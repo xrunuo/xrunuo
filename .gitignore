@@ -14,6 +14,6 @@ Saves/*
 reportHistory.xml
 staffHistory.xml
 */obj/*
-src/*/obj/*
+Scripts/*/obj/*
 output/*
 cache/*
