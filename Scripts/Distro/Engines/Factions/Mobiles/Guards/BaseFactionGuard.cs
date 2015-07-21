@@ -489,6 +489,10 @@ namespace Server.Factions
 		{
 			m_Item = item;
 		}
+
+		public virtual void OnRiderDamaged( int amount, Mobile from, bool willKill )
+		{
+		}
 	}
 
 	public class VirtualMountItem : Item, IMountItem

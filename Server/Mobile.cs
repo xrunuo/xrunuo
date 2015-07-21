@@ -3563,6 +3563,11 @@ namespace Server
 
 		public virtual void Damage( int amount, Mobile from )
 		{
+			Damage( amount, from, true );
+		}
+
+		public virtual void Damage( int amount, Mobile from, bool informMount )
+		{
 			if ( !CanBeDamaged() )
 				return;
 
@@ -3599,6 +3604,10 @@ namespace Server
 				InvokeDamaged( new DamagedEventArgs( amount, from ) );
 
 				OnDamage( amount, from, newHits < 0 );
+
+				IMount m = this.Mount;
+				if ( m != null && informMount )
+					m.OnRiderDamaged( amount, from, newHits < 0 );
 
 				if ( newHits < 0 )
 				{

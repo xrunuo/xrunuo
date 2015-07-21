@@ -12,12 +12,12 @@ namespace Server.Mobiles
 
 		public override bool InitialInnocent { get { return true; } }
 
+		public override TimeSpan MountAbilityDelay { get { return TimeSpan.FromHours( 1.0 ); } }
+
 		public override void OnDisallowedRider( Mobile m )
 		{
 			m.SendLocalizedMessage( 1042319 ); // The Ki-Rin refuses your attempts to mount it.
 		}
-
-		public DateTime m_NextAbilityTime;
 
 		[Constructable]
 		public Kirin()
@@ -80,6 +80,27 @@ namespace Server.Mobiles
 			base.OnAfterDeath( c );
 		}
 
+		public override bool DoMountAbility( int damage, Mobile attacker )
+		{
+			if ( Rider == null || attacker == null ) // sanity
+				return false;
+
+			if ( ( Rider.Hits - damage ) < 30 && Rider.Map == attacker.Map && Rider.InRange( attacker, 18 ) )
+			{
+				attacker.BoltEffect( 0 );
+
+				// 35~100 damage, unresistable, by the Ki-rin.
+				attacker.Damage( Utility.RandomMinMax( 35, 100 ), this, false ); // Don't inform mount about this damage, Still unsure wether or not it's flagged as the mount doing damage or the player.  If changed to player, without the extra bool it'd be an infinite loop
+
+				Rider.LocalOverheadMessage( Network.MessageType.Regular, 0x3B2, 1042534 ); // Your mount calls down the forces of nature on your opponent.
+				Rider.FixedParticles( 0, 0, 0, 0x13A7, EffectLayer.Waist );
+				Rider.PlaySound( 0xA9 );
+				return true;
+			}
+
+			return false;
+		}
+
 		public override int Meat { get { return 3; } }
 		public override int Hides { get { return 10; } }
 		public override HideType HideType { get { return HideType.Horned; } }
@@ -94,9 +115,7 @@ namespace Server.Mobiles
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 2 ); // version
-
-			writer.Write( (DateTime) m_NextAbilityTime );
+			writer.Write( (int) 0 ); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -109,7 +128,7 @@ namespace Server.Mobiles
 			{
 				case 2:
 					{
-						m_NextAbilityTime = reader.ReadDateTime();
+						reader.ReadDateTime();
 						goto case 0;
 					}
 				case 0:

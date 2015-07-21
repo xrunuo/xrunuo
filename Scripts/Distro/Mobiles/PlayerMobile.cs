@@ -2303,45 +2303,6 @@ namespace Server.Mobiles
 			if ( m_SentHonorContext != null )
 				m_SentHonorContext.OnSourceDamaged( from, amount );
 
-			BaseMount mount = Mount as BaseMount;
-
-			if ( mount != null )
-			{
-				if ( mount is Unicorn )
-				{
-					Unicorn unicorn = mount as Unicorn;
-
-					if ( Poison != null && Hits < 40 )
-					{
-						if ( DateTime.Now >= unicorn.m_NextAbilityTime )
-						{
-							Poison = null;
-							SendLocalizedMessage( 1010059 ); // You have been cured of all poisons.
-							FixedParticles( 0x373A, 10, 15, 5012, EffectLayer.Waist );
-							PlaySound( 0x1E0 );
-
-							unicorn.m_NextAbilityTime = DateTime.Now + TimeSpan.FromHours( 1.0 );
-						}
-					}
-				}
-
-				if ( mount is Kirin )
-				{
-					Kirin kirin = mount as Kirin;
-
-					if ( Combatant != null && Hits < 300 )
-					{
-						if ( DateTime.Now >= kirin.m_NextAbilityTime )
-						{
-							Combatant.Damage( Utility.RandomMinMax( 35, 100 ), this );
-							Combatant.BoltEffect( 0 );
-
-							kirin.m_NextAbilityTime = DateTime.Now + TimeSpan.FromHours( 1.0 );
-						}
-					}
-				}
-			}
-
 			if ( amount > 0 && ParalyzingBlow.UnderEffect( this ) )
 			{
 				this.Frozen = false;

@@ -10,6 +10,16 @@ namespace Server.Mobiles
 	{
 		private Mobile m_Rider;
 		private Item m_InternalItem;
+		private DateTime m_NextMountAbility;
+
+		public virtual TimeSpan MountAbilityDelay { get { return TimeSpan.Zero; } }
+
+		[CommandProperty( AccessLevel.GameMaster )]
+		public DateTime NextMountAbility
+		{
+			get { return m_NextMountAbility; }
+			set { m_NextMountAbility = value; }
+		}
 
 		public virtual bool AllowMaleRider { get { return true; } }
 		public virtual bool AllowFemaleRider { get { return true; } }
@@ -32,7 +42,9 @@ namespace Server.Mobiles
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
+
+			writer.Write( m_NextMountAbility );
 
 			writer.Write( m_Rider );
 			writer.Write( m_InternalItem );
@@ -83,6 +95,11 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+				case 1:
+					{
+						m_NextMountAbility = reader.ReadDateTime();
+						goto case 0;
+					}
 				case 0:
 					{
 						m_Rider = reader.ReadMobile();
@@ -354,6 +371,27 @@ namespace Server.Mobiles
 				}
 			}
 
+			return false;
+		}
+
+		public virtual void OnRiderDamaged( int amount, Mobile from, bool willKill )
+		{
+			if ( m_Rider == null )
+				return;
+
+			Mobile attacker = from;
+			if ( attacker == null )
+				attacker = m_Rider.FindMostRecentDamager( true );
+
+			if ( !( attacker == this || attacker == m_Rider || willKill || DateTime.Now < m_NextMountAbility ) )
+			{
+				if ( DoMountAbility( amount, from ) )
+					m_NextMountAbility = DateTime.Now + MountAbilityDelay;
+			}
+		}
+
+		public virtual bool DoMountAbility( int damage, Mobile attacker )
+		{
 			return false;
 		}
 	}

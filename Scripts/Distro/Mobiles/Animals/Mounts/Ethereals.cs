@@ -334,6 +334,10 @@ namespace Server.Mobiles
 				( (EtherealSpell) mob.Spell ).Stop();
 		}
 
+		public void OnRiderDamaged( int amount, Mobile from, bool willKill )
+		{
+		}
+
 		private class EtherealSpell : Spell
 		{
 			private static SpellInfo m_Info = new SpellInfo( "Ethereal Mount", "", 230 );
