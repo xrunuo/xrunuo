@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Login>
+	<IgnoreAuthID>false</IgnoreAuthID>
+	<AutoCreateAccounts>true</AutoCreateAccounts>
+	<MaxAccountsPerIP>1</MaxAccountsPerIP>
+	<!--<MaxLoginsPerIP>2</MaxLoginsPerIP>-->
+	<!--<MaxLoginsPerPC>2</MaxLoginsPerPC>-->
+	<ProtectPasswords>true</ProtectPasswords>
+</Login>

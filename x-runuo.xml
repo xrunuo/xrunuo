@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<x-runuo-config>
+	<global>
+		<server-name value="X-RunUO TC" />
+		<server-email value="noreply@xrunuo.com" />
+		<multi-threading value="off" />
+		<save-interval value="60" />
+		<account-decay value="10000" />
+		<feature name="high-seas" />
+		<feature name="test-center" />
+	</global>
+	<network>
+		<bind address="127.0.0.1" port="2593"/>
+	</network>
+	<locations>
+		<data-path>Muls</data-path>
+	</locations>
+	<libraries>
+		<library name="Distro">
+		</library>
+	</libraries>
+</x-runuo-config>

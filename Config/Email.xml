@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Email>
+	<SmtpServer>mail.example.com</SmtpServer>
+	<SmtpUser></SmtpUser>
+	<SmtpPassword></SmtpPassword>
+	<SmtpPort>25</SmtpPort>
+	<EnableSsl>false</EnableSsl>
+</Email>

@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<names>
+	<namelist type="bird">
+		a wren, a swallow, a warbler, a nuthatch, a chickadee, a thrush, 
+		a nightingale, a starling, a skylark, a finch, a crossbill, a sparrow, a towhee, 
+		a woodpecker, a kingfisher, a tern, a plover, a lapwing, a hawk, a cuckoo, a swift
+	</namelist>
+	<namelist type="ancient lich">
+		Kaltivel, Anshu, Maliel, Baratoz, Almonjin
+	</namelist>
+	<namelist type="balron">
+		the Lord of the Abyss, the Collector of Souls, the Slayer
+	</namelist>
+	<namelist type="darknight creeper">
+		Pariah, Ydoc Llessue, Zhaan, Lorbna, Gragok, Thranger, Krygar, 
+		Grothelfiend, Centibis, Farthak, Laitesach, Crenabil, Krullus, Legron, 
+		Noirkrach, Blassarrabb, Gragragron, Vendodroth, Flaggroth, Vilithrar
+	</namelist>
+	<namelist type="impaler">
+		Po-Kor, Manglar, Verolyn, Gathfe, Skred, Flandrith, Stavinfeks, 
+		Steelbane, Crarigor, Empalk, Perfus, Cassiel, Magor, Xtul, Vladeer, Scrill, 
+		Slix, Ix, Selminus, Victux
+	</namelist>
+	<namelist type="demon knight">
+		Hrallath, Heksen, Peinsluth, Keelus, Kra'an, Ankou, Turi'el, Azazel, 
+		Armarus, Grigorus, Ga'ahp, Therion, Peirazo, Ponerus, Arhaios Ophis, 
+		Vairocan, Arsat, Karnax, Taet Nu'uhn
+	</namelist>
+	<namelist type="shadow knight">
+		Oghmus, Arametheus, Terxor, Erdok, Archatrix, Jonar, Marth'Fador, Helzigar, 
+		Tyrnak, Krakus, Marcus Fel, Lord Kaos, Doomor, Uhn, Malashim, Samael, Nelokhiel, 
+		Montobulus, Usuhl, Zul	
+	</namelist>
+	<namelist type="fire gargoyle">
+		a fiery gargoyle, a burning gargoyle, a smoldering gargoyle, a blistering gargoyle, 
+		a sweltering gargoyle, a flaming gargoyle, a scorching gargoyle, 
+		a blazing gargoyle, a searing gargoyle
+	</namelist>
+	<namelist type="gargoyle vendor">
+		Ansiraal, Aurlem, Betra, Draxsom, Fodus, Forbrak, ForLem, Horffe, Inforlem, Invis,
+		Laplem, Naxator, Quaeven, Sarpling, Silamo, Tereg, Volesh, Vraal, WisSur
+	</namelist>
+	<namelist type="centaur">
+		Sophanon, Caryax, Daemeox, Phlegon, Aerophus, Euforus, Pallax, 
+		Nikaon, Licouax, Lindsaon, Bastax, Magdanon, Thayax, Aethon, Ceridus, Galenon, 
+		Rhysus, Auramax, Aldrax, Anaxus, Luceus, Quarax, Ariax, Balarax, Vincenus, 
+		Loxias, Birhamus, Lekax, Nyctinus, Myrsinus
+	</namelist>
+	<namelist type="ethereal warrior">
+		Galdrion, Briellis, Charpris, Jesurian, Agrast, Beldrion, Polis, 
+		Arafel, Melestoref, Lanculis, Judaselo, Pietrov
+	</namelist>
+	<namelist type="pixie">
+		Klian, Klistra, Laeri, Ciline, Shiale, Ourie, Piepe, Liera, Sili, 
+		Sefi, Cynthe, Nedra, Hali, Jiki, Piku, Rael, Zanne, Zut, Sini, Os, Wienne, Xian, 
+		Ybri, Calee, Shendri, Shri
+	</namelist>
+	<namelist type="savage">
+		Kahl, Ghrom, Ogger, Vek, Sai'ge, Groov'h, Khaonem, Malen, Atar, 
+		Aicee, Vaype, Halex, Yar, Hanz, Evocah, Bishor, Jelak, Adrok, Praphut, Usile, 
+		Sann, Sabba, Prie, Atuk, Chaca, ShoJo, Baccu, Bonkie, Alli, Jexa, La'Loh, Arda, 
+		Cordee, Lana, Lar, Araka, Rhunda, Squee, Bhora, Niha, Olaufee, Sinthe, Karawyn, 
+		Gruwulf, Masena, Nasha, Sargaza
+	</namelist>
+	<namelist type="savage rider">
+		Kahl, Ghrom, Ogger, Vek, Sai'ge, Groov'h, Khaonem, Malen, Atar, 
+		Aicee, Vaype, Halex, Yar, Hanz, Evocah, Bishor, Jelak, Adrok, Praphut, Usile, 
+		Sann, Sabba, Prie, Atuk, Chaca, ShoJo, Baccu, Bonkie, Alli
+	</namelist>
+	<namelist type="savage shaman">
+		Jexa, La'Loh, Arda, Cordee, Lana, Lar, Araka, Rhunda, Squee, 
+		Bhora, Niha, Olaufee, Sinthe, Karawyn, Gruwulf, Masena, Nasha, Sargaza
+	</namelist>
+	<namelist type="golem controller">
+		Zelik, Kronos, Zakron, Velis, Chujil, Hygraph, Dyntrall, Zarus, 
+		Phoseph, Malkavik, Zevras, Vakel, Daklon, Zamog, Tavurk, Drakov, Zazik, Yyntrix, 
+		Zazik, Fropoz, Noxtrag, Makzok, Galzan, Drakan, Drakzik, Vazmog
+	</namelist>
+	<namelist type="daemon">
+		Aamon, Agalierept, Agares, Aglasis, Aiwaz, Astaroth, Ayperos, 
+		Azatoth, Azmodaeus, Azrael, Ba'al, Baal, Barbatos, Bathim, Bathsin, Be'elzebub, 
+		Be'elzebubba, Bechard, Beelzebuth, Botis, Brulefer, Bucon, Buer, Clauneck, 
+		Clitheret, Cthulhu, Druzil, El Chupacabra, Eleogap, Eliezer, Eligor, Eracove, 
+		Faraii, Fleurety, Frimost, Frucissiere, Fruitimiere, Glassyalabolas, Guland, 
+		Gusoyn, Hael, Haristum, Heramael, Hiepacth, Huictiigara, Humots, Khil, Maleki, 
+		Marbas, Mephistopheles, Mersilde, Minoson, Moloch, Molech, Morail, Musisin, 
+		Naberrs, Nebiros, Nebirots, Nyarlathotep, Pentagnony, Proculo, Pruslas, Pursan, 
+		Rofocale, Sargatans, Satanchia, Satanciae, Segal, Sergulath, Sergutthy, 
+		Sidragrosam, Sirchade, Surgat, Sustugriel, Tarchimache, Tarihimal, Trimasel, 
+		Vaelfar, Wormius, Yog-Sothoth, Y'reif Eci, Zoray
+	</namelist>
+	<namelist type="evil mage lord">
+		Xarot the Black Archmage, Kwan Li the Lord of the Mists, 
+		Bazerion the Wizard-Lord, Ylthallynon the Insane
+	</namelist>
+	<namelist type="evil mage">
+		Ronlyn, Merkul, Zasfus, Zain, Doraghir, Danaghir, Staylin, 
+		Kraylin, Limnoch, Kranor, Kraenor, Kranostil, Kranostir, Lilithack, Terus, 
+		Thaelin, Thulack, Jiltharis, Garigor, Banothil, Bainothil, Quain, Ilzinias, 
+		Mardis the Avenger, Phalil the Unexpected, Lord Adnoc, Leje the Invincible, 
+		Master Akris, Sartan, Zejron the Wild, Pitt the Elder, Puzilan the Puzzler, 
+		Vantrom, Singhe-Dul, Tyrin Kuhl, Xarot the Black, Kwan Li, Lord of the Mists, 
+		Viktor Blackoak, Odilion, Raith, Lord of Rats, Bazerion, the Wizard-Lord, 
+		Tybevriat Varn, Keldor the Modoc, Magelord Varsan, Izlay the Ebonheart, Slirith 
+		Iceblood, Alcor, Vitar, Feenark, Sang Qui, Lyticant, Aegnor, Aelfric, Ainvar, 
+		Arazion, Ardarion, Arkanis, Athrax, Barghest, Baros, Begarin, Beynlore, Burat, 
+		Cairne, Carthon, Chamdar, Ciric, Cruzado, Cyphrak, D'Harun, Daelon, Daktar, 
+		Darvain, Dracus, Dradar, Draelin, Draenor, Durodund, Eklor, Elrak, Fangorn, 
+		Farynthane, Galtor, Gemma, Gragus, Irian, Israfel, Jaden, Jefahn, K'shar, 
+		Kalimus, Kallomane, Kanax, Kelnos, Kharn, Khir, Kragon, Kylnath, Larac, Lathis, 
+		Lenroc, Lonthorynthoryl, Lorreck, Mattrick, Mazrim, Mazrim, Modrei, Morturus, 
+		Muktar, Murdon, Murron, Myndon, Mythran, Mytor, Nabius, Nalynkal, Nazgul, 
+		Paorin, Quillan, Rendar, Scythyn, Shilor, Sobran, Soltak, Sorz, Taban, Telzar, 
+		Teron, Trethovian, Tyrnar, Ulath, Vandor, Vermithrax, Vlade, Volan, Wydstrin, 
+		X'calak, Xaelin, Xandor, Xarthos, Xaxtox, Xenix, Xiltanth, Xylor, Xystil, Yazad, 
+		Yllthane, Ylthallynon, Ythoryn, Zalifar, Zathrix, Zunrek
+	</namelist>
+	<namelist type="ratman">eki, 
+		Wecckak, Weckaki, Wedachek, Wikchichoki, Wochickeki
+	</namelist>
+	<namelist type="lizardman">th, 
+		Thalasths, Thaless, Thals, Thatsylh, Thays, Thekths, Theshthis, Thiiths, 
+		Thiitsl, Thilhlyshi, Thishthes, Thlyiss, Thlyly, Thlyshi, Thlysy, Thlythi, 
+		Thmissa, Thmyss, Thsais, Thslish, Ththes, Ththhllith, Ththis, Thtisthh, 
+		Thyisass, Thylmissa, Thys, Thysslah, Tisiss, Tissyth, Tisthhhsy, Tlilhlasth, 
+		Tlishkths, Tseshsath, Tshassasisth, Tsicyth, Tsitys, Tslahsits, Tsthihssthih, 
+		Tsthil, Tsycieth, Tsylhssyt, Tsytysah, Tththhsyt, Tysahyraaath, Tyscesth, 
+		Tysycieth, Yciethhlyly, Yisasshmyss, Yisstisthh, Yllith, Ylsthy, Yraaathlythi, 
+		Ysahlith, Ysasth, Ysath, Yscesth, Yshmissa, Yshtsi, Ysilsia, Yslish, Yssasisth, 
+		Ysssal, Yssthih, Yssths, Yssthy, Ystasah, Ysthsith, Ystsy, Ythals, Ythssysh, 
+		Ytlilh, Ytlish, Ytsais, Ytssysh, Ytsthih
+	</namelist>
+	<namelist type="orc"> Ughat, Ulgan, Ulmragha, Ulmrougha, Umhra, 
+		Umragig, Umruigig, Ungagh, Unrugagh, Urag, Uraugh, Urg, Urgan, Urghat, Urgran, 
+		Urlgan, Urmug, Urug, Urulg, Vabugbu, Vagan, Vagrungad, Vagungad, Vakgar, Vakgu, 
+		Vakmu, Valthurg, Vambag, Vamugbu, Varbu, Varbuk, Varfu, Vargan, Varguk, 
+		Varkgorim, Varthurg, Vegum, Vergu, Verlgu, Verthag, Verthurg, Vetorkag, Vidarok, 
+		Vigdolg, Vigdug, Viggu, Viggulm, Viguka, Vitgurat, Vitgut, Vlog, Vlorg, Vorgak, 
+		Vorgarag, Vothug, Vregu, Vretkag, Vrigka, Vrikdarok, Vrogak, Vrograg, Vrothu, 
+		Vruhag, Vrutha, Vubub, Vugub, Vuiltag, Vukgilug, Vultog, Vulug, Vurbag, Wakgut, 
+		Wanug, Wapkagut, Waruk, Wauktug, Wegub, Welub, Wholug, Wilaktug, Wingloug, 
+		Winug, Woabadug, Woggha, Woggugat, Woggugat, Wogharod, Wogharod, Woghuglat, 
+		Woglug, Wokganit, Womkug, Womrikug, Wonabadug, Worthag, Wraog, Wrug, Wrukag, 
+		Wrukaog, Wubdagog, Wudgh, Wudhagh, Wudugog, Wuglat, Wumanok, Wumkbanok, Wurgoth, 
+		Wurmha, Wurtguth, Wurthu, Wutgarek, Xaakt, Xago, Xagok, Xagu, Xaguk, Xarlug, 
+		Xarpug, Xegug, Xepug, Xig, Xnath, Xnaurl, Xnurl, Xoknath, Xokuk, Xolag, Xolkug, 
+		Xomath, Xomkug, Xomoku, Xonoth, Xorag, Xorakk, Xoroku, Xoruk, Xothkug, Xruul, 
+		Xuag, Xug, Xugaa, Xugag, Xugagug, Xugar, Xugarf, Xugha, Xugor, Xugug, Xujarek, 
+		Xuk, Xulgag, Xunaakt, Xunag, Xunug, Xurek, Xurl, Xurug, Xurukk, Xutag, Xuthakug, 
+		Xutjja, Yaghed, Yagnar, Yagnatz, Yahg, Yahigig, Yakgnath, Yakha, Yalakgh, 
+		Yargug, Yegigoth, Yegoth, Yerghug, Yerug, Ymafubag, Yokgagu, Yokgu, Yolmar, 
+		Yonkathu, Yregh, Yroh, Ysagubar, Yughragh, Yugug, Yugug, Yukgnath, Yukha, 
+		Yulakgh, Yunkathu, Zabghat, Zabub, Zaghig, Zahgigoth, Zahgorim, Zalthu, 
+		Zaraugug, Zarfu, Zargulg, Zarhbub, Zarod, Zeakgu, Zguk, Zildud, Zilge, Zilug, 
+		Zinsbog, Zlapdud, Zlog, Zlughig, Zodagh, Zog, Zogugbu, Zogugh, Zombilge, Zonagh, 
+		Zorfu, Zorgulg, Zorhgigoth, Zornaraugh, Zoughat, Zudagog, Zugarod, Zugbu, 
+		Zugorim, Zuhgan, Zulgha, Zulmthu, Zumhug, Zunodagh, Zunuguk, Zupaugh, Zupgugh, 
+		Zurbag, Zurgha, Zurghed, Zurgug, Zurpigig
+	</namelist>
+	<namelist type="female">entina, Valeria, 
+		Valerie, Valeska, Valonia, Valora, Vanda, Vanessa, Vanora, Vanya, Vashti, Veda, 
+		Velika, Velma, Venesssa, Vera, Verena, Verity, Veronica, Vesta, Vevila, 
+		Victoria, Vidonia, Violet, Violet, Violetta, Virginia, Viridis, Viveka, Vivian, 
+		Voleta, Vrinda, Wakanda, Wanda, Waneta, Wendy, Whilhelmina, Whitney, Wijdan, 
+		Willow, Wilma, Wilona, Winda, Winema, Winifred, Winna, Winona, Wynee, Wynn, 
+		Wynona, Xanthe, Xaveria, Xaviera, Xena, Xenia, Ximena, Xylia, Xylona, Yachne, 
+		Yanice, Yarmilla, Yasmeen, Yasmin, Yelinda, Yenene, Yesmina, Yetta, Yeva, 
+		Yokiko, Yolanda, Yolie, Yonina, Yovela, Yvella, Yvette, Yvonne, Zada, Zahara, 
+		Zahirah, Zahra, Zakia, Zalea, Zalika, Zaltana, Zandra, Zara, Zarah, Zaza, 
+		Zehava, Zelda, Zelenka, Zelia, Zella, Zena, Zenaide, Zenia, Zerlinda, Zeva, 
+		Zevida, Zia, Ziazan, Zigana, Zila, Zina, Zinnia, Zita, Zoe, Zola, Zona, Zora, 
+		Zorah, Zorda, Zosia, Zuleika, Zulema, Zuza, Zuzanny
+	</namelist>
+	<namelist type="male">Sandor, Sanford, Sargent, Sarngin, 
+		Sarojin, Saul, Saunders, Sawyer, Saxon, Schuyler, Scott, Sean, Sebastian, 
+		Sebastien, Seif, Selby, Senon, Sergio, Seth, Seung, Severin, Sevilin, Seward, 
+		Seymour, Shane, Shawn, Shea, Sheffield, Sheldon, Shen, Sheridan, Sherman, 
+		Sherwin, Sherwood, Shing, Shunnar, Sidney, Siegfried, Silas, Simon, Sivan, Skip, 
+		Skyler, Slade, Slevin, Smith, Solomon, Sorgan, Soterios, Spalding, Spencer, 
+		Spenser, Standford, Stanley, Stanton, Stasio, Stefan, Stephan, Stephen, 
+		Sterling, Stevan, Steve, Steven, Stewart, Stoke, Stoyan, Strom, Stuart, Subrey, 
+		Sulaiman, Sullican, Sumner, Sutherland, Sutton, Sven, Sylvester, Tab, Tabari, 
+		Tad, Tadi, Tai, Tajo, Talbart, Talbot, Talman, Talos, Tanek, Tanner, Tano, Taro, 
+		Tate, Taurin, Taylor, Tem, Terence, Terrence, Terrill, Terry, Thaddeus, Thai, 
+		Thaman, Thane, Thanos, Theobald, Theodore, Theron, Thierry, Thomas, Thorpe, 
+		Thurston, Thurston, Tibalt, Tiernan, Timothy, Titus, Tobias, Toby, Tod, Todd, 
+		Tomas, Tong, Tor, Torin, Torrance, Townsend, Travers, Travis, Tremain, Tremaine, 
+		Trent, Trevor, Trey, Tristan, Troy, Tryon, Tucker, Tully, Tyee, Tyler, Tymon, 
+		Tyrone, Upton, Uriah, Urian, Van, Vance, Vaughn, Vern, Vernon, Victor, Vincent, 
+		Vinson, Virgil, Vito, Vlad, Vladimir, Vokes, Volf, Wade, Wagner, Walden, Waldo, 
+		Walker, Wallace, Wally, Walter, Ward, Warner, Warren, Watson, Waylan, Wayland, 
+		Waylon, Wayne, Webb, Webster, Wendell, Wesley, Weston, Weylin, Whitaker, Wilfen, 
+		Will, Willard, Willem, William, Wilson, Winston, Winthrop, Wlby, Woody, Wyatt, 
+		Xavier, Xenos, Xerxes, Ximen, Yakecan, Yale, Yancey, Yardley, Yarin, Yerik, 
+		Yero, Yervant, York, Yusuf, Yves, Zachariah, Zachary, Zackery, Zaid, Zaide, 
+		Zane, Zaniel, Zann, Zared, Zarek, Zeke, Zenon, Zion, Ziven, Zorn
+	</namelist>
+	<namelist type="male tokuno">a, Torashimo, Torataira,
+		Toratani, Torato, Toratsu, Toraura, Torayama, Torihara, Torihashi, Torihayashi, Toriji,
+		Toriike, Torikami, Torikawa, Toriki, Torikushi, Torimatsu, Torimiya, Torimori,
+		Torimoto, Torinaka, Torino, Torinuma, Toriko, Torioka, Torisaka, Torisaki, Torisawa,
+		Torise, Torishima, Torishimo, Toritaira, Toritani, Torito, Toritsu, Toriura, Toriyama,
+		Umehara, Umehashi, Umehayashi, Umeji, Umeike, Umekami, Umekawa, Umeki,
+		Umekushi, Umematsu, Umemiya, Umemori, Umemoto, Umenaka, Umeno, Umenuma,
+		Umeko, Umeoka, Umesaka, Umesaki, Umesawa, Umese, Umeshima, Umeshimo,
+		Umetaira, Umetani, Umeto, Umetsu, Umeura, Umeyama
+	</namelist>
+	<namelist type="female tokuno">ori, Shizu, Shizue, Shizuka, 
+		Shoken, Shoko, Sué, Sui, Suko, Sumi, Sumie, Sumiko, Suzue, Suzuko, Tadako, Tae,
+		Tai, Takako, Tama, Tamafune, Tamaki, Tamami, Tamiko, Tamiyo, Taniko, Tansho, 
+		Tara, Teruyo, Tokie, Tokiko, Tokiyo, Toku, Tomi, Tomiko, Tomoe, Tomoko, Tomomi, 
+		Toshie, Toshiko, Toyoko, Tsuki, Tsukiyama, Tsuya, Ume, Umeka, Umeko, Urako, 
+		Utako, Wazuka, Yae, Yaeko, Yasu, Yasuko, Yayoi, Yodo, Yoko, Yori, Yoriko, Yoshi, 
+		Yoshike, Yoshiko, Yu, Yui, Yuka, Yukako, Yukari, Yuki, Yukiko, Yukiyo, Yuko, Yuma, 
+		Yumako, Yumi, Yumiko, Yuri, Yuriko, Yutsuko, Yuya
+	</namelist>
+	<namelist type="hider">
+		Ahara, Akbaar, Akiosa, Alana, Ano, Blanche, Fina, Yetta
+	</namelist>
+	<namelist type="guardsman">
+		Barret, Caine, Delmore, Erik, Erol, Gakudai, Kennedy, Michito, Ogden, Rodrigo, Sanesue
+	</namelist>
+	<namelist type="ancient urn names">
+		Akira, Avaniaga, Chie, Fumiyo, Gennosuke, Hamato, Nobukazu, Ryo, Takamori, Teruyo, Yoshi, Zeshin
+	</namelist>
+	<namelist type="honorable swords names">
+		Chie, Genjo, Ikuyo, Juri, Kaori, Kaoru, Nobukazu, Roku, Romi, Sanzo, Toshiro, Utamara, Yago, Yeijiro, Yoshi, Zeshin
+	</namelist>
+	<namelist type="reindeer">
+		Dasher, Dancer, Prancer, Vixen, Comet, Cupid, Donner, Blitzen 
+	</namelist>
+</names>

@@ -1,0 +1,36 @@
+using System;
+using Server;
+
+namespace Server.Items
+{
+	public class ChargedAssassinSpike : AssassinSpike
+	{
+		public override int LabelNumber { get { return 1073518; } } // Charged Assassin Spike
+
+		[Constructable]
+		public ChargedAssassinSpike()
+		{
+			WeaponAttributes.HitLightning = 10;
+		}
+
+
+		public ChargedAssassinSpike( Serial serial )
+			: base( serial )
+		{
+		}
+
+		public override void Serialize( GenericWriter writer )
+		{
+			base.Serialize( writer );
+
+			writer.Write( (int) 0 );
+		}
+
+		public override void Deserialize( GenericReader reader )
+		{
+			base.Deserialize( reader );
+
+			/*int version = */reader.ReadInt();
+		}
+	}
+}

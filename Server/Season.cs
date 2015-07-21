@@ -1,0 +1,130 @@
+//
+//  X-RunUO - Ultima Online Server Emulator
+//  Copyright (C) 2015 Pedro Pardal
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace Server
+{
+	/// <summary>
+	/// This class takes care of the map tile transformations in seasons.
+	/// 
+	/// All the maps have a base tileset. Upon this, each concrete season defines a list
+	/// of tile transformations. This transformations make the environment change, for example,
+	/// making shruberry and foliage in Trammel look like tombs in Felucca.
+	/// 
+	/// This transformations were only performed client side, but there are few of them that
+	/// also changes the tile meta data, not only the graphic, i.e. height and blocking
+	/// attributes. As this transformations were not performed server side, players could
+	/// pass over certain tiles in a map with a modified season, when they shouldn't.
+	/// 
+	/// This patch applies the pertinent transformations also server side to keep in sync
+	/// tile attributes and avoid movement exploits.
+	/// 
+	/// See http://iris.schattenkind.net/svn/trunk/lua/filter/filter.map.lua for a complete
+	/// list of tile transformations.
+	/// </summary>
+	public class Season
+	{
+		private static readonly int SeasonCount = 5;
+
+		static Season()
+		{
+			m_TileChanges = new Dictionary<int, int>[SeasonCount];
+
+			// 0 is default season
+			RegisterSeason( 1, "spring" );
+			RegisterSeason( 2, "fall" );
+			RegisterSeason( 3, "winter" );
+			RegisterSeason( 4, "desolation" );
+		}
+
+		public static Tile[] PatchTiles( Tile[] tiles, int season )
+		{
+			if ( season <= 0 || season >= SeasonCount )
+				return tiles;
+
+			var tileChanges = m_TileChanges[season];
+			if ( tileChanges != null )
+			{
+				for ( int i = 0; i < tiles.Length; i++ )
+				{
+					if ( tileChanges.ContainsKey( tiles[i].ID ) )
+						tiles[i].ID = tileChanges[tiles[i].ID];
+				}
+			}
+
+			return tiles;
+		}
+
+		private static Dictionary<int, int>[] m_TileChanges;
+
+		private static void RegisterSeason( int seasonID, string name )
+		{
+			m_TileChanges[seasonID] = GetTileChanges( name );
+		}
+
+		private static Dictionary<int, int> GetTileChanges( string name )
+		{
+			string filename = Path.Combine( "Data/Seasons", String.Format( "{0}.cfg", name ) );
+
+			if ( File.Exists( filename ) )
+			{
+				Dictionary<int, int> tileChanges = new Dictionary<int, int>();
+
+				using ( StreamReader bin = new StreamReader( filename ) )
+				{
+					string line;
+					while ( ( line = bin.ReadLine() ) != null )
+					{
+						if ( ( line.Length == 0 ) || line.StartsWith( "#" ) )
+							continue;
+
+						char[] delimiters = new char[1] { '\t' };
+
+						string[] data = line.Split( delimiters );
+
+						try
+						{
+							int defaultID = Utility.ToInt32( data[0] );
+							int morphID = Utility.ToInt32( data[1] );
+
+							tileChanges[defaultID] = morphID;
+
+							continue;
+						}
+						catch
+						{
+							Console.WriteLine( "Warning: Invalid season entry:" );
+							Console.WriteLine( line );
+							continue;
+						}
+					}
+				}
+
+				return tileChanges;
+			}
+			else
+			{
+				Console.WriteLine( "Warning: season {0} not found.", name );
+				return null;
+			}
+		}
+	}
+}
