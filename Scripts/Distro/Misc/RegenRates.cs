@@ -30,7 +30,9 @@ namespace Server.Misc
 			double n = (double) cur / max;
 			double v = Math.Sqrt( m.Skills[skill].Value * 0.005 );
 
-			n *= ( 1.0 - v );
+			double cap = m.Skills[skill].Cap / 100.0;
+
+			n *= ( cap - v );
 			n += v;
 
 			m.CheckSkill( skill, n );
