@@ -11,7 +11,7 @@ XRunUO
 
 ### Binary packages
 
-*Coming soon*
+* v0.18.0 (Windows) + Saves w/fully spawned world: https://www.dropbox.com/s/1n2smffgwrwcuzu/xrunuo-distro_0-18-0-41100.zip?dl=0
 
 ### From sources
 
