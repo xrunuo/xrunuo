@@ -1,6 +1,8 @@
 XRunUO
 ======
 
+[![Join the chat at https://gitter.im/xrunuo/xrunuo](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/xrunuo/xrunuo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 **XRunUO** is a server emulator of the MMORPG game Ultima Online, forked from the RunUO project, adding support for the Stygian Abyss expansion, written in C# and targeting the .NET Framework 4.0 and Mono.
 
 ## Foreword
