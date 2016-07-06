@@ -32,7 +32,6 @@ namespace Server.Configuration
 		private string[] m_IgnoreSources;
 		private string[] m_IgnoreTypes;
 		private string[] m_Depends;
-		private string[] m_Overlays;
 		private int m_WarningLevel = -1;
 
 		private static string[] CollectStringArray( XmlElement parent, string tag, string attr )
@@ -100,7 +99,6 @@ namespace Server.Configuration
 
 			m_IgnoreSources = CollectStringArray( libConfigEl, "ignore-source", "name" );
 			m_IgnoreTypes = CollectStringArray( libConfigEl, "ignore-type", "name" );
-			m_Overlays = LowerStringArray( CollectStringArray( libConfigEl, "overlay", "name" ) );
 			m_Depends = LowerStringArray( CollectStringArray( libConfigEl, "depends", "name" ) );
 
 			string disabledString = libConfigEl.GetAttribute( "disabled" );
@@ -144,11 +142,6 @@ namespace Server.Configuration
 		public int WarningLevel
 		{
 			get { return m_WarningLevel; }
-		}
-
-		public string[] Overlays
-		{
-			get { return m_Overlays; }
 		}
 
 		public string[] Depends

@@ -300,6 +300,7 @@
     <Compile Include="Serialization.cs" />
     <Compile Include="SkillMods.cs" />
     <Compile Include="Skills.cs" />
+    <Compile Include="SourceCodeFileProvider.cs" />
     <Compile Include="StringList.cs" />
     <Compile Include="Targeting\LandTarget.cs" />
     <Compile Include="Targeting\MobileExtensions.cs" />

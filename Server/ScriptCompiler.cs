@@ -73,18 +73,19 @@ namespace Server
 			return assemblies.ToArray();
 		}
 
-		private static Hashtable ReadStampFile( string filename )
+		private static Dictionary<string, DateTime> ReadStampFile( string filename )
 		{
 			if ( !File.Exists( filename ) )
 				return null;
 
-			FileStream fs = new FileStream( filename, FileMode.Open, FileAccess.Read );
-			BinaryReader br = new BinaryReader( fs );
+			var fs = new FileStream( filename, FileMode.Open, FileAccess.Read );
+			var br = new BinaryReader( fs );
+			
 			int version = br.ReadInt32();
 			if ( version != 1 )
 				return null;
 
-			Hashtable stamps = new Hashtable();
+			var stamps = new Dictionary<string, DateTime>();
 
 			uint count = br.ReadUInt32();
 			for ( uint i = 0; i < count; i++ )
@@ -100,40 +101,37 @@ namespace Server
 			return stamps;
 		}
 
-		private static void WriteStampFile( string filename, Hashtable stamps )
+		private static void WriteStampFile( string filename, Dictionary<string, DateTime> stamps )
 		{
-			FileStream fs = new FileStream( filename, FileMode.OpenOrCreate, FileAccess.Write );
-			BinaryWriter bw = new BinaryWriter( fs );
+			var fs = new FileStream( filename, FileMode.OpenOrCreate, FileAccess.Write );
+			var bw = new BinaryWriter( fs );
 			bw.Write( (int) 1 );
 
 			bw.Write( (uint) stamps.Count );
-			IDictionaryEnumerator e = stamps.GetEnumerator();
-			while ( e.MoveNext() )
+			foreach ( var kvp in stamps )
 			{
-				bw.Write( (string) e.Key );
-				bw.Write( (long) ( (DateTime) e.Value ).Ticks );
+				bw.Write( kvp.Key );
+				bw.Write( (long) kvp.Value.Ticks );
 			}
 
 			bw.Close();
 			fs.Close();
 		}
 
-		private static bool CheckStamps( Hashtable files,
-			string stampFile )
+		private static bool CheckStamps( Dictionary<string, DateTime> files, string stampFile )
 		{
-			Hashtable stamps = ReadStampFile( stampFile );
+			var stamps = ReadStampFile( stampFile );
 			if ( stamps == null )
 				return false;
 
-			IDictionaryEnumerator e = files.GetEnumerator();
-			while ( e.MoveNext() )
+			foreach ( var kvp in files )
 			{
-				string filename = (string) e.Key;
+				var filename = kvp.Key;
 				if ( !stamps.ContainsKey( filename ) )
 					return false;
 
-				DateTime newStamp = (DateTime) e.Value;
-				DateTime oldStamp = (DateTime) stamps[filename];
+				var newStamp = kvp.Value;
+				var oldStamp = stamps[filename];
 
 				if ( oldStamp != newStamp )
 					return false;
@@ -144,25 +142,24 @@ namespace Server
 			return stamps.Count == 0;
 		}
 
-		private static CompilerResults CompileCSScripts( ICollection fileColl,
-														string assemblyFile,
-														Configuration.Library libConfig,
-														bool debug )
+		private static CompilerResults CompileCSScripts( ICollection<string> fileColl, string assemblyFile, Configuration.Library libConfig, bool debug )
 		{
-			CSharpCodeProvider provider = new CSharpCodeProvider();
+			var provider = new CSharpCodeProvider();
 #pragma warning disable 618
-			ICodeCompiler compiler = provider.CreateCompiler();
+			var compiler = provider.CreateCompiler();
 #pragma warning restore 618
 
 			string[] files;
 
-			Console.WriteLine( "Scripts: Compiling library {0}, {1} C# sources",
-						   libConfig.Name, fileColl.Count );
+			Console.WriteLine( "Scripts: Compiling library {0}, {1} C# sources", libConfig.Name, fileColl.Count );
 
 			string tempFile = compiler.GetType().FullName == "Mono.CSharp.CSharpCodeCompiler"
-				? Path.GetTempFileName() : null;
+				? Path.GetTempFileName()
+				: null;
+			
 			if ( tempFile == String.Empty )
 				tempFile = null;
+			
 			if ( tempFile == null )
 			{
 				files = new string[fileColl.Count];
@@ -173,7 +170,7 @@ namespace Server
 				/* to prevent an "argument list too long" error, we
 				   write a list of file names to a temporary file
 				   and add them with @filename */
-				StreamWriter w = new StreamWriter( tempFile, false );
+				var w = new StreamWriter( tempFile, false );
 				foreach ( string file in fileColl )
 				{
 					w.Write( "\"" + file + "\" " );
@@ -183,7 +180,7 @@ namespace Server
 				files = new string[0];
 			}
 
-			CompilerParameters parms = new CompilerParameters( GetReferenceAssemblies(), assemblyFile, debug );
+			var parms = new CompilerParameters( GetReferenceAssemblies(), assemblyFile, debug );
 			if ( tempFile != null )
 				parms.CompilerOptions += "@" + tempFile;
 
@@ -227,12 +224,12 @@ namespace Server
 		{
 			if ( results.Errors.Count > 0 )
 			{
-				Dictionary<string, List<CompilerError>> errors = new Dictionary<string, List<CompilerError>>( results.Errors.Count, StringComparer.OrdinalIgnoreCase );
-				Dictionary<string, List<CompilerError>> warnings = new Dictionary<string, List<CompilerError>>( results.Errors.Count, StringComparer.OrdinalIgnoreCase );
+				var errors = new Dictionary<string, List<CompilerError>>( results.Errors.Count, StringComparer.OrdinalIgnoreCase );
+				var warnings = new Dictionary<string, List<CompilerError>>( results.Errors.Count, StringComparer.OrdinalIgnoreCase );
 
 				foreach ( CompilerError e in results.Errors )
 				{
-					string file = e.FileName;
+					var file = e.FileName;
 
 					// Rediculous. FileName is null if the warning/error is internally generated in csc.
 					if ( string.IsNullOrEmpty( file ) )
@@ -241,7 +238,7 @@ namespace Server
 						continue;
 					}
 
-					Dictionary<string, List<CompilerError>> table = ( e.IsWarning ? warnings : errors );
+					var table = ( e.IsWarning ? warnings : errors );
 
 					List<CompilerError> list = null;
 					table.TryGetValue( file, out list );
@@ -290,7 +287,7 @@ namespace Server
 				if ( errors.Count > 0 )
 					Console.WriteLine( "Errors:" );
 
-				foreach ( KeyValuePair<string, List<CompilerError>> kvp in errors )
+				foreach ( var kvp in errors )
 				{
 					string fileName = kvp.Key;
 					List<CompilerError> list = kvp.Value;
@@ -316,29 +313,11 @@ namespace Server
 			}
 		}
 
-		private static void Overlay( string base1, Hashtable files1,
-									string base2, Hashtable files2 )
+		private static Dictionary<string, DateTime> GetScripts( Configuration.Library libConfig, string type )
 		{
-			foreach ( string filename in files2.Keys )
-			{
-				files1.Remove( base1 + Path.DirectorySeparatorChar + filename.Substring( base2.Length + 1 ) );
-				files1[filename] = files2[filename];
-			}
-		}
+			var sourceCodeFileProvider = new SourceCodeFileProvider( libConfig, type );
 
-		private static Hashtable GetScripts( Configuration.Library libConfig, IEnumerable overlays, string type )
-		{
-			Hashtable files = GetScripts( libConfig, type );
-
-			if ( overlays != null )
-			{
-				foreach ( Configuration.Library overlay in overlays )
-				{
-					Hashtable files2 = GetScripts( overlay, type );
-
-					Overlay( libConfig.SourcePath.FullName, files, overlay.SourcePath.FullName, files2 );
-				}
-			}
+			var files = sourceCodeFileProvider.ProvideSources();
 
 			return files;
 		}
@@ -372,7 +351,7 @@ namespace Server
 				return true;
 			}
 
-			DirectoryInfo cache = new DirectoryInfo( Environment.Config.CacheDirectory ).CreateSubdirectory( libConfig.Name );
+			var cache = new DirectoryInfo( Environment.Config.CacheDirectory ).CreateSubdirectory( libConfig.Name );
 
 			if ( !cache.Exists )
 			{
@@ -380,18 +359,8 @@ namespace Server
 				return false;
 			}
 
-			List<Configuration.Library> overlays = null;
-
-			if ( libConfig.Overlays != null )
-			{
-				overlays = new List<Configuration.Library>();
-
-				foreach ( string name in libConfig.Overlays )
-					overlays.Add( Environment.Config.GetLibrary( name ) );
-			}
-
-			string csFile = Path.Combine( cache.FullName, libConfig.Name + ".dll" );
-			Hashtable files = GetScripts( libConfig, overlays, "*.cs" );
+			var csFile = Path.Combine( cache.FullName, libConfig.Name + ".dll" );
+			var files = GetScripts( libConfig, "*.cs" );
 
 			if ( files.Count > 0 )
 			{
@@ -405,10 +374,10 @@ namespace Server
 				}
 				else
 				{
-					ArrayList sorted = new ArrayList( files.Keys );
+					var sorted = new List<string>( files.Keys );
 					sorted.Sort();
 
-					CompilerResults results = CompileCSScripts( sorted, csFile, libConfig, debug );
+					var results = CompileCSScripts( sorted, csFile, libConfig, debug );
 
 					if ( results != null )
 					{
@@ -431,9 +400,9 @@ namespace Server
 		/// <param name="libs">Source libraries.</param>
 		/// <param name="queue">Somewhat like a stack of libraries currently waiting.</param>
 		/// <param name="libConfig">The library to be added.</param>
-		private static void EnqueueLibrary( ArrayList dst, ArrayList libs, Hashtable queue, Configuration.Library libConfig )
+		private static void EnqueueLibrary( List<Configuration.Library> dst, List<Configuration.Library> libs, ISet<string> queue, Configuration.Library libConfig )
 		{
-			string[] depends = libConfig.Depends;
+			var depends = libConfig.Depends;
 
 			if ( libConfig.Name == "core" || libConfig.Disabled )
 			{
@@ -448,34 +417,30 @@ namespace Server
 				return;
 			}
 
-			/* first resolve dependencies */
+			// First resolve dependencies.
 			if ( depends != null )
 			{
-				queue[libConfig.Name] = 1;
+				queue.Add( libConfig.Name );
 
 				foreach ( string depend in depends )
 				{
-					/* if the depended library is already in the
-					 * queue, there is a circular dependency */
-					if ( queue.ContainsKey( depend ) )
+					// If the depended library is already in the queue, there is a circular dependency.
+					if ( queue.Contains( depend ) )
 					{
-						Console.WriteLine( "Error: Circular library dependency {0} on {1}",
-										libConfig.Name, depend );
+						Console.WriteLine( "Error: Circular library dependency {0} on {1}", libConfig.Name, depend );
 						throw new ApplicationException();
 					}
 
-					Configuration.Library next = Environment.Config.GetLibrary( depend );
+					var next = Environment.Config.GetLibrary( depend );
 					if ( next == null || !next.Exists )
 					{
-						Console.WriteLine( "Error: Unresolved library dependency: {0} depends on {1}, which does not exist",
-										libConfig.Name, depend );
+						Console.WriteLine( "Error: Unresolved library dependency: {0} depends on {1}, which does not exist", libConfig.Name, depend );
 						throw new ApplicationException();
 					}
 
 					if ( next.Disabled )
 					{
-						Console.WriteLine( "Error: Unresolved library dependency: {0} depends on {1}, which is disabled",
-										libConfig.Name, depend );
+						Console.WriteLine( "Error: Unresolved library dependency: {0} depends on {1}, which is disabled", libConfig.Name, depend );
 						throw new ApplicationException();
 					}
 
@@ -486,25 +451,25 @@ namespace Server
 				queue.Remove( libConfig.Name );
 			}
 
-			/* then add it to 'dst' */
+			// Then add it to 'dst'.
 			dst.Add( libConfig );
 			libs.Remove( libConfig );
 		}
 
-		private static ArrayList SortLibrariesByDepends()
+		private static List<Configuration.Library> SortLibrariesByDepends()
 		{
-			ArrayList libs = new ArrayList( Environment.Config.Libraries );
-			Hashtable queue = new Hashtable();
-			ArrayList dst = new ArrayList();
+			var libs = new List<Configuration.Library>( Environment.Config.Libraries );
+			var queue = new HashSet<string>();
+			var dst = new List<Configuration.Library>();
 
 			// Handle distro first, for most compatibility.
-			Configuration.Library libConfig = Environment.Config.GetLibrary( "distro" );
+			var libConfig = Environment.Config.GetLibrary( "distro" );
 
 			if ( libConfig != null )
 				EnqueueLibrary( dst, libs, queue, libConfig );
 
 			while ( libs.Count > 0 )
-				EnqueueLibrary( dst, libs, queue, (Configuration.Library) libs[0] );
+				EnqueueLibrary( dst, libs, queue, libs[0] );
 
 			return dst;
 		}
@@ -519,52 +484,10 @@ namespace Server
 			m_Libraries = new List<Library>();
 			m_Libraries.Add( new Library( Environment.Config.GetLibrary( "core" ), Environment.Assembly ) );
 
-			// Prepare overlays.
-			foreach ( Configuration.Library libConfig in Environment.Config.Libraries )
-			{
-				if ( libConfig.Overlays == null || !libConfig.Exists ||
-					libConfig.Name == "core" )
-					continue;
-
-				if ( libConfig.SourcePath == null )
-				{
-					Console.WriteLine( "Error: Can't overlay the binary library {0}", libConfig.Name );
-					throw new ApplicationException();
-				}
-
-				foreach ( string name in libConfig.Overlays )
-				{
-					Configuration.Library overlay = Environment.Config.GetLibrary( name );
-
-					if ( overlay == null || !overlay.Exists )
-					{
-						Console.WriteLine( "Error: Can't overlay {0} with {1}, because it does not exist", libConfig.Name, name );
-						throw new ApplicationException();
-					}
-
-					if ( overlay.SourcePath == null )
-					{
-						Console.WriteLine( "Error: Can't overlay {0} with {1}, because it is binary only", libConfig.Name, overlay.Name );
-						throw new ApplicationException();
-					}
-
-					overlay.Disabled = true;
-				}
-			}
-
-			foreach ( Configuration.Library libConfig in Environment.Config.Libraries )
-			{
-				if ( libConfig.Overlays != null && libConfig.Exists && libConfig.Name != "core" && libConfig.Disabled )
-				{
-					Console.WriteLine( "Error: Can't overlay library {0} which is already used as overlay for another library", libConfig.Name );
-					throw new ApplicationException();
-				}
-			}
-
 			// Collect Config.Library objects, sort them and compile.
-			ArrayList libConfigs = SortLibrariesByDepends();
+			var libConfigs = SortLibrariesByDepends();
 
-			foreach ( Configuration.Library libConfig in libConfigs )
+			foreach ( var libConfig in libConfigs )
 			{
 				bool result = Compile( libConfig, debug );
 
@@ -573,11 +496,11 @@ namespace Server
 			}
 
 			// Delete unused cache directories.
-			DirectoryInfo cacheDir = new DirectoryInfo( Environment.Config.CacheDirectory );
+			var cacheDir = new DirectoryInfo( Environment.Config.CacheDirectory );
 
-			foreach ( DirectoryInfo sub in cacheDir.GetDirectories() )
+			foreach ( var sub in cacheDir.GetDirectories() )
 			{
-				string libName = sub.Name.ToLower();
+				var libName = sub.Name.ToLower();
 
 				if ( GetLibrary( libName ) == null )
 					sub.Delete( true );
@@ -588,13 +511,13 @@ namespace Server
 
 		public static void Configure()
 		{
-			foreach ( Library library in m_Libraries )
+			foreach ( var library in m_Libraries )
 				library.Configure();
 		}
 
 		public static void Initialize()
 		{
-			foreach ( Library library in m_Libraries )
+			foreach ( var library in m_Libraries )
 				library.Initialize();
 		}
 
@@ -640,9 +563,9 @@ namespace Server
 		{
 			for ( int i = m_Libraries.Count - 1; i >= 0; --i )
 			{
-				Library library = m_Libraries[i];
+				var library = m_Libraries[i];
 
-				Type type = library.TypeCache.GetTypeByFullName( fullName, ignoreCase );
+				var type = library.TypeCache.GetTypeByFullName( fullName, ignoreCase );
 
 				if ( type != null )
 					return type;
@@ -660,52 +583,15 @@ namespace Server
 		{
 			for ( int i = m_Libraries.Count - 1; i >= 0; --i )
 			{
-				Library library = m_Libraries[i];
+				var library = m_Libraries[i];
 
-				Type type = library.TypeCache.GetTypeByName( name, ignoreCase );
+				var type = library.TypeCache.GetTypeByName( name, ignoreCase );
 
 				if ( type != null )
 					return type;
 			}
 
 			return null;
-		}
-
-		private static Hashtable GetScripts( Configuration.Library libConfig, string type )
-		{
-			Hashtable list = new Hashtable();
-
-			GetScripts( libConfig, list, libConfig.SourcePath.FullName, type );
-
-			return list;
-		}
-
-		private static string[] m_IgnoreNames = new string[]
-			{
-				".svn", "_svn", "_darcs", ".git", ".hg", "cvs"
-			};
-
-		private static void GetScripts( Configuration.Library libConfig, Hashtable list, string path, string type )
-		{
-			foreach ( string dir in Directory.GetDirectories( path ) )
-			{
-				string baseName = Path.GetFileName( dir ).ToLower();
-
-				for ( int i = 0; i < m_IgnoreNames.Length; i++ )
-				{
-					if ( baseName == m_IgnoreNames[i] )
-						continue;
-				}
-
-				GetScripts( libConfig, list, dir, type );
-			}
-
-			foreach ( string filename in Directory.GetFiles( path, type ) )
-			{
-				// Pass relative filename only.
-				if ( libConfig == null || !libConfig.GetIgnoreSource( filename ) )
-					list[filename] = File.GetLastWriteTime( filename );
-			}
 		}
 
 		private static int m_ItemCount, m_MobileCount;
@@ -718,7 +604,7 @@ namespace Server
 			m_ItemCount = 0;
 			m_MobileCount = 0;
 
-			foreach ( Library library in ScriptCompiler.Libraries )
+			foreach ( var library in ScriptCompiler.Libraries )
 			{
 				int itemCount = 0, mobileCount = 0;
 				library.Verify( ref itemCount, ref mobileCount );

@@ -42,7 +42,7 @@ namespace Server.Configuration
 			m_SaveDirectory, m_BackupDirectory, m_LogDirectory,
 			m_CacheDirectory;
 		private List<string> m_DataDirectories;
-		private Hashtable m_LibraryConfig = new Hashtable();
+		private Dictionary<string, Library> m_LibraryConfig = new Dictionary<string, Library>();
 		private Network m_Network;
 		private GameServerList m_GameServers;
 
@@ -135,10 +135,10 @@ namespace Server.Configuration
 
 		public Library GetLibrary( string name )
 		{
-			return (Library) m_LibraryConfig[name];
+			return m_LibraryConfig[name];
 		}
 
-		public ICollection Libraries
+		public ICollection<Library> Libraries
 		{
 			get { return m_LibraryConfig.Values; }
 		}
@@ -424,7 +424,7 @@ namespace Server.Configuration
 
 				name = name.ToLower();
 
-				Library libConfig = (Library) m_LibraryConfig[name];
+				var libConfig = m_LibraryConfig[name];
 
 				if ( libConfig == null )
 					m_LibraryConfig[name] = libConfig = new Library( name );
