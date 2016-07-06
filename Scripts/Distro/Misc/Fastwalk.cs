@@ -34,7 +34,7 @@ namespace Server.Misc
 
 			try
 			{
-				using ( StreamWriter op = new StreamWriter( "log/Fastwalk.log", true ) )
+				using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "Fastwalk.log" ), true ) )
 					op.WriteLine( "{0}\t{1}\t{2}\t{3}", DateTime.Now, e.NetState, e.NetState.Account.ToString(), e.NetState.Mobile.Name );
 			}
 			catch { }

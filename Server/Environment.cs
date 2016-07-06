@@ -212,10 +212,10 @@ namespace Server
 			{
 				if ( m_Service )
 				{
-					if ( !Directory.Exists( "Logs" ) )
-						Directory.CreateDirectory( "Logs" );
+					if ( !Directory.Exists( Environment.Config.LogDirectory ) )
+						Directory.CreateDirectory( Environment.Config.LogDirectory );
 
-					Console.SetOut( new MultiTextWriter( Console.Out, new FileLogger( "Logs/Console.log" ) ) );
+					Console.SetOut( new MultiTextWriter( Console.Out, new FileLogger( Path.Combine( Environment.Config.LogDirectory, "Console.log" ) ) ) );
 				}
 				else
 				{

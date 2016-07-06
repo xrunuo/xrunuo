@@ -424,7 +424,7 @@ namespace Server.Network
 		{
 			try
 			{
-				using ( StreamWriter op = new StreamWriter( "log/network-errors.log", true ) )
+				using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "network-errors.log" ), true ) )
 				{
 					op.WriteLine( "# {0}", DateTime.Now );
 

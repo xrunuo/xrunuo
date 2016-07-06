@@ -29,7 +29,7 @@ namespace Server
 
 			try
 			{
-				using ( StreamWriter op = new StreamWriter( "log/Exceptions.log", true ) )
+				using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "Exceptions.log" ), true ) )
 				{
 					op.WriteLine( "{0}, {1}", DateTime.Now, log );
 					op.WriteLine();
@@ -48,7 +48,7 @@ namespace Server
 
 			try
 			{
-				using ( StreamWriter op = new StreamWriter( "log/Debug.log", true ) )
+				using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "Debug.log" ), true ) )
 				{
 					op.WriteLine( "{0}, {1}", DateTime.Now, log );
 				}

@@ -151,7 +151,7 @@ namespace Server.Misc
 
 				Console.WriteLine( "Login: {0}: Past IP limit threshold", e.State );
 
-				using ( StreamWriter op = new StreamWriter( "ipLimits.log", true ) )
+				using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "ipLimits.log" ), true ) )
 					op.WriteLine( "{0}\tPast IP limit threshold\t{1}", e.State, DateTime.Now );
 
 				return;
@@ -227,7 +227,7 @@ namespace Server.Misc
 
 				Console.WriteLine( "Login: {0}: Past IP limit threshold", e.State );
 
-				using ( StreamWriter op = new StreamWriter( "ipLimits.log", true ) )
+				using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "ipLimits.log" ), true ) )
 					op.WriteLine( "{0}\tPast IP limit threshold\t{1}", e.State, DateTime.Now );
 			}
 			else if ( !acct.HasAccess( e.State ) )

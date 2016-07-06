@@ -461,7 +461,7 @@ namespace Server.Scripts.Commands
 		{
 			try
 			{
-				using ( StreamWriter sw = new StreamWriter( "packetprofiles.log", true ) )
+				using ( StreamWriter sw = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "packetprofiles.log" ), true ) )
 				{
 					sw.WriteLine( "# Dump on {0:f}", DateTime.Now );
 					sw.WriteLine( "# Core profiling for " + Environment.ProfileTime );
@@ -522,7 +522,7 @@ namespace Server.Scripts.Commands
 		{
 			try
 			{
-				using ( StreamWriter sw = new StreamWriter( "timerprofiles.log", true ) )
+				using ( StreamWriter sw = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "timerprofiles.log" ), true ) )
 				{
 					TimerProfiles.DumpInfo( sw );
 				}
@@ -554,7 +554,7 @@ namespace Server.Scripts.Commands
 		{
 			try
 			{
-				using ( StreamWriter sw = new StreamWriter( "timerdump.log", true ) )
+				using ( StreamWriter sw = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "timerdump.log" ), true ) )
 				{
 					TimerScheduler.Instance.DumpInfo( sw );
 				}
@@ -592,7 +592,7 @@ namespace Server.Scripts.Commands
 		[Description( "Generates a log file detailing all item and mobile types in the world." )]
 		public static void CountObjects_OnCommand( CommandEventArgs e )
 		{
-			using ( StreamWriter op = new StreamWriter( "objects.log" ) )
+			using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "objects.log" ) ) )
 			{
 				Hashtable table = new Hashtable();
 
@@ -659,7 +659,7 @@ namespace Server.Scripts.Commands
 				}
 			}
 
-			e.Mobile.SendMessage( "Object table has been generated. See the file : <x-runuo root>/objects.log" );
+			e.Mobile.SendMessage( "Object table has been generated. See the file : <log-dir>/objects.log" );
 		}
 
 		[Usage( "TraceInternal" )]
@@ -690,7 +690,7 @@ namespace Server.Scripts.Commands
 				parms[1] += item.Amount;
 			}
 
-			using ( StreamWriter op = new StreamWriter( "internal.log" ) )
+			using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "internal.log" ) ) )
 			{
 				op.WriteLine( "# {0} items found", totalCount );
 				op.WriteLine( "# {0} different types", table.Count );
@@ -773,7 +773,7 @@ namespace Server.Scripts.Commands
 
 				list.Sort( new CountSorter() );
 
-				using ( StreamWriter op = new StreamWriter( opFile ) )
+				using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, opFile ) ) )
 				{
 					op.WriteLine( "# Profile of world {0}", type );
 					op.WriteLine( "# Generated on {0}", DateTime.Now );

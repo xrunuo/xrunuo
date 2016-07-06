@@ -1712,7 +1712,7 @@ namespace Server.Engines.Housing.Multis
 		{
 			try
 			{
-				using ( StreamWriter op = new StreamWriter( "comp_val.log", true ) )
+				using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "comp_val.log" ), true ) )
 					op.WriteLine( "{0}\t{1}\tInvalid ItemID 0x{2:X4}", state, state.Mobile, itemID );
 			}
 			catch

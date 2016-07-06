@@ -19,10 +19,10 @@ namespace Server.Scripts.Commands
 		{
 			EventSink.Instance.Command += new CommandEventHandler( EventSink_Command );
 
-			if ( !Directory.Exists( "log" ) )
-				Directory.CreateDirectory( "Logs" );
+			if ( !Directory.Exists( Environment.Config.LogDirectory ) )
+				Directory.CreateDirectory( Environment.Config.LogDirectory );
 
-			string directory = "log/commands";
+			string directory = Path.Combine( Environment.Config.LogDirectory, "commands" );
 
 			if ( !Directory.Exists( directory ) )
 				Directory.CreateDirectory( directory );
@@ -83,18 +83,17 @@ namespace Server.Scripts.Commands
 			{
 				m_Output.WriteLine( "{0}: {1}: {2}", DateTime.Now, from.Client, text );
 
-				string path = Environment.BaseDirectory;
+				string path = Environment.Config.LogDirectory;
 
 				Account acct = from.Account as Account;
 
 				string name = ( acct == null ? from.Name : acct.Username );
 
-				AppendPath( ref path, "log" );
 				AppendPath( ref path, "commands" );
 				AppendPath( ref path, from.AccessLevel.ToString() );
 				path = Path.Combine( path, String.Format( "{0}.log", name ) );
 
-				using ( StreamWriter sw = new StreamWriter( path, true ) )
+				using ( var sw = new StreamWriter( path, true ) )
 					sw.WriteLine( "{0}: {1}: {2}", DateTime.Now, from.Client, text );
 			}
 			catch

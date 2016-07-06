@@ -188,7 +188,7 @@ namespace Server.Misc
 			try
 			{
 				string timeStamp = GetTimeStamp();
-				string fileName = String.Format( "log/Crash {0}.log", timeStamp );
+				string fileName = Path.Combine( Environment.Config.LogDirectory, String.Format( "Crash {0}.log", timeStamp ) );
 
 				string root = GetRoot();
 				string filePath = Combine( root, fileName );
