@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 using Server;
 using Server.Engines.BuffIcons;
 using Server.Mobiles;
-using Server.Network;
 using Server.Spells;
 using Server.Targeting;
 
@@ -98,6 +96,11 @@ namespace Server.Items
 				if ( map == null )
 					return;
 
+				DoEffect( from, p, map );
+			}
+
+			private async void DoEffect( Mobile from, IPoint3D p, Map map )
+			{
 				SpellHelper.GetSurfaceTop( ref p );
 
 				from.RevealingAction();
@@ -106,39 +109,19 @@ namespace Server.Items
 
 				Effects.SendMovingEffect( from, to, m_Potion.ItemID, 7, 0, false, false, m_Potion.Hue, 0 );
 
-				Timer.DelayCall( TimeSpan.FromSeconds( 1.0 ), new TimerStateCallback( ExplodingTarPotionEffect_Callback ), new object[] { p, from, map } );
-
 				m_Potion.SetNextDrinkTime( from );
-			}
 
-			public virtual void ExplodingTarPotionEffect_Callback( object state )
-			{
-				object[] states = (object[]) state;
-				Point3D p = new Point3D( (IPoint3D) states[0] );
-				Mobile from = (Mobile) states[1];
-				Map map = (Map) states[2];
+				await TimeSpan.FromSeconds( 1.0 );
 
-				var eable = map.GetMobilesInRange( p, ExplosionRange );
+				var toSleep = map.GetMobilesInRange( p, ExplosionRange )
+				                 .Where( m => m.Alive && m != from && Notoriety.Compute(from, m) != Notoriety.Innocent );
 
-				int toAffect = 0;
-				List<Mobile> toSleep = new List<Mobile>();
-
-				foreach ( Mobile m in eable )
-				{
-					if ( m.Alive && m != from && Notoriety.Compute( from, m ) != Notoriety.Innocent )
-					{
-						toSleep.Add( m );
-						++toAffect;
-					}
-				}
-
-
-				if ( toAffect > 0 )
+				if ( toSleep.Any() )
 				{
 					Effects.PlaySound( p, map, 0x207 );
 					Effects.SendLocationParticles( EffectItem.Create( new Point3D( p.X, p.Y, p.Z ), from.Map, EffectItem.DefaultDuration ), 0x36B0, 1, 14, 0x455, 0x7, 0x26BB, 0 );
 
-					foreach ( Mobile m in toSleep )
+					foreach ( var m in toSleep.ToArray() )
 					{
 						if ( CheckSleep( from, m ) )
 						{
