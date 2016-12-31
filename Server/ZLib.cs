@@ -68,13 +68,13 @@ namespace Server
 
 	public class ZLibUnix
 	{
-		[DllImport( "libz.so" )]
+		[DllImport( "libz" )]
 		public static extern string zlibVersion();
-		[DllImport( "libz.so" )]
+		[DllImport( "libz" )]
 		public static extern ZLibError compress( byte[] dest, ref long destLength, byte[] source, long sourceLength );
-		[DllImport( "libz.so" )]
+		[DllImport( "libz" )]
 		public static extern ZLibError compress2( byte[] dest, ref long destLength, byte[] source, long sourceLength, ZLibCompressionLevel level );
-		[DllImport( "libz.so" )]
+		[DllImport( "libz" )]
 		public static extern ZLibError uncompress( byte[] dest, ref long destLen, byte[] source, long sourceLen );
 	}
 
