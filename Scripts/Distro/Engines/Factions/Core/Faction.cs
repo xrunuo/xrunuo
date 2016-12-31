@@ -889,14 +889,13 @@ namespace Server.Factions
 			}
 		}
 
-		public static void FactionKick_OnCommand( CommandEventArgs e )
+		public static async void FactionKick_OnCommand( CommandEventArgs e )
 		{
-			e.Mobile.SendMessage( "Target a player to remove them from their faction." );
-			e.Mobile.BeginTarget( -1, false, TargetFlags.None, new TargetCallback( FactionKick_OnTarget ) );
-		}
+			Mobile from = e.Mobile;
 
-		public static void FactionKick_OnTarget( Mobile from, object obj )
-		{
+			from.SendMessage( "Target a player to remove them from their faction." );
+			object obj = await from.PickTarget( -1, false, TargetFlags.None );
+
 			if ( obj is Mobile )
 			{
 				Mobile mob = (Mobile) obj;
