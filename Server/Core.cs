@@ -89,7 +89,7 @@ namespace Server
 
 			ScriptCompiler.VerifyLibraries();
 
-			// This instance is shared among timer scheduler and timer executor, 
+			// This instance is shared among timer scheduler and timer executor,
 			// and accessed from both core & timer threads.
 			Queue<Timer> timerQueue = new Queue<Timer>();
 

@@ -25,7 +25,7 @@ namespace Server.Configuration
 	{
 		public static bool ParseBool( string value, bool defaultValue )
 		{
-			if ( value == null || value == "" )
+			if ( string.IsNullOrEmpty( value ) )
 				return defaultValue;
 
 			if ( value == "true" || value == "on" || value == "yes" )

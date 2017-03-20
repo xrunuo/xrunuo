@@ -15,8 +15,4 @@
 	<locations>
 		<data-path>Muls</data-path>
 	</locations>
-	<libraries>
-		<library name="Distro">
-		</library>
-	</libraries>
 </x-runuo-config>

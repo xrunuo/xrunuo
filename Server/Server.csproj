@@ -147,6 +147,7 @@
     <Reference Include="System.Data">
       <Name>System.Data</Name>
     </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Web">
       <Name>System.Web</Name>
     </Reference>
@@ -168,6 +169,7 @@
     <Compile Include="Configuration\ConfigModuleAttribute.cs" />
     <Compile Include="Configuration\Features.cs" />
     <Compile Include="Configuration\Library.cs" />
+    <Compile Include="Configuration\LibraryConfig.cs" />
     <Compile Include="Configuration\Modules\Email.cs" />
     <Compile Include="Configuration\Modules\Login.cs" />
     <Compile Include="Configuration\Modules\Network.cs" />
@@ -175,6 +177,7 @@
     <Compile Include="Configuration\Parser.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="CurrentTime.cs" />
+    <Compile Include="Dependencies.cs" />
     <Compile Include="Environment.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Expansion.cs" />

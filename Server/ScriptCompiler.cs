@@ -35,10 +35,7 @@ namespace Server
 
 		public static Library[] Libraries
 		{
-			get
-			{
-				return m_Libraries.ToArray();
-			}
+			get { return m_Libraries.ToArray(); }
 		}
 
 		/// <summary>
@@ -80,7 +77,7 @@ namespace Server
 
 			var fs = new FileStream( filename, FileMode.Open, FileAccess.Read );
 			var br = new BinaryReader( fs );
-			
+
 			int version = br.ReadInt32();
 			if ( version != 1 )
 				return null;
@@ -142,7 +139,8 @@ namespace Server
 			return stamps.Count == 0;
 		}
 
-		private static CompilerResults CompileCSScripts( ICollection<string> fileColl, string assemblyFile, Configuration.Library libConfig, bool debug )
+		private static CompilerResults CompileCSScripts( ICollection<string> fileColl, string assemblyFile,
+			Configuration.Library libConfig, bool debug )
 		{
 			var provider = new CSharpCodeProvider();
 #pragma warning disable 618
@@ -156,10 +154,10 @@ namespace Server
 			string tempFile = compiler.GetType().FullName == "Mono.CSharp.CSharpCodeCompiler"
 				? Path.GetTempFileName()
 				: null;
-			
+
 			if ( tempFile == String.Empty )
 				tempFile = null;
-			
+
 			if ( tempFile == null )
 			{
 				files = new string[fileColl.Count];
@@ -225,7 +223,8 @@ namespace Server
 			if ( results.Errors.Count > 0 )
 			{
 				var errors = new Dictionary<string, List<CompilerError>>( results.Errors.Count, StringComparer.OrdinalIgnoreCase );
-				var warnings = new Dictionary<string, List<CompilerError>>( results.Errors.Count, StringComparer.OrdinalIgnoreCase );
+				var warnings =
+					new Dictionary<string, List<CompilerError>>( results.Errors.Count, StringComparer.OrdinalIgnoreCase );
 
 				foreach ( CompilerError e in results.Errors )
 				{
@@ -254,7 +253,8 @@ namespace Server
 				else
 					Console.WriteLine( "Scripts: compilation done ({0} errors, {1} warnings)", errors.Count, warnings.Count );
 
-				string scriptRoot = Path.GetFullPath( Path.Combine( Environment.BaseDirectory, "src" + Path.DirectorySeparatorChar ) );
+				string scriptRoot = Path.GetFullPath(
+					Path.Combine( Environment.BaseDirectory, "src" + Path.DirectorySeparatorChar ) );
 				Uri scriptRootUri = new Uri( scriptRoot );
 				/*
 				Utility.PushColor( ConsoleColor.Yellow );
@@ -332,7 +332,7 @@ namespace Server
 					Console.WriteLine( "Warning: library {0} does not exist", libConfig.Name );
 					return true;
 				}
-				else if ( !libConfig.BinaryPath.Exists )
+				if ( !libConfig.BinaryPath.Exists )
 				{
 					Console.WriteLine( "Warning: library {0} does not exist: {1}", libConfig.Name, libConfig.BinaryPath );
 					return false;
@@ -345,7 +345,7 @@ namespace Server
 
 				return true;
 			}
-			else if ( !libConfig.SourcePath.Exists )
+			if ( !libConfig.SourcePath.Exists )
 			{
 				Console.WriteLine( "Warning: library {0} does not exist", libConfig.Name );
 				return true;
@@ -364,7 +364,7 @@ namespace Server
 
 			if ( files.Count > 0 )
 			{
-				string stampFile = Path.Combine( cache.FullName, libConfig.Name + ".stm" );
+				var stampFile = Path.Combine( cache.FullName, libConfig.Name + ".stm" );
 
 				if ( File.Exists( csFile ) && CheckStamps( files, stampFile ) )
 				{
@@ -400,14 +400,21 @@ namespace Server
 		/// <param name="libs">Source libraries.</param>
 		/// <param name="queue">Somewhat like a stack of libraries currently waiting.</param>
 		/// <param name="libConfig">The library to be added.</param>
-		private static void EnqueueLibrary( List<Configuration.Library> dst, List<Configuration.Library> libs, ISet<string> queue, Configuration.Library libConfig )
+		private static void EnqueueLibrary( List<Configuration.Library> dst, List<Configuration.Library> libs,
+			ISet<string> queue, Configuration.Library libConfig )
 		{
 			var depends = libConfig.Depends;
 
-			if ( libConfig.Name == "core" || libConfig.Disabled )
+			if ( libConfig.Name == "Core" || libConfig.Disabled )
 			{
 				libs.Remove( libConfig );
 				return;
+			}
+
+			if ( libConfig.IsRemote && ( !libConfig.Exists || Environment.ForceUpdateDeps ) )
+			{
+				var srcPath = Dependencies.Fetch( libConfig );
+				libConfig.SourcePath = new DirectoryInfo( srcPath );
 			}
 
 			if ( !libConfig.Exists )
@@ -422,7 +429,7 @@ namespace Server
 			{
 				queue.Add( libConfig.Name );
 
-				foreach ( string depend in depends )
+				foreach ( var depend in depends )
 				{
 					// If the depended library is already in the queue, there is a circular dependency.
 					if ( queue.Contains( depend ) )
@@ -431,16 +438,18 @@ namespace Server
 						throw new ApplicationException();
 					}
 
-					var next = Environment.Config.GetLibrary( depend );
+					var next = Environment.LibraryConfig.GetLibrary( depend );
 					if ( next == null || !next.Exists )
 					{
-						Console.WriteLine( "Error: Unresolved library dependency: {0} depends on {1}, which does not exist", libConfig.Name, depend );
+						Console.WriteLine( "Error: Unresolved library dependency: {0} depends on {1}, which does not exist",
+							libConfig.Name, depend );
 						throw new ApplicationException();
 					}
 
 					if ( next.Disabled )
 					{
-						Console.WriteLine( "Error: Unresolved library dependency: {0} depends on {1}, which is disabled", libConfig.Name, depend );
+						Console.WriteLine( "Error: Unresolved library dependency: {0} depends on {1}, which is disabled", libConfig.Name,
+							depend );
 						throw new ApplicationException();
 					}
 
@@ -456,14 +465,14 @@ namespace Server
 			libs.Remove( libConfig );
 		}
 
-		private static List<Configuration.Library> SortLibrariesByDepends()
+		private static IEnumerable<Configuration.Library> SortLibrariesByDepends()
 		{
-			var libs = new List<Configuration.Library>( Environment.Config.Libraries );
+			var libs = new List<Configuration.Library>( Environment.LibraryConfig.Libraries );
 			var queue = new HashSet<string>();
 			var dst = new List<Configuration.Library>();
 
-			// Handle distro first, for most compatibility.
-			var libConfig = Environment.Config.GetLibrary( "distro" );
+			// Handle 'Distro' first, for most compatibility.
+			var libConfig = Environment.LibraryConfig.GetLibrary( "Distro" );
 
 			if ( libConfig != null )
 				EnqueueLibrary( dst, libs, queue, libConfig );
@@ -476,20 +485,20 @@ namespace Server
 
 		public static bool Compile( bool debug )
 		{
-			if ( m_AdditionalReferences != null )
+			if ( AlreadyCompiled )
 				throw new ApplicationException( "already compiled" );
 
 			m_AdditionalReferences = new List<string>();
 
 			m_Libraries = new List<Library>();
-			m_Libraries.Add( new Library( Environment.Config.GetLibrary( "core" ), Environment.Assembly ) );
+			m_Libraries.Add( new Library( Environment.LibraryConfig.GetLibrary( "Core" ), Environment.Assembly ) );
 
 			// Collect Config.Library objects, sort them and compile.
 			var libConfigs = SortLibrariesByDepends();
 
 			foreach ( var libConfig in libConfigs )
 			{
-				bool result = Compile( libConfig, debug );
+				var result = Compile( libConfig, debug );
 
 				if ( !result )
 					return false;
@@ -500,13 +509,18 @@ namespace Server
 
 			foreach ( var sub in cacheDir.GetDirectories() )
 			{
-				var libName = sub.Name.ToLower();
+				var libName = sub.Name;
 
 				if ( GetLibrary( libName ) == null )
 					sub.Delete( true );
 			}
 
 			return true;
+		}
+
+		private static bool AlreadyCompiled
+		{
+			get { return m_AdditionalReferences != null; }
 		}
 
 		public static void Configure()
@@ -596,8 +610,15 @@ namespace Server
 
 		private static int m_ItemCount, m_MobileCount;
 
-		public static int ScriptItems { get { return m_ItemCount; } }
-		public static int ScriptMobiles { get { return m_MobileCount; } }
+		public static int ScriptItems
+		{
+			get { return m_ItemCount; }
+		}
+
+		public static int ScriptMobiles
+		{
+			get { return m_MobileCount; }
+		}
 
 		public static void VerifyLibraries()
 		{
@@ -624,9 +645,20 @@ namespace Server
 		private Type[] m_Types;
 		private TypeTable m_Names, m_FullNames;
 
-		public Type[] Types { get { return m_Types; } }
-		public TypeTable Names { get { return m_Names; } }
-		public TypeTable FullNames { get { return m_FullNames; } }
+		public Type[] Types
+		{
+			get { return m_Types; }
+		}
+
+		public TypeTable Names
+		{
+			get { return m_Names; }
+		}
+
+		public TypeTable FullNames
+		{
+			get { return m_FullNames; }
+		}
 
 		public Type GetTypeByName( string name, bool ignoreCase )
 		{

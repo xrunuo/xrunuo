@@ -19,6 +19,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml;
 
 namespace Server.Configuration
@@ -28,6 +29,7 @@ namespace Server.Configuration
 		private string m_Name;
 		private DirectoryInfo m_SourcePath;
 		private FileInfo m_BinaryPath;
+		private Uri m_Uri;
 		private bool m_Disabled = false;
 		private string[] m_IgnoreSources;
 		private string[] m_IgnoreTypes;
@@ -36,13 +38,13 @@ namespace Server.Configuration
 
 		private static string[] CollectStringArray( XmlElement parent, string tag, string attr )
 		{
-			List<string> attributeList = new List<string>();
+			var attributeList = new List<string>();
 
 			foreach ( XmlElement element in parent.GetElementsByTagName( tag ) )
 			{
-				string value = element.GetAttribute( attr );
+				var value = element.GetAttribute( attr );
 
-				if ( value != null && value != "" )
+				if ( !string.IsNullOrEmpty( value ) )
 					attributeList.Add( value );
 			}
 
@@ -54,7 +56,7 @@ namespace Server.Configuration
 			if ( src == null )
 				return null;
 
-			string[] dst = new string[src.Length];
+			var dst = new string[src.Length];
 
 			for ( uint i = 0; i < src.Length; i++ )
 				dst[i] = src[i].ToLower();
@@ -79,21 +81,34 @@ namespace Server.Configuration
 			m_BinaryPath = path;
 		}
 
+		public Library( string name, Uri uri )
+		{
+			m_Name = name;
+			m_Uri = uri;
+		}
+
 		public void Load( XmlElement libConfigEl )
 		{
-			string sourcePathString = Parser.GetElementString( libConfigEl, "path" );
+			var sourceString = Parser.GetElementString( libConfigEl, "path" );
 
-			if ( sourcePathString != null )
+			if ( sourceString != null )
 			{
-				if ( sourcePathString.EndsWith( ".dll" ) )
+				if ( sourceString.StartsWith( "http" ) )
+				{
+					m_BinaryPath = null;
+					m_Uri = new Uri( sourceString );
+				}
+				else if ( sourceString.EndsWith( ".dll" ) )
 				{
 					m_SourcePath = null;
-					m_BinaryPath = new FileInfo( sourcePathString );
+					m_BinaryPath = new FileInfo( sourceString );
+					m_Uri = null;
 				}
 				else
 				{
-					m_SourcePath = new DirectoryInfo( sourcePathString );
+					m_SourcePath = new DirectoryInfo( sourceString );
 					m_BinaryPath = null;
+					m_Uri = null;
 				}
 			}
 
@@ -101,13 +116,13 @@ namespace Server.Configuration
 			m_IgnoreTypes = CollectStringArray( libConfigEl, "ignore-type", "name" );
 			m_Depends = LowerStringArray( CollectStringArray( libConfigEl, "depends", "name" ) );
 
-			string disabledString = libConfigEl.GetAttribute( "disabled" );
+			var disabledString = libConfigEl.GetAttribute( "disabled" );
 			m_Disabled = Parser.ParseBool( disabledString, false );
 
-			string warnString = libConfigEl.GetAttribute( "warn" );
+			var warnString = libConfigEl.GetAttribute( "warn" );
 
-			if ( warnString != null && warnString != "" )
-				m_WarningLevel = Int32.Parse( warnString );
+			if ( !string.IsNullOrEmpty( warnString ) )
+				m_WarningLevel = int.Parse( warnString );
 		}
 
 		public string Name
@@ -118,6 +133,7 @@ namespace Server.Configuration
 		public DirectoryInfo SourcePath
 		{
 			get { return m_SourcePath; }
+			set { m_SourcePath = value; }
 		}
 
 		public FileInfo BinaryPath
@@ -130,9 +146,10 @@ namespace Server.Configuration
 			get
 			{
 				return ( m_SourcePath != null && m_SourcePath.Exists ) ||
-					   ( m_BinaryPath != null && m_BinaryPath.Exists );
+				       ( m_BinaryPath != null && m_BinaryPath.Exists );
 			}
 		}
+
 		public bool Disabled
 		{
 			get { return m_Disabled; }
@@ -151,26 +168,22 @@ namespace Server.Configuration
 
 		public bool GetIgnoreSource( string filename )
 		{
-			if ( m_IgnoreSources == null )
-				return false;
-
-			foreach ( string ign in m_IgnoreSources )
-				if ( filename.EndsWith( ign ) )
-					return true;
-
-			return false;
+			return m_IgnoreSources != null && m_IgnoreSources.Any( filename.EndsWith );
 		}
 
 		public bool GetIgnoreType( Type type )
 		{
-			if ( m_IgnoreTypes == null )
-				return false;
+			return m_IgnoreTypes != null && m_IgnoreTypes.Any( t => t == type.FullName );
+		}
 
-			foreach ( string ign in m_IgnoreTypes )
-				if ( ign == type.FullName )
-					return true;
+		public Uri Uri
+		{
+			get { return m_Uri; }
+		}
 
-			return false;
+		public bool IsRemote
+		{
+			get { return Uri != null; }
 		}
 	}
 }

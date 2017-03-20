@@ -158,7 +158,7 @@ namespace Server
 
 		public void Configure()
 		{
-			if ( m_Name == "core" )
+			if ( m_Name == "Core" )
 			{
 				m_Configured = true;
 				return;
@@ -174,7 +174,7 @@ namespace Server
 
 		public void Initialize()
 		{
-			if ( m_Name == "core" )
+			if ( m_Name == "Core" )
 			{
 				m_Initialized = true;
 				return;

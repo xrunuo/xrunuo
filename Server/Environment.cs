@@ -39,6 +39,7 @@ namespace Server
 		private static bool m_Debug;
 
 		private static RootConfig m_Config;
+		private static LibraryConfig m_LibraryConfig;
 
 		private static bool m_Profiling;
 		private static DateTime m_ProfileStart;
@@ -76,19 +77,50 @@ namespace Server
 
 		private static bool m_Unix;
 
-		public static bool Unix { get { return m_Unix; } }
+		public static bool Unix
+		{
+			get { return m_Unix; }
+		}
 
 		public static readonly bool Is64Bit = IntPtr.Size == 8;
 		private static readonly int ProcessorCount = System.Environment.ProcessorCount;
-		private static bool MultiProcessor { get { return ProcessorCount > 1; } }
 
-		public static bool Logging { get { return m_Logging; } set { m_Logging = value; } }
+		private static bool MultiProcessor
+		{
+			get { return ProcessorCount > 1; }
+		}
 
-		public static bool Service { get { return m_Service; } }
-		public static bool Debug { get { return m_Debug; } }
-		public static List<string> DataDirectories { get { return m_Config.DataDirectories; } }
-		public static Assembly Assembly { get { return m_Assembly; } set { m_Assembly = value; } }
-		public static Process Process { get { return m_Process; } }
+		public static bool Logging
+		{
+			get { return m_Logging; }
+			set { m_Logging = value; }
+		}
+
+		public static bool Service
+		{
+			get { return m_Service; }
+		}
+
+		public static bool Debug
+		{
+			get { return m_Debug; }
+		}
+
+		public static List<string> DataDirectories
+		{
+			get { return m_Config.DataDirectories; }
+		}
+
+		public static Assembly Assembly
+		{
+			get { return m_Assembly; }
+			set { m_Assembly = value; }
+		}
+
+		public static Process Process
+		{
+			get { return m_Process; }
+		}
 
 		public static string FindDataFile( string path )
 		{
@@ -131,6 +163,15 @@ namespace Server
 			get { return m_Config; }
 		}
 
+		#region Dependency management
+		public static LibraryConfig LibraryConfig
+		{
+			get { return m_LibraryConfig; }
+		}
+		#endregion
+
+		public static bool ForceUpdateDeps { get; set; }
+
 		public static string BaseDirectory
 		{
 			get
@@ -172,37 +213,51 @@ namespace Server
 			if ( BaseDirectory.Length > 0 )
 				Directory.SetCurrentDirectory( BaseDirectory );
 
-			Version ver = m_Assembly.GetName().Version;
-			CoreVersion = ver;
+			var version = m_Assembly.GetName().Version;
+			CoreVersion = version;
 
-			int platform = (int) System.Environment.OSVersion.Platform;
+			var platform = (int) System.Environment.OSVersion.Platform;
 			if ( platform == 4 || platform == 128 )
 				m_Unix = true;
 
 			GCSettings.LatencyMode = GCLatencyMode.LowLatency;
 
-			Console.WriteLine( "X-RunUO Server - Version {0}.{1}.{2}, Build {3}", ver.Major, ver.Minor, ver.Build, ver.Revision );
+			Console.WriteLine( "X-RunUO Server - Version {0}.{1}.{2}, Build {3}", version.Major, version.Minor, version.Build,
+				version.Revision );
 			Console.WriteLine( "Core: Running on OS {0}", System.Environment.OSVersion );
 			Console.WriteLine( "Core: Running on {0} {1}", Unix ? "Mono" : ".NET Framework", System.Environment.Version );
 
 			if ( MultiProcessor || Is64Bit )
-				Console.WriteLine( "Core: Optimizing for {0} {2}processor{1}", ProcessorCount, ProcessorCount == 1 ? "" : "s", Is64Bit ? "64-bit " : "" );
+				Console.WriteLine( "Core: Optimizing for {0} {2}processor{1}", ProcessorCount, ProcessorCount == 1 ? "" : "s",
+					Is64Bit ? "64-bit " : "" );
 
-			Console.WriteLine( "Core: Using GC {0} {1} mode", GCSettings.IsServerGC ? "Server" : "Workstation", GCSettings.LatencyMode.ToString() );
+			Console.WriteLine( "Core: Using GC {0} {1} mode", GCSettings.IsServerGC ? "Server" : "Workstation",
+				GCSettings.LatencyMode );
 
 			m_Config = new RootConfig( BaseDirectory, "x-runuo.xml" );
+
+			#region Dependency management
+			m_LibraryConfig = new LibraryConfig( BaseDirectory, "libraries.xml" );
+
+			if ( ForceUpdateDeps )
+				Directory.Delete( Path.Combine( BaseDirectory, "deps" ), recursive: true );
+			#endregion
 		}
 
 		private static void ParseArguments( string[] args )
 		{
 			for ( int i = 0; i < args.Length; ++i )
 			{
-				if ( Insensitive.Equals( args[i], "-debug" ) )
+				if ( Insensitive.Equals( args[i], "--debug" ) )
 					m_Debug = true;
-				else if ( Insensitive.Equals( args[i], "-service" ) )
+				else if ( Insensitive.Equals( args[i], "--service" ) )
 					m_Service = true;
-				else if ( Insensitive.Equals( args[i], "-profile" ) )
+				else if ( Insensitive.Equals( args[i], "--profile" ) )
 					Profiling = true;
+				#region Dependency management
+				else if ( Insensitive.Equals( args[i], "--update-deps" ) )
+					ForceUpdateDeps = true;
+				#endregion
 			}
 		}
 
@@ -215,7 +270,8 @@ namespace Server
 					if ( !Directory.Exists( Environment.Config.LogDirectory ) )
 						Directory.CreateDirectory( Environment.Config.LogDirectory );
 
-					Console.SetOut( new MultiTextWriter( Console.Out, new FileLogger( Path.Combine( Environment.Config.LogDirectory, "Console.log" ) ) ) );
+					Console.SetOut( new MultiTextWriter( Console.Out,
+						new FileLogger( Path.Combine( Environment.Config.LogDirectory, "Console.log" ) ) ) );
 				}
 				else
 				{
@@ -231,6 +287,9 @@ namespace Server
 		{
 			if ( !m_Config.Exists )
 				m_Config.Save();
+
+			if ( !m_LibraryConfig.Exists )
+				m_LibraryConfig.Save();
 		}
 	}
 }

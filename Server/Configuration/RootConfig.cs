@@ -38,11 +38,15 @@ namespace Server.Configuration
 		private TimeSpan m_SaveInterval = TimeSpan.FromMinutes( 15.0 );
 		private TimeSpan m_AccountDecay = TimeSpan.FromDays( 90.0 );
 		private Features m_Features = new Features();
-		private string m_BaseDirectory, m_ConfigDirectory,
-			m_SaveDirectory, m_BackupDirectory, m_LogDirectory,
+
+		private string m_BaseDirectory,
+			m_ConfigDirectory,
+			m_SaveDirectory,
+			m_BackupDirectory,
+			m_LogDirectory,
 			m_CacheDirectory;
+
 		private List<string> m_DataDirectories;
-		private Dictionary<string, Library> m_LibraryConfig = new Dictionary<string, Library>();
 		private Network m_Network;
 		private GameServerList m_GameServers;
 
@@ -53,13 +57,12 @@ namespace Server.Configuration
 			m_SaveDirectory = Path.Combine( m_BaseDirectory, "Saves" );
 			m_BackupDirectory = Path.Combine( m_BaseDirectory, "Backups" );
 
-			DirectoryInfo baseDir = new DirectoryInfo( m_BaseDirectory );
+			var baseDir = new DirectoryInfo( m_BaseDirectory );
 			m_LogDirectory = baseDir.CreateSubdirectory( "log" ).FullName;
 			m_CacheDirectory = baseDir.CreateSubdirectory( "cache" ).FullName;
 
 			m_Filename = filename;
 
-			Defaults();
 			Load();
 		}
 
@@ -133,16 +136,6 @@ namespace Server.Configuration
 			get { return m_DataDirectories; }
 		}
 
-		public Library GetLibrary( string name )
-		{
-			return m_LibraryConfig[name];
-		}
-
-		public ICollection<Library> Libraries
-		{
-			get { return m_LibraryConfig.Values; }
-		}
-
 		public Network Network
 		{
 			get { return m_Network; }
@@ -188,59 +181,18 @@ namespace Server.Configuration
 			return element;
 		}
 
-		private void Defaults()
-		{
-			Library coreConfig = new Library( "core" );
-			m_LibraryConfig["core"] = coreConfig;
-
-			DirectoryInfo basedir = new DirectoryInfo( BaseDirectory );
-
-			// Find binary libraries in ./lib/
-			DirectoryInfo lib = basedir.CreateSubdirectory( "lib" );
-
-			foreach ( FileInfo libFile in lib.GetFiles( "*.dll" ) )
-			{
-				string fileName = libFile.Name;
-				string libName = fileName.Substring( 0, fileName.Length - 4 ).ToLower();
-
-				if ( m_LibraryConfig.ContainsKey( libName ) )
-				{
-					Console.WriteLine( "Warning: duplicate library '{0}' in '{1}'", libName, libFile );
-					continue;
-				}
-
-				m_LibraryConfig[libName] = new Library( libName, libFile );
-			}
-
-			// Find source libraries in ./src/
-			DirectoryInfo src = basedir.CreateSubdirectory( "Scripts" );
-
-			foreach ( DirectoryInfo sub in src.GetDirectories() )
-			{
-				string libName = sub.Name.ToLower();
-
-				if ( m_LibraryConfig.ContainsKey( libName ) )
-				{
-					Console.WriteLine( "Warning: duplicate library '{0}' in '{1}'", libName, sub.FullName );
-					continue;
-				}
-
-				m_LibraryConfig[libName] = new Library( libName, sub );
-			}
-		}
-
 		public static void RemoveElement( XmlElement parent, string tag )
 		{
 			if ( parent == null )
 				return;
 
-			XmlNodeList nodeList = parent.GetElementsByTagName( tag );
-			XmlNode[] children = new XmlNode[nodeList.Count];
+			var nodeList = parent.GetElementsByTagName( tag );
+			var children = new XmlNode[nodeList.Count];
 
-			for ( int i = 0; i < children.Length; i++ )
+			for ( var i = 0; i < children.Length; i++ )
 				children[i] = nodeList.Item( i );
 
-			foreach ( XmlNode child in children )
+			foreach ( var child in children )
 				parent.RemoveChild( child );
 		}
 
@@ -294,52 +246,52 @@ namespace Server.Configuration
 					switch ( node.Name )
 					{
 						case "server-name":
-							{
-								m_ServerName = element.GetAttribute( "value" );
-								break;
-							}
+						{
+							m_ServerName = element.GetAttribute( "value" );
+							break;
+						}
 						case "website":
-							{
-								m_Website = element.GetAttribute( "value" );
-								break;
-							}
+						{
+							m_Website = element.GetAttribute( "value" );
+							break;
+						}
 						case "server-email":
-							{
-								m_ServerEmail = element.GetAttribute( "value" );
-								break;
-							}
+						{
+							m_ServerEmail = element.GetAttribute( "value" );
+							break;
+						}
 						case "multi-threading":
-							{
-								m_Features[node.Name] = Parser.ParseBool( element.GetAttribute( "value" ), true );
-								break;
-							}
+						{
+							m_Features[node.Name] = Parser.ParseBool( element.GetAttribute( "value" ), true );
+							break;
+						}
 						case "feature":
-							{
-								m_Features[element.GetAttribute( "name" )] = Parser.ParseBool( element.GetAttribute( "value" ), true );
-								break;
-							}
+						{
+							m_Features[element.GetAttribute( "name" )] = Parser.ParseBool( element.GetAttribute( "value" ), true );
+							break;
+						}
 						case "save-interval":
-							{
-								double saveInterval = Convert.ToDouble( element.GetAttribute( "value" ) );
+						{
+							double saveInterval = Convert.ToDouble( element.GetAttribute( "value" ) );
 
-								if ( saveInterval < 1.0 )
-									Console.WriteLine( "Warning: Invalid value of save-interval, setting it to default" );
-								else
-									m_SaveInterval = TimeSpan.FromMinutes( saveInterval );
+							if ( saveInterval < 1.0 )
+								Console.WriteLine( "Warning: Invalid value of save-interval, setting it to default" );
+							else
+								m_SaveInterval = TimeSpan.FromMinutes( saveInterval );
 
-								break;
-							}
+							break;
+						}
 						case "account-decay":
-							{
-								m_AccountDecay = TimeSpan.FromDays( Convert.ToDouble( element.GetAttribute( "value" ) ) );
+						{
+							m_AccountDecay = TimeSpan.FromDays( Convert.ToDouble( element.GetAttribute( "value" ) ) );
 
-								break;
-							}
+							break;
+						}
 						default:
-							{
-								Console.WriteLine( "Warning: Invalid element global/{0}", node.Name );
-								break;
-							}
+						{
+							Console.WriteLine( "Warning: Invalid element global/{0}", node.Name );
+							break;
+						}
 					}
 				}
 
@@ -369,71 +321,45 @@ namespace Server.Configuration
 					switch ( element.Name )
 					{
 						case "config-dir":
-							{
-								m_ConfigDirectory = path;
-								break;
-							}
+						{
+							m_ConfigDirectory = path;
+							break;
+						}
 						case "save-dir":
-							{
-								m_SaveDirectory = path;
-								break;
-							}
+						{
+							m_SaveDirectory = path;
+							break;
+						}
 						case "backup-dir":
-							{
-								m_BackupDirectory = path;
-								break;
-							}
+						{
+							m_BackupDirectory = path;
+							break;
+						}
 						case "data-path":
-							{
-								if ( Directory.Exists( path ) )
-									m_DataDirectories.Add( path );
+						{
+							if ( Directory.Exists( path ) )
+								m_DataDirectories.Add( path );
 
-								break;
-							}
+							break;
+						}
 						case "log-dir":
-							{
-								m_LogDirectory = path;
-								break;
-							}
+						{
+							m_LogDirectory = path;
+							break;
+						}
 						case "cache-dir":
-							{
-								m_CacheDirectory = path;
-								break;
-							}
+						{
+							m_CacheDirectory = path;
+							break;
+						}
 						default:
-							{
-								Console.WriteLine( "Warning: Ignoring unknown location tag in {0}: {1}", m_Filename, element.Name );
-								break;
-							}
+						{
+							Console.WriteLine( "Warning: Ignoring unknown location tag in {0}: {1}", m_Filename, element.Name );
+							break;
+						}
 					}
 				}
 			}
-
-			// Section "libraries"
-			XmlElement librariesEl = GetConfiguration( "libraries" );
-
-			foreach ( XmlElement element in librariesEl.GetElementsByTagName( "library" ) )
-			{
-				string name = element.GetAttribute( "name" );
-
-				if ( string.IsNullOrEmpty( name ) )
-				{
-					Console.WriteLine( "Warning: library element without name attribute" );
-					continue;
-				}
-
-				name = name.ToLower();
-
-				var libConfig = m_LibraryConfig[name];
-
-				if ( libConfig == null )
-					m_LibraryConfig[name] = libConfig = new Library( name );
-
-				libConfig.Load( element );
-			}
-
-			if ( !m_LibraryConfig.ContainsKey( "distro" ) )
-				m_LibraryConfig["distro"] = new Library( "distro" );
 
 			// Section "network"
 			XmlElement networkEl = GetConfiguration( "network" );
@@ -463,9 +389,9 @@ namespace Server.Configuration
 
 		private static object DeserializeModule( Type moduleType )
 		{
-			XmlSerializer serializer = new XmlSerializer( moduleType );
+			var serializer = new XmlSerializer( moduleType );
 
-			StreamReader reader = new StreamReader( Path.Combine( Environment.BaseDirectory, "Config", String.Format( "{0}.xml", moduleType.Name ) ) );
+			var reader = new StreamReader( Path.Combine( Environment.BaseDirectory, "Config", $"{moduleType.Name}.xml" ) );
 			return serializer.Deserialize( reader );
 		}
 
@@ -473,7 +399,7 @@ namespace Server.Configuration
 
 		private T GetConfigModule<T>() where T : class
 		{
-			Type t = typeof( T );
+			var t = typeof( T );
 
 			if ( m_ConfigModules.ContainsKey( t ) )
 				return m_ConfigModules[t] as T;
@@ -598,7 +524,7 @@ namespace Server.Configuration
 					continue;
 				}
 
-				string[] splitted = addressString.Split( new char[] { ':' }, 2 );
+				string[] splitted = addressString.Split( new char[] {':'}, 2 );
 
 				if ( splitted.Length != 2 )
 				{
@@ -658,17 +584,14 @@ namespace Server.Configuration
 			get { return m_Servers.Count; }
 		}
 
-		public GameServer this[int index]
+		public GameServer this[ int index ]
 		{
 			get { return m_Servers[index]; }
 		}
 
-		public GameServer this[string name]
+		public GameServer this[ string name ]
 		{
-			get
-			{
-				return m_Servers.FirstOrDefault( s => s.Name == name );
-			}
+			get { return m_Servers.FirstOrDefault( s => s.Name == name ); }
 		}
 	}
 }
