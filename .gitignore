@@ -17,3 +17,4 @@ staffHistory.xml
 Scripts/*/obj/*
 output/*
 cache/*
+/.idea
