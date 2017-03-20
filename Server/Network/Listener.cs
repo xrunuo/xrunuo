@@ -21,6 +21,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
+using System.Net.NetworkInformation;
 using Server;
 using Server.Events;
 
@@ -66,31 +67,17 @@ namespace Server.Network
 
 			m_Listener = Bind( IPAddress.Any, port );
 
-			try
+			var ipep = m_Listener.LocalEndPoint as IPEndPoint;
+
+			if ( ipep == null )
+				return;
+
+			foreach ( var adapter in NetworkInterface.GetAllNetworkInterfaces() )
 			{
-				IPHostEntry iphe = Dns.GetHostEntry( Dns.GetHostName() );
-
-				List<IPAddress> list = new List<IPAddress>();
-				list.Add( IPAddress.Loopback );
-
-				Console.WriteLine( "Address: {0}:{1}", IPAddress.Loopback, port );
-
-				IPAddress[] ips = iphe.AddressList;
-
-				for ( int i = 0; i < ips.Length; ++i )
-				{
-					if ( !list.Contains( ips[i] ) )
-					{
-						list.Add( ips[i] );
-
-						Console.WriteLine( "Address: {0}:{1}", ips[i], port );
-					}
-				}
-
-				list.Clear();
-			}
-			catch
-			{
+				var properties = adapter.GetIPProperties();
+				foreach ( var unicast in properties.UnicastAddresses )
+					if ( ipep.AddressFamily == unicast.Address.AddressFamily )
+						Console.WriteLine( "Address: {0}:{1}", unicast.Address, ipep.Port );
 			}
 		}
 
