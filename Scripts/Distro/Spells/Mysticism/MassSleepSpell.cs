@@ -49,11 +49,11 @@ namespace Server.Spells.Mysticism
 			{
 				SpellHelper.Turn( Caster, m );
 
-				Map map = Caster.Map;
+				var map = Caster.Map;
 
 				if ( map != null )
 				{
-					foreach ( Mobile target in m.GetMobilesInRange( 2 ) )
+					foreach ( var target in m.GetMobilesInRange( 2 ) )
 					{
 						if ( Caster != target && Caster.InLOS( target ) && SpellHelper.ValidIndirectTarget( Caster, target ) && Caster.CanBeHarmful( target, false ) && !target.Hidden )
 						{

@@ -55,16 +55,13 @@ namespace Server.Spells.Mysticism
 
 				targeted.PlaySound( 0x64C );
 
-				List<Mobile> targets = new List<Mobile>();
-				targets.Add( targeted );
+				var targets = new List<Mobile> {targeted};
 
-				Map map = targeted.Map;
+				var map = targeted.Map;
 
 				if ( map != null )
 				{
-					var eable = map.GetMobilesInRange( targeted.Location, 2 );
-
-					foreach ( Mobile m in eable )
+					foreach ( var m in map.GetMobilesInRange( targeted.Location, 2 ) )
 					{
 						if ( targets.Count >= 3 )
 							break;
@@ -74,24 +71,22 @@ namespace Server.Spells.Mysticism
 					}
 				}
 
-				int baseToHeal = (int) ( ( GetBaseSkill( Caster ) + GetBoostSkill( Caster ) ) / 4.0 ) + Utility.RandomMinMax( -3, 3 );
+				var baseToHeal = (int) ( ( GetBaseSkill( Caster ) + GetBoostSkill( Caster ) ) / 4.0 ) + Utility.RandomMinMax( -3, 3 );
 				baseToHeal /= targets.Count;
 
-				for ( int i = 0; i < targets.Count; ++i )
+				foreach ( var m in targets )
 				{
-					Mobile m = targets[i];
-
 					Caster.DoBeneficial( m );
 
 					m.FixedParticles( 0x3709, 1, 30, 9963, 13, 3, EffectLayer.Head );
 
 					IEntity from = new DummyEntity( Serial.Zero, new Point3D( m.X, m.Y, m.Z - 10 ), Caster.Map );
 					IEntity to = new DummyEntity( Serial.Zero, new Point3D( m.X, m.Y, m.Z + 50 ), Caster.Map );
-					Effects.SendMovingParticles( from, to, 0x2255, 1, 0, false, false, 13, 3, 9501, 1, 0, EffectLayer.Head, 0x100 );
+					Effects.SendMovingParticles( @from, to, 0x2255, 1, 0, false, false, 13, 3, 9501, 1, 0, EffectLayer.Head, 0x100 );
 
 					Poison poison = m.Poison;
-					int toHeal = baseToHeal;
-					bool canHeal = true;
+					var toHeal = baseToHeal;
+					var canHeal = true;
 
 					if ( MortalStrike.IsWounded( m ) )
 					{
@@ -100,7 +95,7 @@ namespace Server.Spells.Mysticism
 					}
 
 					// Each Curse reduces healing by 3 points + 1% per curse level.
-					int cursePower = EnchantedApple.GetCursePower( m );
+					var cursePower = EnchantedApple.GetCursePower( m );
 					toHeal -= cursePower * 3;
 					toHeal -= (int) ( toHeal * cursePower * 0.01 );
 
@@ -136,7 +131,7 @@ namespace Server.Spells.Mysticism
 
 		private bool IsValidTarget( Mobile target )
 		{
-			Party party = Party.Get( Caster );
+			var party = Party.Get( Caster );
 
 			return party != null && party.Contains( target );
 		}
@@ -151,7 +146,7 @@ namespace Server.Spells.Mysticism
 		{
 			StatMod mod;
 
-			foreach ( string statModName in StatModNames )
+			foreach ( var statModName in StatModNames )
 			{
 				mod = m.GetStatMod( statModName );
 				if ( mod != null && mod.Offset < 0 )

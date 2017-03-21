@@ -1,32 +1,38 @@
 using System;
 using System.Collections.Generic;
-using Server;
 using Server.ContextMenus;
-using Server.Network;
 using Server.Gumps;
 using Server.Items;
-using Server.Mobiles;
-using Server.Spells;
-using Server.Targeting;
+using Server.Network;
 
 namespace Server.Spells.Mysticism
 {
 	public class SpellTriggerSpell : MysticismSpell
 	{
 		private static SpellInfo m_Info = new SpellInfo(
-				"Spell Trigger", "In Vas Ort Ex",
-				-1,
-				9002,
-				Reagent.Garlic,
-				Reagent.MandrakeRoot,
-				Reagent.SpidersSilk,
-				Reagent.DragonsBlood
-			);
+			"Spell Trigger", "In Vas Ort Ex",
+			-1,
+			9002,
+			Reagent.Garlic,
+			Reagent.MandrakeRoot,
+			Reagent.SpidersSilk,
+			Reagent.DragonsBlood
+		);
 
-		public override int RequiredMana { get { return 14; } }
-		public override double RequiredSkill { get { return 45.0; } }
+		public override int RequiredMana
+		{
+			get { return 14; }
+		}
 
-		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 5.0 ); } }
+		public override double RequiredSkill
+		{
+			get { return 45.0; }
+		}
+
+		public override TimeSpan CastDelayBase
+		{
+			get { return TimeSpan.FromSeconds( 5.0 ); }
+		}
 
 		public SpellTriggerSpell( Mobile caster, Item scroll )
 			: base( caster, scroll, m_Info )
@@ -98,13 +104,15 @@ namespace Server.Spells.Mysticism
 
 						if ( ( idx % 2 ) != 0 )
 						{
-							AddButtonTileArt( 14, 44 + ( 64 * ( idx - 1 ) / 2 ), 0x918, 0x919, GumpButtonType.Reply, 0, 100 + i, entry.ItemId, 0, 15, 20 );
+							AddButtonTileArt( 14, 44 + ( 64 * ( idx - 1 ) / 2 ), 0x918, 0x919, GumpButtonType.Reply, 0, 100 + i,
+								entry.ItemId, 0, 15, 20 );
 							AddTooltip( entry.Tooltip );
 							AddHtmlLocalized( 98, 44 + ( 64 * ( idx - 1 ) / 2 ), 170, 60, entry.Cliloc, 0x7FFF, false, false );
 						}
 						else
 						{
-							AddButtonTileArt( 264, 44 + ( 64 * ( idx - 2 ) / 2 ), 0x918, 0x919, GumpButtonType.Reply, 0, 100 + i, entry.ItemId, 0, 15, 20 );
+							AddButtonTileArt( 264, 44 + ( 64 * ( idx - 2 ) / 2 ), 0x918, 0x919, GumpButtonType.Reply, 0, 100 + i,
+								entry.ItemId, 0, 15, 20 );
 							AddTooltip( entry.Tooltip );
 							AddHtmlLocalized( 348, 44 + ( 64 * ( idx - 2 ) / 2 ), 170, 60, entry.Cliloc, 0x7FFF, false, false );
 						}
@@ -118,16 +126,14 @@ namespace Server.Spells.Mysticism
 
 			public override void OnResponse( NetState sender, RelayInfo info )
 			{
-				Mobile from = sender.Mobile;
+				var from = sender.Mobile;
 
 				if ( from.Backpack != null && info.ButtonID >= 100 && info.ButtonID <= 110 && m_Spell.CheckSequence() )
 				{
-					Item[] stones = from.Backpack.FindItemsByType( typeof( SpellStone ) );
+					foreach ( var stone in from.Backpack.FindItemsByType<SpellStone>() )
+						stone.Delete();
 
-					for ( int i = 0; i < stones.Length; i++ )
-						stones[i].Delete();
-
-					SpellTriggerDef entry = m_Definitions[info.ButtonID - 100];
+					var entry = m_Definitions[info.ButtonID - 100];
 
 					if ( m_Skill >= ( entry.Rank * 40 ) )
 					{
@@ -142,48 +148,44 @@ namespace Server.Spells.Mysticism
 			}
 		}
 
-		private static SpellTriggerDef[] m_Definitions = new SpellTriggerDef[]
-			{
-				new SpellTriggerDef( 677, "Nether Bolt",		1, 1031678, 1095193, 0x2D9E ),
-				new SpellTriggerDef( 678, "Healing Stone",		1, 1031679, 1095194, 0x2D9F ),
-				new SpellTriggerDef( 679, "Purge Magic",		2, 1031680, 1095195, 0x2DA0 ),
-				new SpellTriggerDef( 680, "Enchant",			2, 1031681, 1095196, 0x2DA1 ),
-				new SpellTriggerDef( 681, "Sleep",				3, 1031682, 1095197, 0x2DA2 ),
-				new SpellTriggerDef( 682, "Eagle Strike",		3, 1031683, 1095198, 0x2DA3 ),
-				new SpellTriggerDef( 683, "Animated Weapon",	4, 1031684, 1095199, 0x2DA4 ),
-				new SpellTriggerDef( 684, "Stone Form",			4, 1031685, 1095200, 0x2DA5 ),
-				new SpellTriggerDef( 686, "Mass Sleep",			5, 1031687, 1095202, 0x2DA7 ),
-				new SpellTriggerDef( 687, "Cleansing Winds",	6, 1031688, 1095203, 0x2DA8 ),
-				new SpellTriggerDef( 688, "Bombard",			6, 1031689, 1095204, 0x2DA9 )
-			};
+		private static SpellTriggerDef[] m_Definitions =
+		{
+			new SpellTriggerDef( 677, "Nether Bolt", 1, 1031678, 1095193, 0x2D9E ),
+			new SpellTriggerDef( 678, "Healing Stone", 1, 1031679, 1095194, 0x2D9F ),
+			new SpellTriggerDef( 679, "Purge Magic", 2, 1031680, 1095195, 0x2DA0 ),
+			new SpellTriggerDef( 680, "Enchant", 2, 1031681, 1095196, 0x2DA1 ),
+			new SpellTriggerDef( 681, "Sleep", 3, 1031682, 1095197, 0x2DA2 ),
+			new SpellTriggerDef( 682, "Eagle Strike", 3, 1031683, 1095198, 0x2DA3 ),
+			new SpellTriggerDef( 683, "Animated Weapon", 4, 1031684, 1095199, 0x2DA4 ),
+			new SpellTriggerDef( 684, "Stone Form", 4, 1031685, 1095200, 0x2DA5 ),
+			new SpellTriggerDef( 686, "Mass Sleep", 5, 1031687, 1095202, 0x2DA7 ),
+			new SpellTriggerDef( 687, "Cleansing Winds", 6, 1031688, 1095203, 0x2DA8 ),
+			new SpellTriggerDef( 688, "Bombard", 6, 1031689, 1095204, 0x2DA9 )
+		};
 
-		public static SpellTriggerDef[] Definitions { get { return m_Definitions; } }
+		public static SpellTriggerDef[] Definitions
+		{
+			get { return m_Definitions; }
+		}
 	}
 
 	public class SpellTriggerDef
 	{
-		private int m_SpellId;
-		private string m_Name;
-		private int m_Rank;
-		private int m_Cliloc;
-		private int m_Tooltip;
-		private int m_ItemId;
-
-		public int SpellId { get { return m_SpellId; } }
-		public string Name { get { return m_Name; } }
-		public int Rank { get { return m_Rank; } }
-		public int Cliloc { get { return m_Cliloc; } }
-		public int Tooltip { get { return m_Tooltip; } }
-		public int ItemId { get { return m_ItemId; } }
+		public int SpellId { get; }
+		public string Name { get; }
+		public int Rank { get; }
+		public int Cliloc { get; }
+		public int Tooltip { get; }
+		public int ItemId { get; }
 
 		public SpellTriggerDef( int spellId, string name, int rank, int cliloc, int tooltip, int itemId )
 		{
-			m_SpellId = spellId;
-			m_Name = name;
-			m_Rank = rank;
-			m_Cliloc = cliloc;
-			m_Tooltip = tooltip;
-			m_ItemId = itemId;
+			SpellId = spellId;
+			Name = name;
+			Rank = rank;
+			Cliloc = cliloc;
+			Tooltip = tooltip;
+			ItemId = itemId;
 		}
 	}
 
@@ -200,11 +202,14 @@ namespace Server.Spells.Mysticism
 			LootType = LootType.Blessed;
 		}
 
-		public override bool NonTransferable { get { return true; } }
+		public override bool NonTransferable
+		{
+			get { return true; }
+		}
 
 		public override void HandleInvalidTransfer( Mobile from )
 		{
-			this.Delete();
+			Delete();
 		}
 
 		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list )
@@ -217,8 +222,8 @@ namespace Server.Spells.Mysticism
 		{
 			if ( m_CooldownTable.ContainsKey( from ) )
 			{
-				DateTime next = m_CooldownTable[from];
-				int seconds = (int) ( next - DateTime.Now ).TotalSeconds + 1;
+				var next = m_CooldownTable[from];
+				var seconds = (int) ( next - DateTime.Now ).TotalSeconds + 1;
 
 				// You must wait ~1_seconds~ seconds before you can use this item.
 				from.SendLocalizedMessage( 1079263, seconds.ToString() );
@@ -232,11 +237,7 @@ namespace Server.Spells.Mysticism
 		public void Use( Mobile from )
 		{
 			m_CooldownTable[from] = DateTime.Now + TimeSpan.FromSeconds( 300.0 );
-			Timer.DelayCall( TimeSpan.FromSeconds( 300.0 ), new TimerCallback(
-				delegate
-				{
-					m_CooldownTable.Remove( from );
-				} ) );
+			Timer.DelayCall( TimeSpan.FromSeconds( 300.0 ), () => { m_CooldownTable.Remove( from ); } );
 
 			Delete();
 		}
@@ -257,9 +258,9 @@ namespace Server.Spells.Mysticism
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 1 );
+			writer.Write( 1 );
 
-			writer.Write( (int) m_SpellDef.SpellId );
+			writer.Write( m_SpellDef.SpellId );
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -271,30 +272,30 @@ namespace Server.Spells.Mysticism
 			switch ( version )
 			{
 				case 1:
-					{
-						int spellId = reader.ReadInt();
+				{
+					int spellId = reader.ReadInt();
 
-						for ( int i = 0; i < SpellTriggerSpell.Definitions.Length; i++ )
+					for ( int i = 0; i < SpellTriggerSpell.Definitions.Length; i++ )
+					{
+						SpellTriggerDef def = SpellTriggerSpell.Definitions[i];
+
+						if ( def.SpellId == spellId )
 						{
-							SpellTriggerDef def = SpellTriggerSpell.Definitions[i];
-
-							if ( def.SpellId == spellId )
-							{
-								m_SpellDef = def;
-								break;
-							}
+							m_SpellDef = def;
+							break;
 						}
-
-						if ( m_SpellDef == null )
-							Delete();
-
-						break;
 					}
-				case 0:
-					{
+
+					if ( m_SpellDef == null )
 						Delete();
-						break;
-					}
+
+					break;
+				}
+				case 0:
+				{
+					Delete();
+					break;
+				}
 			}
 		}
 	}

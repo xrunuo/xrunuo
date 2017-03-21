@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Server.Network;
 using Server.Gumps;
 using Server.Items;
@@ -83,17 +84,7 @@ namespace Server.Spells.Mysticism
 
 		private List<BeneficalWard> GetCurrentWardsFor( Mobile m )
 		{
-			List<BeneficalWard> list = new List<BeneficalWard>();
-
-			for ( int i = 0; i < m_Entries.Length; i++ )
-			{
-				BeneficalWard ward = m_Entries[i];
-
-				if ( ward.UnderEffect != null && ward.UnderEffect( m ) )
-					list.Add( ward );
-			}
-
-			return list;
+			return m_Entries.Where( ward => ward.UnderEffect != null && ward.UnderEffect( m ) ).ToList();
 		}
 
 		public override void OnCast()
@@ -103,7 +94,7 @@ namespace Server.Spells.Mysticism
 
 		public void Target( Mobile m )
 		{
-			List<BeneficalWard> wards = GetCurrentWardsFor( m );
+			var wards = GetCurrentWardsFor( m );
 
 			if ( wards.Count == 0 )
 			{
@@ -118,9 +109,9 @@ namespace Server.Spells.Mysticism
 				 * Target's Resisting Spells skill.
 				 */
 
-				BeneficalWard ward = wards[Utility.Random( wards.Count )];
+				var ward = wards[Utility.Random( wards.Count )];
 
-				//First check, Focus + Mysticism / 2 must be greater than target's Resist - 10 
+				//First check, Focus + Mysticism / 2 must be greater than target's Resist - 10
 				//Second check, Base Focus + Base Mysticism must be greater than spell's minimum required skill
 				if ( ( ( Caster.Skills.Focus.Value + Caster.Skills.Mysticism.Value ) * 0.5 ) >= m.Skills.MagicResist.Value - 10 &&
 					Caster.Skills.Focus.Base + Caster.Skills.Mysticism.Base >= ward.RequiredSkill )
@@ -171,22 +162,17 @@ namespace Server.Spells.Mysticism
 
 		public class BeneficalWard
 		{
-			private string m_Name;
-			private UnderEffect m_UnderEffect;
-			private RemoveEffect m_RemoveEffect;
-			private double m_requiredSkill;
-
-			public string Name { get { return m_Name; } }
-			public UnderEffect UnderEffect { get { return m_UnderEffect; } }
-			public RemoveEffect RemoveEffect { get { return m_RemoveEffect; } }
-			public double RequiredSkill { get { return m_requiredSkill; } }
+			public string Name { get; }
+			public UnderEffect UnderEffect { get; }
+			public RemoveEffect RemoveEffect { get; }
+			public double RequiredSkill { get; }
 
 			public BeneficalWard( string name, UnderEffect underEffect, RemoveEffect removeEffect, double requiredSkill )
 			{
-				m_Name = name;
-				m_UnderEffect = underEffect;
-				m_RemoveEffect = removeEffect;
-				m_requiredSkill = requiredSkill;
+				Name = name;
+				UnderEffect = underEffect;
+				RemoveEffect = removeEffect;
+				RequiredSkill = requiredSkill;
 			}
 		}
 	}

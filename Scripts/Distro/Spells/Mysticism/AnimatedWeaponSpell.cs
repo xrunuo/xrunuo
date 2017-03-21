@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections;
-using Server.Network;
-using Server.Items;
 using Server.Targeting;
 using Server.Mobiles;
 
@@ -42,7 +39,7 @@ namespace Server.Spells.Mysticism
 				return;
 			}
 
-			Map map = Caster.Map;
+			var map = Caster.Map;
 
 			SpellHelper.GetSurfaceTop( ref p );
 
@@ -52,9 +49,9 @@ namespace Server.Spells.Mysticism
 			}
 			else if ( SpellHelper.CheckTown( p, Caster ) && CheckSequence() )
 			{
-				int level = (int) ( ( GetBaseSkill( Caster ) + GetBoostSkill( Caster ) ) / 2.0 );
+				var level = (int) ( ( GetBaseSkill( Caster ) + GetBoostSkill( Caster ) ) / 2.0 );
 
-				TimeSpan duration = TimeSpan.FromSeconds( 10 + level );
+				var duration = TimeSpan.FromSeconds( 10 + level );
 
 				BaseCreature summon = new AnimatedWeapon( Caster, level );
 				BaseCreature.Summon( summon, false, Caster, new Point3D( p ), 0x212, duration );

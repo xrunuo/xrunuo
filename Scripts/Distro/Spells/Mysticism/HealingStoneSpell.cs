@@ -45,12 +45,11 @@ namespace Server.Spells.Mysticism
 				}
 				else
 				{
-					HealingStone stone = FindHealingStone( Caster );
+					var stone = FindHealingStone( Caster );
 
-					if ( stone != null )
-						stone.Delete();
+					stone?.Delete();
 
-					int healingPoints = Math.Max( 1, (int) ( 1.25 * ( GetBaseSkill( Caster ) + GetBoostSkill( Caster ) ) ) );
+					var healingPoints = Math.Max( 1, (int) ( 1.25 * ( GetBaseSkill( Caster ) + GetBoostSkill( Caster ) ) ) );
 
 					stone = new HealingStone( healingPoints );
 
@@ -168,7 +167,7 @@ namespace Server.Spells.Mysticism
 
 					amountToHeal = Math.Min( amountToHeal, HealingPoints );
 
-					// TODO (SA): Arcane Empowerment debe otorgar un bonus.
+					// TODO (SA): Arcane Empowerment should grant a bonus.
 
 					from.Heal( amountToHeal );
 					from.PlaySound( 0x202 );
@@ -181,7 +180,7 @@ namespace Server.Spells.Mysticism
 					}
 					else
 					{
-						Timer t = Timer.DelayCall( TimeSpan.FromSeconds( Malus ), new TimerCallback(
+						var t = Timer.DelayCall( TimeSpan.FromSeconds( Malus ), new TimerCallback(
 							delegate
 							{
 								m_MalusTable.Remove( from );
@@ -196,10 +195,6 @@ namespace Server.Spells.Mysticism
 				private Mobile m_Owner;
 				private DateTime m_LastHeal;
 				private Timer m_Timer;
-
-				public Mobile Owner { get { return m_Owner; } }
-				public DateTime LastHeal { get { return m_LastHeal; } }
-				public Timer Timer { get { return m_Timer; } }
 
 				public int Seconds
 				{
@@ -220,8 +215,7 @@ namespace Server.Spells.Mysticism
 				{
 					m_LastHeal = DateTime.Now;
 
-					if ( m_Timer != null )
-						m_Timer.Stop();
+					m_Timer?.Stop();
 
 					m_Timer = Timer.DelayCall( TimeSpan.FromSeconds( Malus ), new TimerCallback(
 						delegate
@@ -249,7 +243,7 @@ namespace Server.Spells.Mysticism
 
 			public override void HandleInvalidTransfer( Mobile from )
 			{
-				this.Delete();
+				Delete();
 			}
 
 			public override void Serialize( GenericWriter writer )

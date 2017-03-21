@@ -42,7 +42,7 @@ namespace Server.Spells.Mysticism
 				return;
 			}
 
-			Map map = Caster.Map;
+			var map = Caster.Map;
 
 			SpellHelper.GetSurfaceTop( ref p );
 
@@ -52,9 +52,9 @@ namespace Server.Spells.Mysticism
 			}
 			else if ( SpellHelper.CheckTown( p, Caster ) && CheckSequence() )
 			{
-				int level = (int) ( GetBaseSkill( Caster ) + GetBoostSkill( Caster ) );
+				var level = (int) ( GetBaseSkill( Caster ) + GetBoostSkill( Caster ) );
 
-				TimeSpan duration = TimeSpan.FromSeconds( level / 4 );
+				var duration = TimeSpan.FromSeconds( level / 4 );
 
 				BaseCreature summon = new RisingColossus( level );
 				BaseCreature.Summon( summon, false, Caster, new Point3D( p ), 0x656, duration );

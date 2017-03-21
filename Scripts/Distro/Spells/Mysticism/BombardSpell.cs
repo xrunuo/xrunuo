@@ -70,7 +70,7 @@ namespace Server.Spells.Mysticism
 				SpellHelper.Damage( this, to, GetNewAosDamage( 40, 1, 5, to ), 100, 0, 0, 0, 0 );
 
 				// stun the target
-				double stunChance = ( GetBaseSkill( Caster ) + GetBoostSkill( Caster ) ) / 2000.0;
+				var stunChance = ( GetBaseSkill( Caster ) + GetBoostSkill( Caster ) ) / 2000.0;
 				stunChance -= GetResistSkill( to ) / 1000.0;
 
 				if ( Utility.RandomDouble() < stunChance && !ParalyzingBlow.IsInmune( to ) )

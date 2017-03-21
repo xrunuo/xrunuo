@@ -67,9 +67,9 @@ namespace Server.Spells.Mysticism
 				VisualEffect( targeted );
 
 				/* Deal the damage */
-				double damage = GetNewAosDamage( 33, 1, 5, targeted );
+				var damage = GetNewAosDamage( 33, 1, 5, targeted );
 
-				int[] types = new int[4];
+				var types = new int[4];
 				types[Utility.Random( types.Length )] = 100;
 
 				SpellHelper.Damage( this, targeted, damage, 0, types[0], types[1], types[2], types[3] );
@@ -99,22 +99,22 @@ namespace Server.Spells.Mysticism
 
 		public static void RemoveEffect( Mobile m )
 		{
-			if ( m_Table.ContainsKey( m ) )
-			{
-				SpellPlagueContext context = m_Table[m];
+			if ( !m_Table.ContainsKey( m ) )
+				return;
 
-				context.EndPlague( false );
-			}
+			var context = m_Table[m];
+
+			context.EndPlague( false );
 		}
 
 		public static void CheckPlague( Mobile m )
 		{
-			if ( m_Table.ContainsKey( m ) )
-			{
-				SpellPlagueContext context = m_Table[m];
+			if ( !m_Table.ContainsKey( m ) )
+				return;
 
-				context.OnDamage();
-			}
+			var context = m_Table[m];
+
+			context.OnDamage();
 		}
 
 		private static void OnPlayerDeath( PlayerDeathEventArgs e )
@@ -194,15 +194,14 @@ namespace Server.Spells.Mysticism
 				}
 			}
 
-			public void EndPlague()
+			private void EndPlague()
 			{
 				EndPlague( true );
 			}
 
 			public void EndPlague( bool restart )
 			{
-				if ( m_Timer != null )
-					m_Timer.Stop();
+				m_Timer?.Stop();
 
 				if ( restart && m_Next != null )
 				{

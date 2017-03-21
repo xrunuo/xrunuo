@@ -52,19 +52,17 @@ namespace Server.Spells.Mysticism
 				if ( p is Item )
 					p = ( (Item) p ).GetWorldLocation();
 
-				List<Mobile> targets = new List<Mobile>();
+				var targets = new List<Mobile>();
 
-				Map map = Caster.Map;
+				var map = Caster.Map;
 
-				bool playerVsPlayer = false;
+				var playerVsPlayer = false;
 
 				if ( map != null )
 				{
 					PlayEffect( p, Caster.Map );
 
-					var eable = map.GetMobilesInRange( new Point3D( p ), 2 );
-
-					foreach ( Mobile m in eable )
+					foreach ( var m in map.GetMobilesInRange( new Point3D( p ), 2 ) )
 					{
 						if ( m == Caster )
 							continue;
@@ -83,27 +81,22 @@ namespace Server.Spells.Mysticism
 
 				}
 
-				double damage = GetNewAosDamage( 51, 1, 5, playerVsPlayer );
-				double reduction = ( GetBaseSkill( Caster ) + GetBoostSkill( Caster ) ) / 1200.0;
+				var damage = GetNewAosDamage( 51, 1, 5, playerVsPlayer );
+				var reduction = ( GetBaseSkill( Caster ) + GetBoostSkill( Caster ) ) / 1200.0;
 
-				if ( targets.Count > 0 )
+				foreach ( var m in targets )
 				{
-					for ( int i = 0; i < targets.Count; ++i )
-					{
-						Mobile m = targets[i];
+					Caster.DoHarmful( m );
 
-						Caster.DoHarmful( m );
+					var types = new int[4];
+					types[Utility.Random( types.Length )] = 100;
 
-						int[] types = new int[4];
-						types[Utility.Random( types.Length )] = 100;
+					SpellHelper.Damage( this, m, damage, 0, types[0], types[1], types[2], types[3] );
 
-						SpellHelper.Damage( this, m, damage, 0, types[0], types[1], types[2], types[3] );
+					var resistedReduction = reduction - ( m.Skills[SkillName.MagicResist].Value / 800.0 );
 
-						double resistedReduction = reduction - ( m.Skills[SkillName.MagicResist].Value / 800.0 );
-
-						m.Stam -= (int) ( m.StamMax * resistedReduction );
-						m.Mana -= (int) ( m.ManaMax * resistedReduction );
-					}
+					m.Stam -= (int) ( m.StamMax * resistedReduction );
+					m.Mana -= (int) ( m.ManaMax * resistedReduction );
 				}
 			}
 
@@ -153,7 +146,7 @@ namespace Server.Spells.Mysticism
 
 			protected override void OnTarget( Mobile from, object o )
 			{
-				IPoint3D p = o as IPoint3D;
+				var p = o as IPoint3D;
 
 				if ( p != null )
 					m_Owner.Target( p );

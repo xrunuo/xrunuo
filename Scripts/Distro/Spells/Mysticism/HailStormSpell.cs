@@ -49,19 +49,17 @@ namespace Server.Spells.Mysticism
 				if ( p is Item )
 					p = ( (Item) p ).GetWorldLocation();
 
-				List<Mobile> targets = new List<Mobile>();
+				var targets = new List<Mobile>();
 
-				Map map = Caster.Map;
+				var map = Caster.Map;
 
-				bool playerVsPlayer = false;
+				var playerVsPlayer = false;
 
 				if ( map != null )
 				{
 					PlayEffect( p, Caster.Map );
 
-					var eable = map.GetMobilesInRange( new Point3D( p ), 2 );
-
-					foreach ( Mobile m in eable )
+					foreach ( var m in map.GetMobilesInRange( new Point3D( p ), 2 ) )
 					{
 						if ( m == Caster )
 							continue;
@@ -82,15 +80,10 @@ namespace Server.Spells.Mysticism
 
 				double damage = GetNewAosDamage( 51, 1, 5, playerVsPlayer );
 
-				if ( targets.Count > 0 )
+				foreach ( var m in targets )
 				{
-					for ( int i = 0; i < targets.Count; ++i )
-					{
-						Mobile m = targets[i];
-
-						Caster.DoHarmful( m );
-						SpellHelper.Damage( this, m, damage, 0, 0, 100, 0, 0 );
-					}
+					Caster.DoHarmful( m );
+					SpellHelper.Damage( this, m, damage, 0, 0, 100, 0, 0 );
 				}
 			}
 
@@ -140,7 +133,7 @@ namespace Server.Spells.Mysticism
 
 			protected override void OnTarget( Mobile from, object o )
 			{
-				IPoint3D p = o as IPoint3D;
+				var p = o as IPoint3D;
 
 				if ( p != null )
 					m_Owner.Target( p );

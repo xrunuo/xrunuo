@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Server.Network;
-using Server.Items;
-using Server.Targeting;
-using Server.Mobiles;
 using Server.Engines.BuffIcons;
+using Server.Targeting;
 
 namespace Server.Spells.Mysticism
 {
@@ -53,7 +50,7 @@ namespace Server.Spells.Mysticism
 				from.SendLocalizedMessage( 1080134 ); // Your target is already immobilized and cannot be slept.
 				return false;
 			}
-			else if ( !m.Alive )
+			if ( !m.Alive )
 			{
 				from.SendLocalizedMessage( 1080135 ); // Your target cannot be put to sleep
 				return false;
@@ -71,7 +68,7 @@ namespace Server.Spells.Mysticism
 			 * is determined by a comparison between the Caster's Evaluating
 			 * Intelligence and Mysticism skills and the Target's Resisting
 			 * Spells skill.
-			 * 
+			 *
 			 * Buff message:
 			 * - Movement slowed.
 			 * - Cannot attack or cast spells.
@@ -80,17 +77,17 @@ namespace Server.Spells.Mysticism
 
 			from.PlaySound( 0x653 );
 
-			int seconds = (int) ( GetBaseSkill( from ) + GetBoostSkill( from ) ) / 20;
+			var seconds = (int) ( GetBaseSkill( from ) + GetBoostSkill( from ) ) / 20;
 			seconds -= (int) m.Skills[SkillName.MagicResist].Value / 10;
 
 			if ( seconds > 0 && !UnderCooldown( m ) )
 			{
 				BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Sleep, 1080139, TimeSpan.FromSeconds( seconds ), m, seconds.ToString() ) );
 
-				Timer t = new InternalTimer( m, DateTime.Now + TimeSpan.FromSeconds( seconds ) );
+				var t = new InternalTimer( m, DateTime.Now + TimeSpan.FromSeconds( seconds ) );
 				t.Start();
 
-				List<AttributeMod> mods = new List<AttributeMod>();
+				var mods = new List<AttributeMod>();
 				mods.Add( new AttributeMod( MagicalAttribute.AttackChance, -45 ) );
 				mods.Add( new AttributeMod( MagicalAttribute.DefendChance, -45 ) );
 				mods.Add( new AttributeMod( MagicalAttribute.WeaponSpeed, -40 ) );
@@ -105,14 +102,13 @@ namespace Server.Spells.Mysticism
 
 				m.ForcedWalk = true;
 
-				int cooldownSeconds = seconds + (int) m.Skills.MagicResist.Value / 10;
+				var cooldownSeconds = seconds + (int) m.Skills.MagicResist.Value / 10;
 
 				m_CooldownTable.Add( m );
-				Timer.DelayCall( TimeSpan.FromSeconds( cooldownSeconds ), new TimerCallback(
-					delegate
-					{
-						m_CooldownTable.Remove( m );
-					} ) );
+				Timer.DelayCall( TimeSpan.FromSeconds( cooldownSeconds ), delegate
+				{
+					m_CooldownTable.Remove( m );
+				} );
 			}
 			else
 			{
@@ -140,11 +136,11 @@ namespace Server.Spells.Mysticism
 			if ( !m_SleptTable.ContainsKey( m ) )
 				return;
 
-			SleepContext context = m_SleptTable[m];
+			var context = m_SleptTable[m];
 
 			context.Timer.Stop();
 
-			foreach ( AttributeMod mod in context.Mods )
+			foreach ( var mod in context.Mods )
 			{
 				m.RemoveAttributeMod( mod );
 			}
@@ -157,16 +153,13 @@ namespace Server.Spells.Mysticism
 
 		private class SleepContext
 		{
-			private Timer m_Timer;
-			private List<AttributeMod> m_Mods;
-
-			public Timer Timer { get { return m_Timer; } }
-			public List<AttributeMod> Mods { get { return m_Mods; } }
+			public Timer Timer { get; }
+			public List<AttributeMod> Mods { get; }
 
 			public SleepContext( Timer timer, List<AttributeMod> mods )
 			{
-				m_Timer = timer;
-				m_Mods = mods;
+				Timer = timer;
+				Mods = mods;
 			}
 		}
 
@@ -193,9 +186,7 @@ namespace Server.Spells.Mysticism
 				{
 					Effects.SendTargetParticles( m_Target, 0x3779, 1, 32, 0x13BA, EffectLayer.Head );
 
-					/* OSI manda un paquete 0xDE aquí, probablemente para actualizar la
-					 * información de los Buff Icons. ¿Realmente es necesario?
-					 */
+					// OSI sends 0xDE packet here, maybe to update buff icon info. Is it really needed?
 				}
 			}
 		}

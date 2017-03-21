@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
-using Server.Network;
-using Server.Items;
-using Server.Targeting;
 using Server.Mobiles;
+using Server.Targeting;
 
 namespace Server.Spells.Mysticism
 {
@@ -34,7 +31,7 @@ namespace Server.Spells.Mysticism
 
 		public void Target( Mobile m )
 		{
-			PlayerMobile pm = Caster as PlayerMobile;
+			var pm = Caster as PlayerMobile;
 
 			if ( pm != null && DateTime.Now < ( pm.LastArrow + DamageDelay ) )
 			{
@@ -56,16 +53,15 @@ namespace Server.Spells.Mysticism
 				if ( pm != null )
 					pm.LastArrow = DateTime.Now;
 
-				Timer.DelayCall( DamageDelay, new TimerCallback(
-					delegate
-					{
-						double damage = GetNewAosDamage( 10, 1, 4, m );
+				Timer.DelayCall( DamageDelay, delegate
+				{
+					double damage = GetNewAosDamage( 10, 1, 4, m );
 
-						int[] types = new int[4];
-						types[Utility.Random( types.Length )] = 100;
+					var types = new int[4];
+					types[Utility.Random( types.Length )] = 100;
 
-						SpellHelper.Damage( this, m, damage, 0, types[0], types[1], types[2], types[3] );
-					} ) );
+					SpellHelper.Damage( this, m, damage, 0, types[0], types[1], types[2], types[3] );
+				} );
 			}
 
 			FinishSequence();

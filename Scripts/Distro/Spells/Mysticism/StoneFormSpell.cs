@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections;
-using Server.Mobiles;
-using Server.Network;
-using Server.Items;
-using Server.Spells;
+using System.Collections.Generic;
 using Server.Spells.Fifth;
 using Server.Spells.Seventh;
 using Server.Engines.BuffIcons;
@@ -95,42 +92,35 @@ namespace Server.Spells.Mysticism
 				}
 				else
 				{
-					int offset = (int) ( ( GetBaseSkill( Caster ) + GetBoostSkill( Caster ) ) / 24.0 );
+					var mount = Caster.Mount;
 
-					// Declaramos las Resistencias
-					ArrayList mods = new ArrayList();
+					if ( mount != null )
+						mount.Rider = null;
 
-					// Seteamos las Resistencias
-					mods.Add( new ResistanceMod( ResistanceType.Physical, offset ) );
-					mods.Add( new ResistanceMod( ResistanceType.Fire, offset ) );
-					mods.Add( new ResistanceMod( ResistanceType.Cold, offset ) );
-					mods.Add( new ResistanceMod( ResistanceType.Poison, offset ) );
-					mods.Add( new ResistanceMod( ResistanceType.Energy, offset ) );
-
-					// Bajamos de la montura
-					if ( Caster.Mount != null )
-					{
-						IMount mt = Caster.Mount;
-
-						if ( mt != null )
-							mt.Rider = null;
-					}
-
-					// Aspecto
 					Caster.BodyMod = 0x2C1;
 					Caster.HueMod = 0;
 
-					// Aplicamos las Resistencias
-					for ( int i = 0; i < mods.Count; ++i )
-						Caster.AddResistanceMod( (ResistanceMod) mods[i] );
+					var offset = (int) ( ( GetBaseSkill( Caster ) + GetBoostSkill( Caster ) ) / 24.0 );
 
-					// Salvamos las Resistencias en la Hashtable
+					var mods = new List<ResistanceMod>
+					{
+						new ResistanceMod( ResistanceType.Physical, offset ),
+						new ResistanceMod( ResistanceType.Fire, offset ),
+						new ResistanceMod( ResistanceType.Cold, offset ),
+						new ResistanceMod( ResistanceType.Poison, offset ),
+						new ResistanceMod( ResistanceType.Energy, offset )
+					};
+
+					foreach ( var mod in mods )
+						Caster.AddResistanceMod( mod );
+
 					m_Table[Caster] = mods;
 
 					Caster.PlaySound( 0x65A );
 					Caster.Delta( MobileDelta.Resistances );
 
-					BuffInfo.AddBuff( Caster, new BuffInfo( BuffIcon.StoneForm, 1080145, 1080146, String.Format( "-10\t-2\t{0}\t{1}\t{2}", offset, GetResistCapBonus( Caster ), GetDIBonus( Caster ) ), false ) );
+					BuffInfo.AddBuff( Caster, new BuffInfo( BuffIcon.StoneForm, 1080145, 1080146,
+						$"-10\t-2\t{offset}\t{GetResistCapBonus( Caster )}\t{GetDIBonus( Caster )}", false ) );
 				}
 			}
 
@@ -149,10 +139,10 @@ namespace Server.Spells.Mysticism
 
 		public static void RemoveEffects( Mobile m )
 		{
-			ArrayList mods = (ArrayList) m_Table[m];
+			var mods = (List<ResistanceMod>) m_Table[m];
 
-			for ( int i = 0; i < mods.Count; ++i )
-				m.RemoveResistanceMod( (ResistanceMod) mods[i] );
+			foreach ( var mod in mods )
+				m.RemoveResistanceMod( mod );
 
 			m.BodyMod = 0;
 			m.HueMod = -1;
@@ -164,7 +154,7 @@ namespace Server.Spells.Mysticism
 
 		private static void OnPlayerDeath( PlayerDeathEventArgs e )
 		{
-			Mobile m = e.Mobile;
+			var m = e.Mobile;
 
 			if ( UnderEffect( m ) )
 				RemoveEffects( m );
