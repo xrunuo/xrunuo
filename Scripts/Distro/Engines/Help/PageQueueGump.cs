@@ -34,7 +34,7 @@ namespace Server.Engines.Help
 			m_Mobile = mobile;
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			m_Mobile.SendGump( new PageResponseGump( m_Mobile, m_Name, m_Text ) );
 		}
@@ -71,7 +71,7 @@ namespace Server.Engines.Help
 			{
 				PageEntry e = (PageEntry) list[i];
 
-				if ( e.Sender.Deleted || e.Sender.Client == null )
+				if ( e.Sender.Deleted || e.Sender.NetState == null )
 				{
 					e.AddResponse( e.Sender, "[Logout]" );
 					PageQueue.Remove( e );
@@ -115,7 +115,7 @@ namespace Server.Engines.Help
 			}
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			if ( info.ButtonID >= 1 && info.ButtonID <= m_List.Length )
 			{
@@ -378,7 +378,7 @@ namespace Server.Engines.Help
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( m_From.AccessLevel < AccessLevel.Administrator )
 			{
@@ -635,14 +635,14 @@ namespace Server.Engines.Help
 			}
 		}
 
-		public void Resend( GameClient state )
+		public void Resend( NetState state )
 		{
 			PageEntryGump g = new PageEntryGump( m_Mobile, m_Entry );
 
 			g.SendTo( state );
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			if ( info.ButtonID != 0 && PageQueue.List.IndexOf( m_Entry ) < 0 )
 			{

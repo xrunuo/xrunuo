@@ -204,7 +204,7 @@ namespace Server.Items
 			PacketHandlers.Instance.Register( 0x93, 99, true, new OnPacketReceive( OldHeaderChange ) );
 		}
 
-		public static void OldHeaderChange( GameClient state, PacketReader pvSrc )
+		public static void OldHeaderChange( NetState state, PacketReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			BaseBook book = World.Instance.FindItem( pvSrc.ReadInt32() ) as BaseBook;
@@ -223,7 +223,7 @@ namespace Server.Items
 			book.Author = Utility.FixHtml( author );
 		}
 
-		public static void HeaderChange( GameClient state, PacketReader pvSrc )
+		public static void HeaderChange( NetState state, PacketReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			BaseBook book = World.Instance.FindItem( pvSrc.ReadInt32() ) as BaseBook;
@@ -257,7 +257,7 @@ namespace Server.Items
 			book.Author = Utility.FixHtml( author );
 		}
 
-		public static void ContentChange( GameClient state, PacketReader pvSrc )
+		public static void ContentChange( NetState state, PacketReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			BaseBook book = World.Instance.FindItem( pvSrc.ReadInt32() ) as BaseBook;

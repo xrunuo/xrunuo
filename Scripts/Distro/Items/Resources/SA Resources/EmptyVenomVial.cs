@@ -58,7 +58,7 @@ namespace Server.Items
 				else if ( serpent.CharmMaster == null )
 				{
 					// You seem to anger the beast!
-					serpent.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 502805, from.Client );
+					serpent.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 502805, from.NetState );
 				}
 				else if ( serpent.Venom == SilverSerpent.VenomLeft.None )
 				{

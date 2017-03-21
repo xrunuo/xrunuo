@@ -405,7 +405,7 @@ namespace Server.Scripts.Commands
 					CommandLogging.WriteLine( from, "{0} {1} getting equip for {2}", from.AccessLevel, CommandLogging.Format( from ), CommandLogging.Format( m ) );
 				}
 
-				public override void OnResponse( GameClient state, int index )
+				public override void OnResponse( NetState state, int index )
 				{
 					var items = m_Mobile.GetEquippedItems().ToArray();
 
@@ -429,12 +429,12 @@ namespace Server.Scripts.Commands
 						m_Item = item;
 					}
 
-					public override void OnCancel( GameClient state )
+					public override void OnCancel( NetState state )
 					{
 						state.Mobile.SendMenu( new EquipMenu( state.Mobile, m_Mobile, ViewEqTarget.GetEquip( m_Mobile ) ) );
 					}
 
-					public override void OnResponse( GameClient state, int index )
+					public override void OnResponse( NetState state, int index )
 					{
 						if ( index == 0 )
 						{
@@ -832,7 +832,7 @@ namespace Server.Scripts.Commands
 
 			p.Acquire();
 
-			foreach ( GameClient state in m.GetClientsInRange( 12 ) )
+			foreach ( NetState state in m.GetClientsInRange( 12 ) )
 			{
 				if ( toAll || state.Mobile.CanSee( m ) )
 				{
@@ -945,10 +945,10 @@ namespace Server.Scripts.Commands
 				{
 					Mobile targ = (Mobile) targeted;
 
-					if ( targ.Client != null )
+					if ( targ.NetState != null )
 					{
 						CommandLogging.WriteLine( from, "{0} {1} opening client menu of {2}", from.AccessLevel, CommandLogging.Format( from ), CommandLogging.Format( targeted ) );
-						from.SendGump( new ClientGump( from, targ.Client ) );
+						from.SendGump( new ClientGump( from, targ.NetState ) );
 					}
 				}
 			}
@@ -981,7 +981,7 @@ namespace Server.Scripts.Commands
 				{
 					Mobile targ = (Mobile) targeted;
 
-					GameClient state = targ.Client;
+					NetState state = targ.NetState;
 
 					if ( state != null )
 					{
@@ -1075,7 +1075,7 @@ namespace Server.Scripts.Commands
 
 		public static void BroadcastMessage( AccessLevel ac, int hue, string message )
 		{
-			foreach ( GameClient state in GameServer.Instance.Clients )
+			foreach ( NetState state in GameServer.Instance.Clients )
 			{
 				Mobile m = state.Mobile;
 
@@ -1088,7 +1088,7 @@ namespace Server.Scripts.Commands
 
 		public static void BroadcastFactionMessage( int hue, string message )
 		{
-			foreach ( GameClient state in GameServer.Instance.Clients )
+			foreach ( NetState state in GameServer.Instance.Clients )
 			{
 				Mobile m = state.Mobile;
 				Faction faction = Faction.Find( m );

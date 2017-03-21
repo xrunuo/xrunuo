@@ -246,7 +246,7 @@ namespace Server.Scripts.Commands
 
 				if ( mob.IsPlayer )
 				{
-					GameClient ns = mob.Client;
+					NetState ns = mob.NetState;
 
 					if ( ns == null )
 					{
@@ -989,7 +989,7 @@ namespace Server.Scripts.Commands
 		{
 			Mobile from = e.Mobile;
 			Mobile targ = (Mobile) obj;
-			GameClient state = targ.Client;
+			NetState state = targ.NetState;
 
 			if ( state != null )
 			{
@@ -1037,7 +1037,7 @@ namespace Server.Scripts.Commands
 
 			if ( from.AccessLevel > targ.AccessLevel )
 			{
-				GameClient fromState = from.Client, targState = targ.Client;
+				NetState fromState = from.NetState, targState = targ.NetState;
 
 				if ( fromState != null && targState != null )
 				{

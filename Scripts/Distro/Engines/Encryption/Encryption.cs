@@ -35,7 +35,7 @@ namespace Scripts.Engines.Encryption
 			if ( Configuration.Enabled )
 			{
 				// Initialize static members and connect to the creation callback of a NetState.
-				NetState.CreatedCallback = new NetStateCreatedCallback( NetStateCreated );
+				UOSocket.CreatedCallback = new NetStateCreatedCallback( NetStateCreated );
 
 				// Overwrite the packet handler for the relay packet since we need to change the
 				// encryption mode then.
@@ -43,24 +43,24 @@ namespace Scripts.Engines.Encryption
 			}
 		}
 
-		public static void NetStateCreated( NetState state )
+		public static void NetStateCreated( UOSocket state )
 		{
 			state.PacketEncoder = new Encryption();
 		}
 
-		public static void HookedPlayServer( GameClient client, PacketReader pvSrc )
+		public static void HookedPlayServer( NetState client, PacketReader pvSrc )
 		{
 			// Call the original handler
 			PacketHandlers.Instance.PlayServer( client, pvSrc );
 
-			// Now indicate, that the state has been relayed already. If it's used again, 
+			// Now indicate, that the state has been relayed already. If it's used again,
 			// it means we're entering a special encryption state
-			Encryption context = (Encryption) ( client.State.PacketEncoder );
+			Encryption context = (Encryption) ( client.UOSocket.PacketEncoder );
 			context.m_AlreadyRelayed = true;
 		}
 
 		// Try to encrypt outgoing data.
-		public void EncodeOutgoingPacket( NetState to, ref byte[] buffer, ref int length )
+		public void EncodeOutgoingPacket( UOSocket to, ref byte[] buffer, ref int length )
 		{
 			if ( m_Encryption != null )
 			{
@@ -69,7 +69,7 @@ namespace Scripts.Engines.Encryption
 			}
 		}
 
-		public void RejectNoEncryption( NetState ns )
+		public void RejectNoEncryption( UOSocket ns )
 		{
 			// Log it on the console
 			Console.WriteLine( "Client: {0}: Unencrypted client detected, disconnected", ns );
@@ -83,7 +83,7 @@ namespace Scripts.Engines.Encryption
 		}
 
 		// Try to decrypt incoming data.
-		public void DecodeIncomingPacket( NetState from, ref byte[] buffer, ref int length )
+		public void DecodeIncomingPacket( UOSocket from, ref byte[] buffer, ref int length )
 		{
 			if ( m_Encryption != null )
 			{

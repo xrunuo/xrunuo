@@ -249,7 +249,7 @@ namespace Server.Engines.BulkOrders
 		{
 		}
 
-		public override void OnResponse( Server.Network.GameClient sender, RelayInfo info )
+		public override void OnResponse( Server.Network.NetState sender, RelayInfo info )
 		{
 			int index = info.ButtonID;
 

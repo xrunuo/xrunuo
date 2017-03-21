@@ -77,15 +77,15 @@ namespace Server.Menus.Questions
 			} while ( m_Serial == 0 );
 		}
 
-		public virtual void OnCancel( GameClient state )
+		public virtual void OnCancel( NetState state )
 		{
 		}
 
-		public virtual void OnResponse( GameClient state, int index )
+		public virtual void OnResponse( NetState state, int index )
 		{
 		}
 
-		public void SendTo( GameClient state )
+		public void SendTo( NetState state )
 		{
 			state.AddMenu( this );
 			state.Send( new DisplayQuestionMenu( this ) );

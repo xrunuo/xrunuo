@@ -47,7 +47,7 @@ namespace Server.Items
 			if ( m_Held <= 0 )
 			{
 				// A foggy memory is recalled and you have to ask yourself, "Why is the Pungent Brew always gone?"
-				from.PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 1113610, from.Client );
+				from.PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 1113610, from.NetState );
 			}
 			else if ( ( bottle = from.Backpack.FindItemByType<BottleOfPungentBrew>() ) == null )
 			{
@@ -57,7 +57,7 @@ namespace Server.Items
 			else if ( bottle.Empty )
 			{
 				// You refill the special bottle with Flint's Pungent Brew.  Boy, it's lucky you kept that bottle!
-				from.PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 1113609, from.Client );
+				from.PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 1113609, from.NetState );
 
 				bottle.Empty = false;
 

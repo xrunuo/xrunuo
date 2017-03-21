@@ -54,7 +54,7 @@ namespace Server.Engines.Guilds.Gumps
 			AddHtmlLocalized( 360, 273, 90, 26, 1062989, 0x5000, false, false );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			int m_Rank = ( m_Mobile as PlayerMobile ).GuildRank;
 

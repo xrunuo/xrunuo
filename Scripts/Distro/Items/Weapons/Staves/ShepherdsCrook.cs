@@ -70,7 +70,7 @@ namespace Server.Items
 					{
 						if ( bc.Controlled )
 						{
-							bc.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 502467, from.Client ); // That animal looks tame already.
+							bc.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 502467, from.NetState ); // That animal looks tame already.
 						}
 						else
 						{

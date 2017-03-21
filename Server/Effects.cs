@@ -50,7 +50,7 @@ namespace Server
 			set { m_ParticleSupportType = value; }
 		}
 
-		public static bool SendParticlesTo( GameClient state )
+		public static bool SendParticlesTo( NetState state )
 		{
 			// TODO: Does current 2d client support particle effects packets?
 			return ( m_ParticleSupportType == ParticleSupportType.Full || ( m_ParticleSupportType == ParticleSupportType.Detect && state.Version.IsEnhanced ) );
@@ -65,7 +65,7 @@ namespace Server
 			{
 				Packet playSound = null;
 
-				foreach ( GameClient state in map.GetClientsInRange( p ) )
+				foreach ( NetState state in map.GetClientsInRange( p ) )
 				{
 					state.Mobile.ProcessDelta();
 
@@ -93,7 +93,7 @@ namespace Server
 
 			Packet preEffect = null, boltEffect = null, playSound = null;
 
-			foreach ( GameClient state in map.GetClientsInRange( e.Location ) )
+			foreach ( NetState state in map.GetClientsInRange( e.Location ) )
 			{
 				if ( state.Mobile.CanSee( e ) )
 				{
@@ -163,7 +163,7 @@ namespace Server
 			{
 				Packet particles = null, regular = null;
 
-				foreach ( GameClient state in map.GetClientsInRange( e.Location ) )
+				foreach ( NetState state in map.GetClientsInRange( e.Location ) )
 				{
 					state.Mobile.ProcessDelta();
 
@@ -232,7 +232,7 @@ namespace Server
 			{
 				Packet particles = null, regular = null;
 
-				foreach ( GameClient state in map.GetClientsInRange( target.Location ) )
+				foreach ( NetState state in map.GetClientsInRange( target.Location ) )
 				{
 					state.Mobile.ProcessDelta();
 
@@ -302,7 +302,7 @@ namespace Server
 			{
 				Packet particles = null, regular = null;
 
-				foreach ( GameClient state in map.GetClientsInRange( from.Location ) )
+				foreach ( NetState state in map.GetClientsInRange( from.Location ) )
 				{
 					state.Mobile.ProcessDelta();
 
@@ -333,7 +333,7 @@ namespace Server
 			{
 				p.Acquire();
 
-				foreach ( GameClient state in map.GetClientsInRange( origin ) )
+				foreach ( NetState state in map.GetClientsInRange( origin ) )
 				{
 					state.Mobile.ProcessDelta();
 

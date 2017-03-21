@@ -17,7 +17,7 @@ namespace Server.Gumps
 			m_Names = names;
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo relayInfo )
+		public override void OnResponse( NetState sender, RelayInfo relayInfo )
 		{
 			int index = relayInfo.ButtonID - 1;
 

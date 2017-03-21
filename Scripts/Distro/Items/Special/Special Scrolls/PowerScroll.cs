@@ -243,7 +243,7 @@ namespace Server.Items
 				AddHtmlLocalized( 310, 20, 120, 20, 1044060 + (int) scroll.m_Skill, 0xFFFFFF, false, false );
 			}
 
-			public override void OnResponse( GameClient state, RelayInfo info )
+			public override void OnResponse( NetState state, RelayInfo info )
 			{
 				if ( info.ButtonID == 1 )
 					m_Scroll.Use( m_Mobile, false );

@@ -38,7 +38,7 @@ namespace Server.Items
 		{
 		}
 
-		public override void SendInfoTo( GameClient state )
+		public override void SendInfoTo( NetState state )
 		{
 			Mobile mob = state.Mobile;
 
@@ -88,7 +88,7 @@ namespace Server.Items
 		{
 		}
 
-		public override void SendInfoTo( GameClient state )
+		public override void SendInfoTo( NetState state )
 		{
 			Mobile mob = state.Mobile;
 

@@ -47,7 +47,7 @@ namespace Server.Gumps
 			AddHtmlLocalized( 40, height - 30, 120, 20, 1011036, 32767, false, false ); // OKAY
 		}
 
-		public override void OnResponse( Server.Network.GameClient sender, RelayInfo info )
+		public override void OnResponse( Server.Network.NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 1 && m_Callback != null )
 			{

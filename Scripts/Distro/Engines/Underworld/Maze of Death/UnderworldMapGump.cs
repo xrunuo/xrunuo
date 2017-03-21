@@ -14,7 +14,7 @@ namespace Server.Gumps
 			AddImage( 0, 0, 0x7739 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 		}
 	}

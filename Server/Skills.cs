@@ -936,7 +936,7 @@ namespace Server
 
 			m_Owner.OnSkillInvalidated( skill );
 
-			GameClient ns = m_Owner.Client;
+			NetState ns = m_Owner.NetState;
 
 			if ( ns != null )
 				ns.Send( new SkillChange( skill ) );

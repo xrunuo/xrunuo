@@ -108,7 +108,7 @@ namespace Server.Regions
 		{
 			base.Damage( m );
 
-			if ( m.Client != null )
+			if ( m.NetState != null )
 				AOS.Damage( m, Utility.Random( 2, 6 ), 0, 0, 100, 0, 0 );
 			else
 				m.LogoutLocation = new Point3D( 6502, 87, 0 );
@@ -126,7 +126,7 @@ namespace Server.Regions
 		{
 			base.Damage( m );
 
-			if ( m.Client != null )
+			if ( m.NetState != null )
 				AOS.Damage( m, Utility.Random( 2, 3 ), 0, 0, 100, 0, 0 );
 		}
 	}
@@ -144,7 +144,7 @@ namespace Server.Regions
 		{
 			base.Damage( m );
 
-			if ( m.Client != null )
+			if ( m.NetState != null )
 			{
 				m.FixedParticles( 0x36B0, 1, 14, 0x26BB, 0x3F, 0x7, EffectLayer.Waist );
 				m.PlaySound( 0x229 );
@@ -166,7 +166,7 @@ namespace Server.Regions
 		{
 			base.Damage( m );
 
-			if ( m.Client != null )
+			if ( m.NetState != null )
 			{
 				m.FixedEffect( 0x374A, 1, 17 );
 				m.PlaySound( 0x1E1 );

@@ -11,7 +11,7 @@ namespace Server.Factions
 		private PlayerMobile m_From;
 		private Election m_Election;
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 0 )
 			{

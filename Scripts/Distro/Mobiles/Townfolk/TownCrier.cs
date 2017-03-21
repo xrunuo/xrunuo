@@ -281,7 +281,7 @@ namespace Server.Mobiles
 		private Mobile m_From;
 		private ITownCrierEntryList m_Owner;
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 1 )
 			{

@@ -33,7 +33,7 @@ namespace Server.Engines.Quests
 			PacketHandlers.Instance.RegisterExtended( 0x2A, true, new OnPacketReceive( HeritageTransform ) );
 		}
 
-		public static void QuestButton( GameClient state, IEntity e, EncodedReader reader )
+		public static void QuestButton( NetState state, IEntity e, EncodedReader reader )
 		{
 			if ( state.Mobile is PlayerMobile )
 			{
@@ -44,7 +44,7 @@ namespace Server.Engines.Quests
 			}
 		}
 
-		public static void HeritageTransform( GameClient state, PacketReader reader )
+		public static void HeritageTransform( NetState state, PacketReader reader )
 		{
 			Mobile m = state.Mobile;
 

@@ -207,21 +207,21 @@ namespace Server
 			return GetObjectsInRange( p, 0 );
 		}
 
-		public IEnumerable<GameClient> GetClientsInRange( IPoint2D p, int range = 18 )
+		public IEnumerable<NetState> GetClientsInRange( IPoint2D p, int range = 18 )
 		{
 			return GetClientsInBounds( new Rectangle2D( p.X - range, p.Y - range, range * 2 + 1, range * 2 + 1 ) );
 		}
 
-		public IEnumerable<GameClient> GetClientsInBounds( Rectangle2D bounds )
+		public IEnumerable<NetState> GetClientsInBounds( Rectangle2D bounds )
 		{
 			if ( this == Map.Internal )
-				return Enumerable.Empty<GameClient>();
+				return Enumerable.Empty<NetState>();
 
 			return GetSectors( bounds ).SelectMany( sector => sector.Clients )
 				.Where( state => state.Mobile != null && bounds.Contains( state.Mobile ) );
 		}
 
-		public IEnumerable<GameClient> GetClientsAtWorldPoint( IPoint2D p )
+		public IEnumerable<NetState> GetClientsAtWorldPoint( IPoint2D p )
 		{
 			return GetClientsInRange( p, 0 );
 		}
@@ -801,7 +801,7 @@ namespace Server
 			return false;
 		}
 
-		public void OnClientChange( GameClient oldState, GameClient newState, Mobile m )
+		public void OnClientChange( NetState oldState, NetState newState, Mobile m )
 		{
 			if ( this == Map.Internal )
 				return;
@@ -1414,10 +1414,10 @@ namespace Server
 			return m.Map.GetMobilesInRange( m.Location, range );
 		}
 
-		public static IEnumerable<GameClient> GetClientsInRange( this Mobile m, int range = 18 )
+		public static IEnumerable<NetState> GetClientsInRange( this Mobile m, int range = 18 )
 		{
 			if ( m.Map == null )
-				return Enumerable.Empty<GameClient>();
+				return Enumerable.Empty<NetState>();
 
 			return m.Map.GetClientsInRange( m.Location, range );
 		}

@@ -835,13 +835,13 @@ namespace Server.Engines.Housing.Multis
 			DesignContext.Add( m, this );
 			m.Send( new BeginHouseCustomization( this ) );
 
-			if ( m.Client != null )
-				SendInfoTo( m.Client );
+			if ( m.NetState != null )
+				SendInfoTo( m.NetState );
 
-			DesignState.SendDetailedInfoTo( m.Client );
+			DesignState.SendDetailedInfoTo( m.NetState );
 		}
 
-		public override void SendInfoTo( GameClient state )
+		public override void SendInfoTo( NetState state )
 		{
 			base.SendInfoTo( state );
 
@@ -975,7 +975,7 @@ namespace Server.Engines.Housing.Multis
 			}
 		}
 
-		public static void Designer_Sync( GameClient state, IEntity e, EncodedReader pvSrc )
+		public static void Designer_Sync( NetState state, IEntity e, EncodedReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			DesignContext context = DesignContext.Find( from );
@@ -993,7 +993,7 @@ namespace Server.Engines.Housing.Multis
 			}
 		}
 
-		public static void Designer_Clear( GameClient state, IEntity e, EncodedReader pvSrc )
+		public static void Designer_Clear( NetState state, IEntity e, EncodedReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			DesignContext context = DesignContext.Find( from );
@@ -1023,7 +1023,7 @@ namespace Server.Engines.Housing.Multis
 			}
 		}
 
-		public static void Designer_Restore( GameClient state, IEntity e, EncodedReader pvSrc )
+		public static void Designer_Restore( NetState state, IEntity e, EncodedReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			DesignContext context = DesignContext.Find( from );
@@ -1053,7 +1053,7 @@ namespace Server.Engines.Housing.Multis
 			}
 		}
 
-		public static void Designer_Backup( GameClient state, IEntity e, EncodedReader pvSrc )
+		public static void Designer_Backup( NetState state, IEntity e, EncodedReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			DesignContext context = DesignContext.Find( from );
@@ -1073,7 +1073,7 @@ namespace Server.Engines.Housing.Multis
 			}
 		}
 
-		public static void Designer_Revert( GameClient state, IEntity e, EncodedReader pvSrc )
+		public static void Designer_Revert( NetState state, IEntity e, EncodedReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			DesignContext context = DesignContext.Find( from );
@@ -1183,7 +1183,7 @@ namespace Server.Engines.Housing.Multis
 			// Notify the core that the foundation has changed and should be resent to all clients
 			Delta( ItemDelta.Update );
 			ProcessDelta();
-			CurrentState.SendDetailedInfoTo( from.Client );
+			CurrentState.SendDetailedInfoTo( from.NetState );
 
 			// If a signpost is needed, add it
 			CheckSignpost();
@@ -1201,7 +1201,7 @@ namespace Server.Engines.Housing.Multis
 			RestoreRelocatedEntities();
 		}
 
-		public static void Designer_Commit( GameClient state, IEntity e, EncodedReader pvSrc )
+		public static void Designer_Commit( NetState state, IEntity e, EncodedReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			DesignContext context = DesignContext.Find( from );
@@ -1486,7 +1486,7 @@ namespace Server.Engines.Housing.Multis
 			return true;
 		}
 
-		public static void Designer_Delete( GameClient state, IEntity e, EncodedReader pvSrc )
+		public static void Designer_Delete( NetState state, IEntity e, EncodedReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			DesignContext context = DesignContext.Find( from );
@@ -1556,7 +1556,7 @@ namespace Server.Engines.Housing.Multis
 			}
 		}
 
-		public static void Designer_Stairs( GameClient state, IEntity e, EncodedReader pvSrc )
+		public static void Designer_Stairs( NetState state, IEntity e, EncodedReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			DesignContext context = DesignContext.Find( from );
@@ -1709,7 +1709,7 @@ namespace Server.Engines.Housing.Multis
 			}
 		}
 
-		private static void TraceValidity( GameClient state, int itemID )
+		private static void TraceValidity( NetState state, int itemID )
 		{
 			try
 			{
@@ -1721,7 +1721,7 @@ namespace Server.Engines.Housing.Multis
 			}
 		}
 
-		public static void Designer_Build( GameClient state, IEntity e, EncodedReader pvSrc )
+		public static void Designer_Build( NetState state, IEntity e, EncodedReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			DesignContext context = DesignContext.Find( from );
@@ -1763,7 +1763,7 @@ namespace Server.Engines.Housing.Multis
 			}
 		}
 
-		public static void Designer_Close( GameClient state, IEntity e, EncodedReader pvSrc )
+		public static void Designer_Close( NetState state, IEntity e, EncodedReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			DesignContext context = DesignContext.Find( from );
@@ -1806,7 +1806,7 @@ namespace Server.Engines.Housing.Multis
 			}
 		}
 
-		public static void Designer_Level( GameClient state, IEntity e, EncodedReader pvSrc )
+		public static void Designer_Level( NetState state, IEntity e, EncodedReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			DesignContext context = DesignContext.Find( from );
@@ -1839,7 +1839,7 @@ namespace Server.Engines.Housing.Multis
 			}
 		}
 
-		public static void QueryDesignDetails( GameClient state, PacketReader pvSrc )
+		public static void QueryDesignDetails( NetState state, PacketReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			DesignContext context = DesignContext.Find( from );
@@ -1859,7 +1859,7 @@ namespace Server.Engines.Housing.Multis
 			}
 		}
 
-		public static void Designer_Roof( GameClient state, IEntity e, EncodedReader pvSrc )
+		public static void Designer_Roof( NetState state, IEntity e, EncodedReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			DesignContext context = DesignContext.Find( from );
@@ -1904,7 +1904,7 @@ namespace Server.Engines.Housing.Multis
 			}
 		}
 
-		public static void Designer_RoofDelete( GameClient state, IEntity e, EncodedReader pvSrc )
+		public static void Designer_RoofDelete( NetState state, IEntity e, EncodedReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			DesignContext context = DesignContext.Find( from );
@@ -2047,13 +2047,13 @@ namespace Server.Engines.Housing.Multis
 			}
 		}
 
-		public void SendGeneralInfoTo( GameClient state )
+		public void SendGeneralInfoTo( NetState state )
 		{
 			if ( state != null )
 				state.Send( new DesignStateGeneral( m_Foundation, this ) );
 		}
 
-		public void SendDetailedInfoTo( GameClient state )
+		public void SendDetailedInfoTo( NetState state )
 		{
 			if ( state != null )
 			{
@@ -2234,7 +2234,7 @@ namespace Server.Engines.Housing.Multis
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 1 )
 				m_Foundation.EndConfirmCommit( sender.Mobile );
@@ -2296,7 +2296,7 @@ namespace Server.Engines.Housing.Multis
 			from.Hidden = true;
 			from.Location = new Point3D( foundation.X, foundation.Y, foundation.Z + 7 );
 
-			GameClient state = from.Client;
+			NetState state = from.NetState;
 
 			if ( state == null )
 				return;
@@ -2331,7 +2331,7 @@ namespace Server.Engines.Housing.Multis
 
 			context.Foundation.Customizer = null;
 
-			GameClient state = from.Client;
+			NetState state = from.NetState;
 
 			if ( state == null )
 				return;
@@ -2661,13 +2661,13 @@ namespace Server.Engines.Housing.Multis
 
 		private class SendQueueEntry
 		{
-			public GameClient m_NetState;
+			public NetState m_NetState;
 			public int m_Serial, m_Revision;
 			public int m_xMin, m_yMin, m_xMax, m_yMax;
 			public DesignState m_Root;
 			public MultiTileEntry[] m_Tiles;
 
-			public SendQueueEntry( GameClient ns, HouseFoundation foundation, DesignState state )
+			public SendQueueEntry( NetState ns, HouseFoundation foundation, DesignState state )
 			{
 				m_NetState = ns;
 				m_Serial = foundation.Serial;
@@ -2752,13 +2752,13 @@ namespace Server.Engines.Housing.Multis
 		public static void SendPacket_Sandbox( object state )
 		{
 			object[] states = (object[]) state;
-			GameClient ns = (GameClient) states[0];
+			NetState ns = (NetState) states[0];
 			Packet p = (Packet) states[1];
 
 			ns.Send( p );
 		}
 
-		public static void SendDetails( GameClient ns, HouseFoundation house, DesignState state )
+		public static void SendDetails( NetState ns, HouseFoundation house, DesignState state )
 		{
 			m_SendQueue.Enqueue( new SendQueueEntry( ns, house, state ) );
 			m_Sync.Set();

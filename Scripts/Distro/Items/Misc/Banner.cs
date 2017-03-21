@@ -234,7 +234,7 @@ namespace Server.Items
 				}
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( m_Banner == null | m_Banner.Deleted )
 					return;
@@ -368,7 +368,7 @@ namespace Server.Items
 					AddButton( 145, 35, 0x868, 0x869, (int) Buttons.South, GumpButtonType.Reply, 0 );
 				}
 
-				public override void OnResponse( GameClient sender, RelayInfo info )
+				public override void OnResponse( NetState sender, RelayInfo info )
 				{
 					if ( m_Banner == null || m_Banner.Deleted || m_House == null )
 						return;

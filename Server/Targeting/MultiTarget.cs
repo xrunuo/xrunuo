@@ -51,7 +51,7 @@ namespace Server.Targeting
 			m_Offset = offset;
 		}
 
-		public override Packet GetPacketFor( GameClient ns )
+		public override Packet GetPacketFor( NetState ns )
 		{
 			return new MultiTargetReq( this );
 		}

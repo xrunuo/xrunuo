@@ -192,7 +192,7 @@ namespace Server.Gumps
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			Mobile from = sender.Mobile;
 
@@ -664,7 +664,7 @@ namespace Server.Gumps
 			AddButton( 10, 288, 0xFA5, 0xFA7, 0, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			Mobile from = sender.Mobile;
 

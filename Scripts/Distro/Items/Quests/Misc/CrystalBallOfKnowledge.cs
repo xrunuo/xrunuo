@@ -64,7 +64,7 @@ namespace Server.Items
 				// You must have the object in your backpack to use it.
 				from.SendLocalizedMessage( 1042010 );
 			}
-			/*else if ( ??? ) // TODO (SA): ¿Cuándo entramos aquí?
+			/*else if ( ??? ) // TODO (SA): ï¿½Cuï¿½ndo entramos aquï¿½?
 			{
 				// You cannot use the Crystal Ball of Knowledge right now.
 				from.SendLocalizedMessage( 1112569 );
@@ -185,7 +185,7 @@ namespace Server.Items
 				AddHtmlLocalized( 190, 55, 100, 35, 1011012, false, false ); // CANCEL
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				Mobile from = sender.Mobile;
 

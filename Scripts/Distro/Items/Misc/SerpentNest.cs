@@ -59,14 +59,14 @@ namespace Server.Items
 							from.SendLocalizedMessage( 1112580 ); // Beware! You've hatched the eggs!!
 							this.HatchEggs( from );
 
-							from.PrivateOverheadMessage( MessageType.Regular, 33, 1112940, from.Client ); // Your hand remains stuck!!!
+							from.PrivateOverheadMessage( MessageType.Regular, 33, 1112940, from.NetState ); // Your hand remains stuck!!!
 							from.Frozen = true;
 
 							Timer.DelayCall( TimeSpan.FromSeconds( 5.0 ), new TimerCallback(
 								delegate
 								{
 									from.Frozen = false;
-									from.PrivateOverheadMessage( MessageType.Regular, 65, 1112941, from.Client ); // You manage to free your hand!
+									from.PrivateOverheadMessage( MessageType.Regular, 65, 1112941, from.NetState ); // You manage to free your hand!
 								} ) );
 
 							break;

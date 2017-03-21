@@ -488,7 +488,7 @@ namespace Server.Items
 				}
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( m_Chest.Deleted || info.ButtonID == 0 || !m_From.CheckAlive() )
 				{

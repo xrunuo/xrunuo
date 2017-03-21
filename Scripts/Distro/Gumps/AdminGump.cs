@@ -522,7 +522,7 @@ namespace Server.Gumps
 
 						for ( int i = 0, index = ( listPage * 12 ); i < 12 && index >= 0 && index < m_List.Count; ++i, ++index )
 						{
-							GameClient ns = m_List[index] as GameClient;
+							NetState ns = m_List[index] as NetState;
 
 							if ( ns == null )
 							{
@@ -582,7 +582,7 @@ namespace Server.Gumps
 						AddButton( 380, y, 0xFA5, 0xFA7, GetButtonID( 7, 14 ), GumpButtonType.Reply, 0 );
 						y += 20;
 
-						GameClient ns = m.Client;
+						NetState ns = m.NetState;
 
 						if ( ns == null )
 						{
@@ -1145,7 +1145,7 @@ namespace Server.Gumps
 							AddLabelCropped( 12, offset, 120, 20, GetHueFor( m ), m.Name );
 							AddLabelCropped( 132, offset, 120, 20, LabelHue, FormatAccessLevel( m.AccessLevel ) );
 
-							if ( m.Client != null )
+							if ( m.NetState != null )
 							{
 								AddLabelCropped( 252, offset, 120, 20, GreenHue, "Online" );
 							}
@@ -1732,7 +1732,7 @@ namespace Server.Gumps
 			from.SendGump( new AdminGump( from, AdminGumpPage.AccountDetails_Access_ClientIPs, 0, null, notice, a ) );
 		}
 
-		public override void OnResponse( Server.Network.GameClient sender, RelayInfo info )
+		public override void OnResponse( Server.Network.NetState sender, RelayInfo info )
 		{
 			int val = info.ButtonID - 1;
 
@@ -2129,7 +2129,7 @@ namespace Server.Gumps
 									{
 										int count = 0;
 
-										foreach ( GameClient ns in GameServer.Instance.Clients )
+										foreach ( NetState ns in GameServer.Instance.Clients )
 										{
 											Account a = ns.Account as Account;
 
@@ -2226,7 +2226,7 @@ namespace Server.Gumps
 									}
 									else
 									{
-										foreach ( GameClient ns in GameServer.Instance.Clients )
+										foreach ( NetState ns in GameServer.Instance.Clients )
 										{
 											bool isMatch;
 
@@ -2253,7 +2253,7 @@ namespace Server.Gumps
 
 									if ( results.Count == 1 )
 									{
-										GameClient ns = (GameClient) results[0];
+										NetState ns = (NetState) results[0];
 										object state = ns.Mobile;
 
 										if ( state == null )
@@ -2287,7 +2287,7 @@ namespace Server.Gumps
 
 									if ( m_List != null && index >= 0 && index < m_List.Count )
 									{
-										GameClient ns = m_List[index] as GameClient;
+										NetState ns = m_List[index] as NetState;
 
 										if ( ns == null )
 										{
@@ -3020,7 +3020,7 @@ namespace Server.Gumps
 								}
 							case 2:
 								{
-									GameClient ns = m.Client;
+									NetState ns = m.NetState;
 
 									if ( ns != null )
 									{
@@ -3044,7 +3044,7 @@ namespace Server.Gumps
 										CommandLogging.WriteLine( from, "{0} {1} {2} {3}", from.AccessLevel, CommandLogging.Format( from ), "banning", CommandLogging.Format( m ) );
 										a.Banned = true;
 
-										GameClient ns = m.Client;
+										NetState ns = m.NetState;
 
 										if ( ns != null )
 										{
@@ -3247,7 +3247,7 @@ namespace Server.Gumps
 					accessLevel = check.AccessLevel;
 				}
 
-				if ( check.Client != null )
+				if ( check.NetState != null )
 				{
 					online = true;
 				}
@@ -3388,8 +3388,8 @@ namespace Server.Gumps
 					return 1;
 				}
 
-				GameClient a = x as GameClient;
-				GameClient b = y as GameClient;
+				NetState a = x as NetState;
+				NetState b = y as NetState;
 
 				if ( a == null || b == null )
 				{

@@ -134,7 +134,7 @@ namespace Server.Factions
 			#endregion
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( !m_Town.IsSheriff( m_From ) || m_Town.Owner != m_Faction )
 			{

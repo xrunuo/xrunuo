@@ -394,7 +394,7 @@ namespace Server.Items
 		private const int LabelColor = 0x7FFF;
 		private const int LabelHue = 1153;
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			int page = m_Page;
 			Mobile from = m_From;

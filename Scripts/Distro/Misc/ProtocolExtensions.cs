@@ -17,7 +17,7 @@ namespace Server.Misc
 			Register( 0x00, true, new OnPacketReceive( QueryPartyLocations ) );
 		}
 
-		public static void QueryPartyLocations( GameClient state, PacketReader pvSrc )
+		public static void QueryPartyLocations( NetState state, PacketReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			Party party = Party.Get( from );
@@ -44,7 +44,7 @@ namespace Server.Misc
 			return null;
 		}
 
-		public static void DecodeBundledPacket( GameClient state, PacketReader pvSrc )
+		public static void DecodeBundledPacket( NetState state, PacketReader pvSrc )
 		{
 			int packetID = pvSrc.ReadByte();
 

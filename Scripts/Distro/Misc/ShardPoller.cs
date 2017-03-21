@@ -89,7 +89,7 @@ namespace Server.Misc
 			}
 		}
 
-		public bool HasAlreadyVoted( GameClient ns )
+		public bool HasAlreadyVoted( NetState ns )
 		{
 			for ( int i = 0; i < m_Options.Length; ++i )
 			{
@@ -102,7 +102,7 @@ namespace Server.Misc
 			return false;
 		}
 
-		public void AddVote( GameClient ns, ShardPollOption option )
+		public void AddVote( NetState ns, ShardPollOption option )
 		{
 			option.AddVote( ns );
 		}
@@ -175,7 +175,7 @@ namespace Server.Misc
 		private static void EventSink_Login_Callback( object state )
 		{
 			Mobile from = (Mobile) state;
-			GameClient ns = from.Client;
+			NetState ns = from.NetState;
 
 			if ( ns == null )
 			{
@@ -326,7 +326,7 @@ namespace Server.Misc
 			m_Voters = new IPAddress[0];
 		}
 
-		public bool HasAlreadyVoted( GameClient ns )
+		public bool HasAlreadyVoted( NetState ns )
 		{
 			if ( ns == null )
 			{
@@ -346,7 +346,7 @@ namespace Server.Misc
 			return false;
 		}
 
-		public void AddVote( GameClient ns )
+		public void AddVote( NetState ns )
 		{
 			if ( ns == null )
 			{
@@ -567,7 +567,7 @@ namespace Server.Misc
 			AddButton( 314, height - 47, 242, 241, 0, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( m_Polls != null && m_Polls.Count > 0 )
 			{

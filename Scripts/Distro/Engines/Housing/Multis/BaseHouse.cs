@@ -1637,7 +1637,7 @@ namespace Server.Engines.Housing.Multis
 
 				if ( valid )
 				{
-					location = String.Format( "{0}° {1}'{2}, {3}° {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
+					location = String.Format( "{0}ï¿½ {1}'{2}, {3}ï¿½ {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
 				}
 				else
 				{
@@ -1878,7 +1878,7 @@ namespace Server.Engines.Housing.Multis
 				}
 				else if ( CheckTransferPosition( from, to ) )
 				{
-					GameClient fromState = from.Client, toState = to.Client;
+					NetState fromState = from.NetState, toState = to.NetState;
 
 					if ( fromState != null && toState != null )
 					{

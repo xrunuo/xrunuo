@@ -222,7 +222,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			int index = info.ButtonID - 1;
 
@@ -237,7 +237,7 @@ namespace Server.Mobiles
 				if ( buyInfo.FacialHair && isFemale )
 				{
 					// You cannot place facial hair on a woman!
-					m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1010639, m_From.Client );
+					m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1010639, m_From.NetState );
 				}
 				else if ( balance >= buyInfo.Price )
 				{
@@ -269,7 +269,7 @@ namespace Server.Mobiles
 				else
 				{
 					// You cannot afford my services for that style.
-					m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1042293, m_From.Client );
+					m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1042293, m_From.NetState );
 				}
 			}
 		}
@@ -409,7 +409,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 1 )
 			{
@@ -428,7 +428,7 @@ namespace Server.Mobiles
 							{
 								if ( !Banker.Withdraw( m_From, m_Price ) )
 								{
-									m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1042293, m_From.Client ); // You cannot afford my services for that style.
+									m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1042293, m_From.NetState ); // You cannot afford my services for that style.
 									return;
 								}
 
@@ -441,20 +441,20 @@ namespace Server.Mobiles
 									m_From.FacialHairHue = hue;
 							}
 							else
-								m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 502623, m_From.Client ); // You have no hair to dye and you cannot use this.
+								m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 502623, m_From.NetState ); // You have no hair to dye and you cannot use this.
 						}
 					}
 				}
 				else
 				{
 					// You decide not to change your hairstyle.
-					m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1013009, m_From.Client );
+					m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1013009, m_From.NetState );
 				}
 			}
 			else
 			{
 				// You decide not to change your hairstyle.
-				m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1013009, m_From.Client );
+				m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1013009, m_From.NetState );
 			}
 		}
 	}
@@ -619,7 +619,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( m_FacialHair && ( m_From.Female || m_From.Body.IsFemale ) )
 				return;
@@ -655,7 +655,7 @@ namespace Server.Mobiles
 									m_From.HairItemID = 0;
 							}
 							else
-								m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1042293, m_From.Client ); // You cannot afford my services for that style.
+								m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1042293, m_From.NetState ); // You cannot afford my services for that style.
 						}
 						else
 						{
@@ -678,20 +678,20 @@ namespace Server.Mobiles
 									m_From.HairItemID = entry.ItemID;
 							}
 							else
-								m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1042293, m_From.Client ); // You cannot afford my services for that style.
+								m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1042293, m_From.NetState ); // You cannot afford my services for that style.
 						}
 					}
 				}
 				else
 				{
 					// You decide not to change your hairstyle.
-					m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1013009, m_From.Client );
+					m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1013009, m_From.NetState );
 				}
 			}
 			else
 			{
 				// You decide not to change your hairstyle.
-				m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1013009, m_From.Client );
+				m_Vendor.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1013009, m_From.NetState );
 			}
 		}
 	}

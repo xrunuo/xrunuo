@@ -354,7 +354,7 @@ namespace Server.Gumps
 			return Intern( value, false );
 		}
 
-		public void SendTo( GameClient state )
+		public void SendTo( NetState state )
 		{
 			state.AddGump( this );
 			state.Send( Compile() );
@@ -411,11 +411,11 @@ namespace Server.Gumps
 			return disp as Packet;
 		}
 
-		public virtual void OnResponse( GameClient sender, RelayInfo info )
+		public virtual void OnResponse( NetState sender, RelayInfo info )
 		{
 		}
 
-		public virtual void OnServerClose( GameClient owner )
+		public virtual void OnServerClose( NetState owner )
 		{
 		}
 	}

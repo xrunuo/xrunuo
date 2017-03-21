@@ -31,7 +31,7 @@ namespace Server.Accounting
 			ph.ThrottleCallback = new ThrottlePacketCallback( Throttle_Callback );
 		}
 
-		public static bool Throttle_Callback( GameClient ns )
+		public static bool Throttle_Callback( NetState ns )
 		{
 			InvalidAccountAccessLog accessLog = FindAccessLog( ns );
 
@@ -43,7 +43,7 @@ namespace Server.Accounting
 
 		private static ArrayList m_List = new ArrayList();
 
-		public static InvalidAccountAccessLog FindAccessLog( GameClient ns )
+		public static InvalidAccountAccessLog FindAccessLog( NetState ns )
 		{
 			if ( ns == null )
 				return null;
@@ -63,7 +63,7 @@ namespace Server.Accounting
 			return null;
 		}
 
-		public static void RegisterInvalidAccess( GameClient ns )
+		public static void RegisterInvalidAccess( NetState ns )
 		{
 			if ( ns == null || !Enabled )
 				return;

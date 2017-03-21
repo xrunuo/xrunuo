@@ -79,7 +79,7 @@ namespace Server.Gumps
 			AddHtmlLocalized( 348, 300, 250, 60, 1070933, 0x7FFF, false, false ); // Pigments of Tokuno
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			Item reward = null;
 

@@ -490,7 +490,7 @@ namespace Server.Spells.Ninjitsu
 			}
 
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( !m_Spell.CheckCast() )
 					return;

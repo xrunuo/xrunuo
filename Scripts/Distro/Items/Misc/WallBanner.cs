@@ -476,7 +476,7 @@ namespace Server.Items
 				AddButton( 70, 205, 0x8AF, 0x8AF, 0, GumpButtonType.Page, 4 );
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( m_WallBanner == null || m_WallBanner.Deleted )
 					return;

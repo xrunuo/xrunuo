@@ -116,7 +116,7 @@ namespace Server.Spells.Mysticism
 				}
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				Mobile from = sender.Mobile;
 

@@ -113,13 +113,13 @@ namespace Server.Events
 
 	public class ClientVersionReceivedArgs : EventArgs
 	{
-		private GameClient m_State;
+		private NetState m_State;
 		private ClientVersion m_Version;
 
-		public GameClient State { get { return m_State; } }
+		public NetState State { get { return m_State; } }
 		public ClientVersion Version { get { return m_Version; } }
 
-		public ClientVersionReceivedArgs( GameClient state, ClientVersion cv )
+		public ClientVersionReceivedArgs( NetState state, ClientVersion cv )
 		{
 			m_State = state;
 			m_Version = cv;
@@ -161,15 +161,15 @@ namespace Server.Events
 
 	public class TargetByResourceMacroEventArgs : EventArgs
 	{
-		private GameClient m_State;
+		private NetState m_State;
 		private Item m_Tool;
 		private int m_ResourceType;
 
-		public GameClient NetState { get { return m_State; } }
+		public NetState NetState { get { return m_State; } }
 		public Item Tool { get { return m_Tool; } }
 		public int ResourceType { get { return m_ResourceType; } }
 
-		public TargetByResourceMacroEventArgs( GameClient state, Item tool, int type )
+		public TargetByResourceMacroEventArgs( NetState state, Item tool, int type )
 		{
 			m_State = state;
 			m_Tool = tool;
@@ -179,13 +179,13 @@ namespace Server.Events
 
 	public class EquipMacroEventArgs : EventArgs
 	{
-		private GameClient m_State;
+		private NetState m_State;
 		private List<int> m_List;
 
-		public GameClient NetState { get { return m_State; } }
+		public NetState NetState { get { return m_State; } }
 		public List<int> List { get { return m_List; } }
 
-		public EquipMacroEventArgs( GameClient state, List<int> list )
+		public EquipMacroEventArgs( NetState state, List<int> list )
 		{
 			m_State = state;
 			m_List = list;
@@ -194,13 +194,13 @@ namespace Server.Events
 
 	public class UnequipMacroEventArgs : EventArgs
 	{
-		private GameClient m_State;
+		private NetState m_State;
 		private List<int> m_List;
 
-		public GameClient NetState { get { return m_State; } }
+		public NetState NetState { get { return m_State; } }
 		public List<int> List { get { return m_List; } }
 
-		public UnequipMacroEventArgs( GameClient state, List<int> list )
+		public UnequipMacroEventArgs( NetState state, List<int> list )
 		{
 			m_State = state;
 			m_List = list;
@@ -297,13 +297,13 @@ namespace Server.Events
 
 	public class DeleteRequestEventArgs : EventArgs
 	{
-		private GameClient m_State;
+		private NetState m_State;
 		private int m_Index;
 
-		public GameClient State { get { return m_State; } }
+		public NetState State { get { return m_State; } }
 		public int Index { get { return m_Index; } }
 
-		public DeleteRequestEventArgs( GameClient state, int index )
+		public DeleteRequestEventArgs( NetState state, int index )
 		{
 			m_State = state;
 			m_Index = index;
@@ -312,19 +312,19 @@ namespace Server.Events
 
 	public class GameLoginEventArgs : EventArgs
 	{
-		private GameClient m_State;
+		private NetState m_State;
 		private string m_Username;
 		private string m_Password;
 		private bool m_Accepted;
 		private CityInfo[] m_CityInfo;
 
-		public GameClient State { get { return m_State; } }
+		public NetState State { get { return m_State; } }
 		public string Username { get { return m_Username; } }
 		public string Password { get { return m_Password; } }
 		public bool Accepted { get { return m_Accepted; } set { m_Accepted = value; } }
 		public CityInfo[] CityInfo { get { return m_CityInfo; } set { m_CityInfo = value; } }
 
-		public GameLoginEventArgs( GameClient state, string un, string pw )
+		public GameLoginEventArgs( NetState state, string un, string pw )
 		{
 			m_State = state;
 			m_Username = un;
@@ -472,20 +472,20 @@ namespace Server.Events
 
 	public class AccountLoginEventArgs : EventArgs
 	{
-		private GameClient m_State;
+		private NetState m_State;
 		private string m_Username;
 		private string m_Password;
 
 		private bool m_Accepted;
 		private ALRReason m_RejectReason;
 
-		public GameClient State { get { return m_State; } }
+		public NetState State { get { return m_State; } }
 		public string Username { get { return m_Username; } }
 		public string Password { get { return m_Password; } }
 		public bool Accepted { get { return m_Accepted; } set { m_Accepted = value; } }
 		public ALRReason RejectReason { get { return m_RejectReason; } set { m_RejectReason = value; } }
 
-		public AccountLoginEventArgs( GameClient state, string un, string pw )
+		public AccountLoginEventArgs( NetState state, string un, string pw )
 		{
 			m_State = state;
 			m_Username = un;
@@ -821,12 +821,12 @@ namespace Server.Events
 
 	public class ServerListEventArgs : EventArgs
 	{
-		private GameClient m_State;
+		private NetState m_State;
 		private IAccount m_Account;
 		private bool m_Rejected;
 		private List<ServerInfo> m_Servers;
 
-		public GameClient State { get { return m_State; } }
+		public NetState State { get { return m_State; } }
 		public IAccount Account { get { return m_Account; } }
 		public bool Rejected { get { return m_Rejected; } set { m_Rejected = value; } }
 		public List<ServerInfo> Servers { get { return m_Servers; } }
@@ -841,7 +841,7 @@ namespace Server.Events
 			m_Servers.Add( new ServerInfo( name, fullPercent, tz, address ) );
 		}
 
-		public ServerListEventArgs( GameClient state, IAccount account )
+		public ServerListEventArgs( NetState state, IAccount account )
 		{
 			m_State = state;
 			m_Account = account;
@@ -895,7 +895,7 @@ namespace Server.Events
 
 	public class CreateCharRequestEventArgs : EventArgs
 	{
-		private GameClient m_State;
+		private NetState m_State;
 		private IAccount m_Account;
 		private CityInfo m_City;
 		private SkillNameValue[] m_Skills;
@@ -910,7 +910,7 @@ namespace Server.Events
 		private Mobile m_Mobile;
 		private Race m_Race;
 
-		public GameClient State { get { return m_State; } }
+		public NetState State { get { return m_State; } }
 		public IAccount Account { get { return m_Account; } }
 		public Mobile Mobile { get { return m_Mobile; } set { m_Mobile = value; } }
 		public string Name { get { return m_Name; } }
@@ -930,7 +930,7 @@ namespace Server.Events
 		public int Profession { get { return m_Profession; } set { m_Profession = value; } }
 		public Race Race { get { return m_Race; } }
 
-		public CreateCharRequestEventArgs( GameClient state, IAccount a, string name, bool female, int hue, int str, int dex, int intel, CityInfo city, SkillNameValue[] skills, int shirtHue, int pantsHue, int hairID, int hairHue, int beardID, int beardHue, int profession, Race race )
+		public CreateCharRequestEventArgs( NetState state, IAccount a, string name, bool female, int hue, int str, int dex, int intel, CityInfo city, SkillNameValue[] skills, int shirtHue, int pantsHue, int hairID, int hairHue, int beardID, int beardHue, int profession, Race race )
 		{
 			m_State = state;
 			m_Account = a;
@@ -1040,16 +1040,16 @@ namespace Server.Events
 
 	public class FastWalkEventArgs
 	{
-		private GameClient m_State;
+		private NetState m_State;
 		private bool m_Blocked;
 
-		public FastWalkEventArgs( GameClient state )
+		public FastWalkEventArgs( NetState state )
 		{
 			m_State = state;
 			m_Blocked = false;
 		}
 
-		public GameClient NetState { get { return m_State; } }
+		public NetState NetState { get { return m_State; } }
 		public bool Blocked { get { return m_Blocked; } set { m_Blocked = value; } }
 	}
 

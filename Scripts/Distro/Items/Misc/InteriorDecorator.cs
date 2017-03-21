@@ -135,7 +135,7 @@ namespace Server.Items
 				AddHtmlLocalized( 80, 141, 100, 20, 1018325, 0x0, false, false ); // Down
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				DecorateCommand command = DecorateCommand.None;
 

@@ -239,7 +239,7 @@ namespace Server.Items
 
 		public bool IsOpen( Mobile toCheck )
 		{
-			GameClient ns = toCheck.Client;
+			NetState ns = toCheck.NetState;
 
 			if ( ns == null )
 				return false;

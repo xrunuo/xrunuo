@@ -297,7 +297,7 @@ namespace Server.Items
 				}
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( info.ButtonID == 0 || !m_Stone.IsEmpty )
 					return;
@@ -385,7 +385,7 @@ namespace Server.Items
 				AddHtmlLocalized( 45, 362, 450, 20, 1070720, 0x7FFF, false, false ); // Activate the stone.  I am ready to transfer the skill points to it.
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( info.ButtonID == 0 || !m_Stone.IsEmpty )
 					return;
@@ -507,7 +507,7 @@ namespace Server.Items
 				AddHtmlLocalized( 45, 362, 450, 20, 1070719, 0x7FFF, false, false ); // Activate the stone.  I am ready to retrieve the skill points from it.
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( info.ButtonID == 0 || m_Stone.IsEmpty )
 					return;
@@ -698,7 +698,7 @@ namespace Server.Items
 				AddHtmlLocalized( 45, 382, 450, 20, 1070723, 0x7FFF, false, false ); // Remove all skill points from this stone and DO NOT absorb them.
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( info.ButtonID == 0 || m_Stone.IsEmpty )
 					return;
@@ -747,7 +747,7 @@ namespace Server.Items
 				AddHtmlLocalized( 45, 382, 450, 20, 1052072, 0x7FFF, false, false ); // Continue
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( info.ButtonID == 0 )
 					return;

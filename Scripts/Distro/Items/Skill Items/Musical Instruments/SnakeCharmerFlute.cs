@@ -55,7 +55,7 @@ namespace Server.Items
 				{
 					if ( bc.CharmMaster != null )
 					{
-						bc.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 502802, from.Client ); // Someone else is already taming this.
+						bc.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 502802, from.NetState ); // Someone else is already taming this.
 					}
 					else
 					{

@@ -46,7 +46,7 @@ namespace Server.Factions
 			if ( this.Faction == null || Faction.Find( from, true ) != this.Faction )
 			{
 				// You are not in my faction, I cannot sell you a horse!
-				PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1042201, from.Client );
+				PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1042201, from.NetState );
 			}
 			else if ( FactionGump.Exists( from ) )
 			{

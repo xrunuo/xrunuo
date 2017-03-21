@@ -37,7 +37,7 @@ namespace Server.Engines.Collections
 			AddButton( 135, 80, 0xFA5, 0xFA7, 1, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 1 )
 			{

@@ -239,7 +239,7 @@ namespace Server.Items
 				AddButton( 390, 50, 0x845, 0x846, 0x1B7F, GumpButtonType.Reply, 0 );
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( m_Skeleton == null | m_Skeleton.Deleted )
 					return;
@@ -371,7 +371,7 @@ namespace Server.Items
 					AddButton( 145, 35, 0x868, 0x869, (int) Buttons.South, GumpButtonType.Reply, 0 );
 				}
 
-				public override void OnResponse( GameClient sender, RelayInfo info )
+				public override void OnResponse( NetState sender, RelayInfo info )
 				{
 					if ( m_Skeleton == null || m_Skeleton.Deleted || m_House == null )
 						return;

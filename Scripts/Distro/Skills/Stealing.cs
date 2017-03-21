@@ -426,9 +426,9 @@ namespace Server.SkillHandlers
 
 						string message = String.Format( "You notice {0} trying to steal from {1}.", m_Thief.Name, mobRoot.Name );
 
-						foreach ( GameClient ns in m_Thief.GetClientsInRange( 8 ) )
+						foreach ( NetState ns in m_Thief.GetClientsInRange( 8 ) )
 						{
-							if ( ns != m_Thief.Client )
+							if ( ns != m_Thief.NetState )
 								ns.Mobile.SendMessage( message );
 						}
 					}

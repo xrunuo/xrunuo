@@ -376,7 +376,7 @@ namespace Server.Mobiles
 
 				var eable = Map.GetClientsInRange( Location );
 
-				foreach ( GameClient state in eable )
+				foreach ( NetState state in eable )
 				{
 					state.Mobile.ProcessDelta();
 

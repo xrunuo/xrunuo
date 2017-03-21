@@ -51,7 +51,7 @@ namespace Server.Gumps
 			AddImageTiled( 0, 0, 1, 217, 0x23C3 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			PlayerMobile pm = sender.Mobile as PlayerMobile;
 

@@ -220,7 +220,7 @@ namespace Server.Gumps
 					AddImageTiled( x, y, SetWidth, EntryHeight, SetGumpID );
 				}
 
-				if ( m.Client != null && !m.Deleted )
+				if ( m.NetState != null && !m.Deleted )
 				{
 					AddButton( x + SetOffsetX, y + SetOffsetY, SetButtonID1, SetButtonID2, i + 3, GumpButtonType.Reply, 0 );
 				}
@@ -260,7 +260,7 @@ namespace Server.Gumps
 			}
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			Mobile from = state.Mobile;
 
@@ -301,14 +301,14 @@ namespace Server.Gumps
 								from.SendMessage( "That player has deleted their character." );
 								from.SendGump( new WhoGump( from, m_Mobiles, m_Page ) );
 							}
-							else if ( m.Client == null )
+							else if ( m.NetState == null )
 							{
 								from.SendMessage( "That player is no longer online." );
 								from.SendGump( new WhoGump( from, m_Mobiles, m_Page ) );
 							}
 							else if ( m == m_Owner || !m.Hidden || m_Owner.AccessLevel > m.AccessLevel )
 							{
-								from.SendGump( new ClientGump( from, m.Client ) );
+								from.SendGump( new ClientGump( from, m.NetState ) );
 							}
 							else
 							{

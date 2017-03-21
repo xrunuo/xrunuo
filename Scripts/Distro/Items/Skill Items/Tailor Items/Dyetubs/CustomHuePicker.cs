@@ -195,7 +195,7 @@ namespace Server.Items
 			RenderCategories();
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			switch ( info.ButtonID )
 			{

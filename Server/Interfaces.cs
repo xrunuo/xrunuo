@@ -54,7 +54,7 @@ namespace Server
 	{
 		int MapID { get; }
 
-		IEnumerable<GameClient> GetClientsInRange( IPoint2D p, int range = 18 );
+		IEnumerable<NetState> GetClientsInRange( IPoint2D p, int range = 18 );
 	}
 
 	public interface IEntity : IPoint3D

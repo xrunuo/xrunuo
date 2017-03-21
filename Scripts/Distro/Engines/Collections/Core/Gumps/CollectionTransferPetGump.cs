@@ -44,7 +44,7 @@ namespace Server.Engines.Collections
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( m_ExpireTimer != null )
 				m_ExpireTimer.Stop();

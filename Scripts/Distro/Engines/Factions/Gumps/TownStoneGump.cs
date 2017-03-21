@@ -43,7 +43,7 @@ namespace Server.Factions
 			AddButton( 20, 210, 4005, 4007, 0, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( m_Town.Owner != m_Faction || !m_Faction.IsCommander( m_From ) )
 			{

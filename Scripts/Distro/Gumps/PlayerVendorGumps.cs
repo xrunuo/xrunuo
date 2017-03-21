@@ -47,7 +47,7 @@ namespace Server.Gumps
 				AddHtmlLocalized( 125, 45, 250, 24, 1019072, false, false ); // an item without a description
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			Mobile from = state.Mobile;
 
@@ -144,7 +144,7 @@ namespace Server.Gumps
 			AddLabel( 300, 48, 0, ( (int) ( days / 12.0 ) ).ToString() );
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			Mobile from = state.Mobile;
 
@@ -285,7 +285,7 @@ namespace Server.Gumps
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			Mobile from = sender.Mobile;
 
@@ -592,7 +592,7 @@ namespace Server.Gumps
 			}
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			if ( m_Vendor.Deleted )
 			{
@@ -907,7 +907,7 @@ namespace Server.Gumps
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			Mobile from = sender.Mobile;
 
@@ -978,7 +978,7 @@ namespace Server.Gumps
 				case 101: // Color hair
 					{
 						if ( m_Vendor.HairItemID > 0 )
-							new PVHuePicker( m_Vendor, false, from ).SendTo( from.Client );
+							new PVHuePicker( m_Vendor, false, from ).SendTo( from.NetState );
 						else
 							from.SendGump( new NewPlayerVendorCustomizeGump( m_Vendor ) );
 
@@ -995,7 +995,7 @@ namespace Server.Gumps
 				case 102: // Color beard
 					{
 						if ( m_Vendor.FacialHairItemID > 0 )
-							new PVHuePicker( m_Vendor, true, from ).SendTo( from.Client );
+							new PVHuePicker( m_Vendor, true, from ).SendTo( from.NetState );
 						else
 							from.SendGump( new NewPlayerVendorCustomizeGump( m_Vendor ) );
 

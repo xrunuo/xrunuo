@@ -156,7 +156,7 @@ namespace Server.Items
 				AddRadio( 215, 250, 0xD0, 0xD1, false, 0 );
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( m_Deed.Deleted )
 					return;

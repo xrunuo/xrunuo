@@ -34,7 +34,7 @@ namespace Server.Multis
 			AddButton( 20, 125, 4005, 4007, 1, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			if ( info.ButtonID == 2 )
 				m_Boat.EndDryDock( m_From );

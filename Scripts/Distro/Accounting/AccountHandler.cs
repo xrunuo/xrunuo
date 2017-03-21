@@ -57,7 +57,7 @@ namespace Server.Misc
 
 		private static void EventSink_DeleteRequest( DeleteRequestEventArgs e )
 		{
-			GameClient state = e.State;
+			NetState state = e.State;
 			int index = e.Index;
 
 			Account acct = state.Account as Account;
@@ -80,7 +80,7 @@ namespace Server.Misc
 					state.Send( new DeleteResult( DeleteResultType.CharNotExist ) );
 					state.Send( new CharacterListUpdate( acct ) );
 				}
-				else if ( m.Client != null )
+				else if ( m.NetState != null )
 				{
 					state.Send( new DeleteResult( DeleteResultType.CharBeingPlayed ) );
 					state.Send( new CharacterListUpdate( acct ) );
@@ -102,7 +102,7 @@ namespace Server.Misc
 			}
 		}
 
-		private static Account CreateAccount( GameClient state, string un, string pw )
+		private static Account CreateAccount( NetState state, string un, string pw )
 		{
 			if ( un.Length == 0 || pw.Length == 0 )
 				return null;

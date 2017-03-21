@@ -68,7 +68,7 @@ namespace Server.Gumps
 			AddHtmlLocalized( 348, 300, 250, 60, 1070996, 0x7FFF, false, false ); // Fire Orange
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			Item reward = null;
 

@@ -108,7 +108,7 @@ namespace Server.Items
 				AddButton( 185, 35, 0x868, 0x869, 2, GumpButtonType.Reply, 0 ); // East
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( m_Deed.Deleted || info.ButtonID == 0 )
 				{

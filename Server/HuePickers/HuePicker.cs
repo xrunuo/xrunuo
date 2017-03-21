@@ -58,7 +58,7 @@ namespace Server.HuePickers
 		{
 		}
 
-		public void SendTo( GameClient state )
+		public void SendTo( NetState state )
 		{
 			state.Send( new DisplayHuePicker( this ) );
 			state.AddHuePicker( this );

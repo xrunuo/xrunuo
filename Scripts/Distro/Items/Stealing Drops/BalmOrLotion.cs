@@ -189,7 +189,7 @@ namespace Server.Items
 			AddHtmlLocalized( 40, 75, 100, 20, 1060051, 0x7FFF, false, false ); // CANCEL
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 1 && !m_NewBalm.Deleted && m_NewBalm.IsChildOf( sender.Mobile.Backpack ) )
 				BalmOrLotion.ReplaceBalmOrLotion( sender.Mobile, m_NewBalm );

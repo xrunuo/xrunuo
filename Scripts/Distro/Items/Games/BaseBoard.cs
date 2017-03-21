@@ -104,7 +104,7 @@ namespace Server.Items
 				}
 				else
 				{
-					foreach ( GameClient state in this.GetClientsInRange( 2 ) )
+					foreach ( NetState state in this.GetClientsInRange( 2 ) )
 					{
 						state.Send( p );
 					}

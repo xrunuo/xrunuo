@@ -132,7 +132,7 @@ namespace Server.Mobiles
 			if ( from.IsBodyMod && !from.Body.IsHuman )
 			{
 				// You cannot ride a mount in your current form.
-				PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 1062061, from.Client );
+				PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 1062061, from.NetState );
 
 				return;
 			}
@@ -182,21 +182,21 @@ namespace Server.Mobiles
 				if ( canAccess )
 				{
 					if ( this.Poisoned )
-						PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 1049692, from.Client ); // This mount is too ill to ride.
+						PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 1049692, from.NetState ); // This mount is too ill to ride.
 					else if ( this.Frozen || this.Paralyzed )
-						PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 1094791, from.Client ); // You are unable to mount a paralyzed pet.
+						PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 1094791, from.NetState ); // You are unable to mount a paralyzed pet.
 					else
 						Rider = from;
 				}
 				else if ( !Controlled && !Summoned )
 				{
 					// That mount does not look broken! You would have to tame it to ride it.
-					PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 501263, from.Client );
+					PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 501263, from.NetState );
 				}
 				else
 				{
 					// This isn't your mount; it refuses to let you ride.
-					PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 501264, from.Client );
+					PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 501264, from.NetState );
 				}
 			}
 			else

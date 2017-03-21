@@ -37,7 +37,7 @@ namespace Server.Engines.Quests
 			AddButton( 90, 95, 0xF2, 0xF1, 0, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( Server.Network.GameClient state, RelayInfo info )
+		public override void OnResponse( Server.Network.NetState state, RelayInfo info )
 		{
 			if ( m_Quester == null )
 				return;

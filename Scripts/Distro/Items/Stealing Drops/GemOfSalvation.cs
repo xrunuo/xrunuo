@@ -74,7 +74,7 @@ namespace Server.Items
 			m_Mobile = pm;
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			m_Mobile.CloseGump( typeof( ResurrectGump ) );
 

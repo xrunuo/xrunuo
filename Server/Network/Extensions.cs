@@ -24,7 +24,7 @@ namespace Server.Network
 {
 	public static class Extensions
 	{
-		public static void Trace( this PacketReader reader, GameClient client )
+		public static void Trace( this PacketReader reader, NetState client )
 		{
 			try
 			{

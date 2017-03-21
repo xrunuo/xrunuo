@@ -607,8 +607,8 @@ namespace Server.Items
 				if ( !onSelf )
 					patient.SendLocalizedMessage( 1008078, false, healer.Name ); //  : Attempting to heal you.
 
-				if ( healer.Client != null )
-					healer.Client.Send( new CooldownInfo( bandage, (int) seconds ) );
+				if ( healer.NetState != null )
+					healer.NetState.Send( new CooldownInfo( bandage, (int) seconds ) );
 
 				BuffInfo.AddBuff( healer, new BuffInfo( BuffIcon.Healing, 1151311, 1151400, TimeSpan.FromSeconds( seconds ), healer, patient.Name ) );
 

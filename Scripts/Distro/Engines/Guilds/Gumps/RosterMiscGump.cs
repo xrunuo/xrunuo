@@ -118,7 +118,7 @@ namespace Server.Engines.Guilds.Gumps
 			//AddMasterGump( 725 );
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			if ( m_Guild.BadMember( m_Mobile ) )
 				return;

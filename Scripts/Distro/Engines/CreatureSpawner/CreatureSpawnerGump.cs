@@ -193,7 +193,7 @@ namespace Server.Gumps
 			spawner.Saturable = saturable;
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 20 )
 			{

@@ -147,7 +147,7 @@ namespace Server.Profiler
 			AddAlphaRegion( x, y, width, height );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( sender.Mobile.AccessLevel < AccessLevel.Administrator )
 				return;

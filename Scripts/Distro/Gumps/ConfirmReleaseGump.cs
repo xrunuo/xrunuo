@@ -31,7 +31,7 @@ namespace Server.Gumps
 			AddButton( 135, 80, 4005, 4007, 1, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( Server.Network.GameClient sender, RelayInfo info )
+		public override void OnResponse( Server.Network.NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 2 )
 			{

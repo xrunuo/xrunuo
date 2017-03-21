@@ -94,7 +94,7 @@ namespace Server.Items
 			}
 		}
 
-		public override void OnResponse( Server.Network.GameClient sender, RelayInfo info )
+		public override void OnResponse( Server.Network.NetState sender, RelayInfo info )
 		{
 			if ( m_Aquarium == null || m_Aquarium.Deleted )
 				return;

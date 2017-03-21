@@ -227,7 +227,7 @@ namespace Server.Items
 				AddHtmlLocalized( 310, 20, 120, 20, 1038019, 0xFFFFFF, false, false ); // Power
 			}
 
-			public override void OnResponse( GameClient state, RelayInfo info )
+			public override void OnResponse( NetState state, RelayInfo info )
 			{
 				if ( info.ButtonID == 1 )
 				{

@@ -49,10 +49,10 @@ namespace Server.Mobiles
 					if ( deed != null )
 					{
 						// If you have a deed, I can appraise it or buy it from you...
-						PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500605, m.Client );
+						PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500605, m.NetState );
 
 						// Simply hand me a deed to sell it.
-						PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500606, m.Client );
+						PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500606, m.NetState );
 					}
 				}
 			}

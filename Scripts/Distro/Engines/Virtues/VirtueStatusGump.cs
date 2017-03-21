@@ -64,7 +64,7 @@ namespace Server
 			AddKRImage( 0, 0, -2402 );
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			switch ( info.ButtonID )
 			{

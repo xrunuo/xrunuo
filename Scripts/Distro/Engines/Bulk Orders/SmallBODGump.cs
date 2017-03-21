@@ -91,7 +91,7 @@ namespace Server.Engines.BulkOrders
 			AddHtmlLocalized( 160, 120 + factor, 300, 20, 1045154, 0xFFFFFF, false, false ); // Combine this deed with the item requested.
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( m_Deed.Deleted || !m_Deed.IsChildOf( m_From.Backpack ) )
 			{

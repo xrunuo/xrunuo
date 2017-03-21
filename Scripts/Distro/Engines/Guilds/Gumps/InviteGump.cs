@@ -34,7 +34,7 @@ namespace Server.Engines.Guilds.Gumps
 			//AddMasterGump( 725 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( inv_Guild != null )
 			{

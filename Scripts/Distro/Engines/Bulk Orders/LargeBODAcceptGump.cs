@@ -96,7 +96,7 @@ namespace Server.Engines.BulkOrders
 				AddHtmlLocalized( 40, y, 210, 20, entries[i].Details.Number, 0xFFFFFF, false, false );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 1 ) // Ok
 			{

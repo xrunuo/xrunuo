@@ -32,7 +32,7 @@ namespace Server.Engines.Chat
 
 		public bool IsOnline
 		{
-			get { return ( m_Mobile.Client != null ); }
+			get { return ( m_Mobile.NetState != null ); }
 		}
 
 		public const char NormalColorCharacter = '0';
@@ -58,7 +58,7 @@ namespace Server.Engines.Chat
 
 		public void SendMessage( int number, Mobile from, string param1, string param2 )
 		{
-			if ( m_Mobile.Client != null )
+			if ( m_Mobile.NetState != null )
 				m_Mobile.Send( new ChatMessagePacket( from, number, param1, param2 ) );
 		}
 

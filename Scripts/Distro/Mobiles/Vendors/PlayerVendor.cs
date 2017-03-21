@@ -1058,7 +1058,7 @@ namespace Server.Mobiles
 				AddButton( 100, 80, 0xF2, 0xF1, 0, GumpButtonType.Reply, 0 );
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( info.ButtonID == 1 && m_Vendor != null )
 					m_Vendor.Destroy( true );

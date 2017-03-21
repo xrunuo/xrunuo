@@ -88,7 +88,7 @@ namespace Server.Gumps
 
 		private void CheckOnline()
 		{
-			if ( m_Owner != null && m_Owner.Client == null )
+			if ( m_Owner != null && m_Owner.NetState == null )
 			{
 				if ( m_Timer != null )
 					m_Timer.Stop();
@@ -143,7 +143,7 @@ namespace Server.Gumps
 			}
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			if ( m_Statue == null || m_Statue.Deleted )
 				return;
@@ -221,7 +221,7 @@ namespace Server.Gumps
 				m_Timer.Stop();
 		}
 
-		public override void OnServerClose( GameClient owner )
+		public override void OnServerClose( NetState owner )
 		{
 			if ( m_Timer != null )
 				m_Timer.Stop();

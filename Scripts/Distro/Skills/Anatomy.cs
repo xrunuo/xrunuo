@@ -37,11 +37,11 @@ namespace Server.SkillHandlers
 				}
 				else if ( targeted is TownCrier )
 				{
-					( (TownCrier) targeted ).PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500322, from.Client ); // This person looks fine to me, though he may have some news...
+					( (TownCrier) targeted ).PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500322, from.NetState ); // This person looks fine to me, though he may have some news...
 				}
 				else if ( targeted is BaseVendor && ( (BaseVendor) targeted ).IsInvulnerable )
 				{
-					( (BaseVendor) targeted ).PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500326, from.Client ); // That can not be inspected.
+					( (BaseVendor) targeted ).PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500326, from.NetState ); // That can not be inspected.
 				}
 				else if ( targeted is Mobile )
 				{
@@ -68,14 +68,14 @@ namespace Server.SkillHandlers
 
 					if ( from.CheckTargetSkill( SkillName.Anatomy, targ, 0, 100 ) )
 					{
-						targ.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1038045 + ( strMod * 11 ) + dexMod, from.Client ); // That looks [strong] and [dexterous].
+						targ.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1038045 + ( strMod * 11 ) + dexMod, from.NetState ); // That looks [strong] and [dexterous].
 
 						if ( from.Skills[SkillName.Anatomy].Base >= 65.0 )
-							targ.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1038303 + stmMod, from.Client ); // That being is at [10,20,...] percent endurance.
+							targ.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1038303 + stmMod, from.NetState ); // That being is at [10,20,...] percent endurance.
 					}
 					else
 					{
-						targ.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1042666, from.Client ); // You can not quite get a sense of their physical characteristics.
+						targ.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1042666, from.NetState ); // You can not quite get a sense of their physical characteristics.
 					}
 				}
 				else if ( targeted is Item )

@@ -412,7 +412,7 @@ namespace Server
 		private int m_Kills, m_ShortTermMurders;
 		private int m_SpeechHue, m_EmoteHue, m_WhisperHue, m_YellHue;
 		private string m_Language;
-		private GameClient m_Client;
+		private NetState m_NetState;
 		private bool m_Female, m_Warmode, m_Hidden, m_Blessed;
 		private int m_StatCap;
 		private int m_Str, m_Dex, m_Int;
@@ -494,8 +494,8 @@ namespace Server
 
 				if ( m_InstanceID != value )
 				{
-					if ( m_Client != null )
-						m_Client.ValidateAllTrades();
+					if ( m_NetState != null )
+						m_NetState.ValidateAllTrades();
 
 					this.ClearScreen();
 					this.SendRemovePacket();
@@ -505,9 +505,9 @@ namespace Server
 
 					m_InstanceID = value;
 
-					if ( m_Client != null )
+					if ( m_NetState != null )
 					{
-						m_Client.Sequence = 0;
+						m_NetState.Sequence = 0;
 						ClearFastwalkStack();
 					}
 
@@ -896,8 +896,8 @@ namespace Server
 					m_Aggressors.RemoveAt( i );
 					info.Free();
 
-					if ( m_Client != null && CanSee( attacker ) && this.InUpdateRange( attacker ) )
-						m_Client.Send( new MobileIncoming( this, attacker ) );
+					if ( m_NetState != null && CanSee( attacker ) && this.InUpdateRange( attacker ) )
+						m_NetState.Send( new MobileIncoming( this, attacker ) );
 				}
 			}
 
@@ -916,8 +916,8 @@ namespace Server
 					m_Aggressed.RemoveAt( i );
 					info.Free();
 
-					if ( m_Client != null && CanSee( defender ) && this.InUpdateRange( defender ) )
-						m_Client.Send( new MobileIncoming( this, defender ) );
+					if ( m_NetState != null && CanSee( defender ) && this.InUpdateRange( defender ) )
+						m_NetState.Send( new MobileIncoming( this, defender ) );
 				}
 			}
 
@@ -1407,8 +1407,8 @@ namespace Server
 				{
 					m_StrLock = value;
 
-					if ( m_Client != null )
-						m_Client.Send( new StatLockInfo( this ) );
+					if ( m_NetState != null )
+						m_NetState.Send( new StatLockInfo( this ) );
 				}
 			}
 		}
@@ -1429,8 +1429,8 @@ namespace Server
 				{
 					m_DexLock = value;
 
-					if ( m_Client != null )
-						m_Client.Send( new StatLockInfo( this ) );
+					if ( m_NetState != null )
+						m_NetState.Send( new StatLockInfo( this ) );
 				}
 			}
 		}
@@ -1451,8 +1451,8 @@ namespace Server
 				{
 					m_IntLock = value;
 
-					if ( m_Client != null )
-						m_Client.Send( new StatLockInfo( this ) );
+					if ( m_NetState != null )
+						m_NetState.Send( new StatLockInfo( this ) );
 				}
 			}
 		}
@@ -1743,8 +1743,8 @@ namespace Server
 						return;
 					}
 
-					if ( m_Client != null )
-						m_Client.Send( new ChangeCombatant( m_Combatant ) );
+					if ( m_NetState != null )
+						m_NetState.Send( new ChangeCombatant( m_Combatant ) );
 
 					#region Combat
 					if ( Combatant == null )
@@ -1881,8 +1881,8 @@ namespace Server
 			{
 				m_Aggressors.Add( AggressorInfo.Create( aggressor, this, criminal ) );
 
-				if ( this.CanSee( aggressor ) && m_Client != null )
-					m_Client.Send( new MobileIncoming( this, aggressor ) );
+				if ( this.CanSee( aggressor ) && m_NetState != null )
+					m_NetState.Send( new MobileIncoming( this, aggressor ) );
 
 				if ( Combatant == null )
 					setCombatant = true;
@@ -1894,8 +1894,8 @@ namespace Server
 			{
 				aggressor.m_Aggressed.Add( AggressorInfo.Create( aggressor, this, criminal ) );
 
-				if ( this.CanSee( aggressor ) && m_Client != null )
-					m_Client.Send( new MobileIncoming( this, aggressor ) );
+				if ( this.CanSee( aggressor ) && m_NetState != null )
+					m_NetState.Send( new MobileIncoming( this, aggressor ) );
 
 				if ( Combatant == null )
 					setCombatant = true;
@@ -1925,8 +1925,8 @@ namespace Server
 					m_Aggressed.RemoveAt( i );
 					info.Free();
 
-					if ( m_Client != null && this.CanSee( aggressed ) )
-						m_Client.Send( new MobileIncoming( this, aggressed ) );
+					if ( m_NetState != null && this.CanSee( aggressed ) )
+						m_NetState.Send( new MobileIncoming( this, aggressed ) );
 
 					break;
 				}
@@ -1951,8 +1951,8 @@ namespace Server
 					m_Aggressors.RemoveAt( i );
 					info.Free();
 
-					if ( m_Client != null && this.CanSee( aggressor ) )
-						m_Client.Send( new MobileIncoming( this, aggressor ) );
+					if ( m_NetState != null && this.CanSee( aggressor ) )
+						m_NetState.Send( new MobileIncoming( this, aggressor ) );
 
 					break;
 				}
@@ -2209,8 +2209,8 @@ namespace Server
 			{
 				m_TargetLocked = value;
 
-				if ( !m_TargetLocked && m_Target != null && m_Client != null )
-					m_Client.Send( m_Target.GetPacketFor( m_Client ) );
+				if ( !m_TargetLocked && m_Target != null && m_NetState != null )
+					m_NetState.Send( m_Target.GetPacketFor( m_NetState ) );
 			}
 		}
 
@@ -2235,8 +2235,8 @@ namespace Server
 
 				m_Target = newTarget;
 
-				if ( newTarget != null && m_Client != null && !m_TargetLocked )
-					m_Client.Send( newTarget.GetPacketFor( m_Client ) );
+				if ( newTarget != null && m_NetState != null && !m_TargetLocked )
+					m_NetState.Send( newTarget.GetPacketFor( m_NetState ) );
 
 				OnTargetChange();
 			}
@@ -2712,11 +2712,11 @@ namespace Server
 			else if ( !World.Instance.OnDelete( this ) )
 				return;
 
-			if ( m_Client != null )
-				m_Client.CancelAllTrades();
+			if ( m_NetState != null )
+				m_NetState.CancelAllTrades();
 
-			if ( m_Client != null )
-				m_Client.Dispose();
+			if ( m_NetState != null )
+				m_NetState.Dispose();
 
 			this.DropHolding();
 
@@ -2901,8 +2901,8 @@ namespace Server
 			if ( box != null && box.Opened )
 				box.Close();
 
-			if ( m_Client != null )
-				m_Client.CancelAllTrades();
+			if ( m_NetState != null )
+				m_NetState.CancelAllTrades();
 
 			if ( m_Spell != null )
 				m_Spell.OnCasterKilled();
@@ -3649,8 +3649,8 @@ namespace Server
 
 			Hits += amount;
 
-			if ( message && amount > 0 && m_Client != null )
-				m_Client.Send( new MessageLocalizedAffix( Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008158, "", AffixType.Append | AffixType.System, amount.ToString(), "" ) );
+			if ( message && amount > 0 && m_NetState != null )
+				m_NetState.Send( new MessageLocalizedAffix( Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008158, "", AffixType.Append | AffixType.System, amount.ToString(), "" ) );
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -4328,13 +4328,13 @@ namespace Server
 
 		public void SendSound( int soundID )
 		{
-			if ( soundID != -1 && m_Client != null )
+			if ( soundID != -1 && m_NetState != null )
 				Send( GenericPackets.PlaySound( soundID, this ) );
 		}
 
 		public void SendSound( int soundID, IPoint3D p )
 		{
-			if ( soundID != -1 && m_Client != null )
+			if ( soundID != -1 && m_NetState != null )
 				Send( GenericPackets.PlaySound( soundID, p ) );
 		}
 
@@ -4347,7 +4347,7 @@ namespace Server
 			{
 				Packet p = null;
 
-				foreach ( GameClient state in this.GetClientsInRange() )
+				foreach ( NetState state in this.GetClientsInRange() )
 				{
 					if ( state.Mobile.CanSee( this ) )
 					{
@@ -4469,7 +4469,7 @@ namespace Server
 		#region Say/SayTo/Emote/Whisper/Yell
 		public void SayTo( Mobile to, bool ascii, string text )
 		{
-			PrivateOverheadMessage( MessageType.Regular, m_SpeechHue, ascii, text, to.Client );
+			PrivateOverheadMessage( MessageType.Regular, m_SpeechHue, ascii, text, to.NetState );
 		}
 
 		public void SayTo( Mobile to, string text )
@@ -4608,7 +4608,7 @@ namespace Server
 
 		public bool Send( Packet p, bool throwOnOffline = false )
 		{
-			if ( m_Client == null )
+			if ( m_NetState == null )
 			{
 				if ( throwOnOffline )
 					throw new MobileNotConnectedException( this, "Packet could not be sent." );
@@ -4616,13 +4616,13 @@ namespace Server
 				return false;
 			}
 
-			m_Client.Send( p );
+			m_NetState.Send( p );
 			return true;
 		}
 
 		public bool SendHuePicker( HuePicker p, bool throwOnOffline = false )
 		{
-			if ( m_Client == null )
+			if ( m_NetState == null )
 			{
 				if ( throwOnOffline )
 					throw new MobileNotConnectedException( this, "Hue picker could not be sent." );
@@ -4630,31 +4630,31 @@ namespace Server
 				return false;
 			}
 
-			p.SendTo( m_Client );
+			p.SendTo( m_NetState );
 			return true;
 		}
 
 		public Gump FindGump( Type type )
 		{
-			if ( m_Client == null )
+			if ( m_NetState == null )
 				return null;
 
-			return m_Client.Gumps.FirstOrDefault( gump => type.IsAssignableFrom( gump.GetType() ) );
+			return m_NetState.Gumps.FirstOrDefault( gump => type.IsAssignableFrom( gump.GetType() ) );
 		}
 
 		public bool CloseGump( Type type, int buttonId = 0 )
 		{
-			if ( m_Client == null )
+			if ( m_NetState == null )
 				return false;
 
 			Gump gump = FindGump( type );
 
 			if ( gump != null )
 			{
-				m_Client.Send( new CloseGump( gump.TypeID, buttonId ) );
-				m_Client.RemoveGump( gump );
+				m_NetState.Send( new CloseGump( gump.TypeID, buttonId ) );
+				m_NetState.RemoveGump( gump );
 
-				gump.OnServerClose( m_Client );
+				gump.OnServerClose( m_NetState );
 			}
 
 			return true;
@@ -4662,17 +4662,17 @@ namespace Server
 
 		public bool CloseAllGumps()
 		{
-			if ( m_Client == null )
+			if ( m_NetState == null )
 				return false;
 
-			foreach ( Gump gump in m_Client.Gumps )
+			foreach ( Gump gump in m_NetState.Gumps )
 			{
-				m_Client.Send( new CloseGump( gump.TypeID, 0 ) );
+				m_NetState.Send( new CloseGump( gump.TypeID, 0 ) );
 
-				gump.OnServerClose( m_Client );
+				gump.OnServerClose( m_NetState );
 			}
 
-			m_Client.ClearGumps();
+			m_NetState.ClearGumps();
 
 			return true;
 		}
@@ -4684,7 +4684,7 @@ namespace Server
 
 		public bool SendGump( Gump g, bool throwOnOffline = false )
 		{
-			if ( m_Client == null )
+			if ( m_NetState == null )
 			{
 				if ( throwOnOffline )
 					throw new MobileNotConnectedException( this, "Gump could not be sent." );
@@ -4692,13 +4692,13 @@ namespace Server
 				return false;
 			}
 
-			g.SendTo( m_Client );
+			g.SendTo( m_NetState );
 			return true;
 		}
 
 		public bool SendMenu( IMenu m, bool throwOnOffline = false )
 		{
-			if ( m_Client == null )
+			if ( m_NetState == null )
 			{
 				if ( throwOnOffline )
 					throw new MobileNotConnectedException( this, "Menu could not be sent." );
@@ -4706,7 +4706,7 @@ namespace Server
 				return false;
 			}
 
-			m.SendTo( m_Client );
+			m.SendTo( m_NetState );
 			return true;
 		}
 
@@ -4762,8 +4762,8 @@ namespace Server
 
 				if ( m_Map != value )
 				{
-					if ( m_Client != null )
-						m_Client.ValidateAllTrades();
+					if ( m_NetState != null )
+						m_NetState.ValidateAllTrades();
 
 					Map oldMap = m_Map;
 
@@ -4785,7 +4785,7 @@ namespace Server
 					if ( m_Map != null )
 						m_Map.OnEnter( this );
 
-					GameClient ns = m_Client;
+					NetState ns = m_NetState;
 
 					if ( m_Map != null )
 					{
@@ -5796,7 +5796,7 @@ namespace Server
 					m_Warmode = value;
 					Delta( MobileDelta.Flags );
 
-					if ( m_Client != null )
+					if ( m_NetState != null )
 						Send( SetWarMode.Instantiate( value ) );
 
 					if ( !m_Warmode )
@@ -5840,7 +5840,7 @@ namespace Server
 					{
 						Packet p = null;
 
-						foreach ( GameClient state in this.GetClientsInRange() )
+						foreach ( NetState state in this.GetClientsInRange() )
 						{
 							if ( !state.Mobile.CanSee( this ) )
 							{
@@ -5877,21 +5877,21 @@ namespace Server
 		{
 		}
 
-		public GameClient Client
+		public NetState NetState
 		{
 			get
 			{
-				if ( m_Client != null && !m_Client.Running )
-					Client = null;
+				if ( m_NetState != null && !m_NetState.Running )
+					NetState = null;
 
-				return m_Client;
+				return m_NetState;
 			}
 			set
 			{
-				if ( m_Client != value )
+				if ( m_NetState != value )
 				{
 					if ( m_Map != null )
-						m_Map.OnClientChange( m_Client, value, this );
+						m_Map.OnClientChange( m_NetState, value, this );
 
 					if ( m_Target != null )
 						m_Target.Cancel( this, TargetCancelType.Disconnected );
@@ -5905,17 +5905,17 @@ namespace Server
 					//if ( m_Spell != null )
 					//	m_Spell.FinishSequence();
 
-					if ( m_Client != null )
-						m_Client.CancelAllTrades();
+					if ( m_NetState != null )
+						m_NetState.CancelAllTrades();
 
 					BankBox box = FindBankNoCreate();
 
 					if ( box != null && box.Opened )
 						box.Close();
 
-					m_Client = value;
+					m_NetState = value;
 
-					if ( m_Client == null )
+					if ( m_NetState == null )
 					{
 						OnDisconnected();
 						EventSink.InvokeDisconnected( new DisconnectedEventArgs( this ) );
@@ -6860,7 +6860,7 @@ namespace Server
 
 			m_Location = newLocation;
 
-			GameClient ns = m_Client;
+			NetState ns = m_NetState;
 
 			if ( m_Map != null )
 			{
@@ -6901,7 +6901,7 @@ namespace Server
 
 			if ( ns != null )
 			{
-				m_Client.Sequence = 0;
+				m_NetState.Sequence = 0;
 				ClearFastwalkStack();
 
 				Send( new MobileIncoming( this, this ) );
@@ -6936,16 +6936,16 @@ namespace Server
 				if ( box != null && box.Opened )
 					box.Close();
 
-				if ( m_Client != null )
-					m_Client.ValidateAllTrades();
+				if ( m_NetState != null )
+					m_NetState.ValidateAllTrades();
 
 				if ( m_Map != null )
 					m_Map.OnMove( oldLocation, this );
 
-				if ( isTeleport && m_Client != null )
+				if ( isTeleport && m_NetState != null )
 				{
-					m_Client.Sequence = 0;
-					m_Client.Send( new MobileUpdate( this ) );
+					m_NetState.Sequence = 0;
+					m_NetState.Send( new MobileUpdate( this ) );
 					ClearFastwalkStack();
 				}
 
@@ -7252,8 +7252,8 @@ namespace Server
 		{
 			get
 			{
-				if ( m_Client != null )
-					return m_Client.Trades.Any();
+				if ( m_NetState != null )
+					return m_NetState.Trades.Any();
 
 				return false;
 			}
@@ -7280,8 +7280,8 @@ namespace Server
 			}
 			else if ( from.IsPlayer && this.IsPlayer && from.Alive && this.Alive && from.InRange( Location, 2 ) )
 			{
-				GameClient ourState = m_Client;
-				GameClient theirState = from.m_Client;
+				NetState ourState = m_NetState;
+				NetState theirState = from.m_NetState;
 
 				if ( ourState != null && theirState != null )
 				{
@@ -7517,7 +7517,7 @@ namespace Server
 
 			Packet p = Packet.Acquire( new HealthBarStatus( this, color, enabled ) );
 
-			foreach ( GameClient state in m_Map.GetClientsInRange( m_Location ) )
+			foreach ( NetState state in m_Map.GetClientsInRange( m_Location ) )
 			{
 				if ( state.Mobile.CanSee( this ) )
 					state.Send( p );
@@ -7632,7 +7632,7 @@ namespace Server
 					Packet.Release( ref cache[i] );
 			}
 
-			GameClient ourState = m.m_Client;
+			NetState ourState = m.m_NetState;
 
 			if ( ourState != null )
 			{
@@ -7716,7 +7716,7 @@ namespace Server
 				Packet deadPacket = null;
 				Packet hairPacket = null, facialhairPacket = null;
 
-				foreach ( GameClient state in m.GetClientsInRange() )
+				foreach ( NetState state in m.GetClientsInRange() )
 				{
 					beholder = state.Mobile;
 
@@ -7949,7 +7949,7 @@ namespace Server
 			{
 				Packet p = null;
 
-				foreach ( GameClient state in m_Map.GetClientsInRange( m_Location ) )
+				foreach ( NetState state in m_Map.GetClientsInRange( m_Location ) )
 				{
 					if ( state.Mobile.CanSee( this ) && ( noLineOfSight || state.Mobile.InLOS( this ) ) )
 					{
@@ -7977,7 +7977,7 @@ namespace Server
 			{
 				Packet p = null;
 
-				foreach ( GameClient state in m_Map.GetClientsInRange( m_Location ) )
+				foreach ( NetState state in m_Map.GetClientsInRange( m_Location ) )
 				{
 					if ( state.Mobile.CanSee( this ) && ( noLineOfSight || state.Mobile.InLOS( this ) ) )
 					{
@@ -7998,7 +7998,7 @@ namespace Server
 			{
 				Packet p = null;
 
-				foreach ( GameClient state in m_Map.GetClientsInRange( m_Location ) )
+				foreach ( NetState state in m_Map.GetClientsInRange( m_Location ) )
 				{
 					if ( state.Mobile.CanSee( this ) && ( noLineOfSight || state.Mobile.InLOS( this ) ) )
 					{
@@ -8013,7 +8013,7 @@ namespace Server
 			}
 		}
 
-		public void PrivateOverheadMessage( MessageType type, int hue, bool ascii, string text, GameClient state )
+		public void PrivateOverheadMessage( MessageType type, int hue, bool ascii, string text, NetState state )
 		{
 			if ( state == null )
 				return;
@@ -8024,12 +8024,12 @@ namespace Server
 				state.Send( new UnicodeMessage( this.Serial, Body, type, hue, 3, m_Language, Name, text ) );
 		}
 
-		public void PrivateOverheadMessage( MessageType type, int hue, int number, GameClient state )
+		public void PrivateOverheadMessage( MessageType type, int hue, int number, NetState state )
 		{
 			PrivateOverheadMessage( type, hue, number, "", state );
 		}
 
-		public void PrivateOverheadMessage( MessageType type, int hue, int number, string args, GameClient state )
+		public void PrivateOverheadMessage( MessageType type, int hue, int number, string args, NetState state )
 		{
 			if ( state == null )
 				return;
@@ -8039,7 +8039,7 @@ namespace Server
 
 		public void LocalOverheadMessage( MessageType type, int hue, bool ascii, string text )
 		{
-			GameClient ns = m_Client;
+			NetState ns = m_NetState;
 
 			if ( ns != null )
 			{
@@ -8052,7 +8052,7 @@ namespace Server
 
 		public void LocalOverheadMessage( MessageType type, int hue, int number, string args = "" )
 		{
-			GameClient ns = m_Client;
+			NetState ns = m_NetState;
 
 			if ( ns != null )
 				ns.Send( new MessageLocalized( this.Serial, Body, type, hue, 3, number, Name, args ) );
@@ -8064,9 +8064,9 @@ namespace Server
 			{
 				Packet p = null;
 
-				foreach ( GameClient state in m_Map.GetClientsInRange( m_Location ) )
+				foreach ( NetState state in m_Map.GetClientsInRange( m_Location ) )
 				{
-					if ( state != m_Client && state.Mobile.CanSee( this ) )
+					if ( state != m_NetState && state.Mobile.CanSee( this ) )
 					{
 						if ( p == null )
 							p = Packet.Acquire( new MessageLocalized( this.Serial, Body, type, hue, 3, number, Name, args ) );
@@ -8086,9 +8086,9 @@ namespace Server
 			{
 				Packet p = null;
 
-				foreach ( GameClient state in m_Map.GetClientsInRange( m_Location ) )
+				foreach ( NetState state in m_Map.GetClientsInRange( m_Location ) )
 				{
-					if ( state != m_Client && state.Mobile.CanSee( this ) )
+					if ( state != m_NetState && state.Mobile.CanSee( this ) )
 					{
 						if ( p == null )
 						{
@@ -8114,7 +8114,7 @@ namespace Server
 
 		public void SendLocalizedMessage( int number )
 		{
-			GameClient ns = m_Client;
+			NetState ns = m_NetState;
 
 			if ( ns != null )
 				ns.Send( MessageLocalized.InstantiateGeneric( number ) );
@@ -8124,14 +8124,14 @@ namespace Server
 		{
 			if ( hue == 0x3B2 && ( args == null || args.Length == 0 ) )
 			{
-				GameClient ns = m_Client;
+				NetState ns = m_NetState;
 
 				if ( ns != null )
 					ns.Send( MessageLocalized.InstantiateGeneric( number ) );
 			}
 			else
 			{
-				GameClient ns = m_Client;
+				NetState ns = m_NetState;
 
 				if ( ns != null )
 					ns.Send( new MessageLocalized( Serial.MinusOne, -1, MessageType.Regular, hue, 3, number, "System", args ) );
@@ -8140,7 +8140,7 @@ namespace Server
 
 		public void SendLocalizedMessage( int number, bool append, string affix, string args = "", int hue = 0x3B2 )
 		{
-			GameClient ns = m_Client;
+			NetState ns = m_NetState;
 
 			if ( ns != null )
 				ns.Send( new MessageLocalizedAffix( Serial.MinusOne, -1, MessageType.Regular, hue, 3, number, "System", ( append ? AffixType.Append : AffixType.Prepend ) | AffixType.System, affix, args ) );
@@ -8162,7 +8162,7 @@ namespace Server
 
 		public void SendMessage( int hue, string text )
 		{
-			GameClient ns = m_Client;
+			NetState ns = m_NetState;
 
 			if ( ns != null )
 				ns.Send( new UnicodeMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "ENU", "System", text ) );
@@ -8185,7 +8185,7 @@ namespace Server
 
 		public void SendAsciiMessage( int hue, string text )
 		{
-			GameClient ns = m_Client;
+			NetState ns = m_NetState;
 
 			if ( ns != null )
 				ns.Send( new AsciiMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "System", text ) );
@@ -8200,8 +8200,8 @@ namespace Server
 
 		public void LaunchBrowser( string url )
 		{
-			if ( m_Client != null )
-				m_Client.LaunchBrowser( url );
+			if ( m_NetState != null )
+				m_NetState.LaunchBrowser( url );
 		}
 
 		public void InitStats( int str, int dex, int intel )
@@ -8698,7 +8698,7 @@ namespace Server
 					if ( !InternalOnMove( d ) )
 						return false;
 
-					if ( m_FwdEnabled && m_Client != null && m_AccessLevel < m_FwdAccessOverride )
+					if ( m_FwdEnabled && m_NetState != null && m_AccessLevel < m_FwdAccessOverride )
 					{
 						if ( m_MoveRecords == null )
 							m_MoveRecords = new Queue<MovementRecord>( 6 );
@@ -8715,7 +8715,7 @@ namespace Server
 
 						if ( m_MoveRecords.Count >= m_FwdMaxSteps )
 						{
-							FastWalkEventArgs fw = new FastWalkEventArgs( m_Client );
+							FastWalkEventArgs fw = new FastWalkEventArgs( m_NetState );
 							EventSink.InvokeFastWalk( fw );
 
 							if ( fw.Blocked )
@@ -8747,8 +8747,8 @@ namespace Server
 				DisruptiveAction();
 			}
 
-			if ( m_Client != null )
-				m_Client.Send( MovementAck.Instantiate( m_Client.Sequence, this ) );//new MovementAck( m_NetState.Sequence, this ) );
+			if ( m_NetState != null )
+				m_NetState.Send( MovementAck.Instantiate( m_NetState.Sequence, this ) );//new MovementAck( m_NetState.Sequence, this ) );
 
 			SetLocation( newLocation, false );
 			SetDirection( d );
@@ -8785,7 +8785,7 @@ namespace Server
 				if ( o is Mobile )
 				{
 					Mobile m = (Mobile) moveList[i];
-					GameClient ns = m.Client;
+					NetState ns = m.NetState;
 
 					if ( ns != null && m.CanSee( this ) && m.InUpdateRange( this ) )
 					{
@@ -8902,7 +8902,7 @@ namespace Server
 				return;
 
 			Mobile from = this;
-			GameClient state = m_Client;
+			NetState state = m_NetState;
 
 			if ( from.AccessLevel >= AccessLevel.GameMaster || DateTime.Now >= from.NextActionTime )
 			{
@@ -9195,7 +9195,7 @@ namespace Server
 
 						if ( heard.CanSee( this ) && ( m_NoSpeechLOS || !heard.IsPlayer || heard.InLOS( this ) ) )
 						{
-							if ( heard.m_Client != null )
+							if ( heard.m_NetState != null )
 								hears.Add( heard );
 
 							if ( heard.HandlesOnSpeech( this ) )
@@ -9243,7 +9243,7 @@ namespace Server
 					{
 						heard.OnSpeech( regArgs );
 
-						GameClient ns = heard.Client;
+						NetState ns = heard.NetState;
 
 						if ( ns != null )
 						{
@@ -9257,7 +9257,7 @@ namespace Server
 					{
 						heard.OnSpeech( mutatedArgs );
 
-						GameClient ns = heard.Client;
+						NetState ns = heard.NetState;
 
 						if ( ns != null )
 						{
@@ -9313,7 +9313,7 @@ namespace Server
 
 				Packet p = null;
 
-				foreach ( GameClient state in map.GetClientsInRange( this.Location ) )
+				foreach ( NetState state in map.GetClientsInRange( this.Location ) )
 				{
 					if ( state.Mobile.CanSee( this ) )
 					{

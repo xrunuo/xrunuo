@@ -357,7 +357,7 @@ namespace Server.Items
 				AddHtmlLocalized( 195, 109, 120, 20, 1076197, 0x7FFF, false, false ); // Recharge
 			}
 
-			public override void OnResponse( GameClient state, RelayInfo info )
+			public override void OnResponse( NetState state, RelayInfo info )
 			{
 				if ( m_Cannon == null || m_Cannon.Deleted )
 					return;

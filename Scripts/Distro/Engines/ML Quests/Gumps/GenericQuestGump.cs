@@ -74,7 +74,7 @@ namespace Server.Engines.Quests
 				AddButton( 95, 395, 0x2EE6, 0x2EE8, 1, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			sender.Mobile.CloseGump( typeof( GenericQuestGump ) );
 

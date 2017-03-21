@@ -53,7 +53,7 @@ namespace Server.Engines.Housing.Gumps
 			return ( m_Info.Level == level ) ? 4006 : 4005;
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			SecureLevel level = m_Info.Level;
 

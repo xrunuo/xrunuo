@@ -269,7 +269,7 @@ namespace Server.Engines.Guilds.Gumps
 			AddKRHtmlLocalized( 0, 0, 0, 0, -2, false, false );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( m_Guild.BadMember( m_Mobile ) )
 				return;

@@ -26,7 +26,7 @@ namespace Server.Gumps
 			AddHtmlLocalized( 47, 167, 300, 40, 1154677, 0x4E73, false, false ); // Cancel Vendor Search
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			m_PollingTimer.Stop();
 		}

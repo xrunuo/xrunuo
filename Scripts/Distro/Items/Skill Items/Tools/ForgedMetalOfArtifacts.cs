@@ -158,7 +158,7 @@ namespace Server.Items
 				AddHtmlLocalized( 310, 202, 85, 30, 1060051, 0x7FFF, false, false ); // CANCEL
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( info.ButtonID == 1 )
 				{
@@ -196,7 +196,7 @@ namespace Server.Items
 				AddHtmlLocalized( 310, 99, 85, 29, 1149968, 0x7FFF, false, false ); // REMOVE
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( info.ButtonID == 1 )
 				{

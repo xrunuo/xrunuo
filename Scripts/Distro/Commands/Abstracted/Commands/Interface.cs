@@ -116,7 +116,7 @@ namespace Server.Scripts.Commands
 			FinishPage();
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			switch ( info.ButtonID )
 			{
@@ -227,7 +227,7 @@ namespace Server.Scripts.Commands
 			CommandSystem.Handle( m_From, String.Format( "{0}{1}", CommandSystem.CommandPrefix, ip ) );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( m_Item.Deleted )
 			{
@@ -365,7 +365,7 @@ namespace Server.Scripts.Commands
 				}
 			}
 
-			if ( m_Mobile.Client != null )
+			if ( m_Mobile.NetState != null )
 			{
 				AddNewLine();
 				AddEntryHtml( 20 + OffsetSize + 160, "Client" );
@@ -380,7 +380,7 @@ namespace Server.Scripts.Commands
 			CommandSystem.Handle( m_From, String.Format( "{0}{1}", CommandSystem.CommandPrefix, ip ) );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( m_Mobile.Deleted )
 			{
@@ -474,9 +474,9 @@ namespace Server.Scripts.Commands
 					{
 						m_From.SendGump( new InterfaceMobileGump( m_From, m_List, m_Page, m_Mobile ) );
 
-						if ( m_Mobile.Client != null )
+						if ( m_Mobile.NetState != null )
 						{
-							m_From.SendGump( new ClientGump( m_From, m_Mobile.Client ) );
+							m_From.SendGump( new ClientGump( m_From, m_Mobile.NetState ) );
 						}
 
 						break;

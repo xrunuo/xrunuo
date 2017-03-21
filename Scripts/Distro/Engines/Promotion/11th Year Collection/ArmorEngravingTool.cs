@@ -146,7 +146,7 @@ namespace Server.Items
 				AddTextEntry( 78, 246, 343, 37, 0xA28, 15, "", 64 );
 			}
 
-			public override void OnResponse( GameClient state, RelayInfo info )
+			public override void OnResponse( NetState state, RelayInfo info )
 			{
 				if ( m_Tool == null || m_Tool.Deleted )
 					return;

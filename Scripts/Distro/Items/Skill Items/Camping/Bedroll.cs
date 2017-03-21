@@ -92,7 +92,7 @@ namespace Server.Items
 				AddButton( 200, 298, 0xFA5, 0xFA7, 1, GumpButtonType.Reply, 0 );
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				PlayerMobile pm = m_Entry.Player;
 

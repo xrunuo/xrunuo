@@ -287,7 +287,7 @@ namespace Server.Engines.Craft
 		private static Type typeofBlankScroll = typeof( BlankScroll );
 		private static Type typeofSpellScroll = typeof( SpellScroll );
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			int typeId = info.ButtonID / 1000;
 			int index = info.ButtonID % 1000;

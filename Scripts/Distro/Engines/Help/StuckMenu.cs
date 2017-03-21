@@ -201,7 +201,7 @@ namespace Server.Menus.Questions
 			m_Mobile.Frozen = false;
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			StopClose();
 
@@ -256,7 +256,7 @@ namespace Server.Menus.Questions
 
 			protected override void OnTick()
 			{
-				if ( m_Mobile.Client == null || DateTime.Now > m_End )
+				if ( m_Mobile.NetState == null || DateTime.Now > m_End )
 				{
 					m_Mobile.Frozen = false;
 					m_Mobile.CloseGump( typeof( StuckMenu ) );

@@ -15,8 +15,8 @@ namespace Server.Scripts.Commands
 		[Description( "Showing incoming and outgoing traffic for your session" )]
 		private static void Traffic_OnCommand( CommandEventArgs e )
 		{
-			e.Mobile.SendMessage( "Incoming traffic: " + Utility.FormatByteAmount( e.Mobile.Client.Incoming ) );
-			e.Mobile.SendMessage( "Outgoing traffic: " + Utility.FormatByteAmount( e.Mobile.Client.Outgoing ) );
+			e.Mobile.SendMessage( "Incoming traffic: " + Utility.FormatByteAmount( e.Mobile.NetState.Incoming ) );
+			e.Mobile.SendMessage( "Outgoing traffic: " + Utility.FormatByteAmount( e.Mobile.NetState.Outgoing ) );
 		}
 	}
 }

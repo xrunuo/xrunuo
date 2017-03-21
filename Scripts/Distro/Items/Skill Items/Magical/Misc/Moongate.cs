@@ -121,7 +121,7 @@ namespace Server.Items
 
 		public virtual void UseGate( Mobile m )
 		{
-			int flags = m.Client == null ? 0 : m.Client.Flags;
+			int flags = m.NetState == null ? 0 : m.NetState.Flags;
 			HouseRegion houseRegion = Region.Find( m_Target, m_TargetMap ) as HouseRegion;
 
 			if ( Factions.Sigil.ExistsOn( m ) )
@@ -449,7 +449,7 @@ namespace Server.Items
 			AddHtmlLocalized( 240, 250, 170, 20, 1011012, 32767, false, false ); // CANCEL
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			if ( info.ButtonID == 1 )
 				m_Gate.EndConfirmation( m_From );

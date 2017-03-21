@@ -121,7 +121,7 @@ namespace Server.Network
 			}
 			catch ( SocketException ex )
 			{
-				NetState.TraceException( ex );
+				UOSocket.TraceException( ex );
 			}
 			catch ( ObjectDisposedException )
 			{
@@ -146,7 +146,7 @@ namespace Server.Network
 			}
 			catch ( SocketException ex )
 			{
-				NetState.TraceException( ex );
+				UOSocket.TraceException( ex );
 			}
 			catch ( ObjectDisposedException )
 			{
@@ -165,7 +165,7 @@ namespace Server.Network
 			}
 			catch ( Exception ex )
 			{
-				NetState.TraceException( ex );
+				UOSocket.TraceException( ex );
 
 				return false;
 			}
@@ -189,7 +189,7 @@ namespace Server.Network
 			}
 			catch ( SocketException ex )
 			{
-				NetState.TraceException( ex );
+				UOSocket.TraceException( ex );
 			}
 
 			try
@@ -198,7 +198,7 @@ namespace Server.Network
 			}
 			catch ( SocketException ex )
 			{
-				NetState.TraceException( ex );
+				UOSocket.TraceException( ex );
 			}
 		}
 

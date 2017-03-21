@@ -11,7 +11,7 @@ namespace Server.Gumps
 {
 	public class ClientGump : Gump
 	{
-		private GameClient m_State;
+		private NetState m_State;
 
 		private void Resend( Mobile to, RelayInfo info )
 		{
@@ -20,7 +20,7 @@ namespace Server.Gumps
 			to.SendGump( new ClientGump( to, m_State, te == null ? "" : te.Text ) );
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			if ( m_State == null )
 			{
@@ -184,7 +184,7 @@ namespace Server.Gumps
 			}
 		}
 
-		public ClientGump( Mobile from, GameClient state )
+		public ClientGump( Mobile from, NetState state )
 			: this( from, state, "" )
 		{
 		}
@@ -201,7 +201,7 @@ namespace Server.Gumps
 			return String.Format( "<BASEFONT COLOR=#{0:X6}>{1}</BASEFONT>", color, text );
 		}
 
-		public ClientGump( Mobile from, GameClient state, string initialText )
+		public ClientGump( Mobile from, NetState state, string initialText )
 			: base( 30, 20 )
 		{
 			if ( state == null )
@@ -326,7 +326,7 @@ namespace Server.Gumps
 			}
 		}
 
-		public static string GetVersion( GameClient state )
+		public static string GetVersion( NetState state )
 		{
 			string version;
 			if ( state.Version != null )

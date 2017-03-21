@@ -41,7 +41,7 @@ namespace Server.Engines.Collections
 			m_Collection = collection;
 			m_From = from;
 
-			// Chequeamos la tabla de la colección
+			// Chequeamos la tabla de la colecciï¿½n
 			if ( !m_Collection.Table.Contains( from ) )
 				m_Collection.Table.Add( from, ( Misc.TestCenter.Enabled ? 5000000 : 0 ) );
 
@@ -218,7 +218,7 @@ namespace Server.Engines.Collections
 			return sum;
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			PlayerMobile pm = sender.Mobile as PlayerMobile;
 

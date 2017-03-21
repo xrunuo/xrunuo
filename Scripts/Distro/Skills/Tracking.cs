@@ -117,7 +117,7 @@ namespace Server.SkillHandlers
 			AddHtmlLocalized( 320, 90, 100, 20, 1018090, false, false ); // Players
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			if ( info.ButtonID >= 1 && info.ButtonID <= 4 )
 				TrackWhoGump.DisplayTo( m_Success, m_From, info.ButtonID - 1 );
@@ -303,7 +303,7 @@ namespace Server.SkillHandlers
 			}
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			int index = info.ButtonID - 1;
 
@@ -380,7 +380,7 @@ namespace Server.SkillHandlers
 				Stop();
 				return;
 			}
-			else if ( m_From.Client == null || m_From.Deleted || m_Target.Deleted || m_From.Map != m_Target.Map || !m_From.InRange( m_Target, m_Range ) )
+			else if ( m_From.NetState == null || m_From.Deleted || m_Target.Deleted || m_From.Map != m_Target.Map || !m_From.InRange( m_Target, m_Range ) )
 			{
 				m_Arrow.Stop();
 

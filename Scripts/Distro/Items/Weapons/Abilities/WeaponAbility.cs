@@ -331,7 +331,7 @@ namespace Server.Items
 		{
 			m_Table.Remove( m );
 
-			if ( m.Client != null )
+			if ( m.NetState != null )
 				m.Send( ClearWeaponAbility.Instance );
 		}
 

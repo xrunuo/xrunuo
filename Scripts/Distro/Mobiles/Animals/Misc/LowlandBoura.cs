@@ -94,7 +94,7 @@ namespace Server.Mobiles
 			if ( m_Shorn )
 			{
 				// The boura glares at you and will not let you shear its fur.
-				PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1112354, from.Client );
+				PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1112354, from.NetState );
 				return;
 			}
 

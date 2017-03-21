@@ -1022,7 +1022,7 @@ namespace Server
 			return Math.Sqrt( ( xDelta * xDelta ) + ( yDelta * yDelta ) );
 		}
 
-		public static bool IsUsingMulticlient( GameClient state, int maxclients )
+		public static bool IsUsingMulticlient( NetState state, int maxclients )
 		{
 			if ( Environment.Config.Login.MaxLoginsPerPC <= 0 )
 				return false;

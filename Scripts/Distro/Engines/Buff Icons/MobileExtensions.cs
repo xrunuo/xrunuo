@@ -42,7 +42,7 @@ namespace Server.Engines.BuffIcons
 			if ( !BuffInfo.Enabled || !m_BuffTables.ContainsKey( m ) )
 				return;
 
-			GameClient state = m.Client;
+			NetState state = m.NetState;
 
 			if ( state != null )
 			{
@@ -69,7 +69,7 @@ namespace Server.Engines.BuffIcons
 
 			table[b.Id] = b;
 
-			GameClient state = m.Client;
+			NetState state = m.NetState;
 
 			if ( state != null )
 				state.Send( new AddBuffPacket( m, b ) );
@@ -100,7 +100,7 @@ namespace Server.Engines.BuffIcons
 
 			table.Remove( b );
 
-			GameClient state = m.Client;
+			NetState state = m.NetState;
 
 			if ( state != null )
 				state.Send( new RemoveBuffPacket( m, b ) );

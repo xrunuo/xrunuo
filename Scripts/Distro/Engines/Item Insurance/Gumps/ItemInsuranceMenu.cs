@@ -131,7 +131,7 @@ namespace Server.Gumps
 				AddButton( x, y, 0x25F8, 0x25FA, buttonId, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( !m_Owner.CheckAlive() )
 				return;

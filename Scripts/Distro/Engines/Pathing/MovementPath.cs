@@ -110,9 +110,9 @@ namespace Server
 			try
 			{
 				from.Direction = d;
-				from.Client.BlockAllPackets = true;
+				from.NetState.BlockAllPackets = true;
 				from.Move( d );
-				from.Client.BlockAllPackets = false;
+				from.NetState.BlockAllPackets = false;
 				from.ProcessDelta();
 			}
 			catch

@@ -162,7 +162,7 @@ namespace Server.Engines.VeteranRewards
 			RenderCategories();
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			int buttonID = info.ButtonID - 1;
 

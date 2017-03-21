@@ -37,11 +37,11 @@ namespace Server.SkillHandlers
 				}
 				else if ( targeted is TownCrier )
 				{
-					( (TownCrier) targeted ).PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500907, from.Client ); // He looks smart enough to remember the news.  Ask him about it.
+					( (TownCrier) targeted ).PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500907, from.NetState ); // He looks smart enough to remember the news.  Ask him about it.
 				}
 				else if ( targeted is BaseVendor && ( (BaseVendor) targeted ).IsInvulnerable )
 				{
-					( (BaseVendor) targeted ).PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500909, from.Client ); // That person could probably calculate the cost of what you buy from them.
+					( (BaseVendor) targeted ).PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500909, from.NetState ); // That person could probably calculate the cost of what you buy from them.
 				}
 				else if ( targeted is Mobile )
 				{
@@ -67,14 +67,14 @@ namespace Server.SkillHandlers
 
 					if ( from.CheckTargetSkill( SkillName.EvalInt, targ, 0.0, 120.0 ) )
 					{
-						targ.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1038169 + intMod + body, from.Client ); // He/She/It looks [slighly less intelligent than a rock.]  [Of Average intellect] [etc...]
+						targ.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1038169 + intMod + body, from.NetState ); // He/She/It looks [slighly less intelligent than a rock.]  [Of Average intellect] [etc...]
 
 						if ( from.Skills[SkillName.EvalInt].Base >= 76.0 )
-							targ.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1038202 + mnMod, from.Client ); // That being is at [10,20,...] percent mental strength.
+							targ.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1038202 + mnMod, from.NetState ); // That being is at [10,20,...] percent mental strength.
 					}
 					else
 					{
-						targ.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1038166 + ( body / 11 ), from.Client ); // You cannot judge his/her/its mental abilities.
+						targ.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1038166 + ( body / 11 ), from.NetState ); // You cannot judge his/her/its mental abilities.
 					}
 				}
 				else if ( targeted is Item )

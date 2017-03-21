@@ -59,7 +59,7 @@ namespace Server.Gumps
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 1 && m_Callback != null )
 				m_Callback( sender.Mobile, true, m_State );

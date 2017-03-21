@@ -39,7 +39,7 @@ namespace Server.Gumps
 			AddHtmlLocalized( 50, 230, 170, 18, 1115130, pm.Karma.ToString(), 0x0, false, false ); // Karma: ~1_AMT~
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 		}
 	}

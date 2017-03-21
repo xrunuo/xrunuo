@@ -25,9 +25,9 @@ using Server.Accounting;
 
 namespace Server.Network
 {
-	public delegate void ConnectionCreated( NetState state );
-	public delegate void DataReceived( NetState state, ByteQueue buffer, out bool throttle );
-	public delegate void ConnectionDisposed( NetState state );
+	public delegate void ConnectionCreated( UOSocket state );
+	public delegate void DataReceived( UOSocket state, ByteQueue buffer, out bool throttle );
+	public delegate void ConnectionDisposed( UOSocket state );
 
 	public class NetServer
 	{
@@ -36,19 +36,19 @@ namespace Server.Network
 		public event ConnectionDisposed Disconnected;
 
 		private List<Listener> m_Listeners;
-		private List<NetState> m_NetStates;
-		private Queue<NetState> m_PendingQueue;
-		private Queue<NetState> m_ThrottledQueue;
-		private ConcurrentQueue<NetState> m_DisposedQueue;
+		private List<UOSocket> m_NetStates;
+		private Queue<UOSocket> m_PendingQueue;
+		private Queue<UOSocket> m_ThrottledQueue;
+		private ConcurrentQueue<UOSocket> m_DisposedQueue;
 		private long m_Incoming, m_Outgoing;
 
 		public NetServer( Listener listener )
 		{
 			m_Listeners = new List<Listener>() { listener };
-			m_NetStates = new List<NetState>();
-			m_PendingQueue = new Queue<NetState>();
-			m_ThrottledQueue = new Queue<NetState>();
-			m_DisposedQueue = new ConcurrentQueue<NetState>();
+			m_NetStates = new List<UOSocket>();
+			m_PendingQueue = new Queue<UOSocket>();
+			m_ThrottledQueue = new Queue<UOSocket>();
+			m_DisposedQueue = new ConcurrentQueue<UOSocket>();
 		}
 
 		public long Incoming { get { return m_Incoming; } }
@@ -59,17 +59,17 @@ namespace Server.Network
 			m_Listeners.Add( listener );
 		}
 
-		public void OnStarted( NetState ns )
+		public void OnStarted( UOSocket ns )
 		{
 			m_NetStates.Add( ns );
 		}
 
-		public void OnSend( NetState ns, int byteCount )
+		public void OnSend( UOSocket ns, int byteCount )
 		{
 			m_Outgoing += byteCount;
 		}
 
-		public void OnReceive( NetState ns, int byteCount )
+		public void OnReceive( UOSocket ns, int byteCount )
 		{
 			lock ( m_PendingQueue )
 				m_PendingQueue.Enqueue( ns );
@@ -79,7 +79,7 @@ namespace Server.Network
 			//Core.WakeUp();
 		}
 
-		public void OnDisposed( NetState ns )
+		public void OnDisposed( UOSocket ns )
 		{
 			m_DisposedQueue.Enqueue( ns );
 		}
@@ -114,7 +114,7 @@ namespace Server.Network
 		{
 			foreach ( var socket in m_Listeners.SelectMany( listener => listener.Slice() ) )
 			{
-				NetState ns = new NetState( socket, this );
+				UOSocket ns = new UOSocket( socket, this );
 				ns.Start();
 
 				if ( ns.Running )
@@ -128,7 +128,7 @@ namespace Server.Network
 			{
 				while ( m_PendingQueue.Count > 0 )
 				{
-					NetState ns = m_PendingQueue.Dequeue();
+					UOSocket ns = m_PendingQueue.Dequeue();
 
 					if ( ns.Running )
 					{
@@ -172,7 +172,7 @@ namespace Server.Network
 			{
 				++breakout;
 
-				NetState ns;
+				UOSocket ns;
 
 				if ( m_DisposedQueue.TryDequeue( out ns ) )
 				{
@@ -183,19 +183,19 @@ namespace Server.Network
 			}
 		}
 
-		private void InvokeConnected( NetState ns )
+		private void InvokeConnected( UOSocket ns )
 		{
 			if ( Connected != null )
 				Connected( ns );
 		}
 
-		private void InvokeDisconnected( NetState ns )
+		private void InvokeDisconnected( UOSocket ns )
 		{
 			if ( Disconnected != null )
 				Disconnected( ns );
 		}
 
-		private void InvokeReceived( NetState ns, ByteQueue buffer, out bool throttle )
+		private void InvokeReceived( UOSocket ns, ByteQueue buffer, out bool throttle )
 		{
 			throttle = false;
 

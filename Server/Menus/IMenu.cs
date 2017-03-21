@@ -25,8 +25,8 @@ namespace Server.Menus
 	{
 		int Serial { get; }
 		int EntryLength { get; }
-		void SendTo( GameClient state );
-		void OnCancel( GameClient state );
-		void OnResponse( GameClient state, int index );
+		void SendTo( NetState state );
+		void OnCancel( NetState state );
+		void OnResponse( NetState state, int index );
 	}
 }

@@ -44,7 +44,7 @@ namespace Server.Gumps
 			AddHtmlLocalized( 47, 167, 100, 40, 1150300, 0x4E73, false, false ); // CANCEL
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			Mobile from = sender.Mobile;
 

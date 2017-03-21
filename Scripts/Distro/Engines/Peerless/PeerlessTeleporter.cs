@@ -86,7 +86,7 @@ namespace Server.Items
 				AddButton( 265, 220, 0xF7, 0xF8, 7, GumpButtonType.Reply, 0 );
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				int button = info.ButtonID;
 				Mobile m = sender.Mobile;

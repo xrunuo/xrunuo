@@ -105,7 +105,7 @@ namespace Server.Items
 					args = "Heritage Items";
 					break;
 				case PromotionalType.EvilHomeDecoration:
-					args = "Evil Home Décor Collection";
+					args = "Evil Home Dï¿½cor Collection";
 					break;
 			}
 
@@ -263,7 +263,7 @@ namespace Server.Items
 					}
 				case PromotionalType.EvilHomeDecoration:
 					{
-						AddHtml( 15, 60, 210, 75, @"<CENTER>Evil Home Décor Collection</CENTER>", false, false ); // <CENTER>Evil Home Décor Collection</CENTER>
+						AddHtml( 15, 60, 210, 75, @"<CENTER>Evil Home Dï¿½cor Collection</CENTER>", false, false ); // <CENTER>Evil Home Dï¿½cor Collection</CENTER>
 						break;
 					}
 			}
@@ -272,7 +272,7 @@ namespace Server.Items
 			AddButton( 90, 95, 0xF2, 0xF1, 0, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			PlayerMobile pm = from as PlayerMobile;
 
@@ -329,7 +329,7 @@ namespace Server.Items
 						}
 					case PromotionalType.SeventhAnniversary:
 						{
-							//Cerramos algún posible gump abierto (exploit arreglado)
+							//Cerramos algï¿½n posible gump abierto (exploit arreglado)
 							if ( !pm.HasGump( typeof( SeventhAniversaryGump ) ) )
 								pm.SendGump( new SeventhAniversaryGump( token ) );
 
@@ -337,7 +337,7 @@ namespace Server.Items
 						}
 					case PromotionalType.EighthAnniversary:
 						{
-							//Cerramos algún posible gump abierto (exploit arreglado)
+							//Cerramos algï¿½n posible gump abierto (exploit arreglado)
 							if ( !pm.HasGump( typeof( EighthAnniversaryGump ) ) )
 								pm.SendGump( new EighthAnniversaryGump( token ) );
 
@@ -345,7 +345,7 @@ namespace Server.Items
 						}
 					case PromotionalType.BrokenFurniture:
 						{
-							//Cerramos algún posible gump abierto (exploit arreglado)
+							//Cerramos algï¿½n posible gump abierto (exploit arreglado)
 							if ( !pm.HasGump( typeof( BrokenFurnitureGump ) ) )
 								pm.SendGump( new BrokenFurnitureConfirmGump( token ) );
 
@@ -353,7 +353,7 @@ namespace Server.Items
 						}
 					case PromotionalType.HeritageItems:
 						{
-							//Cerramos algún posible gump abierto (exploit arreglado)
+							//Cerramos algï¿½n posible gump abierto (exploit arreglado)
 							if ( !pm.HasGump( typeof( HeritageItemsGump ) ) )
 								pm.SendGump( new HeritageItemsConfirmGump( token ) );
 
@@ -361,7 +361,7 @@ namespace Server.Items
 						}
 					case PromotionalType.EvilHomeDecoration:
 						{
-							//Cerramos algún posible gump abierto (exploit arreglado)
+							//Cerramos algï¿½n posible gump abierto (exploit arreglado)
 							if ( !pm.HasGump( typeof( EvilHomeDecorationGump ) ) )
 								pm.SendGump( new EvilHomeDecorationConfirmGump( token ) );
 

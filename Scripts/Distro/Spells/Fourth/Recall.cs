@@ -166,7 +166,7 @@ namespace Server.Spells.Fourth
 				{
 					RecallRune rune = (RecallRune) o;
 
-					if ( o is DarkKnightRune && !from.Client.Version.IsEnhanced )
+					if ( o is DarkKnightRune && !from.NetState.Version.IsEnhanced )
 					{
 						from.SendLocalizedMessage( 1079261 ); // This area requires the 'Kingdom Reborn' client. Please visit www.uo.com for more information.
 						return;

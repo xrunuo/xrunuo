@@ -129,7 +129,7 @@ namespace Server.Mobiles
 			if ( m_Shorn )
 			{
 				// The Kepetch nimbly escapes your attempts to shear its mane.
-				PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1112358, from.Client );
+				PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1112358, from.NetState );
 				return;
 			}
 

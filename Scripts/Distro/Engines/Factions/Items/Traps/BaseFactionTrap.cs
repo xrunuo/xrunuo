@@ -170,7 +170,7 @@ namespace Server.Factions
 				return;
 			}
 
-			GameClient ns = to.Client;
+			NetState ns = to.NetState;
 
 			if ( ns != null )
 			{

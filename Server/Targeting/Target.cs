@@ -48,7 +48,7 @@ namespace Server.Targeting
 
 		public static void Cancel( Mobile m )
 		{
-			GameClient ns = m.Client;
+			NetState ns = m.NetState;
 
 			if ( ns != null )
 				ns.Send( CancelTarget.Instance );
@@ -154,7 +154,7 @@ namespace Server.Targeting
 			}
 		}
 
-		public virtual Packet GetPacketFor( GameClient ns )
+		public virtual Packet GetPacketFor( NetState ns )
 		{
 			return new TargetReq( this );
 		}

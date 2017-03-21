@@ -122,15 +122,15 @@ namespace Server.Menus.ItemLists
 			m_Serial = (int) ( (uint) m_Serial | 0x80000000 );
 		}
 
-		public virtual void OnCancel( GameClient state )
+		public virtual void OnCancel( NetState state )
 		{
 		}
 
-		public virtual void OnResponse( GameClient state, int index )
+		public virtual void OnResponse( NetState state, int index )
 		{
 		}
 
-		public void SendTo( GameClient state )
+		public void SendTo( NetState state )
 		{
 			state.AddMenu( this );
 			state.Send( new DisplayItemListMenu( this ) );

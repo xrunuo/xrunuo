@@ -87,7 +87,7 @@ namespace Server.Mobiles
 			return creaturesName;
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			if ( m_Spawner.Deleted )
 			{

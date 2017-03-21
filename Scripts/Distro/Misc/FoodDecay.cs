@@ -23,7 +23,7 @@ namespace Server.Misc
 
 		public static void FoodDecay()
 		{
-			foreach ( GameClient state in GameServer.Instance.Clients )
+			foreach ( NetState state in GameServer.Instance.Clients )
 			{
 				HungerDecay( state.Mobile );
 				ThirstDecay( state.Mobile );

@@ -2261,12 +2261,12 @@ namespace Server.Network
 			set { m_AdditionalFlags = value; }
 		}
 
-		public static SupportedFeatures Instantiate( GameClient state )
+		public static SupportedFeatures Instantiate( NetState state )
 		{
 			return new SupportedFeatures( state );
 		}
 
-		public SupportedFeatures( GameClient state )
+		public SupportedFeatures( NetState state )
 			: base( 0xB9, 5 )
 		{
 			m_Stream.Write( (ushort) 1 ); // Stygian Abyss
@@ -2547,7 +2547,7 @@ namespace Server.Network
 
 			int size = 0;
 
-			bool isEnhancedClient = beholder.Client != null && beholder.Client.Version.IsEnhanced;
+			bool isEnhancedClient = beholder.NetState != null && beholder.NetState.Version.IsEnhanced;
 
 			if ( type == 0 )
 				size = 43;
@@ -2696,7 +2696,7 @@ namespace Server.Network
 		public MobileIncoming( Mobile beholder, Mobile beheld )
 			: base( 0x78 )
 		{
-			bool isPrior7033 = ( beholder.Client != null && beholder.Client.Version < ClientVersion.Client70330 );
+			bool isPrior7033 = ( beholder.NetState != null && beholder.NetState.Version < ClientVersion.Client70330 );
 
 			m_Beheld = beheld;
 			++m_Version;

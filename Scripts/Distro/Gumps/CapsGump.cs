@@ -56,7 +56,7 @@ namespace Server.Scripts.Gumps
 
 		private CapsGumpGroup m_Selected;
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 1 )
 			{
@@ -199,7 +199,7 @@ namespace Server.Scripts.Gumps
 		private CapsGumpGroup[] m_Groups;
 		private CapsGumpGroup m_Selected;
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			int buttonID = info.ButtonID - 1;
 

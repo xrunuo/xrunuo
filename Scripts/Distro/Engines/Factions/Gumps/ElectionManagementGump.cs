@@ -34,7 +34,7 @@ namespace Server.Factions
 		private Candidate m_Candidate;
 		private int m_Page;
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			Mobile from = sender.Mobile;
 			int bid = info.ButtonID;

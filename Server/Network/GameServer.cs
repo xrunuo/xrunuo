@@ -49,16 +49,16 @@ namespace Server.Network
 			m_Server.Received += new DataReceived( OnReceived );
 		}
 
-		private void OnConnected( NetState state )
+		private void OnConnected( UOSocket state )
 		{
-			m_Clients.Add( state, new GameClient( state ) );
+			m_Clients.Add( state, new NetState( state ) );
 
 			Console.WriteLine( "Client: {0}: Connected. [{1} Online]", state, m_Clients.Count );
 		}
 
-		private void OnDisconnected( NetState state )
+		private void OnDisconnected( UOSocket state )
 		{
-			GameClient client;
+			NetState client;
 
 			if ( !m_Clients.TryGetValue( state, out client ) )
 			{
@@ -73,7 +73,7 @@ namespace Server.Network
 			var mob = client.Mobile;
 
 			if ( mob != null )
-				mob.Client = null;
+				mob.NetState = null;
 
 			var account = client.Account;
 
@@ -88,10 +88,10 @@ namespace Server.Network
 		private const int BufferSize = 4096;
 		private BufferPool m_Buffers = new BufferPool( "Processor", 4, BufferSize );
 
-		private void OnReceived( NetState state, ByteQueue buffer, out bool throttle )
+		private void OnReceived( UOSocket state, ByteQueue buffer, out bool throttle )
 		{
 			throttle = false;
-			GameClient client;
+			NetState client;
 
 			if ( !m_Clients.TryGetValue( state, out client ) )
 			{
@@ -245,9 +245,9 @@ namespace Server.Network
 			}
 		}
 
-		private Dictionary<NetState, GameClient> m_Clients = new Dictionary<NetState, GameClient>();
+		private Dictionary<UOSocket, NetState> m_Clients = new Dictionary<UOSocket, NetState>();
 
-		public IEnumerable<GameClient> Clients
+		public IEnumerable<NetState> Clients
 		{
 			get { return m_Clients.Values; }
 		}

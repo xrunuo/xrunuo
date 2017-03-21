@@ -91,7 +91,7 @@ namespace Server.Mobiles
 			{
 				Packet shoutPacket = null;
 
-				foreach ( GameClient state in this.GetClientsInRange( 12 ) )
+				foreach ( NetState state in this.GetClientsInRange( 12 ) )
 				{
 					Mobile m = state.Mobile;
 

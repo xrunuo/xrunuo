@@ -933,7 +933,7 @@ namespace Server.Mobiles
 
 		public override void CheckLightLevels( bool forceResend )
 		{
-			GameClient ns = this.Client;
+			NetState ns = this.NetState;
 
 			if ( ns == null )
 				return;
@@ -1153,7 +1153,7 @@ namespace Server.Mobiles
 
 				Accounting.Account acct = from.Account as Accounting.Account;
 
-				if ( acct == null || !acct.HasAccess( from.Client ) )
+				if ( acct == null || !acct.HasAccess( from.NetState ) )
 				{
 					if ( from.AccessLevel == AccessLevel.Player )
 						notice = "The server is currently under lockdown. No players are allowed to log in at this time.";
@@ -1178,7 +1178,7 @@ namespace Server.Mobiles
 			{
 				PlayerMobile pm = (PlayerMobile) from;
 
-				if ( pm.Client != null && pm.Client.Version != null && pm.Client.Version.IsEnhanced )
+				if ( pm.NetState != null && pm.NetState.Version != null && pm.NetState.Version.IsEnhanced )
 				{
 					if ( pm.LastLogin == DateTime.MinValue )
 						pm.KRStartingQuestStep++;
@@ -1325,7 +1325,7 @@ namespace Server.Mobiles
 
 		private static void Disconnect( object state )
 		{
-			GameClient ns = ( (Mobile) state ).Client;
+			NetState ns = ( (Mobile) state ).NetState;
 
 			if ( ns != null )
 				ns.Dispose();
@@ -1495,7 +1495,7 @@ namespace Server.Mobiles
 			Stam = Stam;
 			Mana = Mana;
 
-			if ( this.Client != null )
+			if ( this.NetState != null )
 				CheckLightLevels( false );
 
 			InvalidateMyRunUO();
@@ -1510,7 +1510,7 @@ namespace Server.Mobiles
 			Stam = Stam;
 			Mana = Mana;
 
-			if ( this.Client != null )
+			if ( this.NetState != null )
 				CheckLightLevels( false );
 
 			InvalidateMyRunUO();
@@ -1521,7 +1521,7 @@ namespace Server.Mobiles
 			if ( TestCenter.Enabled )
 				InvalidateProperties();
 
-			if ( Client != null && Client.Version.IsEnhanced )
+			if ( NetState != null && NetState.Version.IsEnhanced )
 				Delta( MobileDelta.Attributes );
 		}
 
@@ -1581,7 +1581,7 @@ namespace Server.Mobiles
 
 		public override bool Move( Direction d )
 		{
-			GameClient ns = this.Client;
+			NetState ns = this.NetState;
 
 			if ( ns != null )
 			{
@@ -3716,7 +3716,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				if ( Client != null )
+				if ( NetState != null )
 					return m_GameTime + ( DateTime.Now - m_SessionStart );
 				else
 					return m_GameTime;
@@ -3870,7 +3870,7 @@ namespace Server.Mobiles
 
 						if ( chance > Utility.Random( 100 ) )
 						{
-							PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500814, this.Client ); // You have been revealed!
+							PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500814, this.NetState ); // You have been revealed!
 							RevealingAction();
 
 							break;
@@ -4100,7 +4100,7 @@ namespace Server.Mobiles
 			return ( running ? Mobile.RunFoot : Mobile.WalkFoot );
 		}
 
-		public static bool MovementThrottle_Callback( GameClient ns )
+		public static bool MovementThrottle_Callback( NetState ns )
 		{
 			PlayerMobile pm = ns.Mobile as PlayerMobile;
 
@@ -4613,7 +4613,7 @@ namespace Server.Mobiles
 
 		public override void OnSpeech( SpeechEventArgs e )
 		{
-			if ( SpeechLog.Enabled && this.Client != null )
+			if ( SpeechLog.Enabled && this.NetState != null )
 			{
 				if ( m_SpeechLog == null )
 					m_SpeechLog = new SpeechLog();

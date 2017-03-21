@@ -39,7 +39,7 @@ namespace Server.Gumps
 			AddButton( 20, 125, 0xFA5, 0xFA7, (int) Buttons.Cancel, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			Item item = m_Addon as Item;
 

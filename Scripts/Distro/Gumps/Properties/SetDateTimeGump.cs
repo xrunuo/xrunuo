@@ -109,7 +109,7 @@ namespace Server.Gumps
 				AddButton( x + SetOffsetX, y + SetOffsetY, SetButtonID1, SetButtonID2, button, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			DateTime toSet;
 			bool shouldSet, shouldSend;

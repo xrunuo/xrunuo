@@ -39,7 +39,7 @@ namespace Server.Engines.Promotion
 			AddHtmlLocalized( 40, 135, 100, 20, 1060051, 0x7FFF, false, false ); // CANCEL
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 1 )
 			{
@@ -50,7 +50,7 @@ namespace Server.Engines.Promotion
 
 				Container c = item as Container;
 				c.Hue = 232;
-				c.Name = "Evil Home Décor Collection";
+				c.Name = "Evil Home Dï¿½cor Collection";
 
 				c.DropItem( new BedOfNailsDeed() );
 				c.DropItem( new BoneTableDeed() );

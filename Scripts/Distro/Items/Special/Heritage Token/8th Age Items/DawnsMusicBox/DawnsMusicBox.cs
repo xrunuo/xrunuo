@@ -28,7 +28,7 @@ namespace Server.Items.MusicBox
 		#endregion
 
 		#region Properties
-		public override int LabelNumber { get { return 1075198; } } // Dawn’s Music Box
+		public override int LabelNumber { get { return 1075198; } } // Dawnï¿½s Music Box
 
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Developer )]
 		public bool IsPlaying
@@ -211,7 +211,7 @@ namespace Server.Items.MusicBox
 
 		public void ToggleMusic( Mobile m, bool play )
 		{
-			if ( m_ActualSong != MusicName.Invalid && m.Client != null )
+			if ( m_ActualSong != MusicName.Invalid && m.NetState != null )
 			{
 				m.Send( PlayMusic.InvalidInstance ); // Stop actual music
 
@@ -419,7 +419,7 @@ namespace Server.Items.MusicBox
 				}
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				Mobile from = sender.Mobile;
 

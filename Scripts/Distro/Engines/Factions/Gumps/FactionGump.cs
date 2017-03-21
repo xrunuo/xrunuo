@@ -35,7 +35,7 @@ namespace Server.Factions
 
 		public static bool Exists( Mobile mob )
 		{
-			GameClient ns = mob.Client;
+			NetState ns = mob.NetState;
 
 			if ( ns == null )
 				return false;

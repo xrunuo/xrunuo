@@ -1031,7 +1031,7 @@ namespace Server
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			PlayerMobile pm = sender.Mobile as PlayerMobile;
 
@@ -1079,7 +1079,7 @@ namespace Server
 			AddHtmlLocalized( 145, 358, 100, 36, 1045007, false, false );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 		}
 	}
@@ -1124,7 +1124,7 @@ namespace Server
 			AddButton( 265, 220, 0xF7, 0xF8, 7, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			PlayerMobile pm = sender.Mobile as PlayerMobile;
 

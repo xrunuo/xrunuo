@@ -64,7 +64,7 @@ namespace Server.Misc
 			return false;
 		}
 
-		private static bool IsLocalMachine( GameClient state )
+		private static bool IsLocalMachine( NetState state )
 		{
 			IPAddress theirAddress = state.Address;
 

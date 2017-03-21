@@ -365,7 +365,7 @@ namespace Server.Engines.PartySystem
 
 			Packet p = null;
 
-			foreach ( GameClient ns in from.GetClientsInRange( 8 ) )
+			foreach ( NetState ns in from.GetClientsInRange( 8 ) )
 			{
 				Mobile mob = ns.Mobile;
 
@@ -397,7 +397,7 @@ namespace Server.Engines.PartySystem
 
 			Packet p = null;
 
-			foreach ( GameClient ns in from.GetClientsInRange( 8 ) )
+			foreach ( NetState ns in from.GetClientsInRange( 8 ) )
 			{
 				Mobile mob = ns.Mobile;
 

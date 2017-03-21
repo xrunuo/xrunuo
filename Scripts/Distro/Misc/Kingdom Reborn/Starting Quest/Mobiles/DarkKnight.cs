@@ -100,7 +100,7 @@ namespace Server.Mobiles
 			AddHtmlLocalized( 98, 156, 312, 180, 1077655, 0x15F90, false, true );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( sender.Mobile is PlayerMobile )
 				((PlayerMobile)sender.Mobile).CheckKRStartingQuestStep( 30 );

@@ -828,7 +828,7 @@ namespace Server.Items
 			{
 				attacker.DisruptiveAction();
 
-				if ( attacker.Client != null )
+				if ( attacker.NetState != null )
 					attacker.Send( new Swing( 0, attacker, defender ) );
 
 				if ( attacker is BaseCreature )

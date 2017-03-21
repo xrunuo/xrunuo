@@ -2456,7 +2456,7 @@ namespace Server.Mobiles
 			if ( !Deleted && m_CharmMaster != null )
 			{
 				// The charm seems to wear off.
-				PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1112181, m_CharmMaster.Client );
+				PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1112181, m_CharmMaster.NetState );
 
 				Frozen = false;
 
@@ -5135,7 +5135,7 @@ namespace Server.Mobiles
 
 			string format = String.Format( "{0}\t{1}\t{2}", master.Name, this.Name, target.Name );
 
-			foreach ( GameClient ns in master.GetClientsInRange( 8 ) )
+			foreach ( NetState ns in master.GetClientsInRange( 8 ) )
 			{
 				if ( ns.Mobile != master )
 				{

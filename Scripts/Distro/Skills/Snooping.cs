@@ -69,9 +69,9 @@ namespace Server.SkillHandlers
 
 						var eable = map.GetClientsInRange( from.Location, 8 );
 
-						foreach ( GameClient ns in eable )
+						foreach ( NetState ns in eable )
 						{
-							if ( ns != from.Client )
+							if ( ns != from.NetState )
 								ns.Mobile.SendMessage( message );
 						}
 

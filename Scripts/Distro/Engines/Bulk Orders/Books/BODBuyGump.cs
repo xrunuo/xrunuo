@@ -15,7 +15,7 @@ namespace Server.Engines.BulkOrders
 		private object m_Object;
 		private int m_Price;
 
-		public override void OnResponse( Server.Network.GameClient sender, RelayInfo info )
+		public override void OnResponse( Server.Network.NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 2 )
 			{

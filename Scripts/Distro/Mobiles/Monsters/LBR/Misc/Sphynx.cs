@@ -199,7 +199,7 @@ namespace Server.Mobiles
 				AddHtmlLocalized( 30, 105, 340, 40, 1060865, 0x1DB2D, false, false ); // Do you accept this offer?  The funds will be withdrawn from your backpack.
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( info.ButtonID == 2 )
 				{

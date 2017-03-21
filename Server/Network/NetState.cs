@@ -1,4 +1,4 @@
-﻿//
+//
 //  X-RunUO - Ultima Online Server Emulator
 //  Copyright (C) 2015 Pedro Pardal
 //
@@ -17,72 +17,307 @@
 //
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
+using Server;
+using Server.Accounting;
+using Server.Network;
+using Server.Items;
+using Server.Gumps;
+using Server.Menus;
+using Server.HuePickers;
+
 namespace Server.Network
 {
-	public interface IPacketEncoder
-	{
-		void EncodeOutgoingPacket( NetState to, ref byte[] buffer, ref int length );
-		void DecodeIncomingPacket( NetState from, ref byte[] buffer, ref int length );
-	}
-
-	public delegate void NetStateCreatedCallback( NetState ns );
-
 	public class NetState
 	{
-		private Socket m_Socket;
-		private NetServer m_NetServer;
-		private IPAddress m_Address;
-		private ByteQueue m_Buffer;
-		private byte[] m_RecvBuffer;
-		private SendQueue m_SendQueue;
-		private bool m_Running, m_Disposing, m_DisposeFinished, m_Sending;
-		private IPacketEncoder m_Encoder;
-		private DateTime m_NextCheckActivity;
-		private string m_ToString;
+		private UOSocket m_UOSocket;
+		private IPAddress m_ClientAddress;
+		private bool m_Seeded;
+		private ServerInfo[] m_ServerInfo;
+		private IAccount m_Account;
+		private Mobile m_Mobile;
+		private CityInfo[] m_CityInfo;
+		private IList<Gump> m_Gumps;
+		private ISet<HuePicker> m_HuePickers;
+		private ISet<IMenu> m_Menus;
+		private ISet<SecureTrade> m_Trades;
+		private int m_Sequence;
+		private bool m_CompressionEnabled;
+		private ClientVersion m_Version;
+		private bool m_SentFirstPacket;
+		private bool m_BlockAllPackets;
+		private bool m_Running;
+
+		internal int m_Seed;
+		internal int m_AuthID;
 
 		#region Traffic
-		private long m_Incoming = 0;
-		private long m_Outgoing = 0;
-
 		public long Incoming
 		{
-			get { return m_Incoming; }
-			set { m_Incoming = value; }
+			get { return m_UOSocket.Incoming; }
 		}
 
 		public long Outgoing
 		{
-			get { return m_Outgoing; }
-			set { m_Outgoing = value; }
+			get { return m_UOSocket.Outgoing; }
 		}
 		#endregion
 
-		public Socket Socket
+		public UOSocket UOSocket
 		{
-			get { return m_Socket; }
-		}
-
-		public ByteQueue Buffer
-		{
-			get { return m_Buffer; }
-		}
-
-		public IPacketEncoder PacketEncoder
-		{
-			get { return m_Encoder; }
-			set { m_Encoder = value; }
+			get { return m_UOSocket; }
 		}
 
 		public IPAddress Address
 		{
-			get { return m_Address; }
+			get { return m_UOSocket.Address; }
+		}
+
+		public IPAddress ClientAddress
+		{
+			get { return m_ClientAddress; }
+			set { m_ClientAddress = value; }
+		}
+
+		private int m_Flags;
+
+		public bool SentFirstPacket
+		{
+			get { return m_SentFirstPacket; }
+			set { m_SentFirstPacket = value; }
+		}
+
+		public bool BlockAllPackets
+		{
+			get { return m_BlockAllPackets; }
+			set { m_BlockAllPackets = value; }
+		}
+
+		public int Flags
+		{
+			get { return m_Flags; }
+			set { m_Flags = value; }
+		}
+
+		public ClientVersion Version
+		{
+			get { return m_Version; }
+			set { m_Version = value; }
+		}
+
+		public IEnumerable<SecureTrade> Trades
+		{
+			get { return m_Trades; }
+		}
+
+		public void ValidateAllTrades()
+		{
+			foreach ( var trade in m_Trades.ToArray() )
+			{
+				var from = trade.From.Mobile;
+				var to = trade.To.Mobile;
+
+				if ( from.Deleted || to.Deleted || !from.Alive || !to.Alive || !from.InRange( to, 2 ) || from.Map != to.Map )
+					trade.Cancel();
+			}
+		}
+
+		public void CancelAllTrades()
+		{
+			foreach ( var trade in m_Trades.ToArray() )
+			{
+				trade.Cancel();
+			}
+		}
+
+		public void RemoveTrade( SecureTrade trade )
+		{
+			m_Trades.Remove( trade );
+		}
+
+		public SecureTrade FindTrade( Mobile m )
+		{
+			return m_Trades.Where( t => t.From.Mobile == m || t.To.Mobile == m ).FirstOrDefault();
+		}
+
+		public SecureTradeContainer FindTradeContainer( Mobile m )
+		{
+			foreach ( var trade in m_Trades )
+			{
+				SecureTradeInfo from = trade.From;
+				SecureTradeInfo to = trade.To;
+
+				if ( from.Mobile == m_Mobile && to.Mobile == m )
+					return from.Container;
+				else if ( from.Mobile == m && to.Mobile == m_Mobile )
+					return to.Container;
+			}
+
+			return null;
+		}
+
+		public SecureTradeContainer AddTrade( NetState state )
+		{
+			SecureTrade newTrade = new SecureTrade( m_Mobile, state.m_Mobile );
+
+			m_Trades.Add( newTrade );
+			state.m_Trades.Add( newTrade );
+
+			return newTrade.From.Container;
+		}
+
+		public bool CompressionEnabled
+		{
+			get { return m_CompressionEnabled; }
+			set { m_CompressionEnabled = value; }
+		}
+
+		public int Sequence
+		{
+			get { return m_Sequence; }
+			set { m_Sequence = value; }
+		}
+
+		public IEnumerable<Gump> Gumps
+		{
+			get { return m_Gumps; }
+		}
+
+		public IEnumerable<HuePicker> HuePickers
+		{
+			get { return m_HuePickers; }
+		}
+
+		public IEnumerable<IMenu> Menus
+		{
+			get { return m_Menus; }
+		}
+
+		private static int m_GumpCap = 512, m_HuePickerCap = 512, m_MenuCap = 512;
+
+		public static int GumpCap
+		{
+			get { return m_GumpCap; }
+			set { m_GumpCap = value; }
+		}
+
+		public static int HuePickerCap
+		{
+			get { return m_HuePickerCap; }
+			set { m_HuePickerCap = value; }
+		}
+
+		public static int MenuCap
+		{
+			get { return m_MenuCap; }
+			set { m_MenuCap = value; }
+		}
+
+		public void AddMenu( IMenu menu )
+		{
+			if ( m_Menus == null )
+				return;
+
+			if ( m_Menus.Count >= m_MenuCap )
+			{
+				Console.WriteLine( "Client: {0}: Exceeded menu cap, disconnecting...", this );
+				Dispose();
+			}
+			else
+			{
+				m_Menus.Add( menu );
+			}
+		}
+
+		public void RemoveMenu( IMenu menu )
+		{
+			if ( m_Menus == null )
+				return;
+
+			m_Menus.Remove( menu );
+		}
+
+		public void AddHuePicker( HuePicker huePicker )
+		{
+			if ( m_HuePickers == null )
+				return;
+
+			if ( m_HuePickers.Count >= m_HuePickerCap )
+			{
+				Console.WriteLine( "Client: {0}: Exceeded hue picker cap, disconnecting...", this );
+				Dispose();
+			}
+			else
+			{
+				m_HuePickers.Add( huePicker );
+			}
+		}
+
+		public void RemoveHuePicker( HuePicker huePicker )
+		{
+			if ( m_HuePickers == null )
+				return;
+
+			m_HuePickers.Remove( huePicker );
+		}
+
+		public void AddGump( Gump g )
+		{
+			if ( m_Gumps == null )
+				return;
+
+			if ( m_Gumps.Count >= m_GumpCap )
+			{
+				Console.WriteLine( "Client: {0}: Exceeded gump cap, disconnecting...", this );
+				Dispose();
+			}
+			else
+			{
+				m_Gumps.Add( g );
+			}
+		}
+
+		public void RemoveGump( Gump gump )
+		{
+			if ( m_Gumps != null )
+				m_Gumps.Remove( gump );
+		}
+
+		public void ClearGumps()
+		{
+			if ( m_Gumps != null )
+				m_Gumps.Clear();
+		}
+
+		public CityInfo[] CityInfo
+		{
+			get { return m_CityInfo; }
+			set { m_CityInfo = value; }
+		}
+
+		public Mobile Mobile
+		{
+			get { return m_Mobile; }
+			set { m_Mobile = value; }
+		}
+
+		public ServerInfo[] ServerInfo
+		{
+			get { return m_ServerInfo; }
+			set { m_ServerInfo = value; }
+		}
+
+		public IAccount Account
+		{
+			get { return m_Account; }
+			set { m_Account = value; }
 		}
 
 		public bool Running
@@ -90,357 +325,96 @@ namespace Server.Network
 			get { return m_Running; }
 		}
 
-		private static NetStateCreatedCallback m_CreatedCallback;
-
-		public static NetStateCreatedCallback CreatedCallback
-		{
-			get { return m_CreatedCallback; }
-			set { m_CreatedCallback = value; }
-		}
-
-		public void SetName( string name )
-		{
-			m_ToString = name;
-		}
-
 		public override string ToString()
 		{
-			return m_ToString;
+			return m_UOSocket.ToString();
 		}
 
-		private static BufferPool m_ReceiveBufferPool = new BufferPool( "Receive", 2048, 2048 );
-
-		public NetState( Socket socket, NetServer netServer )
+		public NetState( UOSocket uoSocket )
 		{
-			m_Socket = socket;
-			m_NetServer = netServer;
-			m_Buffer = new ByteQueue();
-			m_Running = false;
-			m_RecvBuffer = m_ReceiveBufferPool.AcquireBuffer();
-			m_SendQueue = new SendQueue();
+			m_UOSocket = uoSocket;
 
-			m_NextCheckActivity = DateTime.Now + TimeSpan.FromMinutes( 0.5 );
+			m_Seeded = false;
+			m_Gumps = new List<Gump>();
+			m_HuePickers = new HashSet<HuePicker>();
+			m_Menus = new HashSet<IMenu>();
+			m_Trades = new HashSet<SecureTrade>();
 
-			try
-			{
-				m_Address = ( (IPEndPoint) m_Socket.RemoteEndPoint ).Address;
-				m_ToString = m_Address.ToString();
-			}
-			catch ( Exception ex )
-			{
-				TraceException( ex );
-				m_Address = IPAddress.None;
-				m_ToString = "(error)";
-			}
-
-			if ( m_CreatedCallback != null )
-				m_CreatedCallback( this );
-		}
-
-		public void Start()
-		{
-			if ( m_Socket == null )
-				return;
+			// Ensure client version is NEVER null.
+			m_Version = new ClientVersion( 0, 0, 0, 0, ClientType.Classic );
 
 			m_Running = true;
-
-			m_NetServer.OnStarted( this );
-
-			try
-			{
-				m_Socket.BeginReceive( m_RecvBuffer, 0, 32, SocketFlags.None, OnReceive, null );
-			}
-			catch ( Exception ex )
-			{
-				TraceException( ex );
-				Dispose( false );
-			}
 		}
 
-		public void Continue()
+		public void Send( Packet p )
 		{
-			if ( m_Socket == null )
+			if ( m_BlockAllPackets )
+			{
+				p.OnSend();
 				return;
+			}
 
-			try
+			PacketProfile prof = PacketProfile.GetOutgoingProfile( (byte) p.PacketID );
+			DateTime start = ( prof == null ? DateTime.MinValue : DateTime.Now );
+
+			int length;
+			byte[] buffer = p.Compile( m_CompressionEnabled, out length );
+
+			if ( buffer != null && buffer.Length > 0 && length > 0 )
 			{
-				m_Socket.BeginReceive( m_RecvBuffer, 0, 2048, SocketFlags.None, OnReceive, null );
+				m_UOSocket.Send( buffer, length );
 			}
-			catch ( Exception ex )
-			{
-				TraceException( ex );
-				Dispose( false );
-			}
+
+			if ( prof != null )
+				prof.Record( length, DateTime.Now - start );
+
+			p.OnSend();
 		}
 
-		private void OnReceive( IAsyncResult asyncResult )
+		public void LaunchBrowser( string url )
 		{
-			lock ( this )
-			{
-				if ( m_Socket == null )
-					return;
-
-				try
-				{
-					int byteCount = m_Socket.EndReceive( asyncResult );
-
-					if ( byteCount > 0 )
-					{
-						m_NextCheckActivity = DateTime.Now + TimeSpan.FromMinutes( 1.2 );
-
-						byte[] buffer = m_RecvBuffer;
-
-						if ( m_Encoder != null )
-							m_Encoder.DecodeIncomingPacket( this, ref buffer, ref byteCount );
-
-						m_Buffer.Enqueue( buffer, 0, byteCount );
-
-						m_Incoming += byteCount;
-
-						m_NetServer.OnReceive( this, byteCount );
-					}
-					else
-					{
-						Dispose( false );
-					}
-				}
-				catch ( Exception ex )
-				{
-					TraceException( ex );
-					Dispose( false );
-				}
-			}
+			Send( new MessageLocalized( Serial.MinusOne, -1, MessageType.Label, 0x35, 3, 501231, "", "" ) );
+			Send( new LaunchBrowser( url ) );
 		}
 
-		public void Send( byte[] buffer, int length )
+		public void Flush()
 		{
-			if ( m_Socket == null )
-				return;
-
-			if ( m_Encoder != null )
-				m_Encoder.EncodeOutgoingPacket( this, ref buffer, ref length );
-
-			bool shouldBegin = false;
-
-			lock ( m_SendQueue )
-				shouldBegin = ( m_SendQueue.Enqueue( buffer, length ) );
-
-			if ( shouldBegin )
-			{
-				int sendLength = 0;
-				byte[] sendBuffer = m_SendQueue.Peek( ref sendLength );
-
-				try
-				{
-					m_Socket.BeginSend( sendBuffer, 0, sendLength, SocketFlags.None, OnSend, null );
-					m_Sending = true;
-				}
-				catch ( Exception ex )
-				{
-					TraceException( ex );
-					Dispose( false );
-				}
-			}
-		}
-
-		public bool Flush()
-		{
-			if ( m_Socket == null || !m_SendQueue.IsFlushReady )
-				return false;
-
-			int length = 0;
-			byte[] buffer;
-
-			lock ( m_SendQueue )
-				buffer = m_SendQueue.CheckFlushReady( ref length );
-
-			if ( buffer != null )
-			{
-				try
-				{
-					m_Socket.BeginSend( buffer, 0, length, SocketFlags.None, OnSend, null );
-					m_Sending = true;
-					return true;
-				}
-				catch ( Exception ex )
-				{
-					TraceException( ex );
-					Dispose( false );
-				}
-			}
-
-			return false;
-		}
-
-		private static int m_CoalesceSleep = -1;
-
-		public static int CoalesceSleep
-		{
-			get { return m_CoalesceSleep; }
-			set { m_CoalesceSleep = value; }
-		}
-
-		private void OnSend( IAsyncResult asyncResult )
-		{
-			m_Sending = false;
-
-			if ( m_Socket == null )
-				return;
-
-			try
-			{
-				int bytes = m_Socket.EndSend( asyncResult );
-
-				if ( bytes <= 0 )
-				{
-					Dispose( false );
-					return;
-				}
-
-				m_Outgoing += bytes;
-				m_NetServer.OnSend( this, bytes );
-
-				if ( m_Disposing && !m_DisposeFinished )
-				{
-					FinishDispose();
-					return;
-				}
-
-				m_NextCheckActivity = DateTime.Now + TimeSpan.FromMinutes( 1.2 );
-
-				if ( m_CoalesceSleep >= 0 )
-					Thread.Sleep( m_CoalesceSleep );
-
-				int length = 0;
-				byte[] queued;
-
-				lock ( m_SendQueue )
-					queued = m_SendQueue.Dequeue( ref length );
-
-				if ( queued != null )
-				{
-					m_Socket.BeginSend( queued, 0, length, SocketFlags.None, OnSend, null );
-					m_Sending = true;
-				}
-			}
-			catch ( Exception ex )
-			{
-				TraceException( ex );
-				Dispose( false );
-			}
-		}
-
-		public bool CheckAlive()
-		{
-			if ( m_Disposing && !m_DisposeFinished )
-			{
-				FinishDispose();
-				return false;
-			}
-
-			if ( m_Socket == null )
-				return false;
-
-			if ( DateTime.Now < m_NextCheckActivity )
-				return true;
-
-			Console.WriteLine( "Client: {0}: Disconnecting due to inactivity...", this );
-
-			Dispose();
-			return false;
+			m_UOSocket.Flush();
 		}
 
 		public void Dispose()
 		{
-			Dispose( true );
-		}
-
-		public void Dispose( bool flush )
-		{
-			if ( m_Disposing && !m_DisposeFinished )
-			{
-				// The second call forces disposal.
-				FinishDispose();
-				return;
-			}
-
-			if ( m_Socket == null || m_Disposing )
-				return;
-
-			m_Disposing = true;
-
-			if ( flush )
-				flush = Flush();
-
-			// If we're currently sending the last packet, schedule the "real" dispose for later.
-			if ( !m_Sending )
-				FinishDispose();
-		}
-
-		public void FinishDispose()
-		{
-			if ( m_DisposeFinished )
-				return;
-
-			m_DisposeFinished = true;
-
-			try
-			{
-				m_Socket.Shutdown( SocketShutdown.Both );
-			}
-			catch ( SocketException ex )
-			{
-				TraceException( ex );
-			}
-
-			try
-			{
-				m_Socket.Close();
-			}
-			catch ( SocketException ex )
-			{
-				TraceException( ex );
-			}
-
-			if ( m_RecvBuffer != null )
-				m_ReceiveBufferPool.ReleaseBuffer( m_RecvBuffer );
-
-			m_Socket = null;
-
-			m_Buffer = null;
-			m_RecvBuffer = null;
 			m_Running = false;
 
-			m_NetServer.OnDisposed( this );
-
-			if ( !m_SendQueue.IsEmpty )
-			{
-				lock ( m_SendQueue )
-					m_SendQueue.Clear();
-			}
+			m_UOSocket.Dispose();
 		}
 
-		public static void TraceException( Exception ex )
+		public void Clear()
 		{
-			try
-			{
-				using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "network-errors.log" ), true ) )
-				{
-					op.WriteLine( "# {0}", DateTime.Now );
+			m_Mobile = null;
+			m_Account = null;
+			m_ServerInfo = null;
+			m_CityInfo = null;
 
-					op.WriteLine( ex );
+			m_Gumps.Clear();
+			m_Menus.Clear();
+			m_HuePickers.Clear();
+		}
 
-					op.WriteLine();
-					op.WriteLine();
-				}
-			}
-			catch { }
+		public bool Seeded
+		{
+			get { return m_Seeded; }
+			set { m_Seeded = value; }
+		}
 
-			try
-			{
-				Console.WriteLine( ex );
-			}
-			catch { }
+		public const int MaxNullTargets = 5;
+
+		private int m_NullTargets;
+
+		public int NullTargets
+		{
+			get { return m_NullTargets; }
+			set { m_NullTargets = value; }
 		}
 	}
 }

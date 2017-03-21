@@ -24,12 +24,12 @@ namespace Server.Mobiles
 			if ( DateTime.Now < m_NextWoolTime )
 			{
 				// This sheep is not yet ready to be shorn.
-				PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500449, from.Client );
+				PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500449, from.NetState );
 			}
 			else if ( Controlled && ControlMaster != from )
 			{
 				// The sheep nimbly escapes your attempts to shear his wool.
-				PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500453, from.Client );
+				PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500453, from.NetState );
 			}
 			else
 			{

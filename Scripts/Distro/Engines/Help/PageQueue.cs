@@ -138,7 +138,7 @@ namespace Server.Engines.Help
 			{
 				int index = PageQueue.IndexOf( m_Entry );
 
-				if ( m_Entry.Sender.Client != null && index != -1 )
+				if ( m_Entry.Sender.NetState != null && index != -1 )
 				{
 					m_Entry.Sender.SendLocalizedMessage( 1008077, true, ( index + 1 ).ToString() ); // Thank you for paging. Queue status :
 					m_Entry.Sender.SendLocalizedMessage( 1008084 ); // You can reference our website at www.uo.com or contact us at support@uo.com. To cancel your page, please select the help button again and select cancel.
@@ -163,7 +163,7 @@ namespace Server.Engines.Help
 		{
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			PageQueue.SendPageQueueGump( state.Mobile );
 		}
@@ -282,7 +282,7 @@ namespace Server.Engines.Help
 
 			if ( m_List.Count == 0 )
 			{
-				foreach ( GameClient ns in GameServer.Instance.Clients )
+				foreach ( NetState ns in GameServer.Instance.Clients )
 				{
 					Mobile m = ns.Mobile;
 
@@ -311,7 +311,7 @@ namespace Server.Engines.Help
 
 			//bool isStaffOnline = false;
 
-			foreach ( GameClient ns in GameServer.Instance.Clients )
+			foreach ( NetState ns in GameServer.Instance.Clients )
 			{
 				Mobile m = ns.Mobile;
 

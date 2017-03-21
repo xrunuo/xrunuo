@@ -106,7 +106,7 @@ namespace Server.Items
 				AddButton( 198, 140, 247, 248, 1, GumpButtonType.Reply, 0 );
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				int button = info.ButtonID;
 
@@ -180,7 +180,7 @@ namespace Server.Items
 				m_Accept.Start();
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				Mobile from = sender.Mobile;
 				from.CloseGump( typeof( ConfirmPeerlessPartyGump ) );

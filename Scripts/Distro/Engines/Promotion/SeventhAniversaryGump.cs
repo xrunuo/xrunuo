@@ -51,13 +51,13 @@ namespace Server.Gumps
 			AddHtmlLocalized( 98, 172, 250, 60, 1062923, 0x7FFF, false, false ); // Ancient Samurai Helm
 
 			AddButtonTileArt( 264, 172, 0x918, 0x919, GumpButtonType.Reply, 0, 105, 0x26C3, 5, 20, 15 );
-			AddHtmlLocalized( 348, 172, 250, 60, 1062915, 0x7FFF, false, false ); // Shamino’s Best Crossbow
+			AddHtmlLocalized( 348, 172, 250, 60, 1062915, 0x7FFF, false, false ); // Shaminoï¿½s Best Crossbow
 
 			AddButtonTileArt( 14, 236, 0x918, 0x919, GumpButtonType.Reply, 0, 106, 0x234E, 0, 15, 0 );
 			AddHtmlLocalized( 98, 236, 250, 60, 1062917, 0x7FFF, false, false ); // The Tapestry of Sosaria
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			Mobile from = sender.Mobile;
 

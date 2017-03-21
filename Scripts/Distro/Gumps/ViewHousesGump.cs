@@ -227,7 +227,7 @@ namespace Server.Gumps
 			}
 		}
 
-		public override void OnResponse( Server.Network.GameClient sender, RelayInfo info )
+		public override void OnResponse( Server.Network.NetState sender, RelayInfo info )
 		{
 			if ( m_Selection == null )
 			{

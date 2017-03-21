@@ -37,7 +37,7 @@ namespace Server.Gumps
 			AddHtml( 14, 12, 500, 20, @"<basefont color=#FFFFFF>UO Eighth Anniversary gift</basefont>", false, false ); // UO Eighth Anniversary gift
 
 			AddButtonTileArt( 14, 44, 0x918, 0x919, GumpButtonType.Reply, 0, 100, 0x2B01, 0, 15, 15 );
-			AddHtmlLocalized( 98, 44, 250, 60, 1075196, 0x7FFF, false, false ); // Dupre’s Shield
+			AddHtmlLocalized( 98, 44, 250, 60, 1075196, 0x7FFF, false, false ); // Dupreï¿½s Shield
 
 			AddButtonTileArt( 264, 44, 0x918, 0x919, GumpButtonType.Reply, 0, 101, 0x2253, 0, 20, 15 );
 			AddHtmlLocalized( 348, 44, 250, 60, 1078148, 0x7FFF, false, false ); // Ossian Grimoire
@@ -64,7 +64,7 @@ namespace Server.Gumps
 			AddHtmlLocalized( 98, 300, 250, 60, 1075197, 0x7FFF, false, false ); // Fountain Of Life
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			Mobile from = sender.Mobile;
 

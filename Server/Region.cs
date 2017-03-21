@@ -879,7 +879,7 @@ namespace Server
 
 		internal static void OnRegionChange( Mobile m, Region oldRegion, Region newRegion )
 		{
-			if ( newRegion != null && m.Client != null )
+			if ( newRegion != null && m.NetState != null )
 			{
 				m.CheckLightLevels( false );
 

@@ -82,7 +82,7 @@ namespace Server.Scripts.Commands
 
 			try
 			{
-				m_Output.WriteLine( "{0}: {1}: {2}", DateTime.Now, from.Client, text );
+				m_Output.WriteLine( "{0}: {1}: {2}", DateTime.Now, from.NetState, text );
 
 				string path = Environment.Config.LogDirectory;
 
@@ -95,7 +95,7 @@ namespace Server.Scripts.Commands
 				path = Path.Combine( path, String.Format( "{0}.log", name ) );
 
 				using ( var sw = new StreamWriter( path, true ) )
-					sw.WriteLine( "{0}: {1}: {2}", DateTime.Now, from.Client, text );
+					sw.WriteLine( "{0}: {1}: {2}", DateTime.Now, from.NetState, text );
 			}
 			catch
 			{

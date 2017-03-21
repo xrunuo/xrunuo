@@ -324,7 +324,7 @@ namespace Server.Scripts.Commands
 			FinishPage();
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			int type, index;
 
@@ -437,7 +437,7 @@ namespace Server.Scripts.Commands
 			FinishPage();
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			int type, index;
 

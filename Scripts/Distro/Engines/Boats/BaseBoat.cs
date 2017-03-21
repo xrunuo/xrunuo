@@ -603,7 +603,7 @@ namespace Server.Multis
 			if ( from.AccessLevel < AccessLevel.GameMaster && from != m_Owner )
 			{
 				if ( m_TillerMan != null )
-					m_TillerMan.Say( Utility.Random( 1042876, 4 ) ); // Arr, don't do that! | Arr, leave me alone! | Arr, watch what thour'rt doing, matey! | Arr! Do that again and I’ll throw ye overhead!
+					m_TillerMan.Say( Utility.Random( 1042876, 4 ) ); // Arr, don't do that! | Arr, leave me alone! | Arr, watch what thour'rt doing, matey! | Arr! Do that again and Iï¿½ll throw ye overhead!
 
 				return;
 			}
@@ -1541,7 +1541,7 @@ namespace Server.Multis
 			SafeAdd( m_SPlank, toMove );
 
 			// Packet must be sent before actual locations are changed
-			foreach ( GameClient ns in Map.GetClientsInRange( Location, GetMaxUpdateRange() ) )
+			foreach ( NetState ns in Map.GetClientsInRange( Location, GetMaxUpdateRange() ) )
 			{
 				Mobile m = ns.Mobile;
 

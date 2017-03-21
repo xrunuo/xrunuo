@@ -354,7 +354,7 @@ namespace Server.Mobiles
 
 				if ( g.Amount > 50 )
 				{
-					PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "I cannot accept so large a tip!", from.Client );
+					PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "I cannot accept so large a tip!", from.NetState );
 				}
 				else
 				{
@@ -362,12 +362,12 @@ namespace Server.Mobiles
 
 					if ( tip == null || ( tip = tip.Trim() ).Length == 0 )
 					{
-						PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "It would not be fair of me to take your money and not offer you information in return.", from.Client );
+						PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "It would not be fair of me to take your money and not offer you information in return.", from.NetState );
 					}
 					else
 					{
 						Direction = this.GetDirectionTo( from );
-						PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, tip, from.Client );
+						PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, tip, from.NetState );
 
 						g.Delete();
 						return true;
@@ -416,7 +416,7 @@ namespace Server.Mobiles
 				return;
 
 			from.Prompt = new ChangeRumorMessagePrompt( this, index );
-			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "Say what news you would like me to tell our guests.", from.Client );
+			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "Say what news you would like me to tell our guests.", from.NetState );
 		}
 
 		public void EndChangeRumor( Mobile from, int index, string text )
@@ -430,7 +430,7 @@ namespace Server.Mobiles
 				m_Rumors[index].Message = text;
 
 			from.Prompt = new ChangeRumorKeywordPrompt( this, index );
-			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "What keyword should a guest say to me to get this news?", from.Client );
+			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "What keyword should a guest say to me to get this news?", from.NetState );
 		}
 
 		public void EndChangeKeyword( Mobile from, int index, string text )
@@ -443,7 +443,7 @@ namespace Server.Mobiles
 			else
 				m_Rumors[index].Keyword = text;
 
-			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "I'll pass on the message.", from.Client );
+			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "I'll pass on the message.", from.NetState );
 		}
 
 		public void RemoveRumor( Mobile from, int index )
@@ -457,13 +457,13 @@ namespace Server.Mobiles
 		public void BeginChangeTip( Mobile from )
 		{
 			from.Prompt = new ChangeTipMessagePrompt( this );
-			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "Say what you want me to tell guests when they give me a good tip.", from.Client );
+			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "Say what you want me to tell guests when they give me a good tip.", from.NetState );
 		}
 
 		public void EndChangeTip( Mobile from, string text )
 		{
 			m_TipMessage = text;
-			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "I'll say that to anyone who gives me a good tip.", from.Client );
+			PrivateOverheadMessage( MessageType.Regular, 0x3B2, false, "I'll say that to anyone who gives me a good tip.", from.NetState );
 		}
 
 		public void RemoveTip( Mobile from )
@@ -725,7 +725,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			int buttonID = info.ButtonID;
 
@@ -984,7 +984,7 @@ namespace Server.Mobiles
 			RenderAppearanceCategories();
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			if ( !m_Barkeeper.IsOwner( m_From ) )
 			{

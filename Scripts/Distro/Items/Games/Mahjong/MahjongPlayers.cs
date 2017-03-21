@@ -180,7 +180,7 @@ namespace Server.Engines.Mahjong
 					}
 					else if ( m_InGame[i] )
 					{
-						if ( player.Client == null )
+						if ( player.NetState == null )
 						{
 							m_InGame[i] = false;
 
@@ -208,7 +208,7 @@ namespace Server.Engines.Mahjong
 			{
 				Mobile mobile = (Mobile) m_Spectators[i];
 
-				if ( mobile.Client == null || mobile.Deleted )
+				if ( mobile.NetState == null || mobile.Deleted )
 				{
 					m_Spectators.RemoveAt( i );
 				}

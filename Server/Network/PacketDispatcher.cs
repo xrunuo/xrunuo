@@ -50,7 +50,7 @@ namespace Server.Network
 
 				Packet p = null;
 
-				foreach ( GameClient state in map.GetClientsInRange( m.Location ) )
+				foreach ( NetState state in map.GetClientsInRange( m.Location ) )
 				{
 					if ( state.Mobile.CanSee( m ) )
 					{
@@ -73,14 +73,14 @@ namespace Server.Network
 			int amount = args.Amount;
 			Mobile from = args.From;
 
-			GameClient ourState = m.Client, theirState = ( from == null ? null : from.Client );
+			NetState ourState = m.NetState, theirState = ( from == null ? null : from.NetState );
 
 			if ( ourState == null )
 			{
 				Mobile master = m.GetDamageMaster( from );
 
 				if ( master != null )
-					ourState = master.Client;
+					ourState = master.NetState;
 			}
 
 			if ( theirState == null && from != null )
@@ -88,7 +88,7 @@ namespace Server.Network
 				Mobile master = from.GetDamageMaster( m );
 
 				if ( master != null )
-					theirState = master.Client;
+					theirState = master.NetState;
 			}
 
 			if ( amount > 0 && ( ourState != null || theirState != null ) )
@@ -116,9 +116,9 @@ namespace Server.Network
 				Packet animPacket = null;
 				Packet remPacket = null;
 
-				foreach ( GameClient state in map.GetClientsInRange( m.Location ) )
+				foreach ( NetState state in map.GetClientsInRange( m.Location ) )
 				{
-					if ( state != m.Client )
+					if ( state != m.NetState )
 					{
 						if ( animPacket == null )
 							animPacket = Packet.Acquire( new DeathAnimation( m, c ) );
@@ -150,7 +150,7 @@ namespace Server.Network
 			{
 				Packet p = null;
 
-				foreach ( GameClient ns in map.GetClientsInRange( m.Location ) )
+				foreach ( NetState ns in map.GetClientsInRange( m.Location ) )
 				{
 					if ( ns.Mobile != m && ns.Mobile.CanSee( m ) )
 					{
@@ -194,7 +194,7 @@ namespace Server.Network
 			{
 				Packet p = null;
 
-				foreach ( GameClient ns in map.GetClientsInRange( m.Location ) )
+				foreach ( NetState ns in map.GetClientsInRange( m.Location ) )
 				{
 					if ( ns.Mobile != m && ns.Mobile.CanSee( m ) )
 					{
@@ -231,9 +231,9 @@ namespace Server.Network
 				// First, send a remove message to everyone who can no longer see us. (inOldRange && !inNewRange)
 				Packet removeThis = null;
 
-				foreach ( GameClient ns in map.GetClientsInRange( oldLocation ) )
+				foreach ( NetState ns in map.GetClientsInRange( oldLocation ) )
 				{
-					if ( ns != from.Client && !ns.Mobile.InUpdateRange( newLocation ) )
+					if ( ns != from.NetState && !ns.Mobile.InUpdateRange( newLocation ) )
 					{
 						if ( removeThis == null )
 							removeThis = from.RemovePacket;
@@ -242,7 +242,7 @@ namespace Server.Network
 					}
 				}
 
-				GameClient ourState = from.Client;
+				NetState ourState = from.NetState;
 
 				// Check to see if we are attached to a client
 				if ( ourState != null )
@@ -266,15 +266,15 @@ namespace Server.Network
 
 							bool inOldRange = m.InUpdateRange( oldLocation );
 
-							if ( ( isTeleport || !inOldRange ) && m.Client != null && m.CanSee( from ) )
+							if ( ( isTeleport || !inOldRange ) && m.NetState != null && m.CanSee( from ) )
 							{
-								m.Client.Send( new MobileIncoming( m, from ) );
+								m.NetState.Send( new MobileIncoming( m, from ) );
 
 								if ( from.IsDeadBondedPet )
-									m.Client.Send( new BondedStatus( 0, from.Serial, 1 ) );
+									m.NetState.Send( new BondedStatus( 0, from.Serial, 1 ) );
 
 								if ( ObjectPropertyListPacket.Enabled )
-									m.Client.Send( from.OPLPacket );
+									m.NetState.Send( from.OPLPacket );
 							}
 
 							if ( !inOldRange && from.CanSee( m ) )
@@ -293,7 +293,7 @@ namespace Server.Network
 				else
 				{
 					// We're not attached to a client, so simply send an Incoming
-					foreach ( GameClient ns in map.GetClientsInRange( newLocation ) )
+					foreach ( NetState ns in map.GetClientsInRange( newLocation ) )
 					{
 						if ( ( isTeleport || !ns.Mobile.InUpdateRange( oldLocation ) ) && ns.Mobile.CanSee( from ) )
 						{
@@ -324,7 +324,7 @@ namespace Server.Network
 
 			Packet p = Packet.Acquire( new DamagePacket( m, amount ) );
 
-			foreach ( GameClient ns in map.GetClientsInRange( m.Location ) )
+			foreach ( NetState ns in map.GetClientsInRange( m.Location ) )
 			{
 				if ( ns.Mobile.CanSee( m ) )
 					ns.Send( p );
@@ -335,7 +335,7 @@ namespace Server.Network
 
 		public static void ClearScreen( this Mobile from )
 		{
-			GameClient ns = from.Client;
+			NetState ns = from.NetState;
 
 			if ( from.Map != null && ns != null )
 			{
@@ -363,7 +363,7 @@ namespace Server.Network
 		{
 			if ( m.Map != null )
 			{
-				foreach ( GameClient state in m.Map.GetClientsInRange( m.Location ) )
+				foreach ( NetState state in m.Map.GetClientsInRange( m.Location ) )
 				{
 					if ( state.Mobile.CanSee( m ) )
 					{
@@ -385,9 +385,9 @@ namespace Server.Network
 			{
 				Packet p = null;
 
-				foreach ( GameClient state in m.Map.GetClientsInRange( m.Location ) )
+				foreach ( NetState state in m.Map.GetClientsInRange( m.Location ) )
 				{
-					if ( state != m.Client && ( everyone || !state.Mobile.CanSee( m ) ) )
+					if ( state != m.NetState && ( everyone || !state.Mobile.CanSee( m ) ) )
 					{
 						if ( p == null )
 							p = m.RemovePacket;
@@ -400,7 +400,7 @@ namespace Server.Network
 
 		public static void SendEverything( this Mobile from )
 		{
-			GameClient ns = from.Client;
+			NetState ns = from.NetState;
 
 			if ( from.Map != null && ns != null )
 			{

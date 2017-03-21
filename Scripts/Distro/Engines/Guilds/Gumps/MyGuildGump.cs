@@ -169,7 +169,7 @@ namespace Server.Engines.Guilds.Gumps
 			Design();
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( m_Guild.BadMember( m_Mobile ) )
 				return;

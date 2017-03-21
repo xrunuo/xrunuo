@@ -163,7 +163,7 @@ namespace Server.Items
 				AddItem( 180, 30, 0xC19 );
 				AddButton( 145, 35, 0x867, 0x869, (int) Buttons.East, GumpButtonType.Reply, 0 ); // East
 			}
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( m_Deed == null || m_Deed.Deleted )
 					return;

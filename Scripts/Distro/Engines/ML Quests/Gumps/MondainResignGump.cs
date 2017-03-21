@@ -78,7 +78,7 @@ namespace Server.Engines.Quests
 			AddButton( 265, 220, 0xF7, 0xF8, (int) Buttons.Okay, GumpButtonType.Reply, 0 ); // okay
 		}
 
-		public override void OnResponse( Server.Network.GameClient state, RelayInfo info )
+		public override void OnResponse( Server.Network.NetState state, RelayInfo info )
 		{
 			if ( info.ButtonID != (int) Buttons.Okay || m_Quest == null )
 				return;

@@ -508,7 +508,7 @@ namespace Server.Engines.Craft
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( m_MakeTimer != null )
 				m_MakeTimer.Stop();

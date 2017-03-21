@@ -49,7 +49,7 @@ namespace Server.Engines.Plants
 				AddItem( 156, 130, 0xDCF ); // Seed
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			Mobile from = sender.Mobile;
 

@@ -82,7 +82,7 @@ namespace Server
 				AddImage( 95 + ( i * 17 ), 50, i < dots ? 2362 : 2360 );
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			switch ( info.ButtonID )
 			{

@@ -31,7 +31,7 @@ namespace Server.Items
 			if ( Empty )
 			{
 				// A foggy memory is recalled and you have to ask yourself, "Why is the Pungent Brew always gone?"
-				from.PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 1113610, from.Client );
+				from.PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 1113610, from.NetState );
 			}
 			else
 			{

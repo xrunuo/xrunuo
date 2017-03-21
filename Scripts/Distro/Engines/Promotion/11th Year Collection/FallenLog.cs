@@ -136,7 +136,7 @@ namespace Server.Items
 				AddHtmlLocalized( 44, 71, 213, 20, 1071193, 0x7FFF, false, false ); // Fallen Log (South)
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( m_Deed == null || m_Deed.Deleted )
 					return;

@@ -171,7 +171,7 @@ namespace Server.Engines.Collections
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			PlayerMobile pm = sender.Mobile as PlayerMobile;
 

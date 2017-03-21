@@ -62,7 +62,7 @@ namespace Server.Engines.Quests
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			PlayerMobile from = (PlayerMobile) sender.Mobile;
 

@@ -177,7 +177,7 @@ namespace Server.Engines.Quests
 			AddButton( 30, 15, 5575, 5576, 1, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 1 )
 				m_System.ShowQuestLog();
@@ -264,7 +264,7 @@ namespace Server.Engines.Quests
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			for ( int i = m_Objectives.Count - 1; i >= 0; --i )
 			{

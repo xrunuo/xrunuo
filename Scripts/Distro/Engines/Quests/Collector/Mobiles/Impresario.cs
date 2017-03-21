@@ -135,7 +135,7 @@ namespace Server.Engines.Quests.Collector
 			AddButton( 340, 390, 0xF7, 0xF8, 1, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 1 && info.IsSwitched( 1 ) )
 			{

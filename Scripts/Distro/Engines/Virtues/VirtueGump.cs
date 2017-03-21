@@ -172,7 +172,7 @@ namespace Server
 			}
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			if ( info.ButtonID == 1 && m_Beholder == m_Beheld )
 				m_Beholder.SendGump( new VirtueStatusGump( m_Beholder ) );

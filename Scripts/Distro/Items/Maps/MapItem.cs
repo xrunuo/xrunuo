@@ -342,7 +342,7 @@ namespace Server.Items
 			PacketHandlers.Instance.Register( 0x56, 11, true, new OnPacketReceive( OnMapCommand ) );
 		}
 
-		private static void OnMapCommand( GameClient state, PacketReader pvSrc )
+		private static void OnMapCommand( NetState state, PacketReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 			MapItem map = World.Instance.FindItem( pvSrc.ReadInt32() ) as MapItem;

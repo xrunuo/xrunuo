@@ -26,7 +26,7 @@ namespace Server.Network
 	{
 		public static void SendTo( this Prompt prompt, Mobile m )
 		{
-			if ( m.Client != null && m.Client.Version.IsEnhanced )
+			if ( m.NetState != null && m.NetState.Version.IsEnhanced )
 			{
 				m.Send( new PromptGumpStub( prompt, m ).GetPacket() );
 			}

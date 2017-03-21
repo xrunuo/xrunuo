@@ -42,7 +42,7 @@ namespace Server.Engines.VeteranRewards
 				AddHtmlLocalized( 335, 55, 150, 35, entry.Name, false, false );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 1 )
 			{

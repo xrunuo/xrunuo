@@ -238,7 +238,7 @@ namespace Server.Spells.Mysticism
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( m_Spell != null )
 				m_Spell.OnGumpResponse( info.ButtonID );

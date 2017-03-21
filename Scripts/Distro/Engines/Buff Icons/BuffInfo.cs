@@ -16,7 +16,7 @@ namespace Server.Engines.BuffIcons
 				PacketHandlers.Instance.Register( 0xBD, 0, false, new OnPacketReceive( HandleBuff ) );
 		}
 
-		private static void HandleBuff( GameClient state, PacketReader pvSrc )
+		private static void HandleBuff( NetState state, PacketReader pvSrc )
 		{
 			PacketHandlers.Instance.ClientVersion( state, pvSrc );
 

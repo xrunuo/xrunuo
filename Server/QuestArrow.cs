@@ -62,7 +62,7 @@ namespace Server
 			if ( !m_Running )
 				return;
 
-			GameClient ns = m_Mobile.Client;
+			NetState ns = m_Mobile.NetState;
 
 			if ( ns == null )
 				return;
@@ -82,7 +82,7 @@ namespace Server
 
 			m_Mobile.ClearQuestArrow();
 
-			GameClient ns = m_Mobile.Client;
+			NetState ns = m_Mobile.NetState;
 
 			if ( ns != null )
 				ns.Send( new CancelArrow( x, y, m_Target.Serial ) );

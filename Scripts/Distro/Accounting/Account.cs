@@ -270,7 +270,7 @@ namespace Server.Accounting
 				{
 					PlayerMobile m = m_Mobiles[i] as PlayerMobile;
 
-					if ( m != null && m.Client != null )
+					if ( m != null && m.NetState != null )
 						return m_TotalGameTime + ( DateTime.Now - m.SessionStart );
 				}
 
@@ -593,7 +593,7 @@ namespace Server.Accounting
 				{
 					m.Young = false;
 
-					if ( m.Client != null )
+					if ( m.NetState != null )
 					{
 						if ( message > 0 )
 							m.SendLocalizedMessage( message );
@@ -913,7 +913,7 @@ namespace Server.Accounting
 		/// </summary>
 		/// <param name="ns">NetState instance to check.</param>
 		/// <returns>True if allowed, false if not.</returns>
-		public bool HasAccess( GameClient ns )
+		public bool HasAccess( NetState ns )
 		{
 			if ( ns == null )
 				return false;
@@ -957,7 +957,7 @@ namespace Server.Accounting
 		/// Records the IP address of 'ns' in its 'LoginIPs' list.
 		/// </summary>
 		/// <param name="client">GameClient instance to record.</param>
-		public void LogAccess( GameClient client )
+		public void LogAccess( NetState client )
 		{
 			if ( client == null )
 				return;
@@ -986,7 +986,7 @@ namespace Server.Accounting
 		/// </summary>
 		/// <param name="ns">NetState instance to check.</param>
 		/// <returns>True if allowed, false if not.</returns>
-		public bool CheckAccess( GameClient ns )
+		public bool CheckAccess( NetState ns )
 		{
 			if ( !HasAccess( ns ) )
 				return false;
@@ -1239,7 +1239,7 @@ namespace Server.Accounting
 	{
 		public static Mobile GetConnectedCharacter( this Account account )
 		{
-			return account.GetCharacters().Where( m => m.Client != null ).FirstOrDefault();
+			return account.GetCharacters().Where( m => m.NetState != null ).FirstOrDefault();
 		}
 	}
 }

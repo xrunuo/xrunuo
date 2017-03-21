@@ -142,7 +142,7 @@ namespace Server
 			}
 		}
 
-		public static void OnReceive( GameClient state, PacketReader pvSrc )
+		public static void OnReceive( NetState state, PacketReader pvSrc )
 		{
 			pvSrc.ReadByte(); // 1: <4.0.1a, 2>=4.0.1a
 

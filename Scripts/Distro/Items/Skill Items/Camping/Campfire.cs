@@ -118,7 +118,7 @@ namespace Server.Items
 
 			foreach ( CampfireEntry entry in new ArrayList( m_Entries ) )
 			{
-				if ( !entry.Valid || entry.Player.Client == null )
+				if ( !entry.Valid || entry.Player.NetState == null )
 				{
 					RemoveEntry( entry );
 				}
@@ -131,7 +131,7 @@ namespace Server.Items
 
 			var eable = this.GetClientsInRange( SecureRange );
 
-			foreach ( GameClient state in eable )
+			foreach ( NetState state in eable )
 			{
 				PlayerMobile pm = state.Mobile as PlayerMobile;
 

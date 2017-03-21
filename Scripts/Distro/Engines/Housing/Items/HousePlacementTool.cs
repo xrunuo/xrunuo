@@ -114,7 +114,7 @@ namespace Server.Engines.Housing.Gumps
 			AddHtmlLocalized( 45, 80, 200, 20, 1060392, LabelColor, false, false ); // 3-Story Customizable Houses
 		}
 
-		public override void OnResponse( Server.Network.GameClient sender, RelayInfo info )
+		public override void OnResponse( Server.Network.NetState sender, RelayInfo info )
 		{
 			if ( !m_From.CheckAlive() )
 			{
@@ -225,7 +225,7 @@ namespace Server.Engines.Housing.Gumps
 			}
 		}
 
-		public override void OnResponse( Server.Network.GameClient sender, RelayInfo info )
+		public override void OnResponse( Server.Network.NetState sender, RelayInfo info )
 		{
 			if ( !m_From.CheckAlive() )
 			{

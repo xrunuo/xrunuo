@@ -1454,7 +1454,7 @@ namespace Server.Mobiles
 				}
 				else if ( from.CanBeBeneficial( to, true ) )
 				{
-					GameClient fromState = from.Client, toState = to.Client;
+					NetState fromState = from.NetState, toState = to.NetState;
 
 					if ( fromState != null && toState != null )
 					{
@@ -1853,10 +1853,10 @@ namespace Server.Mobiles
 		{
 			Mobile from = m_Mobile.ControlMaster;
 
-			if ( from == null || from.Client == null )
+			if ( from == null || from.NetState == null )
 				return false;
 
-			return from.Client.Trades
+			return from.NetState.Trades
 				.Any( t => t.From.Container.Items.OfType<TransferItem>().Any( i => i.Creature == m_Mobile ) );
 		}
 
@@ -1904,7 +1904,7 @@ namespace Server.Mobiles
 				}
 				else
 				{
-					GameClient fromState = from.Client, toState = to.Client;
+					NetState fromState = from.NetState, toState = to.NetState;
 
 					if ( fromState != null && toState != null )
 					{
@@ -2518,7 +2518,7 @@ namespace Server.Mobiles
 					m_Mobile.FocusMob = null;
 					return false;
 				}
-				// Modificado este else para evitar el bug de los pets atacando a dueños.
+				// Modificado este else para evitar el bug de los pets atacando a dueï¿½os.
 				else if ( m_Mobile.ControlTarget != m_Mobile.ControlMaster )
 				{
 					m_Mobile.FocusMob = m_Mobile.ControlTarget;

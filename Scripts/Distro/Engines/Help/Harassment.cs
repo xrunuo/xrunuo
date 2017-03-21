@@ -42,7 +42,7 @@ namespace Server.Engines.Help
 			AddButton( 320, 360, 0x819, 0x818, 0, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			Mobile from = state.Mobile;
 
@@ -126,7 +126,7 @@ namespace Server.Engines.Help
 			AddLabel( 220, 240, 0xA28, third );
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			Mobile from = state.Mobile;
 
@@ -277,7 +277,7 @@ namespace Server.Engines.Help
 			AddTextEntry( 80, 240, 375, 30, 0x481, 2, third );
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			Mobile from = state.Mobile;
 
@@ -338,7 +338,7 @@ namespace Server.Engines.Help
 			AddButton( 320, 350, 0x819, 0x818, 0, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			Mobile from = state.Mobile;
 

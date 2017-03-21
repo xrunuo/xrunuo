@@ -67,7 +67,7 @@ namespace Server.Items
 					}
 
 					// The training clockwork fails and the creature vanishes.
-					from.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1112987, from.Client );
+					from.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1112987, from.NetState );
 
 					Timer.DelayCall( TimeSpan.FromSeconds( 1.0 ), new TimerCallback(
 						delegate

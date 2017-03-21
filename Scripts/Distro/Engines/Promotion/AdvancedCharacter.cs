@@ -58,7 +58,7 @@ namespace Server.Mobiles
 			AddHtmlLocalized( 34, 12, 233, 24, 1073365, 0xFFFFFF, false, false ); // Choose Advanced Character Template
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			Mobile from = state.Mobile;
 
@@ -190,7 +190,7 @@ namespace Server.Mobiles
 			AddHtmlLocalized( 98, 300, 250, 60, 1112755, 0x7FFF, false, false ); // Artificer
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			Mobile from = state.Mobile;
 
@@ -533,7 +533,7 @@ namespace Server.Mobiles
 			AddHtmlLocalized( 245, 235, 160, 20, 1073843, 0x7FFF, false, false ); // 
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			Mobile from = state.Mobile;
 
@@ -565,7 +565,7 @@ namespace Server.Mobiles
 			AddHtmlLocalized( 50, 235, 450, 20, 1060051, 0x7FFF, false, false ); // CANCEL
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			Mobile from = state.Mobile;
 

@@ -558,7 +558,7 @@ namespace Server.Engines.Quests
 			AddButton( 265, 220, 247, 248, 7, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 7 ) // Legacy
 				m_System.EndCancelQuest( info.IsSwitched( 1 ) );
@@ -629,7 +629,7 @@ namespace Server.Engines.Quests
 			AddImage( 425, 0, 10441 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( info.ButtonID == 7 )
 			{

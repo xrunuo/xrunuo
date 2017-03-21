@@ -81,7 +81,7 @@ namespace Server.Items
 			AddItem( 12, 22, 3594, 1153 ); // Luna White used in gump
 		}
 
-		public override void OnResponse( GameClient from, RelayInfo info )
+		public override void OnResponse( NetState from, RelayInfo info )
 		{
 			if ( m_MelisandeHairDye.Deleted )
 				return;

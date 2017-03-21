@@ -163,7 +163,7 @@ namespace Server.Engines.Guilds.Gumps
 						int j = 0;
 						while ( j < m_List.Count )
 						{
-							if ( ( (Mobile) m_List[j] ).Client != null )
+							if ( ( (Mobile) m_List[j] ).NetState != null )
 							{
 								m_SortList.Add( m_List[j] );
 								m_List.Remove( m_List[j] );
@@ -223,7 +223,7 @@ namespace Server.Engines.Guilds.Gumps
 				if ( fealty == null || !guild.IsMember( fealty ) )
 					fealty = guild.Leader;
 
-				GameClient ns = ( (Mobile) m_List[i] ).Client;
+				NetState ns = ( (Mobile) m_List[i] ).NetState;
 
 				string name;
 				if ( ( name = m.Name ) != null && ( name = name.Trim() ).Length <= 0 )
@@ -308,7 +308,7 @@ namespace Server.Engines.Guilds.Gumps
 			AddKRHtmlLocalized( 0, 0, 0, 0, -2, false, false );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			if ( m_Guild.BadMember( m_Mobile ) )
 				return;

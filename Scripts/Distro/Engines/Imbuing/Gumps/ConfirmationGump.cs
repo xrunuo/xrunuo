@@ -302,7 +302,7 @@ namespace Server.Engines.Imbuing
 			m_SuccessChance = Imbuing.GetSuccessChance( from, m_ItemToImbue, totalIntensity );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			Mobile from = sender.Mobile;
 

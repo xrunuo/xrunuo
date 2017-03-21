@@ -19,7 +19,7 @@ namespace Server.Engines.Chat
 			PacketHandlers.Instance.Register( 0xB3, 0, true, new OnPacketReceive( ChatAction ) );
 		}
 
-		public static void OpenChatWindowRequest( GameClient state, PacketReader pvSrc )
+		public static void OpenChatWindowRequest( NetState state, PacketReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 
@@ -39,7 +39,7 @@ namespace Server.Engines.Chat
 			ChatUser.AddChatUser( from );
 		}
 
-		public static void ChatAction( GameClient state, PacketReader pvSrc )
+		public static void ChatAction( NetState state, PacketReader pvSrc )
 		{
 			if ( !Enabled )
 				return;

@@ -865,7 +865,7 @@ namespace Server.Items
 			return m_Devourer.Devour( this ); // Devour the corpse if it hasn't
 		}
 
-		public override void SendInfoTo( GameClient state )
+		public override void SendInfoTo( NetState state )
 		{
 			base.SendInfoTo( state );
 
@@ -1055,7 +1055,7 @@ namespace Server.Items
 
 				if ( selfLoot )
 				{
-					if ( from is PlayerMobile && from.Client != null && from.Client.Version.IsEnhanced )
+					if ( from is PlayerMobile && from.NetState != null && from.NetState.Version.IsEnhanced )
 					{
 						PlayerMobile pm = (PlayerMobile) from;
 
@@ -1411,7 +1411,7 @@ namespace Server.Items
 			Delete();
 		}
 
-		public override void SendInfoTo( GameClient state )
+		public override void SendInfoTo( NetState state )
 		{
 		}
 

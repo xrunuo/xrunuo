@@ -65,7 +65,7 @@ namespace Server
 		private List<Mobile> m_Mobiles;
 		private List<Mobile> m_Players;
 		private List<Item> m_Items;
-		private List<GameClient> m_Clients;
+		private List<NetState> m_Clients;
 		private List<BaseMulti> m_Multis;
 		private List<RegionRect> m_RegionRects;
 		private bool m_Active;
@@ -73,7 +73,7 @@ namespace Server
 		// TODO: Can we avoid this?
 		private static List<Mobile> m_DefaultMobileList = new List<Mobile>();
 		private static List<Item> m_DefaultItemList = new List<Item>();
-		private static List<GameClient> m_DefaultClientList = new List<GameClient>();
+		private static List<NetState> m_DefaultClientList = new List<NetState>();
 		private static List<BaseMulti> m_DefaultMultiList = new List<BaseMulti>();
 		private static List<RegionRect> m_DefaultRectList = new List<RegionRect>();
 
@@ -133,7 +133,7 @@ namespace Server
 			}
 		}
 
-		public void OnClientChange( GameClient oldState, GameClient newState )
+		public void OnClientChange( NetState oldState, NetState newState )
 		{
 			Replace( ref m_Clients, oldState, newState );
 		}
@@ -152,9 +152,9 @@ namespace Server
 		{
 			Add( ref m_Mobiles, mob );
 
-			if ( mob.Client != null )
+			if ( mob.NetState != null )
 			{
-				Add( ref m_Clients, mob.Client );
+				Add( ref m_Clients, mob.NetState );
 			}
 
 			if ( mob.IsPlayer )
@@ -172,9 +172,9 @@ namespace Server
 		{
 			Remove( ref m_Mobiles, mob );
 
-			if ( mob.Client != null )
+			if ( mob.NetState != null )
 			{
-				Remove( ref m_Clients, mob.Client );
+				Remove( ref m_Clients, mob.NetState );
 			}
 
 			if ( mob.IsPlayer && m_Players != null )
@@ -335,7 +335,7 @@ namespace Server
 			}
 		}
 
-		public List<GameClient> Clients
+		public List<NetState> Clients
 		{
 			get
 			{

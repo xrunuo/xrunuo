@@ -306,7 +306,7 @@ namespace Server.Misc
 
 				Packet weatherPacket = null;
 
-				foreach ( GameClient ns in GameServer.Instance.Clients )
+				foreach ( NetState ns in GameServer.Instance.Clients )
 				{
 					Mobile mob = ns.Mobile;
 

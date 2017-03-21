@@ -895,7 +895,7 @@ namespace Server
 					{
 						Packet remPacket = null;
 
-						foreach ( GameClient state in m_Map.GetClientsInRange( oldLocation, GetMaxUpdateRange() ) )
+						foreach ( NetState state in m_Map.GetClientsInRange( oldLocation, GetMaxUpdateRange() ) )
 						{
 							Mobile m = state.Mobile;
 
@@ -932,7 +932,7 @@ namespace Server
 
 				if ( m_Map != null )
 				{
-					foreach ( GameClient state in m_Map.GetClientsInRange( m_Location, GetMaxUpdateRange() ) )
+					foreach ( NetState state in m_Map.GetClientsInRange( m_Location, GetMaxUpdateRange() ) )
 					{
 						Mobile m = state.Mobile;
 
@@ -952,7 +952,7 @@ namespace Server
 				{
 					Packet removeThis = null;
 
-					foreach ( GameClient state in m_Map.GetClientsInRange( oldLocation, GetMaxUpdateRange() ) )
+					foreach ( NetState state in m_Map.GetClientsInRange( oldLocation, GetMaxUpdateRange() ) )
 					{
 						Mobile m = state.Mobile;
 
@@ -973,7 +973,7 @@ namespace Server
 
 				ReleaseWorldPackets();
 
-				foreach ( GameClient state in m_Map.GetClientsInRange( m_Location, GetMaxUpdateRange() ) )
+				foreach ( NetState state in m_Map.GetClientsInRange( m_Location, GetMaxUpdateRange() ) )
 				{
 					Mobile m = state.Mobile;
 
@@ -1319,7 +1319,7 @@ namespace Server
 					{
 						Point3D worldLoc = GetWorldLocation();
 
-						foreach ( GameClient state in m_Map.GetClientsInRange( worldLoc, GetMaxUpdateRange() ) )
+						foreach ( NetState state in m_Map.GetClientsInRange( worldLoc, GetMaxUpdateRange() ) )
 						{
 							Mobile m = state.Mobile;
 
@@ -1734,12 +1734,12 @@ namespace Server
 			return map.GetMobilesInRange( GetWorldLocation(), range );
 		}
 
-		public IEnumerable<GameClient> GetClientsInRange( int range )
+		public IEnumerable<NetState> GetClientsInRange( int range )
 		{
 			Map map = m_Map;
 
 			if ( map == null )
-				return Enumerable.Empty<GameClient>();
+				return Enumerable.Empty<NetState>();
 
 			if ( m_Parent == null )
 				return map.GetClientsInRange( m_Location, range );
@@ -1999,7 +1999,7 @@ namespace Server
 
 		public virtual bool SendOplPacket { get { return ObjectPropertyListPacket.Enabled && GraphicData == GraphicData.TileData; } }
 
-		public virtual void SendInfoTo( GameClient state )
+		public virtual void SendInfoTo( NetState state )
 		{
 			state.Send( GetWorldPacketFor( state ) );
 
@@ -2009,7 +2009,7 @@ namespace Server
 
 		public virtual GraphicData GraphicData { get { return GraphicData.TileData; } }
 
-		protected virtual Packet GetWorldPacketFor( GameClient state )
+		protected virtual Packet GetWorldPacketFor( NetState state )
 		{
 			return WorldPacket;
 		}
@@ -2440,7 +2440,7 @@ namespace Server
 
 						if ( rootParent != null )
 						{
-							GameClient ns = rootParent.Client;
+							NetState ns = rootParent.NetState;
 
 							if ( ns != null )
 							{
@@ -2474,7 +2474,7 @@ namespace Server
 
 								if ( tradeRecip != null )
 								{
-									GameClient ns = tradeRecip.Client;
+									NetState ns = tradeRecip.NetState;
 
 									if ( ns != null )
 									{
@@ -2509,7 +2509,7 @@ namespace Server
 									if ( mob == rootParent || mob == tradeRecip )
 										continue;
 
-									GameClient ns = mob.Client;
+									NetState ns = mob.NetState;
 
 									if ( ns != null )
 									{
@@ -2536,7 +2536,7 @@ namespace Server
 				{
 					Point3D worldLoc = GetWorldLocation();
 
-					foreach ( GameClient state in map.GetClientsInRange( worldLoc, GetMaxUpdateRange() ) )
+					foreach ( NetState state in map.GetClientsInRange( worldLoc, GetMaxUpdateRange() ) )
 					{
 						Mobile m = state.Mobile;
 
@@ -2568,7 +2568,7 @@ namespace Server
 						Packet p = null;
 						Point3D worldLoc = GetWorldLocation();
 
-						foreach ( GameClient state in map.GetClientsInRange( worldLoc, GetMaxUpdateRange() ) )
+						foreach ( NetState state in map.GetClientsInRange( worldLoc, GetMaxUpdateRange() ) )
 						{
 							Mobile m = state.Mobile;
 
@@ -2594,7 +2594,7 @@ namespace Server
 				{
 					Point3D worldLoc = GetWorldLocation();
 
-					foreach ( GameClient state in map.GetClientsInRange( worldLoc, GetMaxUpdateRange() ) )
+					foreach ( NetState state in map.GetClientsInRange( worldLoc, GetMaxUpdateRange() ) )
 					{
 						Mobile m = state.Mobile;
 
@@ -2707,7 +2707,7 @@ namespace Server
 				Packet p = null;
 				Point3D worldLoc = GetWorldLocation();
 
-				foreach ( GameClient state in m_Map.GetClientsInRange( worldLoc, GetMaxUpdateRange() ) )
+				foreach ( NetState state in m_Map.GetClientsInRange( worldLoc, GetMaxUpdateRange() ) )
 				{
 					Mobile m = state.Mobile;
 
@@ -2738,7 +2738,7 @@ namespace Server
 				Packet p = null;
 				Point3D worldLoc = GetWorldLocation();
 
-				foreach ( GameClient state in m_Map.GetClientsInRange( worldLoc, GetMaxUpdateRange() ) )
+				foreach ( NetState state in m_Map.GetClientsInRange( worldLoc, GetMaxUpdateRange() ) )
 				{
 					Mobile m = state.Mobile;
 
@@ -2874,7 +2874,7 @@ namespace Server
 					{
 						if ( m_Location.X != 0 )
 						{
-							foreach ( GameClient state in m_Map.GetClientsInRange( oldLocation, GetMaxUpdateRange() ) )
+							foreach ( NetState state in m_Map.GetClientsInRange( oldLocation, GetMaxUpdateRange() ) )
 							{
 								Mobile m = state.Mobile;
 
@@ -2888,7 +2888,7 @@ namespace Server
 
 						SetLastMoved();
 
-						foreach ( GameClient state in m_Map.GetClientsInRange( m_Location, GetMaxUpdateRange() ) )
+						foreach ( NetState state in m_Map.GetClientsInRange( m_Location, GetMaxUpdateRange() ) )
 						{
 							Mobile m = state.Mobile;
 
@@ -3152,7 +3152,7 @@ namespace Server
 		{
 			if ( IsUnderYourFeet( from, target ) )
 			{
-				from.SendMessage( "No puedes mover eso, ¡estás pisando la bolsa!" );
+				from.SendMessage( "No puedes mover eso, ï¿½estï¿½s pisando la bolsa!" );
 				return false;
 			}
 			else if ( !from.OnDroppedItemInto( this, target, p ) )
@@ -3172,7 +3172,7 @@ namespace Server
 		{
 			if ( IsUnderYourFeet( from, target ) )
 			{
-				from.SendMessage( "No puedes mover eso, ¡estás pisando la bolsa!" );
+				from.SendMessage( "No puedes mover eso, ï¿½estï¿½s pisando la bolsa!" );
 				return false;
 			}
 			else if ( Deleted || from.Deleted || target.Deleted || from.Map != target.Map || from.Map == null || target.Map == null )
@@ -3477,7 +3477,7 @@ namespace Server
 				Packet p = null;
 				Point3D worldLoc = GetWorldLocation();
 
-				foreach ( GameClient state in m_Map.GetClientsInRange( worldLoc, GetMaxUpdateRange() ) )
+				foreach ( NetState state in m_Map.GetClientsInRange( worldLoc, GetMaxUpdateRange() ) )
 				{
 					Mobile m = state.Mobile;
 

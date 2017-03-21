@@ -22,12 +22,12 @@ namespace Server.Engines.Help
 			m_From = from;
 		}
 
-		public override void OnCancel( GameClient state )
+		public override void OnCancel( NetState state )
 		{
 			m_From.SendLocalizedMessage( 1005306, "", 0x35 ); // Help request unchanged.
 		}
 
-		public override void OnResponse( GameClient state, int index )
+		public override void OnResponse( NetState state, int index )
 		{
 			if ( index == 0 )
 			{
@@ -63,7 +63,7 @@ namespace Server.Engines.Help
 		private static void EventSink_HelpRequest( HelpRequestEventArgs e )
 		{
 			var from = e.Mobile;
-			var state = from.Client;
+			var state = from.NetState;
 			var gumps = state.Gumps;
 
 			if ( gumps == null )
@@ -222,16 +222,16 @@ namespace Server.Engines.Help
 			AddPage( 3 );
 
 			AddButton( 80, 75, 5540, 5541, 3, GumpButtonType.Reply, 0 );
-			AddHtmlLocalized( 110, 75, 450, 164, 1062572, true, true ); // <U><CENTER>Another player is harassing me (or Exploiting).</CENTER></U><BR>VERBAL HARASSMENT<BR>Use this option when another player is verbally harassing your character. Verbal harassment behaviors include but are not limited to, using bad language, threats etc.. Before you submit a complaint be sure you understand what constitutes harassment <A HREF="http://uo.custhelp.com/cgi-bin/uo.cfg/php/enduser/std_adp.php?p_faqid=40">– what is verbal harassment? -</A> and that you have followed these steps:<BR>1. You have asked the player to stop and they have continued.<BR>2. You have tried to remove yourself from the situation.<BR>3. You have done nothing to instigate or further encourage the harassment.<BR>4. You have added the player to your ignore list. <A HREF="http://uo.custhelp.com/cgi-bin/uo.cfg/php/enduser/std_adp.php?p_faqid=138">- How do I ignore a player?</A><BR>5. You have read and understand Origin’s definition of harassment.<BR>6. Your account information is up to date. (Including a current email address)<BR>*If these steps have not been taken, GMs may be unable to take action against the offending player.<BR>**A chat log will be review by a GM to assess the validity of this complaint. Abuse of this system is a violation of the Rules of Conduct.<BR>EXPLOITING<BR>Use this option to report someone who may be exploiting or cheating. <A HREF="http://uo.custhelp.com/cgi-bin/uo.cfg/php/enduser/std_adp.php?p_faqid=41">– What constitutes an exploit?</a>
+			AddHtmlLocalized( 110, 75, 450, 164, 1062572, true, true ); // <U><CENTER>Another player is harassing me (or Exploiting).</CENTER></U><BR>VERBAL HARASSMENT<BR>Use this option when another player is verbally harassing your character. Verbal harassment behaviors include but are not limited to, using bad language, threats etc.. Before you submit a complaint be sure you understand what constitutes harassment <A HREF="http://uo.custhelp.com/cgi-bin/uo.cfg/php/enduser/std_adp.php?p_faqid=40">ï¿½ what is verbal harassment? -</A> and that you have followed these steps:<BR>1. You have asked the player to stop and they have continued.<BR>2. You have tried to remove yourself from the situation.<BR>3. You have done nothing to instigate or further encourage the harassment.<BR>4. You have added the player to your ignore list. <A HREF="http://uo.custhelp.com/cgi-bin/uo.cfg/php/enduser/std_adp.php?p_faqid=138">- How do I ignore a player?</A><BR>5. You have read and understand Originï¿½s definition of harassment.<BR>6. Your account information is up to date. (Including a current email address)<BR>*If these steps have not been taken, GMs may be unable to take action against the offending player.<BR>**A chat log will be review by a GM to assess the validity of this complaint. Abuse of this system is a violation of the Rules of Conduct.<BR>EXPLOITING<BR>Use this option to report someone who may be exploiting or cheating. <A HREF="http://uo.custhelp.com/cgi-bin/uo.cfg/php/enduser/std_adp.php?p_faqid=41">ï¿½ What constitutes an exploit?</a>
 
 			AddButton( 80, 245, 5540, 5541, 12, GumpButtonType.Reply, 0 );
-			AddHtmlLocalized( 110, 245, 450, 164, 1062573, true, true ); // <U><CENTER>Another player is harassing me using game mechanics.</CENTER></U><BR><BR>PHYSICAL HARASSMENT<BR>Use this option when another player is harassing your character using game mechanics. Physical harassment includes but is not limited to luring and any act that causes a players death in Trammel. Before you submit a complaint be sure you understand what constitutes harassment <A HREF="http://uo.custhelp.com/cgi-bin/uo.cfg/php/enduser/std_adp.php?p_faqid=59">- What is physical harassment? -</A> and that you have followed these steps:<BR>1. You have asked the player to stop and they have continued.<BR>2. You have tried to remove yourself from the situation.<BR>3. You have done nothing to instigate or further encourage the harassment.<BR>4. You have added the player to your ignore list. <A HREF="http://uo.custhelp.com/cgi-bin/uo.cfg/php/enduser/std_adp.php?p_faqid=138">- How do I ignore a player? -</A><BR>5. You have read and understand Origin’s definition of harassment.<BR>6. Your account information is up to date. (Including a current email address)<BR>*If these steps have not been taken, GMs may be unable to take action against the offending player.<BR>**This issue will be reviewed by a GM to assess the validity of this complaint. Abuse of this system is a violation of the Rules of Conduct.
+			AddHtmlLocalized( 110, 245, 450, 164, 1062573, true, true ); // <U><CENTER>Another player is harassing me using game mechanics.</CENTER></U><BR><BR>PHYSICAL HARASSMENT<BR>Use this option when another player is harassing your character using game mechanics. Physical harassment includes but is not limited to luring and any act that causes a players death in Trammel. Before you submit a complaint be sure you understand what constitutes harassment <A HREF="http://uo.custhelp.com/cgi-bin/uo.cfg/php/enduser/std_adp.php?p_faqid=59">- What is physical harassment? -</A> and that you have followed these steps:<BR>1. You have asked the player to stop and they have continued.<BR>2. You have tried to remove yourself from the situation.<BR>3. You have done nothing to instigate or further encourage the harassment.<BR>4. You have added the player to your ignore list. <A HREF="http://uo.custhelp.com/cgi-bin/uo.cfg/php/enduser/std_adp.php?p_faqid=138">- How do I ignore a player? -</A><BR>5. You have read and understand Originï¿½s definition of harassment.<BR>6. Your account information is up to date. (Including a current email address)<BR>*If these steps have not been taken, GMs may be unable to take action against the offending player.<BR>**This issue will be reviewed by a GM to assess the validity of this complaint. Abuse of this system is a violation of the Rules of Conduct.
 
 			AddButton( 80, 415, 5540, 5541, 0, GumpButtonType.Page, 1 );
 			AddHtmlLocalized( 110, 415, 450, 29, 1001011, true, false ); // <U>Return to the help menu</U>
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			Mobile from = state.Mobile;
 

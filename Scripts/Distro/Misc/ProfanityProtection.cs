@@ -42,7 +42,7 @@ namespace Server.Misc
 					return true;
 				case ProfanityAction.Disconnect:
 					{
-						GameClient ns = from.Client;
+						NetState ns = from.NetState;
 
 						if ( ns != null )
 							ns.Dispose();

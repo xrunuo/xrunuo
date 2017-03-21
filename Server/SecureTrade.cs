@@ -100,12 +100,12 @@ namespace Server
 
 			m_Valid = false;
 
-			GameClient ns = m_From.Mobile.Client;
+			NetState ns = m_From.Mobile.NetState;
 
 			if ( ns != null )
 				ns.RemoveTrade( this );
 
-			ns = m_To.Mobile.Client;
+			ns = m_To.Mobile.NetState;
 
 			if ( ns != null )
 				ns.RemoveTrade( this );

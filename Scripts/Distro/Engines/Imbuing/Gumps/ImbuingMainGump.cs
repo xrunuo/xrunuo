@@ -53,7 +53,7 @@ namespace Server.Engines.Imbuing
 			AddButton( 15, 280, 0xFB1, 0xFB2, 0, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			Mobile from = sender.Mobile;
 

@@ -44,7 +44,7 @@ namespace Server.Items
 
 			if ( from.Hidden )
 			{
-				from.PrivateOverheadMessage( MessageType.Regular, 0x3B2, true, "You can not use that while hidden", from.Client );
+				from.PrivateOverheadMessage( MessageType.Regular, 0x3B2, true, "You can not use that while hidden", from.NetState );
 				return;
 			}
 

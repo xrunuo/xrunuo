@@ -291,7 +291,7 @@ namespace Server.Factions
 					{
 						from.SendLocalizedMessage( 1042248 ); // You cannot give a sigil to a dead person.
 					}
-					else if ( from.Client != null && targ.Client != null )
+					else if ( from.NetState != null && targ.NetState != null )
 					{
 						Container pack = targ.Backpack;
 
@@ -390,7 +390,7 @@ namespace Server.Factions
 
 						m_Corrupted = null;
 
-						if ( !isTownAlreadyOwned && m_OriginalThief != null && m_OriginalThief.Client != null )
+						if ( !isTownAlreadyOwned && m_OriginalThief != null && m_OriginalThief.NetState != null )
 						{
 							int punkte = 10;
 							int silver = 750;

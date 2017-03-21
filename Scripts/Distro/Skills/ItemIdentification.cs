@@ -36,7 +36,7 @@ namespace Server.Items
 				if ( o is Mobile )
 				{
 					// It appears to be:
-					from.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1041349, ( (Mobile) o ).Name, from.Client );
+					from.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1041349, ( (Mobile) o ).Name, from.NetState );
 				}
 				else if ( !from.CheckTargetSkill( SkillName.ItemID, o, 0, 100 ) )
 				{
@@ -57,26 +57,26 @@ namespace Server.Items
 						if ( info == null )
 						{
 							// You conclude that item cannot be magically unraveled. It appears to possess little to no magic.
-							from.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1111876, from.Client );
+							from.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1111876, from.NetState );
 						}
 						else
 						{
 							if ( from.Skills[SkillName.Imbuing].Value >= info.MinSkill )
 							{
 								// You conclude that item will magically unravel into: ~1_ingredient~
-								from.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1111874, String.Format( "#{0}", info.Name.ToString() ), from.Client );
+								from.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1111874, String.Format( "#{0}", info.Name.ToString() ), from.NetState );
 							}
 							else
 							{
 								// Your Imbuing skill is not high enough to identify the imbuing ingredient.
-								from.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1111875, from.Client );
+								from.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1111875, from.NetState );
 							}
 						}
 					}
 					else
 					{
 						// You conclude that item cannot be magically unraveled.
-						from.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1111878, from.Client );
+						from.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 1111878, from.NetState );
 					}
 				}
 				else

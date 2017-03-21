@@ -63,7 +63,7 @@ namespace Server.Engines.Guilds.Targets
 				{
 					m_Mobile.SendLocalizedMessage( 1063051, m.Name ); // ~1_val~ is already a member of a guild.
 				}
-				else if ( m.Client == null )
+				else if ( m.NetState == null )
 				{
 					m_Mobile.SendMessage( "El jugador debe estar online para aceptar invitaciones." );
 				}

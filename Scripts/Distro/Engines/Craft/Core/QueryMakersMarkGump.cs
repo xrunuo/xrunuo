@@ -45,7 +45,7 @@ namespace Server.Engines.Craft
 			AddButton( 20, 125, 4005, 4007, 1, GumpButtonType.Reply, 0 );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			bool makersMark = ( info.ButtonID == 2 );
 

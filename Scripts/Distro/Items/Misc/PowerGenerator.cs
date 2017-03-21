@@ -228,7 +228,7 @@ namespace Server.Items
 					return;
 				}
 
-				if ( m_User.Deleted || m_User.Map != Map || !m_User.InRange( this, 3 ) || m_User.Client == null || DateTime.Now - m_LastUse >= m_UseTimeout )
+				if ( m_User.Deleted || m_User.Map != Map || !m_User.InRange( this, 3 ) || m_User.NetState == null || DateTime.Now - m_LastUse >= m_UseTimeout )
 				{
 					m_User.CloseGump( typeof( GameGump ) );
 				}
@@ -370,7 +370,7 @@ namespace Server.Items
 				AddImage( x, y, id );
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( m_Panel.Deleted || info.ButtonID == 0 || !m_From.CheckAlive() )
 				{

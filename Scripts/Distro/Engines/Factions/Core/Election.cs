@@ -490,9 +490,9 @@ namespace Server.Factions
 			m_From = from;
 			m_Candidate = candidate;
 
-			if ( m_From.Client != null )
+			if ( m_From.NetState != null )
 			{
-				m_Address = m_From.Client.Address;
+				m_Address = m_From.NetState.Address;
 			}
 			else
 			{

@@ -106,7 +106,7 @@ namespace Server.Engines.Collections
 			AddButton( 270, 335, 0x15E1, 0x15E5, -2, GumpButtonType.Page, pageto );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			PlayerMobile pm = sender.Mobile as PlayerMobile;
 

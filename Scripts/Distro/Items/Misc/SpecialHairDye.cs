@@ -109,7 +109,7 @@ namespace Server.Items
 			}
 		}
 
-		public override void OnResponse( GameClient from, RelayInfo info )
+		public override void OnResponse( NetState from, RelayInfo info )
 		{
 			if ( m_SpecialHairDye.Deleted )
 			{

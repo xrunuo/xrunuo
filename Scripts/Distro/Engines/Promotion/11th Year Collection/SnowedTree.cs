@@ -123,7 +123,7 @@ namespace Server.Items
 				AddHtmlLocalized( 44, 71, 213, 20, 1071300, 0x7FFF, false, false ); // Snow Tree (trunk)
 			}
 
-			public override void OnResponse( GameClient sender, RelayInfo info )
+			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				if ( m_Deed == null || m_Deed.Deleted )
 					return;

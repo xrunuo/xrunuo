@@ -827,7 +827,7 @@ namespace Server.Engines.Housing.Gumps
 			from.SendGump( new HouseGump( HouseGumpPage.Security, from, house ) );
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			int val = info.ButtonID - 1;
 

@@ -37,7 +37,7 @@ namespace Server.Gumps
 			AddButton( 110, 105, 0x819, 0x818, 2, GumpButtonType.Reply, 0 ); // Cancel
 		}
 
-		public override void OnResponse( GameClient state, RelayInfo info )
+		public override void OnResponse( NetState state, RelayInfo info )
 		{
 			if ( m_Pet.Deleted || !m_Pet.IsBonded || !m_Pet.IsDeadPet )
 			{

@@ -180,7 +180,7 @@ namespace Server.Gumps
 			}
 		}
 
-		public override void OnResponse( GameClient sender, RelayInfo info )
+		public override void OnResponse( NetState sender, RelayInfo info )
 		{
 			Point2D toSet;
 			bool shouldSet, shouldSend;

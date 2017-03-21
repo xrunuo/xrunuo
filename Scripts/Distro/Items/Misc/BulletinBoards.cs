@@ -227,7 +227,7 @@ namespace Server.Items
 			PacketHandlers.Instance.Register( 0x71, 0, true, new OnPacketReceive( BBClientRequest ) );
 		}
 
-		public static void BBClientRequest( GameClient state, PacketReader pvSrc )
+		public static void BBClientRequest( NetState state, PacketReader pvSrc )
 		{
 			Mobile from = state.Mobile;
 

@@ -14,7 +14,7 @@ namespace Server
 			PacketHandlers.Instance.Register( 0xEB, 0, true, new OnPacketReceive( ReportUseKRHotbarIcon ) );
 		}
 
-		public static void RemoveHighlightKRUIElement( GameClient state, PacketReader pvSrc )
+		public static void RemoveHighlightKRUIElement( NetState state, PacketReader pvSrc )
 		{
 			Mobile m = World.Instance.FindMobile( (Serial) pvSrc.ReadInt32() );
 
@@ -32,7 +32,7 @@ namespace Server
 			}
 		}
 
-		public static void ReportUseKRHotbarIcon( GameClient state, PacketReader pvSrc )
+		public static void ReportUseKRHotbarIcon( NetState state, PacketReader pvSrc )
 		{
 			pvSrc.ReadInt32(); // 0x00010006
 
