@@ -337,7 +337,7 @@ namespace Server.Items
 
 		public static void Initialize()
 		{
-			EventSink.Instance.SetAbility += new SetAbilityEventHandler( EventSink_SetAbility );
+			EventSink.SetAbility += new SetAbilityEventHandler( EventSink_SetAbility );
 		}
 
 		public WeaponAbility()

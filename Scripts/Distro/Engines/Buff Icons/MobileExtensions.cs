@@ -11,7 +11,7 @@ namespace Server.Engines.BuffIcons
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.PlayerDeath += new PlayerDeathEventHandler( EventSink_PlayerDeath );
+			EventSink.PlayerDeath += new PlayerDeathEventHandler( EventSink_PlayerDeath );
 		}
 
 		private static void EventSink_PlayerDeath( PlayerDeathEventArgs e )

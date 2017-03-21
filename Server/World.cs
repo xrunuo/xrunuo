@@ -177,7 +177,7 @@ namespace Server
 			LoadStrategy strategy = LoadStrategy.Acquire();
 			strategy.LoadEntities( m_Repositories );
 
-			EventSink.Instance.InvokeWorldLoad();
+			EventSink.InvokeWorldLoad();
 
 			m_Loading = false;
 
@@ -271,7 +271,7 @@ namespace Server
 
 			try
 			{
-				EventSink.Instance.InvokeWorldBeforeSave();
+				EventSink.InvokeWorldBeforeSave();
 			}
 			catch ( Exception e )
 			{
@@ -291,7 +291,7 @@ namespace Server
 
 			try
 			{
-				EventSink.Instance.InvokeWorldSave( new WorldSaveEventArgs( message ) );
+				EventSink.InvokeWorldSave( new WorldSaveEventArgs( message ) );
 			}
 			catch ( Exception e )
 			{

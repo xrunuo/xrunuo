@@ -12,7 +12,7 @@ namespace Server
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.SocketConnect += new SocketConnectEventHandler( EventSink_SocketConnect );
+			EventSink.SocketConnect += new SocketConnectEventHandler( EventSink_SocketConnect );
 		}
 
 		private static void EventSink_SocketConnect( SocketConnectEventArgs e )

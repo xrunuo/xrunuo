@@ -15,7 +15,7 @@ namespace Server.Spells.Mysticism
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.PlayerDeath += new PlayerDeathEventHandler( OnPlayerDeath );
+			EventSink.PlayerDeath += new PlayerDeathEventHandler( OnPlayerDeath );
 		}
 
 		private static SpellInfo m_Info = new SpellInfo(

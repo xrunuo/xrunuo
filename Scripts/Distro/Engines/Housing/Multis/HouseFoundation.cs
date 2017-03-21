@@ -962,7 +962,7 @@ namespace Server.Engines.Housing.Multis
 
 			CommandSystem.Register( "DesignInsert", AccessLevel.GameMaster, new CommandEventHandler( DesignInsert_OnCommand ) );
 
-			EventSink.Instance.Speech += new SpeechEventHandler( EventSink_Speech );
+			EventSink.Speech += new SpeechEventHandler( EventSink_Speech );
 		}
 
 		private static void EventSink_Speech( SpeechEventArgs e )

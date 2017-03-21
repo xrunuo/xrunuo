@@ -9,8 +9,8 @@ namespace Server.Accounting
 	{
 		public static void Configure()
 		{
-			EventSink.Instance.WorldLoad += new WorldLoadEventHandler( Load );
-			EventSink.Instance.WorldSave += new WorldSaveEventHandler( Save );
+			EventSink.WorldLoad += new WorldLoadEventHandler( Load );
+			EventSink.WorldSave += new WorldSaveEventHandler( Save );
 		}
 
 		private static void Load()

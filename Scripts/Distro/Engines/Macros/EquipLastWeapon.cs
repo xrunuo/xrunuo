@@ -11,7 +11,7 @@ namespace Server.Engines.Macros
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.EquipLastWeaponMacroUsed += new EquipLastWeaponMacroEventHandler( EventSink_EquipLastWeaponMacroUsed );
+			EventSink.EquipLastWeaponMacroUsed += new EquipLastWeaponMacroEventHandler( EventSink_EquipLastWeaponMacroUsed );
 		}
 
 		private static void Expire_Callback( object state )

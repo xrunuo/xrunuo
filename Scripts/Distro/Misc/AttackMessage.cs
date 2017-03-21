@@ -17,7 +17,7 @@ namespace Server.Misc
 
 		public static void Initialize()
 		{
-			EventSink.Instance.AggressiveAction += new AggressiveActionEventHandler( EventSink_AggressiveAction );
+			EventSink.AggressiveAction += new AggressiveActionEventHandler( EventSink_AggressiveAction );
 		}
 
 		public static void EventSink_AggressiveAction( AggressiveActionEventArgs e )

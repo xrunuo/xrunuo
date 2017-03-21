@@ -888,10 +888,10 @@ namespace Server.Mobiles
 				ph.ThrottleCallback = new ThrottlePacketCallback( MovementThrottle_Callback );
 			}
 
-			EventSink.Instance.Login += new LoginEventHandler( OnLogin );
-			EventSink.Instance.Logout += new LogoutEventHandler( OnLogout );
-			EventSink.Instance.Connected += new ConnectedEventHandler( EventSink_Connected );
-			EventSink.Instance.Disconnected += new DisconnectedEventHandler( EventSink_Disconnected );
+			EventSink.Login += new LoginEventHandler( OnLogin );
+			EventSink.Logout += new LogoutEventHandler( OnLogout );
+			EventSink.Connected += new ConnectedEventHandler( EventSink_Connected );
+			EventSink.Disconnected += new DisconnectedEventHandler( EventSink_Disconnected );
 		}
 
 		public override void OnSkillInvalidated( Skill skill )

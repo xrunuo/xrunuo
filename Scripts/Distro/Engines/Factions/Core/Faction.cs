@@ -555,10 +555,10 @@ namespace Server.Factions
 
 		public static void Initialize()
 		{
-			EventSink.Instance.Login += new LoginEventHandler( EventSink_Login );
-			EventSink.Instance.Logout += new LogoutEventHandler( EventSink_Logout );
-			EventSink.Instance.ServerStarted += new ServerStartedEventHandler( EventSink_ServerStarted );
-			EventSink.Instance.WorldSave += new WorldSaveEventHandler( EventSink_Save );
+			EventSink.Login += new LoginEventHandler( EventSink_Login );
+			EventSink.Logout += new LogoutEventHandler( EventSink_Logout );
+			EventSink.ServerStarted += new ServerStartedEventHandler( EventSink_ServerStarted );
+			EventSink.WorldSave += new WorldSaveEventHandler( EventSink_Save );
 
 			Timer.DelayCall( TimeSpan.FromSeconds( 30.0 ), TimeSpan.FromSeconds( 30.0 ), new TimerCallback( ProcessTick ) );
 

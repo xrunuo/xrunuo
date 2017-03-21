@@ -12,7 +12,7 @@ namespace Server.Misc
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.PoisonCured += new PoisonCuredEventHandler( EventSink_PoisonCured );
+			EventSink.PoisonCured += new PoisonCuredEventHandler( EventSink_PoisonCured );
 		}
 
 		private static void EventSink_PoisonCured( PoisonCuredEventArgs e )

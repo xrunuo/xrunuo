@@ -10,7 +10,7 @@ namespace Server.Spells.Bard
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.BeforeDamage += new BeforeDamageEventHandler( EventSink_BeforeDamage );
+			EventSink.BeforeDamage += new BeforeDamageEventHandler( EventSink_BeforeDamage );
 		}
 
 		private static void EventSink_BeforeDamage( BeforeDamageEventArgs e )

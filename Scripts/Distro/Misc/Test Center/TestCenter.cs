@@ -19,8 +19,8 @@ namespace Server.Misc
 		{
 			if ( Enabled )
 			{
-				EventSink.Instance.Speech += new SpeechEventHandler( EventSink_Speech );
-				EventSink.Instance.CharacterCreated += new CharacterCreatedEventHandler( EventSink_CharacterCreated );
+				EventSink.Speech += new SpeechEventHandler( EventSink_Speech );
+				EventSink.CharacterCreated += new CharacterCreatedEventHandler( EventSink_CharacterCreated );
 			}
 		}
 

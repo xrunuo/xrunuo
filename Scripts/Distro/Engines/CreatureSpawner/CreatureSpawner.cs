@@ -26,7 +26,7 @@ namespace Server.Mobiles
 		#region Untamed pets cleaning
 		public static void Initialize()
 		{
-			EventSink.Instance.WorldBeforeSave += new WorldBeforeSaveEventHandler( OnBeforeSave );
+			EventSink.WorldBeforeSave += new WorldBeforeSaveEventHandler( OnBeforeSave );
 		}
 
 		private static void OnBeforeSave()

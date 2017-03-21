@@ -8,7 +8,7 @@ namespace Server.Misc
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.RenameRequest += new RenameRequestEventHandler( EventSink_RenameRequest );
+			EventSink.RenameRequest += new RenameRequestEventHandler( EventSink_RenameRequest );
 		}
 
 		private static void EventSink_RenameRequest( RenameRequestEventArgs e )

@@ -82,7 +82,7 @@ namespace Server.Misc
 
 		public static void Initialize()
 		{
-			EventSink.Instance.ClientVersionReceived += new ClientVersionReceivedHandler( EventSink_ClientVersionReceived );
+			EventSink.ClientVersionReceived += new ClientVersionReceivedHandler( EventSink_ClientVersionReceived );
 
 			ClientVersion.Required = null;
 			Required = new ClientVersion( "7.0.34.6" );

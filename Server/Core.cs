@@ -137,7 +137,7 @@ namespace Server
 			GameServer.Instance = new GameServer( netServer, PacketHandlers.Instance );
 			GameServer.Instance.Initialize();
 
-			EventSink.Instance.InvokeServerStarted();
+			EventSink.InvokeServerStarted();
 
 			PacketDispatcher.Initialize();
 
@@ -197,7 +197,7 @@ namespace Server
 			{
 				CrashedEventArgs args = new CrashedEventArgs( e );
 
-				EventSink.Instance.InvokeCrashed( args );
+				EventSink.InvokeCrashed( args );
 
 				close = args.Close;
 			}
@@ -234,7 +234,7 @@ namespace Server
 			Console.Write( "Exiting..." );
 
 			if ( !m_Crashed )
-				EventSink.Instance.InvokeShutdown( new ShutdownEventArgs() );
+				EventSink.InvokeShutdown( new ShutdownEventArgs() );
 
 			if ( m_TimerThread != null )
 				m_TimerThread.Stop();

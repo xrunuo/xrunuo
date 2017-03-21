@@ -16,7 +16,7 @@ namespace Server.Misc
 		public static void Initialize()
 		{
 			Listener.Port = Environment.Config.Network.Bind[0].Port;
-			EventSink.Instance.ServerList += new ServerListEventHandler( EventSink_ServerList );
+			EventSink.ServerList += new ServerListEventHandler( EventSink_ServerList );
 		}
 
 		public static void EventSink_ServerList( ServerListEventArgs e )

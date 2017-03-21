@@ -11,7 +11,7 @@ namespace Server.Mobiles
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.ServerStarted += new ServerStartedEventHandler( OnServerStarted );
+			EventSink.ServerStarted += new ServerStartedEventHandler( OnServerStarted );
 		}
 
 		private static void OnServerStarted()

@@ -10,7 +10,7 @@ namespace Server.Engines.Guilds
 	{
 		public static void Configure()
 		{
-			EventSink.Instance.CreateGuild += new CreateGuildHandler( EventSink_CreateGuild );
+			EventSink.CreateGuild += new CreateGuildHandler( EventSink_CreateGuild );
 		}
 
 		public static BaseGuild EventSink_CreateGuild( CreateGuildEventArgs args )

@@ -16,7 +16,7 @@ namespace Server.Spells.Ninjitsu
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.Login += new LoginEventHandler( OnLogin );
+			EventSink.Login += new LoginEventHandler( OnLogin );
 		}
 
 		public static void OnLogin( LoginEventArgs e )

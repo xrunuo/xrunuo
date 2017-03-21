@@ -13,7 +13,7 @@ namespace Server.Mobiles
 
 		public static void Initialize()
 		{
-			EventSink.Instance.PlayerDeath += new PlayerDeathEventHandler( EventSink_PlayerDeath );
+			EventSink.PlayerDeath += new PlayerDeathEventHandler( EventSink_PlayerDeath );
 		}
 
 		public static void EventSink_PlayerDeath( PlayerDeathEventArgs e )

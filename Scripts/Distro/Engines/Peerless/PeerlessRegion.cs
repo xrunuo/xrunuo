@@ -13,7 +13,7 @@ namespace Server.Regions
 
 		public static void Initialize()
 		{
-			EventSink.Instance.Logout += new LogoutEventHandler( EventSink_Logout );
+			EventSink.Logout += new LogoutEventHandler( EventSink_Logout );
 		}
 
 		public PeerlessRegion( string name, Map map, AltarPeerless altar, Rectangle2D[] regionBounds )

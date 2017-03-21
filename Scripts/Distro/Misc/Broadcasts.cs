@@ -8,8 +8,8 @@ namespace Server.Misc
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.Crashed += new CrashedEventHandler( EventSink_Crashed );
-			EventSink.Instance.Shutdown += new ShutdownEventHandler( EventSink_Shutdown );
+			EventSink.Crashed += new CrashedEventHandler( EventSink_Crashed );
+			EventSink.Shutdown += new ShutdownEventHandler( EventSink_Shutdown );
 		}
 
 		public static void EventSink_Crashed( CrashedEventArgs e )

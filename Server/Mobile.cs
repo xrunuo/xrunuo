@@ -841,7 +841,7 @@ namespace Server
 					list.Add( Utility.FixHtml( guild.Name ) );
 			}
 
-			EventSink.Instance.InvokeOPLRequest( new OPLRequestArgs( this, list ) );
+			EventSink.InvokeOPLRequest( new OPLRequestArgs( this, list ) );
 		}
 
 		public virtual void GetProperties( ObjectPropertyList list )
@@ -1160,7 +1160,7 @@ namespace Server
 				{
 					m_Hunger = value;
 
-					EventSink.Instance.InvokeHungerChanged( new HungerChangedEventArgs( this, oldValue ) );
+					EventSink.InvokeHungerChanged( new HungerChangedEventArgs( this, oldValue ) );
 				}
 			}
 		}
@@ -1572,7 +1572,7 @@ namespace Server
 			{
 				if ( m_Mobile.m_Map != Map.Internal )
 				{
-					EventSink.Instance.InvokeLogout( new LogoutEventArgs( m_Mobile ) );
+					EventSink.InvokeLogout( new LogoutEventArgs( m_Mobile ) );
 
 					m_Mobile.m_LogoutLocation = m_Mobile.m_Location;
 					m_Mobile.m_LogoutMap = m_Mobile.m_Map;
@@ -1796,7 +1796,7 @@ namespace Server
 
 			AggressiveActionEventArgs args = AggressiveActionEventArgs.Create( this, aggressor, criminal );
 
-			EventSink.Instance.InvokeAggressiveAction( args );
+			EventSink.InvokeAggressiveAction( args );
 
 			args.Free();
 
@@ -2301,7 +2301,7 @@ namespace Server
 
 			MovementEventArgs e = MovementEventArgs.Create( this, d );
 
-			EventSink.Instance.InvokeMovement( e );
+			EventSink.InvokeMovement( e );
 
 			bool ret = !e.Blocked;
 
@@ -2758,7 +2758,7 @@ namespace Server
 
 			World.Instance.RemoveMobile( this );
 
-			EventSink.Instance.InvokeDeleted( new DeletedEventArgs( this ) );
+			EventSink.InvokeDeleted( new DeletedEventArgs( this ) );
 
 			StopAggrExpire();
 
@@ -3104,7 +3104,7 @@ namespace Server
 				Stam = 0;
 				Mana = 0;
 
-				EventSink.Instance.InvokePlayerDeath( new PlayerDeathEventArgs( this ) );
+				EventSink.InvokePlayerDeath( new PlayerDeathEventArgs( this ) );
 
 				ProcessDeltaQueue();
 
@@ -3576,7 +3576,7 @@ namespace Server
 
 			BeforeDamageEventArgs args = new BeforeDamageEventArgs( this, from, amount );
 
-			EventSink.Instance.InvokeBeforeDamage( args );
+			EventSink.InvokeBeforeDamage( args );
 
 			amount = args.Amount;
 
@@ -4826,7 +4826,7 @@ namespace Server
 						Send( new MobileAttributes( this ) );
 					}
 
-					EventSink.Instance.InvokeMapChanged( new MapChangedEventArgs( this, oldMap ) );
+					EventSink.InvokeMapChanged( new MapChangedEventArgs( this, oldMap ) );
 
 					OnMapChange( oldMap );
 				}
@@ -5072,7 +5072,7 @@ namespace Server
 
 			HarmfulActionEventArgs args = HarmfulActionEventArgs.Create( this, target, isCriminal );
 
-			EventSink.Instance.InvokeHarmfulAction( args );
+			EventSink.InvokeHarmfulAction( args );
 
 			args.Free();
 		}
@@ -5917,7 +5917,7 @@ namespace Server
 					if ( m_Client == null )
 					{
 						OnDisconnected();
-						EventSink.Instance.InvokeDisconnected( new DisconnectedEventArgs( this ) );
+						EventSink.InvokeDisconnected( new DisconnectedEventArgs( this ) );
 
 						// Disconnected, start the logout timer
 
@@ -5932,7 +5932,7 @@ namespace Server
 					else
 					{
 						OnConnected();
-						EventSink.Instance.InvokeConnected( new ConnectedEventArgs( this ) );
+						EventSink.InvokeConnected( new ConnectedEventArgs( this ) );
 
 						// Connected, stop the logout timer and if needed, move to the world
 
@@ -6489,7 +6489,7 @@ namespace Server
 				OnCured( from, oldPoison );
 
 				if ( oldPoison != null )
-					EventSink.Instance.InvokePoisonCured( new PoisonCuredEventArgs( from, oldPoison ) );
+					EventSink.InvokePoisonCured( new PoisonCuredEventArgs( from, oldPoison ) );
 
 				return true;
 			}
@@ -6909,7 +6909,7 @@ namespace Server
 				Send( new MobileAttributes( this ) );
 			}
 
-			EventSink.Instance.InvokeMapChanged( new MapChangedEventArgs( this, oldMap ) );
+			EventSink.InvokeMapChanged( new MapChangedEventArgs( this, oldMap ) );
 
 			OnMapChange( oldMap );
 			OnLocationChange( oldLocation );
@@ -8218,7 +8218,7 @@ namespace Server
 
 		public virtual void DisplayPaperdollTo( Mobile to )
 		{
-			EventSink.Instance.InvokePaperdollRequest( new PaperdollRequestEventArgs( to, this ) );
+			EventSink.InvokePaperdollRequest( new PaperdollRequestEventArgs( to, this ) );
 		}
 
 		private static bool m_DisableDismountInWarmode;
@@ -8715,7 +8715,7 @@ namespace Server
 						if ( m_MoveRecords.Count >= m_FwdMaxSteps )
 						{
 							FastWalkEventArgs fw = new FastWalkEventArgs( m_Client );
-							EventSink.Instance.InvokeFastWalk( fw );
+							EventSink.InvokeFastWalk( fw );
 
 							if ( fw.Blocked )
 								return false;
@@ -8817,12 +8817,12 @@ namespace Server
 
 		public void CastSpell( int spellId, Item book = null, IEntity target = null )
 		{
-			EventSink.Instance.InvokeCastSpellRequest( new CastSpellRequestEventArgs( this, spellId, book, target ) );
+			EventSink.InvokeCastSpellRequest( new CastSpellRequestEventArgs( this, spellId, book, target ) );
 		}
 
 		public void UseRacialAbility( int abilityId )
 		{
-			EventSink.Instance.InvokeRacialAbilityRequest( new RacialAbilityRequestEventArgs( this, abilityId ) );
+			EventSink.InvokeRacialAbilityRequest( new RacialAbilityRequestEventArgs( this, abilityId ) );
 		}
 
 		public virtual void Use( Item item )
@@ -9159,7 +9159,7 @@ namespace Server
 
 			SpeechEventArgs regArgs = new SpeechEventArgs( this, text, type, hue, keywords );
 
-			EventSink.Instance.InvokeSpeech( regArgs );
+			EventSink.InvokeSpeech( regArgs );
 			m_Region.OnSpeech( regArgs );
 			OnSaid( regArgs );
 

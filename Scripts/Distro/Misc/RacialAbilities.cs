@@ -12,7 +12,7 @@ namespace Server.Mobiles
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.RacialAbilityRequest += new RacialAbilityRequestEventHandler( EventSink_RacialAbilityUsed );
+			EventSink.RacialAbilityRequest += new RacialAbilityRequestEventHandler( EventSink_RacialAbilityUsed );
 		}
 
 		private static void EventSink_RacialAbilityUsed( RacialAbilityRequestEventArgs e )

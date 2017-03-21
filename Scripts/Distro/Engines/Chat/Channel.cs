@@ -10,7 +10,7 @@ namespace Server.Engines.Chat
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.Disconnected += new DisconnectedEventHandler( EventSink_Disconnected );
+			EventSink.Disconnected += new DisconnectedEventHandler( EventSink_Disconnected );
 
 			AddStaticChannel( "General" );
 			AddStaticChannel( "PvP" );

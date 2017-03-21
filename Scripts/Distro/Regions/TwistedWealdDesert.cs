@@ -11,7 +11,7 @@ namespace Server.Regions
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.Login += new LoginEventHandler( Desert_OnLogin );
+			EventSink.Login += new LoginEventHandler( Desert_OnLogin );
 		}
 
 		private static void Desert_OnLogin( LoginEventArgs e )

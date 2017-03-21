@@ -159,7 +159,7 @@ namespace Server.Network
 			{
 				SocketConnectEventArgs args = new SocketConnectEventArgs( socket );
 
-				EventSink.Instance.InvokeSocketConnect( args );
+				EventSink.InvokeSocketConnect( args );
 
 				return args.AllowConnection;
 			}

@@ -15,7 +15,7 @@ namespace Server.Gumps
 
 		public static void Initialize()
 		{
-			EventSink.Instance.PlayerDeath += new PlayerDeathEventHandler( EventSink_PlayerDeath );
+			EventSink.PlayerDeath += new PlayerDeathEventHandler( EventSink_PlayerDeath );
 		}
 
 		private int m_Idx;

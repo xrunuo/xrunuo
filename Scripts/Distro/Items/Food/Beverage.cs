@@ -964,7 +964,7 @@ namespace Server.Items
 
 		public static void Initialize()
 		{
-			EventSink.Instance.Login += new LoginEventHandler( EventSink_Login );
+			EventSink.Login += new LoginEventHandler( EventSink_Login );
 		}
 
 		private static void EventSink_Login( LoginEventArgs e )

@@ -12,8 +12,8 @@ namespace Server.Factions
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.ServerStarted += new ServerStartedEventHandler( EventSink_ServerStarted );
-			EventSink.Instance.MapChanged += new MapChangedEventHandler( EventSink_MapChanged );
+			EventSink.ServerStarted += new ServerStartedEventHandler( EventSink_ServerStarted );
+			EventSink.MapChanged += new MapChangedEventHandler( EventSink_MapChanged );
 		}
 
 		private static Dictionary<Item, MoonbindTimer> m_Timers = new Dictionary<Item, MoonbindTimer>();

@@ -32,7 +32,7 @@ namespace Server.Mobiles
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.WorldBeforeSave += new WorldBeforeSaveEventHandler( EventSink_WorldBeforeSave );
+			EventSink.WorldBeforeSave += new WorldBeforeSaveEventHandler( EventSink_WorldBeforeSave );
 		}
 
 		private static void EventSink_WorldBeforeSave()

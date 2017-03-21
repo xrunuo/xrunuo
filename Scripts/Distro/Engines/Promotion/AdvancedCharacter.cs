@@ -27,7 +27,7 @@ namespace Server.Mobiles
 
 		public static void Initialize()
 		{
-			EventSink.Instance.Login += new LoginEventHandler( OnLogin );
+			EventSink.Login += new LoginEventHandler( OnLogin );
 		}
 
 		private static void OnLogin( LoginEventArgs e )

@@ -34,7 +34,7 @@ namespace Server
 		public static void Initialize()
 		{
 			new LightCycleTimer().Start();
-			EventSink.Instance.Login += new LoginEventHandler( OnLogin );
+			EventSink.Login += new LoginEventHandler( OnLogin );
 
 			CommandSystem.Register( "GlobalLight", AccessLevel.GameMaster, new CommandEventHandler( Light_OnCommand ) );
 		}

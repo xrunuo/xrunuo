@@ -21,7 +21,7 @@ namespace Server.Multis
 		{
 			new UpdateAllTimer().Start();
 
-			EventSink.Instance.WorldSave += new WorldSaveEventHandler( EventSink_WorldSave );
+			EventSink.WorldSave += new WorldSaveEventHandler( EventSink_WorldSave );
 		}
 
 		private static Rectangle2D[] m_BritWrap = new Rectangle2D[] { new Rectangle2D( 16, 16, 5120 - 32, 4096 - 32 ), new Rectangle2D( 5136, 2320, 992, 1760 ) };

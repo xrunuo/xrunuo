@@ -29,8 +29,8 @@ namespace Server.Engines.VendorSearch
 
 		public static void Initialize()
 		{
-			EventSink.Instance.ServerStarted += new ServerStartedEventHandler( () => Instance.UpdateCache() );
-			EventSink.Instance.WorldSave += new WorldSaveEventHandler( ( e ) => Instance.UpdateCache() );
+			EventSink.ServerStarted += new ServerStartedEventHandler( () => Instance.UpdateCache() );
+			EventSink.WorldSave += new WorldSaveEventHandler( ( e ) => Instance.UpdateCache() );
 		}
 
 		private IVendorSearchItem[] m_WorldVendorItemsCache;

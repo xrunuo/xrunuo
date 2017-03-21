@@ -25,7 +25,7 @@ namespace Server.Misc
 
 		public static void Configure()
 		{
-			EventSink.Instance.Login += new LoginEventHandler( EventSink_Login );
+			EventSink.Login += new LoginEventHandler( EventSink_Login );
 		}
 
 		private static void EventSink_Login( LoginEventArgs e )

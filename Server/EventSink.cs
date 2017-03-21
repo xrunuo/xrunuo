@@ -19,10 +19,8 @@
 using System;
 using System.Net;
 using System.Net.Sockets;
-using System.Collections;
 using System.Collections.Generic;
 using Server;
-using Server.Items;
 using Server.Accounting;
 using Server.Network;
 using Server.Guilds;
@@ -84,11 +82,11 @@ namespace Server.Events
 	public delegate void ClientVersionReceivedHandler( ClientVersionReceivedArgs e );
 	public delegate void OPLRequestHandler( OPLRequestArgs e );
 	public delegate void PoisonCuredEventHandler( PoisonCuredEventArgs e );
-	
+
 	public class PoisonCuredEventArgs : EventArgs
 	{
-		public Mobile Mobile { get; private set; }
-		public Poison Poison { get; private set; }
+		public Mobile Mobile { get; }
+		public Poison Poison { get; }
 
 		public PoisonCuredEventArgs( Mobile mobile, Poison poison )
 		{
@@ -1064,112 +1062,112 @@ namespace Server.Events
 			set { m_Instance = value; }
 		}
 
-		public event DeletedEventHandler Deleted;
-		public event BeforeDamageEventHandler BeforeDamage;
-		public event CreateCharRequestEventHandler CreateCharRequest;
-		public event CharacterCreatedEventHandler CharacterCreated;
-		public event OpenDoorMacroEventHandler OpenDoorMacroUsed;
-		public event SpeechEventHandler Speech;
-		public event LoginEventHandler Login;
-		public event ServerListEventHandler ServerList;
-		public event MovementEventHandler Movement;
-		public event HungerChangedEventHandler HungerChanged;
-		public event MapChangedEventHandler MapChanged;
-		public event CrashedEventHandler Crashed;
-		public event ShutdownEventHandler Shutdown;
-		public event HelpRequestEventHandler HelpRequest;
-		public event DisarmRequestEventHandler DisarmRequest;
-		public event StunRequestEventHandler StunRequest;
-		public event OpenSpellbookRequestEventHandler OpenSpellbookRequest;
-		public event CastSpellRequestEventHandler CastSpellRequest;
-		public event AnimateRequestEventHandler AnimateRequest;
-		public event LogoutEventHandler Logout;
-		public event SocketConnectEventHandler SocketConnect;
-		public event ConnectedEventHandler Connected;
-		public event DisconnectedEventHandler Disconnected;
-		public event RenameRequestEventHandler RenameRequest;
-		public event PlayerDeathEventHandler PlayerDeath;
-		public event VirtueGumpRequestEventHandler VirtueGumpRequest;
-		public event VirtueItemRequestEventHandler VirtueItemRequest;
-		public event VirtueMacroEventHandler VirtueMacroUsed;
-		public event ChatRequestEventHandler ChatRequest;
-		public event AccountLoginEventHandler AccountLogin;
-		public event PaperdollRequestEventHandler PaperdollRequest;
-		public event ProfileRequestEventHandler ProfileRequest;
-		public event ChangeProfileRequestEventHandler ChangeProfileRequest;
-		public event AggressiveActionEventHandler AggressiveAction;
-		public event HarmfulActionEventHandler HarmfulAction;
-		public event CommandEventHandler Command;
-		public event GameLoginEventHandler GameLogin;
-		public event DeleteRequestEventHandler DeleteRequest;
-		public event WorldLoadEventHandler WorldLoad;
-		public event WorldBeforeSaveEventHandler WorldBeforeSave;
-		public event WorldSaveEventHandler WorldSave;
-		public event SetAbilityEventHandler SetAbility;
-		public event FastWalkEventHandler FastWalk;
-		public event CreateGuildHandler CreateGuild;
-		public event ServerStartedEventHandler ServerStarted;
-		public event GuildGumpRequestHandler GuildGumpRequest;
-		public event QuestGumpRequestHandler QuestGumpRequest;
-		public event EquipLastWeaponMacroEventHandler EquipLastWeaponMacroUsed;
-		public event EquipMacroEventHandler EquipMacro;
-		public event UnequipMacroEventHandler UnequipMacro;
-		public event TargetByResourceMacroEventHandler TargetByResourceMacro;
-		public event RacialAbilityRequestEventHandler RacialAbilityRequest;
-		public event BoatMovementRequestEventHandler BoatMovementRequest;
-		public event ClientVersionReceivedHandler ClientVersionReceived;
-		public event OPLRequestHandler OPLRequest;
-		public event PoisonCuredEventHandler PoisonCured;
-		
-		public void InvokePoisonCured( PoisonCuredEventArgs e )
+		public static event DeletedEventHandler Deleted;
+		public static event BeforeDamageEventHandler BeforeDamage;
+		public static event CreateCharRequestEventHandler CreateCharRequest;
+		public static event CharacterCreatedEventHandler CharacterCreated;
+		public static event OpenDoorMacroEventHandler OpenDoorMacroUsed;
+		public static event SpeechEventHandler Speech;
+		public static event LoginEventHandler Login;
+		public static event ServerListEventHandler ServerList;
+		public static event MovementEventHandler Movement;
+		public static event HungerChangedEventHandler HungerChanged;
+		public static event MapChangedEventHandler MapChanged;
+		public static event CrashedEventHandler Crashed;
+		public static event ShutdownEventHandler Shutdown;
+		public static event HelpRequestEventHandler HelpRequest;
+		public static event DisarmRequestEventHandler DisarmRequest;
+		public static event StunRequestEventHandler StunRequest;
+		public static event OpenSpellbookRequestEventHandler OpenSpellbookRequest;
+		public static event CastSpellRequestEventHandler CastSpellRequest;
+		public static event AnimateRequestEventHandler AnimateRequest;
+		public static event LogoutEventHandler Logout;
+		public static event SocketConnectEventHandler SocketConnect;
+		public static event ConnectedEventHandler Connected;
+		public static event DisconnectedEventHandler Disconnected;
+		public static event RenameRequestEventHandler RenameRequest;
+		public static event PlayerDeathEventHandler PlayerDeath;
+		public static event VirtueGumpRequestEventHandler VirtueGumpRequest;
+		public static event VirtueItemRequestEventHandler VirtueItemRequest;
+		public static event VirtueMacroEventHandler VirtueMacroUsed;
+		public static event ChatRequestEventHandler ChatRequest;
+		public static event AccountLoginEventHandler AccountLogin;
+		public static event PaperdollRequestEventHandler PaperdollRequest;
+		public static event ProfileRequestEventHandler ProfileRequest;
+		public static event ChangeProfileRequestEventHandler ChangeProfileRequest;
+		public static event AggressiveActionEventHandler AggressiveAction;
+		public static event HarmfulActionEventHandler HarmfulAction;
+		public static event CommandEventHandler Command;
+		public static event GameLoginEventHandler GameLogin;
+		public static event DeleteRequestEventHandler DeleteRequest;
+		public static event WorldLoadEventHandler WorldLoad;
+		public static event WorldBeforeSaveEventHandler WorldBeforeSave;
+		public static event WorldSaveEventHandler WorldSave;
+		public static event SetAbilityEventHandler SetAbility;
+		public static event FastWalkEventHandler FastWalk;
+		public static event CreateGuildHandler CreateGuild;
+		public static event ServerStartedEventHandler ServerStarted;
+		public static event GuildGumpRequestHandler GuildGumpRequest;
+		public static event QuestGumpRequestHandler QuestGumpRequest;
+		public static event EquipLastWeaponMacroEventHandler EquipLastWeaponMacroUsed;
+		public static event EquipMacroEventHandler EquipMacro;
+		public static event UnequipMacroEventHandler UnequipMacro;
+		public static event TargetByResourceMacroEventHandler TargetByResourceMacro;
+		public static event RacialAbilityRequestEventHandler RacialAbilityRequest;
+		public static event BoatMovementRequestEventHandler BoatMovementRequest;
+		public static event ClientVersionReceivedHandler ClientVersionReceived;
+		public static event OPLRequestHandler OPLRequest;
+		public static event PoisonCuredEventHandler PoisonCured;
+
+		public static void InvokePoisonCured( PoisonCuredEventArgs e )
 		{
 			if ( PoisonCured != null )
 				PoisonCured( e );
 		}
 
-		public void InvokeOPLRequest( OPLRequestArgs e )
+		public static void InvokeOPLRequest( OPLRequestArgs e )
 		{
 			if ( OPLRequest != null )
 				OPLRequest( e );
 		}
 
-		public void InvokeClientVersionReceived( ClientVersionReceivedArgs e )
+		public static void InvokeClientVersionReceived( ClientVersionReceivedArgs e )
 		{
 			if ( ClientVersionReceived != null )
 				ClientVersionReceived( e );
 		}
 
-		public void InvokeTargetByResourceMacro( TargetByResourceMacroEventArgs e )
+		public static void InvokeTargetByResourceMacro( TargetByResourceMacroEventArgs e )
 		{
 			if ( TargetByResourceMacro != null )
 				TargetByResourceMacro( e );
 		}
 
-		public void InvokeEquipMacro( EquipMacroEventArgs e )
+		public static void InvokeEquipMacro( EquipMacroEventArgs e )
 		{
 			if ( EquipMacro != null )
 				EquipMacro( e );
 		}
 
-		public void InvokeUnequipMacro( UnequipMacroEventArgs e )
+		public static void InvokeUnequipMacro( UnequipMacroEventArgs e )
 		{
 			if ( UnequipMacro != null )
 				UnequipMacro( e );
 		}
 
-		public void InvokeBoatMovementRequest( BoatMovementRequestEventArgs e )
+		public static void InvokeBoatMovementRequest( BoatMovementRequestEventArgs e )
 		{
 			if ( BoatMovementRequest != null )
 				BoatMovementRequest( e );
 		}
 
-		public void InvokeRacialAbilityRequest( RacialAbilityRequestEventArgs e )
+		public static void InvokeRacialAbilityRequest( RacialAbilityRequestEventArgs e )
 		{
 			if ( RacialAbilityRequest != null )
 				RacialAbilityRequest( e );
 		}
 
-		public void InvokeServerStarted()
+		public static void InvokeServerStarted()
 		{
 			if ( ServerStarted != null )
 				ServerStarted();
@@ -1183,277 +1181,277 @@ namespace Server.Events
 				return null;
 		}
 
-		public void InvokeSetAbility( SetAbilityEventArgs e )
+		public static void InvokeSetAbility( SetAbilityEventArgs e )
 		{
 			if ( SetAbility != null )
 				SetAbility( e );
 		}
 
-		public void InvokeEquipLastWeaponMacroUsed( EquipLastWeaponMacroEventArgs e )
+		public static void InvokeEquipLastWeaponMacroUsed( EquipLastWeaponMacroEventArgs e )
 		{
 			if ( EquipLastWeaponMacroUsed != null )
 				EquipLastWeaponMacroUsed( e );
 		}
 
-		public void InvokeGuildGumpRequest( GuildGumpRequestArgs e )
+		public static void InvokeGuildGumpRequest( GuildGumpRequestArgs e )
 		{
 			if ( GuildGumpRequest != null )
 				GuildGumpRequest( e );
 		}
 
-		public void InvokeQuestGumpRequest( QuestGumpRequestArgs e )
+		public static void InvokeQuestGumpRequest( QuestGumpRequestArgs e )
 		{
 			if ( QuestGumpRequest != null )
 				QuestGumpRequest( e );
 		}
 
-		public void InvokeFastWalk( FastWalkEventArgs e )
+		public static void InvokeFastWalk( FastWalkEventArgs e )
 		{
 			if ( FastWalk != null )
 				FastWalk( e );
 		}
 
-		public void InvokeDeleteRequest( DeleteRequestEventArgs e )
+		public static void InvokeDeleteRequest( DeleteRequestEventArgs e )
 		{
 			if ( DeleteRequest != null )
 				DeleteRequest( e );
 		}
 
-		public void InvokeGameLogin( GameLoginEventArgs e )
+		public static void InvokeGameLogin( GameLoginEventArgs e )
 		{
 			if ( GameLogin != null )
 				GameLogin( e );
 		}
 
-		public void InvokeCommand( CommandEventArgs e )
+		public static void InvokeCommand( CommandEventArgs e )
 		{
 			if ( Command != null )
 				Command( e );
 		}
 
-		public void InvokeAggressiveAction( AggressiveActionEventArgs e )
+		public static void InvokeAggressiveAction( AggressiveActionEventArgs e )
 		{
 			if ( AggressiveAction != null )
 				AggressiveAction( e );
 		}
 
-		public void InvokeHarmfulAction( HarmfulActionEventArgs e )
+		public static void InvokeHarmfulAction( HarmfulActionEventArgs e )
 		{
 			if ( HarmfulAction != null )
 				HarmfulAction( e );
 		}
 
-		public void InvokeProfileRequest( ProfileRequestEventArgs e )
+		public static void InvokeProfileRequest( ProfileRequestEventArgs e )
 		{
 			if ( ProfileRequest != null )
 				ProfileRequest( e );
 		}
 
-		public void InvokeChangeProfileRequest( ChangeProfileRequestEventArgs e )
+		public static void InvokeChangeProfileRequest( ChangeProfileRequestEventArgs e )
 		{
 			if ( ChangeProfileRequest != null )
 				ChangeProfileRequest( e );
 		}
 
-		public void InvokePaperdollRequest( PaperdollRequestEventArgs e )
+		public static void InvokePaperdollRequest( PaperdollRequestEventArgs e )
 		{
 			if ( PaperdollRequest != null )
 				PaperdollRequest( e );
 		}
 
-		public void InvokeAccountLogin( AccountLoginEventArgs e )
+		public static void InvokeAccountLogin( AccountLoginEventArgs e )
 		{
 			if ( AccountLogin != null )
 				AccountLogin( e );
 		}
 
-		public void InvokeChatRequest( ChatRequestEventArgs e )
+		public static void InvokeChatRequest( ChatRequestEventArgs e )
 		{
 			if ( ChatRequest != null )
 				ChatRequest( e );
 		}
 
-		public void InvokeVirtueItemRequest( VirtueItemRequestEventArgs e )
+		public static void InvokeVirtueItemRequest( VirtueItemRequestEventArgs e )
 		{
 			if ( VirtueItemRequest != null )
 				VirtueItemRequest( e );
 		}
 
-		public void InvokeVirtueGumpRequest( VirtueGumpRequestEventArgs e )
+		public static void InvokeVirtueGumpRequest( VirtueGumpRequestEventArgs e )
 		{
 			if ( VirtueGumpRequest != null )
 				VirtueGumpRequest( e );
 		}
 
-		public void InvokeVirtueMacroUsed( VirtueMacroEventArgs e )
+		public static void InvokeVirtueMacroUsed( VirtueMacroEventArgs e )
 		{
 			if ( VirtueMacroUsed != null )
 				VirtueMacroUsed( e );
 		}
 
-		public void InvokePlayerDeath( PlayerDeathEventArgs e )
+		public static void InvokePlayerDeath( PlayerDeathEventArgs e )
 		{
 			if ( PlayerDeath != null )
 				PlayerDeath( e );
 		}
 
-		public void InvokeRenameRequest( RenameRequestEventArgs e )
+		public static void InvokeRenameRequest( RenameRequestEventArgs e )
 		{
 			if ( RenameRequest != null )
 				RenameRequest( e );
 		}
 
-		public void InvokeLogout( LogoutEventArgs e )
+		public static void InvokeLogout( LogoutEventArgs e )
 		{
 			if ( Logout != null )
 				Logout( e );
 		}
 
-		public void InvokeSocketConnect( SocketConnectEventArgs e )
+		public static void InvokeSocketConnect( SocketConnectEventArgs e )
 		{
 			if ( SocketConnect != null )
 				SocketConnect( e );
 		}
 
-		public void InvokeConnected( ConnectedEventArgs e )
+		public static void InvokeConnected( ConnectedEventArgs e )
 		{
 			if ( Connected != null )
 				Connected( e );
 		}
 
-		public void InvokeDisconnected( DisconnectedEventArgs e )
+		public static void InvokeDisconnected( DisconnectedEventArgs e )
 		{
 			if ( Disconnected != null )
 				Disconnected( e );
 		}
 
-		public void InvokeAnimateRequest( AnimateRequestEventArgs e )
+		public static void InvokeAnimateRequest( AnimateRequestEventArgs e )
 		{
 			if ( AnimateRequest != null )
 				AnimateRequest( e );
 		}
 
-		public void InvokeCastSpellRequest( CastSpellRequestEventArgs e )
+		public static void InvokeCastSpellRequest( CastSpellRequestEventArgs e )
 		{
 			if ( CastSpellRequest != null )
 				CastSpellRequest( e );
 		}
 
-		public void InvokeOpenSpellbookRequest( OpenSpellbookRequestEventArgs e )
+		public static void InvokeOpenSpellbookRequest( OpenSpellbookRequestEventArgs e )
 		{
 			if ( OpenSpellbookRequest != null )
 				OpenSpellbookRequest( e );
 		}
 
-		public void InvokeDisarmRequest( DisarmRequestEventArgs e )
+		public static void InvokeDisarmRequest( DisarmRequestEventArgs e )
 		{
 			if ( DisarmRequest != null )
 				DisarmRequest( e );
 		}
 
-		public void InvokeStunRequest( StunRequestEventArgs e )
+		public static void InvokeStunRequest( StunRequestEventArgs e )
 		{
 			if ( StunRequest != null )
 				StunRequest( e );
 		}
 
-		public void InvokeHelpRequest( HelpRequestEventArgs e )
+		public static void InvokeHelpRequest( HelpRequestEventArgs e )
 		{
 			if ( HelpRequest != null )
 				HelpRequest( e );
 		}
 
-		public void InvokeShutdown( ShutdownEventArgs e )
+		public static void InvokeShutdown( ShutdownEventArgs e )
 		{
 			if ( Shutdown != null )
 				Shutdown( e );
 		}
 
-		public void InvokeCrashed( CrashedEventArgs e )
+		public static void InvokeCrashed( CrashedEventArgs e )
 		{
 			if ( Crashed != null )
 				Crashed( e );
 		}
 
-		public void InvokeHungerChanged( HungerChangedEventArgs e )
+		public static void InvokeHungerChanged( HungerChangedEventArgs e )
 		{
 			if ( HungerChanged != null )
 				HungerChanged( e );
 		}
 
-		public void InvokeMapChanged( MapChangedEventArgs e )
+		public static void InvokeMapChanged( MapChangedEventArgs e )
 		{
 			if ( MapChanged != null )
 				MapChanged( e );
 		}
 
-		public void InvokeMovement( MovementEventArgs e )
+		public static void InvokeMovement( MovementEventArgs e )
 		{
 			if ( Movement != null )
 				Movement( e );
 		}
 
-		public void InvokeServerList( ServerListEventArgs e )
+		public static void InvokeServerList( ServerListEventArgs e )
 		{
 			if ( ServerList != null )
 				ServerList( e );
 		}
 
-		public void InvokeLogin( LoginEventArgs e )
+		public static void InvokeLogin( LoginEventArgs e )
 		{
 			if ( Login != null )
 				Login( e );
 		}
 
-		public void InvokeSpeech( SpeechEventArgs e )
+		public static void InvokeSpeech( SpeechEventArgs e )
 		{
 			if ( Speech != null )
 				Speech( e );
 		}
 
-		public void InvokeDeleted( DeletedEventArgs e )
+		public static void InvokeDeleted( DeletedEventArgs e )
 		{
 			if ( Deleted != null )
 				Deleted( e );
 		}
 
-		public void InvokeBeforeDamage( BeforeDamageEventArgs e )
+		public static void InvokeBeforeDamage( BeforeDamageEventArgs e )
 		{
 			if ( BeforeDamage != null )
 				BeforeDamage( e );
 		}
 
-		public void InvokeCreateCharRequest( CreateCharRequestEventArgs e )
+		public static void InvokeCreateCharRequest( CreateCharRequestEventArgs e )
 		{
 			if ( CreateCharRequest != null )
 				CreateCharRequest( e );
 		}
 
-		public void InvokeCharacterCreated( CharacterCreatedEventArgs e )
+		public static void InvokeCharacterCreated( CharacterCreatedEventArgs e )
 		{
 			if ( CharacterCreated != null )
 				CharacterCreated( e );
 		}
 
-		public void InvokeOpenDoorMacroUsed( OpenDoorMacroEventArgs e )
+		public static void InvokeOpenDoorMacroUsed( OpenDoorMacroEventArgs e )
 		{
 			if ( OpenDoorMacroUsed != null )
 				OpenDoorMacroUsed( e );
 		}
 
-		public void InvokeWorldLoad()
+		public static void InvokeWorldLoad()
 		{
 			if ( WorldLoad != null )
 				WorldLoad();
 		}
 
-		public void InvokeWorldBeforeSave()
+		public static void InvokeWorldBeforeSave()
 		{
 			if ( WorldBeforeSave != null )
 				WorldBeforeSave();
 		}
 
-		public void InvokeWorldSave( WorldSaveEventArgs e )
+		public static void InvokeWorldSave( WorldSaveEventArgs e )
 		{
 			if ( WorldSave != null )
 				WorldSave( e );

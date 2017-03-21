@@ -157,7 +157,7 @@ namespace Server.Misc
 
 		public static void Initialize()
 		{
-			EventSink.Instance.Login += new LoginEventHandler( EventSink_Login );
+			EventSink.Login += new LoginEventHandler( EventSink_Login );
 		}
 
 		private static ArrayList m_ActivePollers = new ArrayList();

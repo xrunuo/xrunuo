@@ -16,9 +16,9 @@ namespace Server
 
 		public static void Initialize()
 		{
-			EventSink.Instance.VirtueGumpRequest += new VirtueGumpRequestEventHandler( EventSink_VirtueGumpRequest );
-			EventSink.Instance.VirtueItemRequest += new VirtueItemRequestEventHandler( EventSink_VirtueItemRequest );
-			EventSink.Instance.VirtueMacroUsed += new VirtueMacroEventHandler( EventSink_VirtueMacroUsed );
+			EventSink.VirtueGumpRequest += new VirtueGumpRequestEventHandler( EventSink_VirtueGumpRequest );
+			EventSink.VirtueItemRequest += new VirtueItemRequestEventHandler( EventSink_VirtueItemRequest );
+			EventSink.VirtueMacroUsed += new VirtueMacroEventHandler( EventSink_VirtueMacroUsed );
 		}
 
 		public override int TypeID { get { return 0x1C4; } }

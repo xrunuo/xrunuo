@@ -21,8 +21,8 @@ namespace Server.Spells.Spellweaving
 
 		public static void Initialize()
 		{
-			EventSink.Instance.Login += new LoginEventHandler( OnLogin );
-			EventSink.Instance.PlayerDeath += new PlayerDeathEventHandler( OnPlayerDeath );
+			EventSink.Login += new LoginEventHandler( OnLogin );
+			EventSink.PlayerDeath += new PlayerDeathEventHandler( OnPlayerDeath );
 		}
 
 		private static void OnLogin( LoginEventArgs e )

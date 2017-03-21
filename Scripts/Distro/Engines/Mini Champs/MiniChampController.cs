@@ -12,7 +12,7 @@ namespace Server.Engines.MiniChamps
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.WorldBeforeSave += new WorldBeforeSaveEventHandler( CleanupSpawn );
+			EventSink.WorldBeforeSave += new WorldBeforeSaveEventHandler( CleanupSpawn );
 		}
 
 		private static void CleanupSpawn()

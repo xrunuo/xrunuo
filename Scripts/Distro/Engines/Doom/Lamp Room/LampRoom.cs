@@ -11,7 +11,7 @@ namespace Server.Regions
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.Disconnected += new DisconnectedEventHandler( EventSink_Disconnected );
+			EventSink.Disconnected += new DisconnectedEventHandler( EventSink_Disconnected );
 		}
 
 		private static void EventSink_Disconnected( DisconnectedEventArgs e )

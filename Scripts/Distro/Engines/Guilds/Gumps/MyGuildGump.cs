@@ -15,7 +15,7 @@ namespace Server.Engines.Guilds.Gumps
 
 		public static void Initialize()
 		{
-			EventSink.Instance.GuildGumpRequest += new GuildGumpRequestHandler( EventSink_GuildGumpRequest );
+			EventSink.GuildGumpRequest += new GuildGumpRequestHandler( EventSink_GuildGumpRequest );
 		}
 
 		private static void EventSink_GuildGumpRequest( GuildGumpRequestArgs e )

@@ -17,7 +17,7 @@ namespace Server.Scripts.Commands
 
 		public static void Initialize()
 		{
-			EventSink.Instance.Command += new CommandEventHandler( EventSink_Command );
+			EventSink.Command += new CommandEventHandler( EventSink_Command );
 
 			if ( !Directory.Exists( Environment.Config.LogDirectory ) )
 				Directory.CreateDirectory( Environment.Config.LogDirectory );

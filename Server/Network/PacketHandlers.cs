@@ -259,22 +259,22 @@ namespace Server.Network
 
 		public void SetAbility( GameClient state, IEntity e, EncodedReader reader )
 		{
-			EventSink.Instance.InvokeSetAbility( new SetAbilityEventArgs( state.Mobile, reader.ReadInt32() ) );
+			EventSink.InvokeSetAbility( new SetAbilityEventArgs( state.Mobile, reader.ReadInt32() ) );
 		}
 
 		public void EquipLastWeaponMacro( GameClient state, IEntity e, EncodedReader reader )
 		{
-			EventSink.Instance.InvokeEquipLastWeaponMacroUsed( new EquipLastWeaponMacroEventArgs( state.Mobile ) );
+			EventSink.InvokeEquipLastWeaponMacroUsed( new EquipLastWeaponMacroEventArgs( state.Mobile ) );
 		}
 
 		public void GuildGumpRequest( GameClient state, IEntity e, EncodedReader reader )
 		{
-			EventSink.Instance.InvokeGuildGumpRequest( new GuildGumpRequestArgs( state.Mobile ) );
+			EventSink.InvokeGuildGumpRequest( new GuildGumpRequestArgs( state.Mobile ) );
 		}
 
 		public void QuestGumpRequest( GameClient state, IEntity e, EncodedReader reader )
 		{
-			EventSink.Instance.InvokeQuestGumpRequest( new QuestGumpRequestArgs( state.Mobile ) );
+			EventSink.InvokeQuestGumpRequest( new QuestGumpRequestArgs( state.Mobile ) );
 		}
 
 		public void EncodedCommand( GameClient state, PacketReader pvSrc )
@@ -312,12 +312,12 @@ namespace Server.Network
 			Mobile targ = World.Instance.FindMobile( pvSrc.ReadInt32() );
 
 			if ( targ != null )
-				EventSink.Instance.InvokeRenameRequest( new RenameRequestEventArgs( from, targ, pvSrc.ReadStringSafe() ) );
+				EventSink.InvokeRenameRequest( new RenameRequestEventArgs( from, targ, pvSrc.ReadStringSafe() ) );
 		}
 
 		public void ChatRequest( GameClient state, PacketReader pvSrc )
 		{
-			EventSink.Instance.InvokeChatRequest( new ChatRequestEventArgs( state.Mobile ) );
+			EventSink.InvokeChatRequest( new ChatRequestEventArgs( state.Mobile ) );
 		}
 
 		public void SecureTrade( GameClient state, PacketReader pvSrc )
@@ -458,7 +458,7 @@ namespace Server.Network
 			pvSrc.Seek( 30, SeekOrigin.Current );
 			int index = pvSrc.ReadInt32();
 
-			EventSink.Instance.InvokeDeleteRequest( new DeleteRequestEventArgs( state, index ) );
+			EventSink.InvokeDeleteRequest( new DeleteRequestEventArgs( state, index ) );
 		}
 
 		public void ResourceQuery( GameClient state, PacketReader pvSrc )
@@ -773,7 +773,7 @@ namespace Server.Network
 					}
 				case 0xC7: // Animate
 					{
-						EventSink.Instance.InvokeAnimateRequest( new AnimateRequestEventArgs( m, command ) );
+						EventSink.InvokeAnimateRequest( new AnimateRequestEventArgs( m, command ) );
 
 						break;
 					}
@@ -802,7 +802,7 @@ namespace Server.Network
 						try { booktype = Convert.ToInt32( command ); }
 						catch { booktype = 1; }
 
-						EventSink.Instance.InvokeOpenSpellbookRequest( new OpenSpellbookRequestEventArgs( m, booktype ) );
+						EventSink.InvokeOpenSpellbookRequest( new OpenSpellbookRequestEventArgs( m, booktype ) );
 
 						break;
 					}
@@ -831,7 +831,7 @@ namespace Server.Network
 					{
 						try
 						{
-							EventSink.Instance.InvokeOpenDoorMacroUsed( new OpenDoorMacroEventArgs( m ) );
+							EventSink.InvokeOpenDoorMacroUsed( new OpenDoorMacroEventArgs( m ) );
 						}
 						catch ( Exception e )
 						{
@@ -861,7 +861,7 @@ namespace Server.Network
 
 						try
 						{
-							EventSink.Instance.InvokeVirtueMacroUsed( new VirtueMacroEventArgs( m, virtueID ) );
+							EventSink.InvokeVirtueMacroUsed( new VirtueMacroEventArgs( m, virtueID ) );
 						}
 						catch ( Exception e )
 						{
@@ -996,7 +996,7 @@ namespace Server.Network
 			{
 				case 0x00: // display request
 					{
-						EventSink.Instance.InvokeProfileRequest( new ProfileRequestEventArgs( beholder, beheld ) );
+						EventSink.InvokeProfileRequest( new ProfileRequestEventArgs( beholder, beheld ) );
 
 						break;
 					}
@@ -1010,7 +1010,7 @@ namespace Server.Network
 
 						string text = pvSrc.ReadUnicodeString( length );
 
-						EventSink.Instance.InvokeChangeProfileRequest( new ChangeProfileRequestEventArgs( beholder, beheld, text ) );
+						EventSink.InvokeChangeProfileRequest( new ChangeProfileRequestEventArgs( beholder, beheld, text ) );
 
 						break;
 					}
@@ -1161,7 +1161,7 @@ namespace Server.Network
 
 		public void HelpRequest( GameClient state, PacketReader pvSrc )
 		{
-			EventSink.Instance.InvokeHelpRequest( new HelpRequestEventArgs( state.Mobile ) );
+			EventSink.InvokeHelpRequest( new HelpRequestEventArgs( state.Mobile ) );
 		}
 
 		public void TargetResponse( GameClient state, PacketReader pvSrc )
@@ -1343,18 +1343,18 @@ namespace Server.Network
 					Mobile beheld = World.Instance.FindMobile( pvSrc.ReadInt32() );
 
 					if ( beheld != null )
-						EventSink.Instance.InvokeVirtueGumpRequest( new VirtueGumpRequestEventArgs( state.Mobile, beheld ) );
+						EventSink.InvokeVirtueGumpRequest( new VirtueGumpRequestEventArgs( state.Mobile, beheld ) );
 				}
 				else if ( buttonID == 1971 )
 				{
-					EventSink.Instance.InvokeVirtueGumpRequest( new VirtueGumpRequestEventArgs( state.Mobile, state.Mobile ) );
+					EventSink.InvokeVirtueGumpRequest( new VirtueGumpRequestEventArgs( state.Mobile, state.Mobile ) );
 				}
 				else
 				{
 					Mobile beheld = World.Instance.FindMobile( serial );
 
 					if ( beheld != null )
-						EventSink.Instance.InvokeVirtueItemRequest( new VirtueItemRequestEventArgs( state.Mobile, beheld, buttonID ) );
+						EventSink.InvokeVirtueItemRequest( new VirtueItemRequestEventArgs( state.Mobile, beheld, buttonID ) );
 				}
 			}
 		}
@@ -1728,7 +1728,7 @@ namespace Server.Network
 				serialList.Add( s );
 			}
 
-			EventSink.Instance.InvokeEquipMacro( new EquipMacroEventArgs( ns, serialList ) );
+			EventSink.InvokeEquipMacro( new EquipMacroEventArgs( ns, serialList ) );
 		}
 
 		public void UnequipMacro( GameClient ns, PacketReader pvSrc )
@@ -1743,7 +1743,7 @@ namespace Server.Network
 				layers.Add( s );
 			}
 
-			EventSink.Instance.InvokeUnequipMacro( new UnequipMacroEventArgs( ns, layers ) );
+			EventSink.InvokeUnequipMacro( new UnequipMacroEventArgs( ns, layers ) );
 		}
 
 		public void TargetByResourceMacro( GameClient ns, PacketReader pvSrc )
@@ -1756,7 +1756,7 @@ namespace Server.Network
 			if ( serial.IsItem )
 			{
 				TargetByResourceMacroEventArgs e = new TargetByResourceMacroEventArgs( ns, World.Instance.FindItem( serial ), resourceType );
-				EventSink.Instance.InvokeTargetByResourceMacro( e );
+				EventSink.InvokeTargetByResourceMacro( e );
 			}
 		}
 
@@ -1898,12 +1898,12 @@ namespace Server.Network
 
 		public void StunRequest( GameClient state, PacketReader pvSrc )
 		{
-			EventSink.Instance.InvokeStunRequest( new StunRequestEventArgs( state.Mobile ) );
+			EventSink.InvokeStunRequest( new StunRequestEventArgs( state.Mobile ) );
 		}
 
 		public void DisarmRequest( GameClient state, PacketReader pvSrc )
 		{
-			EventSink.Instance.InvokeDisarmRequest( new DisarmRequestEventArgs( state.Mobile ) );
+			EventSink.InvokeDisarmRequest( new DisarmRequestEventArgs( state.Mobile ) );
 		}
 
 		public void StatLockChange( GameClient state, PacketReader pvSrc )
@@ -2053,7 +2053,7 @@ namespace Server.Network
 
 			try
 			{
-				EventSink.Instance.InvokeBoatMovementRequest( new BoatMovementRequestEventArgs( from, direction, speed ) );
+				EventSink.InvokeBoatMovementRequest( new BoatMovementRequestEventArgs( from, direction, speed ) );
 			}
 			catch ( Exception e )
 			{
@@ -2081,7 +2081,7 @@ namespace Server.Network
 		{
 			CV version = state.Version = new CV( pvSrc.ReadString() );
 
-			EventSink.Instance.InvokeClientVersionReceived( new ClientVersionReceivedArgs( state, version ) );
+			EventSink.InvokeClientVersionReceived( new ClientVersionReceivedArgs( state, version ) );
 		}
 
 		public void MobileQuery( GameClient state, PacketReader pvSrc )
@@ -2232,7 +2232,7 @@ namespace Server.Network
 
 			try
 			{
-				EventSink.Instance.InvokeLogin( new LoginEventArgs( m ) );
+				EventSink.InvokeLogin( new LoginEventArgs( m ) );
 			}
 			catch ( Exception ex )
 			{
@@ -2357,7 +2357,7 @@ namespace Server.Network
 
 				try
 				{
-					EventSink.Instance.InvokeCreateCharRequest( args );
+					EventSink.InvokeCreateCharRequest( args );
 				}
 				catch ( Exception ex )
 				{
@@ -2375,7 +2375,7 @@ namespace Server.Network
 
 					try
 					{
-						EventSink.Instance.InvokeCharacterCreated( new CharacterCreatedEventArgs( m ) );
+						EventSink.InvokeCharacterCreated( new CharacterCreatedEventArgs( m ) );
 					}
 					catch ( Exception ex )
 					{
@@ -2510,7 +2510,7 @@ namespace Server.Network
 
 				try
 				{
-					EventSink.Instance.InvokeCreateCharRequest( args );
+					EventSink.InvokeCreateCharRequest( args );
 				}
 				catch ( Exception ex )
 				{
@@ -2528,7 +2528,7 @@ namespace Server.Network
 
 					try
 					{
-						EventSink.Instance.InvokeCharacterCreated( new CharacterCreatedEventArgs( m ) );
+						EventSink.InvokeCharacterCreated( new CharacterCreatedEventArgs( m ) );
 					}
 					catch ( Exception ex )
 					{
@@ -2663,7 +2663,7 @@ namespace Server.Network
 
 				try
 				{
-					EventSink.Instance.InvokeCreateCharRequest( args );
+					EventSink.InvokeCreateCharRequest( args );
 				}
 				catch ( Exception ex )
 				{
@@ -2681,7 +2681,7 @@ namespace Server.Network
 
 					try
 					{
-						EventSink.Instance.InvokeCharacterCreated( new CharacterCreatedEventArgs( m ) );
+						EventSink.InvokeCharacterCreated( new CharacterCreatedEventArgs( m ) );
 					}
 					catch ( Exception ex )
 					{
@@ -2802,7 +2802,7 @@ namespace Server.Network
 
 			try
 			{
-				EventSink.Instance.InvokeGameLogin( e );
+				EventSink.InvokeGameLogin( e );
 			}
 			catch ( Exception ex )
 			{
@@ -2895,7 +2895,7 @@ namespace Server.Network
 
 			try
 			{
-				EventSink.Instance.InvokeAccountLogin( e );
+				EventSink.InvokeAccountLogin( e );
 			}
 			catch ( Exception ex )
 			{
@@ -2914,7 +2914,7 @@ namespace Server.Network
 
 			try
 			{
-				EventSink.Instance.InvokeServerList( e );
+				EventSink.InvokeServerList( e );
 			}
 			catch ( Exception ex )
 			{

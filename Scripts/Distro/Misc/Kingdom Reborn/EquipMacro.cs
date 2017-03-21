@@ -12,8 +12,8 @@ namespace Server.Misc
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.EquipMacro += new EquipMacroEventHandler( EquipMacro_Handler );
-			EventSink.Instance.UnequipMacro += new UnequipMacroEventHandler( UnequipMacro_Handler );
+			EventSink.EquipMacro += new EquipMacroEventHandler( EquipMacro_Handler );
+			EventSink.UnequipMacro += new UnequipMacroEventHandler( UnequipMacro_Handler );
 		}
 
 		private static void Expire_Callback( object state )

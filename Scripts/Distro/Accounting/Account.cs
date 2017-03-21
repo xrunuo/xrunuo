@@ -521,9 +521,9 @@ namespace Server.Accounting
 
 		public static void Initialize()
 		{
-			EventSink.Instance.Connected += new ConnectedEventHandler( EventSink_Connected );
-			EventSink.Instance.Disconnected += new DisconnectedEventHandler( EventSink_Disconnected );
-			EventSink.Instance.Login += new LoginEventHandler( EventSink_Login );
+			EventSink.Connected += new ConnectedEventHandler( EventSink_Connected );
+			EventSink.Disconnected += new DisconnectedEventHandler( EventSink_Disconnected );
+			EventSink.Login += new LoginEventHandler( EventSink_Login );
 		}
 
 		private static void EventSink_Connected( ConnectedEventArgs e )

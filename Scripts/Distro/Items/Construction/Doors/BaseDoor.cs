@@ -37,7 +37,7 @@ namespace Server.Items
 		// Called by X-RunUO
 		public static void Initialize()
 		{
-			EventSink.Instance.OpenDoorMacroUsed += new OpenDoorMacroEventHandler( EventSink_OpenDoorMacroUsed );
+			EventSink.OpenDoorMacroUsed += new OpenDoorMacroEventHandler( EventSink_OpenDoorMacroUsed );
 
 			CommandSystem.Register( "Link", AccessLevel.GameMaster, new CommandEventHandler( Link_OnCommand ) );
 			CommandSystem.Register( "ChainLink", AccessLevel.GameMaster, new CommandEventHandler( ChainLink_OnCommand ) );

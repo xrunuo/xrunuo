@@ -35,7 +35,7 @@ namespace Server.Engines.Imbuing
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.Login += new LoginEventHandler( OnLogin );
+			EventSink.Login += new LoginEventHandler( OnLogin );
 		}
 
 		private static void OnLogin( LoginEventArgs e )

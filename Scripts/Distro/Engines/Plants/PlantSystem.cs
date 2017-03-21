@@ -383,12 +383,12 @@ namespace Server.Engines.Plants
 
 		public static void Configure()
 		{
-			EventSink.Instance.WorldLoad += new WorldLoadEventHandler( EventSink_WorldLoad );
+			EventSink.WorldLoad += new WorldLoadEventHandler( EventSink_WorldLoad );
 
 			if ( !Misc.AutoRestart.Enabled )
-				EventSink.Instance.WorldSave += new WorldSaveEventHandler( EventSink_WorldSave );
+				EventSink.WorldSave += new WorldSaveEventHandler( EventSink_WorldSave );
 
-			EventSink.Instance.Login += new LoginEventHandler( EventSink_Login );
+			EventSink.Login += new LoginEventHandler( EventSink_Login );
 		}
 
 		private static void EventSink_Login( LoginEventArgs args )

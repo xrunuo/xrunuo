@@ -22,8 +22,8 @@ namespace Server.Engines.CannedEvil
 				{
 					ChampionSpawn spawn = (ChampionSpawn) item;
 
-					EventSink.Instance.Login += new LoginEventHandler( spawn.OnLogin );
-					EventSink.Instance.Logout += new LogoutEventHandler( spawn.OnLogout );
+					EventSink.Login += new LoginEventHandler( spawn.OnLogin );
+					EventSink.Logout += new LogoutEventHandler( spawn.OnLogout );
 				}
 			}
 		}

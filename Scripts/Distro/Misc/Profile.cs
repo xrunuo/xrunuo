@@ -10,8 +10,8 @@ namespace Server.Misc
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.ProfileRequest += new ProfileRequestEventHandler( EventSink_ProfileRequest );
-			EventSink.Instance.ChangeProfileRequest += new ChangeProfileRequestEventHandler( EventSink_ChangeProfileRequest );
+			EventSink.ProfileRequest += new ProfileRequestEventHandler( EventSink_ProfileRequest );
+			EventSink.ChangeProfileRequest += new ChangeProfileRequestEventHandler( EventSink_ChangeProfileRequest );
 		}
 
 		public static void EventSink_ChangeProfileRequest( ChangeProfileRequestEventArgs e )

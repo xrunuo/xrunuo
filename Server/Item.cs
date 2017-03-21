@@ -928,7 +928,7 @@ namespace Server
 
 				OnMapChange();
 
-				EventSink.Instance.InvokeMapChanged( new MapChangedEventArgs( this, old ) );
+				EventSink.InvokeMapChanged( new MapChangedEventArgs( this, old ) );
 
 				if ( m_Map != null )
 				{
@@ -1432,7 +1432,7 @@ namespace Server
 
 					this.OnMapChange();
 
-					EventSink.Instance.InvokeMapChanged( new MapChangedEventArgs( this, old ) );
+					EventSink.InvokeMapChanged( new MapChangedEventArgs( this, old ) );
 
 					if ( old == null || old == Map.Internal )
 						InvalidateProperties();

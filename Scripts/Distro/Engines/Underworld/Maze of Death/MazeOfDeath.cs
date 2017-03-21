@@ -257,7 +257,7 @@ namespace Server.Regions
 		public UnderworldDeathRegion( XmlElement xml, Map map, Region parent )
 			: base( xml, map, parent )
 		{
-			EventSink.Instance.Logout += new LogoutEventHandler( OnLogout );
+			EventSink.Logout += new LogoutEventHandler( OnLogout );
 		}
 
 		protected void OnLogout( LogoutEventArgs e )

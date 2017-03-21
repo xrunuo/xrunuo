@@ -8,7 +8,7 @@ namespace Server.Misc
 	{
 		public static void Initialize()
 		{
-			EventSink.Instance.AnimateRequest += new AnimateRequestEventHandler( EventSink_AnimateRequest );
+			EventSink.AnimateRequest += new AnimateRequestEventHandler( EventSink_AnimateRequest );
 		}
 
 		private static void EventSink_AnimateRequest( AnimateRequestEventArgs e )

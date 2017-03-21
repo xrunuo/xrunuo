@@ -39,7 +39,7 @@ namespace Server.Factions
 
 		public static void Configure()
 		{
-			EventSink.Instance.WorldSave += new WorldSaveEventHandler( EventSink_WorldSave );
+			EventSink.WorldSave += new WorldSaveEventHandler( EventSink_WorldSave );
 		}
 
 		private static void EventSink_WorldSave( WorldSaveEventArgs e )

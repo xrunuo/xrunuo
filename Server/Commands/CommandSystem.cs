@@ -154,7 +154,7 @@ namespace Server
 						{
 							CommandEventArgs e = new CommandEventArgs( from, command, argString, args );
 							entry.Handler( e );
-							EventSink.Instance.InvokeCommand( e );
+							EventSink.InvokeCommand( e );
 						}
 					}
 					else

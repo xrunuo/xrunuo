@@ -17,7 +17,7 @@ namespace Server.Engines.Housing.Regions
 
 		public static void Initialize()
 		{
-			EventSink.Instance.Login += new LoginEventHandler( OnLogin );
+			EventSink.Login += new LoginEventHandler( OnLogin );
 		}
 
 		public static void OnLogin( LoginEventArgs e )
