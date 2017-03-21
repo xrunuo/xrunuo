@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Server;
+using Server.Commands;
 using Server.Mobiles;
 using Server.Items;
 using Server.Gumps;
@@ -82,7 +83,7 @@ namespace Server.Engines.Quests.MadScientist
 				new SutekIngredientInfo( SutekIngredient.GoldIngots,		new Point3D( 914, 581, -14 ),	0x1BEE, 1027146 ),
 				new SutekIngredientInfo( SutekIngredient.GoldIngots,		new Point3D( 922, 594, -14 ),	0x1BEB, 1027146 ),
 				new SutekIngredientInfo( SutekIngredient.CopperIngots,	new Point3D( 914, 580, -14 ),	0x1BE5, 1027140 ),
-				new SutekIngredientInfo( SutekIngredient.CopperIngots,	new Point3D( 916, 590, -11 ),	0x1BE8, 1027140 ),			
+				new SutekIngredientInfo( SutekIngredient.CopperIngots,	new Point3D( 916, 590, -11 ),	0x1BE8, 1027140 ),
 				new SutekIngredientInfo( SutekIngredient.IronIngots,		new Point3D( 915, 580, -14 ),	0x1BF1, 1027152 ),
 				new SutekIngredientInfo( SutekIngredient.IronIngots,		new Point3D( 912, 602, -15 ),	0x1BF4, 1027152 ),
 				new SutekIngredientInfo( SutekIngredient.OilOfVitriol,	new Point3D( 916, 601, -8 ),	0x098D, 1077482 ),

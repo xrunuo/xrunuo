@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Server;
+using Server.Commands;
 
 namespace Server.Items
 {
@@ -75,13 +76,13 @@ namespace Server.Items
 				new ChestEntry( Map.Felucca, new Point3D( 5452, 1891, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 2 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5400, 1860, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 3 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5400, 1860, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
-				new ChestEntry( Map.Felucca, new Point3D( 5400, 1860, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ), 
+				new ChestEntry( Map.Felucca, new Point3D( 5400, 1860, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5387, 1911, 0 ), 60, 120, typeof( DungeonTreasureChestFirst ), 2 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5387, 1911, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 2 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5387, 1911, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 2 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5410, 1933, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 3 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5410, 1933, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
-				new ChestEntry( Map.Felucca, new Point3D( 5410, 1933, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ), 
+				new ChestEntry( Map.Felucca, new Point3D( 5410, 1933, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
 
 				// Covetous lvl 1 Trammel
 				new ChestEntry( Map.Trammel, new Point3D( 5452, 1891, 0 ), 60, 120, typeof( DungeonTreasureChestFirst ), 2 ),
@@ -89,37 +90,37 @@ namespace Server.Items
 				new ChestEntry( Map.Trammel, new Point3D( 5452, 1891, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 2 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5400, 1860, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5400, 1860, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
-				new ChestEntry( Map.Trammel, new Point3D( 5400, 1860, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ), 
+				new ChestEntry( Map.Trammel, new Point3D( 5400, 1860, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5387, 1911, 0 ), 60, 120, typeof( DungeonTreasureChestFirst ), 2 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5387, 1911, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 2 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5387, 1911, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 2 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5410, 1933, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5410, 1933, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
-				new ChestEntry( Map.Trammel, new Point3D( 5410, 1933, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ), 
+				new ChestEntry( Map.Trammel, new Point3D( 5410, 1933, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
 
 				// Covetous lvl 2 Felucca
 				new ChestEntry( Map.Felucca, new Point3D( 5498, 2002, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 3 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5498, 2002, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
-				new ChestEntry( Map.Felucca, new Point3D( 5498, 2002, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ), 
+				new ChestEntry( Map.Felucca, new Point3D( 5498, 2002, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5448, 2026, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5448, 2026, 0 ), 60, 120, typeof( DungeonTreasureChestFourth ), 3 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5448, 2026, 0 ), 60, 120, typeof( DungeonTreasureChestFourth ), 3 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5417, 2000, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 3 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5457, 1973, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 3 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5457, 1973, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
-				new ChestEntry( Map.Felucca, new Point3D( 5457, 1973, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ), 
+				new ChestEntry( Map.Felucca, new Point3D( 5457, 1973, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
 
 				// Covetous lvl 2 Trammel
 				new ChestEntry( Map.Trammel, new Point3D( 5498, 2002, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5498, 2002, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
-				new ChestEntry( Map.Trammel, new Point3D( 5498, 2002, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ), 
+				new ChestEntry( Map.Trammel, new Point3D( 5498, 2002, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5448, 2026, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5448, 2026, 0 ), 60, 120, typeof( DungeonTreasureChestFourth ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5448, 2026, 0 ), 60, 120, typeof( DungeonTreasureChestFourth ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5417, 2000, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5457, 1973, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5457, 1973, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
-				new ChestEntry( Map.Trammel, new Point3D( 5457, 1973, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ), 
+				new ChestEntry( Map.Trammel, new Point3D( 5457, 1973, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
 
 				// Covetous lvl 3 Felucca
 				new ChestEntry( Map.Felucca, new Point3D( 5616, 1839, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
@@ -255,7 +256,7 @@ namespace Server.Items
 				new ChestEntry( Map.Felucca, new Point3D( 5395, 978, 0 ), 60, 120, typeof( DungeonTreasureChestFourth ), 7 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5549, 894, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 3 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5549, 894, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
-				new ChestEntry( Map.Felucca, new Point3D( 5549, 894, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ), 
+				new ChestEntry( Map.Felucca, new Point3D( 5549, 894, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5558, 824, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5558, 824, 0 ), 60, 120, typeof( DungeonTreasureChestFourth ), 3 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5558, 824, 0 ), 60, 120, typeof( DungeonTreasureChestFourth ), 3 ),
@@ -269,7 +270,7 @@ namespace Server.Items
 				new ChestEntry( Map.Trammel, new Point3D( 5395, 978, 0 ), 60, 120, typeof( DungeonTreasureChestFourth ), 7 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5549, 894, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5549, 894, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
-				new ChestEntry( Map.Trammel, new Point3D( 5549, 894, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ), 
+				new ChestEntry( Map.Trammel, new Point3D( 5549, 894, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5558, 824, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5558, 824, 0 ), 60, 120, typeof( DungeonTreasureChestFourth ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5558, 824, 0 ), 60, 120, typeof( DungeonTreasureChestFourth ), 3 ),
@@ -310,7 +311,7 @@ namespace Server.Items
 				new ChestEntry( Map.Trammel, new Point3D( 5930, 81, 25 ), 60, 120, typeof( DungeonTreasureChestFirst ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5911, 103, 25 ), 60, 120, typeof( DungeonTreasureChestSecond ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5968, 80, 25 ), 60, 120, typeof( DungeonTreasureChestFirst ), 3 ),
-				new ChestEntry( Map.Trammel, new Point3D( 5983, 29, 12 ), 60, 120, typeof( DungeonTreasureChestHybrid ), 3 ),				
+				new ChestEntry( Map.Trammel, new Point3D( 5983, 29, 12 ), 60, 120, typeof( DungeonTreasureChestHybrid ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5983, 29, 0 ), 60, 120, typeof( DungeonTreasureChestHybrid ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5983, 29, 0 ), 60, 120, typeof( DungeonTreasureChestHybrid ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5983, 29, 0 ), 60, 120, typeof( DungeonTreasureChestHybrid ), 3 ),
@@ -601,7 +602,7 @@ namespace Server.Items
 				new ChestEntry( Map.Felucca, new Point3D( 5477, 185, 0 ), 60, 120, typeof( DungeonTreasureChestThird ), 3 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5477, 185, 0 ), 60, 120, typeof( DungeonTreasureChestFourth ), 3 ),
 				new ChestEntry( Map.Felucca, new Point3D( 5477, 185, 0 ), 60, 120, typeof( DungeonTreasureChestFourth ), 3 ),
-																											  															 
+
 				// Shame lvl 3 Trammel
 				new ChestEntry( Map.Trammel, new Point3D( 5394, 145, 0 ), 60, 120, typeof( DungeonTreasureChestFirst ), 3 ),
 				new ChestEntry( Map.Trammel, new Point3D( 5394, 145, 0 ), 60, 120, typeof( DungeonTreasureChestSecond ), 3 ),

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Server;
 using Server.Items;
+using Server.Commands;
 
 namespace Server
 {
@@ -319,7 +320,7 @@ namespace Server
 				CreateTeleporter( 2676, 2242, -18, 2691, 2234, 2, map, false );
 				CreateTeleporter( 2758, 2092, -20, 2756, 2097, 38, map, false );
 				CreateTeleporter( 2759, 2092, -20, 2756, 2097, 38, map, false );
-				CreateTeleporter( 2685, 2063, 39, 2685, 2063, -20, map, false ); // that should not be a teleporter: on OSI you simply fall under the ground 
+				CreateTeleporter( 2685, 2063, 39, 2685, 2063, -20, map, false ); // that should not be a teleporter: on OSI you simply fall under the ground
 
 				// Misc
 				CreateTeleporter( 5217, 18, 15, 5204, 74, 17, map, false );
@@ -455,12 +456,12 @@ namespace Server
 
 				// Britain
 				CreateLocalizedTeleporter( 1414, 1630, 50, 1414, 1626, 23, map, map, 1016035 ); // A teleporter to the ground.
-				CreateLocalizedTeleporter( 1424, 1691, 20, 1420, 1695, 0, map, map, 1016386 ); // This tile will teleport you to the ground. 
+				CreateLocalizedTeleporter( 1424, 1691, 20, 1420, 1695, 0, map, map, 1016386 ); // This tile will teleport you to the ground.
 				CreateLocalizedTeleporter( 1493, 1624, 60, 1491, 1629, 16, map, map, 1016035 ); // A teleporter to the ground.
 				CreateLocalizedTeleporter( 1519, 1454, 35, 1521, 1457, 15, map, map, 1016035 ); // A teleporter to the ground.
 
 				// Moonglow
-				CreateLocalizedTeleporter( 4469, 1173, 20, 4465, 1177, 0, map, map, 1016386 ); // This tile will teleport you to the ground. 
+				CreateLocalizedTeleporter( 4469, 1173, 20, 4465, 1177, 0, map, map, 1016386 ); // This tile will teleport you to the ground.
 				CreateLocalizedTeleporter( 4454, 1086, 20, 4454, 1086, 0, map, map, 1016035 ); // A teleporter to the ground.
 
 				// Serpent's Hold
@@ -591,7 +592,7 @@ namespace Server
 				CreateTeleporter( 11, 1519, -27, 11, 873, -28, map, false );
 				CreateTeleporter( 12, 1519, -27, 12, 873, -27, map, false );
 
-				// Ratman Lair 
+				// Ratman Lair
 				CreateTeleporter( 636, 813, -62, 164, 743, -28, map, false );
 				CreateTeleporter( 164, 746, -16, 636, 815, -52, map, false );
 
@@ -769,47 +770,47 @@ namespace Server
 				CreateTeleporter( 548, 455, -40, 428, 113, -28, map, true );
 				CreateTeleporter( 429, 113, -28, 548, 455, -40, map, false );
 
-				CreateTeleporter( 242, 27, -16, 372, 31, -31, map, false ); // stairs - 0x754 
-				CreateTeleporter( 242, 26, -16, 372, 30, -31, map, false ); // stairs - 0x754 
-				CreateTeleporter( 242, 25, -16, 372, 29, -31, map, false ); // stairs - 0x754 
-				CreateTeleporter( 371, 31, -36, 241, 27, -18, map, false ); // stairs - 0x754 
-				CreateTeleporter( 371, 30, -36, 241, 26, -18, map, false ); // stairs - 0x754 
+				CreateTeleporter( 242, 27, -16, 372, 31, -31, map, false ); // stairs - 0x754
+				CreateTeleporter( 242, 26, -16, 372, 30, -31, map, false ); // stairs - 0x754
+				CreateTeleporter( 242, 25, -16, 372, 29, -31, map, false ); // stairs - 0x754
+				CreateTeleporter( 371, 31, -36, 241, 27, -18, map, false ); // stairs - 0x754
+				CreateTeleporter( 371, 30, -36, 241, 26, -18, map, false ); // stairs - 0x754
 
 				DestroyTeleporter( 371, 29, -36, map ); //To remove old erroneous teleporter
 
 				CreateTeleporter( 371, 29, -36, 241, 25, -18, map, false ); // stairs - 0x754
 
-				CreateTeleporter( 272, 141, -16, 555, 427, -1, map, false ); // stairs - 1st 0x753 
-				CreateTeleporter( 273, 141, -16, 556, 427, -1, map, false ); // stairs - 1st 0x753 
-				CreateTeleporter( 274, 141, -16, 557, 427, -1, map, false ); // stairs - 1st 0x753 
-				CreateTeleporter( 555, 426, -6, 272, 140, -21, map, false ); // stairs - 1st 0x753 
-				CreateTeleporter( 556, 426, -6, 273, 140, -21, map, false ); // stairs - 1st 0x753 
-				CreateTeleporter( 557, 426, -6, 274, 140, -21, map, false ); // stairs - 1st 0x753 
+				CreateTeleporter( 272, 141, -16, 555, 427, -1, map, false ); // stairs - 1st 0x753
+				CreateTeleporter( 273, 141, -16, 556, 427, -1, map, false ); // stairs - 1st 0x753
+				CreateTeleporter( 274, 141, -16, 557, 427, -1, map, false ); // stairs - 1st 0x753
+				CreateTeleporter( 555, 426, -6, 272, 140, -21, map, false ); // stairs - 1st 0x753
+				CreateTeleporter( 556, 426, -6, 273, 140, -21, map, false ); // stairs - 1st 0x753
+				CreateTeleporter( 557, 426, -6, 274, 140, -21, map, false ); // stairs - 1st 0x753
 
-				CreateTeleporter( 265, 130, -31, 284, 72, -21, map, false ); // stairs - 0x753 
-				CreateTeleporter( 266, 130, -31, 285, 72, -21, map, false ); // stairs - 0x753 
-				CreateTeleporter( 267, 130, -31, 286, 72, -21, map, false ); // stairs - 0x753 
-				CreateTeleporter( 268, 130, -31, 287, 72, -21, map, false ); // stairs - 0x753 
-				CreateTeleporter( 284, 73, -16, 265, 131, -28, map, false ); // stairs - 0x753 
-				CreateTeleporter( 285, 73, -16, 266, 131, -28, map, false ); // stairs - 0x753 
-				CreateTeleporter( 286, 73, -16, 267, 131, -28, map, false ); // stairs - 0x753 
-				CreateTeleporter( 287, 73, -16, 268, 131, -28, map, false ); // stairs - 0x753 
+				CreateTeleporter( 265, 130, -31, 284, 72, -21, map, false ); // stairs - 0x753
+				CreateTeleporter( 266, 130, -31, 285, 72, -21, map, false ); // stairs - 0x753
+				CreateTeleporter( 267, 130, -31, 286, 72, -21, map, false ); // stairs - 0x753
+				CreateTeleporter( 268, 130, -31, 287, 72, -21, map, false ); // stairs - 0x753
+				CreateTeleporter( 284, 73, -16, 265, 131, -28, map, false ); // stairs - 0x753
+				CreateTeleporter( 285, 73, -16, 266, 131, -28, map, false ); // stairs - 0x753
+				CreateTeleporter( 286, 73, -16, 267, 131, -28, map, false ); // stairs - 0x753
+				CreateTeleporter( 287, 73, -16, 268, 131, -28, map, false ); // stairs - 0x753
 
-				CreateTeleporter( 284, 67, -30, 131, 128, -21, map, false ); // stairs - 0x753 
-				CreateTeleporter( 285, 67, -30, 132, 128, -21, map, false ); // stairs - 0x753 
-				CreateTeleporter( 286, 67, -30, 133, 128, -21, map, false ); // stairs - 0x753 
-				CreateTeleporter( 287, 67, -30, 134, 128, -21, map, false ); // stairs - 0x753 
-				CreateTeleporter( 131, 129, -16, 284, 68, -28, map, false ); // stairs - 0x753 
-				CreateTeleporter( 132, 129, -16, 285, 68, -28, map, false ); // stairs - 0x753 
-				CreateTeleporter( 133, 129, -16, 286, 68, -28, map, false ); // stairs - 0x753 
-				CreateTeleporter( 134, 129, -16, 287, 68, -28, map, false ); // stairs - 0x753 
+				CreateTeleporter( 284, 67, -30, 131, 128, -21, map, false ); // stairs - 0x753
+				CreateTeleporter( 285, 67, -30, 132, 128, -21, map, false ); // stairs - 0x753
+				CreateTeleporter( 286, 67, -30, 133, 128, -21, map, false ); // stairs - 0x753
+				CreateTeleporter( 287, 67, -30, 134, 128, -21, map, false ); // stairs - 0x753
+				CreateTeleporter( 131, 129, -16, 284, 68, -28, map, false ); // stairs - 0x753
+				CreateTeleporter( 132, 129, -16, 285, 68, -28, map, false ); // stairs - 0x753
+				CreateTeleporter( 133, 129, -16, 286, 68, -28, map, false ); // stairs - 0x753
+				CreateTeleporter( 134, 129, -16, 287, 68, -28, map, false ); // stairs - 0x753
 
-				CreateTeleporter( 358, 40, -36, 156, 88, -18, map, false ); // stairs - 0x73A 
-				CreateTeleporter( 358, 41, -36, 156, 89, -18, map, false ); // stairs - 0x73A 
-				CreateTeleporter( 358, 42, -36, 156, 90, -18, map, false ); // stairs - 0x73A 
-				CreateTeleporter( 155, 88, -16, 357, 40, -31, map, false ); // stairs - 0x73A 
-				CreateTeleporter( 155, 89, -16, 357, 41, -31, map, false ); // stairs - 0x73A 
-				CreateTeleporter( 155, 90, -16, 357, 42, -31, map, false ); // stairs - 0x73A 
+				CreateTeleporter( 358, 40, -36, 156, 88, -18, map, false ); // stairs - 0x73A
+				CreateTeleporter( 358, 41, -36, 156, 89, -18, map, false ); // stairs - 0x73A
+				CreateTeleporter( 358, 42, -36, 156, 90, -18, map, false ); // stairs - 0x73A
+				CreateTeleporter( 155, 88, -16, 357, 40, -31, map, false ); // stairs - 0x73A
+				CreateTeleporter( 155, 89, -16, 357, 41, -31, map, false ); // stairs - 0x73A
+				CreateTeleporter( 155, 90, -16, 357, 42, -31, map, false ); // stairs - 0x73A
 
 				CreateTeleporter( 259, 90, -28, 236, 113, -28, map, true );
 
@@ -920,7 +921,7 @@ namespace Server
 
 			public void CreateTeleportersMap3( Map map )
 			{
-				// CreateTeleporter( 408, 254, 2, 428, 319, 2, map, false ); // for doom quest; use blockers to avoid players teleporting into the ship! 
+				// CreateTeleporter( 408, 254, 2, 428, 319, 2, map, false ); // for doom quest; use blockers to avoid players teleporting into the ship!
 				// CreateTeleporter( 428, 321, 2, 422, 328, -1, map, false ); // for doom quest; use blockers to avoid players teleporting into the ship!
 
 				// Doom Dungeon
@@ -972,7 +973,7 @@ namespace Server
 				CreateTeleporter( 404, 1169, 0, 385, 810, 0, map, false );
 				CreateTeleporter( 405, 1169, 0, 385, 810, 0, map, false );
 
-				// Yomotsu Mines Entrance 
+				// Yomotsu Mines Entrance
 				CreateTeleporter( 3, 128, -1, 260, 783, 63, map, Map.Tokuno, false );
 				CreateTeleporter( 4, 128, -1, 260, 783, 63, map, Map.Tokuno, false );
 				CreateTeleporter( 5, 128, -1, 260, 783, 63, map, Map.Tokuno, false );

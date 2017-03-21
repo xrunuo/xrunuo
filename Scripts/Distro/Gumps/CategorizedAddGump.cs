@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Xml;
 using System.Collections;
+using Server.Commands;
 using Server.Network;
 
 namespace Server.Gumps

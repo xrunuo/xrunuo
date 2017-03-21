@@ -21,7 +21,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server.Events;
 
-namespace Server
+namespace Server.Commands
 {
 	public delegate void CommandEventHandler( CommandEventArgs e );
 

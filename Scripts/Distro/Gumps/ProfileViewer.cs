@@ -20,6 +20,7 @@
  */
 
 using System;
+using Server.Commands;
 using Server.Gumps;
 using Server.Network;
 

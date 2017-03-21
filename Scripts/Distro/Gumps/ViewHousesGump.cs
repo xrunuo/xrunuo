@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Server;
+using Server.Commands;
 using Server.Engines.Housing;
 using Server.Engines.Housing.Gumps;
 using Server.Engines.Housing.Items;
@@ -173,7 +174,7 @@ namespace Server.Gumps
 
 				if ( valid )
 				{
-					location = String.Format( "{0}° {1}'{2}, {3}° {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
+					location = String.Format( "{0}ï¿½ {1}'{2}, {3}ï¿½ {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
 				}
 				else
 				{

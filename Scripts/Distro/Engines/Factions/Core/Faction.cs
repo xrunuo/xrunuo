@@ -11,6 +11,7 @@ using Server.Mobiles;
 using Server.Prompts;
 using Server.Targeting;
 using Server.Accounting;
+using Server.Commands;
 using Server.Scripts.Commands;
 using Server.Engines.BuffIcons;
 using Server.Events;
@@ -1245,7 +1246,7 @@ namespace Server.Factions
 					{
 						if ( killer == victim || killerState.Faction != victimState.Faction )
 							ApplySkillLoss( victim );
-						killer.SendLocalizedMessage( 501693 ); // This victim is not worth enough to get kill points from. 
+						killer.SendLocalizedMessage( 501693 ); // This victim is not worth enough to get kill points from.
 						return;
 					}
 

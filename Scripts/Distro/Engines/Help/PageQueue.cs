@@ -7,6 +7,7 @@ using Server.Mobiles;
 using Server.Network;
 using Server.Misc;
 using Server.Accounting;
+using Server.Commands;
 using Server.Engines.Reports;
 using Server.Gumps;
 using Server.Events;
@@ -139,7 +140,7 @@ namespace Server.Engines.Help
 
 				if ( m_Entry.Sender.Client != null && index != -1 )
 				{
-					m_Entry.Sender.SendLocalizedMessage( 1008077, true, ( index + 1 ).ToString() ); // Thank you for paging. Queue status : 
+					m_Entry.Sender.SendLocalizedMessage( 1008077, true, ( index + 1 ).ToString() ); // Thank you for paging. Queue status :
 					m_Entry.Sender.SendLocalizedMessage( 1008084 ); // You can reference our website at www.uo.com or contact us at support@uo.com. To cancel your page, please select the help button again and select cancel.
 				}
 				else

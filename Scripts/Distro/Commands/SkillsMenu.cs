@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Targeting;
 using Server.Gumps;
+using Server.Commands;
 using Server.Scripts.Gumps;
 
 namespace Server.Scripts.Commands

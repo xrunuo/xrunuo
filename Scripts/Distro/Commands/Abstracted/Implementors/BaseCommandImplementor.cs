@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Collections;
 using Server;
+using Server.Commands;
 
 namespace Server.Scripts.Commands
 {

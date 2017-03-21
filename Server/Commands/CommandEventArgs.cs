@@ -18,7 +18,7 @@
 
 using System;
 
-namespace Server
+namespace Server.Commands
 {
 	public class CommandEventArgs : EventArgs
 	{

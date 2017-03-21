@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using Server;
+using Server.Commands;
 using Server.Gumps;
 using Server.Network;
-using Server.Targeting;
 using Server.Targets;
 
 namespace Server.Scripts.Commands
@@ -224,7 +224,7 @@ namespace Server.Scripts.Commands
 
 		private void InvokeCommand( string ip )
 		{
-			Server.CommandSystem.Handle( m_From, String.Format( "{0}{1}", Server.CommandSystem.CommandPrefix, ip ) );
+			CommandSystem.Handle( m_From, String.Format( "{0}{1}", CommandSystem.CommandPrefix, ip ) );
 		}
 
 		public override void OnResponse( GameClient sender, RelayInfo info )
@@ -377,7 +377,7 @@ namespace Server.Scripts.Commands
 
 		private void InvokeCommand( string ip )
 		{
-			Server.CommandSystem.Handle( m_From, String.Format( "{0}{1}", Server.CommandSystem.CommandPrefix, ip ) );
+			CommandSystem.Handle( m_From, String.Format( "{0}{1}", CommandSystem.CommandPrefix, ip ) );
 		}
 
 		public override void OnResponse( GameClient sender, RelayInfo info )

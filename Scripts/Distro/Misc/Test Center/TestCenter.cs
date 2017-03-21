@@ -1,11 +1,11 @@
 using System;
 using System.Text;
+using Server.Commands;
 using Server.Engines.Housing.Items;
 using Server.Gumps;
 using Server.Network;
 using Server.Mobiles;
 using Server.Items;
-using Server.Engines.Craft;
 using Server.Engines.Imbuing;
 using Server.Events;
 
@@ -241,7 +241,7 @@ namespace Server.Misc
 						}
 					case 3: // Command list
 						{
-							sender.Mobile.SendAsciiMessage( 0x482, "The command prefix is \"{0}\"", Server.CommandSystem.CommandPrefix );
+							sender.Mobile.SendAsciiMessage( 0x482, "The command prefix is \"{0}\"", CommandSystem.CommandPrefix );
 							Server.Scripts.Commands.CommandHandlers.Help_OnCommand( new CommandEventArgs( sender.Mobile, "help", "", new string[0] ) );
 
 							break;

@@ -1,7 +1,7 @@
 using System;
-using System.Collections;
 using Server;
 using Server.Targeting;
+using Server.Commands;
 
 namespace Server.Scripts.Commands
 {

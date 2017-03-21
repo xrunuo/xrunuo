@@ -23,6 +23,7 @@ using System.Linq;
 using System.Text;
 using Server.Accounting;
 using Server.ContextMenus;
+using Server.Commands;
 using Server.Events;
 using Server.Guilds;
 using Server.Gumps;
@@ -1216,15 +1217,15 @@ namespace Server
 		}
 
 		/* Logout:
-		 * 
+		 *
 		 * When a client logs into mobile x
 		 *  - if ( x is Internalized ) move x to logout location and map
-		 * 
+		 *
 		 * When a client attached to a mobile disconnects
 		 *  - LogoutTimer is started
 		 *	   - Delay is taken from Region.GetLogoutDelay to allow insta-logout regions.
 		 *     - OnTick : Location and map are stored, and mobile is internalized
-		 * 
+		 *
 		 * Some things to consider:
 		 *  - An internalized person getting killed (say, by poison). Where does the body go?
 		 *  - Regions now have a GetLogoutDelay( Mobile m ); virtual function (see above)
@@ -2159,7 +2160,7 @@ namespace Server
 
 			/*
 			 * Racial Abilities: Strong Back (Humans)
-			 * Humans have an increased carrying capacity above what is determined by their strength. 
+			 * Humans have an increased carrying capacity above what is determined by their strength.
 			 */
 			if ( Race == Race.Human )
 				maxweight += 60;
@@ -6030,11 +6031,11 @@ namespace Server
 					return false;
 			}
 
-			// Items dentro de una casa no se pueden ver si no se está dentro de ella.
+			// Items dentro de una casa no se pueden ver si no se estï¿½ dentro de ella.
 
-			/*Multis.BaseHouse house = Multis.HousingHelper.FindHouseAt( item );	
+			/*Multis.BaseHouse house = Multis.HousingHelper.FindHouseAt( item );
 
-			if ( house != null && 
+			if ( house != null &&
 				house != Multis.HousingHelper.FindHouseAt( this ) &&
 				item.Parent == null &&
 				!( item is Multis.BaseHouse ) &&
@@ -6071,7 +6072,7 @@ namespace Server
 		{
 			/* Author: wyatt
 			 * E-mail: wyatter@gmail.com
-			 * Stuff with accesslevel lower than GameMaster 
+			 * Stuff with accesslevel lower than GameMaster
 			 * can't renamed players by dragging their healthbar
 			 */
 			if ( from.AccessLevel >= AccessLevel.GameMaster )
@@ -7339,7 +7340,7 @@ namespace Server
 		///			SendMessage( "That is too heavy for you to lift." );
 		///			return false;
 		///		}
-		///		
+		///
 		///		return base.OnDragLift( item );
 		/// }</code>
 		/// </example>

@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Commands;
 using Server.Items;
 using Server.Mobiles;
 using Server.Network;
@@ -279,17 +280,17 @@ namespace Server
 					{
 						pm.MoveToWorld( new Point3D( 3648, 2678, -2 ), Map.Trammel );
 
-						/* 
+						/*
 						 * Introduction
-						 * 
+						 *
 						 * Greetings, Traveler! Welcome to
 						 * the world of Ultima Online.
-						 * 
+						 *
 						 * I am Gwen. I am here to help
 						 * you learn the basic skills
 						 * needed to thrive in your travels
 						 * to come.
-						 * 
+						 *
 						 * Left click on the Next button
 						 * to continue.
 						 */
@@ -301,13 +302,13 @@ namespace Server
 					}
 				case 2:
 					{
-						/* 
+						/*
 						 * Movement
-						 * 
+						 *
 						 * Movement is controlled with the mouse.
-						 * 
+						 *
 						 * Do you see the glowing light?
-						 * 
+						 *
 						 * Right click and hold over it
 						 * to walk in that direction.
 						 */
@@ -325,11 +326,11 @@ namespace Server
 
 						pm.Send( new DisplayWaypoint( Serial.MinusOne, new Point3D( 3648, 2666, 0 ), Map.Trammel, WaypointType.QuestDestination, true, 1078267 ) ); // Run Toward Here
 
-						/* 
+						/*
 						 * Movement
-						 * 
+						 *
 						 * Very good!
-						 * 
+						 *
 						 * Right click and hold, further
 						 * away, to run to the glowing light.
 						 */
@@ -345,15 +346,15 @@ namespace Server
 
 						pm.Send( new DisplayWaypoint( Serial.MinusOne, new Point3D( 3648, 2655, 0 ), Map.Trammel, WaypointType.QuestDestination, true, 1078268 ) ); // Pathfind Toward Here
 
-						/* 
+						/*
 						 * Movement
-						 * 
+						 *
 						 * Very good!
-						 * 
+						 *
 						 * Good!
-						 * 
+						 *
 						 * Do you see the glowing light?
-						 * 
+						 *
 						 * Right click and hold over it to
 						 * run in that direction.
 						 */
@@ -367,18 +368,18 @@ namespace Server
 					{
 						pm.Send( new RemoveWaypoint( Serial.MinusOne ) );
 
-						/* 
+						/*
 						 * Inventory
-						 * 
+						 *
 						 * Alright! Now you have your footing.
-						 * 
+						 *
 						 * Many things you find in the world,
 						 * you will be able to pick up and carry.
-						 * 
+						 *
 						 * You have been given a backpack to carry
 						 * all your belongings in.
-						 * 
-						 * Left click on the Backpack Icon in 
+						 *
+						 * Left click on the Backpack Icon in
 						 * the lower right corner of your screen.
 						 */
 						pm.SendGump( new KRStartingQuestGump( 1078236, 1077646, false ) );
@@ -395,17 +396,17 @@ namespace Server
 					{
 						pm.Send( new ToggleHighlightKRUIElement( pm.Serial, 31006, "ToggleInventory", 0 ) );
 
-						/* 
+						/*
 						 * Inventory
-						 * 
+						 *
 						 * This is where you will carry items.
-						 * 
+						 *
 						 * Up ahead are some crates. There are
 						 * supplies in them you may need.
-						 * 
+						 *
 						 * To open the crates, mouse over them
 						 * until you see their item properties.
-						 * 
+						 *
 						 * Double Left click on it to see
 						 * what's inside.
 						 */
@@ -417,13 +418,13 @@ namespace Server
 					}
 				case 7:
 					{
-						/* 
+						/*
 						 * Inventory
-						 * 
+						 *
 						 * To pick up an object, Left click
 						 * and drag it into your backpack
 						 * window.
-						 * 
+						 *
 						 * There are other goodies in the
 						 * crates and barrels, go ahead and
 						 * grab some for yourself.
@@ -438,17 +439,17 @@ namespace Server
 					{
 						pm.Send( new DisplayWaypoint( Serial.MinusOne, new Point3D( 3672, 2653, 0 ), Map.Trammel, WaypointType.QuestDestination, true, 1078266 ) ); // Walk Toward Here
 
-						/* 
+						/*
 						 * Equipment
-						 * 
+						 *
 						 * Excellent!
-						 * 
+						 *
 						 * Now approach Hogarth the Keeper
 						 * of Old Haven in the building to
 						 * the East of you. He is the Keeper
 						 * of Old Haven, and he has a task
 						 * for you.
-						 * 
+						 *
 						 * A glowing light toward the East
 						 * marks his location.
 						 */
@@ -462,12 +463,12 @@ namespace Server
 					{
 						pm.Send( new RemoveWaypoint( Serial.MinusOne ) );
 
-						/* 
+						/*
 						 * Equipment
-						 * 
+						 *
 						 * To speak with the Keeper, Double
 						 * Left click on him.
-						 * 
+						 *
 						 * Please read the quest text and
 						 * accept the quest to proceed.
 						 */
@@ -479,14 +480,14 @@ namespace Server
 					}
 				case 10:
 					{
-						/* 
+						/*
 						 * Equipment
-						 * 
+						 *
 						 * Great! You are on your first quest.
-						 * 
+						 *
 						 * It's a small one, but I'm sure you
 						 * will be rewarded nonetheless.
-						 * 
+						 *
 						 * Remember to pick up the Worn Katana
 						 * and then talk to the Keeper to
 						 * complete the quest.
@@ -499,19 +500,19 @@ namespace Server
 					}
 				case 11:
 					{
-						/* 
+						/*
 						 * Equipment
-						 * 
+						 *
 						 * You found the Worn Katana.
 						 * You need to toggle it as a
 						 * quest item.
-						 * 
+						 *
 						 * Hold down the Shift key, Right
 						 * click on yourself, and select
 						 * 'Toggle Quest Item' from the
 						 * context menu. A 'Targeting
 						 * Cursor' will appear.
-						 * 
+						 *
 						 * Left click on the Worn Katana,
 						 * press the Esc key, and then
 						 * talk to Hogarth.
@@ -524,15 +525,15 @@ namespace Server
 					}
 				case 12:
 					{
-						/* 
+						/*
 						 * Equipment
-						 * 
+						 *
 						 * Great! The Keeper has given you
 						 * a weapon. You need to equip it.
-						 * 
+						 *
 						 * Left click on the Paperdoll icon
 						 * on the lower right of your screen.
-						 * 
+						 *
 						 * Drag the Worn Katana from your
 						 * backpack to your hand slot in the
 						 * Paperdoll.
@@ -547,9 +548,9 @@ namespace Server
 					}
 				case 13:
 					{
-						/* 
+						/*
 						 * Equipment
-						 * 
+						 *
 						 * You will use this same method to
 						 * put on weapons, armor, and
 						 * clothing. The slot has to be
@@ -557,7 +558,7 @@ namespace Server
 						 * you are wearing a hat, and want
 						 * to put on a helmet, you will
 						 * have to take off the hat, first.
-						 * 
+						 *
 						 * Left click the Next button to
 						 * continue.
 						 */
@@ -571,16 +572,16 @@ namespace Server
 					}
 				case 14:
 					{
-						/* 
+						/*
 						 * Navigation
-						 * 
+						 *
 						 * Alright, looks like you're ready
 						 * to go.
-						 * 
+						 *
 						 * Before you can start your
 						 * adventures, you'll have to complete
 						 * a few challenges.
-						 * 
+						 *
 						 * Open your map at the bottom of
 						 * the screen.
 						 */
@@ -599,18 +600,18 @@ namespace Server
 					{
 						pm.Send( new ToggleHighlightKRUIElement( pm.Serial, 31006, "ToggleMap", 0 ) );
 
-						/* 
+						/*
 						 * Navigation
-						 * 
+						 *
 						 * You'll notice a little marker
 						 * on the map. That's a waypoint.
 						 * This waypoint shows you where
 						 * a gate is.
-						 * 
+						 *
 						 * Follow the alley towards the
 						 * marker, and head through the
 						 * gate.
-						 * 
+						 *
 						 * Once you arrive at the gate,
 						 * Double Left click on it.
 						 */
@@ -624,18 +625,18 @@ namespace Server
 					{
 						pm.Send( new RemoveWaypoint( Serial.MinusOne ) );
 
-						/* 
+						/*
 						 * First Combat
-						 * 
+						 *
 						 * This is the town of Old Haven,
 						 * or what remains of it. The
 						 * former residents have been
 						 * reanimated from the dead.
-						 * 
+						 *
 						 * Your first challenge is to
 						 * return just one of these
 						 * skeletons to the grave.
-						 * 
+						 *
 						 * Left click on the War/Peace
 						 * button on the bar at the
 						 * bottom left of your screen.
@@ -652,19 +653,19 @@ namespace Server
 					{
 						pm.Send( new ToggleHighlightKRUIElement( pm.Serial, 31009, "", 0 ) );
 
-						/* 
+						/*
 						 * First Combat
-						 * 
+						 *
 						 * Great, now you are in an
 						 * aggressive stance. Perfect
 						 * for fighting.
-						 * 
+						 *
 						 * Now remember to toggle back
 						 * into Peace mode before you
 						 * try to interact with friendly
 						 * townsfolk. They don't usually
 						 * take kindly to being attacked.
-						 * 
+						 *
 						 * Left click on the Next button
 						 * to continue.
 						 */
@@ -676,18 +677,18 @@ namespace Server
 					}
 				case 18:
 					{
-						/* 
+						/*
 						 * First Combat
-						 * 
+						 *
 						 * Now, let's slay a skeleton.
-						 * 
+						 *
 						 * Left click on the skeleton,
 						 * and move within reach.
-						 * 
+						 *
 						 * Once you begin attacking, you
 						 * will continue to do so until
 						 * the skeleton is laid to rest.
-						 * 
+						 *
 						 * You may need to kill more than
 						 * one skeleton if another
 						 * adventurer is also attacking it.
@@ -700,16 +701,16 @@ namespace Server
 					}
 				case 19:
 					{
-						/* 
+						/*
 						 * First Loot
-						 * 
+						 *
 						 * You destroyed the skeleton!
 						 * Nice work!
-						 * 
+						 *
 						 * Now you can check it to see if
 						 * it was carrying anything of
 						 * value.
-						 * 
+						 *
 						 * Double Left click on its corpse.
 						 */
 						pm.SendGump( new KRStartingQuestGump( 1078240, 1078251, false ) );
@@ -720,13 +721,13 @@ namespace Server
 					}
 				case 20:
 					{
-						/* 
+						/*
 						 * First Loot
-						 * 
+						 *
 						 * This is what the poor thing was
 						 * carrying, remnants of its life
 						 * long past. It's sad, really.
-						 * 
+						 *
 						 * Anyway, drag all of these items
 						 * to your inventory. You can right
 						 * click on each item to loot as well.
@@ -739,19 +740,19 @@ namespace Server
 					}
 				case 21:
 					{
-						/* 
+						/*
 						 * First Loot
-						 * 
+						 *
 						 * Well done! When you have taken
 						 * any damage, it's a good idea to
 						 * heal up before going into battle
 						 * again.
-						 * 
+						 *
 						 * You have a Potion of Healing in
 						 * your inventory. To drink the
 						 * potion, Double Left click on it
 						 * and you will drink it.
-						 * 
+						 *
 						 * Even if you are not injured, try
 						 * and drink the potion now.
 						 */
@@ -763,19 +764,19 @@ namespace Server
 					}
 				case 22:
 					{
-						/* 
+						/*
 						 * First Loot
-						 * 
+						 *
 						 * Very good!
-						 * 
+						 *
 						 * You should have a scroll of
 						 * Magic Arrow in your backpack.
-						 * 
+						 *
 						 * Scrolls, and other items, like
 						 * the healing potion or bandages,
 						 * can be put into your hotbar on
 						 * the bottom left of your screen.
-						 * 
+						 *
 						 * Drag the scroll of Magic Arrow
 						 * from your inventory to an open
 						 * slot on the hotbar.
@@ -792,18 +793,18 @@ namespace Server
 					}
 				case 23:
 					{
-						/* 
+						/*
 						 * First Loot
-						 * 
+						 *
 						 * Don't use that scroll yet. You
 						 * will need it against your next
 						 * opponent.
-						 * 
+						 *
 						 * Let's head to the next waypoint
 						 * on your map. Head Northwest,
 						 * then North, and follow path to
 						 * the East.
-						 * 
+						 *
 						 * I'm waiting for you to approach
 						 * the next gate.
 						 */
@@ -821,17 +822,17 @@ namespace Server
 					}
 				case 24:
 					{
-						/* 
+						/*
 						 * Zombies
-						 * 
+						 *
 						 * Alright, the zombies beyond this
 						 * gate are tough, but you have
 						 * proven to be pretty good with a
 						 * weapon thus far.
-						 * 
+						 *
 						 * Head through the gate and take
 						 * one of those zombies out.
-						 * 
+						 *
 						 * When you have a zombie targeted,
 						 * Left click on the Magic Arrow
 						 * scroll icon in the hotbar to cast
@@ -847,20 +848,20 @@ namespace Server
 					}
 				case 25:
 					{
-						/* 
+						/*
 						 * The Healer
-						 * 
+						 *
 						 * Oh No! They got you.
-						 * 
+						 *
 						 * Death in the world of Sosaria
 						 * is not a trivial thing, but
 						 * neither is it the end of your
 						 * adventures.
-						 * 
+						 *
 						 * You now exist in a ghostly state,
 						 * and cannot interact with the
 						 * world of the living.
-						 * 
+						 *
 						 * The location of the nearest
 						 * Healer appears on your map.
 						 * Go to the location marked
@@ -876,19 +877,19 @@ namespace Server
 					}
 				case 26:
 					{
-						/* 
+						/*
 						 * Your Corpse
-						 * 
+						 *
 						 * Good! You are back among the
 						 * living.
-						 * 
+						 *
 						 * Once you are resurrected you
 						 * will have only 15 minutes to
 						 * return to your body and collect
 						 * your equipment from your corpse.
 						 * Your corpse location is now
 						 * marked on the map.
-						 * 
+						 *
 						 * Double Left click on your corpse
 						 * to retrieve your items.
 						 */
@@ -900,21 +901,21 @@ namespace Server
 					}
 				case 27:
 					{
-						/* 
+						/*
 						 * Your Corpse
-						 * 
+						 *
 						 * Good job! You have retrieved
 						 * your items. Take a look in your
 						 * backpack and re-equip your
 						 * weapon. You will also find a
 						 * small gift from me.
-						 * 
+						 *
 						 * The Token of Passage will allow
 						 * you to get through a gate
 						 * protected by an energy field.
 						 * I have marked the gate on your
 						 * map.
-						 * 
+						 *
 						 * Head to the gate and pass through
 						 * the energy field.
 						 */
@@ -930,16 +931,16 @@ namespace Server
 					}
 				case 28:
 					{
-						/* 
+						/*
 						 * A Challenge
-						 * 
+						 *
 						 * Uh oh. It's the Dark Knight.
 						 * I don't see a way to slip
 						 * past him.
-						 * 
+						 *
 						 * So, it looks like you're
 						 * going to have to talk to him.
-						 * 
+						 *
 						 * Double Left click on the Dark
 						 * Knight to speak with him, and
 						 * let's hope he's in a good mood.
@@ -960,9 +961,9 @@ namespace Server
 					}
 				case 30:
 					{
-						/* 
+						/*
 						 * To New Haven
-						 * 
+						 *
 						 * This gate will lead you out of
 						 * here, and on the road to New
 						 * Haven. It's a town of learning,
@@ -971,7 +972,7 @@ namespace Server
 						 * of the skills vital to your
 						 * prosperity in the world of
 						 * Sosaria.
-						 * 
+						 *
 						 * Follow the path to the West.
 						 */
 						pm.SendGump( new KRStartingQuestGump( 1078608, 1078261, false ) );

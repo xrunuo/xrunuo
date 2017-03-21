@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Collections;
 using Server;
+using Server.Commands;
 using Server.Items;
 using Server.Engines.Quests.Haven;
 using Server.Engines.Quests.Necro;

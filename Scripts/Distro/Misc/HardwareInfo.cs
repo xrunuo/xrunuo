@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Commands;
 using Server.Scripts.Commands;
 using Server.Accounting;
 using Server.Network;

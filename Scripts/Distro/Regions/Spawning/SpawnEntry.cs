@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Server;
+using Server.Commands;
 using Server.Mobiles;
 
 namespace Server.Regions
@@ -14,7 +15,6 @@ namespace Server.Regions
 
 		public static Hashtable Table { get { return m_Table; } }
 
-
 		// When a creature's AI is deactivated (PlayerRangeSensitive optimization) does it return home?
 		public bool ReturnOnDeactivate { get { return true; } }
 
@@ -23,7 +23,6 @@ namespace Server.Regions
 
 		// Are unlinked and untamed creatures removed after 20 hours?
 		public bool RemoveIfUntamed { get { return true; } }
-
 
 		public static readonly Direction InvalidDirection = Direction.Running;
 

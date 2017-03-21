@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Server;
+using Server.Commands;
 using Server.Engines.Craft;
 using Server.Engines.Housing.Multis;
 using Server.Engines.Imbuing;
@@ -124,7 +125,7 @@ namespace Server.Items
 						spell.Cast();
 					}
 					else
-						from.SendLocalizedMessage( 502345 ); // This spell has been temporarily disabled.			
+						from.SendLocalizedMessage( 502345 ); // This spell has been temporarily disabled.
 				}
 			}
 			else

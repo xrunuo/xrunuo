@@ -1,5 +1,7 @@
 using System;
 
+using Server.Commands;
+
 namespace Server.Scripts.Commands
 {
 	public static class Traffic

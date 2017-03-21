@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Server.Commands;
 using Server.Engines.Housing.Multis;
 using Server.Factions;
 using Server.Gumps;
@@ -22,7 +23,7 @@ namespace Server.Scripts.Commands
 	{
 		public static void Initialize()
 		{
-			Server.CommandSystem.CommandPrefix = ".";
+			CommandSystem.CommandPrefix = ".";
 
 			Properties.Register();
 
@@ -1015,7 +1016,7 @@ namespace Server.Scripts.Commands
 
 			ArrayList list = new ArrayList();
 
-			foreach ( CommandEntry entry in Server.CommandSystem.Entries.Values )
+			foreach ( CommandEntry entry in CommandSystem.Entries.Values )
 			{
 				if ( m.AccessLevel >= entry.AccessLevel )
 				{

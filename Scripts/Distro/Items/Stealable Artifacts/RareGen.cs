@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Server;
+using Server.Commands;
 
 namespace Server.Items
 {
@@ -42,7 +43,7 @@ namespace Server.Items
 
 		private static StealableEntry[] m_Entries = new StealableEntry[]
 			{
-				/*				
+				/*
 				// Basket
 				new StealableEntry( Map.Felucca, new Point3D( 3778, 1251, 6 ), 24, 25, typeof( BasketRegular ) ),
 				new StealableEntry( Map.Trammel, new Point3D( 3778, 1251, 6 ), 24, 25, typeof( BasketRegular ) ),
@@ -197,7 +198,7 @@ namespace Server.Items
 				new StealableEntry( Map.Malas, new Point3D( 187, 643, -1 ), 18432, 27648, typeof( PaintingFO ) ),
 				new StealableEntry( Map.Malas, new Point3D( 146, 623,  0 ), 18432, 27648, typeof( PaintingF ) ),
 				new StealableEntry( Map.Malas, new Point3D( 181, 629,  0 ), 18432, 27648, typeof( SculptureEO ) ),
-			
+
 				// Underworld - Artifact rarity 3
 				new StealableEntry( Map.TerMur, new Point3D( 1239, 1019, -37 ), 288, 432, typeof( JugsofGoblinRotgut ) ),
 				new StealableEntry( Map.TerMur, new Point3D( 1046, 1106, -63 ), 288, 432, typeof( MysteriousSupper ) ),

@@ -1,9 +1,7 @@
 ﻿using System;
 using Server;
 using Server.Items;
-using Server.Mobiles;
-using Server.Network;
-using Server.Gumps;
+using Server.Commands;
 
 namespace Server.Engines.TombOfKings
 {

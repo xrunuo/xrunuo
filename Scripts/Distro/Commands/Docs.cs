@@ -4,6 +4,7 @@ using System.Text;
 using System.Reflection;
 using System.Collections;
 using Server;
+using Server.Commands;
 using Server.Items;
 using Server.Engines.BulkOrders;
 
@@ -1673,7 +1674,7 @@ namespace Server.Scripts.Commands
 				html.WriteLine( "      <h4><a href=\"index.html\">Back to the index</a></h4>" );
 				html.WriteLine( "      <h2>Commands</h2>" );
 
-				ArrayList commands = new ArrayList( Server.CommandSystem.Entries.Values );
+				ArrayList commands = new ArrayList( CommandSystem.Entries.Values );
 				ArrayList list = new ArrayList();
 
 				commands.Sort();
@@ -2132,7 +2133,7 @@ namespace Server.Scripts.Commands
 
 				first = false;
 
-				html.Write( "{0}Add {1}", Server.CommandSystem.CommandPrefix, t.Name );
+				html.Write( "{0}Add {1}", CommandSystem.CommandPrefix, t.Name );
 
 				ParameterInfo[] parms = ctor.GetParameters();
 

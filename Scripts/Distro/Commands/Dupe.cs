@@ -1,8 +1,8 @@
 using System;
 using System.Reflection;
+using Server.Commands;
 using Server.Items;
 using Server.Targeting;
-using Server.Misc;
 
 namespace Server.Scripts.Commands
 {

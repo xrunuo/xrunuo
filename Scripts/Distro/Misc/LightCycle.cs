@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Server;
+using Server.Commands;
 using Server.Network;
 using Server.Engines.BuffIcons;
 using Server.Events;
@@ -72,12 +73,12 @@ namespace Server
 			Server.Items.Clock.GetTime( from.Map, from.X, from.Y, out hours, out minutes );
 
 			/* OSI times:
-			 * 
+			 *
 			 * Midnight ->  3:59 AM : Night
 			 *  4:00 AM -> 11:59 PM : Day
-			 * 
+			 *
 			 * RunUO times:
-			 * 
+			 *
 			 * 10:00 PM -> 11:59 PM : Scale to night
 			 * Midnight ->  3:59 AM : Night
 			 *  4:00 AM ->  5:59 AM : Scale to day

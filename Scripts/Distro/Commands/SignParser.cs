@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.IO;
 using Server;
+using Server.Commands;
 using Server.Items;
 
 namespace Server.Scripts.Commands

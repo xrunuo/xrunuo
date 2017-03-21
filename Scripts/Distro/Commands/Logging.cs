@@ -3,6 +3,7 @@ using System.IO;
 using Server;
 using Server.Accounting;
 using Server.Events;
+using Server.Commands;
 
 namespace Server.Scripts.Commands
 {

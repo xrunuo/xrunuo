@@ -13,6 +13,7 @@ using Server.Accounting;
 using Server.Items;
 using Server.Network;
 using Server.Prompts;
+using Server.Commands;
 using Server.Scripts.Commands;
 
 namespace Server.Gumps
@@ -3224,7 +3225,7 @@ namespace Server.Gumps
 
 		private void InvokeCommand( string ip )
 		{
-			CommandSystem.Handle( m_From, String.Format( "{0}{1}", Server.CommandSystem.CommandPrefix, ip ) );
+			CommandSystem.Handle( m_From, String.Format( "{0}{1}", CommandSystem.CommandPrefix, ip ) );
 		}
 
 		public static void GetAccountInfo( Account a, out AccessLevel accessLevel, out bool online )

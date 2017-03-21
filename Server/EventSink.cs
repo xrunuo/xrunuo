@@ -22,6 +22,7 @@ using System.Net.Sockets;
 using System.Collections.Generic;
 using Server;
 using Server.Accounting;
+using Server.Commands;
 using Server.Network;
 using Server.Guilds;
 

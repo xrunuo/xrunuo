@@ -2,6 +2,7 @@ using System;
 using System.Reflection;
 using System.Collections;
 using Server;
+using Server.Commands;
 using Server.Gumps;
 using Server.Network;
 
@@ -174,7 +175,7 @@ namespace Server.Scripts.Commands
 				return false;
 			}
 
-			string[] args = Server.CommandSystem.Split( m_Condition );
+			string[] args = CommandSystem.Split( m_Condition );
 
 			m_Scope.Process( from, this, args );
 
@@ -214,7 +215,7 @@ namespace Server.Scripts.Commands
 				argString = m_Command.Substring( indexOf + 1 );
 
 				command = m_Command.Substring( 0, indexOf );
-				args = Server.CommandSystem.Split( argString );
+				args = CommandSystem.Split( argString );
 			}
 			else
 			{
