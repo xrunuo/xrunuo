@@ -4283,7 +4283,7 @@ namespace Server.Mobiles
 
 		public override bool DoEffectTimerOnDeath { get { return m_IsBonded; } }
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			if ( GiftOfLifeSpell.UnderEffect( this ) )
 			{

@@ -67,7 +67,7 @@ namespace Server.Mobiles
 
 		public override bool KeepsItemsOnDeath { get { return true; } }
 		private int m_GoldOnDeath = 0;
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			// Stop the pay timer if its running 
 			if ( m_PayTimer != null )

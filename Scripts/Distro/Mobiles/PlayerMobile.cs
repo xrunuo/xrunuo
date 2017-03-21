@@ -2486,7 +2486,7 @@ namespace Server.Mobiles
 		private int m_InsuranceCost;
 		private int m_InsuranceBonus;
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			Flying = false;
 

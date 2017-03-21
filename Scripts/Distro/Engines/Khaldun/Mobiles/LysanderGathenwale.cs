@@ -92,7 +92,7 @@ namespace Server.Mobiles
 			AddLoot( LootPack.MedScrolls, 2 );
 		}
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			if ( !base.OnBeforeDeath() )
 			{

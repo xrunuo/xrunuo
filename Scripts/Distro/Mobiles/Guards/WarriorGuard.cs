@@ -116,7 +116,7 @@ namespace Server.Mobiles
 		{
 		}
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			if ( m_Focus != null && m_Focus.Alive )
 				new AvengeTimer( m_Focus ).Start(); // If a guard dies, three more guards will spawn

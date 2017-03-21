@@ -65,7 +65,7 @@ namespace Server.Mobiles
 			get { return OppositionGroup.SavagesAndOrcs; }
 		}
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			IMount mount = this.Mount;
 

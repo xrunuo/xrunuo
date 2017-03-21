@@ -57,7 +57,7 @@ namespace Server.Mobiles
 		{
 		}
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			Effects.SendLocationParticles( EffectItem.Create( Location, Map, EffectItem.DefaultDuration ), 0x3728, 10, 10, 2023 );
 

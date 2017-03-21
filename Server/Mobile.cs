@@ -3058,7 +3058,7 @@ namespace Server
 		/// <seealso cref="OnAfterDeath" />
 		/// </summary>
 		/// <returns>True to continue with death, false to override it.</returns>
-		protected virtual bool OnBeforeDeath()
+		public virtual bool OnBeforeDeath()
 		{
 			return true;
 		}

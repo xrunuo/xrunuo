@@ -106,7 +106,7 @@ namespace Server.Mobiles
 		public override bool ShowFameTitle { get { return false; } }
 		public override bool HasBreath { get { return true; } }
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			IMount mount = this.Mount;
 

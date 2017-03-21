@@ -276,7 +276,7 @@ namespace Server.Mobiles
 			House = null;
 		}
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			if ( !base.OnBeforeDeath() )
 			{

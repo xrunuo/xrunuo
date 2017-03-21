@@ -114,7 +114,7 @@ namespace Server.Mobiles
 			base.OnDamage( amount, from, willKill );
 		}
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			SpillAcid( 4 );
 

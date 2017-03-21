@@ -43,7 +43,7 @@ namespace Server.Mobiles
 
 		public override bool DeleteCorpseOnDeath { get { return true; } }
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			if ( !base.OnBeforeDeath() )
 				return false;

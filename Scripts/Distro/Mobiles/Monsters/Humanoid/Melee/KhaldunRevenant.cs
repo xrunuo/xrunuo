@@ -144,7 +144,7 @@ namespace Server.Mobiles
 			base.OnThink();
 		}
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			Effects.SendLocationEffect( Location, Map, 0x376A, 10, 1 );
 			return true;

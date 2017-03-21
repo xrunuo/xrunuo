@@ -85,7 +85,7 @@ namespace Server.Mobiles
 			return 0x257;
 		}
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			Gold gold = new Gold( Utility.RandomMinMax( 190, 230 ) );
 			gold.MoveToWorld( Location, Map );

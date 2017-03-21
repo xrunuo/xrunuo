@@ -152,7 +152,7 @@ namespace Server.Mobiles
 			base.OnThink();
 		}
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			Effects.PlaySound( Location, Map, 0x10B );
 			Effects.SendLocationParticles( EffectItem.Create( Location, Map, TimeSpan.FromSeconds( 10.0 ) ), 0x37CC, 1, 50, 2101, 7, 9909, 0 );

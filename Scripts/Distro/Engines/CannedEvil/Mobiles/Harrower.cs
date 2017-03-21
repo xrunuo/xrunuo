@@ -425,7 +425,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			if ( m_TrueForm )
 			{

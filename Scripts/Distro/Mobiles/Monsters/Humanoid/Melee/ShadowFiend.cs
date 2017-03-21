@@ -78,7 +78,7 @@ namespace Server.Mobiles
 
 		public override bool CanRummageCorpses { get { return true; } }
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			if ( Backpack != null )
 				Backpack.Destroy();

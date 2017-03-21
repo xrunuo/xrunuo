@@ -57,7 +57,7 @@ namespace Server.Mobiles
 		public override int GetAngerSound() { return 0x56; }
 		public override int GetAttackSound() { return 0x23B; }
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			if ( !base.OnBeforeDeath() )
 				return false;

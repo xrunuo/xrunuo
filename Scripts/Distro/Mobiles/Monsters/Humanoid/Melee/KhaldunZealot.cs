@@ -109,7 +109,7 @@ namespace Server.Mobiles
 		{
 		}
 
-		protected override bool OnBeforeDeath()
+		public override bool OnBeforeDeath()
 		{
 			BoneKnight rm = new BoneKnight();
 			rm.Team = this.Team;
