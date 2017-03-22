@@ -103,7 +103,7 @@ namespace Server.Factions
 
 		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
-			if ( m.IsPlayer && m.Alive && this.InRange( m, 10 ) && !this.InRange( oldLocation, 10 ) && this.InLOS( m ) && m_Orders.GetReaction( Faction.Find( m ) ).Type == ReactionType.Warn )
+			if ( m.Player && m.Alive && this.InRange( m, 10 ) && !this.InRange( oldLocation, 10 ) && this.InLOS( m ) && m_Orders.GetReaction( Faction.Find( m ) ).Type == ReactionType.Warn )
 			{
 				Direction = this.GetDirectionTo( m );
 

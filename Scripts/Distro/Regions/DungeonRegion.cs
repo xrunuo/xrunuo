@@ -37,7 +37,7 @@ namespace Server.Regions
 		{
 			Account acc = m.Account as Account;
 
-			if ( m.IsPlayer && ( acc == null || acc.Trial ) )
+			if ( m.Player && ( acc == null || acc.Trial ) )
 			{
 				m.SendMessage( "Trial account players may not travel into dungeons." );
 

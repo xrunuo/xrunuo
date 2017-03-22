@@ -46,7 +46,7 @@ namespace Server.Spells.Spellweaving
 
 				int damage = 0;
 
-				bool pvp = m.IsPlayer && Caster.IsPlayer;
+				bool pvp = m.Player && Caster.Player;
 
 				if ( pvp || m.Hits > umbral || m is SlasherOfVeils )
 					damage = Utility.RandomMinMax( 25, 35 );

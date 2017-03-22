@@ -34,7 +34,7 @@ namespace Server.Mobiles
 
 		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
-			if ( m.Alive && m.IsPlayer && !m.Hidden && this.InRange( m, 3 ) && !this.InRange( oldLocation, 3 ) )
+			if ( m.Alive && m.Player && !m.Hidden && this.InRange( m, 3 ) && !this.InRange( oldLocation, 3 ) )
 				PublicOverheadMessage( MessageType.Regular, 0x24E, true, "Greetings Adventurer!  If you are seeking to enter the Abyss, I may be of assistance to you." );
 		}
 

@@ -183,7 +183,7 @@ namespace Server.Items
 		{
 			if ( m is CuSidhe && n is CuSidhe )
 				return SkillName.Healing;
-			else if ( !m.IsPlayer && ( m.Body.IsMonster || m.Body.IsAnimal ) )
+			else if ( !m.Player && ( m.Body.IsMonster || m.Body.IsAnimal ) )
 				return SkillName.Veterinary;
 			else
 				return SkillName.Healing;
@@ -193,7 +193,7 @@ namespace Server.Items
 		{
 			if ( m is CuSidhe && n is CuSidhe )
 				return SkillName.Healing;
-			else if ( !m.IsPlayer && ( m.Body.IsMonster || m.Body.IsAnimal ) )
+			else if ( !m.Player && ( m.Body.IsMonster || m.Body.IsAnimal ) )
 				return SkillName.AnimalLore;
 			else
 				return SkillName.Anatomy;
@@ -204,7 +204,7 @@ namespace Server.Items
 			if ( m_Bandage == null || !m_Bandage.AttemptsMidlifeCure )
 				return;
 
-			if ( m_Healer != m_Patient || !m_Healer.Alive || !m_Healer.IsPlayer )
+			if ( m_Healer != m_Patient || !m_Healer.Alive || !m_Healer.Player )
 				return;
 
 			SkillName primarySkill = GetPrimarySkill( m_Patient, m_Healer );
@@ -462,7 +462,7 @@ namespace Server.Items
 
 					double min, max;
 
-					if ( m_Patient.IsPlayer )
+					if ( m_Patient.Player )
 					{
 						min = ( anatomy / 6.0 ) + ( healing / 6.0 ) + 3.0;
 						max = ( anatomy / 6.0 ) + ( healing / 3.0 ) + 10.0;

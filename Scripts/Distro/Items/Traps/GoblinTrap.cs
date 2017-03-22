@@ -74,7 +74,7 @@ namespace Server.Items
 
 		public override void OnTrigger( Mobile from )
 		{
-			if ( !from.IsPlayer || !from.Alive || from.Flying || from.AccessLevel > AccessLevel.Player )
+			if ( !from.Player || !from.Alive || from.Flying || from.AccessLevel > AccessLevel.Player )
 			{
 				if ( m_Concealing == null && Visible )
 					Visible = false;

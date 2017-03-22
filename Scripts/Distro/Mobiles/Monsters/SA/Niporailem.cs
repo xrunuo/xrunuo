@@ -109,7 +109,7 @@ namespace Server.Mobiles
 							{
 								Item treasure = new NiporailemsTreasure();
 
-								if ( !to.IsPlayer || !to.PlaceInBackpack( treasure ) )
+								if ( !to.Player || !to.PlaceInBackpack( treasure ) )
 								{
 									treasure.MoveToWorld( to.Location, to.Map );
 									treasure.OnDroppedToWorld( this, to.Location );

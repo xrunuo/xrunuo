@@ -28,7 +28,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( !from.IsPlayer )
+			if ( !from.Player )
 				return;
 
 			if ( from.InRange( GetWorldLocation(), 1 ) )
@@ -39,7 +39,7 @@ namespace Server.Items
 
 		public override bool OnMoveOver( Mobile m )
 		{
-			if ( !m.IsPlayer )
+			if ( !m.Player )
 				return true;
 
 			UseGate( m );
@@ -264,7 +264,7 @@ namespace Server.Items
 
 			PMList[] checkLists;
 
-			if ( mobile.IsPlayer )
+			if ( mobile.Player )
 			{
 				if ( Factions.Sigil.ExistsOn( mobile ) )
 					checkLists = PMList.SigilLists;
@@ -369,7 +369,7 @@ namespace Server.Items
 			{
 				m_Mobile.SendLocalizedMessage( 1019002 ); // You are too far away to use the gate.
 			}
-			else if ( m_Mobile.IsPlayer && m_Mobile.Kills >= 5 && list.Map != Map.Felucca )
+			else if ( m_Mobile.Player && m_Mobile.Kills >= 5 && list.Map != Map.Felucca )
 			{
 				m_Mobile.SendLocalizedMessage( 1019004 ); // You are not allowed to travel there.
 			}

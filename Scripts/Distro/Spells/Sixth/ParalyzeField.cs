@@ -168,7 +168,7 @@ namespace Server.Spells.Sixth
 
 					double duration = 2.0 + ( (int) ( m_Caster.Skills[SkillName.EvalInt].Value / 10 ) - (int) ( m.Skills[SkillName.MagicResist].Value / 10 ) );
 
-					if ( !m.IsPlayer )
+					if ( !m.Player )
 						duration *= 3.0;
 
 					Utility.FixMin( ref duration, 0.0 );

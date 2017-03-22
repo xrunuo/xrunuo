@@ -215,7 +215,7 @@ namespace Server.Items
 		{
 			if ( m_Active )
 			{
-				if ( !m_Creatures && !m.IsPlayer )
+				if ( !m_Creatures && !m.Player )
 				{
 					return true;
 				}
@@ -361,7 +361,7 @@ namespace Server.Items
 		{
 			if ( Active )
 			{
-				if ( !Creatures && !m.IsPlayer )
+				if ( !Creatures && !m.Player )
 				{
 					return true;
 				}
@@ -512,7 +512,7 @@ namespace Server.Items
 			{
 				Mobile m = e.Mobile;
 
-				if ( !Creatures && !m.IsPlayer )
+				if ( !Creatures && !m.Player )
 				{
 					return;
 				}

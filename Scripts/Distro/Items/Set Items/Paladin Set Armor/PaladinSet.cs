@@ -43,7 +43,7 @@ namespace Server.Items
 
 			List<AttributeMod> mods = new List<AttributeMod>();
 
-			mods.Add( new AttributeMod( MagicalAttribute.ReflectPhysical, 25 ) );
+			mods.Add( new AttributeMod( AosAttribute.ReflectPhysical, 25 ) );
 
 			ApplyMods( m, mods );
 

@@ -23,7 +23,7 @@ namespace Server.Engines.Quests.Necro
 				return true;
 			}
 
-			bool sendMessage = m.IsPlayer;
+			bool sendMessage = m.Player;
 
 			if ( m is BaseCreature )
 			{

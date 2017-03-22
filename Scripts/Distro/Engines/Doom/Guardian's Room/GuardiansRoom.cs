@@ -13,7 +13,7 @@ namespace Server.Regions
 
 		public override void OnExit( Mobile m )
 		{
-			if ( m.IsPlayer && !m.Alive )
+			if ( m.Player && !m.Alive )
 			{
 				Rectangle2D rect = new Rectangle2D( 342, 168, 16, 16 );
 

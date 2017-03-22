@@ -12,7 +12,7 @@ namespace Server.Engines.Imbuing
 		// Increases the wearer's Physical Resistance.
 		public override int Description { get { return 1112010; } }
 
-		public override ElementAttribute Attribute { get { return ElementAttribute.Physical; } }
+		public override AosElementAttribute Attribute { get { return AosElementAttribute.Physical; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons | ImbuingFlag.Armor | ImbuingFlag.Jewelry; } }
@@ -54,7 +54,7 @@ namespace Server.Engines.Imbuing
 		// Increases the wearer's Fire Resistance.
 		public override int Description { get { return 1112009; } }
 
-		public override ElementAttribute Attribute { get { return ElementAttribute.Fire; } }
+		public override AosElementAttribute Attribute { get { return AosElementAttribute.Fire; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons | ImbuingFlag.Armor | ImbuingFlag.Jewelry; } }
@@ -96,7 +96,7 @@ namespace Server.Engines.Imbuing
 		// Increases the wearer's Cold Resistance.
 		public override int Description { get { return 1112007; } }
 
-		public override ElementAttribute Attribute { get { return ElementAttribute.Cold; } }
+		public override AosElementAttribute Attribute { get { return AosElementAttribute.Cold; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons | ImbuingFlag.Armor | ImbuingFlag.Jewelry; } }
@@ -138,7 +138,7 @@ namespace Server.Engines.Imbuing
 		// Increases the wearer's Poison Resistance.
 		public override int Description { get { return 1112011; } }
 
-		public override ElementAttribute Attribute { get { return ElementAttribute.Poison; } }
+		public override AosElementAttribute Attribute { get { return AosElementAttribute.Poison; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons | ImbuingFlag.Armor | ImbuingFlag.Jewelry; } }
@@ -180,7 +180,7 @@ namespace Server.Engines.Imbuing
 		// Increases the wearer's Energy Resistance.
 		public override int Description { get { return 1112008; } }
 
-		public override ElementAttribute Attribute { get { return ElementAttribute.Energy; } }
+		public override AosElementAttribute Attribute { get { return AosElementAttribute.Energy; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons | ImbuingFlag.Armor | ImbuingFlag.Jewelry; } }

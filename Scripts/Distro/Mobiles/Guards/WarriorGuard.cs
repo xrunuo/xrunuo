@@ -315,7 +315,7 @@ namespace Server.Mobiles
 					target.Damage( target.HitsMax, m_Owner );
 					target.Kill(); // just in case, maybe Damage is overriden on some shard
 
-					if ( target.Corpse != null && !target.IsPlayer )
+					if ( target.Corpse != null && !target.Player )
 						target.Corpse.Delete();
 
 					m_Owner.Focus = null;

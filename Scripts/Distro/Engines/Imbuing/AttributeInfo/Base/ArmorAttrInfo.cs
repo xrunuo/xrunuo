@@ -4,11 +4,11 @@ using Server;
 namespace Server.Engines.Imbuing
 {
 	/// <summary>
-	/// Represents the properties from <see cref="ArmorAttribute" /> enum.
+	/// Represents the properties from <see cref="AosArmorAttribute" /> enum.
 	/// </summary>
 	public abstract class ArmorAttrInfo : BaseAttrInfo
 	{
-		public abstract ArmorAttribute Attribute { get; }
+		public abstract AosArmorAttribute Attribute { get; }
 
 		public override bool CanHold( Item item )
 		{

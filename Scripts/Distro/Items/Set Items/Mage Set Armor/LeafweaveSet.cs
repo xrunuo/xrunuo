@@ -37,7 +37,7 @@ namespace Server.Items
 
 			List<AttributeMod> mods = new List<AttributeMod>();
 
-			mods.Add( new AttributeMod( MagicalAttribute.SpellDamage, 15 ) );
+			mods.Add( new AttributeMod( AosAttribute.SpellDamage, 15 ) );
 
 			ApplyMods( m, mods );
 

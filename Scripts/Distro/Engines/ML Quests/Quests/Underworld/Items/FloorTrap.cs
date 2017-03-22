@@ -116,7 +116,7 @@ namespace Server.Items
 
 		public override void OnTrigger( Mobile from )
 		{
-			if ( from.IsPlayer || from.YellowHealthbar )
+			if ( from.Player || from.YellowHealthbar )
 			{
 				if ( m_Concealing == null && Visible )
 					Visible = false;
@@ -156,7 +156,7 @@ namespace Server.Items
 			if ( m.Location == oldLocation )
 				return;
 
-			if ( m.IsPlayer || m.YellowHealthbar )
+			if ( m.Player || m.YellowHealthbar )
 				return;
 
 			if ( m is BaseCreature )

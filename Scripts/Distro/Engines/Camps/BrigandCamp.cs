@@ -139,7 +139,7 @@ namespace Server.Multis
 		{
 			base.OnEnter( m );
 
-			if ( m.IsPlayer && m_Prisoner != null )
+			if ( m.Player && m_Prisoner != null )
 			{
 				m_Prisoner.Yell( Utility.RandomMinMax( 502261, 502268 ) );
 			}

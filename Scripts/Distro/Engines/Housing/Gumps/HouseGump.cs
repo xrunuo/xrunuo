@@ -171,7 +171,7 @@ namespace Server.Engines.Housing.Gumps
 					AddButton( 10, 150 + ( offset * 20 ), 4005, 4007, GetButtonID( button, i ), GumpButtonType.Reply, 0 );
 				}
 
-				if ( accountOf && m.IsPlayer && m.Account != null )
+				if ( accountOf && m.Player && m.Account != null )
 				{
 					name = "Account of " + name;
 				}

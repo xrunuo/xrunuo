@@ -165,7 +165,7 @@ namespace Server.Mobiles
 
 				foreach ( Mobile m in m_Owner.GetMobilesInRange( 6 ) )
 				{
-					if ( m != m_Owner && m.IsPlayer && m_Owner.CanBeHarmful( m ) && m_Owner.CanSee( m ) && m.Region == m_Owner.Region )
+					if ( m != m_Owner && m.Player && m_Owner.CanBeHarmful( m ) && m_Owner.CanSee( m ) && m.Region == m_Owner.Region )
 					{
 						toCurse = m;
 						break;

@@ -152,7 +152,7 @@ namespace Server.Mobiles
 
 				foreach ( Mobile m in this.GetMobilesInRange( 5 ) )
 				{
-					if ( m.IsPlayer )
+					if ( m.Player )
 					{
 						PlayerMobile pm = m as PlayerMobile;
 						if ( pm.HonorActive )
@@ -221,7 +221,7 @@ namespace Server.Mobiles
 
 				foreach ( Mobile m in m_Owner.GetMobilesInRange( 16 ) )
 				{
-					if ( m != m_Owner && m.IsPlayer && m_Owner.CanBeHarmful( m ) && m_Owner.CanSee( m ) )
+					if ( m != m_Owner && m.Player && m_Owner.CanBeHarmful( m ) && m_Owner.CanSee( m ) )
 					{
 						PlayerMobile pm = m as PlayerMobile;
 						if ( !pm.HonorActive )

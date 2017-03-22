@@ -71,8 +71,8 @@ namespace Server.Spells.Bard
 				{
 					m_Mods = new AttributeMod[]
 					{
-						new AttributeMod( MagicalAttribute.AttackChance, -propMalus ),
-						new AttributeMod( MagicalAttribute.SpellDamage, -propMalus )
+						new AttributeMod( AosAttribute.AttackChance, -propMalus ),
+						new AttributeMod( AosAttribute.SpellDamage, -propMalus )
 					};
 
 					if ( CheckInstrumentSlays( target ) )

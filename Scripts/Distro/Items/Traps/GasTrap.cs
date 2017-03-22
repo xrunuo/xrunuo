@@ -86,7 +86,7 @@ namespace Server.Items
 
 		public override void OnTrigger( Mobile from )
 		{
-			if ( m_Poison == null || !from.IsPlayer || !from.Alive || from.AccessLevel > AccessLevel.Player )
+			if ( m_Poison == null || !from.Player || !from.Alive || from.AccessLevel > AccessLevel.Player )
 			{
 				return;
 			}

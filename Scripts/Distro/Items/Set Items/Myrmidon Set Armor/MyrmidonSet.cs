@@ -40,7 +40,7 @@ namespace Server.Items
 
 			List<AttributeMod> mods = new List<AttributeMod>();
 
-			mods.Add( new AttributeMod( MagicalAttribute.Luck, 500 ) );
+			mods.Add( new AttributeMod( AosAttribute.Luck, 500 ) );
 
 			ApplyMods( m, mods );
 

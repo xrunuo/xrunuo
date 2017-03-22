@@ -50,7 +50,7 @@ namespace Server.Misc
 
 		private static TimeSpan Mobile_HitsRegenRate( Mobile from )
 		{
-			int points = from.GetMagicalAttribute( MagicalAttribute.RegenHits );
+			int points = from.GetMagicalAttribute( AosAttribute.RegenHits );
 
 			if ( from is BaseCreature && !( (BaseCreature) from ).IsAnimatedDead )
 				points += 4;
@@ -61,7 +61,7 @@ namespace Server.Misc
 			if ( CheckAnimal( from, typeof( Dog ) ) || CheckAnimal( from, typeof( Cat ) ) )
 				points += from.Skills[SkillName.Ninjitsu].Fixed / 200;
 
-			if ( from.IsPlayer && from.Race == Race.Human )
+			if ( from.Player && from.Race == Race.Human )
 				points += 2;
 
 			if ( SurgeShield.IsUnderSurgeEffect( from, SurgeEffect.HitPoint ) )
@@ -70,7 +70,7 @@ namespace Server.Misc
 			Utility.FixMin( ref points, 0 );
 
 			// Publish 42: Added caps to stat regen rates: HP Regeneration: 18
-			if ( from.IsPlayer )
+			if ( from.Player )
 				Utility.FixMax( ref points, 18 );
 
 			if ( CheckBump( from ) )
@@ -86,7 +86,7 @@ namespace Server.Misc
 
 			CheckBonusSkill( from, from.Stam, from.StamMax, SkillName.Focus );
 
-			int points = from.GetMagicalAttribute( MagicalAttribute.RegenStam ) + (int) ( from.Skills[SkillName.Focus].Value * 0.1 );
+			int points = from.GetMagicalAttribute( AosAttribute.RegenStam ) + (int) ( from.Skills[SkillName.Focus].Value * 0.1 );
 
 			if ( CheckTransform( from, typeof( VampiricEmbraceSpell ) ) )
 				points += 15;
@@ -103,7 +103,7 @@ namespace Server.Misc
 			Utility.FixMin( ref points, -1 );
 
 			// Publish 42: Added caps to stat regen rates: Stamina Regeneration: 24
-			if ( from.IsPlayer )
+			if ( from.Player )
 				Utility.FixMax( ref points, 24 );
 
 			return TimeSpan.FromSeconds( 1.0 / ( 0.1 * ( 2 + points ) ) );
@@ -142,7 +142,7 @@ namespace Server.Misc
 			double baseItemBonus = ( meditation / 2.0 + focus / 4.0 ) / 90.0;
 			baseItemBonus = ( baseItemBonus * 0.65 ) + 2.35;
 
-			double intensityBonus = from.GetMagicalAttribute( MagicalAttribute.RegenMana );
+			double intensityBonus = from.GetMagicalAttribute( AosAttribute.RegenMana );
 
 			// ********** Special Bonuses **********
 			if ( CheckTransform( from, typeof( VampiricEmbraceSpell ) ) )
@@ -152,7 +152,7 @@ namespace Server.Misc
 			// *************************************
 
 			// Gargoyle Racial Ability: Mystic Insight
-			if ( from.IsPlayer && from.Race == Race.Gargoyle )
+			if ( from.Player && from.Race == Race.Gargoyle )
 				intensityBonus += 2;
 			// *************************************
 

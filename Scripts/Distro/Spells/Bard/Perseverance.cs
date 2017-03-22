@@ -52,10 +52,10 @@ namespace Server.Spells.Bard
 			GetSkillBonus( out music, out peace, out provo, out disco );
 
 			int defenseChance = 1 + GetMusicBonus( music ) + GetPeaceBonus( peace ) + provo + disco;
-			mods.Add( new AttributeMod( MagicalAttribute.DefendChance, defenseChance ) );
+			mods.Add( new AttributeMod( AosAttribute.DefendChance, defenseChance ) );
 
 			int castingFocus = 1 + ( music + peace ) / 2 + ( provo + disco ) / 3;
-			mods.Add( new AttributeMod( MagicalAttribute.CastingFocus, castingFocus ) );
+			mods.Add( new AttributeMod( AosAttribute.CastingFocus, castingFocus ) );
 
 			int damageTaken = 1 + GetMusicBonus( music ) + GetPeaceBonus( peace ) + provo + disco;
 			this.DamageTaken = damageTaken;

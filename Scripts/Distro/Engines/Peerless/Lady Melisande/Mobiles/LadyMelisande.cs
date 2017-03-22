@@ -132,7 +132,7 @@ namespace Server.Mobiles
 
 				if ( m is BaseCreature && ( ( (BaseCreature) m ).Controlled || ( (BaseCreature) m ).Summoned || ( (BaseCreature) m ).Team != this.Team ) )
 					list.Add( m );
-				else if ( m.IsPlayer )
+				else if ( m.Player )
 					list.Add( m );
 			}
 

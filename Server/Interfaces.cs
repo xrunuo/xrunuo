@@ -113,19 +113,19 @@ namespace Server
 		void UnscaleDurability();
 		void ScaleDurability();
 		TimeSpan GetDelay( Mobile attacker );
-		WeaponAttributes WeaponAttributes { get; set; }
+		AosWeaponAttributes WeaponAttributes { get; set; }
 	}
 
 	public interface IArmor : IMagicalItem, IMagicalBonus, IResistances, ISkillBonuses, IAbsorption
 	{
 		void UnscaleDurability();
 		void ScaleDurability();
-		ArmorAttributes ArmorAttributes { get; set; }
+		AosArmorAttributes ArmorAttributes { get; set; }
 	}
 
 	public interface ICloth
 	{
-		ArmorAttributes ClothingAttributes { get; set; }
+		AosArmorAttributes ClothingAttributes { get; set; }
 	}
 
 	public interface IHued
@@ -154,17 +154,17 @@ namespace Server
 
 	public interface IMagicalItem
 	{
-		MagicalAttributes Attributes { get; set; }
+		AosAttributes Attributes { get; set; }
 	}
 
 	public interface IMagicalBonus
 	{
-		int GetAttributeBonus( MagicalAttribute attr );
+		int GetAttributeBonus( AosAttribute attr );
 	}
 
 	public interface IResistances
 	{
-		ElementAttributes Resistances { get; set; }
+		AosElementAttributes Resistances { get; set; }
 	}
 
 	public interface ISkillBonuses

@@ -180,7 +180,7 @@ namespace Server.Items
 
 				if ( Parent is Container )
 				{
-					if ( !( RootParent is Mobile && ( (Mobile) RootParent ).IsPlayer ) || IsInBankBox( this ) )
+					if ( !( RootParent is Mobile && ( (Mobile) RootParent ).Player ) || IsInBankBox( this ) )
 						maxWeight = ( (Container) Parent ).MaxWeight;
 					else
 						maxWeight = DefaultMaxWeight;
@@ -193,7 +193,7 @@ namespace Server.Items
 					maxWeight = DefaultMaxWeight;
 				}
 
-				if ( Parent is Mobile && ( (Mobile) Parent ).IsPlayer && !( this is BankBox ) )
+				if ( Parent is Mobile && ( (Mobile) Parent ).Player && !( this is BankBox ) )
 					maxWeight = 550;
 
 				return maxWeight;

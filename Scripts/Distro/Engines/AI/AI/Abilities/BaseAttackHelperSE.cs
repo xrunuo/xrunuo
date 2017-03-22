@@ -106,7 +106,7 @@ namespace Server
 				mt.Rider = null;
 			}
 
-			if ( target.IsPlayer )
+			if ( target.Player )
 			{
 				target.BeginAction( typeof( BaseMount ) );
 

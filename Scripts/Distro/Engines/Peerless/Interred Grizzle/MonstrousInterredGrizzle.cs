@@ -137,7 +137,7 @@ namespace Server.Mobiles
 			if ( to == null )
 				return;
 
-			if ( to.Alive && to.IsPlayer && m_Table[to] == null )
+			if ( to.Alive && to.Player && m_Table[to] == null )
 			{
 				to.ForcedWalk = true;
 				to.SendLocalizedMessage( 1072069 ); // A cacophonic sound lambastes you, suppressing your ability to move.
@@ -299,7 +299,7 @@ namespace Server.Mobiles
 			if ( !base.OnMoveOver( m ) )
 				return false;
 
-			if ( ( m.IsPlayer && m.Alive ) || ( m is BaseCreature && !m.IsDeadBondedPet && ( (BaseCreature) m ).Controlled ) )
+			if ( ( m.Player && m.Alive ) || ( m is BaseCreature && !m.IsDeadBondedPet && ( (BaseCreature) m ).Controlled ) )
 				m_Table[m] = Timer.DelayCall( TimeSpan.FromSeconds( 1.0 ), TimeSpan.FromSeconds( 1.0 ), new TimerStateCallback( Damage_Callback ), m );
 
 			return true;

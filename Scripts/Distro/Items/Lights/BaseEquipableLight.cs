@@ -6,10 +6,10 @@ namespace Server.Items
 {
 	public abstract class BaseEquipableLight : BaseLight, IMagicalItem
 	{
-		private MagicalAttributes m_Attributes;
+		private AosAttributes m_Attributes;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public MagicalAttributes Attributes
+		public AosAttributes Attributes
 		{
 			get { return m_Attributes; }
 			set { }
@@ -21,7 +21,7 @@ namespace Server.Items
 		{
 			Layer = Layer.TwoHanded;
 
-			m_Attributes = new MagicalAttributes( this );
+			m_Attributes = new AosAttributes( this );
 		}
 
 		public BaseEquipableLight( Serial serial )
@@ -169,14 +169,14 @@ namespace Server.Items
 			{
 				case 1:
 					{
-						m_Attributes = new MagicalAttributes( this, reader );
+						m_Attributes = new AosAttributes( this, reader );
 
 						goto case 0;
 					}
 				case 0:
 					{
 						if ( version == 0 )
-							m_Attributes = new MagicalAttributes( this );
+							m_Attributes = new AosAttributes( this );
 
 						break;
 					}

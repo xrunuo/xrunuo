@@ -501,7 +501,7 @@ namespace Server.Mobiles
 
 		public void RegisterDamage( Mobile from, int amount )
 		{
-			if ( from == null || !from.IsPlayer )
+			if ( from == null || !from.Player )
 				return;
 
 			if ( m_DamageEntries.ContainsKey( from ) )
@@ -572,7 +572,7 @@ namespace Server.Mobiles
 
 		public bool IsEligable( Mobile m, Item Artifact )
 		{
-			return m.IsPlayer && m.Alive && m.InRange( Location, 32 ) && m.Backpack != null && m.Backpack.CheckHold( m, Artifact, false );
+			return m.Player && m.Alive && m.InRange( Location, 32 ) && m.Backpack != null && m.Backpack.CheckHold( m, Artifact, false );
 		}
 
 		public Item GetArtifact()
@@ -641,7 +641,7 @@ namespace Server.Mobiles
 
 				foreach ( Mobile m in m_Owner.GetMobilesInRange( 16 ) )
 				{
-					if ( m != m_Owner && m.IsPlayer && m_Owner.CanBeHarmful( m ) && m_Owner.CanSee( m ) )
+					if ( m != m_Owner && m.Player && m_Owner.CanBeHarmful( m ) && m_Owner.CanSee( m ) )
 					{
 						toTeleport = m;
 						break;

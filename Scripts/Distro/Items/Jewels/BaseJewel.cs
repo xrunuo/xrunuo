@@ -22,8 +22,8 @@ namespace Server.Items
 
 	public abstract class BaseJewel : Item, ICraftable, IMagicalItem, IResistances, ISkillBonuses, IImbuable, IAbsorption, IWearableDurability, IArtifactRarity
 	{
-		private MagicalAttributes m_MagicalAttributes;
-		private ElementAttributes m_AosResistances;
+		private AosAttributes m_AosAttributes;
+		private AosElementAttributes m_AosResistances;
 		private SkillBonuses m_SkillBonuses;
 		private AbsorptionAttributes m_AbsorptionAttributes;
 
@@ -90,16 +90,16 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public MagicalAttributes Attributes
+		public AosAttributes Attributes
 		{
-			get { return m_MagicalAttributes; }
+			get { return m_AosAttributes; }
 			set
 			{
 			}
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public ElementAttributes Resistances
+		public AosElementAttributes Resistances
 		{
 			get { return m_AosResistances; }
 			set
@@ -186,8 +186,8 @@ namespace Server.Items
 		public BaseJewel( int itemID, Layer layer )
 			: base( itemID )
 		{
-			m_MagicalAttributes = new MagicalAttributes( this );
-			m_AosResistances = new ElementAttributes( this );
+			m_AosAttributes = new AosAttributes( this );
+			m_AosResistances = new AosElementAttributes( this );
 			m_SkillBonuses = new SkillBonuses( this );
 			m_AbsorptionAttributes = new AbsorptionAttributes( this );
 
@@ -207,9 +207,9 @@ namespace Server.Items
 
 				m_SkillBonuses.AddTo( from );
 
-				int strBonus = m_MagicalAttributes.BonusStr;
-				int dexBonus = m_MagicalAttributes.BonusDex;
-				int intBonus = m_MagicalAttributes.BonusInt;
+				int strBonus = m_AosAttributes.BonusStr;
+				int dexBonus = m_AosAttributes.BonusDex;
+				int intBonus = m_AosAttributes.BonusInt;
 
 				if ( strBonus != 0 || dexBonus != 0 || intBonus != 0 )
 				{
@@ -363,73 +363,73 @@ namespace Server.Items
 			if ( ( prop = m_AbsorptionAttributes.EnergyResonance ) != 0 )
 				list.Add( 1113694, prop.ToString() ); // Energy Resonance ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.WeaponDamage ) != 0 )
+			if ( ( prop = m_AosAttributes.WeaponDamage ) != 0 )
 				list.Add( 1060401, prop.ToString() ); // damage increase ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.DefendChance ) != 0 )
+			if ( ( prop = m_AosAttributes.DefendChance ) != 0 )
 				list.Add( 1060408, prop.ToString() ); // defense chance increase ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.BonusDex ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusDex ) != 0 )
 				list.Add( 1060409, prop.ToString() ); // dexterity bonus ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.EnhancePotions ) != 0 )
+			if ( ( prop = m_AosAttributes.EnhancePotions ) != 0 )
 				list.Add( 1060411, prop.ToString() ); // enhance potions ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.CastRecovery ) != 0 )
+			if ( ( prop = m_AosAttributes.CastRecovery ) != 0 )
 				list.Add( 1060412, prop.ToString() ); // faster cast recovery ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.CastSpeed ) != 0 )
+			if ( ( prop = m_AosAttributes.CastSpeed ) != 0 )
 				list.Add( 1060413, prop.ToString() ); // faster casting ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.AttackChance ) != 0 )
+			if ( ( prop = m_AosAttributes.AttackChance ) != 0 )
 				list.Add( 1060415, prop.ToString() ); // hit chance increase ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.BonusHits ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusHits ) != 0 )
 				list.Add( 1060431, prop.ToString() ); // hit point increase ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.BonusInt ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusInt ) != 0 )
 				list.Add( 1060432, prop.ToString() ); // intelligence bonus ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.LowerManaCost ) != 0 )
+			if ( ( prop = m_AosAttributes.LowerManaCost ) != 0 )
 				list.Add( 1060433, prop.ToString() ); // lower mana cost ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.LowerRegCost ) != 0 )
+			if ( ( prop = m_AosAttributes.LowerRegCost ) != 0 )
 				list.Add( 1060434, prop.ToString() ); // lower reagent cost ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.Luck ) != 0 )
+			if ( ( prop = m_AosAttributes.Luck ) != 0 )
 				list.Add( 1060436, prop.ToString() ); // luck ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.BonusMana ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusMana ) != 0 )
 				list.Add( 1060439, prop.ToString() ); // mana increase ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.RegenMana ) != 0 )
+			if ( ( prop = m_AosAttributes.RegenMana ) != 0 )
 				list.Add( 1060440, prop.ToString() ); // mana regeneration ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.NightSight ) != 0 )
+			if ( ( prop = m_AosAttributes.NightSight ) != 0 )
 				list.Add( 1060441 ); // night sight
 
-			if ( ( prop = m_MagicalAttributes.ReflectPhysical ) != 0 )
+			if ( ( prop = m_AosAttributes.ReflectPhysical ) != 0 )
 				list.Add( 1060442, prop.ToString() ); // reflect physical damage ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.RegenStam ) != 0 )
+			if ( ( prop = m_AosAttributes.RegenStam ) != 0 )
 				list.Add( 1060443, prop.ToString() ); // stamina regeneration ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.RegenHits ) != 0 )
+			if ( ( prop = m_AosAttributes.RegenHits ) != 0 )
 				list.Add( 1060444, prop.ToString() ); // hit point regeneration ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.SpellChanneling ) != 0 )
+			if ( ( prop = m_AosAttributes.SpellChanneling ) != 0 )
 				list.Add( 1060482 ); // spell channeling
 
-			if ( ( prop = m_MagicalAttributes.SpellDamage ) != 0 )
+			if ( ( prop = m_AosAttributes.SpellDamage ) != 0 )
 				list.Add( 1060483, prop.ToString() ); // spell damage increase ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.BonusStam ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusStam ) != 0 )
 				list.Add( 1060484, prop.ToString() ); // stamina increase ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.BonusStr ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusStr ) != 0 )
 				list.Add( 1060485, prop.ToString() ); // strength bonus ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.WeaponSpeed ) != 0 )
+			if ( ( prop = m_AosAttributes.WeaponSpeed ) != 0 )
 				list.Add( 1060486, prop.ToString() ); // swing speed increase ~1_val~%
 
 			base.AddResistanceProperties( list );
@@ -460,7 +460,7 @@ namespace Server.Items
 			writer.WriteEncodedInt( (int) m_Resource );
 			writer.WriteEncodedInt( (int) m_GemType );
 
-			m_MagicalAttributes.Serialize( writer );
+			m_AosAttributes.Serialize( writer );
 			m_AosResistances.Serialize( writer );
 			m_SkillBonuses.Serialize( writer );
 		}
@@ -493,8 +493,8 @@ namespace Server.Items
 						m_Resource = (CraftResource) reader.ReadEncodedInt();
 						m_GemType = (GemType) reader.ReadEncodedInt();
 
-						m_MagicalAttributes = new MagicalAttributes( this, reader );
-						m_AosResistances = new ElementAttributes( this, reader );
+						m_AosAttributes = new AosAttributes( this, reader );
+						m_AosResistances = new AosElementAttributes( this, reader );
 						m_SkillBonuses = new SkillBonuses( this, reader );
 
 						if ( Parent is Mobile )
@@ -504,9 +504,9 @@ namespace Server.Items
 					}
 			}
 
-			int strBonus = m_MagicalAttributes.BonusStr;
-			int dexBonus = m_MagicalAttributes.BonusDex;
-			int intBonus = m_MagicalAttributes.BonusInt;
+			int strBonus = m_AosAttributes.BonusStr;
+			int dexBonus = m_AosAttributes.BonusDex;
+			int intBonus = m_AosAttributes.BonusInt;
 
 			if ( Parent is Mobile && ( strBonus != 0 || dexBonus != 0 || intBonus != 0 ) )
 			{

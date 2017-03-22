@@ -15,7 +15,7 @@ namespace Server.Engines.Imbuing
 		// Combat
 		public override int Category { get { return 1114249; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.UseBestSkill; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.UseBestSkill; } }
 		public override double Weight { get { return 1.4; } }
 		public override DisplayValue Display { get { return DisplayValue.NoShow; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Weapon; } }
@@ -40,7 +40,7 @@ namespace Server.Engines.Imbuing
 		// Hit Effects
 		public override int Category { get { return 1114251; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.HitDispel; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.HitDispel; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -65,7 +65,7 @@ namespace Server.Engines.Imbuing
 		// Hit Area Effects
 		public override int Category { get { return 1114250; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.HitColdArea; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.HitColdArea; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -90,7 +90,7 @@ namespace Server.Engines.Imbuing
 		// Hit Area Effects
 		public override int Category { get { return 1114250; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.HitFireArea; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.HitFireArea; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -115,7 +115,7 @@ namespace Server.Engines.Imbuing
 		// Hit Area Effects
 		public override int Category { get { return 1114250; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.HitEnergyArea; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.HitEnergyArea; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -140,7 +140,7 @@ namespace Server.Engines.Imbuing
 		// Hit Area Effects
 		public override int Category { get { return 1114250; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.HitPhysicalArea; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.HitPhysicalArea; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -165,7 +165,7 @@ namespace Server.Engines.Imbuing
 		// Hit Area Effects
 		public override int Category { get { return 1114250; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.HitPoisonArea; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.HitPoisonArea; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -190,7 +190,7 @@ namespace Server.Engines.Imbuing
 		// Hit Effects
 		public override int Category { get { return 1114251; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.HitHarm; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.HitHarm; } }
 		public override double Weight { get { return 1.1; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -215,7 +215,7 @@ namespace Server.Engines.Imbuing
 		// Hit Effects
 		public override int Category { get { return 1114251; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.HitFireball; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.HitFireball; } }
 		public override double Weight { get { return 1.4; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -240,7 +240,7 @@ namespace Server.Engines.Imbuing
 		// Hit Effects
 		public override int Category { get { return 1114251; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.HitLightning; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.HitLightning; } }
 		public override double Weight { get { return 1.4; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -265,7 +265,7 @@ namespace Server.Engines.Imbuing
 		// Hit Effects
 		public override int Category { get { return 1114251; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.HitMagicArrow; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.HitMagicArrow; } }
 		public override double Weight { get { return 1.2; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -290,7 +290,7 @@ namespace Server.Engines.Imbuing
 		// Hit Effects
 		public override int Category { get { return 1114251; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.HitLowerAttack; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.HitLowerAttack; } }
 		public override double Weight { get { return 1.1; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -315,7 +315,7 @@ namespace Server.Engines.Imbuing
 		// Hit Effects
 		public override int Category { get { return 1114251; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.HitLowerDefend; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.HitLowerDefend; } }
 		public override double Weight { get { return 1.3; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -340,7 +340,7 @@ namespace Server.Engines.Imbuing
 		// Hit Effects
 		public override int Category { get { return 1114251; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.HitLeechMana; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.HitLeechMana; } }
 		public override double Weight { get { return 1.1; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -383,7 +383,7 @@ namespace Server.Engines.Imbuing
 		// Hit Effects
 		public override int Category { get { return 1114251; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.HitLeechHits; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.HitLeechHits; } }
 		public override double Weight { get { return 1.1; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -426,7 +426,7 @@ namespace Server.Engines.Imbuing
 		// Hit Effects
 		public override int Category { get { return 1114251; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.HitLeechStam; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.HitLeechStam; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -451,7 +451,7 @@ namespace Server.Engines.Imbuing
 		// Casting
 		public override int Category { get { return 1114248; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.MageWeapon; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.MageWeapon; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.MinusValue; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -481,7 +481,7 @@ namespace Server.Engines.Imbuing
 		// Ranged
 		public override int Category { get { return 1114253; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.Balanced; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.Balanced; } }
 		public override double Weight { get { return 1.5; } }
 		public override DisplayValue Display { get { return DisplayValue.NoShow; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Ranged; } }
@@ -506,7 +506,7 @@ namespace Server.Engines.Imbuing
 		// Ranged
 		public override int Category { get { return 1114253; } }
 
-		public override WeaponAttribute Attribute { get { return WeaponAttribute.Velocity; } }
+		public override AosWeaponAttribute Attribute { get { return AosWeaponAttribute.Velocity; } }
 		public override double Weight { get { return 1.4; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Ranged; } }

@@ -135,7 +135,7 @@ namespace Server.Spells.Ninjitsu
 				}
 				else
 				{
-					if ( Caster.IsPlayer )
+					if ( Caster.Player )
 					{
 						Caster.CloseGump( typeof( AnimalFormGump ) );
 						Caster.SendGump( new AnimalFormGump( Caster, m_Entries, this ) );

@@ -149,7 +149,7 @@ namespace Server.Regions
 		{
 			base.OnLocationChanged( m, oldLocation );
 
-			if ( m.IsPlayer )
+			if ( m.Player )
 			{
 				if ( m_Maze.HasTrap( m.Location ) )
 				{
@@ -268,7 +268,7 @@ namespace Server.Regions
 
 		public override void OnEnter( Mobile m )
 		{
-			if ( m.IsPlayer )
+			if ( m.Player )
 			{
 				if ( m.Alive )
 				{

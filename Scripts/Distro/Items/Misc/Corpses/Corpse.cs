@@ -100,7 +100,7 @@ namespace Server.Items
 			 *  - When a player opens an instanced corpse, it displays to him the instance he owns.
 			 */
 
-			if ( m_Owner.IsPlayer )
+			if ( m_Owner.Player )
 				return; // Loot does not instance for players
 
 			if ( m_Owner is BaseCreature && ( (BaseCreature) m_Owner ).Controlled )
@@ -520,12 +520,12 @@ namespace Server.Items
 			{
 				Item item = (Item) initialContent[i];
 
-				if ( owner.IsPlayer && item.Parent == owner.Backpack )
+				if ( owner.Player && item.Parent == owner.Backpack )
 					c.AddItem( item );
 				else
 					c.DropItem( item );
 
-				if ( owner.IsPlayer )
+				if ( owner.Player )
 					c.SetRestoreInfo( item, item.Location );
 			}
 
@@ -578,7 +578,7 @@ namespace Server.Items
 			m_FacialHair = facialhair;
 
 			// This corpse does not turn to bones if: the owner is not a player
-			SetFlag( CorpseFlag.NoBones, !owner.IsPlayer );
+			SetFlag( CorpseFlag.NoBones, !owner.Player );
 
 			m_Looters = new List<Mobile>();
 			m_EquipItems = equipItems;
@@ -1019,7 +1019,7 @@ namespace Server.Items
 
 			if ( !CanLoot( from ) )
 			{
-				if ( m_Owner == null || !m_Owner.IsPlayer )
+				if ( m_Owner == null || !m_Owner.Player )
 					from.SendLocalizedMessage( 1005035 ); // You did not earn the right to loot this creature!
 				else
 					from.SendLocalizedMessage( 1010049 ); // You may not loot this corpse.
@@ -1028,13 +1028,13 @@ namespace Server.Items
 			}
 			else if ( IsCriminalAction( from ) )
 			{
-				if ( m_Owner == null || !m_Owner.IsPlayer )
+				if ( m_Owner == null || !m_Owner.Player )
 					from.SendLocalizedMessage( 1005036 ); // Looting this monster corpse will be a criminal act!
 				else
 					from.SendLocalizedMessage( 1005038 ); // Looting this corpse will be a criminal act!
 			}
 			// From RunUO RE
-			else if ( ( map == null || ( map.Rules & MapRules.HarmfulRestrictions ) != 0 ) && m_Owner != null && m_Owner.IsPlayer && NotorietyHandlers.ComputeCorpse( from, this ) == Notoriety.Criminal )
+			else if ( ( map == null || ( map.Rules & MapRules.HarmfulRestrictions ) != 0 ) && m_Owner != null && m_Owner.Player && NotorietyHandlers.ComputeCorpse( from, this ) == Notoriety.Criminal )
 			{
 				// Really it's not possible to become criminal in trammel/ilshenar/malas at all, but there're some bugs that allow this
 				// So we need to prevent looting from criminal corpses
@@ -1373,7 +1373,7 @@ namespace Server.Items
 			if ( !base.IsAccessibleTo( check ) )
 				return false;
 
-			if ( !check.IsPlayer || check.AccessLevel >= AccessLevel.GameMaster )
+			if ( !check.Player || check.AccessLevel >= AccessLevel.GameMaster )
 				return true;
 
 			if ( m_Looters == null )

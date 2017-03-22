@@ -26,7 +26,7 @@ namespace Server.Items
 	{
 		public override int MaxWeight { get { return 50; } }
 
-		private MagicalAttributes m_Attributes;
+		private AosAttributes m_Attributes;
 
 		private bool m_Exceptional;
 		private Mobile m_Crafter;
@@ -59,7 +59,7 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public MagicalAttributes Attributes
+		public AosAttributes Attributes
 		{
 			get { return m_Attributes; }
 			set { }
@@ -85,7 +85,7 @@ namespace Server.Items
 			DropSound = 0x4F;
 			MaxItems = 1;
 
-			m_Attributes = new MagicalAttributes( this );
+			m_Attributes = new AosAttributes( this );
 		}
 
 		public BaseQuiver( Serial serial )
@@ -328,7 +328,7 @@ namespace Server.Items
 					}
 				case 2:
 					{
-						m_Attributes = new MagicalAttributes( this, reader );
+						m_Attributes = new AosAttributes( this, reader );
 						break;
 					}
 			}

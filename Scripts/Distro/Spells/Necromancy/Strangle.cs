@@ -181,7 +181,7 @@ namespace Server.Spells.Necromancy
 					if ( damage < 1 )
 						damage = 1;
 
-					if ( !m_Target.IsPlayer )
+					if ( !m_Target.Player )
 						damage *= 1.75;
 
 					AOS.Damage( m_Target, m_From, (int) damage, 0, 0, 0, 100, 0 );

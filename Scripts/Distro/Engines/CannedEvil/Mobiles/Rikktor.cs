@@ -129,7 +129,7 @@ namespace Server.Mobiles
 				{
 					targets.Add( m );
 				}
-				else if ( m.IsPlayer )
+				else if ( m.Player )
 				{
 					targets.Add( m );
 				}

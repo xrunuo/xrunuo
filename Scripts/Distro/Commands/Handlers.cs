@@ -134,7 +134,7 @@ namespace Server.Scripts.Commands
 
 		public static void DropHolding_OnTarget( Mobile from, object obj )
 		{
-			if ( obj is Mobile && ( (Mobile) obj ).IsPlayer )
+			if ( obj is Mobile && ( (Mobile) obj ).Player )
 			{
 				Mobile targ = (Mobile) obj;
 				Item held = targ.Holding;
@@ -239,7 +239,7 @@ namespace Server.Scripts.Commands
 
 			foreach ( Mobile m in World.Instance.Mobiles )
 			{
-				if ( m.Map == map && !m.IsPlayer )
+				if ( m.Map == map && !m.Player )
 				{
 					list.Add( m );
 				}
@@ -267,7 +267,7 @@ namespace Server.Scripts.Commands
 
 		public static void GetFollowers_OnTarget( Mobile from, object obj )
 		{
-			if ( obj is Mobile && ( (Mobile) obj ).IsPlayer )
+			if ( obj is Mobile && ( (Mobile) obj ).Player )
 			{
 				Mobile master = (Mobile) obj;
 				ArrayList pets = new ArrayList();
@@ -856,7 +856,7 @@ namespace Server.Scripts.Commands
 				{
 					Mobile m = (Mobile) targeted;
 
-					BankBox box = ( m.IsPlayer ? m.BankBox : m.FindBankNoCreate() );
+					BankBox box = ( m.Player ? m.BankBox : m.FindBankNoCreate() );
 
 					if ( box != null )
 					{

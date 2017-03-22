@@ -49,8 +49,8 @@ namespace Server.Items
 
 			List<AttributeMod> mods = new List<AttributeMod>();
 
-			mods.Add( new AttributeMod( MagicalAttribute.ReflectPhysical, 25 ) );
-			mods.Add( new AttributeMod( MagicalAttribute.Luck, 100 ) );
+			mods.Add( new AttributeMod( AosAttribute.ReflectPhysical, 25 ) );
+			mods.Add( new AttributeMod( AosAttribute.Luck, 100 ) );
 
 			ApplyMods( m, mods );
 

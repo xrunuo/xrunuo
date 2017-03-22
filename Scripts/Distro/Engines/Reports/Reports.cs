@@ -100,7 +100,7 @@ namespace Server.Engines.Reports
 
 			foreach ( Mobile mob in World.Instance.Mobiles )
 			{
-				if ( mob.IsPlayer )
+				if ( mob.Player )
 					++players;
 				else
 					++npcs;

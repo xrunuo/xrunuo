@@ -33,7 +33,7 @@ namespace Server.Misc
 			Mobile beholder = e.Beholder;
 			Mobile beheld = e.Beheld;
 
-			if ( !beheld.IsPlayer )
+			if ( !beheld.Player )
 			{
 				return;
 			}

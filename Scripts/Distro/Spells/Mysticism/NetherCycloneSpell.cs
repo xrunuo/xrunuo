@@ -74,7 +74,7 @@ namespace Server.Spells.Mysticism
 
 							targets.Add( m );
 
-							if ( m.IsPlayer )
+							if ( m.Player )
 								playerVsPlayer = true;
 						}
 					}

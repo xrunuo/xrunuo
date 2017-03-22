@@ -94,7 +94,7 @@ namespace Server.Items
 		{
 			base.OnMovement( m, oldLocation );
 
-			if ( m.IsPlayer && this.InRange( m, 3 ) && !this.InRange( oldLocation, 3 ) )
+			if ( m.Player && this.InRange( m, 3 ) && !this.InRange( oldLocation, 3 ) )
 			{
 				if ( DateTime.UtcNow >= m_NextMessage )
 				{

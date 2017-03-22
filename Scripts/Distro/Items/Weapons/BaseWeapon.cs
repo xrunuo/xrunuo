@@ -77,10 +77,10 @@ namespace Server.Items
 
 		private int m_TimesImbued;
 
-		private MagicalAttributes m_MagicalAttributes;
-		private WeaponAttributes m_WeaponAttributes;
+		private AosAttributes m_AosAttributes;
+		private AosWeaponAttributes m_AosWeaponAttributes;
 		private SkillBonuses m_SkillBonuses;
-		private ElementAttributes m_Resistances;
+		private AosElementAttributes m_Resistances;
 		private AbsorptionAttributes m_AbsorptionAttributes;
 
 		public virtual WeaponAbility PrimaryAbility { get { return null; } }
@@ -125,18 +125,18 @@ namespace Server.Items
 		public override int EnergyResistance { get { return m_Resistances.Energy; } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public MagicalAttributes Attributes
+		public AosAttributes Attributes
 		{
-			get { return m_MagicalAttributes; }
+			get { return m_AosAttributes; }
 			set
 			{
 			}
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public WeaponAttributes WeaponAttributes
+		public AosWeaponAttributes WeaponAttributes
 		{
-			get { return m_WeaponAttributes; }
+			get { return m_AosWeaponAttributes; }
 			set
 			{
 			}
@@ -152,7 +152,7 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public ElementAttributes Resistances
+		public AosElementAttributes Resistances
 		{
 			get { return m_Resistances; }
 			set
@@ -463,12 +463,12 @@ namespace Server.Items
 					m.AddStatMod( new StatMod( StatType.Int, modName + "Int", intBonus, TimeSpan.Zero ) );
 			}
 
-			if ( m_WeaponAttributes.MageWeapon != 0 && m_WeaponAttributes.MageWeapon != 30 )
+			if ( m_AosWeaponAttributes.MageWeapon != 0 && m_AosWeaponAttributes.MageWeapon != 30 )
 			{
 				if ( m_MageMod != null )
 					m_MageMod.Remove();
 
-				m_MageMod = new DefaultSkillMod( SkillName.Magery, true, -30 + m_WeaponAttributes.MageWeapon );
+				m_MageMod = new DefaultSkillMod( SkillName.Magery, true, -30 + m_AosWeaponAttributes.MageWeapon );
 				from.AddSkillMod( m_MageMod );
 			}
 
@@ -549,7 +549,7 @@ namespace Server.Items
 		{
 			SkillName sk;
 
-			if ( checkSkillAttrs && m_WeaponAttributes.UseBestSkill != 0 )
+			if ( checkSkillAttrs && m_AosWeaponAttributes.UseBestSkill != 0 )
 			{
 				double swrd = m.Skills[SkillName.Swords].Value;
 				double fenc = m.Skills[SkillName.Fencing].Value;
@@ -570,7 +570,7 @@ namespace Server.Items
 					val = mcng;
 				}
 			}
-			else if ( m_WeaponAttributes.MageWeapon != 0 )
+			else if ( m_AosWeaponAttributes.MageWeapon != 0 )
 			{
 				if ( m.Skills[SkillName.Magery].Value > m.Skills[Skill].Value )
 				{
@@ -585,7 +585,7 @@ namespace Server.Items
 			{
 				sk = Skill;
 
-				if ( sk != SkillName.Wrestling && !m.IsPlayer && !m.Body.IsHuman && m.Skills[SkillName.Wrestling].Value > m.Skills[sk].Value )
+				if ( sk != SkillName.Wrestling && !m.Player && !m.Body.IsHuman && m.Skills[SkillName.Wrestling].Value > m.Skills[sk].Value )
 				{
 					sk = SkillName.Wrestling;
 				}
@@ -628,7 +628,7 @@ namespace Server.Items
 
 		public static int GetAttackChance( Mobile m )
 		{
-			int bonus = m.GetMagicalAttribute( MagicalAttribute.AttackChance );
+			int bonus = m.GetMagicalAttribute( AosAttribute.AttackChance );
 
 			if ( m.BodyMod == 0xF6 || m.BodyMod == 0x19 )
 				bonus += (int) ( m.Skills[SkillName.Ninjitsu].Value * 0.1 ); // TODO: verify
@@ -650,7 +650,7 @@ namespace Server.Items
 
 		public static int GetDefendChance( Mobile m )
 		{
-			int bonus = m.GetMagicalAttribute( MagicalAttribute.DefendChance );
+			int bonus = m.GetMagicalAttribute( AosAttribute.DefendChance );
 
 			if ( Spells.Chivalry.DivineFurySpell.UnderEffect( m ) )
 				bonus -= 20; // defender loses 20% bonus when they're under divine fury
@@ -750,7 +750,7 @@ namespace Server.Items
 			int staminaSpeedBonusInTicks = m.Stam / 30;
 			int modifiedSwingSpeedInTicks = baseSwingSpeedInTicks - staminaSpeedBonusInTicks;
 
-			int ssiprop = m.GetMagicalAttribute( MagicalAttribute.WeaponSpeed );
+			int ssiprop = m.GetMagicalAttribute( AosAttribute.WeaponSpeed );
 
 			if ( StoneFormSpell.UnderEffect( m ) )
 				ssiprop -= 10;
@@ -958,7 +958,7 @@ namespace Server.Items
 		{
 			bool blocked = false;
 
-			if ( defender.IsPlayer || defender.Body.IsHuman )
+			if ( defender.Player || defender.Body.IsHuman )
 			{
 				blocked = CheckParry( defender );
 
@@ -1034,7 +1034,7 @@ namespace Server.Items
 							}
 						}
 
-						if ( shield.ArmorAttributes[ArmorAttribute.ReactiveParalyze] != 0 && 0.3 > Utility.RandomDouble() )
+						if ( shield.ArmorAttributes[AosArmorAttribute.ReactiveParalyze] != 0 && 0.3 > Utility.RandomDouble() )
 						{
 							if ( !attacker.Frozen && !attacker.Paralyzed )
 							{
@@ -1042,7 +1042,7 @@ namespace Server.Items
 
 								int secs = (int) ( ( defender.Skills[SkillName.EvalInt].Value - attacker.Skills[SkillName.MagicResist].Value ) / 10.0 );
 
-								if ( !attacker.IsPlayer )
+								if ( !attacker.Player )
 									secs *= 3;
 
 								if ( secs < 0 )
@@ -1074,7 +1074,7 @@ namespace Server.Items
 
 		public virtual int GetPackInstinctBonus( Mobile attacker, Mobile defender )
 		{
-			if ( attacker.IsPlayer || defender.IsPlayer )
+			if ( attacker.Player || defender.Player )
 				return 0;
 
 			BaseCreature bc = attacker as BaseCreature;
@@ -1278,7 +1278,7 @@ namespace Server.Items
 				// ******************************************
 			}
 
-			if ( !attacker.IsPlayer )
+			if ( !attacker.Player )
 			{
 				var context = EnemyOfOneSpell.GetContext( defender );
 
@@ -1288,7 +1288,7 @@ namespace Server.Items
 						percentageBonus += 100;
 				}
 			}
-			else if ( !defender.IsPlayer )
+			else if ( !defender.Player )
 			{
 				var context = EnemyOfOneSpell.GetContext( attacker );
 
@@ -1444,7 +1444,7 @@ namespace Server.Items
 				move = null;
 			}
 
-			if ( m_WeaponAttributes.Velocity > Utility.RandomMinMax( 1, 100 ) )
+			if ( m_AosWeaponAttributes.Velocity > Utility.RandomMinMax( 1, 100 ) )
 			{
 				int damageVelocity = 3 * (int) attacker.GetDistanceToSqrt( defender );
 
@@ -1480,8 +1480,8 @@ namespace Server.Items
 			int stamLeech = 0;
 			int manaLeech = 0;
 
-			int lifeLeechProp = (int) ( m_WeaponAttributes.HitLeechHits * propertyBonus );
-			int manaLeechProp = (int) ( m_WeaponAttributes.HitLeechMana * propertyBonus );
+			int lifeLeechProp = (int) ( m_AosWeaponAttributes.HitLeechHits * propertyBonus );
+			int manaLeechProp = (int) ( m_AosWeaponAttributes.HitLeechMana * propertyBonus );
 
 			lifeLeechProp = (int) ( ( lifeLeechProp / 2 ) * this.GetSpeed() * 0.25 );
 			manaLeechProp = (int) ( ( manaLeechProp / 2 ) * this.GetSpeed() * 0.25 );
@@ -1507,7 +1507,7 @@ namespace Server.Items
 				lifeLeech += 50;
 			}
 
-			if ( ( m_WeaponAttributes.HitLeechStam * propertyBonus ) > Utility.Random( 100 ) )
+			if ( ( m_AosWeaponAttributes.HitLeechStam * propertyBonus ) > Utility.Random( 100 ) )
 			{
 				// HitLeechStam% chance to leech 100% of damage as stamina
 				stamLeech += 100;
@@ -1542,7 +1542,7 @@ namespace Server.Items
 				if ( MaxRange <= 1 && acidBlood )
 					attacker.LocalOverheadMessage( MessageType.Regular, 0x3B2, 500263 ); // *Splashing acid blood scars your weapon!*
 
-				if ( m_WeaponAttributes.SelfRepair > Utility.Random( 10 ) )
+				if ( m_AosWeaponAttributes.SelfRepair > Utility.Random( 10 ) )
 				{
 					HitPoints += 2;
 				}
@@ -1581,11 +1581,11 @@ namespace Server.Items
 			}
 
 			#region Hit Area Damage
-			int physChance = (int) ( m_WeaponAttributes.HitPhysicalArea * propertyBonus );
-			int fireChance = (int) ( m_WeaponAttributes.HitFireArea * propertyBonus );
-			int coldChance = (int) ( m_WeaponAttributes.HitColdArea * propertyBonus );
-			int poisChance = (int) ( m_WeaponAttributes.HitPoisonArea * propertyBonus );
-			int nrgyChance = (int) ( m_WeaponAttributes.HitEnergyArea * propertyBonus );
+			int physChance = (int) ( m_AosWeaponAttributes.HitPhysicalArea * propertyBonus );
+			int fireChance = (int) ( m_AosWeaponAttributes.HitFireArea * propertyBonus );
+			int coldChance = (int) ( m_AosWeaponAttributes.HitColdArea * propertyBonus );
+			int poisChance = (int) ( m_AosWeaponAttributes.HitPoisonArea * propertyBonus );
+			int nrgyChance = (int) ( m_AosWeaponAttributes.HitEnergyArea * propertyBonus );
 
 			if ( physChance != 0 && physChance > Utility.Random( 100 ) )
 				DoAreaAttack( attacker, defender, 0x10E, 50, 100, 0, 0, 0, 0 );
@@ -1604,11 +1604,11 @@ namespace Server.Items
 			#endregion
 
 			#region Hit Spell
-			int maChance = (int) ( m_WeaponAttributes.HitMagicArrow * propertyBonus );
-			int harmChance = (int) ( m_WeaponAttributes.HitHarm * propertyBonus );
-			int fireballChance = (int) ( m_WeaponAttributes.HitFireball * propertyBonus );
-			int lightningChance = (int) ( m_WeaponAttributes.HitLightning * propertyBonus );
-			int dispelChance = (int) ( m_WeaponAttributes.HitDispel * propertyBonus );
+			int maChance = (int) ( m_AosWeaponAttributes.HitMagicArrow * propertyBonus );
+			int harmChance = (int) ( m_AosWeaponAttributes.HitHarm * propertyBonus );
+			int fireballChance = (int) ( m_AosWeaponAttributes.HitFireball * propertyBonus );
+			int lightningChance = (int) ( m_AosWeaponAttributes.HitLightning * propertyBonus );
+			int dispelChance = (int) ( m_AosWeaponAttributes.HitDispel * propertyBonus );
 
 			if ( maChance != 0 && maChance > Utility.Random( 100 ) )
 				DoMagicArrow( attacker, defender );
@@ -1626,14 +1626,14 @@ namespace Server.Items
 				DoDispel( attacker, defender );
 			#endregion
 
-			int curseChance = m_WeaponAttributes.HitCurse;
+			int curseChance = m_AosWeaponAttributes.HitCurse;
 
 			if ( curseChance != 0 && curseChance > Utility.Random( 100 ) )
 				DoCurse( attacker, defender );
 
 			#region Hit Lower Attack/Defend
-			int laChance = (int) ( m_WeaponAttributes.HitLowerAttack * propertyBonus );
-			int ldChance = (int) ( m_WeaponAttributes.HitLowerDefend * propertyBonus );
+			int laChance = (int) ( m_AosWeaponAttributes.HitLowerAttack * propertyBonus );
+			int ldChance = (int) ( m_AosWeaponAttributes.HitLowerDefend * propertyBonus );
 
 			ElvenGlasses eg = attacker.FindItemOnLayer( Layer.Helm ) as ElvenGlasses;
 			if ( eg != null )
@@ -1677,7 +1677,7 @@ namespace Server.Items
 
 			scale += attacker.Skills[SkillName.Inscribe].Value * 0.001;
 
-			if ( attacker.IsPlayer )
+			if ( attacker.Player )
 			{
 				scale += attacker.Int * 0.001;
 				scale += SpellHelper.GetSpellDamage( attacker, false ) * 0.01;
@@ -2046,13 +2046,13 @@ namespace Server.Items
 			return bonus;
 		}
 
-		public virtual int GetAttributeBonus( MagicalAttribute attr )
+		public virtual int GetAttributeBonus( AosAttribute attr )
 		{
 			int value = 0;
 
 			switch ( attr )
 			{
-				case MagicalAttribute.CastSpeed:
+				case AosAttribute.CastSpeed:
 					value += GetCastSpeedBonus();
 					break;
 			}
@@ -2106,7 +2106,7 @@ namespace Server.Items
 			 * The following are damage modifiers whose effect shows on the status bar.
 			 * Capped at 100% total.
 			 */
-			int damageBonus = attacker.GetMagicalAttribute( MagicalAttribute.WeaponDamage );
+			int damageBonus = attacker.GetMagicalAttribute( AosAttribute.WeaponDamage );
 
 			// Stone Form gives a +0% to +20% bonus to damage.
 			if ( StoneFormSpell.UnderEffect( attacker ) )
@@ -2216,8 +2216,8 @@ namespace Server.Items
 			SetSaveFlag( ref flags, SaveFlag.Crafter, m_Crafter != null );
 			SetSaveFlag( ref flags, SaveFlag.PoisonCharges, m_PoisonCharges != 0 );
 			SetSaveFlag( ref flags, SaveFlag.Resource, m_Resource != CraftResource.Iron );
-			SetSaveFlag( ref flags, SaveFlag.xAttributes, !m_MagicalAttributes.IsEmpty );
-			SetSaveFlag( ref flags, SaveFlag.xWeaponAttributes, !m_WeaponAttributes.IsEmpty );
+			SetSaveFlag( ref flags, SaveFlag.xAttributes, !m_AosAttributes.IsEmpty );
+			SetSaveFlag( ref flags, SaveFlag.xWeaponAttributes, !m_AosWeaponAttributes.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.PlayerConstructed, m_PlayerConstructed );
 			SetSaveFlag( ref flags, SaveFlag.SkillBonuses, !m_SkillBonuses.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.Resistances, !m_Resistances.IsEmpty );
@@ -2250,10 +2250,10 @@ namespace Server.Items
 				writer.Write( (int) m_Resource );
 
 			if ( GetSaveFlag( flags, SaveFlag.xAttributes ) )
-				m_MagicalAttributes.Serialize( writer );
+				m_AosAttributes.Serialize( writer );
 
 			if ( GetSaveFlag( flags, SaveFlag.xWeaponAttributes ) )
-				m_WeaponAttributes.Serialize( writer );
+				m_AosWeaponAttributes.Serialize( writer );
 
 			if ( GetSaveFlag( flags, SaveFlag.SkillBonuses ) )
 				m_SkillBonuses.Serialize( writer );
@@ -2363,21 +2363,21 @@ namespace Server.Items
 							m_Resource = CraftResource.Iron;
 
 						if ( GetSaveFlag( flags, SaveFlag.xAttributes ) )
-							m_MagicalAttributes = new MagicalAttributes( this, reader );
+							m_AosAttributes = new AosAttributes( this, reader );
 						else
-							m_MagicalAttributes = new MagicalAttributes( this );
+							m_AosAttributes = new AosAttributes( this );
 
 						if ( GetSaveFlag( flags, SaveFlag.xWeaponAttributes ) )
-							m_WeaponAttributes = new WeaponAttributes( this, reader );
+							m_AosWeaponAttributes = new AosWeaponAttributes( this, reader );
 						else
-							m_WeaponAttributes = new WeaponAttributes( this );
+							m_AosWeaponAttributes = new AosWeaponAttributes( this );
 
-						if ( version < 7 && m_WeaponAttributes.MageWeapon != 0 )
-							m_WeaponAttributes.MageWeapon = (short) ( 30 - m_WeaponAttributes.MageWeapon );
+						if ( version < 7 && m_AosWeaponAttributes.MageWeapon != 0 )
+							m_AosWeaponAttributes.MageWeapon = (short) ( 30 - m_AosWeaponAttributes.MageWeapon );
 
-						if ( m_WeaponAttributes.MageWeapon != 0 && m_WeaponAttributes.MageWeapon != 30 && Parent is Mobile )
+						if ( m_AosWeaponAttributes.MageWeapon != 0 && m_AosWeaponAttributes.MageWeapon != 30 && Parent is Mobile )
 						{
-							m_MageMod = new DefaultSkillMod( SkillName.Magery, true, -30 + m_WeaponAttributes.MageWeapon );
+							m_MageMod = new DefaultSkillMod( SkillName.Magery, true, -30 + m_AosWeaponAttributes.MageWeapon );
 							( (Mobile) Parent ).AddSkillMod( m_MageMod );
 						}
 
@@ -2390,9 +2390,9 @@ namespace Server.Items
 							m_SkillBonuses = new SkillBonuses( this );
 
 						if ( GetSaveFlag( flags, SaveFlag.Resistances ) )
-							m_Resistances = new ElementAttributes( this, reader );
+							m_Resistances = new AosElementAttributes( this, reader );
 						else
-							m_Resistances = new ElementAttributes( this );
+							m_Resistances = new AosElementAttributes( this );
 
 						if ( GetSaveFlag( flags, SaveFlag.AbsorptionAttributes ) )
 							m_AbsorptionAttributes = new AbsorptionAttributes( this, reader );
@@ -2454,10 +2454,10 @@ namespace Server.Items
 
 			m_Resource = CraftResource.Iron;
 
-			m_MagicalAttributes = new MagicalAttributes( this );
-			m_WeaponAttributes = new WeaponAttributes( this );
+			m_AosAttributes = new AosAttributes( this );
+			m_AosWeaponAttributes = new AosWeaponAttributes( this );
 			m_SkillBonuses = new SkillBonuses( this );
-			m_Resistances = new ElementAttributes( this );
+			m_Resistances = new AosElementAttributes( this );
 			m_AbsorptionAttributes = new AbsorptionAttributes( this );
 		}
 
@@ -2995,7 +2995,7 @@ namespace Server.Items
 
 		protected virtual void AddSkillRequiredProperty( ObjectPropertyList list )
 		{
-			if ( m_WeaponAttributes.UseBestSkill == 0 )
+			if ( m_AosWeaponAttributes.UseBestSkill == 0 )
 			{
 				switch ( Skill )
 				{
@@ -3169,10 +3169,10 @@ namespace Server.Items
 
 			Resource = orig.Resource;
 
-			m_MagicalAttributes = orig.Attributes;
+			m_AosAttributes = orig.Attributes;
 			m_Resistances = orig.Resistances;
 			m_SkillBonuses = orig.SkillBonuses;
-			m_WeaponAttributes = orig.WeaponAttributes;
+			m_AosWeaponAttributes = orig.WeaponAttributes;
 
 			Slayer = orig.Slayer;
 			Slayer2 = orig.Slayer2;

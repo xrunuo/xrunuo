@@ -32,8 +32,8 @@ namespace Server.Items
 
 			List<AttributeMod> mods = new List<AttributeMod>();
 
-			mods.Add( new AttributeMod( MagicalAttribute.WeaponSpeed, 35 ) );
-			mods.Add( new AttributeMod( MagicalAttribute.DefendChance, 10 ) );
+			mods.Add( new AttributeMod( AosAttribute.WeaponSpeed, 35 ) );
+			mods.Add( new AttributeMod( AosAttribute.DefendChance, 10 ) );
 
 			ApplyMods( m, mods );
 

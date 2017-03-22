@@ -1167,7 +1167,7 @@ namespace Server.Mobiles
 
 			int disruptThreshold;
 
-			if ( from != null && from.IsPlayer )
+			if ( from != null && from.Player )
 				disruptThreshold = 18;
 			else
 				disruptThreshold = 25;
@@ -2865,7 +2865,7 @@ namespace Server.Mobiles
 		 */
 		public virtual double GetValueFrom( Mobile m, FightMode acqType, bool bPlayerOnly )
 		{
-			if ( ( bPlayerOnly && m.IsPlayer ) || !bPlayerOnly )
+			if ( ( bPlayerOnly && m.Player ) || !bPlayerOnly )
 			{
 				switch ( acqType )
 				{
@@ -3348,9 +3348,9 @@ namespace Server.Mobiles
 
 			if ( Controlled || Summoned )
 			{
-				if ( m_ControlMaster != null && m_ControlMaster.IsPlayer )
+				if ( m_ControlMaster != null && m_ControlMaster.Player )
 					m_ControlMaster.CriminalAction( false );
-				else if ( m_SummonMaster != null && m_SummonMaster.IsPlayer )
+				else if ( m_SummonMaster != null && m_SummonMaster.Player )
 					m_SummonMaster.CriminalAction( false );
 			}
 		}
@@ -3380,9 +3380,9 @@ namespace Server.Mobiles
 
 				if ( ai.Defender == target )
 				{
-					if ( m_ControlMaster != null && m_ControlMaster.IsPlayer && m_ControlMaster.CanBeHarmful( target, false ) )
+					if ( m_ControlMaster != null && m_ControlMaster.Player && m_ControlMaster.CanBeHarmful( target, false ) )
 						m_ControlMaster.DoHarmful( target, true );
-					else if ( m_SummonMaster != null && m_SummonMaster.IsPlayer && m_SummonMaster.CanBeHarmful( target, false ) )
+					else if ( m_SummonMaster != null && m_SummonMaster.Player && m_SummonMaster.CanBeHarmful( target, false ) )
 						m_SummonMaster.DoHarmful( target, true );
 
 					return;
@@ -3497,7 +3497,7 @@ namespace Server.Mobiles
 				speechType.OnMovement( this, m, oldLocation );
 
 			/* Begin notice sound */
-			if ( ( !m.Hidden || m.AccessLevel == AccessLevel.Player ) && m.IsPlayer && m_FightMode != FightMode.Aggressor && m_FightMode != FightMode.None && Combatant == null && !Controlled && !Summoned )
+			if ( ( !m.Hidden || m.AccessLevel == AccessLevel.Player ) && m.Player && m_FightMode != FightMode.Aggressor && m_FightMode != FightMode.None && Combatant == null && !Controlled && !Summoned )
 			{
 				// If this creature defends itself but doesn't actively attack (animal) or
 				// doesn't fight at all (vendor) then no notice sounds are played..
@@ -4468,7 +4468,7 @@ namespace Server.Mobiles
 						DamageEntry subEntry = respList[j];
 						Mobile master = subEntry.Damager;
 
-						if ( master == null || master.Deleted || !master.IsPlayer )
+						if ( master == null || master.Deleted || !master.Player )
 							continue;
 
 						bool needNewSubEntry = true;
@@ -4493,7 +4493,7 @@ namespace Server.Mobiles
 
 				Mobile m = de.Damager;
 
-				if ( m == null || m.Deleted || !m.IsPlayer )
+				if ( m == null || m.Deleted || !m.Player )
 					continue;
 
 				if ( damage <= 0 )
@@ -4941,7 +4941,7 @@ namespace Server.Mobiles
 		{
 			base.OnMovement( m, oldLocation );
 
-			if ( m.Alive && m.IsPlayer && this.InRange( m.Location, TrueFearRange ) && !this.InRange( oldLocation, TrueFearRange ) )
+			if ( m.Alive && m.Player && this.InRange( m.Location, TrueFearRange ) && !this.InRange( oldLocation, TrueFearRange ) )
 			{
 				if ( !m_TrueFearCooldown.Contains( m ) )
 				{
@@ -5017,7 +5017,7 @@ namespace Server.Mobiles
 					if ( bc.Controlled || bc.Summoned || bc.Team != Team )
 						list.Add( m );
 				}
-				else if ( m.IsPlayer )
+				else if ( m.Player )
 				{
 					list.Add( m );
 				}
@@ -5112,7 +5112,7 @@ namespace Server.Mobiles
 
 					Mobile owner = toRummage.Owner as Mobile;
 
-					if ( owner != null && owner.IsPlayer )
+					if ( owner != null && owner.Player )
 						m_RummagedItems.Add( item, owner );
 
 					return true;

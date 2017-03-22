@@ -328,7 +328,7 @@ namespace Server.Scripts.Commands
 			AddEntryHtml( 20 + OffsetSize + 160, "Properties" );
 			AddEntryButton( 20, ArrowRightID1, ArrowRightID2, 2, ArrowRightWidth, ArrowRightHeight );
 
-			if ( !m_Mobile.IsPlayer )
+			if ( !m_Mobile.Player )
 			{
 				AddNewLine();
 				AddEntryHtml( 20 + OffsetSize + 160, "Delete" );
@@ -410,7 +410,7 @@ namespace Server.Scripts.Commands
 					}
 				case 3: // Delete
 					{
-						if ( !m_Mobile.IsPlayer )
+						if ( !m_Mobile.Player )
 						{
 							CommandLogging.WriteLine( m_From, "{0} {1} deleting {2}", m_From.AccessLevel, CommandLogging.Format( m_From ), CommandLogging.Format( m_Mobile ) );
 							m_Mobile.Delete();

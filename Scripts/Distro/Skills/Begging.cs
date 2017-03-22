@@ -51,7 +51,7 @@ namespace Server.SkillHandlers
 				{
 					Mobile targ = (Mobile) targeted;
 
-					if ( targ.IsPlayer ) // We can't beg from players
+					if ( targ.Player ) // We can't beg from players
 					{
 						number = 500398; // Perhaps just asking would work better.
 					}

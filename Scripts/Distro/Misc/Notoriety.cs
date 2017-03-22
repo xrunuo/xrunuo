@@ -100,7 +100,7 @@ namespace Server.Misc
 			if ( map != null && ( map.Rules & MapRules.BeneficialRestrictions ) == 0 )
 				return true; // In felucca, anything goes
 
-			if ( !from.IsPlayer )
+			if ( !from.Player )
 				return true; // NPCs have no restrictions
 
 			if ( target is BaseCreature && !( (BaseCreature) target ).Controlled )
@@ -140,7 +140,7 @@ namespace Server.Misc
 			if ( ( from is BaseCreature && ( (BaseCreature) from ).SummonMaster is BaseCreature ) || ( target is BaseCreature && ( (BaseCreature) target ).SummonMaster is BaseCreature ) )
 				return true; // Summon's summons can attack players
 
-			if ( !from.IsPlayer && !( from is BaseCreature && ( ( (BaseCreature) from ).Controlled || ( (BaseCreature) from ).Summoned ) ) )
+			if ( !from.Player && !( from is BaseCreature && ( ( (BaseCreature) from ).Controlled || ( (BaseCreature) from ).Summoned ) ) )
 			{
 				if ( !CheckAggressor( from.Aggressors, target ) && !CheckAggressed( from.Aggressed, target ) && target is PlayerMobile && ( (PlayerMobile) target ).CheckYoungProtection( from ) )
 					return false;
@@ -157,7 +157,7 @@ namespace Server.Misc
 			if ( target is BaseCreature && ( ( (BaseCreature) target ).Controlled || ( ( (BaseCreature) target ).Summoned && from != ( (BaseCreature) target ).SummonMaster ) ) )
 				return false; // Cannot harm other controled mobiles
 
-			if ( target.IsPlayer )
+			if ( target.Player )
 				return false; // Cannot harm other players
 
 			if ( !( target is BaseCreature && ( (BaseCreature) target ).InitialInnocent ) )
@@ -279,7 +279,7 @@ namespace Server.Misc
 				if ( CheckHouseFlag( source, target.Owner, target.Location, target.Map ) )
 					return Notoriety.CanBeAttacked;
 
-				if ( target.Owner != null && !target.Owner.IsPlayer )
+				if ( target.Owner != null && !target.Owner.Player )
 					return Notoriety.CanBeAttacked;
 
 				foreach ( var aggressor in target.Aggressors )

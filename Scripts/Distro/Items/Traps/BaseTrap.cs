@@ -51,7 +51,7 @@ namespace Server.Items
 			if ( m.Location == oldLocation )
 				return;
 
-			if ( m.AccessLevel > AccessLevel.Player || !m.IsPlayer )
+			if ( m.AccessLevel > AccessLevel.Player || !m.Player )
 				return;
 
 			if ( CheckRange( m.Location, oldLocation, 5 ) )

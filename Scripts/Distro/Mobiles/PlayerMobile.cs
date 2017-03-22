@@ -925,7 +925,7 @@ namespace Server.Mobiles
 		{
 			global = LightCycle.ComputeLevelFor( this );
 
-			if ( this.LightLevel < 21 && ( GetMagicalAttribute( MagicalAttribute.NightSight ) > 0 || this.Race == Race.Elf || this.AccessLevel >= AccessLevel.GameMaster ) )
+			if ( this.LightLevel < 21 && ( GetMagicalAttribute( AosAttribute.NightSight ) > 0 || this.Race == Race.Elf || this.AccessLevel >= AccessLevel.GameMaster ) )
 				personal = 21;
 			else
 				personal = this.LightLevel;
@@ -1532,7 +1532,7 @@ namespace Server.Mobiles
 			get
 			{
 				int strBase = this.Str;
-				int strOffs = GetMagicalAttribute( MagicalAttribute.BonusHits );
+				int strOffs = GetMagicalAttribute( AosAttribute.BonusHits );
 
 				if ( strOffs > 25 )
 					strOffs = 25;
@@ -1547,7 +1547,7 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public override int StamMax
 		{
-			get { return base.StamMax + GetMagicalAttribute( MagicalAttribute.BonusStam ); }
+			get { return base.StamMax + GetMagicalAttribute( AosAttribute.BonusStam ); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -1555,7 +1555,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				int mana = base.ManaMax + GetMagicalAttribute( MagicalAttribute.BonusMana );
+				int mana = base.ManaMax + GetMagicalAttribute( AosAttribute.BonusMana );
 
 				// Bonus +20 de mana por ser elfo.
 				if ( Race == Race.Elf )
@@ -2274,7 +2274,7 @@ namespace Server.Mobiles
 		{
 			int disruptThreshold;
 
-			if ( from != null && from.IsPlayer )
+			if ( from != null && from.Player )
 				disruptThreshold = 18;
 			else
 				disruptThreshold = 25;
@@ -2323,7 +2323,7 @@ namespace Server.Mobiles
 			}
 			#endregion
 
-			int soulCharge = ArmorAttributes.GetValue( this, ArmorAttribute.SoulCharge );
+			int soulCharge = AosArmorAttributes.GetValue( this, AosArmorAttribute.SoulCharge );
 
 			if ( soulCharge > 0 && Mana < ManaMax )
 			{
@@ -2699,7 +2699,7 @@ namespace Server.Mobiles
 				if ( m is BaseCreature )
 					m = ( (BaseCreature) m ).GetMaster();
 
-				if ( m != null && m.IsPlayer && m != this )
+				if ( m != null && m.Player && m != this )
 				{
 					bool gainedPath = false;
 
@@ -3106,7 +3106,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				int luck = GetMagicalAttribute( MagicalAttribute.Luck );
+				int luck = GetMagicalAttribute( AosAttribute.Luck );
 
 				if ( FontOfFortune.HasBlessing( this, FontOfFortune.BlessingType.Luck ) )
 					luck += 400;
@@ -3784,11 +3784,11 @@ namespace Server.Mobiles
 			if ( TestCenter.Enabled )
 			{
 				list.Add( 1060847, String.Format( "Kills: {0}	/ Deaths: {1}", this.Kills, this.Deaths ) );
-				list.Add( 1060415, GetMagicalAttribute( MagicalAttribute.AttackChance ).ToString() );
-				list.Add( 1060408, GetMagicalAttribute( MagicalAttribute.DefendChance ).ToString() );
-				list.Add( 1060486, GetMagicalAttribute( MagicalAttribute.WeaponSpeed ).ToString() ); // TODO: Show it in %
-				list.Add( 1060401, GetMagicalAttribute( MagicalAttribute.WeaponDamage ).ToString() );
-				list.Add( 1060433, GetMagicalAttribute( MagicalAttribute.LowerManaCost ).ToString() );
+				list.Add( 1060415, GetMagicalAttribute( AosAttribute.AttackChance ).ToString() );
+				list.Add( 1060408, GetMagicalAttribute( AosAttribute.DefendChance ).ToString() );
+				list.Add( 1060486, GetMagicalAttribute( AosAttribute.WeaponSpeed ).ToString() ); // TODO: Show it in %
+				list.Add( 1060401, GetMagicalAttribute( AosAttribute.WeaponDamage ).ToString() );
+				list.Add( 1060433, GetMagicalAttribute( AosAttribute.LowerManaCost ).ToString() );
 			}
 
 			if ( Map == Faction.Facet )
@@ -3894,7 +3894,7 @@ namespace Server.Mobiles
 			if ( from == this || from.AccessLevel > AccessLevel.Player )
 				return false;
 
-			if ( from.Hidden || !from.Alive || !from.IsPlayer )
+			if ( from.Hidden || !from.Alive || !from.Player )
 				return false;
 
 			Party party = from.Party as Party;
@@ -4144,7 +4144,7 @@ namespace Server.Mobiles
 		{
 			BaseWeapon weapon = Weapon as BaseWeapon;
 
-			if ( weapon != null && weapon.WeaponAttributes[WeaponAttribute.BattleLust] != 0 )
+			if ( weapon != null && weapon.WeaponAttributes[AosWeaponAttribute.BattleLust] != 0 )
 			{
 				if ( DateTime.UtcNow > ( m_LastBattleLustGain + TimeSpan.FromSeconds( 2.0 ) ) )
 				{
@@ -4160,11 +4160,11 @@ namespace Server.Mobiles
 		{
 			BaseWeapon weapon = Weapon as BaseWeapon;
 
-			if ( weapon != null && weapon.WeaponAttributes[WeaponAttribute.BattleLust] != 0 )
+			if ( weapon != null && weapon.WeaponAttributes[AosWeaponAttribute.BattleLust] != 0 )
 			{
 				int lust = Math.Min( m_BattleLust, 15 * Aggressors.Count );
 
-				return Math.Min( lust, defender.IsPlayer ? 45 : 90 );
+				return Math.Min( lust, defender.Player ? 45 : 90 );
 			}
 
 			return 0;

@@ -150,7 +150,7 @@ namespace Server.SkillHandlers
 					{
 						from.SendLocalizedMessage( 1049535 ); // A song of discord would have no effect on that.
 					}
-					else if ( !targ.IsPlayer )
+					else if ( !targ.Player )
 					{
 						from.NextSkillTime = DateTime.UtcNow + BaseInstrument.GetBardSkillTimeout( SkillName.Discordance, from );
 

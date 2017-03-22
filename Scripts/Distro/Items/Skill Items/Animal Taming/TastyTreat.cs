@@ -210,7 +210,7 @@ namespace Server.Items
 		{
 			base.AddEffect( pet );
 
-			AttributeMod dmgMod = new AttributeMod( MagicalAttribute.WeaponDamage, 10 );
+			AttributeMod dmgMod = new AttributeMod( AosAttribute.WeaponDamage, 10 );
 
 			pet.AddAttributeMod( dmgMod );
 

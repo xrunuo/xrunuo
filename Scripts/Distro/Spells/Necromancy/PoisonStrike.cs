@@ -50,7 +50,7 @@ namespace Server.Spells.Necromancy
 
 				double damage = Utility.RandomMinMax( 32, 40 ) * ( ( 300 + ( GetDamageSkill( Caster ) * 9 ) ) / 1000 );
 
-				damage += damage * ( SpellHelper.GetSpellDamage( Caster, m.IsPlayer ) / 100.0 );
+				damage += damage * ( SpellHelper.GetSpellDamage( Caster, m.Player ) / 100.0 );
 
 				Map map = m.Map;
 

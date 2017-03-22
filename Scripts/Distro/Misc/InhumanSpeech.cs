@@ -535,7 +535,7 @@ namespace Server.Misc
 			if ( ( m_Flags & IHSFlags.OnMovement ) == 0 )
 				return; // not enabled
 
-			if ( !mover.IsPlayer || ( mover.Hidden && mover.AccessLevel > AccessLevel.Player ) )
+			if ( !mover.Player || ( mover.Hidden && mover.AccessLevel > AccessLevel.Player ) )
 				return;
 
 			if ( !mob.InRange( mover, 5 ) || mob.InRange( oldLocation, 5 ) )

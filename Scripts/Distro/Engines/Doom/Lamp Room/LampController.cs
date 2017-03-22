@@ -620,7 +620,7 @@ namespace Server.Items
 						{
 							Mobile mobile = obj as Mobile;
 
-							if ( mobile != null && mobile.IsPlayer )
+							if ( mobile != null && mobile.Player )
 							{
 								if ( number != 0 )
 									mobile.SendLocalizedMessage( number, null, hue );
@@ -670,7 +670,7 @@ namespace Server.Items
 
 					if ( mobile != null && !( mobile is WandererOfTheVoid ) )
 					{
-						if ( mobile.IsPlayer )
+						if ( mobile.Player )
 						{
 							mobile.Say( 1062092 ); // Your body reacts violently from the pain.
 

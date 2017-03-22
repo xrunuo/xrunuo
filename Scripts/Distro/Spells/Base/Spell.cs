@@ -43,7 +43,7 @@ namespace Server.Spells
 		public virtual SkillName DamageSkill { get { return SkillName.EvalInt; } }
 
 		public virtual bool RevealOnCast { get { return true; } }
-		public virtual bool ClearHandsOnCast { get { return m_Caster.IsPlayer; } }
+		public virtual bool ClearHandsOnCast { get { return m_Caster.Player; } }
 		public virtual bool ShowHandMovement { get { return true; } }
 
 		public virtual bool DelayedDamage { get { return false; } }
@@ -58,7 +58,7 @@ namespace Server.Spells
 		public virtual int GetNewAosDamage( int bonus, int dice, int sides, Mobile singleTarget )
 		{
 			if ( singleTarget != null )
-				return GetNewAosDamage( bonus, dice, sides, ( Caster.IsPlayer && singleTarget.IsPlayer ), GetDamageScalar( singleTarget ) );
+				return GetNewAosDamage( bonus, dice, sides, ( Caster.Player && singleTarget.Player ), GetDamageScalar( singleTarget ) );
 			else
 				return GetNewAosDamage( bonus, dice, sides, false );
 		}
@@ -108,7 +108,7 @@ namespace Server.Spells
 
 		public virtual void OnCasterHurt()
 		{
-			if ( !Caster.IsPlayer )
+			if ( !Caster.Player )
 				return;
 
 			if ( IsCasting )
@@ -130,7 +130,7 @@ namespace Server.Spells
 
 				m_Resonates = false;
 
-				int castingFocus = Caster.GetMagicalAttribute( MagicalAttribute.CastingFocus );
+				int castingFocus = Caster.GetMagicalAttribute( AosAttribute.CastingFocus );
 
 				castingFocus += (int) Math.Max( 0.0, ( Caster.Skills[SkillName.Inscribe].Value - 50.0 ) / 10.0 );
 
@@ -189,14 +189,14 @@ namespace Server.Spells
 
 		public virtual bool ConsumeReagents()
 		{
-			if ( ( m_Scroll != null && !( m_Scroll is SpellStone ) ) || !m_Caster.IsPlayer )
+			if ( ( m_Scroll != null && !( m_Scroll is SpellStone ) ) || !m_Caster.Player )
 				return true;
 
 			// Staff members do not consume reagents
 			if ( m_Caster.AccessLevel >= AccessLevel.GameMaster )
 				return true;
 
-			if ( m_Caster.GetMagicalAttribute( MagicalAttribute.LowerRegCost ) > Utility.Random( 100 ) )
+			if ( m_Caster.GetMagicalAttribute( AosAttribute.LowerRegCost ) > Utility.Random( 100 ) )
 				return true;
 
 			Container pack = m_Caster.Backpack;
@@ -305,7 +305,7 @@ namespace Server.Spells
 		{
 			m_Caster.LocalOverheadMessage( MessageType.Regular, 0x3B2, 502632 ); // The spell fizzles.
 
-			if ( m_Caster.IsPlayer )
+			if ( m_Caster.Player )
 			{
 				m_Caster.FixedParticles( 0x3735, 1, 30, 9503, EffectLayer.Waist );
 				m_Caster.PlaySound( 0x5C );
@@ -346,7 +346,7 @@ namespace Server.Spells
 				if ( m_AnimTimer != null )
 					m_AnimTimer.Stop();
 
-				if ( m_Caster.IsPlayer && type == DisturbType.Hurt )
+				if ( m_Caster.Player && type == DisturbType.Hurt )
 					DoHurtFizzle();
 
 				m_Caster.NextSpellTime = DateTime.UtcNow + GetDisturbRecovery();
@@ -360,7 +360,7 @@ namespace Server.Spells
 
 				Targeting.Target.Cancel( m_Caster );
 
-				if ( m_Caster.IsPlayer && type == DisturbType.Hurt )
+				if ( m_Caster.Player && type == DisturbType.Hurt )
 					DoHurtFizzle();
 			}
 		}
@@ -391,7 +391,7 @@ namespace Server.Spells
 				return;
 
 			// Monsters in debug mode say Mantra too
-			if ( m_Info.Mantra != null && m_Info.Mantra.Length > 0 && ( m_Caster.IsPlayer || m_Caster is BaseCreature && ( (BaseCreature) m_Caster ).Debug ) )
+			if ( m_Info.Mantra != null && m_Info.Mantra.Length > 0 && ( m_Caster.Player || m_Caster is BaseCreature && ( (BaseCreature) m_Caster ).Debug ) )
 				m_Caster.PublicOverheadMessage( MessageType.Spell, m_Caster.SpeechHue, true, m_Info.Mantra, false );
 		}
 
@@ -534,7 +534,7 @@ namespace Server.Spells
 			if ( !Necromancy.MindRotSpell.GetMindRotScalar( Caster, ref scalar ) )
 				scalar = 1.0;
 
-			int lmc = m_Caster.GetMagicalAttribute( MagicalAttribute.LowerManaCost );
+			int lmc = m_Caster.GetMagicalAttribute( AosAttribute.LowerManaCost );
 
 			if ( lmc > 40 )
 				lmc = 40;
@@ -568,7 +568,7 @@ namespace Server.Spells
 			if ( Caster is BaseCreature && ( (BaseCreature) Caster ).InstantCast )
 				return TimeSpan.Zero;
 
-			int fcr = m_Caster.GetMagicalAttribute( MagicalAttribute.CastRecovery );
+			int fcr = m_Caster.GetMagicalAttribute( AosAttribute.CastRecovery );
 
 			if ( Caster is BaseCreature && !( (BaseCreature) Caster ).Controlled && !( (BaseCreature) Caster ).Summoned )
 				fcr = 4;
@@ -605,7 +605,7 @@ namespace Server.Spells
 				return TimeSpan.Zero;
 
 			int fcMax = FasterCastingCap;
-			int fc = m_Caster.GetMagicalAttribute( MagicalAttribute.CastSpeed );
+			int fc = m_Caster.GetMagicalAttribute( AosAttribute.CastSpeed );
 
 			if ( Caster is BaseCreature && !( (BaseCreature) Caster ).Controlled && !( (BaseCreature) Caster ).Summoned )
 				fc = 2;
@@ -827,7 +827,7 @@ namespace Server.Spells
 					m_Spell.m_Caster.TargetLocked = true;
 					m_Spell.OnCast();
 
-					if ( m_Spell.m_Caster.IsPlayer && m_Spell.m_Caster.Target != originalTarget && m_Spell.Caster.Target != null )
+					if ( m_Spell.m_Caster.Player && m_Spell.m_Caster.Target != originalTarget && m_Spell.Caster.Target != null )
 					{
 						if ( m_Spell.MacroTarget != null )
 							m_Spell.Caster.Target.Invoke( m_Spell.Caster, m_Spell.MacroTarget );

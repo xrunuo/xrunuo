@@ -4,11 +4,11 @@ using Server;
 namespace Server.Engines.Imbuing
 {
 	/// <summary>
-	/// Represents the properties from <see cref="MagicalAttribute" /> enum.
+	/// Represents the properties from <see cref="AosAttribute" /> enum.
 	/// </summary>
 	public abstract class MagicalAttrInfo : BaseAttrInfo
 	{
-		public abstract MagicalAttribute Attribute { get; }
+		public abstract AosAttribute Attribute { get; }
 
 		public override bool CanHold( Item item )
 		{

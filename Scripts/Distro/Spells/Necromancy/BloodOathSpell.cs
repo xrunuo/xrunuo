@@ -26,7 +26,7 @@ namespace Server.Spells.Necromancy
 			{
 				e.Amount = (int) ( e.Amount * 1.1 );
 
-				if ( e.Amount > 35 && e.Mobile.IsPlayer && e.From.IsPlayer )
+				if ( e.Amount > 35 && e.Mobile.Player && e.From.Player )
 					e.Amount = 35;
 
 				/* Per EA's UO Herald Pub48 (ML): 
@@ -70,7 +70,7 @@ namespace Server.Spells.Necromancy
 			}
 			else if ( m_OathTable.Contains( m ) )
 			{
-				if ( m.IsPlayer )
+				if ( m.Player )
 					Caster.SendLocalizedMessage( 1061608 ); // That player is already bonded in a Blood Oath.
 				else
 					Caster.SendLocalizedMessage( 1061609 ); // That creature is already bonded in a Blood Oath.

@@ -107,7 +107,7 @@ namespace Server.Movement
 			int checkTop = startZ + PersonHeight;
 
 			bool ignoreDoors = ( m_AlwaysIgnoreDoors || !m.Alive || m.Body.BodyID == 0x3DB || m.IsDeadBondedPet );
-			bool ignoreSpellFields = ( m_IgnoreSpellFields || ( m.IsPlayer && map.Rules != MapRules.FeluccaRules ) );
+			bool ignoreSpellFields = ( m_IgnoreSpellFields || ( m.Player && map.Rules != MapRules.FeluccaRules ) );
 
 			#region Tiles
 			for ( int i = 0; i < tiles.Length; ++i )
@@ -128,7 +128,7 @@ namespace Server.Movement
 					int testTop = checkTop;
 
 					// Flying overrides all Z checks
-					if ( m.Flying && ( !m.IsPlayer || ( flags & TileFlag.NoDiagonal ) != 0 ) )
+					if ( m.Flying && ( !m.Player || ( flags & TileFlag.NoDiagonal ) != 0 ) )
 					{
 						newZ = ourZ;
 						moveIsOk = true;
@@ -190,7 +190,7 @@ namespace Server.Movement
 					int testTop = checkTop;
 
 					// Flying overrides all Z checks
-					if ( m.Flying && ( !m.IsPlayer || ( flags & TileFlag.NoDiagonal ) != 0 ) )
+					if ( m.Flying && ( !m.Player || ( flags & TileFlag.NoDiagonal ) != 0 ) )
 					{
 						newZ = ourZ;
 						moveIsOk = true;
@@ -416,7 +416,7 @@ namespace Server.Movement
 			{
 				int hold;
 
-				if ( m.IsPlayer && m.AccessLevel < AccessLevel.GameMaster )
+				if ( m.Player && m.AccessLevel < AccessLevel.GameMaster )
 				{
 					if ( !Check( map, m, itemsLeft, xLeft, yLeft, startTop, startZ, m.CanSwim, m.CantWalk, out hold ) || !Check( map, m, itemsRight, xRight, yRight, startTop, startZ, m.CanSwim, m.CantWalk, out hold ) )
 						moveIsOk = false;

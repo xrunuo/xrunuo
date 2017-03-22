@@ -50,7 +50,7 @@ namespace Server.Items
 
 		public static void BeginInmunity( Mobile m )
 		{
-			BeginInmunity( m, InmunityDuration + ( m.IsPlayer ? PlayerFreezeDuration : NPCFreezeDuration ) );
+			BeginInmunity( m, InmunityDuration + ( m.Player ? PlayerFreezeDuration : NPCFreezeDuration ) );
 		}
 
 		public static void BeginInmunity( Mobile m, TimeSpan duration )
@@ -91,7 +91,7 @@ namespace Server.Items
 				attacker.SendLocalizedMessage( 1060163 ); // You deliver a paralyzing blow!
 				defender.SendLocalizedMessage( 1072221 ); // You have been hit by a paralyzing blow!
 
-				defender.Freeze( defender.IsPlayer ? PlayerFreezeDuration : NPCFreezeDuration );
+				defender.Freeze( defender.Player ? PlayerFreezeDuration : NPCFreezeDuration );
 
 				BeginInmunity( defender );
 			}

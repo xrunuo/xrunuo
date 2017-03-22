@@ -28,7 +28,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( !from.IsPlayer )
+			if ( !from.Player )
 			{
 				return;
 			}

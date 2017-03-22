@@ -100,17 +100,17 @@ namespace Server.Items
 			{
 				case VirtueName.Honesty:
 					{
-						mods.Add( new AttributeMod( MagicalAttribute.RegenMana, 2 ) );
+						mods.Add( new AttributeMod( AosAttribute.RegenMana, 2 ) );
 						break;
 					}
 				case VirtueName.Compassion:
 					{
-						mods.Add( new AttributeMod( MagicalAttribute.RegenHits, 2 ) );
+						mods.Add( new AttributeMod( AosAttribute.RegenHits, 2 ) );
 						break;
 					}
 				case VirtueName.Valor:
 					{
-						mods.Add( new AttributeMod( MagicalAttribute.RegenStam, 2 ) );
+						mods.Add( new AttributeMod( AosAttribute.RegenStam, 2 ) );
 						break;
 					}
 				case VirtueName.Justice:
@@ -118,8 +118,8 @@ namespace Server.Items
 						bool bump = 0.5 > Utility.RandomDouble();
 						bool which = Utility.RandomBool();
 
-						mods.Add( new AttributeMod( MagicalAttribute.RegenMana, bump && which ? 2 : 1 ) );
-						mods.Add( new AttributeMod( MagicalAttribute.RegenHits, bump && !which ? 2 : 1 ) );
+						mods.Add( new AttributeMod( AosAttribute.RegenMana, bump && which ? 2 : 1 ) );
+						mods.Add( new AttributeMod( AosAttribute.RegenHits, bump && !which ? 2 : 1 ) );
 
 						break;
 					}
@@ -128,8 +128,8 @@ namespace Server.Items
 						bool bump = 0.5 > Utility.RandomDouble();
 						bool which = Utility.RandomBool();
 
-						mods.Add( new AttributeMod( MagicalAttribute.RegenHits, bump && which ? 2 : 1 ) );
-						mods.Add( new AttributeMod( MagicalAttribute.RegenStam, bump && !which ? 2 : 1 ) );
+						mods.Add( new AttributeMod( AosAttribute.RegenHits, bump && which ? 2 : 1 ) );
+						mods.Add( new AttributeMod( AosAttribute.RegenStam, bump && !which ? 2 : 1 ) );
 
 						break;
 					}
@@ -138,22 +138,22 @@ namespace Server.Items
 						bool bump = 0.5 > Utility.RandomDouble();
 						bool which = Utility.RandomBool();
 
-						mods.Add( new AttributeMod( MagicalAttribute.RegenMana, bump && which ? 2 : 1 ) );
-						mods.Add( new AttributeMod( MagicalAttribute.RegenStam, bump && !which ? 2 : 1 ) );
+						mods.Add( new AttributeMod( AosAttribute.RegenMana, bump && which ? 2 : 1 ) );
+						mods.Add( new AttributeMod( AosAttribute.RegenStam, bump && !which ? 2 : 1 ) );
 
 						break;
 					}
 				case VirtueName.Spirituality:
 					{
-						mods.Add( new AttributeMod( MagicalAttribute.RegenHits, 0.25 > Utility.RandomDouble() ? 2 : 1 ) );
-						mods.Add( new AttributeMod( MagicalAttribute.RegenMana, 0.25 > Utility.RandomDouble() ? 2 : 1 ) );
-						mods.Add( new AttributeMod( MagicalAttribute.RegenStam, 0.25 > Utility.RandomDouble() ? 2 : 1 ) );
+						mods.Add( new AttributeMod( AosAttribute.RegenHits, 0.25 > Utility.RandomDouble() ? 2 : 1 ) );
+						mods.Add( new AttributeMod( AosAttribute.RegenMana, 0.25 > Utility.RandomDouble() ? 2 : 1 ) );
+						mods.Add( new AttributeMod( AosAttribute.RegenStam, 0.25 > Utility.RandomDouble() ? 2 : 1 ) );
 
 						break;
 					}
 				case VirtueName.Humility:
 					{
-						var attribute = Utility.RandomList( MagicalAttribute.RegenHits, MagicalAttribute.RegenMana, MagicalAttribute.RegenStam );
+						var attribute = Utility.RandomList( AosAttribute.RegenHits, AosAttribute.RegenMana, AosAttribute.RegenStam );
 						mods.Add( new AttributeMod( attribute, 3 ) );
 
 						break;

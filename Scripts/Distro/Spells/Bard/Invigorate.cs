@@ -41,7 +41,7 @@ namespace Server.Spells.Bard
 			statMods.Add( new StatMod( StatType.Int, "Invigorate Int", statBonus ) );
 
 			int hitsBonus = 5 + ( 2 * music ) + ( 3 * provo ) + peace + disco;
-			mods.Add( new AttributeMod( MagicalAttribute.BonusHits, hitsBonus ) );
+			mods.Add( new AttributeMod( AosAttribute.BonusHits, hitsBonus ) );
 
 			this.BuffInfo = new BuffInfo( this.BuffIcon, 1115613, 1115730,
 				String.Format( "{0}\t{1}\t{1}\t{1}", hitsBonus, statBonus ), false );

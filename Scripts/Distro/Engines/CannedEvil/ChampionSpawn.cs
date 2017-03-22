@@ -630,7 +630,7 @@ namespace Server.Engines.CannedEvil
 
 		public static bool IsGhost( Mobile m )
 		{
-			if ( !m.IsPlayer || m.Alive )
+			if ( !m.Player || m.Alive )
 				return false;
 
 			Corpse c = m.Corpse as Corpse;
@@ -1101,14 +1101,14 @@ namespace Server.Engines.CannedEvil
 				{
 					Mobile mob = m_Creatures[i];
 
-					if ( !mob.IsPlayer )
+					if ( !mob.Player )
 						mob.Delete();
 				}
 
 				m_Creatures.Clear();
 			}
 
-			if ( m_Champion != null && !m_Champion.IsPlayer )
+			if ( m_Champion != null && !m_Champion.Player )
 				m_Champion.Delete();
 
 			Stop();
@@ -1144,7 +1144,7 @@ namespace Server.Engines.CannedEvil
 
 		public void RegisterDamage( Mobile from, int amount )
 		{
-			if ( from == null || !from.IsPlayer )
+			if ( from == null || !from.Player )
 				return;
 
 			if ( m_DamageEntries.ContainsKey( from ) )
@@ -1215,7 +1215,7 @@ namespace Server.Engines.CannedEvil
 
 		public bool IsEligible( Mobile m, Item Artifact )
 		{
-			return m.IsPlayer && m.Alive && m.InRange( m_Champion.Corpse, 90 ) && m.Backpack != null && m.Backpack.CheckHold( m, Artifact, false );
+			return m.Player && m.Alive && m.InRange( m_Champion.Corpse, 90 ) && m.Backpack != null && m.Backpack.CheckHold( m, Artifact, false );
 		}
 
 		public override void Serialize( GenericWriter writer )

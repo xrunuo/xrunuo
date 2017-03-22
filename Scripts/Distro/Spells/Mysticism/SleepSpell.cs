@@ -88,11 +88,11 @@ namespace Server.Spells.Mysticism
 				t.Start();
 
 				var mods = new List<AttributeMod>();
-				mods.Add( new AttributeMod( MagicalAttribute.AttackChance, -45 ) );
-				mods.Add( new AttributeMod( MagicalAttribute.DefendChance, -45 ) );
-				mods.Add( new AttributeMod( MagicalAttribute.WeaponSpeed, -40 ) );
-				mods.Add( new AttributeMod( MagicalAttribute.CastSpeed, -2 ) );
-				mods.Add( new AttributeMod( MagicalAttribute.CastRecovery, -4 ) );
+				mods.Add( new AttributeMod( AosAttribute.AttackChance, -45 ) );
+				mods.Add( new AttributeMod( AosAttribute.DefendChance, -45 ) );
+				mods.Add( new AttributeMod( AosAttribute.WeaponSpeed, -40 ) );
+				mods.Add( new AttributeMod( AosAttribute.CastSpeed, -2 ) );
+				mods.Add( new AttributeMod( AosAttribute.CastRecovery, -4 ) );
 				foreach ( AttributeMod mod in mods )
 				{
 					m.AddAttributeMod( mod );

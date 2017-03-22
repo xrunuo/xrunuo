@@ -19,7 +19,7 @@ namespace Server.SkillHandlers
 		{
 			Map map = from.Map;
 
-			if ( to.IsPlayer )
+			if ( to.Player )
 				return from.CanBeHarmful( to, false, true ); // normal restrictions
 
 			if ( map != null && ( map.Rules & MapRules.HarmfulRestrictions ) == 0 )

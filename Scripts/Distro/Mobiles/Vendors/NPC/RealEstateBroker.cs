@@ -36,7 +36,7 @@ namespace Server.Mobiles
 
 		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
-			if ( DateTime.UtcNow > m_NextCheckPack && this.InRange( m, 4 ) && !this.InRange( oldLocation, 4 ) && m.IsPlayer )
+			if ( DateTime.UtcNow > m_NextCheckPack && this.InRange( m, 4 ) && !this.InRange( oldLocation, 4 ) && m.Player )
 			{
 				Container pack = m.Backpack;
 

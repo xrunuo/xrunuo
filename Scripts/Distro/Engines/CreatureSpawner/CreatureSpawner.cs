@@ -256,7 +256,7 @@ namespace Server.Mobiles
 			int players = 0;
 
 			foreach ( Mobile m in this.GetMobilesInRange( this.HomeRange ) )
-				if ( m.IsPlayer && m.AccessLevel == AccessLevel.Player )
+				if ( m.Player && m.AccessLevel == AccessLevel.Player )
 					players++;
 
 			return players;

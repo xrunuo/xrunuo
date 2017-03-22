@@ -2619,33 +2619,33 @@ namespace Server.Network
 					m_Stream.Write( (short) beheld.GetMaxResistance( ResistanceType.Cold ) );
 					m_Stream.Write( (short) beheld.GetMaxResistance( ResistanceType.Poison ) );
 					m_Stream.Write( (short) beheld.GetMaxResistance( ResistanceType.Energy ) );
-					m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.DefendChance ) );
+					m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.DefendChance ) );
 					m_Stream.Write( (short) 45 ); // Max dci
-					m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.AttackChance ) );
-					m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.WeaponSpeed ) );
-					m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.WeaponDamage ) );
-					m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.LowerRegCost ) );
-					m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.SpellDamage ) );
-					m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.CastRecovery ) );
-					m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.CastSpeed ) );
-					m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.LowerManaCost ) );
+					m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.AttackChance ) );
+					m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.WeaponSpeed ) );
+					m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.WeaponDamage ) );
+					m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.LowerRegCost ) );
+					m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.SpellDamage ) );
+					m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.CastRecovery ) );
+					m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.CastSpeed ) );
+					m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.LowerManaCost ) );
 
 					if ( isEnhancedClient )
 					{
-						m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.RegenHits ) );
-						m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.RegenStam ) );
-						m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.RegenMana ) );
-						m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.ReflectPhysical ) );
-						m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.EnhancePotions ) );
+						m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.RegenHits ) );
+						m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.RegenStam ) );
+						m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.RegenMana ) );
+						m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.ReflectPhysical ) );
+						m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.EnhancePotions ) );
 						m_Stream.Write( (short) beheld.GetStatOffset( StatType.Str ) );
 						m_Stream.Write( (short) beheld.GetStatOffset( StatType.Dex ) );
 						m_Stream.Write( (short) beheld.GetStatOffset( StatType.Int ) );
 						m_Stream.Write( (short) 0 );
 						m_Stream.Write( (short) 0 );
 						m_Stream.Write( (short) 0 );
-						m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.BonusHits ) );
-						m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.BonusStam ) );
-						m_Stream.Write( (short) beheld.GetMagicalAttribute( MagicalAttribute.BonusMana ) );
+						m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.BonusHits ) );
+						m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.BonusStam ) );
+						m_Stream.Write( (short) beheld.GetMagicalAttribute( AosAttribute.BonusMana ) );
 					}
 				}
 			}

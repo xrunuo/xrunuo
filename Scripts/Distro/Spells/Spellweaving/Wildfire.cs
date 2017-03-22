@@ -194,7 +194,7 @@ namespace Server.Spells.Spellweaving
 							{
 								Mobile m = (Mobile) m_Queue.Dequeue();
 
-								if ( caster.CanSee( m ) && caster.InLOS( m ) && ( caster.IsPlayer || m.IsPlayer || ( m is BaseCreature && ( (BaseCreature) m ).Controlled ) ) )
+								if ( caster.CanSee( m ) && caster.InLOS( m ) && ( caster.Player || m.Player || ( m is BaseCreature && ( (BaseCreature) m ).Controlled ) ) )
 								{
 									caster.DoHarmful( m );
 

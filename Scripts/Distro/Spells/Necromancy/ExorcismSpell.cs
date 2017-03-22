@@ -89,7 +89,7 @@ namespace Server.Spells.Necromancy
 
 		private bool IsValidTarget( Mobile m )
 		{
-			if ( !m.IsPlayer || m.Alive )
+			if ( !m.Player || m.Alive )
 				return false;
 
 			Corpse c = m.Corpse as Corpse;

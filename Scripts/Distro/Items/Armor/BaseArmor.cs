@@ -57,10 +57,10 @@ namespace Server.Items
 
 		private int m_PhysicalBonus, m_FireBonus, m_ColdBonus, m_PoisonBonus, m_EnergyBonus;
 
-		private MagicalAttributes m_MagicalAttributes;
-		private ArmorAttributes m_ArmorAttributes;
+		private AosAttributes m_AosAttributes;
+		private AosArmorAttributes m_AosArmorAttributes;
 		private SkillBonuses m_SkillBonuses;
-		private ElementAttributes m_Resistances;
+		private AosElementAttributes m_Resistances;
 		private AbsorptionAttributes m_AbsorptionAttributes;
 
 		// Overridable values. These values are provided to override the defaults which get defined in the individual armor scripts.
@@ -179,16 +179,16 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public MagicalAttributes Attributes
+		public AosAttributes Attributes
 		{
-			get { return m_MagicalAttributes; }
+			get { return m_AosAttributes; }
 			set { }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public ArmorAttributes ArmorAttributes
+		public AosArmorAttributes ArmorAttributes
 		{
-			get { return m_ArmorAttributes; }
+			get { return m_AosArmorAttributes; }
 			set { }
 		}
 
@@ -200,7 +200,7 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public ElementAttributes Resistances
+		public AosElementAttributes Resistances
 		{
 			get { return m_Resistances; }
 			set { }
@@ -400,7 +400,7 @@ namespace Server.Items
 
 		public int GetLowerStatReq()
 		{
-			int v = m_ArmorAttributes.LowerStatReq;
+			int v = m_AosArmorAttributes.LowerStatReq;
 
 			CraftResourceInfo info = CraftResources.GetInfo( m_Resource );
 
@@ -502,8 +502,8 @@ namespace Server.Items
 
 			SaveFlag flags = SaveFlag.None;
 
-			SetSaveFlag( ref flags, SaveFlag.Attributes, !m_MagicalAttributes.IsEmpty );
-			SetSaveFlag( ref flags, SaveFlag.ArmorAttributes, !m_ArmorAttributes.IsEmpty );
+			SetSaveFlag( ref flags, SaveFlag.Attributes, !m_AosAttributes.IsEmpty );
+			SetSaveFlag( ref flags, SaveFlag.ArmorAttributes, !m_AosArmorAttributes.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.PhysicalBonus, m_PhysicalBonus != 0 );
 			SetSaveFlag( ref flags, SaveFlag.FireBonus, m_FireBonus != 0 );
 			SetSaveFlag( ref flags, SaveFlag.ColdBonus, m_ColdBonus != 0 );
@@ -532,10 +532,10 @@ namespace Server.Items
 			}
 
 			if ( GetSaveFlag( flags, SaveFlag.Attributes ) )
-				m_MagicalAttributes.Serialize( writer );
+				m_AosAttributes.Serialize( writer );
 
 			if ( GetSaveFlag( flags, SaveFlag.ArmorAttributes ) )
-				m_ArmorAttributes.Serialize( writer );
+				m_AosArmorAttributes.Serialize( writer );
 
 			if ( GetSaveFlag( flags, SaveFlag.PhysicalBonus ) )
 				writer.WriteEncodedInt( (int) m_PhysicalBonus );
@@ -603,14 +603,14 @@ namespace Server.Items
 						}
 
 						if ( GetSaveFlag( flags, SaveFlag.Attributes ) )
-							m_MagicalAttributes = new MagicalAttributes( this, reader );
+							m_AosAttributes = new AosAttributes( this, reader );
 						else
-							m_MagicalAttributes = new MagicalAttributes( this );
+							m_AosAttributes = new AosAttributes( this );
 
 						if ( GetSaveFlag( flags, SaveFlag.ArmorAttributes ) )
-							m_ArmorAttributes = new ArmorAttributes( this, reader );
+							m_AosArmorAttributes = new AosArmorAttributes( this, reader );
 						else
-							m_ArmorAttributes = new ArmorAttributes( this );
+							m_AosArmorAttributes = new AosArmorAttributes( this );
 
 						if ( GetSaveFlag( flags, SaveFlag.PhysicalBonus ) )
 							m_PhysicalBonus = reader.ReadEncodedInt();
@@ -653,9 +653,9 @@ namespace Server.Items
 							m_SkillBonuses = new SkillBonuses( this );
 
 						if ( GetSaveFlag( flags, SaveFlag.Resistances ) )
-							m_Resistances = new ElementAttributes( this, reader );
+							m_Resistances = new AosElementAttributes( this, reader );
 						else
-							m_Resistances = new ElementAttributes( this );
+							m_Resistances = new AosElementAttributes( this );
 
 						if ( GetSaveFlag( flags, SaveFlag.TimesImbued ) )
 							m_TimesImbued = reader.ReadEncodedInt();
@@ -701,14 +701,14 @@ namespace Server.Items
 			if ( Parent is Mobile )
 				( (Mobile) Parent ).CheckStatTimers();
 
-			if ( !( this is BaseShield ) && Meditable && m_ArmorAttributes.MageArmor != 0 )
-				m_ArmorAttributes.MageArmor = 0;
+			if ( !( this is BaseShield ) && Meditable && m_AosArmorAttributes.MageArmor != 0 )
+				m_AosArmorAttributes.MageArmor = 0;
 
 			if ( m_PlayerConstructed )
-				m_ArmorAttributes.DurabilityBonus = 0;
+				m_AosArmorAttributes.DurabilityBonus = 0;
 
 			if ( MaterialType == ArmorMaterialType.Leather )
-				m_ArmorAttributes.LowerStatReq = 0;
+				m_AosArmorAttributes.LowerStatReq = 0;
 
 			if ( MaxHitPoints > 255 )
 				MaxHitPoints = 255;
@@ -724,10 +724,10 @@ namespace Server.Items
 
 			this.Layer = (Layer) ItemData.Quality;
 
-			m_MagicalAttributes = new MagicalAttributes( this );
-			m_ArmorAttributes = new ArmorAttributes( this );
+			m_AosAttributes = new AosAttributes( this );
+			m_AosArmorAttributes = new AosArmorAttributes( this );
 			m_SkillBonuses = new SkillBonuses( this );
-			m_Resistances = new ElementAttributes( this );
+			m_Resistances = new AosElementAttributes( this );
 			m_AbsorptionAttributes = new AbsorptionAttributes( this );
 		}
 
@@ -975,13 +975,13 @@ namespace Server.Items
 			return bonus;
 		}
 
-		public virtual int GetAttributeBonus( MagicalAttribute attr )
+		public virtual int GetAttributeBonus( AosAttribute attr )
 		{
 			int value = 0;
 
 			switch ( attr )
 			{
-				case MagicalAttribute.CastSpeed:
+				case AosAttribute.CastSpeed:
 					value += GetCastSpeedBonus();
 					break;
 			}
@@ -1143,7 +1143,7 @@ namespace Server.Items
 			if ( ( prop = Attributes.CastRecovery ) != 0 )
 				list.Add( 1060412, prop.ToString() ); // faster cast recovery ~1_val~
 
-			if ( ( prop = ( GetCastSpeedBonus() + m_MagicalAttributes.CastSpeed ) ) != 0 )
+			if ( ( prop = ( GetCastSpeedBonus() + m_AosAttributes.CastSpeed ) ) != 0 )
 				list.Add( 1060413, prop.ToString() ); // faster casting ~1_val~
 
 			if ( ( prop = Attributes.AttackChance ) != 0 )
@@ -1382,10 +1382,10 @@ namespace Server.Items
 			MaxHitPoints = orig.MaxHitPoints;
 			HitPoints = orig.HitPoints;
 
-			m_MagicalAttributes = orig.Attributes;
+			m_AosAttributes = orig.Attributes;
 			m_Resistances = orig.Resistances;
 			m_SkillBonuses = orig.SkillBonuses;
-			m_ArmorAttributes = orig.ArmorAttributes;
+			m_AosArmorAttributes = orig.ArmorAttributes;
 			m_AbsorptionAttributes = orig.AbsorptionAttributes;
 
 			EngravedText = orig.EngravedText;

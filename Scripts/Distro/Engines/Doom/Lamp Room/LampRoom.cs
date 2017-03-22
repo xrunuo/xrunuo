@@ -19,7 +19,7 @@ namespace Server.Regions
 			// at OSI for logout from Lamp Room, account may be banned
 			Mobile m = e.Mobile;
 
-			if ( m != null && m.IsPlayer && m.Region.Name == "Doom Lamp Room" )
+			if ( m != null && m.Player && m.Region.Name == "Doom Lamp Room" )
 			{
 				Rectangle2D rect = new Rectangle2D( 342, 168, 16, 16 );
 

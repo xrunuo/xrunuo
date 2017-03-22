@@ -58,9 +58,9 @@ namespace Server.Spells.Necromancy
 				m.FixedParticles( 0x37C4, 1, 8, 9502, 39, 4, EffectLayer.Head );
 				m.PlaySound( 0x210 );
 
-				double damage = ( ( GetDamageSkill( Caster ) - GetResistSkill( m ) ) / 10 ) + ( m.IsPlayer ? 18 : 30 );
+				double damage = ( ( GetDamageSkill( Caster ) - GetResistSkill( m ) ) / 10 ) + ( m.Player ? 18 : 30 );
 
-				damage += damage * ( SpellHelper.GetSpellDamage( Caster, m.IsPlayer ) / 100.0 );
+				damage += damage * ( SpellHelper.GetSpellDamage( Caster, m.Player ) / 100.0 );
 
 				Utility.FixMin( ref damage, 1 );
 

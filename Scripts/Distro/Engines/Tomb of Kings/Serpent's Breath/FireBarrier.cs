@@ -54,7 +54,7 @@ namespace Server.Items
 
 		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
-			if ( !Active || !m.Alive || !m.IsPlayer )
+			if ( !Active || !m.Alive || !m.Player )
 				return;
 
 			if ( m.InRange( this, 1 ) && !m_DamageTable.ContainsKey( m ) )
@@ -66,7 +66,7 @@ namespace Server.Items
 
 		protected void Damage( Mobile m )
 		{
-			if ( Active && m.IsPlayer && m.Alive && !Deleted && m.InRange( this, 1 ) )
+			if ( Active && m.Player && m.Alive && !Deleted && m.InRange( this, 1 ) )
 			{
 				AOS.Damage( m, Utility.RandomMinMax( 5, 7 ), 0, 100, 0, 0, 0 );
 			}

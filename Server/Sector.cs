@@ -157,7 +157,7 @@ namespace Server
 				Add( ref m_Clients, mob.NetState );
 			}
 
-			if ( mob.IsPlayer )
+			if ( mob.Player )
 			{
 				if ( m_Players == null )
 				{
@@ -177,7 +177,7 @@ namespace Server
 				Remove( ref m_Clients, mob.NetState );
 			}
 
-			if ( mob.IsPlayer && m_Players != null )
+			if ( mob.Player && m_Players != null )
 			{
 				Remove( ref m_Players, mob );
 

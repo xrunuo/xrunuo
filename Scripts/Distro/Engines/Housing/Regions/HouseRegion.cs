@@ -77,7 +77,7 @@ namespace Server.Engines.Housing.Regions
 			{
 				AggressorInfo info = (AggressorInfo) m.Aggressed[i];
 
-				if ( info.Attacker.IsPlayer && ( DateTime.UtcNow - info.LastCombatTime ) < time )
+				if ( info.Attacker.Player && ( DateTime.UtcNow - info.LastCombatTime ) < time )
 					return true;
 			}
 
@@ -85,7 +85,7 @@ namespace Server.Engines.Housing.Regions
 			{
 				AggressorInfo info = (AggressorInfo) m.Aggressors[i];
 
-				if ( info.Attacker.IsPlayer && ( DateTime.UtcNow - info.LastCombatTime ) < time )
+				if ( info.Attacker.Player && ( DateTime.UtcNow - info.LastCombatTime ) < time )
 					return true;
 			}
 
@@ -132,7 +132,7 @@ namespace Server.Engines.Housing.Regions
 					m.Location = m_House.BanLocation;
 			}
 
-			// Añadido para Antihousing
+			// Aï¿½adido para Antihousing
 			if ( m_House.IsInside( m ) && CheckCombat( m, TimeSpan.FromMinutes( 2.0 ) ) )
 			{
 				for ( int i = 0; i < m.Aggressors.Count; i++ )
@@ -246,7 +246,7 @@ namespace Server.Engines.Housing.Regions
 				{
 					AggressorInfo info = (AggressorInfo) m.Aggressed[i];
 
-					if ( info.Defender.IsPlayer && ( DateTime.UtcNow - info.LastCombatTime ) < CombatHeatDelay )
+					if ( info.Defender.Player && ( DateTime.UtcNow - info.LastCombatTime ) < CombatHeatDelay )
 						return base.GetLogoutDelay( m );
 				}
 

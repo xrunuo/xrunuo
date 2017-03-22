@@ -29,13 +29,13 @@ namespace Server.Regions
 
 		public override void OnEnter( Mobile m )
 		{
-			if ( m.IsPlayer )
+			if ( m.Player )
 				m.ForcedWalk = true;
 		}
 
 		public override void OnExit( Mobile m )
 		{
-			if ( m.IsPlayer )
+			if ( m.Player )
 				m.ForcedWalk = false;
 		}
 	}

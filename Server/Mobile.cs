@@ -130,13 +130,13 @@ namespace Server
 
 	public class AttributeMod
 	{
-		private MagicalAttribute m_Attribute;
+		private AosAttribute m_Attribute;
 		private int m_Offset;
 
-		public MagicalAttribute Attribute { get { return m_Attribute; } }
+		public AosAttribute Attribute { get { return m_Attribute; } }
 		public int Offset { get { return m_Offset; } }
 
-		public AttributeMod( MagicalAttribute attr, int offset )
+		public AttributeMod( AosAttribute attr, int offset )
 		{
 			m_Attribute = attr;
 			m_Offset = offset;
@@ -421,7 +421,7 @@ namespace Server
 		private AccessLevel m_AccessLevel;
 		private Skills m_Skills;
 		private List<Item> m_EquippedItems;
-		private bool m_IsPlayer;
+		private bool m_Player;
 		private string m_Title;
 		private string m_Profile;
 		private bool m_ProfileLocked;
@@ -749,7 +749,7 @@ namespace Server
 
 		public virtual int GetMaxResistance( ResistanceType type )
 		{
-			if ( m_IsPlayer )
+			if ( m_Player )
 			{
 				if ( Race == Race.Elf && ( type == ResistanceType.Energy ) )
 					return 75;
@@ -798,7 +798,7 @@ namespace Server
 
 			string prefix = "";
 
-			if ( ShowFameTitle && ( m_IsPlayer || m_Body.IsHuman ) && m_Fame >= 10000 )
+			if ( ShowFameTitle && ( m_Player || m_Body.IsHuman ) && m_Fame >= 10000 )
 				prefix = m_Female ? "Lady" : "Lord";
 
 			string suffix = "";
@@ -808,7 +808,7 @@ namespace Server
 
 			BaseGuild guild = m_Guild;
 
-			if ( guild != null && ( m_IsPlayer && m_DisplayGuildTitle ) )
+			if ( guild != null && ( m_Player && m_DisplayGuildTitle ) )
 			{
 				if ( suffix.Length > 0 )
 					suffix = String.Format( "{0} [{1}]", suffix, Utility.FixHtml( guild.Abbreviation ) );
@@ -820,7 +820,7 @@ namespace Server
 
 			list.Add( 1050045, "{0} \t{1}\t {2}", prefix, name, suffix ); // ~1_PREFIX~~2_NAME~~3_SUFFIX~
 
-			if ( guild != null && ( m_DisplayGuildTitle || ( m_IsPlayer && guild.Type != GuildType.Regular ) ) )
+			if ( guild != null && ( m_DisplayGuildTitle || ( m_Player && guild.Type != GuildType.Regular ) ) )
 			{
 				string type;
 
@@ -2822,7 +2822,7 @@ namespace Server
 		{
 			get
 			{
-				return !m_Deleted && ( !m_IsPlayer || !m_Body.IsGhost );
+				return !m_Deleted && ( !m_Player || !m_Body.IsGhost );
 			}
 		}
 
@@ -3075,7 +3075,7 @@ namespace Server
 			if ( sound >= 0 )
 				Effects.PlaySound( this, this.Map, sound );
 
-			if ( !m_IsPlayer )
+			if ( !m_Player )
 			{
 				Delete();
 			}
@@ -3780,7 +3780,7 @@ namespace Server
 								m_EquippedItems.Add( item );
 						}
 
-						m_IsPlayer = reader.ReadBool();
+						m_Player = reader.ReadBool();
 						m_Title = reader.ReadString();
 						if ( m_Title != null )
 							m_Title = string.Intern( m_Title );
@@ -3812,7 +3812,7 @@ namespace Server
 							m_StuckMenuUses = null;
 						}
 
-						if ( m_IsPlayer && m_Map != Map.Internal )
+						if ( m_Player && m_Map != Map.Internal )
 						{
 							m_LogoutLocation = m_Location;
 							m_LogoutMap = m_Map;
@@ -4034,7 +4034,7 @@ namespace Server
 			for ( int i = 0; i < m_EquippedItems.Count; ++i )
 				writer.Write( (Item) m_EquippedItems[i] );
 
-			writer.Write( m_IsPlayer );
+			writer.Write( m_Player );
 			writer.Write( m_Title );
 			writer.Write( m_Profile );
 			writer.Write( m_ProfileLocked );
@@ -4112,15 +4112,15 @@ namespace Server
 		}
 
 		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
-		public bool IsPlayer
+		public bool Player
 		{
 			get
 			{
-				return m_IsPlayer;
+				return m_Player;
 			}
 			set
 			{
-				m_IsPlayer = value;
+				m_Player = value;
 				InvalidateProperties();
 
 				CheckStatTimers();
@@ -4137,8 +4137,10 @@ namespace Server
 			set
 			{
 				m_Title = value;
+
 				if ( m_Title != null )
 					m_Title = string.Intern( m_Title );
+
 				InvalidateProperties();
 			}
 		}
@@ -4420,7 +4422,7 @@ namespace Server
 				{
 					m_Fame = value;
 
-					if ( ShowFameTitle && ( m_IsPlayer || m_Body.IsHuman ) && ( oldValue >= 10000 ) != ( value >= 10000 ) )
+					if ( ShowFameTitle && ( m_Player || m_Body.IsHuman ) && ( oldValue >= 10000 ) != ( value >= 10000 ) )
 						InvalidateProperties();
 
 					OnFameChange( oldValue );
@@ -5008,9 +5010,9 @@ namespace Server
 			InvalidateProperties();
 		}
 
-		public virtual int GetMagicalAttribute( MagicalAttribute attr )
+		public virtual int GetMagicalAttribute( AosAttribute attr )
 		{
-			int value = MagicalAttributes.GetValue( this, attr );
+			int value = AosAttributes.GetValue( this, attr );
 
 			if ( m_AttributeMods != null )
 			{
@@ -7278,7 +7280,7 @@ namespace Server
 
 				return false;
 			}
-			else if ( from.IsPlayer && this.IsPlayer && from.Alive && this.Alive && from.InRange( Location, 2 ) )
+			else if ( from.Player && this.Player && from.Alive && this.Alive && from.InRange( Location, 2 ) )
 			{
 				NetState ourState = m_NetState;
 				NetState theirState = from.m_NetState;
@@ -9193,7 +9195,7 @@ namespace Server
 					{
 						Mobile heard = (Mobile) o;
 
-						if ( heard.CanSee( this ) && ( m_NoSpeechLOS || !heard.IsPlayer || heard.InLOS( this ) ) )
+						if ( heard.CanSee( this ) && ( m_NoSpeechLOS || !heard.Player || heard.InLOS( this ) ) )
 						{
 							if ( heard.m_NetState != null )
 								hears.Add( heard );

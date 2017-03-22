@@ -795,7 +795,7 @@ namespace Server
 				return DeathMoveResult.MoveToBackpack;
 			else if ( CheckNewbied() && parent.Kills < 5 )
 				return DeathMoveResult.MoveToBackpack;
-			else if ( parent.IsPlayer && NonTransferable )
+			else if ( parent.Player && NonTransferable )
 				return DeathMoveResult.MoveToBackpack;
 			else
 				return DeathMoveResult.MoveToCorpse;
@@ -811,7 +811,7 @@ namespace Server
 				return DeathMoveResult.MoveToBackpack;
 			else if ( CheckNewbied() && parent.Kills < 5 )
 				return DeathMoveResult.MoveToBackpack;
-			else if ( parent.IsPlayer && NonTransferable )
+			else if ( parent.Player && NonTransferable )
 				return DeathMoveResult.MoveToBackpack;
 			else
 				return DeathMoveResult.MoveToCorpse;
@@ -3121,7 +3121,7 @@ namespace Server
 
 		public virtual bool OnDroppedToMobile( Mobile from, Mobile target )
 		{
-			if ( NonTransferable && from.IsPlayer && from.AccessLevel <= AccessLevel.GameMaster )
+			if ( NonTransferable && from.Player && from.AccessLevel <= AccessLevel.GameMaster )
 			{
 				HandleInvalidTransfer( from );
 				return false;
@@ -3159,7 +3159,7 @@ namespace Server
 			{
 				return false;
 			}
-			else if ( NonTransferable && from.IsPlayer && target != from.Backpack && from.AccessLevel <= AccessLevel.GameMaster )
+			else if ( NonTransferable && from.Player && target != from.Backpack && from.AccessLevel <= AccessLevel.GameMaster )
 			{
 				HandleInvalidTransfer( from );
 				return false;
@@ -3185,7 +3185,7 @@ namespace Server
 				return false;
 			else if ( !from.OnDroppedItemOnto( this, target ) )
 				return false;
-			else if ( NonTransferable && from.IsPlayer && from.AccessLevel <= AccessLevel.GameMaster )
+			else if ( NonTransferable && from.Player && from.AccessLevel <= AccessLevel.GameMaster )
 			{
 				HandleInvalidTransfer( from );
 				return false;
@@ -3229,7 +3229,7 @@ namespace Server
 
 		public virtual bool OnDroppedToWorld( Mobile from, Point3D p )
 		{
-			if ( NonTransferable && from.IsPlayer && from.AccessLevel <= AccessLevel.GameMaster )
+			if ( NonTransferable && from.Player && from.AccessLevel <= AccessLevel.GameMaster )
 			{
 				HandleInvalidTransfer( from );
 				return false;

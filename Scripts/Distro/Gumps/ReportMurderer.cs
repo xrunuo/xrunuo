@@ -30,19 +30,19 @@ namespace Server.Gumps
 
 			foreach ( AggressorInfo ai in m.Aggressors )
 			{
-				if ( ai.Attacker.IsPlayer && ai.CanReportMurder && !ai.Reported )
+				if ( ai.Attacker.Player && ai.CanReportMurder && !ai.Reported )
 				{
 					killers.Add( ai.Attacker );
 					ai.Reported = true;
 				}
 
-				if ( ai.Attacker.IsPlayer && ( DateTime.UtcNow - ai.LastCombatTime ) < TimeSpan.FromSeconds( 30.0 ) && !toGive.Contains( ai.Attacker ) )
+				if ( ai.Attacker.Player && ( DateTime.UtcNow - ai.LastCombatTime ) < TimeSpan.FromSeconds( 30.0 ) && !toGive.Contains( ai.Attacker ) )
 					toGive.Add( ai.Attacker );
 			}
 
 			foreach ( AggressorInfo ai in m.Aggressed )
 			{
-				if ( ai.Defender.IsPlayer && ( DateTime.UtcNow - ai.LastCombatTime ) < TimeSpan.FromSeconds( 30.0 ) && !toGive.Contains( ai.Defender ) )
+				if ( ai.Defender.Player && ( DateTime.UtcNow - ai.LastCombatTime ) < TimeSpan.FromSeconds( 30.0 ) && !toGive.Contains( ai.Defender ) )
 					toGive.Add( ai.Defender );
 			}
 

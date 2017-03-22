@@ -129,7 +129,7 @@ namespace Server.Items
 
 		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
-			if ( m.IsPlayer && this.InRange( m, m_Range ) && !this.InRange( oldLocation, m_Range ) )
+			if ( m.Player && this.InRange( m, m_Range ) && !this.InRange( oldLocation, m_Range ) )
 			{
 				Broadcast( m );
 			}

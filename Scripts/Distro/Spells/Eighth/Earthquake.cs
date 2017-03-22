@@ -51,7 +51,7 @@ namespace Server.Spells.Eighth
 
 					int damage = m.Hits / 2;
 
-					if ( !m.IsPlayer )
+					if ( !m.Player )
 						damage = Math.Max( Math.Min( damage, 100 ), 15 );
 
 					damage += Utility.RandomMinMax( 0, 15 );

@@ -48,10 +48,10 @@ namespace Server.Items
 
 		private bool m_Altered;
 
-		private MagicalAttributes m_MagicalAttributes;
-		private ArmorAttributes m_ClothingAttributes;
+		private AosAttributes m_AosAttributes;
+		private AosArmorAttributes m_ClothingAttributes;
 		private SkillBonuses m_SkillBonuses;
-		private ElementAttributes m_Resistances;
+		private AosElementAttributes m_Resistances;
 		private AbsorptionAttributes m_AbsorptionAttributes;
 
 		public virtual bool AllowMaleWearer { get { return true; } }
@@ -95,16 +95,16 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public MagicalAttributes Attributes
+		public AosAttributes Attributes
 		{
-			get { return m_MagicalAttributes; }
+			get { return m_AosAttributes; }
 			set
 			{
 			}
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public ArmorAttributes ClothingAttributes
+		public AosArmorAttributes ClothingAttributes
 		{
 			get { return m_ClothingAttributes; }
 			set
@@ -122,7 +122,7 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public ElementAttributes Resistances
+		public AosElementAttributes Resistances
 		{
 			get { return m_Resistances; }
 			set
@@ -358,10 +358,10 @@ namespace Server.Items
 
 			m_Resource = DefaultResource;
 
-			m_MagicalAttributes = new MagicalAttributes( this );
-			m_ClothingAttributes = new ArmorAttributes( this );
+			m_AosAttributes = new AosAttributes( this );
+			m_ClothingAttributes = new AosArmorAttributes( this );
 			m_SkillBonuses = new SkillBonuses( this );
-			m_Resistances = new ElementAttributes( this );
+			m_Resistances = new AosElementAttributes( this );
 			m_AbsorptionAttributes = new AbsorptionAttributes( this );
 
 			m_HitPoints = m_MaxHitPoints = Utility.RandomMinMax( InitMinHits, InitMaxHits );
@@ -412,7 +412,7 @@ namespace Server.Items
 				return true;
 			}
 
-			return ( m_MagicalAttributes.SpellChanneling != 0 );
+			return ( m_AosAttributes.SpellChanneling != 0 );
 		}
 
 		public override bool CheckPropertyConfliction( Mobile m )
@@ -600,91 +600,91 @@ namespace Server.Items
 			if ( ( prop = m_AbsorptionAttributes.EnergyResonance ) != 0 )
 				list.Add( 1113694, prop.ToString() ); // Energy Resonance ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.WeaponDamage ) != 0 )
+			if ( ( prop = m_AosAttributes.WeaponDamage ) != 0 )
 				list.Add( 1060401, prop.ToString() ); // damage increase ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.DefendChance ) != 0 )
+			if ( ( prop = m_AosAttributes.DefendChance ) != 0 )
 				list.Add( 1060408, prop.ToString() ); // defense chance increase ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.BonusDex ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusDex ) != 0 )
 				list.Add( 1060409, prop.ToString() ); // dexterity bonus ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.EnhancePotions ) != 0 )
+			if ( ( prop = m_AosAttributes.EnhancePotions ) != 0 )
 				list.Add( 1060411, prop.ToString() ); // enhance potions ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.CastRecovery ) != 0 )
+			if ( ( prop = m_AosAttributes.CastRecovery ) != 0 )
 				list.Add( 1060412, prop.ToString() ); // faster cast recovery ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.CastSpeed ) != 0 )
+			if ( ( prop = m_AosAttributes.CastSpeed ) != 0 )
 				list.Add( 1060413, prop.ToString() ); // faster casting ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.AttackChance ) != 0 )
+			if ( ( prop = m_AosAttributes.AttackChance ) != 0 )
 				list.Add( 1060415, prop.ToString() ); // hit chance increase ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.BonusHits ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusHits ) != 0 )
 				list.Add( 1060431, prop.ToString() ); // hit point increase ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.BonusInt ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusInt ) != 0 )
 				list.Add( 1060432, prop.ToString() ); // intelligence bonus ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.LowerManaCost ) != 0 )
+			if ( ( prop = m_AosAttributes.LowerManaCost ) != 0 )
 				list.Add( 1060433, prop.ToString() ); // lower mana cost ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.LowerRegCost ) != 0 )
+			if ( ( prop = m_AosAttributes.LowerRegCost ) != 0 )
 				list.Add( 1060434, prop.ToString() ); // lower reagent cost ~1_val~%
 
 			if ( ( prop = m_ClothingAttributes.LowerStatReq ) != 0 )
 				list.Add( 1060435, prop.ToString() ); // lower requirements ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.Luck ) != 0 )
+			if ( ( prop = m_AosAttributes.Luck ) != 0 )
 				list.Add( 1060436, prop.ToString() ); // luck ~1_val~
 
 			if ( ( prop = m_ClothingAttributes.MageArmor ) != 0 )
 				list.Add( 1060437 ); // mage armor
 
-			if ( ( prop = m_MagicalAttributes.BonusMana ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusMana ) != 0 )
 				list.Add( 1060439, prop.ToString() ); // mana increase ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.RegenMana ) != 0 )
+			if ( ( prop = m_AosAttributes.RegenMana ) != 0 )
 				list.Add( 1060440, prop.ToString() ); // mana regeneration ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.NightSight ) != 0 )
+			if ( ( prop = m_AosAttributes.NightSight ) != 0 )
 				list.Add( 1060441 ); // night sight
 
-			if ( ( prop = m_MagicalAttributes.ReflectPhysical ) != 0 )
+			if ( ( prop = m_AosAttributes.ReflectPhysical ) != 0 )
 				list.Add( 1060442, prop.ToString() ); // reflect physical damage ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.RegenStam ) != 0 )
+			if ( ( prop = m_AosAttributes.RegenStam ) != 0 )
 				list.Add( 1060443, prop.ToString() ); // stamina regeneration ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.RegenHits ) != 0 )
+			if ( ( prop = m_AosAttributes.RegenHits ) != 0 )
 				list.Add( 1060444, prop.ToString() ); // hit point regeneration ~1_val~
 
 			if ( ( prop = m_ClothingAttributes.SelfRepair ) != 0 )
 				list.Add( 1060450, prop.ToString() ); // self repair ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.SpellChanneling ) != 0 )
+			if ( ( prop = m_AosAttributes.SpellChanneling ) != 0 )
 				list.Add( 1060482 ); // spell channeling
 
-			if ( ( prop = m_MagicalAttributes.SpellDamage ) != 0 )
+			if ( ( prop = m_AosAttributes.SpellDamage ) != 0 )
 				list.Add( 1060483, prop.ToString() ); // spell damage increase ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.BonusStam ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusStam ) != 0 )
 				list.Add( 1060484, prop.ToString() ); // stamina increase ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.BonusStr ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusStr ) != 0 )
 				list.Add( 1060485, prop.ToString() ); // strength bonus ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.WeaponSpeed ) != 0 )
+			if ( ( prop = m_AosAttributes.WeaponSpeed ) != 0 )
 				list.Add( 1060486, prop.ToString() ); // swing speed increase ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.IncreasedKarmaLoss ) != 0 )
+			if ( ( prop = m_AosAttributes.IncreasedKarmaLoss ) != 0 )
 				list.Add( 1075210, prop.ToString() ); // Increased Karma Loss ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.CastingFocus ) != 0 )
+			if ( ( prop = m_AosAttributes.CastingFocus ) != 0 )
 				list.Add( 1113696, prop.ToString() ); // Casting Focus ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.LowerAmmoCost ) != 0 )
+			if ( ( prop = m_AosAttributes.LowerAmmoCost ) != 0 )
 				list.Add( 1075208, prop.ToString() ); // Lower Ammo Cost ~1_Percentage~%
 
 			base.AddResistanceProperties( list );
@@ -771,7 +771,7 @@ namespace Server.Items
 			SaveFlag flags = SaveFlag.None;
 
 			SetSaveFlag( ref flags, SaveFlag.Resource, m_Resource != DefaultResource );
-			SetSaveFlag( ref flags, SaveFlag.Attributes, !m_MagicalAttributes.IsEmpty );
+			SetSaveFlag( ref flags, SaveFlag.Attributes, !m_AosAttributes.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.ClothingAttributes, !m_ClothingAttributes.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.SkillBonuses, !m_SkillBonuses.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.Resistances, !m_Resistances.IsEmpty );
@@ -789,7 +789,7 @@ namespace Server.Items
 				writer.Write( (int) m_Resource );
 
 			if ( GetSaveFlag( flags, SaveFlag.Attributes ) )
-				m_MagicalAttributes.Serialize( writer );
+				m_AosAttributes.Serialize( writer );
 
 			if ( GetSaveFlag( flags, SaveFlag.ClothingAttributes ) )
 				m_ClothingAttributes.Serialize( writer );
@@ -831,14 +831,14 @@ namespace Server.Items
 							m_Resource = DefaultResource;
 
 						if ( GetSaveFlag( flags, SaveFlag.Attributes ) )
-							m_MagicalAttributes = new MagicalAttributes( this, reader );
+							m_AosAttributes = new AosAttributes( this, reader );
 						else
-							m_MagicalAttributes = new MagicalAttributes( this );
+							m_AosAttributes = new AosAttributes( this );
 
 						if ( GetSaveFlag( flags, SaveFlag.ClothingAttributes ) )
-							m_ClothingAttributes = new ArmorAttributes( this, reader );
+							m_ClothingAttributes = new AosArmorAttributes( this, reader );
 						else
-							m_ClothingAttributes = new ArmorAttributes( this );
+							m_ClothingAttributes = new AosArmorAttributes( this );
 
 						if ( GetSaveFlag( flags, SaveFlag.SkillBonuses ) )
 							m_SkillBonuses = new SkillBonuses( this, reader );
@@ -846,9 +846,9 @@ namespace Server.Items
 							m_SkillBonuses = new SkillBonuses( this );
 
 						if ( GetSaveFlag( flags, SaveFlag.Resistances ) )
-							m_Resistances = new ElementAttributes( this, reader );
+							m_Resistances = new AosElementAttributes( this, reader );
 						else
-							m_Resistances = new ElementAttributes( this );
+							m_Resistances = new AosElementAttributes( this );
 
 						if ( GetSaveFlag( flags, SaveFlag.MaxHitPoints ) )
 							m_MaxHitPoints = reader.ReadInt();
@@ -884,10 +884,10 @@ namespace Server.Items
 
 						m_Resource = (CraftResource) reader.ReadInt();
 
-						m_MagicalAttributes = new MagicalAttributes( this, reader );
-						m_ClothingAttributes = new ArmorAttributes( this, reader );
+						m_AosAttributes = new AosAttributes( this, reader );
+						m_ClothingAttributes = new AosArmorAttributes( this, reader );
 						m_SkillBonuses = new SkillBonuses( this, reader );
-						m_Resistances = new ElementAttributes( this, reader );
+						m_Resistances = new AosElementAttributes( this, reader );
 
 						break;
 					}
@@ -1021,7 +1021,7 @@ namespace Server.Items
 		{
 			m_Altered = true;
 
-			m_MagicalAttributes = orig.Attributes;
+			m_AosAttributes = orig.Attributes;
 			m_ClothingAttributes = orig.ClothingAttributes;
 			m_SkillBonuses = orig.SkillBonuses;
 			m_Resistances = orig.Resistances;
@@ -1038,7 +1038,7 @@ namespace Server.Items
 		{
 			m_Altered = true;
 
-			m_MagicalAttributes = orig.Attributes;
+			m_AosAttributes = orig.Attributes;
 
 			Crafter = orig.Crafter;
 			Exceptional = orig.Exceptional;

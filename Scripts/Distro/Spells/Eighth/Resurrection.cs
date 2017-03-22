@@ -50,7 +50,7 @@ namespace Server.Spells.Eighth
 			{
 				Caster.SendLocalizedMessage( 501042 ); // Target is not close enough.
 			}
-			else if ( !m.IsPlayer )
+			else if ( !m.Player )
 			{
 				Caster.SendLocalizedMessage( 501043 ); // Target is not a being.
 			}

@@ -52,7 +52,7 @@ namespace Server.Spells.Chivalry
 		{
 			int requiredTithing = this.RequiredTithing;
 
-			if ( Caster.GetMagicalAttribute( MagicalAttribute.LowerRegCost ) > Utility.Random( 100 ) )
+			if ( Caster.GetMagicalAttribute( AosAttribute.LowerRegCost ) > Utility.Random( 100 ) )
 				requiredTithing = 0;
 
 			int mana = ScaleMana( RequiredMana );

@@ -242,7 +242,7 @@ namespace Server.Mobiles
 
 		public override void DoDamage( Mobile m )
 		{
-			if ( m.IsPlayer )
+			if ( m.Player )
 			{
 				m.SendLocalizedMessage( 1070821, m_Mobile.Name ); // ~1_CREATURE~ spits a poisonous substance at you!
 			}

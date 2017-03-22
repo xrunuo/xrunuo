@@ -358,20 +358,20 @@ namespace Server.Engines.Imbuing
 
 				// Properties not included in the imbuing system, but
 				// needed to compute the magical intensity of an item
-				new OtherMagicalAttrInfo( MagicalAttribute.LowerAmmoCost, 1, 20 ),
-				new OtherMagicalAttrInfo( MagicalAttribute.IncreasedKarmaLoss, 1, 10 ),
-				new OtherMagicalAttrInfo( MagicalAttribute.CastingFocus, 1, 5 ),
+				new OtherMagicalAttrInfo( AosAttribute.LowerAmmoCost, 1, 20 ),
+				new OtherMagicalAttrInfo( AosAttribute.IncreasedKarmaLoss, 1, 10 ),
+				new OtherMagicalAttrInfo( AosAttribute.CastingFocus, 1, 5 ),
 
-				new OtherWeaponAttrInfo( WeaponAttribute.HitFatigue, 1, 15 ),
-				new OtherWeaponAttrInfo( WeaponAttribute.HitManaDrain, 1, 15 ),
-				new OtherWeaponAttrInfo( WeaponAttribute.HitCurse, 1, 15 ),
-				new OtherWeaponAttrInfo( WeaponAttribute.SplinteringWeapon, 1, 1 ),
-				new OtherWeaponAttrInfo( WeaponAttribute.BattleLust, 1, 1 ),
-				new OtherWeaponAttrInfo( WeaponAttribute.BloodDrinker, 1, 1 ),
+				new OtherWeaponAttrInfo( AosWeaponAttribute.HitFatigue, 1, 15 ),
+				new OtherWeaponAttrInfo( AosWeaponAttribute.HitManaDrain, 1, 15 ),
+				new OtherWeaponAttrInfo( AosWeaponAttribute.HitCurse, 1, 15 ),
+				new OtherWeaponAttrInfo( AosWeaponAttribute.SplinteringWeapon, 1, 1 ),
+				new OtherWeaponAttrInfo( AosWeaponAttribute.BattleLust, 1, 1 ),
+				new OtherWeaponAttrInfo( AosWeaponAttribute.BloodDrinker, 1, 1 ),
 				new HitLowerDefendGlasses(),
 
-				new OtherArmorAttrInfo( ArmorAttribute.ReactiveParalyze, 1, 1 ),
-				new OtherArmorAttrInfo( ArmorAttribute.SoulCharge, 1, 20 ),
+				new OtherArmorAttrInfo( AosArmorAttribute.ReactiveParalyze, 1, 1 ),
+				new OtherArmorAttrInfo( AosArmorAttribute.SoulCharge, 1, 20 ),
 
 				new AbsorptionAttrInfo( AbsorptionAttribute.KineticEater, 1, 15 ),
 				new AbsorptionAttrInfo( AbsorptionAttribute.FireEater, 1, 15 ),

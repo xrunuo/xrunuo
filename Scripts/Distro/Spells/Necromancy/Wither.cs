@@ -48,7 +48,7 @@ namespace Server.Spells.Necromancy
 					{
 						if ( Caster != m && Caster.InLOS( m ) && SpellHelper.ValidIndirectTarget( Caster, m ) && Caster.CanBeHarmful( m, false ) && !m.Hidden )
 						{
-							if ( !Caster.IsPlayer && m is BaseCreature && !( (BaseCreature) m ).Controlled )
+							if ( !Caster.Player && m is BaseCreature && !( (BaseCreature) m ).Controlled )
 								continue;
 
 							targets.Add( m );
@@ -71,7 +71,7 @@ namespace Server.Spells.Necromancy
 						damage *= ( 300 + ( m.Karma / 100 ) + ( GetDamageSkill( Caster ) * 10 ) );
 						damage /= 1000;
 
-						damage += damage * ( SpellHelper.GetSpellDamage( Caster, m.IsPlayer ) / 100.0 );
+						damage += damage * ( SpellHelper.GetSpellDamage( Caster, m.Player ) / 100.0 );
 
 						// TODO: cap?
 						//if ( damage > 40 )

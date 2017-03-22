@@ -29,7 +29,7 @@ namespace Server.Regions
 		{
 			base.OnEnter( m );
 
-			if ( m.IsPlayer && m.Alive && m.AccessLevel == AccessLevel.Player )
+			if ( m.Player && m.Alive && m.AccessLevel == AccessLevel.Player )
 			{
 				if ( EnterSound > 0 )
 					m.PlaySound( EnterSound );
@@ -47,7 +47,7 @@ namespace Server.Regions
 
 			StopTimer( m );
 
-			if ( m.IsPlayer && m.Alive && m.AccessLevel == AccessLevel.Player )
+			if ( m.Player && m.Alive && m.AccessLevel == AccessLevel.Player )
 				StartTimer( m );
 		}
 
@@ -87,7 +87,7 @@ namespace Server.Regions
 
 		public virtual void Damage( Mobile m )
 		{
-			if ( m.IsPlayer && !m.Alive )
+			if ( m.Player && !m.Alive )
 				StopTimer( m );
 
 			m.RevealingAction();

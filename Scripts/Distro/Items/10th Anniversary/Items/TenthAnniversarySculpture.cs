@@ -74,7 +74,7 @@ namespace Server.Items
 			{
 				int luckBonus = ComputeLuckBonus( pm );
 
-				AttributeMod luckMod = new AttributeMod( MagicalAttribute.Luck, luckBonus );
+				AttributeMod luckMod = new AttributeMod( AosAttribute.Luck, luckBonus );
 				pm.AddAttributeMod( luckMod );
 
 				m_Bonuses.Add( pm );

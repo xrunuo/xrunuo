@@ -77,7 +77,7 @@ namespace Server.SkillHandlers
 
 					BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.ActiveMeditation, 1075657 ) );
 
-					if ( m.IsPlayer || m.Body.IsHuman )
+					if ( m.Player || m.Body.IsHuman )
 						m.PlaySound( 0xF9 );
 				}
 				else

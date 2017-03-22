@@ -180,7 +180,7 @@ namespace Server
 			}
 
 			#region Dragon Barding
-			if ( ( from == null || !from.IsPlayer ) && m.IsPlayer && m.Mount is SwampDragon )
+			if ( ( from == null || !from.Player ) && m.Player && m.Mount is SwampDragon )
 			{
 				SwampDragon pet = m.Mount as SwampDragon;
 
@@ -209,7 +209,7 @@ namespace Server
 
 			if ( from != null )
 			{
-				int reflectPhys = m.GetMagicalAttribute( MagicalAttribute.ReflectPhysical );
+				int reflectPhys = m.GetMagicalAttribute( AosAttribute.ReflectPhysical );
 
 				if ( reflectPhys != 0 )
 				{
@@ -262,9 +262,9 @@ namespace Server
 			if ( m is PlayerMobile && from is PlayerMobile && directDamage )
 				totalDamage = Math.Min( totalDamage, 35 );
 
-			/* TODO: El efecto del Attunement debería ir despues de aplicar el Blood Oath.
-			 * Según parece, en OSI los Necro-Arcanists lo usan mucho en PvP, de manera que
-			 * el daño recibido se refleja al atacante por Blood Oath, pero luego es
+			/* TODO: El efecto del Attunement deberï¿½a ir despues de aplicar el Blood Oath.
+			 * Segï¿½n parece, en OSI los Necro-Arcanists lo usan mucho en PvP, de manera que
+			 * el daï¿½o recibido se refleja al atacante por Blood Oath, pero luego es
 			 * absorbido por el Attunement en el defensor.
 			 */
 			if ( directDamage )

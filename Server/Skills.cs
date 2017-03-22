@@ -358,7 +358,7 @@ namespace Server
 					value = 20.0;
 
 				// Human Racial Ability: Jack of all Trades
-				if ( value < 20.0 && m_Owner.Owner.Race == Race.Human && m_Owner.Owner.IsPlayer )
+				if ( value < 20.0 && m_Owner.Owner.Race == Race.Human && m_Owner.Owner.Player )
 					value = 20.0;
 
 				return value;

@@ -58,7 +58,7 @@ namespace Server.Engines.Quests.Haven
 
 		public override bool IsEnemy( Mobile m )
 		{
-			if ( m.IsPlayer || m is BaseVendor )
+			if ( m.Player || m is BaseVendor )
 			{
 				return false;
 			}

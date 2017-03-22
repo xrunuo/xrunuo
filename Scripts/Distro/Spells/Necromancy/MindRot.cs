@@ -52,9 +52,9 @@ namespace Server.Spells.Necromancy
 				m.PlaySound( 0x258 );
 				m.FixedParticles( 0x373A, 1, 17, 9903, 15, 4, EffectLayer.Head );
 
-				TimeSpan duration = TimeSpan.FromSeconds( ( ( ( GetDamageSkill( Caster ) - GetResistSkill( m ) ) / 5.0 ) + 20.0 ) * ( m.IsPlayer ? 1.0 : 2.0 ) );
+				TimeSpan duration = TimeSpan.FromSeconds( ( ( ( GetDamageSkill( Caster ) - GetResistSkill( m ) ) / 5.0 ) + 20.0 ) * ( m.Player ? 1.0 : 2.0 ) );
 
-				if ( m.IsPlayer )
+				if ( m.Player )
 					SetMindRotScalar( Caster, m, 1.25, duration );
 				else
 					SetMindRotScalar( Caster, m, 2.00, duration );

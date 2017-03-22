@@ -221,7 +221,7 @@ namespace Server.Items
 		{
 			double alchemy = from.Skills[SkillName.Alchemy].Value;
 
-			int itemEnhancePotions = from.GetMagicalAttribute( MagicalAttribute.EnhancePotions );
+			int itemEnhancePotions = from.GetMagicalAttribute( AosAttribute.EnhancePotions );
 			if ( itemEnhancePotions > 50 )
 				itemEnhancePotions = 50;
 

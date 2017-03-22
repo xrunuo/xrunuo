@@ -25,7 +25,7 @@ namespace Server.Misc
 			Mobile aggressor = e.Aggressor;
 			Mobile aggressed = e.Aggressed;
 
-			if ( !aggressor.IsPlayer || !aggressed.IsPlayer )
+			if ( !aggressor.Player || !aggressed.Player )
 				return;
 
 			if ( !CheckAggressions( aggressor, aggressed ) )

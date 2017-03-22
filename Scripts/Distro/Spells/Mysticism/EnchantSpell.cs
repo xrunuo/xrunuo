@@ -78,11 +78,11 @@ namespace Server.Spells.Mysticism
 
 		public static EnchantEntry[] Entries { get; } =
 		{
-			new EnchantEntry( WeaponAttribute.HitDispel, 1079702 ),
-			new EnchantEntry( WeaponAttribute.HitFireball, 1079703 ),
-			new EnchantEntry( WeaponAttribute.HitHarm, 1079704 ),
-			new EnchantEntry( WeaponAttribute.HitLightning, 1079705 ),
-			new EnchantEntry( WeaponAttribute.HitMagicArrow, 1079706 )
+			new EnchantEntry( AosWeaponAttribute.HitDispel, 1079702 ),
+			new EnchantEntry( AosWeaponAttribute.HitFireball, 1079703 ),
+			new EnchantEntry( AosWeaponAttribute.HitHarm, 1079704 ),
+			new EnchantEntry( AosWeaponAttribute.HitLightning, 1079705 ),
+			new EnchantEntry( AosWeaponAttribute.HitMagicArrow, 1079706 )
 		};
 
 		public void OnGumpResponse( int buttonId )
@@ -197,10 +197,10 @@ namespace Server.Spells.Mysticism
 
 	public class EnchantEntry
 	{
-		public WeaponAttribute Attribute { get; }
+		public AosWeaponAttribute Attribute { get; }
 		public int Cliloc { get; }
 
-		public EnchantEntry( WeaponAttribute attribute, int cliloc )
+		public EnchantEntry( AosWeaponAttribute attribute, int cliloc )
 		{
 			Attribute = attribute;
 			Cliloc = cliloc;
@@ -251,11 +251,11 @@ namespace Server.Spells.Mysticism
 	public class EnchantContext
 	{
 		public Mobile Owner { get; }
-		public WeaponAttribute Attribute { get; }
+		public AosWeaponAttribute Attribute { get; }
 		public bool SpellChanneling { get; }
 		public Timer Timer { get; }
 
-		public EnchantContext( Mobile owner, WeaponAttribute attribute, bool spellChanneling, Timer timer )
+		public EnchantContext( Mobile owner, AosWeaponAttribute attribute, bool spellChanneling, Timer timer )
 		{
 			Owner = owner;
 			Attribute = attribute;
@@ -266,7 +266,7 @@ namespace Server.Spells.Mysticism
 		public EnchantContext( GenericReader reader, BaseWeapon weapon )
 		{
 			Owner = reader.ReadMobile();
-			Attribute = (WeaponAttribute) reader.ReadInt();
+			Attribute = (AosWeaponAttribute) reader.ReadInt();
 			SpellChanneling = reader.ReadBool();
 			Timer = Timer.DelayCall( reader.ReadTimeSpan(), EnchantSpell.RemoveEnchantContext, weapon );
 

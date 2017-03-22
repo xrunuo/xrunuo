@@ -184,7 +184,7 @@ namespace Server.Mobiles
 						if ( bc.Controlled || bc.Summoned )
 							m_ToDrain.Add( m );
 					}
-					else if ( m.IsPlayer )
+					else if ( m.Player )
 					{
 						m_ToDrain.Add( m );
 					}

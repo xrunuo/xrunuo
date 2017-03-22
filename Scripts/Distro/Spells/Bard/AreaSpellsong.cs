@@ -59,7 +59,7 @@ namespace Server.Spells.Bard
 				if ( !caster.CanBeBeneficial( m, false ) )
 					continue;
 
-				if ( m.IsPlayer )
+				if ( m.Player )
 				{
 					if ( m.Alive && partyPlayers.Contains( m ) )
 					{

@@ -85,7 +85,7 @@ namespace Server.Items
 							// That must be in your backpack for you to use it.
 							from.SendLocalizedMessage( 1116249 );
 						}
-						else if ( targeted == null || !targeted.IsPlayer )
+						else if ( targeted == null || !targeted.Player )
 						{
 							// That's not another player!
 							from.SendLocalizedMessage( 1077488 );

@@ -82,7 +82,7 @@ namespace Server.Items
 			if ( !healer.Alive || !patient.Alive )
 				return;
 
-			if ( !patient.IsPlayer )
+			if ( !patient.Player )
 				return;
 
 			if ( !healer.InRange( patient, Bandage.Range ) )

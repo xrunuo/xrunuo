@@ -194,7 +194,7 @@ namespace Server.Mobiles
 				if ( master == null )
 					master = this.SummonMaster;
 
-				if ( master != null && master.IsPlayer && master.Map == this.Map && master.InRange( Location, 20 ) )
+				if ( master != null && master.Player && master.Map == this.Map && master.InRange( Location, 20 ) )
 				{
 					if ( master.Mana >= amount )
 					{

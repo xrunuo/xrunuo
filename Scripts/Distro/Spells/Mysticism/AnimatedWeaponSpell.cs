@@ -43,7 +43,7 @@ namespace Server.Spells.Mysticism
 
 			SpellHelper.GetSurfaceTop( ref p );
 
-			if ( map == null || ( Caster.IsPlayer && !map.CanSpawnMobile( p.X, p.Y, p.Z ) ) )
+			if ( map == null || ( Caster.Player && !map.CanSpawnMobile( p.X, p.Y, p.Z ) ) )
 			{
 				Caster.SendLocalizedMessage( 501942 ); // That location is blocked.
 			}

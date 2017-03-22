@@ -186,7 +186,7 @@ namespace Server.Mobiles
 						m = bc.ControlMaster;
 				}
 
-				if ( m.IsPlayer && !NavreysWeb.IsTrapped( m ) && this.InRange( m, RangePerception ) )
+				if ( m.Player && !NavreysWeb.IsTrapped( m ) && this.InRange( m, RangePerception ) )
 					return m;
 			}
 

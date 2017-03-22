@@ -181,7 +181,7 @@ namespace Server.Mobiles
 
 			foreach ( Mobile m in this.GetMobilesInRange( BlastRange ).ToArray() )
 			{
-				if ( m.IsPlayer && this.GetDistanceToSqrt( m ) <= BlastRange && CanBeHarmful( m ) )
+				if ( m.Player && this.GetDistanceToSqrt( m ) <= BlastRange && CanBeHarmful( m ) )
 				{
 					DoHarmful( m );
 
@@ -242,7 +242,7 @@ namespace Server.Mobiles
 
 				foreach ( Mobile m in m_Owner.GetMobilesInRange( 16 ) )
 				{
-					if ( m != m_Owner && m.IsPlayer && m_Owner.CanBeHarmful( m ) && m_Owner.CanSee( m ) )
+					if ( m != m_Owner && m.Player && m_Owner.CanBeHarmful( m ) && m_Owner.CanSee( m ) )
 					{
 						toTeleport = m;
 						break;

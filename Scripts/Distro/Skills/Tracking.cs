@@ -218,7 +218,7 @@ namespace Server.SkillHandlers
 		// Tracking players uses tracking and detect hidden vs. hiding and stealth 
 		private static bool CheckDifficulty( Mobile from, Mobile m )
 		{
-			if ( !m.IsPlayer )
+			if ( !m.Player )
 				return true;
 
 			int tracking = from.Skills[SkillName.Tracking].Fixed;
@@ -247,22 +247,22 @@ namespace Server.SkillHandlers
 
 		private static bool IsAnimal( Mobile m )
 		{
-			return ( !m.IsPlayer && m.Body.IsAnimal );
+			return ( !m.Player && m.Body.IsAnimal );
 		}
 
 		private static bool IsMonster( Mobile m )
 		{
-			return ( !m.IsPlayer && m.Body.IsMonster );
+			return ( !m.Player && m.Body.IsMonster );
 		}
 
 		private static bool IsHumanNPC( Mobile m )
 		{
-			return ( !m.IsPlayer && m.Body.IsHuman );
+			return ( !m.Player && m.Body.IsHuman );
 		}
 
 		private static bool IsPlayer( Mobile m )
 		{
-			return m.IsPlayer;
+			return m.Player;
 		}
 
 		private ArrayList m_List;

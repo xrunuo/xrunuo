@@ -28,9 +28,9 @@ namespace Server.Engines.PartySystem
 					return;
 				else if ( p != null && ( p.Members.Count + p.Candidates.Count ) >= Party.Capacity )
 					from.SendLocalizedMessage( 1008095 ); // You may only have 10 in your party (this includes candidates).
-				else if ( !m.IsPlayer && m.Body.IsHuman )
+				else if ( !m.Player && m.Body.IsHuman )
 					m.SayTo( from, 1005443 ); // Nay, I would rather stay here and watch a nail rust.
-				else if ( !m.IsPlayer )
+				else if ( !m.Player )
 					from.SendLocalizedMessage( 1005444 ); // The creature ignores your offer.
 				else if ( mp != null && mp == p )
 					from.SendLocalizedMessage( 1005440 ); // This person is already in your party!

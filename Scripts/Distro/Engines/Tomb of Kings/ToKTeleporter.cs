@@ -25,7 +25,7 @@ namespace Server.Items
 
 		public override bool OnMoveOver( Mobile m )
 		{
-			if ( m.IsPlayer )
+			if ( m.Player )
 			{
 				BaseCreature.TeleportPets( m, m_Dest, Map.TerMur );
 				m.MoveToWorld( m_Dest, Map.TerMur );

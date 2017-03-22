@@ -68,7 +68,7 @@ namespace Server.Mobiles
 		
 		public override void Damage( int amount, Mobile from )	
 		{
-			if ( from != null && from.IsPlayer )
+			if ( from != null && from.Player )
 			{
 				if ( IsMurderer( from as PlayerMobile ) )
 					base.Damage( amount, from );		

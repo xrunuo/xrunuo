@@ -132,7 +132,7 @@ namespace Server.Spells
 			{
 				AggressorInfo info = (AggressorInfo) m.Aggressed[i];
 
-				if ( info.Defender.IsPlayer && ( DateTime.UtcNow - info.LastCombatTime ) < CombatHeatDelay )
+				if ( info.Defender.Player && ( DateTime.UtcNow - info.LastCombatTime ) < CombatHeatDelay )
 					return true;
 			}
 
@@ -140,7 +140,7 @@ namespace Server.Spells
 			{
 				AggressorInfo info = (AggressorInfo) m.Aggressors[i];
 
-				if ( info.Attacker.IsPlayer && ( DateTime.UtcNow - info.LastCombatTime ) < CombatHeatDelay )
+				if ( info.Attacker.Player && ( DateTime.UtcNow - info.LastCombatTime ) < CombatHeatDelay )
 					return true;
 			}
 
@@ -1061,7 +1061,7 @@ namespace Server.Spells
 			{
 				PlayerMobile pm = m as PlayerMobile;
 
-				bonus += m.GetMagicalAttribute( MagicalAttribute.SpellDamage );
+				bonus += m.GetMagicalAttribute( AosAttribute.SpellDamage );
 
 				if ( applyCap )
 				{

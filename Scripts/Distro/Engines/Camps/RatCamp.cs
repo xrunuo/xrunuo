@@ -53,7 +53,7 @@ namespace Server.Multis
 		{
 			base.OnEnter( m );
 
-			if ( m.IsPlayer && m_Prisoner != null && m_Gate != null && m_Gate.Locked )
+			if ( m.Player && m_Prisoner != null && m_Gate != null && m_Gate.Locked )
 			{
 				int number;
 

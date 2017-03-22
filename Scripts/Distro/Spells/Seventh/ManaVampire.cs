@@ -47,7 +47,7 @@ namespace Server.Spells.Seventh
 
 				int toDrain = (int) ( GetDamageSkill( Caster ) - GetResistSkill( m ) );
 
-				if ( !m.IsPlayer )
+				if ( !m.Player )
 					toDrain /= 2;
 
 				if ( toDrain < 0 )

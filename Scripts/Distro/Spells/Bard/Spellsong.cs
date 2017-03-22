@@ -366,7 +366,7 @@ namespace Server.Spells.Bard
 
 		private static void Mobile_Damaged( Mobile m, DamagedEventArgs args )
 		{
-			bool isFromPlayer = args.From != null && args.From.IsPlayer;
+			bool isFromPlayer = args.From != null && args.From.Player;
 
 			foreach ( Spellsong spellsong in Spellsong.GetAllActiveSpellsongs( m ).ToArray() )
 			{

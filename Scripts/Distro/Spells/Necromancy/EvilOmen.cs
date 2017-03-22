@@ -20,7 +20,7 @@ namespace Server.Spells.Necromancy
 		{
 			if ( CheckEffect( e.Mobile ) )
 			{
-				bool isFromPlayer = ( e.From != null && e.From.IsPlayer );
+				bool isFromPlayer = ( e.From != null && e.From.Player );
 				e.Amount = (int) ( e.Amount * ( isFromPlayer ? 1.1 : 1.25 ) );
 			}
 		}

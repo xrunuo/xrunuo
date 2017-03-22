@@ -62,11 +62,11 @@ namespace Server.Items
 
 			List<object> mods = new List<object>();
 
-			mods.Add( new AttributeMod( MagicalAttribute.BonusHits, 6 ) );
-			mods.Add( new AttributeMod( MagicalAttribute.RegenHits, 2 ) );
-			mods.Add( new AttributeMod( MagicalAttribute.RegenMana, 2 ) );
-			mods.Add( new AttributeMod( MagicalAttribute.AttackChance, 10 ) );
-			mods.Add( new AttributeMod( MagicalAttribute.DefendChance, 10 ) );
+			mods.Add( new AttributeMod( AosAttribute.BonusHits, 6 ) );
+			mods.Add( new AttributeMod( AosAttribute.RegenHits, 2 ) );
+			mods.Add( new AttributeMod( AosAttribute.RegenMana, 2 ) );
+			mods.Add( new AttributeMod( AosAttribute.AttackChance, 10 ) );
+			mods.Add( new AttributeMod( AosAttribute.DefendChance, 10 ) );
 			mods.Add( new ResistanceMod( ResistanceType.Physical, 28 ) );
 			mods.Add( new ResistanceMod( ResistanceType.Fire, 28 ) );
 			mods.Add( new ResistanceMod( ResistanceType.Cold, 28 ) );

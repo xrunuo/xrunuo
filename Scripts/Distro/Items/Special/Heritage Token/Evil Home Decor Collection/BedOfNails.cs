@@ -83,7 +83,7 @@ namespace Server.Items
 		{
 			if ( m.Alive && ( m.AccessLevel == AccessLevel.Player || !m.Hidden ) )
 			{
-				if ( m.IsPlayer )
+				if ( m.Player )
 				{
 					if ( m.Female )
 						Effects.PlaySound( Location, Map, Utility.RandomMinMax( 0x53B, 0x53D ) );

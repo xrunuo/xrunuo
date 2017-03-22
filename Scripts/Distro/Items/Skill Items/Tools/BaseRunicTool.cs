@@ -96,45 +96,45 @@ namespace Server.Items
 			return low + ( ( ( high - low ) * percent ) / 1000001 );
 		}
 
-		private static void ApplyAttribute( MagicalAttributes attrs, int min, int max, MagicalAttribute attr, int low, int high )
+		private static void ApplyAttribute( AosAttributes attrs, int min, int max, AosAttribute attr, int low, int high )
 		{
 			ApplyAttribute( attrs, min, max, attr, low, high, 1 );
 		}
 
-		private static void ApplyAttribute( MagicalAttributes attrs, int min, int max, MagicalAttribute attr, int low, int high, int scale )
+		private static void ApplyAttribute( AosAttributes attrs, int min, int max, AosAttribute attr, int low, int high, int scale )
 		{
-			if ( attr == MagicalAttribute.CastSpeed )
+			if ( attr == AosAttribute.CastSpeed )
 				attrs[attr] += Scale( min, max, low / scale, high / scale ) * scale;
 			else
 				attrs[attr] = Scale( min, max, low / scale, high / scale ) * scale;
 		}
 
-		private static void ApplyAttribute( ArmorAttributes attrs, int min, int max, ArmorAttribute attr, int low, int high )
+		private static void ApplyAttribute( AosArmorAttributes attrs, int min, int max, AosArmorAttribute attr, int low, int high )
 		{
 			attrs[attr] = Scale( min, max, low, high );
 		}
 
-		private static void ApplyAttribute( ArmorAttributes attrs, int min, int max, ArmorAttribute attr, int low, int high, int scale )
+		private static void ApplyAttribute( AosArmorAttributes attrs, int min, int max, AosArmorAttribute attr, int low, int high, int scale )
 		{
 			attrs[attr] = Scale( min, max, low / scale, high / scale ) * scale;
 		}
 
-		private static void ApplyAttribute( WeaponAttributes attrs, int min, int max, WeaponAttribute attr, int low, int high )
+		private static void ApplyAttribute( AosWeaponAttributes attrs, int min, int max, AosWeaponAttribute attr, int low, int high )
 		{
 			attrs[attr] = Scale( min, max, low, high );
 		}
 
-		private static void ApplyAttribute( WeaponAttributes attrs, int min, int max, WeaponAttribute attr, int low, int high, int scale )
+		private static void ApplyAttribute( AosWeaponAttributes attrs, int min, int max, AosWeaponAttribute attr, int low, int high, int scale )
 		{
 			attrs[attr] = Scale( min, max, low / scale, high / scale ) * scale;
 		}
 
-		private static void ApplyAttribute( ElementAttributes attrs, int min, int max, ElementAttribute attr, int low, int high )
+		private static void ApplyAttribute( AosElementAttributes attrs, int min, int max, AosElementAttribute attr, int low, int high )
 		{
 			ApplyAttribute( attrs, min, max, attr, low, high, 0 );
 		}
 
-		private static void ApplyAttribute( ElementAttributes attrs, int min, int max, ElementAttribute attr, int low, int high, int offset )
+		private static void ApplyAttribute( AosElementAttributes attrs, int min, int max, AosElementAttribute attr, int low, int high, int offset )
 		{
 			attrs[attr] = Scale( min, max, low + offset, high + offset );
 		}
@@ -253,9 +253,9 @@ namespace Server.Items
 			m_IsRunicTool = isRunicTool;
 			m_LuckChance = luckChance;
 
-			MagicalAttributes primary = weapon.Attributes;
-			WeaponAttributes secondary = weapon.WeaponAttributes;
-			ElementAttributes resistances = weapon.Resistances;
+			AosAttributes primary = weapon.Attributes;
+			AosWeaponAttributes secondary = weapon.WeaponAttributes;
+			AosElementAttributes resistances = weapon.Resistances;
 
 			m_Props.SetAll( false );
 
@@ -288,11 +288,11 @@ namespace Server.Items
 						{
 							switch ( Utility.Random( 5 ) )
 							{
-								case 0: ApplyAttribute( secondary, min, max, WeaponAttribute.HitPhysicalArea, 2, 50, 2 ); break;
-								case 1: ApplyAttribute( secondary, min, max, WeaponAttribute.HitFireArea, 2, 50, 2 ); break;
-								case 2: ApplyAttribute( secondary, min, max, WeaponAttribute.HitColdArea, 2, 50, 2 ); break;
-								case 3: ApplyAttribute( secondary, min, max, WeaponAttribute.HitPoisonArea, 2, 50, 2 ); break;
-								case 4: ApplyAttribute( secondary, min, max, WeaponAttribute.HitEnergyArea, 2, 50, 2 ); break;
+								case 0: ApplyAttribute( secondary, min, max, AosWeaponAttribute.HitPhysicalArea, 2, 50, 2 ); break;
+								case 1: ApplyAttribute( secondary, min, max, AosWeaponAttribute.HitFireArea, 2, 50, 2 ); break;
+								case 2: ApplyAttribute( secondary, min, max, AosWeaponAttribute.HitColdArea, 2, 50, 2 ); break;
+								case 3: ApplyAttribute( secondary, min, max, AosWeaponAttribute.HitPoisonArea, 2, 50, 2 ); break;
+								case 4: ApplyAttribute( secondary, min, max, AosWeaponAttribute.HitEnergyArea, 2, 50, 2 ); break;
 							}
 
 							break;
@@ -301,10 +301,10 @@ namespace Server.Items
 						{
 							switch ( Utility.Random( 4 ) )
 							{
-								case 0: ApplyAttribute( secondary, min, max, WeaponAttribute.HitMagicArrow, 2, 50, 2 ); break;
-								case 1: ApplyAttribute( secondary, min, max, WeaponAttribute.HitHarm, 2, 50, 2 ); break;
-								case 2: ApplyAttribute( secondary, min, max, WeaponAttribute.HitFireball, 2, 50, 2 ); break;
-								case 3: ApplyAttribute( secondary, min, max, WeaponAttribute.HitLightning, 2, 50, 2 ); break;
+								case 0: ApplyAttribute( secondary, min, max, AosWeaponAttribute.HitMagicArrow, 2, 50, 2 ); break;
+								case 1: ApplyAttribute( secondary, min, max, AosWeaponAttribute.HitHarm, 2, 50, 2 ); break;
+								case 2: ApplyAttribute( secondary, min, max, AosWeaponAttribute.HitFireball, 2, 50, 2 ); break;
+								case 3: ApplyAttribute( secondary, min, max, AosWeaponAttribute.HitLightning, 2, 50, 2 ); break;
 							}
 
 							break;
@@ -313,15 +313,15 @@ namespace Server.Items
 						{
 							switch ( Utility.Random( 2 ) )
 							{
-								case 0: ApplyAttribute( secondary, min, max, WeaponAttribute.UseBestSkill, 1, 1 ); break;
-								case 1: ApplyAttribute( secondary, min, max, WeaponAttribute.MageWeapon, 1, 10 ); break;
+								case 0: ApplyAttribute( secondary, min, max, AosWeaponAttribute.UseBestSkill, 1, 1 ); break;
+								case 1: ApplyAttribute( secondary, min, max, AosWeaponAttribute.MageWeapon, 1, 10 ); break;
 							}
 
 							break;
 						}
 					case 3:
 						{
-							MagicalAttribute attr = MagicalAttribute.WeaponDamage;
+							AosAttribute attr = AosAttribute.WeaponDamage;
 							int oldValue = primary[attr];
 
 							ApplyAttribute( primary, min, max, attr, 1, 50 );
@@ -334,42 +334,42 @@ namespace Server.Items
 
 							break;
 						}
-					case 4: ApplyAttribute( primary, min, max, MagicalAttribute.DefendChance, 1, isRunicToolRanged ? 25 : 15 ); break;
-					case 5: ApplyAttribute( primary, min, max, MagicalAttribute.CastSpeed, 1, 1 ); break;
-					case 6: ApplyAttribute( primary, min, max, MagicalAttribute.AttackChance, 1, isRunicToolRanged ? 25 : 15 ); break;
-					case 7: ApplyAttribute( primary, min, max, MagicalAttribute.Luck, 1, isRunicToolRanged ? 120 : 100 ); break;
-					case 8: ApplyAttribute( primary, min, max, MagicalAttribute.WeaponSpeed, 5, 30, 5 ); break;
-					case 9: ApplyAttribute( primary, min, max, MagicalAttribute.SpellChanneling, 1, 1 ); break;
-					case 10: ApplyAttribute( secondary, min, max, WeaponAttribute.HitDispel, 2, 50, 2 ); break;
-					case 11: ApplyAttribute( secondary, min, max, WeaponAttribute.HitLeechHits, 2, 50, 2 ); break;
-					case 12: ApplyAttribute( secondary, min, max, WeaponAttribute.HitLowerAttack, 2, 50, 2 ); break;
-					case 13: ApplyAttribute( secondary, min, max, WeaponAttribute.HitLowerDefend, 2, 50, 2 ); break;
-					case 14: ApplyAttribute( secondary, min, max, WeaponAttribute.HitLeechMana, 2, 50, 2 ); break;
-					case 15: ApplyAttribute( secondary, min, max, WeaponAttribute.HitLeechStam, 2, 50, 2 ); break;
-					case 16: ApplyAttribute( secondary, min, max, WeaponAttribute.LowerStatReq, 10, 100, 10 ); break;
-					case 17: ApplyAttribute( resistances, min, max, ElementAttribute.Physical, 1, 15 ); break;
-					case 18: ApplyAttribute( resistances, min, max, ElementAttribute.Fire, 1, 15 ); break;
-					case 19: ApplyAttribute( resistances, min, max, ElementAttribute.Cold, 1, 15 ); break;
-					case 20: ApplyAttribute( resistances, min, max, ElementAttribute.Poison, 1, 15 ); break;
-					case 21: ApplyAttribute( resistances, min, max, ElementAttribute.Energy, 1, 15 ); break;
-					case 22: ApplyAttribute( secondary, min, max, WeaponAttribute.DurabilityBonus, 10, 100, 10 ); i--; break;
+					case 4: ApplyAttribute( primary, min, max, AosAttribute.DefendChance, 1, isRunicToolRanged ? 25 : 15 ); break;
+					case 5: ApplyAttribute( primary, min, max, AosAttribute.CastSpeed, 1, 1 ); break;
+					case 6: ApplyAttribute( primary, min, max, AosAttribute.AttackChance, 1, isRunicToolRanged ? 25 : 15 ); break;
+					case 7: ApplyAttribute( primary, min, max, AosAttribute.Luck, 1, isRunicToolRanged ? 120 : 100 ); break;
+					case 8: ApplyAttribute( primary, min, max, AosAttribute.WeaponSpeed, 5, 30, 5 ); break;
+					case 9: ApplyAttribute( primary, min, max, AosAttribute.SpellChanneling, 1, 1 ); break;
+					case 10: ApplyAttribute( secondary, min, max, AosWeaponAttribute.HitDispel, 2, 50, 2 ); break;
+					case 11: ApplyAttribute( secondary, min, max, AosWeaponAttribute.HitLeechHits, 2, 50, 2 ); break;
+					case 12: ApplyAttribute( secondary, min, max, AosWeaponAttribute.HitLowerAttack, 2, 50, 2 ); break;
+					case 13: ApplyAttribute( secondary, min, max, AosWeaponAttribute.HitLowerDefend, 2, 50, 2 ); break;
+					case 14: ApplyAttribute( secondary, min, max, AosWeaponAttribute.HitLeechMana, 2, 50, 2 ); break;
+					case 15: ApplyAttribute( secondary, min, max, AosWeaponAttribute.HitLeechStam, 2, 50, 2 ); break;
+					case 16: ApplyAttribute( secondary, min, max, AosWeaponAttribute.LowerStatReq, 10, 100, 10 ); break;
+					case 17: ApplyAttribute( resistances, min, max, AosElementAttribute.Physical, 1, 15 ); break;
+					case 18: ApplyAttribute( resistances, min, max, AosElementAttribute.Fire, 1, 15 ); break;
+					case 19: ApplyAttribute( resistances, min, max, AosElementAttribute.Cold, 1, 15 ); break;
+					case 20: ApplyAttribute( resistances, min, max, AosElementAttribute.Poison, 1, 15 ); break;
+					case 21: ApplyAttribute( resistances, min, max, AosElementAttribute.Energy, 1, 15 ); break;
+					case 22: ApplyAttribute( secondary, min, max, AosWeaponAttribute.DurabilityBonus, 10, 100, 10 ); i--; break;
 					case 23: SlayerName slayer = GetRandomSlayer();
 						if ( weapon.Slayer == SlayerName.None )
 							weapon.Slayer = slayer;
 						else
 							weapon.Slayer2 = slayer;
 						break;
-					case 24: AssignElementalDamage( weapon, ElementAttribute.Fire ); i--; break;
-					case 25: AssignElementalDamage( weapon, ElementAttribute.Cold ); i--; break;
-					case 26: AssignElementalDamage( weapon, ElementAttribute.Poison ); i--; break;
-					case 27: AssignElementalDamage( weapon, ElementAttribute.Energy ); i--; break;
-					case 28: ApplyAttribute( secondary, min, max, WeaponAttribute.Balanced, 1, 1 ); break;
-					case 29: ApplyAttribute( secondary, min, max, WeaponAttribute.Velocity, 10, 50, 1 ); break;
+					case 24: AssignElementalDamage( weapon, AosElementAttribute.Fire ); i--; break;
+					case 25: AssignElementalDamage( weapon, AosElementAttribute.Cold ); i--; break;
+					case 26: AssignElementalDamage( weapon, AosElementAttribute.Poison ); i--; break;
+					case 27: AssignElementalDamage( weapon, AosElementAttribute.Energy ); i--; break;
+					case 28: ApplyAttribute( secondary, min, max, AosWeaponAttribute.Balanced, 1, 1 ); break;
+					case 29: ApplyAttribute( secondary, min, max, AosWeaponAttribute.Velocity, 10, 50, 1 ); break;
 				}
 			}
 		}
 
-		public static void AssignElementalDamage( BaseWeapon weapon, ElementAttribute attr )
+		public static void AssignElementalDamage( BaseWeapon weapon, AosElementAttribute attr )
 		{
 			int fire, phys, cold, nrgy, pois;
 
@@ -380,7 +380,7 @@ namespace Server.Items
 			weapon.Hue = weapon.GetElementalDamageHue();
 		}
 
-		private static int AssignElementalDamage( BaseWeapon weapon, ElementAttribute attr, int totalDamage )
+		private static int AssignElementalDamage( BaseWeapon weapon, AosElementAttribute attr, int totalDamage )
 		{
 			if ( totalDamage <= 0 )
 				return 0;
@@ -392,16 +392,16 @@ namespace Server.Items
 
 			switch ( attr )
 			{
-				case ElementAttribute.Cold:
+				case AosElementAttribute.Cold:
 					weapon.WeaponAttributes.DamageColdPercent = random;
 					break;
-				case ElementAttribute.Energy:
+				case AosElementAttribute.Energy:
 					weapon.WeaponAttributes.DamageEnergyPercent = random;
 					break;
-				case ElementAttribute.Fire:
+				case AosElementAttribute.Fire:
 					weapon.WeaponAttributes.DamageFirePercent = random;
 					break;
-				case ElementAttribute.Poison:
+				case AosElementAttribute.Poison:
 					weapon.WeaponAttributes.DamagePoisonPercent = random;
 					break;
 			}
@@ -471,9 +471,9 @@ namespace Server.Items
 			m_IsRunicTool = isRunicTool;
 			m_LuckChance = luckChance;
 
-			MagicalAttributes primary = armor.Attributes;
-			ArmorAttributes secondary = armor.ArmorAttributes;
-			ElementAttributes resistances = armor.Resistances;
+			AosAttributes primary = armor.Attributes;
+			AosArmorAttributes secondary = armor.ArmorAttributes;
+			AosElementAttributes resistances = armor.Resistances;
 
 			m_Props.SetAll( false );
 
@@ -502,54 +502,54 @@ namespace Server.Items
 				switch ( random )
 				{
 					/* Begin Shields */
-					case 0: ApplyAttribute( primary, min, max, MagicalAttribute.SpellChanneling, 1, 1 ); break;
-					case 1: ApplyAttribute( primary, min, max, MagicalAttribute.DefendChance, 1, 15 ); break;
-					case 2: ApplyAttribute( primary, min, max, MagicalAttribute.AttackChance, 1, 15 ); break;
-					case 3: ApplyAttribute( primary, min, max, MagicalAttribute.CastSpeed, 1, 1 ); break;
+					case 0: ApplyAttribute( primary, min, max, AosAttribute.SpellChanneling, 1, 1 ); break;
+					case 1: ApplyAttribute( primary, min, max, AosAttribute.DefendChance, 1, 15 ); break;
+					case 2: ApplyAttribute( primary, min, max, AosAttribute.AttackChance, 1, 15 ); break;
+					case 3: ApplyAttribute( primary, min, max, AosAttribute.CastSpeed, 1, 1 ); break;
 					/* Begin Armor */
-					case 4: ApplyAttribute( secondary, min, max, ArmorAttribute.LowerStatReq, 10, 100, 10 ); break;
-					case 5: ApplyAttribute( secondary, min, max, ArmorAttribute.SelfRepair, 1, 5 ); break;
-					case 6: ApplyAttribute( secondary, min, max, ArmorAttribute.DurabilityBonus, 10, 100, 10 ); break;
-					case 7: ApplyAttribute( primary, min, max, MagicalAttribute.ReflectPhysical, 1, 15 ); break;
+					case 4: ApplyAttribute( secondary, min, max, AosArmorAttribute.LowerStatReq, 10, 100, 10 ); break;
+					case 5: ApplyAttribute( secondary, min, max, AosArmorAttribute.SelfRepair, 1, 5 ); break;
+					case 6: ApplyAttribute( secondary, min, max, AosArmorAttribute.DurabilityBonus, 10, 100, 10 ); break;
+					case 7: ApplyAttribute( primary, min, max, AosAttribute.ReflectPhysical, 1, 15 ); break;
 					/* End Shields */
-					case 8: ApplyAttribute( secondary, min, max, ArmorAttribute.MageArmor, 1, 1 ); break;
-					case 9: ApplyAttribute( primary, min, max, MagicalAttribute.RegenHits, 1, 2 ); break;
-					case 10: ApplyAttribute( primary, min, max, MagicalAttribute.RegenStam, 1, 3 ); break;
-					case 11: ApplyAttribute( primary, min, max, MagicalAttribute.RegenMana, 1, 2 ); break;
-					case 12: ApplyAttribute( primary, min, max, MagicalAttribute.NightSight, 1, 1 ); break;
-					case 13: ApplyAttribute( primary, min, max, MagicalAttribute.BonusHits, 1, 5 ); break;
-					case 14: ApplyAttribute( primary, min, max, MagicalAttribute.BonusStam, 1, 8 ); break;
-					case 15: ApplyAttribute( primary, min, max, MagicalAttribute.BonusMana, 1, 8 ); break;
-					case 16: ApplyAttribute( primary, min, max, MagicalAttribute.LowerManaCost, 1, 8 ); break;
-					case 17: ApplyAttribute( primary, min, max, MagicalAttribute.LowerRegCost, 1, 20 ); break;
-					case 18: ApplyAttribute( primary, min, max, MagicalAttribute.Luck, 1, 100 ); break;
+					case 8: ApplyAttribute( secondary, min, max, AosArmorAttribute.MageArmor, 1, 1 ); break;
+					case 9: ApplyAttribute( primary, min, max, AosAttribute.RegenHits, 1, 2 ); break;
+					case 10: ApplyAttribute( primary, min, max, AosAttribute.RegenStam, 1, 3 ); break;
+					case 11: ApplyAttribute( primary, min, max, AosAttribute.RegenMana, 1, 2 ); break;
+					case 12: ApplyAttribute( primary, min, max, AosAttribute.NightSight, 1, 1 ); break;
+					case 13: ApplyAttribute( primary, min, max, AosAttribute.BonusHits, 1, 5 ); break;
+					case 14: ApplyAttribute( primary, min, max, AosAttribute.BonusStam, 1, 8 ); break;
+					case 15: ApplyAttribute( primary, min, max, AosAttribute.BonusMana, 1, 8 ); break;
+					case 16: ApplyAttribute( primary, min, max, AosAttribute.LowerManaCost, 1, 8 ); break;
+					case 17: ApplyAttribute( primary, min, max, AosAttribute.LowerRegCost, 1, 20 ); break;
+					case 18: ApplyAttribute( primary, min, max, AosAttribute.Luck, 1, 100 ); break;
 					case 19:
 						{
-							ApplyAttribute( resistances, min, max, ElementAttribute.Physical, 1, 15, armor.PhysicalBonus );
+							ApplyAttribute( resistances, min, max, AosElementAttribute.Physical, 1, 15, armor.PhysicalBonus );
 							armor.PhysicalBonus = 0;
 							break;
 						}
 					case 20:
 						{
-							ApplyAttribute( resistances, min, max, ElementAttribute.Fire, 1, 15, armor.FireBonus );
+							ApplyAttribute( resistances, min, max, AosElementAttribute.Fire, 1, 15, armor.FireBonus );
 							armor.FireBonus = 0;
 							break;
 						}
 					case 21:
 						{
-							ApplyAttribute( resistances, min, max, ElementAttribute.Cold, 1, 15, armor.ColdBonus );
+							ApplyAttribute( resistances, min, max, AosElementAttribute.Cold, 1, 15, armor.ColdBonus );
 							armor.ColdBonus = 0;
 							break;
 						}
 					case 22:
 						{
-							ApplyAttribute( resistances, min, max, ElementAttribute.Poison, 1, 15, armor.PoisonBonus );
+							ApplyAttribute( resistances, min, max, AosElementAttribute.Poison, 1, 15, armor.PoisonBonus );
 							armor.PoisonBonus = 0;
 							break;
 						}
 					case 23:
 						{
-							ApplyAttribute( resistances, min, max, ElementAttribute.Energy, 1, 15, armor.EnergyBonus );
+							ApplyAttribute( resistances, min, max, AosElementAttribute.Energy, 1, 15, armor.EnergyBonus );
 							armor.EnergyBonus = 0;
 							break;
 						}
@@ -568,9 +568,9 @@ namespace Server.Items
 			m_IsRunicTool = isRunicTool;
 			m_LuckChance = luckChance;
 
-			MagicalAttributes primary = hat.Attributes;
-			ArmorAttributes secondary = hat.ClothingAttributes;
-			ElementAttributes resists = hat.Resistances;
+			AosAttributes primary = hat.Attributes;
+			AosArmorAttributes secondary = hat.ClothingAttributes;
+			AosElementAttributes resists = hat.Resistances;
 
 			m_Props.SetAll( false );
 
@@ -583,25 +583,25 @@ namespace Server.Items
 
 				switch ( random )
 				{
-					case 0: ApplyAttribute( secondary, min, max, ArmorAttribute.LowerStatReq, 10, 100, 10 ); break;
-					case 1: ApplyAttribute( secondary, min, max, ArmorAttribute.SelfRepair, 1, 5 ); break;
-					case 2: ApplyAttribute( secondary, min, max, ArmorAttribute.DurabilityBonus, 10, 100, 10 ); break;
-					case 3: ApplyAttribute( primary, min, max, MagicalAttribute.ReflectPhysical, 1, 15 ); break;
-					case 4: ApplyAttribute( primary, min, max, MagicalAttribute.RegenHits, 1, 2 ); break;
-					case 5: ApplyAttribute( primary, min, max, MagicalAttribute.RegenStam, 1, 3 ); break;
-					case 6: ApplyAttribute( primary, min, max, MagicalAttribute.RegenMana, 1, 2 ); break;
-					case 7: ApplyAttribute( primary, min, max, MagicalAttribute.NightSight, 1, 1 ); break;
-					case 8: ApplyAttribute( primary, min, max, MagicalAttribute.BonusHits, 1, 5 ); break;
-					case 9: ApplyAttribute( primary, min, max, MagicalAttribute.BonusStam, 1, 8 ); break;
-					case 10: ApplyAttribute( primary, min, max, MagicalAttribute.BonusMana, 1, 8 ); break;
-					case 11: ApplyAttribute( primary, min, max, MagicalAttribute.LowerManaCost, 1, 8 ); break;
-					case 12: ApplyAttribute( primary, min, max, MagicalAttribute.LowerRegCost, 1, 20 ); break;
-					case 13: ApplyAttribute( primary, min, max, MagicalAttribute.Luck, 1, 100 ); break;
-					case 14: ApplyAttribute( resists, min, max, ElementAttribute.Physical, 1, 15 ); break;
-					case 15: ApplyAttribute( resists, min, max, ElementAttribute.Fire, 1, 15 ); break;
-					case 16: ApplyAttribute( resists, min, max, ElementAttribute.Cold, 1, 15 ); break;
-					case 17: ApplyAttribute( resists, min, max, ElementAttribute.Poison, 1, 15 ); break;
-					case 18: ApplyAttribute( resists, min, max, ElementAttribute.Energy, 1, 15 ); break;
+					case 0: ApplyAttribute( secondary, min, max, AosArmorAttribute.LowerStatReq, 10, 100, 10 ); break;
+					case 1: ApplyAttribute( secondary, min, max, AosArmorAttribute.SelfRepair, 1, 5 ); break;
+					case 2: ApplyAttribute( secondary, min, max, AosArmorAttribute.DurabilityBonus, 10, 100, 10 ); break;
+					case 3: ApplyAttribute( primary, min, max, AosAttribute.ReflectPhysical, 1, 15 ); break;
+					case 4: ApplyAttribute( primary, min, max, AosAttribute.RegenHits, 1, 2 ); break;
+					case 5: ApplyAttribute( primary, min, max, AosAttribute.RegenStam, 1, 3 ); break;
+					case 6: ApplyAttribute( primary, min, max, AosAttribute.RegenMana, 1, 2 ); break;
+					case 7: ApplyAttribute( primary, min, max, AosAttribute.NightSight, 1, 1 ); break;
+					case 8: ApplyAttribute( primary, min, max, AosAttribute.BonusHits, 1, 5 ); break;
+					case 9: ApplyAttribute( primary, min, max, AosAttribute.BonusStam, 1, 8 ); break;
+					case 10: ApplyAttribute( primary, min, max, AosAttribute.BonusMana, 1, 8 ); break;
+					case 11: ApplyAttribute( primary, min, max, AosAttribute.LowerManaCost, 1, 8 ); break;
+					case 12: ApplyAttribute( primary, min, max, AosAttribute.LowerRegCost, 1, 20 ); break;
+					case 13: ApplyAttribute( primary, min, max, AosAttribute.Luck, 1, 100 ); break;
+					case 14: ApplyAttribute( resists, min, max, AosElementAttribute.Physical, 1, 15 ); break;
+					case 15: ApplyAttribute( resists, min, max, AosElementAttribute.Fire, 1, 15 ); break;
+					case 16: ApplyAttribute( resists, min, max, AosElementAttribute.Cold, 1, 15 ); break;
+					case 17: ApplyAttribute( resists, min, max, AosElementAttribute.Poison, 1, 15 ); break;
+					case 18: ApplyAttribute( resists, min, max, AosElementAttribute.Energy, 1, 15 ); break;
 				}
 			}
 		}
@@ -616,8 +616,8 @@ namespace Server.Items
 			m_IsRunicTool = isRunicTool;
 			m_LuckChance = luckChance;
 
-			MagicalAttributes primary = jewelry.Attributes;
-			ElementAttributes resists = jewelry.Resistances;
+			AosAttributes primary = jewelry.Attributes;
+			AosElementAttributes resists = jewelry.Resistances;
 			SkillBonuses skills = jewelry.SkillBonuses;
 
 			m_Props.SetAll( false );
@@ -631,25 +631,25 @@ namespace Server.Items
 
 				switch ( random )
 				{
-					case 0: ApplyAttribute( resists, min, max, ElementAttribute.Physical, 1, 15 ); break;
-					case 1: ApplyAttribute( resists, min, max, ElementAttribute.Fire, 1, 15 ); break;
-					case 2: ApplyAttribute( resists, min, max, ElementAttribute.Cold, 1, 15 ); break;
-					case 3: ApplyAttribute( resists, min, max, ElementAttribute.Poison, 1, 15 ); break;
-					case 4: ApplyAttribute( resists, min, max, ElementAttribute.Energy, 1, 15 ); break;
-					case 5: ApplyAttribute( primary, min, max, MagicalAttribute.WeaponDamage, 1, 25 ); break;
-					case 6: ApplyAttribute( primary, min, max, MagicalAttribute.DefendChance, 1, 15 ); break;
-					case 7: ApplyAttribute( primary, min, max, MagicalAttribute.AttackChance, 1, 15 ); break;
-					case 8: ApplyAttribute( primary, min, max, MagicalAttribute.BonusStr, 1, 8 ); break;
-					case 9: ApplyAttribute( primary, min, max, MagicalAttribute.BonusDex, 1, 8 ); break;
-					case 10: ApplyAttribute( primary, min, max, MagicalAttribute.BonusInt, 1, 8 ); break;
-					case 11: ApplyAttribute( primary, min, max, MagicalAttribute.EnhancePotions, 5, 25, 5 ); break;
-					case 12: ApplyAttribute( primary, min, max, MagicalAttribute.CastSpeed, 1, 1 ); break;
-					case 13: ApplyAttribute( primary, min, max, MagicalAttribute.CastRecovery, 1, 3 ); break;
-					case 14: ApplyAttribute( primary, min, max, MagicalAttribute.LowerManaCost, 1, 8 ); break;
-					case 15: ApplyAttribute( primary, min, max, MagicalAttribute.LowerRegCost, 1, 20 ); break;
-					case 16: ApplyAttribute( primary, min, max, MagicalAttribute.Luck, 1, 100 ); break;
-					case 17: ApplyAttribute( primary, min, max, MagicalAttribute.SpellDamage, 1, 12 ); break;
-					case 18: ApplyAttribute( primary, min, max, MagicalAttribute.NightSight, 1, 1 ); break;
+					case 0: ApplyAttribute( resists, min, max, AosElementAttribute.Physical, 1, 15 ); break;
+					case 1: ApplyAttribute( resists, min, max, AosElementAttribute.Fire, 1, 15 ); break;
+					case 2: ApplyAttribute( resists, min, max, AosElementAttribute.Cold, 1, 15 ); break;
+					case 3: ApplyAttribute( resists, min, max, AosElementAttribute.Poison, 1, 15 ); break;
+					case 4: ApplyAttribute( resists, min, max, AosElementAttribute.Energy, 1, 15 ); break;
+					case 5: ApplyAttribute( primary, min, max, AosAttribute.WeaponDamage, 1, 25 ); break;
+					case 6: ApplyAttribute( primary, min, max, AosAttribute.DefendChance, 1, 15 ); break;
+					case 7: ApplyAttribute( primary, min, max, AosAttribute.AttackChance, 1, 15 ); break;
+					case 8: ApplyAttribute( primary, min, max, AosAttribute.BonusStr, 1, 8 ); break;
+					case 9: ApplyAttribute( primary, min, max, AosAttribute.BonusDex, 1, 8 ); break;
+					case 10: ApplyAttribute( primary, min, max, AosAttribute.BonusInt, 1, 8 ); break;
+					case 11: ApplyAttribute( primary, min, max, AosAttribute.EnhancePotions, 5, 25, 5 ); break;
+					case 12: ApplyAttribute( primary, min, max, AosAttribute.CastSpeed, 1, 1 ); break;
+					case 13: ApplyAttribute( primary, min, max, AosAttribute.CastRecovery, 1, 3 ); break;
+					case 14: ApplyAttribute( primary, min, max, AosAttribute.LowerManaCost, 1, 8 ); break;
+					case 15: ApplyAttribute( primary, min, max, AosAttribute.LowerRegCost, 1, 20 ); break;
+					case 16: ApplyAttribute( primary, min, max, AosAttribute.Luck, 1, 100 ); break;
+					case 17: ApplyAttribute( primary, min, max, AosAttribute.SpellDamage, 1, 12 ); break;
+					case 18: ApplyAttribute( primary, min, max, AosAttribute.NightSight, 1, 1 ); break;
 					case 19: ApplySkillBonus( skills, min, max, 0, 1, 15 ); break;
 					case 20: ApplySkillBonus( skills, min, max, 1, 1, 15 ); break;
 					case 21: ApplySkillBonus( skills, min, max, 2, 1, 15 ); break;
@@ -669,7 +669,7 @@ namespace Server.Items
 			m_IsRunicTool = isRunicTool;
 			m_LuckChance = luckChance;
 
-			MagicalAttributes primary = spellbook.Attributes;
+			AosAttributes primary = spellbook.Attributes;
 			SkillBonuses skills = spellbook.SkillBonuses;
 
 			m_Props.SetAll( false );
@@ -683,22 +683,22 @@ namespace Server.Items
 
 				switch ( random )
 				{
-					case 0: ApplyAttribute( primary, min, max, MagicalAttribute.LowerRegCost, 1, 16 ); break;
-					case 1: ApplyAttribute( primary, min, max, MagicalAttribute.LowerManaCost, 1, 6 ); break;
-					case 2: ApplyAttribute( primary, min, max, MagicalAttribute.RegenMana, 1, 1 ); break;
+					case 0: ApplyAttribute( primary, min, max, AosAttribute.LowerRegCost, 1, 16 ); break;
+					case 1: ApplyAttribute( primary, min, max, AosAttribute.LowerManaCost, 1, 6 ); break;
+					case 2: ApplyAttribute( primary, min, max, AosAttribute.RegenMana, 1, 1 ); break;
 					case 3:
 						{
-							ApplyAttribute( primary, min, max, MagicalAttribute.BonusInt, 1, 6 );
+							ApplyAttribute( primary, min, max, AosAttribute.BonusInt, 1, 6 );
 
 							for ( int j = 0; j < 4; ++j )
 								m_Props.Set( j, true );
 
 							break;
 						}
-					case 4: ApplyAttribute( primary, min, max, MagicalAttribute.BonusMana, 1, 6 ); break;
-					case 5: ApplyAttribute( primary, min, max, MagicalAttribute.CastSpeed, 1, 1 ); break;
-					case 6: ApplyAttribute( primary, min, max, MagicalAttribute.CastRecovery, 1, 2 ); break;
-					case 7: ApplyAttribute( primary, min, max, MagicalAttribute.SpellDamage, 1, 9 ); break;
+					case 4: ApplyAttribute( primary, min, max, AosAttribute.BonusMana, 1, 6 ); break;
+					case 5: ApplyAttribute( primary, min, max, AosAttribute.CastSpeed, 1, 1 ); break;
+					case 6: ApplyAttribute( primary, min, max, AosAttribute.CastRecovery, 1, 2 ); break;
+					case 7: ApplyAttribute( primary, min, max, AosAttribute.SpellDamage, 1, 9 ); break;
 					case 8: ApplySkillBonus( skills, min, max, 0, 1, 12 ); break;
 					case 9: ApplySkillBonus( skills, min, max, 1, 1, 12 ); break;
 					case 10: ApplySkillBonus( skills, min, max, 2, 1, 12 ); break;

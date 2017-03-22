@@ -151,7 +151,7 @@ namespace Server
 				return;
 			}
 
-			if ( target.IsPlayer )
+			if ( target.Player )
 			{
 				source.SendLocalizedMessage( 1075614 ); // You cannot honor other players.
 				return;

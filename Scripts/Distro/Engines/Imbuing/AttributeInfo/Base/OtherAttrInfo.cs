@@ -32,13 +32,13 @@ namespace Server.Engines.Imbuing
 
 	public class OtherMagicalAttrInfo : OtherAttrInfo
 	{
-		private MagicalAttribute m_Attribute;
+		private AosAttribute m_Attribute;
 		private int m_MinIntensity, m_MaxIntensity;
 
 		public override double MinIntensity { get { return m_MinIntensity; } }
 		public override double MaxIntensity { get { return m_MaxIntensity; } }
 
-		public OtherMagicalAttrInfo( MagicalAttribute attr, int min, int max )
+		public OtherMagicalAttrInfo( AosAttribute attr, int min, int max )
 		{
 			m_Attribute = attr;
 			m_MinIntensity = min;
@@ -67,13 +67,13 @@ namespace Server.Engines.Imbuing
 
 	public class OtherWeaponAttrInfo : OtherAttrInfo
 	{
-		private WeaponAttribute m_Attribute;
+		private AosWeaponAttribute m_Attribute;
 		private int m_MinIntensity, m_MaxIntensity;
 
 		public override double MinIntensity { get { return m_MinIntensity; } }
 		public override double MaxIntensity { get { return m_MaxIntensity; } }
 
-		public OtherWeaponAttrInfo( WeaponAttribute attr, int min, int max )
+		public OtherWeaponAttrInfo( AosWeaponAttribute attr, int min, int max )
 		{
 			m_Attribute = attr;
 			m_MinIntensity = min;
@@ -102,13 +102,13 @@ namespace Server.Engines.Imbuing
 
 	public class OtherArmorAttrInfo : OtherAttrInfo
 	{
-		private ArmorAttribute m_Attribute;
+		private AosArmorAttribute m_Attribute;
 		private int m_MinIntensity, m_MaxIntensity;
 
 		public override double MinIntensity { get { return m_MinIntensity; } }
 		public override double MaxIntensity { get { return m_MaxIntensity; } }
 
-		public OtherArmorAttrInfo( ArmorAttribute attr, int min, int max )
+		public OtherArmorAttrInfo( AosArmorAttribute attr, int min, int max )
 		{
 			m_Attribute = attr;
 			m_MinIntensity = min;

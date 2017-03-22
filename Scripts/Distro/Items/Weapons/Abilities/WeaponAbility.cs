@@ -87,7 +87,7 @@ namespace Server.Items
 			if ( !Server.Spells.Necromancy.MindRotSpell.GetMindRotScalar( from, ref scalar ) )
 				scalar = 1.0;
 
-			int lmc = from.GetMagicalAttribute( MagicalAttribute.LowerManaCost );
+			int lmc = from.GetMagicalAttribute( AosAttribute.LowerManaCost );
 
 			if ( lmc > 40 )
 				lmc = 40;
@@ -173,7 +173,7 @@ namespace Server.Items
 
 		public virtual bool Validate( Mobile from )
 		{
-			if ( !from.IsPlayer )
+			if ( !from.Player )
 				return true;
 
 			if ( HonorableExecution.IsUnderPenalty( from ) || AnimalForm.UnderTransformation( from ) )
@@ -262,7 +262,7 @@ namespace Server.Items
 			if ( a == null )
 				return true;
 
-			if ( !m.IsPlayer )
+			if ( !m.Player )
 				return true;
 
 			BaseWeapon weapon = m.Weapon as BaseWeapon;

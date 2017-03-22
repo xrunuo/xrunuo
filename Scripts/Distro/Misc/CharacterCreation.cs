@@ -151,7 +151,7 @@ namespace Server.Misc
 			args.Mobile = newChar;
 			m_Mobile = newChar;
 
-			newChar.IsPlayer = true;
+			newChar.Player = true;
 			newChar.AccessLevel = ( (Account) args.Account ).AccessLevel;
 			newChar.Female = args.Female;
 			newChar.Race = args.Race;

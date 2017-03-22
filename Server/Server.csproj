@@ -269,7 +269,7 @@
     <Compile Include="Items\VirtualHair.cs" />
     <Compile Include="KeywordList.cs" />
     <Compile Include="Library.cs" />
-    <Compile Include="MagicalAttributes.cs" />
+    <Compile Include="AosAttributes.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Menus\IMenu.cs" />

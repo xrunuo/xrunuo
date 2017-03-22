@@ -41,7 +41,7 @@ namespace Server.Items
 
 			List<AttributeMod> mods = new List<AttributeMod>();
 
-			mods.Add( new AttributeMod( MagicalAttribute.LowerManaCost, 10 ) );
+			mods.Add( new AttributeMod( AosAttribute.LowerManaCost, 10 ) );
 
 			ApplyMods( m, mods );
 

@@ -1435,7 +1435,7 @@ namespace Server.Mobiles
 			Mobile from = m_Mobile.ControlMaster;
 			Mobile to = m_Mobile.ControlTarget;
 
-			if ( from == null || to == null || from == to || from.Deleted || to.Deleted || !to.IsPlayer )
+			if ( from == null || to == null || from == to || from.Deleted || to.Deleted || !to.Player )
 			{
 				m_Mobile.PublicOverheadMessage( MessageType.Regular, 0x3B2, 502039 ); // *looks confused*
 			}
@@ -1506,7 +1506,7 @@ namespace Server.Mobiles
 			Mobile from = m_Mobile.ControlMaster;
 			Mobile to = m_Mobile.ControlTarget;
 
-			if ( from == null || to == null || from == to || from.Deleted || to.Deleted || !to.IsPlayer )
+			if ( from == null || to == null || from == to || from.Deleted || to.Deleted || !to.Player )
 			{
 				m_Mobile.PublicOverheadMessage( MessageType.Regular, 0x3B2, 502039 ); // *looks confused*
 			}
@@ -1868,7 +1868,7 @@ namespace Server.Mobiles
 			Mobile from = m_Mobile.ControlMaster;
 			Mobile to = m_Mobile.ControlTarget;
 
-			if ( from != to && from != null && !from.Deleted && to != null && !to.Deleted && to.IsPlayer )
+			if ( from != to && from != null && !from.Deleted && to != null && !to.Deleted && to.Player )
 			{
 				m_Mobile.DebugSay( "Begin transfer with {0}", to.Name );
 
@@ -2583,7 +2583,7 @@ namespace Server.Mobiles
 						continue;
 
 					// Does it have to be a player?
-					if ( bPlayerOnly && !m.IsPlayer )
+					if ( bPlayerOnly && !m.Player )
 						continue;
 
 					// Can't acquire a target we can't see.
@@ -2605,7 +2605,7 @@ namespace Server.Mobiles
 							continue;
 
 						// Animated creatures cannot attack players directly. (exept for animated deads by monsters)
-						if ( m.IsPlayer && m_Mobile.IsAnimatedDead && m_Mobile.SummonMaster.IsPlayer )
+						if ( m.Player && m_Mobile.IsAnimatedDead && m_Mobile.SummonMaster.Player )
 							continue;
 					}
 
@@ -2690,7 +2690,7 @@ namespace Server.Mobiles
 
 			foreach ( Mobile trg in m_Mobile.GetMobilesInRange( m_Mobile.RangePerception ) )
 			{
-				if ( trg != m_Mobile && trg.IsPlayer && trg.Alive && trg.Hidden && trg.AccessLevel == AccessLevel.Player && m_Mobile.InLOS( trg ) )
+				if ( trg != m_Mobile && trg.Player && trg.Alive && trg.Hidden && trg.AccessLevel == AccessLevel.Player && m_Mobile.InLOS( trg ) )
 				{
 					// Make sure we are not revealing our master.
 					if ( m_Mobile.Controlled && m_Mobile.ControlMaster == trg )

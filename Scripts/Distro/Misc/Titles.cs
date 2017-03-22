@@ -415,7 +415,7 @@ namespace Server.Misc
 			{
 				title.AppendFormat( " {0}", customTitle );
 			}
-			else if ( showSkillTitle && beheld.IsPlayer )
+			else if ( showSkillTitle && beheld.Player )
 			{
 				Skill highest = GetHighestSkill( beheld ); // beheld.Skills.Highest;
 

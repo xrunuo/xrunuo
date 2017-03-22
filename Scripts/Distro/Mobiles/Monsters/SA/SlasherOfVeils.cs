@@ -65,7 +65,7 @@ namespace Server.Mobiles
 		{
 			base.AlterMeleeDamageTo( to, ref damage );
 
-			if ( !to.IsPlayer )
+			if ( !to.Player )
 			{
 				damage *= 5;
 

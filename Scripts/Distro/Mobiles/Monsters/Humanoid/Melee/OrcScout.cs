@@ -74,7 +74,7 @@ namespace Server.Mobiles
 
 		public override bool IsEnemy( Mobile m )
 		{
-			if ( m.IsPlayer && m.FindItemOnLayer( Layer.Helm ) is OrcishKinMask )
+			if ( m.Player && m.FindItemOnLayer( Layer.Helm ) is OrcishKinMask )
 			{
 				return false;
 			}
@@ -101,7 +101,7 @@ namespace Server.Mobiles
 		{
 			foreach ( Mobile m in this.GetMobilesInRange( 10 ) )
 			{
-				if ( m.IsPlayer && m.Hidden && m.AccessLevel == AccessLevel.Player )
+				if ( m.Player && m.Hidden && m.AccessLevel == AccessLevel.Player )
 				{
 					return m;
 				}

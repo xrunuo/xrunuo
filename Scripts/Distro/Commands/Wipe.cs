@@ -107,7 +107,7 @@ namespace Server.Scripts.Commands
 				{
 					toDelete.Add( obj );
 				}
-				else if ( mobiles && ( obj is Mobile ) && !( (Mobile) obj ).IsPlayer )
+				else if ( mobiles && ( obj is Mobile ) && !( (Mobile) obj ).Player )
 				{
 					toDelete.Add( obj );
 				}

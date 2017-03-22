@@ -93,7 +93,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( !from.IsPlayer )
+			if ( !from.Player )
 				return;
 
 			if ( from.InRange( GetWorldLocation(), 1 ) )
@@ -104,7 +104,7 @@ namespace Server.Items
 
 		public override bool OnMoveOver( Mobile m )
 		{
-			if ( m.IsPlayer && Visible )
+			if ( m.Player && Visible )
 				CheckGate( m, 0 );
 
 			return true;

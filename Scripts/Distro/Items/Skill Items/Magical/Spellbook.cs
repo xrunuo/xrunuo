@@ -290,15 +290,15 @@ namespace Server.Items
 			return ( book.SpellbookType == type && ( spellID == -1 || book.HasSpell( spellID ) ) );
 		}
 
-		private MagicalAttributes m_MagicalAttributes;
+		private AosAttributes m_AosAttributes;
 		private SkillBonuses m_SkillBonuses;
 
 		private string m_EngraveString;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public MagicalAttributes Attributes
+		public AosAttributes Attributes
 		{
-			get { return m_MagicalAttributes; }
+			get { return m_AosAttributes; }
 			set { }
 		}
 
@@ -447,7 +447,7 @@ namespace Server.Items
 		public Spellbook( ulong content, int itemID )
 			: base( itemID )
 		{
-			m_MagicalAttributes = new MagicalAttributes( this );
+			m_AosAttributes = new AosAttributes( this );
 			m_SkillBonuses = new SkillBonuses( this );
 
 			Weight = 0.0;
@@ -473,9 +473,9 @@ namespace Server.Items
 
 				m_SkillBonuses.AddTo( from );
 
-				int strBonus = m_MagicalAttributes.BonusStr;
-				int dexBonus = m_MagicalAttributes.BonusDex;
-				int intBonus = m_MagicalAttributes.BonusInt;
+				int strBonus = m_AosAttributes.BonusStr;
+				int dexBonus = m_AosAttributes.BonusDex;
+				int intBonus = m_AosAttributes.BonusInt;
 
 				if ( strBonus != 0 || dexBonus != 0 || intBonus != 0 )
 				{
@@ -584,79 +584,79 @@ namespace Server.Items
 
 			int prop;
 
-			if ( ( prop = m_MagicalAttributes.WeaponDamage ) != 0 )
+			if ( ( prop = m_AosAttributes.WeaponDamage ) != 0 )
 				list.Add( 1060401, prop.ToString() ); // damage increase ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.DefendChance ) != 0 )
+			if ( ( prop = m_AosAttributes.DefendChance ) != 0 )
 				list.Add( 1060408, prop.ToString() ); // defense chance increase ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.BonusDex ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusDex ) != 0 )
 				list.Add( 1060409, prop.ToString() ); // dexterity bonus ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.EnhancePotions ) != 0 )
+			if ( ( prop = m_AosAttributes.EnhancePotions ) != 0 )
 				list.Add( 1060411, prop.ToString() ); // enhance potions ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.CastRecovery ) != 0 )
+			if ( ( prop = m_AosAttributes.CastRecovery ) != 0 )
 				list.Add( 1060412, prop.ToString() ); // faster cast recovery ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.CastSpeed ) != 0 )
+			if ( ( prop = m_AosAttributes.CastSpeed ) != 0 )
 				list.Add( 1060413, prop.ToString() ); // faster casting ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.AttackChance ) != 0 )
+			if ( ( prop = m_AosAttributes.AttackChance ) != 0 )
 				list.Add( 1060415, prop.ToString() ); // hit chance increase ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.BonusHits ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusHits ) != 0 )
 				list.Add( 1060431, prop.ToString() ); // hit point increase ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.BonusInt ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusInt ) != 0 )
 				list.Add( 1060432, prop.ToString() ); // intelligence bonus ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.LowerManaCost ) != 0 )
+			if ( ( prop = m_AosAttributes.LowerManaCost ) != 0 )
 				list.Add( 1060433, prop.ToString() ); // lower mana cost ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.LowerRegCost ) != 0 )
+			if ( ( prop = m_AosAttributes.LowerRegCost ) != 0 )
 				list.Add( 1060434, prop.ToString() ); // lower reagent cost ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.Luck ) != 0 )
+			if ( ( prop = m_AosAttributes.Luck ) != 0 )
 				list.Add( 1060436, prop.ToString() ); // luck ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.BonusMana ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusMana ) != 0 )
 				list.Add( 1060439, prop.ToString() ); // mana increase ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.RegenMana ) != 0 )
+			if ( ( prop = m_AosAttributes.RegenMana ) != 0 )
 				list.Add( 1060440, prop.ToString() ); // mana regeneration ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.NightSight ) != 0 )
+			if ( ( prop = m_AosAttributes.NightSight ) != 0 )
 				list.Add( 1060441 ); // night sight
 
-			if ( ( prop = m_MagicalAttributes.ReflectPhysical ) != 0 )
+			if ( ( prop = m_AosAttributes.ReflectPhysical ) != 0 )
 				list.Add( 1060442, prop.ToString() ); // reflect physical damage ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.RegenStam ) != 0 )
+			if ( ( prop = m_AosAttributes.RegenStam ) != 0 )
 				list.Add( 1060443, prop.ToString() ); // stamina regeneration ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.RegenHits ) != 0 )
+			if ( ( prop = m_AosAttributes.RegenHits ) != 0 )
 				list.Add( 1060444, prop.ToString() ); // hit point regeneration ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.SpellChanneling ) != 0 )
+			if ( ( prop = m_AosAttributes.SpellChanneling ) != 0 )
 				list.Add( 1060482 ); // spell channeling
 
-			if ( ( prop = m_MagicalAttributes.SpellDamage ) != 0 )
+			if ( ( prop = m_AosAttributes.SpellDamage ) != 0 )
 				list.Add( 1060483, prop.ToString() ); // spell damage increase ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.BonusStam ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusStam ) != 0 )
 				list.Add( 1060484, prop.ToString() ); // stamina increase ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.BonusStr ) != 0 )
+			if ( ( prop = m_AosAttributes.BonusStr ) != 0 )
 				list.Add( 1060485, prop.ToString() ); // strength bonus ~1_val~
 
-			if ( ( prop = m_MagicalAttributes.WeaponSpeed ) != 0 )
+			if ( ( prop = m_AosAttributes.WeaponSpeed ) != 0 )
 				list.Add( 1060486, prop.ToString() ); // swing speed increase ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.IncreasedKarmaLoss ) != 0 )
+			if ( ( prop = m_AosAttributes.IncreasedKarmaLoss ) != 0 )
 				list.Add( 1075210, prop.ToString() ); // increased karma loss ~1_val~%
 
-			if ( ( prop = m_MagicalAttributes.CastingFocus ) != 0 )
+			if ( ( prop = m_AosAttributes.CastingFocus ) != 0 )
 				list.Add( 1113696, prop.ToString() ); // Casting Focus ~1_val~%
 
 			list.Add( 1042886, m_Count.ToString() ); // ~1_NUMBERS_OF_SPELLS~ Spells
@@ -705,7 +705,7 @@ namespace Server.Items
 
 			writer.WriteEncodedInt( (int) m_Slayer );
 
-			m_MagicalAttributes.Serialize( writer );
+			m_AosAttributes.Serialize( writer );
 			m_SkillBonuses.Serialize( writer );
 
 			writer.Write( m_Content );
@@ -714,29 +714,29 @@ namespace Server.Items
 
 		public void FixAttributes()
 		{
-			if ( m_MagicalAttributes.LowerRegCost > 16 )
-				m_MagicalAttributes.LowerRegCost = 16;
+			if ( m_AosAttributes.LowerRegCost > 16 )
+				m_AosAttributes.LowerRegCost = 16;
 
-			if ( m_MagicalAttributes.LowerManaCost > 6 )
-				m_MagicalAttributes.LowerManaCost = 6;
+			if ( m_AosAttributes.LowerManaCost > 6 )
+				m_AosAttributes.LowerManaCost = 6;
 
-			if ( m_MagicalAttributes.RegenMana > 1 )
-				m_MagicalAttributes.RegenMana = 1;
+			if ( m_AosAttributes.RegenMana > 1 )
+				m_AosAttributes.RegenMana = 1;
 
-			if ( m_MagicalAttributes.BonusInt > 6 )
-				m_MagicalAttributes.BonusInt = 6;
+			if ( m_AosAttributes.BonusInt > 6 )
+				m_AosAttributes.BonusInt = 6;
 
-			if ( m_MagicalAttributes.BonusMana > 6 )
-				m_MagicalAttributes.BonusMana = 6;
+			if ( m_AosAttributes.BonusMana > 6 )
+				m_AosAttributes.BonusMana = 6;
 
-			if ( m_MagicalAttributes.CastSpeed > 1 )
-				m_MagicalAttributes.CastSpeed = 1;
+			if ( m_AosAttributes.CastSpeed > 1 )
+				m_AosAttributes.CastSpeed = 1;
 
-			if ( m_MagicalAttributes.CastRecovery > 2 )
-				m_MagicalAttributes.CastRecovery = 2;
+			if ( m_AosAttributes.CastRecovery > 2 )
+				m_AosAttributes.CastRecovery = 2;
 
-			if ( m_MagicalAttributes.SpellDamage > 9 )
-				m_MagicalAttributes.SpellDamage = 9;
+			if ( m_AosAttributes.SpellDamage > 9 )
+				m_AosAttributes.SpellDamage = 9;
 
 			if ( m_SkillBonuses.Skill_1_Value > 12 )
 				m_SkillBonuses.Skill_1_Value = 12;
@@ -792,7 +792,7 @@ namespace Server.Items
 					}
 				case 1:
 					{
-						m_MagicalAttributes = new MagicalAttributes( this, reader );
+						m_AosAttributes = new AosAttributes( this, reader );
 						m_SkillBonuses = new SkillBonuses( this, reader );
 
 						if ( this is ScrappersCompendium )
@@ -853,8 +853,8 @@ namespace Server.Items
 					}
 			}
 
-			if ( m_MagicalAttributes == null )
-				m_MagicalAttributes = new MagicalAttributes( this );
+			if ( m_AosAttributes == null )
+				m_AosAttributes = new AosAttributes( this );
 
 			if ( m_SkillBonuses == null )
 				m_SkillBonuses = new SkillBonuses( this );
@@ -862,9 +862,9 @@ namespace Server.Items
 			if ( Parent is Mobile )
 				m_SkillBonuses.AddTo( (Mobile) Parent );
 
-			int strBonus = m_MagicalAttributes.BonusStr;
-			int dexBonus = m_MagicalAttributes.BonusDex;
-			int intBonus = m_MagicalAttributes.BonusInt;
+			int strBonus = m_AosAttributes.BonusStr;
+			int dexBonus = m_AosAttributes.BonusDex;
+			int intBonus = m_AosAttributes.BonusInt;
 
 			if ( Parent is Mobile && ( strBonus != 0 || dexBonus != 0 || intBonus != 0 ) )
 			{

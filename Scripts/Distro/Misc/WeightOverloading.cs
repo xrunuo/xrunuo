@@ -54,7 +54,7 @@ namespace Server.Misc
 			 * Racial Abilities: Strong Back (Humans)
 			 * Humans have an increased carrying capacity above what is determined by their strength. 
 			 */
-			if ( m.IsPlayer && m.Race == Race.Human )
+			if ( m.Player && m.Race == Race.Human )
 				maxweight += 60;
 
 			return maxweight;
@@ -64,7 +64,7 @@ namespace Server.Misc
 		{
 			Mobile from = e.Mobile;
 
-			if ( !from.IsPlayer || !from.Alive || from.AccessLevel >= AccessLevel.GameMaster )
+			if ( !from.Player || !from.Alive || from.AccessLevel >= AccessLevel.GameMaster )
 				return;
 
 			bool isRunning = ( e.Direction & Direction.Running ) != 0;
@@ -118,7 +118,7 @@ namespace Server.Misc
 
 		public static bool IsOverloaded( Mobile m )
 		{
-			if ( !m.IsPlayer || !m.Alive || m.AccessLevel >= AccessLevel.GameMaster )
+			if ( !m.Player || !m.Alive || m.AccessLevel >= AccessLevel.GameMaster )
 				return false;
 
 			return ( ( Mobile.BodyWeight + m.TotalWeight ) > ( GetMaxWeight( m ) + OverloadAllowance ) );

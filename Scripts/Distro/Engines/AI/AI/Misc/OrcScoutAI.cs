@@ -31,7 +31,7 @@ namespace Server.Mobiles
 
 			foreach ( Mobile m in m_Mobile.GetMobilesInRange( m_Mobile.RangePerception ) )
 			{
-				if ( m.IsPlayer && !m.Hidden && m.AccessLevel == AccessLevel.Player && m.Combatant == m_Mobile )
+				if ( m.Player && !m.Hidden && m.AccessLevel == AccessLevel.Player && m.Combatant == m_Mobile )
 				{
 					if ( dist > m.GetDistanceToSqrt( m_Mobile ) )
 					{

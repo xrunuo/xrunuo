@@ -112,7 +112,7 @@ namespace Server.Items
 			{
 				int damage = Utility.RandomMinMax( level, level * 2 );
 
-				if ( !m.IsPlayer )
+				if ( !m.Player )
 					damage *= 2;
 
 				m.PlaySound( 0x133 );
@@ -124,7 +124,7 @@ namespace Server.Items
 
 				BaseWeapon weapon = from.Weapon as BaseWeapon;
 
-				if ( weapon != null && weapon.WeaponAttributes[WeaponAttribute.BloodDrinker] != 0 && from.Hits < from.HitsMax )
+				if ( weapon != null && weapon.WeaponAttributes[AosWeaponAttribute.BloodDrinker] != 0 && from.Hits < from.HitsMax )
 				{
 					from.FixedParticles( 0x375A, 1, 10, 0x1AE9, 0x21, 0x2, EffectLayer.Head );
 					from.SendLocalizedMessage( 1113606 ); // The blood drinker effect heals you.

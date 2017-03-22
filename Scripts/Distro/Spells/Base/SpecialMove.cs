@@ -93,7 +93,7 @@ namespace Server.Spells
 				scalar = 1.0;
 
 			// Lower Mana Cost = 40%
-			int lmc = m.GetMagicalAttribute( MagicalAttribute.LowerManaCost );
+			int lmc = m.GetMagicalAttribute( AosAttribute.LowerManaCost );
 
 			if ( lmc > 40 )
 				lmc = 40;
@@ -145,7 +145,7 @@ namespace Server.Spells
 
 		public virtual bool Validate( Mobile from )
 		{
-			if ( !from.IsPlayer )
+			if ( !from.Player )
 				return true;
 
 			if ( from.Spell != null )

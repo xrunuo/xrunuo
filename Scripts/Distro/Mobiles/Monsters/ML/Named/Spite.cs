@@ -89,7 +89,7 @@ namespace Server.Mobiles
                 ArrayList list = new ArrayList();
 
                 foreach ( Mobile m in Map.GetMobilesInRange( Location, 5 ) )
-                    if ( m.IsPlayer && m.AccessLevel == AccessLevel.Player )
+                    if ( m.Player && m.AccessLevel == AccessLevel.Player )
                         list.Add( m );
 
                 if ( list.Count <= 0 )

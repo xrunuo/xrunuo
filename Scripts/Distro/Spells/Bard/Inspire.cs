@@ -55,13 +55,13 @@ namespace Server.Spells.Bard
 			GetSkillBonus( out music, out peace, out provo, out disco );
 
 			int weaponDamage = 10 + 5 * ( music + provo ) + 3 * ( peace + disco );
-			mods.Add( new AttributeMod( MagicalAttribute.WeaponDamage, weaponDamage ) );
+			mods.Add( new AttributeMod( AosAttribute.WeaponDamage, weaponDamage ) );
 
 			int spellDamage = 4 + 2 * ( music + provo ) + peace + disco;
-			mods.Add( new AttributeMod( MagicalAttribute.SpellDamage, spellDamage ) );
+			mods.Add( new AttributeMod( AosAttribute.SpellDamage, spellDamage ) );
 
 			int attackChance = 4 + 2 * ( music + provo ) + peace + disco;
-			mods.Add( new AttributeMod( MagicalAttribute.AttackChance, attackChance ) );
+			mods.Add( new AttributeMod( AosAttribute.AttackChance, attackChance ) );
 
 			int damageModifier = Math.Max( 1, music * provo + Math.Max( music, provo ) + ( disco + peace ) / 2 );
 			this.DamageModifier = damageModifier;

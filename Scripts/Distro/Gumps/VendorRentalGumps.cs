@@ -405,7 +405,7 @@ namespace Server.Gumps
 
 				Mobile mob = targeted as Mobile;
 
-				if ( mob == null || !mob.IsPlayer || !mob.Alive || mob == from )
+				if ( mob == null || !mob.Player || !mob.Alive || mob == from )
 				{
 					from.SendMessage( "That is not a valid target for a rental contract!" );
 				}

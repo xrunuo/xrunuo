@@ -15,7 +15,7 @@ namespace Server.Engines.Imbuing
 		// Misc.
 		public override int Category { get { return 1114252; } }
 
-		public override ArmorAttribute Attribute { get { return ArmorAttribute.LowerStatReq; } }
+		public override AosArmorAttribute Attribute { get { return AosArmorAttribute.LowerStatReq; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Shield; } }
@@ -40,7 +40,7 @@ namespace Server.Engines.Imbuing
 		// Casting
 		public override int Category { get { return 1114248; } }
 
-		public override ArmorAttribute Attribute { get { return ArmorAttribute.MageArmor; } }
+		public override AosArmorAttribute Attribute { get { return AosArmorAttribute.MageArmor; } }
 		public override double Weight { get { return 1.4; } }
 		public override DisplayValue Display { get { return DisplayValue.NoShow; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Armor; } }

@@ -39,7 +39,7 @@ namespace Server.Engines.Guilds.Targets
 
 				Account targetAccount = m.Account as Account;
 
-				if ( !m.IsPlayer )
+				if ( !m.Player )
 				{
 					m_Mobile.SendLocalizedMessage( 1063334 ); // That isn't a valid player.
 				}

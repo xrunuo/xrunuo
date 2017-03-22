@@ -37,11 +37,11 @@ namespace Server.Items
 
 			List<AttributeMod> mods = new List<AttributeMod>();
 
-			mods.Add( new AttributeMod( MagicalAttribute.Luck, 100 ) );
-			mods.Add( new AttributeMod( MagicalAttribute.RegenMana, 2 ) );
-			mods.Add( new AttributeMod( MagicalAttribute.RegenHits, 2 ) );
-			mods.Add( new AttributeMod( MagicalAttribute.CastSpeed, 1 ) );
-			mods.Add( new AttributeMod( MagicalAttribute.CastRecovery, 4 ) );
+			mods.Add( new AttributeMod( AosAttribute.Luck, 100 ) );
+			mods.Add( new AttributeMod( AosAttribute.RegenMana, 2 ) );
+			mods.Add( new AttributeMod( AosAttribute.RegenHits, 2 ) );
+			mods.Add( new AttributeMod( AosAttribute.CastSpeed, 1 ) );
+			mods.Add( new AttributeMod( AosAttribute.CastRecovery, 4 ) );
 
 			ApplyMods( m, mods );
 

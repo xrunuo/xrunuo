@@ -57,7 +57,7 @@ namespace Server.Items
 
 		private static TimeSpan ComputeDuration( Mobile defender )
 		{
-			double seconds = defender.IsPlayer ? PlayerDurationSeconds : NpcDurationSeconds;
+			double seconds = defender.Player ? PlayerDurationSeconds : NpcDurationSeconds;
 
 			Resilience song = Spellsong.GetEffectSpellsong<Resilience>( defender );
 

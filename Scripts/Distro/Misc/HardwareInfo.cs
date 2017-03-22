@@ -113,7 +113,7 @@ namespace Server
 
 		public static void HWInfo_OnTarget( Mobile from, object obj )
 		{
-			if ( obj is Mobile && ( (Mobile) obj ).IsPlayer )
+			if ( obj is Mobile && ( (Mobile) obj ).Player )
 			{
 				Mobile m = (Mobile) obj;
 				Account acct = m.Account as Account;

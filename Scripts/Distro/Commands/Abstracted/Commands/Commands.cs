@@ -244,7 +244,7 @@ namespace Server.Scripts.Commands
 				Mobile mob = (Mobile) obj;
 				Mobile from = e.Mobile;
 
-				if ( mob.IsPlayer )
+				if ( mob.Player )
 				{
 					NetState ns = mob.NetState;
 
@@ -818,7 +818,7 @@ namespace Server.Scripts.Commands
 				( (Item) obj ).Delete();
 				AddResponse( "The item has been deleted." );
 			}
-			else if ( obj is Mobile && !( (Mobile) obj ).IsPlayer )
+			else if ( obj is Mobile && !( (Mobile) obj ).Player )
 			{
 				CommandLogging.WriteLine( e.Mobile, "{0} {1} deleting {2}", e.Mobile.AccessLevel, CommandLogging.Format( e.Mobile ), CommandLogging.Format( obj ) );
 				( (Mobile) obj ).Delete();

@@ -46,7 +46,7 @@ namespace Server.Items
 		public override TimeSpan OnSwing( Mobile attacker, Mobile defender )
 		{
 			// Make sure we've been standing still for 0.5 seconds
-			if ( DateTime.UtcNow > ( attacker.LastMoveTime + TimeSpan.FromSeconds( 0.5 ) ) || ( WeaponAbility.GetCurrentAbility( attacker ) is MovingShot ) || !attacker.IsPlayer )
+			if ( DateTime.UtcNow > ( attacker.LastMoveTime + TimeSpan.FromSeconds( 0.5 ) ) || ( WeaponAbility.GetCurrentAbility( attacker ) is MovingShot ) || !attacker.Player )
 			{
 				if ( CanSwing( attacker ) && attacker.HarmfulCheck( defender ) )
 				{
@@ -72,7 +72,7 @@ namespace Server.Items
 
 		public override void OnHit( Mobile attacker, Mobile defender, double damageBonus )
 		{
-			if ( attacker.IsPlayer && !defender.IsPlayer && ( defender.Body.IsAnimal || defender.Body.IsMonster ) && 0.4 >= Utility.RandomDouble() )
+			if ( attacker.Player && !defender.Player && ( defender.Body.IsAnimal || defender.Body.IsMonster ) && 0.4 >= Utility.RandomDouble() )
 			{
 				defender.AddToBackpack( Ammo );
 			}
@@ -154,7 +154,7 @@ namespace Server.Items
 
 		public override void OnMiss( Mobile attacker, Mobile defender )
 		{
-			if ( attacker.IsPlayer/* && 0.4 >= Utility.RandomDouble()*/ )
+			if ( attacker.Player/* && 0.4 >= Utility.RandomDouble()*/ )
 			{
 				RecoveryTimer timer = new RecoveryTimer( attacker, Ammo );
 
@@ -168,7 +168,7 @@ namespace Server.Items
 		{
 			Container pack = attacker.Backpack;
 
-			if ( Attributes.LowerAmmoCost < Utility.RandomMinMax( 1, 100 ) && attacker.IsPlayer )
+			if ( Attributes.LowerAmmoCost < Utility.RandomMinMax( 1, 100 ) && attacker.Player )
 			{
 				m_IsFalseArrow = false;
 

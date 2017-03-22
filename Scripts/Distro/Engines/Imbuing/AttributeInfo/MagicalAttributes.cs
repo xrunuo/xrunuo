@@ -15,7 +15,7 @@ namespace Server.Engines.Imbuing
 		// Combat
 		public override int Category { get { return 1114249; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.WeaponDamage; } }
+		public override AosAttribute Attribute { get { return AosAttribute.WeaponDamage; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -59,7 +59,7 @@ namespace Server.Engines.Imbuing
 		// Combat
 		public override int Category { get { return 1114249; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.WeaponSpeed; } }
+		public override AosAttribute Attribute { get { return AosAttribute.WeaponSpeed; } }
 		public override double Weight { get { return 1.1; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons; } }
@@ -84,7 +84,7 @@ namespace Server.Engines.Imbuing
 		// Misc.
 		public override int Category { get { return 1114252; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.Luck; } }
+		public override AosAttribute Attribute { get { return AosAttribute.Luck; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.Value; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Weapon | ImbuingFlag.Jewelry | ImbuingFlag.Armor; } }
@@ -128,7 +128,7 @@ namespace Server.Engines.Imbuing
 		// Combat
 		public override int Category { get { return 1114249; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.AttackChance; } }
+		public override AosAttribute Attribute { get { return AosAttribute.AttackChance; } }
 		public override double Weight { get { return 1.3; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Weapon | ImbuingFlag.Jewelry; } }
@@ -175,7 +175,7 @@ namespace Server.Engines.Imbuing
 		// Combat
 		public override int Category { get { return 1114249; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.DefendChance; } }
+		public override AosAttribute Attribute { get { return AosAttribute.DefendChance; } }
 		public override double Weight { get { return 1.1; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons | ImbuingFlag.Jewelry | ImbuingFlag.Shield; } }
@@ -222,7 +222,7 @@ namespace Server.Engines.Imbuing
 		// Casting
 		public override int Category { get { return 1114248; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.CastSpeed; } }
+		public override AosAttribute Attribute { get { return AosAttribute.CastSpeed; } }
 		public override double Weight { get { return 1.4; } }
 		public override DisplayValue Display { get { return DisplayValue.Value; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons | ImbuingFlag.Jewelry | ImbuingFlag.Shield; } }
@@ -247,7 +247,7 @@ namespace Server.Engines.Imbuing
 		// Casting
 		public override int Category { get { return 1114248; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.CastRecovery; } }
+		public override AosAttribute Attribute { get { return AosAttribute.CastRecovery; } }
 		public override double Weight { get { return 1.2; } }
 		public override DisplayValue Display { get { return DisplayValue.Value; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Jewelry; } }
@@ -272,7 +272,7 @@ namespace Server.Engines.Imbuing
 		// Casting
 		public override int Category { get { return 1114248; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.SpellChanneling; } }
+		public override AosAttribute Attribute { get { return AosAttribute.SpellChanneling; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.NoShow; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.AllWeapons | ImbuingFlag.Shield; } }
@@ -297,7 +297,7 @@ namespace Server.Engines.Imbuing
 		// Casting
 		public override int Category { get { return 1114248; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.LowerManaCost; } }
+		public override AosAttribute Attribute { get { return AosAttribute.LowerManaCost; } }
 		public override double Weight { get { return 1.1; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Armor | ImbuingFlag.Jewelry; } }
@@ -322,7 +322,7 @@ namespace Server.Engines.Imbuing
 		// Stats
 		public override int Category { get { return 1114262; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.BonusHits; } }
+		public override AosAttribute Attribute { get { return AosAttribute.BonusHits; } }
 		public override double Weight { get { return 1.1; } }
 		public override DisplayValue Display { get { return DisplayValue.Value; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Armor; } }
@@ -347,7 +347,7 @@ namespace Server.Engines.Imbuing
 		// Stats
 		public override int Category { get { return 1114262; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.BonusMana; } }
+		public override AosAttribute Attribute { get { return AosAttribute.BonusMana; } }
 		public override double Weight { get { return 1.1; } }
 		public override DisplayValue Display { get { return DisplayValue.Value; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Armor; } }
@@ -372,7 +372,7 @@ namespace Server.Engines.Imbuing
 		// Stats
 		public override int Category { get { return 1114262; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.BonusStam; } }
+		public override AosAttribute Attribute { get { return AosAttribute.BonusStam; } }
 		public override double Weight { get { return 1.1; } }
 		public override DisplayValue Display { get { return DisplayValue.Value; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Armor; } }
@@ -397,7 +397,7 @@ namespace Server.Engines.Imbuing
 		// Misc.
 		public override int Category { get { return 1114252; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.ReflectPhysical; } }
+		public override AosAttribute Attribute { get { return AosAttribute.ReflectPhysical; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Armor | ImbuingFlag.Shield; } }
@@ -422,7 +422,7 @@ namespace Server.Engines.Imbuing
 		// Misc.
 		public override int Category { get { return 1114252; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.NightSight; } }
+		public override AosAttribute Attribute { get { return AosAttribute.NightSight; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.NoShow; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Armor | ImbuingFlag.Jewelry; } }
@@ -447,7 +447,7 @@ namespace Server.Engines.Imbuing
 		// Stats
 		public override int Category { get { return 1114262; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.RegenMana; } }
+		public override AosAttribute Attribute { get { return AosAttribute.RegenMana; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.Value; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Armor; } }
@@ -472,7 +472,7 @@ namespace Server.Engines.Imbuing
 		// Stats
 		public override int Category { get { return 1114262; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.RegenHits; } }
+		public override AosAttribute Attribute { get { return AosAttribute.RegenHits; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.Value; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Armor; } }
@@ -497,7 +497,7 @@ namespace Server.Engines.Imbuing
 		// Stats
 		public override int Category { get { return 1114262; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.RegenStam; } }
+		public override AosAttribute Attribute { get { return AosAttribute.RegenStam; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.Value; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Armor; } }
@@ -522,7 +522,7 @@ namespace Server.Engines.Imbuing
 		// Stats
 		public override int Category { get { return 1114262; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.BonusStr; } }
+		public override AosAttribute Attribute { get { return AosAttribute.BonusStr; } }
 		public override double Weight { get { return 1.1; } }
 		public override DisplayValue Display { get { return DisplayValue.Value; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Jewelry; } }
@@ -547,7 +547,7 @@ namespace Server.Engines.Imbuing
 		// Stats
 		public override int Category { get { return 1114262; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.BonusDex; } }
+		public override AosAttribute Attribute { get { return AosAttribute.BonusDex; } }
 		public override double Weight { get { return 1.1; } }
 		public override DisplayValue Display { get { return DisplayValue.Value; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Jewelry; } }
@@ -572,7 +572,7 @@ namespace Server.Engines.Imbuing
 		// Stats
 		public override int Category { get { return 1114262; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.BonusInt; } }
+		public override AosAttribute Attribute { get { return AosAttribute.BonusInt; } }
 		public override double Weight { get { return 1.1; } }
 		public override DisplayValue Display { get { return DisplayValue.Value; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Jewelry; } }
@@ -597,7 +597,7 @@ namespace Server.Engines.Imbuing
 		// Misc.
 		public override int Category { get { return 1114252; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.EnhancePotions; } }
+		public override AosAttribute Attribute { get { return AosAttribute.EnhancePotions; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Jewelry; } }
@@ -622,7 +622,7 @@ namespace Server.Engines.Imbuing
 		// Casting
 		public override int Category { get { return 1114248; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.LowerRegCost; } }
+		public override AosAttribute Attribute { get { return AosAttribute.LowerRegCost; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Jewelry | ImbuingFlag.Armor; } }
@@ -647,7 +647,7 @@ namespace Server.Engines.Imbuing
 		// Casting
 		public override int Category { get { return 1114248; } }
 
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.SpellDamage; } }
+		public override AosAttribute Attribute { get { return AosAttribute.SpellDamage; } }
 		public override double Weight { get { return 1.0; } }
 		public override DisplayValue Display { get { return DisplayValue.ValuePercentage; } }
 		public override ImbuingFlag Flags { get { return ImbuingFlag.Jewelry; } }

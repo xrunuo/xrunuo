@@ -4,11 +4,11 @@ using Server;
 namespace Server.Engines.Imbuing
 {
 	/// <summary>
-	/// Represents the properties from <see cref="ElementAttribute" /> enum.
+	/// Represents the properties from <see cref="AosElementAttribute" /> enum.
 	/// </summary>
 	public abstract class ResistanceAttrInfo : BaseAttrInfo
 	{
-		public abstract ElementAttribute Attribute { get; }
+		public abstract AosElementAttribute Attribute { get; }
 
 		public override int Category { get { return 1114254; } } // Resists
 

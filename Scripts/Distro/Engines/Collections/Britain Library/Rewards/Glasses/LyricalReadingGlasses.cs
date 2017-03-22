@@ -124,7 +124,7 @@ namespace Server.Items
 
 					targets.Add( m );
 
-					if ( m.IsPlayer )
+					if ( m.Player )
 						playerVsPlayer = true;
 				}
 			}

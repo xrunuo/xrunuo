@@ -6,7 +6,7 @@ namespace Server.Engines.VendorSearch
 {
 	public abstract class MagicalAttributeSearchCriterion : ValuedSearchCriterion
 	{
-		public abstract MagicalAttribute Attribute { get; }
+		public abstract AosAttribute Attribute { get; }
 
 		public override bool Matches( IVendorSearchItem item )
 		{
@@ -16,7 +16,7 @@ namespace Server.Engines.VendorSearch
 
 	public abstract class BooleanMagicalAttributeSearchCriterion : SearchCriterion
 	{
-		public abstract MagicalAttribute Attribute { get; }
+		public abstract AosAttribute Attribute { get; }
 
 		public override bool Matches( IVendorSearchItem item )
 		{
@@ -27,73 +27,73 @@ namespace Server.Engines.VendorSearch
 	public class NightSightSearchCriterion : BooleanMagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1015168; } } // Night Sight
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.NightSight; } }
+		public override AosAttribute Attribute { get { return AosAttribute.NightSight; } }
 	}
 
 	public class EnhancePotionsSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060411; } } // enhance potions ~1_val~%
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.EnhancePotions; } }
+		public override AosAttribute Attribute { get { return AosAttribute.EnhancePotions; } }
 	}
 
 	public class LuckSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060436; } } // luck ~1_val~
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.Luck; } }
+		public override AosAttribute Attribute { get { return AosAttribute.Luck; } }
 	}
 
 	public class ReflectPhysicalDamageSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060442; } } // reflect physical damage ~1_val~%
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.ReflectPhysical; } }
+		public override AosAttribute Attribute { get { return AosAttribute.ReflectPhysical; } }
 	}
 
 	public class DamageIncreaseSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060401; } } // damage increase ~1_val~%
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.WeaponDamage; } }
+		public override AosAttribute Attribute { get { return AosAttribute.WeaponDamage; } }
 	}
 
 	public class DefenseIncreaseChanceSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060408; } } // defense chance increase ~1_val~%
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.DefendChance; } }
+		public override AosAttribute Attribute { get { return AosAttribute.DefendChance; } }
 	}
 
 	public class HitChanceIncreaseSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060415; } } // hit chance increase ~1_val~%
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.AttackChance; } }
+		public override AosAttribute Attribute { get { return AosAttribute.AttackChance; } }
 	}
 
 	public class SwingSpeedIncreaseSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060486; } } // swing speed increase ~1_val~%
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.WeaponSpeed; } }
+		public override AosAttribute Attribute { get { return AosAttribute.WeaponSpeed; } }
 	}
 
 	public class SpellDamageIncreaseSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060483; } } // spell damage increase ~1_val~%
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.SpellDamage; } }
+		public override AosAttribute Attribute { get { return AosAttribute.SpellDamage; } }
 	}
 
 	public class CastingFocusSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1113696; } } // Casting Focus ~1_val~%
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.CastingFocus; } }
+		public override AosAttribute Attribute { get { return AosAttribute.CastingFocus; } }
 	}
 
 	public class FasterCastRecoverySearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060412; } } // faster cast recovery ~1_val~
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.CastRecovery; } }
+		public override AosAttribute Attribute { get { return AosAttribute.CastRecovery; } }
 	}
 
 	public class FasterCastingSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060413; } } // faster casting ~1_val~
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.CastSpeed; } }
+		public override AosAttribute Attribute { get { return AosAttribute.CastSpeed; } }
 
 		public override bool Matches( IVendorSearchItem item )
 		{
@@ -114,72 +114,72 @@ namespace Server.Engines.VendorSearch
 	public class LowerManaCostSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060433; } } // lower mana cost ~1_val~%
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.LowerManaCost; } }
+		public override AosAttribute Attribute { get { return AosAttribute.LowerManaCost; } }
 	}
 
 	public class LowerReagentCostSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060434; } } // lower reagent cost ~1_val~%
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.LowerRegCost; } }
+		public override AosAttribute Attribute { get { return AosAttribute.LowerRegCost; } }
 	}
 
 	public class SpellChannelingCostSearchCriterion : BooleanMagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1079766; } } // Spell Channeling
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.SpellChanneling; } }
+		public override AosAttribute Attribute { get { return AosAttribute.SpellChanneling; } }
 	}
 
 	public class StrengthBonusSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060485; } } // strength bonus ~1_val~
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.BonusStr; } }
+		public override AosAttribute Attribute { get { return AosAttribute.BonusStr; } }
 	}
 
 	public class DexterityBonusSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060409; } } // dexterity bonus ~1_val~
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.BonusDex; } }
+		public override AosAttribute Attribute { get { return AosAttribute.BonusDex; } }
 	}
 
 	public class IntelligenceBonusSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060432; } } // intelligence bonus ~1_val~
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.BonusInt; } }
+		public override AosAttribute Attribute { get { return AosAttribute.BonusInt; } }
 	}
 
 	public class HitPointsIncreaseSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060431; } } // hit point increase ~1_val~
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.BonusHits; } }
+		public override AosAttribute Attribute { get { return AosAttribute.BonusHits; } }
 	}
 
 	public class StaminaIncreaseSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060484; } } // stamina increase ~1_val~
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.BonusStam; } }
+		public override AosAttribute Attribute { get { return AosAttribute.BonusStam; } }
 	}
 
 	public class ManaIncreaseSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060439; } } // mana increase ~1_val~
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.BonusMana; } }
+		public override AosAttribute Attribute { get { return AosAttribute.BonusMana; } }
 	}
 
 	public class HitPointRegenerationSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060444; } } // hit point regeneration ~1_val~
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.RegenHits; } }
+		public override AosAttribute Attribute { get { return AosAttribute.RegenHits; } }
 	}
 
 	public class StaminaRegerationSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060443; } } // stamina regeneration ~1_val~
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.RegenStam; } }
+		public override AosAttribute Attribute { get { return AosAttribute.RegenStam; } }
 	}
 
 	public class ManaRegenerationSearchCriterion : MagicalAttributeSearchCriterion
 	{
 		public override int LabelNumber { get { return 1060440; } } // mana regeneration ~1_val~
-		public override MagicalAttribute Attribute { get { return MagicalAttribute.RegenMana; } }
+		public override AosAttribute Attribute { get { return AosAttribute.RegenMana; } }
 	}
 }

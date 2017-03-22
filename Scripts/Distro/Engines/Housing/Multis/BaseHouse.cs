@@ -1796,7 +1796,7 @@ namespace Server.Engines.Housing.Multis
 			{
 				from.SendLocalizedMessage( 1005330 ); // You cannot transfer a house to yourself, silly.
 			}
-			else if ( to.IsPlayer )
+			else if ( to.Player )
 			{
 				Account acc = to.Account as Account;
 
@@ -1870,7 +1870,7 @@ namespace Server.Engines.Housing.Multis
 			{
 				from.SendLocalizedMessage( 1005330 ); // You cannot transfer a house to yourself, silly.
 			}
-			else if ( to.IsPlayer )
+			else if ( to.Player )
 			{
 				if ( BaseHouse.HasAccountHouse( to ) )
 				{
@@ -1997,7 +1997,7 @@ namespace Server.Engines.Housing.Multis
 
 		public virtual bool IsCombatRestricted( Mobile m )
 		{
-			if ( m == null || !m.IsPlayer || m.AccessLevel >= AccessLevel.GameMaster )
+			if ( m == null || !m.Player || m.AccessLevel >= AccessLevel.GameMaster )
 				return false;
 
 			for ( int i = 0; i < m.Aggressed.Count; ++i )
@@ -2007,7 +2007,7 @@ namespace Server.Engines.Housing.Multis
 				Guild attackerGuild = m.Guild as Guild;
 				Guild defenderGuild = info.Defender.Guild as Guild;
 
-				if ( info.Defender.IsPlayer && info.Defender.Alive && ( DateTime.UtcNow - info.LastCombatTime ) < HouseRegion.CombatHeatDelay && ( attackerGuild == null || defenderGuild == null || defenderGuild != attackerGuild && !defenderGuild.IsEnemy( attackerGuild ) ) )
+				if ( info.Defender.Player && info.Defender.Alive && ( DateTime.UtcNow - info.LastCombatTime ) < HouseRegion.CombatHeatDelay && ( attackerGuild == null || defenderGuild == null || defenderGuild != attackerGuild && !defenderGuild.IsEnemy( attackerGuild ) ) )
 				{
 					return true;
 				}
@@ -2264,7 +2264,7 @@ namespace Server.Engines.Housing.Multis
 			{
 				from.SendLocalizedMessage( 1060729 ); // That person already has access to this house.
 			}
-			else if ( !targ.IsPlayer )
+			else if ( !targ.Player )
 			{
 				from.SendLocalizedMessage( 1060712 ); // That is not a player.
 			}
@@ -2297,7 +2297,7 @@ namespace Server.Engines.Housing.Multis
 			{
 				from.SendLocalizedMessage( 501361 ); // This person is a friend of the house. Remove them first.
 			}
-			else if ( !targ.IsPlayer )
+			else if ( !targ.Player )
 			{
 				from.SendLocalizedMessage( 501362 ); // That can't be a co-owner of the house.
 			}
@@ -2375,7 +2375,7 @@ namespace Server.Engines.Housing.Multis
 			{
 				from.SendLocalizedMessage( 501369 ); // This person is already on your co-owner list!
 			}
-			else if ( !targ.IsPlayer )
+			else if ( !targ.Player )
 			{
 				from.SendLocalizedMessage( 501371 ); // That can't be a friend of the house.
 			}

@@ -74,7 +74,7 @@ namespace Server.Items
 			if ( !Rect.Contains( m.Location ) || m is BaseCreature )
 				return;
 
-			if ( m != null && m_Door != null && !m_Door.Locked && !m_Door.Open && m_Door.Link != null && !m_Door.Link.Locked && !m_Door.Link.Open && m.IsPlayer && m.Alive && m_CanActive )
+			if ( m != null && m_Door != null && !m_Door.Locked && !m_Door.Open && m_Door.Link != null && !m_Door.Link.Locked && !m_Door.Link.Open && m.Player && m.Alive && m_CanActive )
 			{
 				m_CanActive = false; //Carrabas: Moved this here so it will not execute the OnMovement more than once while executing the loops
 
@@ -84,7 +84,7 @@ namespace Server.Items
 				{
 					if ( !( mobile is DarkGuardian ) )
 					{
-						if ( mobile.IsPlayer )
+						if ( mobile.Player )
 							mobile.SendLocalizedMessage( 1050000, null, 0x41 ); // The locks on the door click loudly and you begin to hear a faint hissing near the walls.
 
 						guardianCount += 2;
@@ -132,7 +132,7 @@ namespace Server.Items
 
 			foreach ( var mobile in Map.GetMobilesInBounds( Rect ).ToArray() )
 			{
-				if ( mobile.IsPlayer )
+				if ( mobile.Player )
 					mobile.SendLocalizedMessage( 1050055, null, 0x41 ); // You hear the doors unlocking and the hissing stops.
 
 				if ( mobile is DarkGuardian )
@@ -355,7 +355,7 @@ namespace Server.Items
 					{
 						foreach ( var mobile in m_Controller.Map.GetMobilesInBounds( m_Controller.Rect ) )
 						{
-							if ( mobile.IsPlayer )
+							if ( mobile.Player )
 								mobile.SendLocalizedMessage( number, null, hue );
 						}
 					}
@@ -391,7 +391,7 @@ namespace Server.Items
 				{
 					if ( !( mobile is DarkGuardian ) )
 					{
-						if ( mobile.IsPlayer )
+						if ( mobile.Player )
 						{
 							mobile.LocalOverheadMessage( MessageType.Regular, 0x3B2, 1062092 ); // Your body reacts violently from the pain. 
 							mobile.Animate( 32, 5, 1, true, false, 0 );

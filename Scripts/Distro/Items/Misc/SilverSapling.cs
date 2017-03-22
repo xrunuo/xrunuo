@@ -27,7 +27,7 @@ namespace Server.Items
 
 		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
-			if ( !m.Alive && m.IsPlayer && this.InRange( m, 1 ) && !this.InRange( oldLocation, 1 ) )
+			if ( !m.Alive && m.Player && this.InRange( m, 1 ) && !this.InRange( oldLocation, 1 ) )
 				OfferResurrection( m );
 		}
 

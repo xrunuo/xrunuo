@@ -59,7 +59,7 @@ namespace Server.Spells.Bard
 
 					m_Damage = 9 + ( 5 * disco ) + ( 4 * music ) + ( 2 * ( provo + peace ) ) - resist;
 
-					if ( !target.IsPlayer )
+					if ( !target.Player )
 					{
 						if ( CheckInstrumentSlays( target ) )
 							m_Damage = (int) ( m_Damage * 3 );

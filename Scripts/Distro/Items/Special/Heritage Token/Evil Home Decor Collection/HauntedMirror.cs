@@ -26,7 +26,7 @@ namespace Server.Items
 		{
 			base.OnMovement( m, old );
 
-			if ( m.Alive && m.IsPlayer && ( m.AccessLevel == AccessLevel.Player || !m.Hidden ) )
+			if ( m.Alive && m.Player && ( m.AccessLevel == AccessLevel.Player || !m.Hidden ) )
 			{
 				if ( !this.InRange( old, 2 ) && this.InRange( m, 2 ) )
 				{

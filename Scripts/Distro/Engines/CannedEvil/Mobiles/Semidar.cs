@@ -94,7 +94,7 @@ namespace Server.Mobiles
 				{
 					list.Add( m );
 				}
-				else if ( m.IsPlayer )
+				else if ( m.Player )
 				{
 					list.Add( m );
 				}

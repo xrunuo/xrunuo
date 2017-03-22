@@ -10,10 +10,10 @@ namespace Server.Items
 {
 	public class FishingPole : Item, IMagicalItem
 	{
-		private MagicalAttributes m_Attributes;
+		private AosAttributes m_Attributes;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public MagicalAttributes Attributes
+		public AosAttributes Attributes
 		{
 			get { return m_Attributes; }
 			set { }
@@ -28,7 +28,7 @@ namespace Server.Items
 			Layer = Layer.OneHanded;
 			Weight = 8.0;
 
-			m_Attributes = new MagicalAttributes( this );
+			m_Attributes = new AosAttributes( this );
 		}
 
 		public override void OnDoubleClick( Mobile from )
@@ -154,14 +154,14 @@ namespace Server.Items
 			{
 				case 1:
 					{
-						m_Attributes = new MagicalAttributes( this, reader );
+						m_Attributes = new AosAttributes( this, reader );
 
 						goto case 0;
 					}
 				case 0:
 					{
 						if ( version == 0 )
-							m_Attributes = new MagicalAttributes( this );
+							m_Attributes = new AosAttributes( this );
 
 						break;
 					}

@@ -26,7 +26,7 @@ namespace Server.Items
 		public static bool IsLockedAndTrappedByPlayer( this ILockpickable item )
 		{
 			bool isTrapEnabled = item is TrapableContainer && ( (TrapableContainer) item ).TrapEnabled;
-			bool isLockedByPlayer = item.Locker != null && item.Locker.IsPlayer;
+			bool isLockedByPlayer = item.Locker != null && item.Locker.Player;
 
 			return isLockedByPlayer && isTrapEnabled;
 		}

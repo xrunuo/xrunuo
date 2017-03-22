@@ -38,9 +38,9 @@ namespace Server.Spells.Bard
 			GetSkillBonus( out music, out peace, out provo, out disco );
 
 			int regenBonus = ( 1 + music ) * ( 1 + peace ) + provo + disco;
-			mods.Add( new AttributeMod( MagicalAttribute.RegenHits, regenBonus ) );
-			mods.Add( new AttributeMod( MagicalAttribute.RegenStam, regenBonus ) );
-			mods.Add( new AttributeMod( MagicalAttribute.RegenMana, regenBonus ) );
+			mods.Add( new AttributeMod( AosAttribute.RegenHits, regenBonus ) );
+			mods.Add( new AttributeMod( AosAttribute.RegenStam, regenBonus ) );
+			mods.Add( new AttributeMod( AosAttribute.RegenMana, regenBonus ) );
 
 			int curseReduction = ( Math.Min( 1 + music, 1 + peace ) + ( disco / 3 ) + ( peace / 3 ) ) * 10;
 			CurseReduction = curseReduction;

@@ -289,7 +289,7 @@ namespace Server.Mobiles
 					//
 					// Basic check
 					//
-					if ( ( bPlayerOnly && m.IsPlayer ) || !bPlayerOnly )
+					if ( ( bPlayerOnly && m.Player ) || !bPlayerOnly )
 					{
 						if ( m.AccessLevel == AccessLevel.Player && m.Alive && !m.Blessed && !m.Deleted && m != m_Mobile && m_Mobile.CanSee( m ) )
 						{

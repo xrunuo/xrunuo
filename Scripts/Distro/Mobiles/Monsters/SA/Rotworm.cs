@@ -132,7 +132,7 @@ namespace Server.Mobiles
 
 				if ( toAbsorb != null )
 				{
-					if ( toAbsorb.Owner == null || toAbsorb.Owner.IsPlayer )
+					if ( toAbsorb.Owner == null || toAbsorb.Owner.Player )
 					{
 						// * The rotworm attempts to absorb the remains, but cannot! *
 						PublicOverheadMessage( MessageType.Regular, 0x3B2, 1111666 );
