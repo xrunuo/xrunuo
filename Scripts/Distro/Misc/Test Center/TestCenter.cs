@@ -319,7 +319,7 @@ namespace Server.Misc
 			PlaceItemIn( cont2, 102, 107, new BookOfBushido() ); //Default ctor = full
 			PlaceItemIn( cont2, 121, 107, new BookOfNinjitsu() ); //Default ctor = full
 			PlaceItemIn( cont2, 102, 149, new SpellweavingSpellbook( (UInt64) 0xFFFF ) );
-			PlaceItemIn( cont2, 121, 149, new MysticismSpellbook( (UInt64) 0xFFFF ) );
+			PlaceItemIn( cont2, 121, 149, new MysticSpellbook( (UInt64) 0xFFFF ) );
 
 			Runebook runebook = new Runebook( 20 );
 			runebook.CurCharges = runebook.MaxCharges;

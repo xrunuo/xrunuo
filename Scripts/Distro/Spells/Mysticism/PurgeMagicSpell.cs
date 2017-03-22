@@ -16,7 +16,7 @@ using Server.Spells.Spellweaving;
 
 namespace Server.Spells.Mysticism
 {
-	public class PurgeMagicSpell : MysticismSpell
+	public class PurgeMagicSpell : MysticSpell
 	{
 		private static SpellInfo m_Info = new SpellInfo(
 				"Purge Magic", "An Ort Sanct",

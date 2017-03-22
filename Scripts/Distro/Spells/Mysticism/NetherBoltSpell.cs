@@ -4,7 +4,7 @@ using Server.Targeting;
 
 namespace Server.Spells.Mysticism
 {
-	public class NetherBoltSpell : MysticismSpell
+	public class NetherBoltSpell : MysticSpell
 	{
 		private static SpellInfo m_Info = new SpellInfo(
 				"Nether Bolt", "In Corp Ylem",

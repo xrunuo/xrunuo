@@ -28,7 +28,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -3084,7 +3084,7 @@
     <Compile Include="Items\Skill Items\Magical\Misc\Moongate.cs" />
     <Compile Include="Items\Skill Items\Magical\Misc\PotionKeg.cs" />
     <Compile Include="Items\Skill Items\Magical\Misc\RecallRune.cs" />
-    <Compile Include="Items\Skill Items\Magical\MysticismSpellbook.cs" />
+    <Compile Include="Items\Skill Items\Magical\MysticSpellbook.cs" />
     <Compile Include="Items\Skill Items\Magical\NecromancerSpellbook.cs" />
     <Compile Include="Items\Skill Items\Magical\Potions\ElixirOfRebirth.cs" />
     <Compile Include="Items\Skill Items\Magical\Potions\ExplodingTarPotion\BaseExplodingTarPotion.cs" />
@@ -4797,7 +4797,7 @@
     <Compile Include="Spells\Mysticism\PurgeMagicSpell.cs" />
     <Compile Include="Spells\Mysticism\EnchantSpell.cs" />
     <Compile Include="Spells\Mysticism\HealingStoneSpell.cs" />
-    <Compile Include="Spells\Mysticism\MysticismSpell.cs" />
+    <Compile Include="Spells\Mysticism\MysticSpell.cs" />
     <Compile Include="Spells\Mysticism\NetherBoltSpell.cs" />
     <Compile Include="Spells\Mysticism\CleansingWindsSpell.cs" />
     <Compile Include="Spells\Mysticism\SleepSpell.cs" />

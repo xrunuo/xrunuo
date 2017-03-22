@@ -282,7 +282,7 @@
     <Compile Include="Network\GenericPackets.cs" />
     <Compile Include="Network\Listener.cs" />
     <Compile Include="Network\NetServer.cs" />
-    <Compile Include="Network\GameClient.cs" />
+    <Compile Include="Network\UOSocket.cs" />
     <Compile Include="Network\PacketHandlers.cs" />
     <Compile Include="Network\PacketProfile.cs" />
     <Compile Include="Network\Packets.cs" />

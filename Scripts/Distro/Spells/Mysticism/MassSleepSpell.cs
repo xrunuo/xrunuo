@@ -7,7 +7,7 @@ using Server.Mobiles;
 
 namespace Server.Spells.Mysticism
 {
-	public class MassSleepSpell : MysticismSpell
+	public class MassSleepSpell : MysticSpell
 	{
 		private static SpellInfo m_Info = new SpellInfo(
 				"Mass Sleep", "Vas Zu",

@@ -7,7 +7,7 @@ using Server.Mobiles;
 
 namespace Server.Spells.Mysticism
 {
-	public class HealingStoneSpell : MysticismSpell
+	public class HealingStoneSpell : MysticSpell
 	{
 		private static SpellInfo m_Info = new SpellInfo(
 				"Healing Stone", "Kal In Mani",

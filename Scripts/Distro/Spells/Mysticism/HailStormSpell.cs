@@ -8,7 +8,7 @@ using Server.Mobiles;
 
 namespace Server.Spells.Mysticism
 {
-	public class HailStormSpell : MysticismSpell
+	public class HailStormSpell : MysticSpell
 	{
 		private static SpellInfo m_Info = new SpellInfo(
 				"Hail Storm", "Kal Des Ylem",

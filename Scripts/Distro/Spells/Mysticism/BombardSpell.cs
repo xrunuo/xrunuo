@@ -7,7 +7,7 @@ using Server.Mobiles;
 
 namespace Server.Spells.Mysticism
 {
-	public class BombardSpell : MysticismSpell
+	public class BombardSpell : MysticSpell
 	{
 		private static SpellInfo m_Info = new SpellInfo(
 				"Bombard", "Corp Por Ylem",

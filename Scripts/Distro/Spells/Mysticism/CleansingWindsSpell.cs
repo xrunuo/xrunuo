@@ -11,7 +11,7 @@ using Server.Engines.BuffIcons;
 
 namespace Server.Spells.Mysticism
 {
-	public class CleansingWindsSpell : MysticismSpell
+	public class CleansingWindsSpell : MysticSpell
 	{
 		private static SpellInfo m_Info = new SpellInfo(
 				"Cleansing Winds", "In Vas Mani Hur",

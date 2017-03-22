@@ -375,7 +375,7 @@ namespace Server.Engines.Craft
 			craft.AddRes( typeof( BlackPearl ), 1015001, 7, 1044253 );
 			craft.RequiresML = true;
 
-			AddCraft( 206, typeof( MysticismSpellbook ), 1044294, 1031677, 50.0, 150.0, typeof( BlankScroll ), 1044377, 10, 1044378 );
+			AddCraft( 206, typeof( MysticSpellbook ), 1044294, 1031677, 50.0, 150.0, typeof( BlankScroll ), 1044377, 10, 1044378 );
 			AddCraft( 207, typeof( NecromancerSpellbook ), 1044294, 1028787, 50.0, 150.0, typeof( BlankScroll ), 1044377, 10, 1044378 );
 
 			craft = AddCraft( 300, typeof( BlankScroll ), 1044294, 1044377, 50.0, 75.0, typeof( WoodPulp ), 1113136, 1, 1113289 );

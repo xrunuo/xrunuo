@@ -3,7 +3,7 @@ using Server;
 
 namespace Server.Items
 {
-	public class FallenMysticsSpellbook : MysticismSpellbook
+	public class FallenMysticsSpellbook : MysticSpellbook
 	{
 		public override int LabelNumber { get { return 1113867; } } // Fallen Mystic's Spellbook
 

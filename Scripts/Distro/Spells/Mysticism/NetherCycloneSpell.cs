@@ -8,7 +8,7 @@ using Server.Mobiles;
 
 namespace Server.Spells.Mysticism
 {
-	public class NetherCycloneSpell : MysticismSpell
+	public class NetherCycloneSpell : MysticSpell
 	{
 		private static SpellInfo m_Info = new SpellInfo(
 				"Nether Cyclone", "Grav Hur",

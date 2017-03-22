@@ -5,7 +5,7 @@ using Server.Targeting;
 
 namespace Server.Spells.Mysticism
 {
-	public class SleepSpell : MysticismSpell
+	public class SleepSpell : MysticSpell
 	{
 		private static SpellInfo m_Info = new SpellInfo(
 				"Sleep", "In Zu",

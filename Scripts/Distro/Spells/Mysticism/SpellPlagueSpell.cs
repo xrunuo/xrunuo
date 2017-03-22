@@ -10,7 +10,7 @@ using Server.Events;
 
 namespace Server.Spells.Mysticism
 {
-	public class SpellPlagueSpell : MysticismSpell
+	public class SpellPlagueSpell : MysticSpell
 	{
 		public static void Initialize()
 		{

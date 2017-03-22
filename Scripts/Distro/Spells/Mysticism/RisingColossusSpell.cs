@@ -7,7 +7,7 @@ using Server.Mobiles;
 
 namespace Server.Spells.Mysticism
 {
-	public class RisingColossusSpell : MysticismSpell
+	public class RisingColossusSpell : MysticSpell
 	{
 		private static SpellInfo m_Info = new SpellInfo(
 				"Rising Colossus", "Kal Vas Xen Corp Ylem",

@@ -50,7 +50,7 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( typeof( BlankScroll ), 5, 20, 0x0E34, 0 ) );
 				Add( new GenericBuyInfo( typeof( ScribesPen ), 8, 20, 0xFBF, 0 ) );
 
-				Add( new GenericBuyInfo( typeof( MysticismSpellbook ), 18, 20, 0x2D9D, 0 ) );
+				Add( new GenericBuyInfo( typeof( MysticSpellbook ), 18, 20, 0x2D9D, 0 ) );
 			}
 		}
 
@@ -58,7 +58,7 @@ namespace Server.Mobiles
 		{
 			public InternalSellInfo()
 			{
-				Add( typeof( MysticismSpellbook ), 9 );
+				Add( typeof( MysticSpellbook ), 9 );
 
 				Add( typeof( RecallRune ), 7 );
 

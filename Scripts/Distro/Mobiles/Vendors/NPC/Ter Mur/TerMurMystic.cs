@@ -26,7 +26,7 @@ namespace Server.Mobiles
 		{
 			base.InitOutfit();
 
-			AddItem( new MysticismSpellbook() );
+			AddItem( new MysticSpellbook() );
 		}
 
 		public override void InitSBInfo()

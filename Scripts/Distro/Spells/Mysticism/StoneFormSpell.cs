@@ -8,7 +8,7 @@ using Server.Events;
 
 namespace Server.Spells.Mysticism
 {
-	public class StoneFormSpell : MysticismSpell
+	public class StoneFormSpell : MysticSpell
 	{
 		public static void Initialize()
 		{

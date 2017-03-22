@@ -7,7 +7,7 @@ using Server.Mobiles;
 
 namespace Server.Spells.Mysticism
 {
-	public class EagleStrikeSpell : MysticismSpell
+	public class EagleStrikeSpell : MysticSpell
 	{
 		private static SpellInfo m_Info = new SpellInfo(
 				"Eagle Strike", "Kal Por Xen",

@@ -7,7 +7,7 @@ using Server.Network;
 
 namespace Server.Spells.Mysticism
 {
-	public class SpellTriggerSpell : MysticismSpell
+	public class SpellTriggerSpell : MysticSpell
 	{
 		private static SpellInfo m_Info = new SpellInfo(
 			"Spell Trigger", "In Vas Ort Ex",

@@ -4,7 +4,7 @@ using Server.Mobiles;
 
 namespace Server.Spells.Mysticism
 {
-	public class AnimatedWeaponSpell : MysticismSpell
+	public class AnimatedWeaponSpell : MysticSpell
 	{
 		private static SpellInfo m_Info = new SpellInfo(
 				"Animated Weapon", "In Jux Por Ylem",
