@@ -1,6 +1,4 @@
 using System;
-using System.IO;
-using System.Reflection;
 using Server;
 using Server.Items;
 
@@ -364,8 +362,8 @@ namespace Server
 				typeof( ClumsyWand ),               typeof( FeebleWand ),           typeof( FireballWand ),
 				typeof( GreaterHealWand ),          typeof( HarmWand ),             typeof( HealWand ),
 				typeof( IDWand ),                   typeof( LightningWand ),        typeof( MagicArrowWand ),
-				typeof( ManaDrainWand ),            typeof( WeaknessWand )          
-                
+				typeof( ManaDrainWand ),            typeof( WeaknessWand )
+
 			};
 		public static Type[] WandTypes { get { return m_WandTypes; } }
 
@@ -390,7 +388,7 @@ namespace Server
 
 		private static Type[] m_ClothingTypes = new Type[]
 			{
-				typeof( Cloak ),				
+				typeof( Cloak ),
 				typeof( Bonnet ),               typeof( Cap ),		            typeof( FeatheredHat ),
 				typeof( FloppyHat ),            typeof( JesterHat ),			typeof( Surcoat ),
 				typeof( SkullCap ),             typeof( StrawHat ),	            typeof( TallStrawHat ),

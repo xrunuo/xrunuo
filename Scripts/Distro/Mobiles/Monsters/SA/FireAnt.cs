@@ -42,7 +42,7 @@ namespace Server.Mobiles
 		}
 
 		public override int TreasureMapLevel { get { return 3; } }
-		
+
 		public override int GetDeathSound()
 		{
 			return 0x1BA;
@@ -71,34 +71,9 @@ namespace Server.Mobiles
 				c.DropItem( new SearedFireAntGoo() );
 		}
 
-		public override void OnGaveMeleeAttack( Mobile defender )
+		public override SpecialAbility GetSpecialAbility()
 		{
-			base.OnGaveMeleeAttack( defender );
-
-			if ( 0.2 > Utility.RandomDouble() )
-			{
-				Effects.PlaySound( this.Location, this.Map, 0x349 );
-				Effects.SendPacket( this.Location, this.Map, new LocationEffect( this.Location, 0x3709, 14, 14, 0x5DE, 0 ) );
-				defender.SendLocalizedMessage( 1112365 ); // Flammable goo sprays into the air
-
-				Timer.DelayCall( TimeSpan.FromSeconds( Utility.RandomMinMax( 2, 3 ) ), new TimerCallback(
-					delegate
-					{
-						for ( int i = -1; i <= 1; i++ )
-						{
-							for ( int j = -1; j <= 1; j++ )
-							{
-								Point3D loc = new Point3D( defender.X + i, defender.Y + j, defender.Z );
-
-								Effects.SendPacket( this.Location, this.Map, new LocationEffect( loc, 0x36BD, 14, 14, 0x5DE, 5 ) );
-							}
-						}
-
-						AOS.Damage( defender, Utility.RandomMinMax( 60, 80 ), 0, 100, 0, 0, 0 );
-
-						defender.SendLocalizedMessage( 1112366 ); // The flammable goo covering you bursts into flame!
-					} ) );
-			}
+			return SpecialAbility.FlammableGoo;
 		}
 
 		public override LoyaltyGroup LoyaltyGroupEnemy { get { return LoyaltyGroup.GargoyleQueen; } }

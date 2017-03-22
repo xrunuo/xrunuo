@@ -26,7 +26,7 @@ namespace Server.Mobiles
 	/// <summary>
 	/// Summary description for MobileAI.
 	/// </summary>
-	/// 
+	///
 	public enum FightMode
 	{
 		None,			// Never focus on others
@@ -42,21 +42,21 @@ namespace Server.Mobiles
 	{
 		None,			// When no order, let's roam
 
-		Come,			// "(All/Name) come"		Summons all or one pet to your location.  
-		Drop,			// "(Name) drop"			Drops its loot to the ground (if it carries any).  
-		Follow,			// "(Name) follow"			Follows targeted being.  
-		// "(All/Name) follow me"	Makes all or one pet follow you.  
-		Friend,			// "(Name) friend"			Allows targeted player to confirm resurrection. 
+		Come,			// "(All/Name) come"		Summons all or one pet to your location.
+		Drop,			// "(Name) drop"			Drops its loot to the ground (if it carries any).
+		Follow,			// "(Name) follow"			Follows targeted being.
+		// "(All/Name) follow me"	Makes all or one pet follow you.
+		Friend,			// "(Name) friend"			Allows targeted player to confirm resurrection.
 		Unfriend,		// Remove a friend
-		Guard,			// "(Name) guard"			Makes the specified pet guard you. Pets can only guard their owner. 
-		// "(All/Name) guard me"	Makes all or one pet guard you.  
-		Attack,			// "(All/Name) kill", 
-		// "(All/Name) attack"		All or the specified pet(s) currently under your control attack the target. 
-		Patrol,			// "(Name) patrol"			Roves between two or more guarded targets.  
-		Release,		// "(Name) release"			Releases pet back into the wild (removes "tame" status). 
-		Stay,			// "(All/Name) stay"		All or the specified pet(s) will stop and stay in current spot. 
-		Stop,			// "(All/Name) stop"		Cancels any current orders to attack, guard or follow.  
-		Transfer		// "(Name) transfer"		Transfers complete ownership to targeted player. 
+		Guard,			// "(Name) guard"			Makes the specified pet guard you. Pets can only guard their owner.
+		// "(All/Name) guard me"	Makes all or one pet guard you.
+		Attack,			// "(All/Name) kill",
+		// "(All/Name) attack"		All or the specified pet(s) currently under your control attack the target.
+		Patrol,			// "(Name) patrol"			Roves between two or more guarded targets.
+		Release,		// "(Name) release"			Releases pet back into the wild (removes "tame" status).
+		Stay,			// "(All/Name) stay"		All or the specified pet(s) will stop and stay in current spot.
+		Stop,			// "(All/Name) stop"		Cancels any current orders to attack, guard or follow.
+		Transfer		// "(Name) transfer"		Transfers complete ownership to targeted player.
 	}
 
 	[Flags]
@@ -345,6 +345,13 @@ namespace Server.Mobiles
 		public virtual double WeaponAbilityChance { get { return 0.4; } }
 
 		public virtual WeaponAbility GetWeaponAbility()
+		{
+			return null;
+		}
+
+		public virtual double SpecialAbilityChance { get { return 0.2; } }
+
+		public virtual SpecialAbility GetSpecialAbility()
 		{
 			return null;
 		}
@@ -1499,7 +1506,7 @@ namespace Server.Mobiles
 			// Version 3
 			writer.Write( (int) m_Loyalty );
 
-			// Version 4 
+			// Version 4
 			writer.Write( m_CurrentWayPoint );
 
 			// Verison 5
@@ -2058,7 +2065,7 @@ namespace Server.Mobiles
 								{
 									IsBonded = true;
 									BondingBegin = DateTime.MinValue;
-									from.SendLocalizedMessage( 1049666 ); // Your pet has bonded with you!	
+									from.SendLocalizedMessage( 1049666 ); // Your pet has bonded with you!
 								}
 							}
 						}
@@ -2801,6 +2808,11 @@ namespace Server.Mobiles
 
 			if ( AutoDispel && defender is BaseCreature && ( (BaseCreature) defender ).Summoned && !( (BaseCreature) defender ).IsAnimatedDead )
 				Dispel( defender );
+
+			var specialAbility = GetSpecialAbility();
+
+			if ( specialAbility != null && SpecialAbilityChance > Utility.RandomDouble() )
+				specialAbility.OnGaveMeleeAttack( this, defender );
 		}
 
 		public override void OnAfterDelete()
@@ -2840,11 +2852,11 @@ namespace Server.Mobiles
 
 		/*
 		 * Will need to be givent a better name
-		 * 
+		 *
 		 * This function can be overriden.. so a "Strongest" mobile, can have a different definition depending
 		 * on who check for value
 		 * -Could add a FightMode.Prefered
-		 * 
+		 *
 		 */
 		public virtual double GetValueFrom( Mobile m, FightMode acqType, bool bPlayerOnly )
 		{
@@ -3957,9 +3969,9 @@ namespace Server.Mobiles
 			 *    min: 1
 			 *    max: 5
 			 *  count: 5
-			 * 
+			 *
 			 * total = (5*5) + (4*4) + (3*3) + (2*2) + (1*1) = 25 + 16 + 9 + 4 + 1 = 55
-			 * 
+			 *
 			 * chance for min+0 : 25/55 : 45.45%
 			 * chance for min+1 : 16/55 : 29.09%
 			 * chance for min+2 :  9/55 : 16.36%
@@ -4296,7 +4308,7 @@ namespace Server.Mobiles
 					} ) );
 			}
 
-			// Recursos para la rama chocolatera de cooking 
+			// Recursos para la rama chocolatera de cooking
 
 			if ( m_Paragon && Paragon.SackOfSugarChance > Utility.RandomDouble() )
 				PackItem( new SackOfSugar() );
@@ -4726,12 +4738,12 @@ namespace Server.Mobiles
 			}
 		}
 
-		/* 
+		/*
 		 * To save on cpu usage, X-RunUO creatures only reacquire creatures under the following circumstances:
 		 *  - 10 seconds have elapsed since the last time it tried
 		 *  - The creature was attacked
 		 *  - Some creatures, like dragons, will reacquire when they see someone move
-		 * 
+		 *
 		 * This functionality appears to be implemented on OSI as well
 		 */
 
