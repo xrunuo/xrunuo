@@ -77,6 +77,11 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Meager );
 		}
 
+		public override SpecialAbility GetSpecialAbility()
+		{
+			return SpecialAbility.BloodDisease;
+		}
+
 		public override void OnKilledBy( Mobile mob )
 		{
 			base.OnKilledBy( mob );
@@ -101,32 +106,6 @@ namespace Server.Mobiles
 
 			if ( torch != null && torch.Burning )
 				BeginFlee( TimeSpan.FromSeconds( 5.0 ) );
-		}
-
-		private static Dictionary<Mobile, BloodDiseaseTimer> m_BloodDiseaseTable = new Dictionary<Mobile, BloodDiseaseTimer>();
-
-		public static bool IsDiseased( Mobile m )
-		{
-			return m_BloodDiseaseTable.ContainsKey( m );
-		}
-
-		public override void OnGotMeleeAttack( Mobile attacker )
-		{
-			base.OnGotMeleeAttack( attacker );
-
-			if ( !m_BloodDiseaseTable.ContainsKey( attacker ) && this.InRange( attacker, 1 ) && 0.25 > Utility.RandomDouble() && !FontOfFortune.HasBlessing( attacker, FontOfFortune.BlessingType.Protection ) )
-			{
-				// The rotworm has infected you with blood disease!!
-				attacker.SendLocalizedMessage( 1111672, "", 0x25 );
-
-				attacker.PlaySound( 0x213 );
-				Effects.SendTargetParticles( attacker, 0x373A, 1, 15, 0x26B9, EffectLayer.Head );
-
-				BloodDiseaseTimer timer = new BloodDiseaseTimer( attacker );
-				timer.Start();
-
-				m_BloodDiseaseTable.Add( attacker, timer );
-			}
 		}
 
 		public override void OnAfterMove( Point3D oldLocation )
@@ -189,39 +168,6 @@ namespace Server.Mobiles
 
 			/*int version = */
 			reader.ReadInt();
-		}
-
-		private class BloodDiseaseTimer : Timer
-		{
-			private const int MaxCount = 8;
-
-			private int m_Count;
-			private Mobile m_Victim;
-
-			public BloodDiseaseTimer( Mobile m )
-				: base( TimeSpan.FromSeconds( 2.0 ), TimeSpan.FromSeconds( 2.0 ) )
-			{
-				m_Victim = m;
-			}
-
-			protected override void OnTick()
-			{
-				if ( m_Count == MaxCount || m_Victim.Deleted || !m_Victim.Alive || m_Victim.IsDeadBondedPet )
-				{
-					// You no longer feel sick.
-					m_Victim.SendLocalizedMessage( 1111673 );
-
-					m_BloodDiseaseTable.Remove( m_Victim );
-					Stop();
-				}
-				else if ( m_Count > 0 )
-				{
-					AOS.Damage( m_Victim, Utility.RandomMinMax( 10, 20 ), 0, 0, 0, 100, 0 );
-					m_Victim.Combatant = null;
-				}
-
-				m_Count++;
-			}
 		}
 	}
 }

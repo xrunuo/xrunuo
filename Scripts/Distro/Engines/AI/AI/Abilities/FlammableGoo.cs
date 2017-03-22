@@ -5,10 +5,10 @@ namespace Server.Mobiles
 {
 	public class FlammableGoo : SpecialAbility
 	{
-		public override void OnGaveMeleeAttack( Mobile attacker, Mobile defender )
+		public override void OnGaveMeleeAttack( Mobile m, Mobile defender )
 		{
-			Effects.PlaySound( attacker.Location, attacker.Map, 0x349 );
-			Effects.SendPacket( attacker.Location, attacker.Map, new LocationEffect( attacker.Location, 0x3709, 14, 14, 0x5DE, 0 ) );
+			Effects.PlaySound( m.Location, m.Map, 0x349 );
+			Effects.SendPacket( m.Location, m.Map, new LocationEffect( m.Location, 0x3709, 14, 14, 0x5DE, 0 ) );
 
 			defender.SendLocalizedMessage( 1112365 ); // Flammable goo sprays into the air
 
@@ -20,7 +20,7 @@ namespace Server.Mobiles
 					{
 						var loc = new Point3D( defender.X + i, defender.Y + j, defender.Z );
 
-						Effects.SendPacket( attacker.Location, attacker.Map, new LocationEffect( loc, 0x36BD, 14, 14, 0x5DE, 5 ) );
+						Effects.SendPacket( m.Location, m.Map, new LocationEffect( loc, 0x36BD, 14, 14, 0x5DE, 5 ) );
 					}
 				}
 

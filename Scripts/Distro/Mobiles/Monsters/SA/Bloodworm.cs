@@ -58,7 +58,7 @@ namespace Server.Mobiles
 
 			if ( Utility.RandomBool() )
 			{
-				if ( Rotworm.IsDiseased( defender ) )
+				if ( BloodDisease.UnderEffect( defender ) )
 				{
 					// * The bloodworm is repulsed by your diseased blood. *
 					defender.SendLocalizedMessage( 1111668, "", 0x25 );
@@ -96,7 +96,7 @@ namespace Server.Mobiles
 						defender.RemoveStatMod( "[Bloodworm] Dex Malus" );
 						defender.RemoveStatMod( "[Bloodworm] Int Malus" );
 					}
-				) ); 
+				) );
 			}
 		}
 

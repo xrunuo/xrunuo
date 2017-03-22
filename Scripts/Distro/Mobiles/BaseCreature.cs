@@ -2784,6 +2784,11 @@ namespace Server.Mobiles
 		{
 			if ( AutoDispel && attacker is BaseCreature && ( (BaseCreature) attacker ).IsDispellable && AutoDispelChance > Utility.RandomDouble() )
 				Dispel( attacker );
+
+			var specialAbility = GetSpecialAbility();
+
+			if ( specialAbility != null && SpecialAbilityChance > Utility.RandomDouble() )
+				specialAbility.OnGotMeleeAttack( this, attacker );
 		}
 
 		public virtual void Dispel( Mobile m )

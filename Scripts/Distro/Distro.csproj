@@ -210,6 +210,7 @@
     <Compile Include="Engines\AI\AI\Abilities\BaseThrowablesSE.cs" />
     <Compile Include="Engines\AI\AI\Abilities\BaseTimersSE.cs" />
     <Compile Include="Engines\AI\AI\Abilities\MonsterHelper.cs" />
+    <Compile Include="Engines\AI\AI\Abilities\BloodDisease.cs" />
     <Compile Include="Engines\AI\AI\Abilities\FlammableGoo.cs" />
     <Compile Include="Engines\AI\AI\Abilities\SpecialAbility.cs" />
     <Compile Include="Engines\AI\AI\AnimalAI.cs" />
