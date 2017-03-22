@@ -1,12 +1,8 @@
 using System;
-using System.Collections;
+using System.Linq;
 using Server;
 using Server.Items;
 using Server.Mobiles;
-using Server.Network;
-using Server.ContextMenus;
-using Server.Engines.Quests;
-using Server.Engines.Quests.Necro;
 
 namespace Server.Engines.Quests.Doom
 {
@@ -54,14 +50,7 @@ namespace Server.Engines.Quests.Doom
 			{
 				if ( m_Altar == null || m_Altar.Deleted || m_Altar.Map != this.Map || !this.InRange( m_Altar, AltarRange ) )
 				{
-					foreach ( Item item in this.GetItemsInRange( AltarRange ) )
-					{
-						if ( item is SummoningAltar )
-						{
-							m_Altar = (SummoningAltar) item;
-							break;
-						}
-					}
+					m_Altar = this.GetItemsInRange( AltarRange ).OfType<SummoningAltar>().FirstOrDefault();
 				}
 
 				return m_Altar;
@@ -82,23 +71,23 @@ namespace Server.Engines.Quests.Doom
 
 		public override bool OnDragDrop( Mobile from, Item dropped )
 		{
-			PlayerMobile player = from as PlayerMobile;
+			var player = from as PlayerMobile;
 
 			if ( player != null )
 			{
-				QuestSystem qs = player.Quest;
+				var qs = player.Quest;
 
 				if ( qs is TheSummoningQuest )
 				{
 					if ( dropped is DaemonBone )
 					{
-						DaemonBone bones = (DaemonBone) dropped;
+						var bones = (DaemonBone) dropped;
 
-						QuestObjective obj = qs.FindObjective( typeof( CollectBonesObjective ) );
+						var obj = qs.FindObjective( typeof( CollectBonesObjective ) );
 
 						if ( obj != null && !obj.Completed )
 						{
-							int need = obj.MaxProgress - obj.CurProgress;
+							var need = obj.MaxProgress - obj.CurProgress;
 
 							if ( bones.Amount < need )
 							{
@@ -140,7 +129,7 @@ namespace Server.Engines.Quests.Doom
 
 		public override void OnTalk( PlayerMobile player, bool contextMenu )
 		{
-			QuestSystem qs = player.Quest;
+			var qs = player.Quest;
 
 			if ( qs == null && QuestSystem.CanOfferQuest( player, typeof( TheSummoningQuest ) ) )
 			{

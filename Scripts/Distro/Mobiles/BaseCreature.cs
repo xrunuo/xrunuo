@@ -787,10 +787,10 @@ namespace Server.Mobiles
 			if ( !Controlled && BaseMaskOfDeathPotion.UnderEffect( m ) )
 				return false;
 
-			if ( Server.Spells.Spellweaving.EtherealVoyageSpell.UnderEffect( m ) )
+			if ( EtherealVoyageSpell.UnderEffect( m ) )
 				return false;
 
-			if ( !( m is BaseCreature ) || m is Server.Engines.Quests.Haven.MilitiaFighter )
+			if ( !( m is BaseCreature ) )
 				return true;
 
 			if ( m is PlayerMobile && ( (PlayerMobile) m ).HonorActive )

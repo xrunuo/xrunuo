@@ -6,7 +6,6 @@ using Server;
 using Server.ContextMenus;
 using Server.Engines.Collections;
 using Server.Engines.Quests;
-using Server.Engines.Quests.Necro;
 using Server.Items;
 using Server.Network;
 using Server.Spells.Ninjitsu;
@@ -1348,27 +1347,6 @@ namespace Server.Mobiles
 
 			if ( distance < 1 || distance > 20 )
 			{
-				if ( distance < 1 && target.X == 1076 && target.Y == 450 && ( m_Mobile is HordeMinionFamiliar ) )
-				{
-					PlayerMobile pm = m_Mobile.ControlMaster as PlayerMobile;
-
-					if ( pm != null )
-					{
-						QuestSystem qs = pm.Quest;
-
-						if ( qs is DarkTidesQuest )
-						{
-							QuestObjective obj = qs.FindObjective( typeof( FetchAbraxusScrollObjective ) );
-
-							if ( obj != null && !obj.Completed )
-							{
-								m_Mobile.AddToBackpack( new ScrollOfAbraxus() );
-								obj.Complete();
-							}
-						}
-					}
-				}
-
 				m_Mobile.TargetLocation = Point2D.Zero;
 				return false; // At the target or too far away
 			}
@@ -2409,12 +2387,12 @@ namespace Server.Mobiles
 
 		/*
 		 *  Walk at range distance from mobile
-		 * 
+		 *
 		 *	iSteps : Number of steps
 		 *	bRun   : Do we run
 		 *	iWantDistMin : The minimum distance we want to be
 		 *  iWantDistMax : The maximum distance we want to be
-		 * 
+		 *
 		 */
 		public virtual bool WalkMobileRange( Mobile m, int iSteps, bool bRun, int iWantDistMin, int iWantDistMax )
 		{
@@ -2485,13 +2463,13 @@ namespace Server.Mobiles
 
 		/*
 		 * Here we check to acquire a target from our surronding
-		 * 
+		 *
 		 *  iRange : The range
 		 *  acqType : A type of acquire we want (closest, strongest, etc)
 		 *  bPlayerOnly : Don't bother with other creatures or NPCs, want a player
 		 *  bFacFriend : Check people in my faction
 		 *  bFacFoe : Check people in other factions
-		 * 
+		 *
 		 */
 		public virtual bool AcquireFocusMob( int iRange, FightMode acqType, bool bPlayerOnly, bool bFacFriend, bool bFacFoe )
 		{

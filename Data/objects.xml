@@ -31,7 +31,6 @@
 					<object type="Server.Items.GozaMatSouthAddon" gfx="1" />
 					<object type="Server.Items.GrayBrickFireplaceEastAddon" gfx="1" />
 					<object type="Server.Items.GrayBrickFireplaceSouthAddon" gfx="1" />
-					<object type="Server.Engines.Quests.Necro.MaabusCoffin" gfx="1" />
 					<object type="Server.Items.MiniHouseAddon" gfx="8900" />
 					<object type="Server.Items.PowerGenerator" gfx="1" />
 					<object type="Server.Items.RejuvinationAnkhNorth" gfx="1" />
@@ -307,7 +306,6 @@
 				<object type="Server.Items.Barrel" gfx="3703" />
 				<object type="Server.Items.Basket" gfx="2448" />
 				<object type="Server.Items.CherryArmoire" gfx="10333" />
-				<object type="Server.Engines.Quests.Haven.DaemonBloodChest" gfx="2475" />
 				<object type="Server.Items.Drawer" gfx="2604" />
 				<object type="Server.Items.ElegantArmoire" gfx="10329" />
 				<object type="Server.Items.EmptyBookcase" gfx="2717" />
@@ -319,7 +317,6 @@
 				<object type="Server.Items.GildedWoodenChest" gfx="10255" />
 				<object type="Server.Engines.Quests.Hag.HagApprenticeCorpse" gfx="8198" hue="1035" />
 				<object type="Server.Items.Keg" gfx="3711" />
-				<object type="Server.Engines.Quests.Necro.KronusScrollBox" gfx="3712" />
 				<object type="Server.Items.LargeBagBall" gfx="8791" />
 				<object type="Server.Items.LargeCrate" gfx="3645" />
 				<object type="Server.Items.MapleArmoire" gfx="10331" />
@@ -336,7 +333,6 @@
 				<object type="Server.Items.PlainWoodenChest" gfx="10251" />
 				<object type="Server.Items.Pouch" gfx="3705" />
 				<object type="Server.Items.RedArmoire" gfx="10327" />
-				<object type="Server.Engines.Quests.Haven.SchmendrickApprenticeCorpse" gfx="8198" hue="1016" />
 				<object type="Server.Items.ShortCabinet" gfx="10263" />
 				<object type="Server.Items.SmallBagBall" gfx="8790" />
 				<object type="Server.Items.SmallCrate" gfx="2473" />
@@ -1092,10 +1088,7 @@
 			<object type="Server.Items.CommodityDeed" gfx="5360" hue="71" />
 			<object type="Server.Items.ConfirmationMoongate" gfx="3948" />
 			<object type="Server.Items.ContractOfEmployment" gfx="5360" />
-			<object type="Server.Engines.Quests.Necro.CrystalCaveBarrier" gfx="14695" />
 			<object type="Server.Items.DarkSource" gfx="5702" />
-			<object type="Server.Engines.Quests.Necro.DarkTidesHorn" gfx="4036" hue="1154" />
-			<object type="Server.Engines.Quests.Necro.DarkTidesTeleporter" gfx="6178" hue="1154" />
 			<object type="Server.Items.DartBoard" gfx="7727" />
 			<object type="Server.Items.DecorativeTopiary" gfx="9080" />
 			<object type="Server.Items.DisappearingRaiseSwitch" gfx="4239" />
@@ -1151,7 +1144,6 @@
 			<object type="Server.Items.Knife" gfx="2550" />
 			<object type="Server.Items.KnifeLeft" gfx="2550" />
 			<object type="Server.Items.KnifeRight" gfx="2551" />
-			<object type="Server.Engines.Quests.Necro.KronusScroll" gfx="8826" hue="1102" />
 			<object type="Server.Items.LargeForgeEast" gfx="6522" />
 			<object type="Server.Items.LargeForgeWest" gfx="6554" />
 			<object type="Server.Items.LeatherDyeTub" gfx="4011" />
@@ -1189,9 +1181,6 @@
 			<object type="Server.Items.PowderOfTranslocation" gfx="9912" />
 			<object type="Server.Items.PowerCrystal" gfx="7964" />
 			<object type="Server.Items.PublicMoongate" gfx="3948" />
-			<object type="Server.Engines.Quests.Haven.QuestDaemonBlood" gfx="3965" />
-			<object type="Server.Engines.Quests.Haven.QuestDaemonBone" gfx="3968" />
-			<object type="Server.Engines.Quests.Haven.QuestFertileDirt" gfx="3969" />
 			<object type="Server.Items.RaiseSwitch" gfx="4243" />
 			<object type="Server.Items.RecallRune" gfx="7956" />
 			<object type="Server.Items.ReceiverCrystal" gfx="7888" />
@@ -1210,7 +1199,6 @@
 			<object type="Server.Items.SandMiningBook" gfx="4084" />
 			<object type="Server.Items.Scales" gfx="6226" />
 			<object type="Server.Items.Scissors" gfx="3999" />
-			<object type="Server.Engines.Quests.Necro.ScrollOfAbraxus" gfx="8827" />
 			<object type="Server.Items.SeahorseStatuette" gfx="9658" hue="1161" />
 			<object type="Server.Engines.Plants.Seed" gfx="3535" hue="1341" />
 			<object type="Server.Items.SerpentPillar" gfx="9023" />
@@ -1257,9 +1245,6 @@
 			<object type="Server.Items.TribalBerry" gfx="2512" hue="6" />
 			<object type="Server.Items.TribalPaint" gfx="2540" hue="2101" />
 			<object type="Server.Items.UnholyBone" gfx="3966" hue="1175" />
-			<object type="Server.Engines.Quests.Haven.UzeraanTurmoilHorn" gfx="4036" hue="1154" />
-			<object type="Server.Engines.Quests.Haven.UzeraanTurmoilTeleporter" gfx="6178" hue="1154" />
-			<object type="Server.Engines.Quests.Necro.VaultOfSecretsBarrier" gfx="1182" />
 			<object type="Server.Items.VendorRentalContract" gfx="5360" hue="1650" />
 			<object type="Server.Items.Vines" gfx="3311" />
 			<object type="Server.Items.WayPoint" gfx="7956" hue="1176" />
@@ -1985,7 +1970,6 @@
 					<object type="Server.Mobiles.MeerEternal" gfx="9720" />
 					<object type="Server.Mobiles.MeerMage" gfx="9756" />
 					<object type="Server.Mobiles.MeerWarrior" gfx="9757" />
-					<object type="Server.Engines.Quests.Haven.MilitiaFighter" gfx="8454" hue="1050" />
 					<object type="Server.Mobiles.Moloch" gfx="9742" />
 					<object type="Server.Mobiles.MorgBergen" gfx="8454" hue="1430" />
 					<object type="Server.Mobiles.Parrot" gfx="8474" />
@@ -2124,7 +2108,6 @@
 			<object type="Server.Mobiles.Cobbler" gfx="8454" hue="1053" />
 			<object type="Server.Mobiles.Cook" gfx="8454" hue="1036" />
 			<object type="Server.Mobiles.CustomHairstylist" gfx="8455" hue="1008" />
-			<object type="Server.Engines.Quests.Haven.Dryad" gfx="8455" hue="1447" />
 			<object type="Server.Engines.Quests.Collector.ElwoodMcCarrin" gfx="8454" hue="1005" />
 			<object type="Server.Mobiles.Farmer" gfx="8455" hue="1012" />
 			<object type="Server.Mobiles.Fisherman" gfx="8455" hue="1014" />
@@ -2139,7 +2122,6 @@
 			<object type="Server.Mobiles.HairStylist" gfx="8454" hue="1046" />
 			<object type="Server.Mobiles.Herbalist" gfx="8454" hue="1005" />
 			<object type="Server.Mobiles.HolyMage" gfx="8454" hue="1047" />
-			<object type="Server.Engines.Quests.Necro.Horus" gfx="8454" hue="1011" />
 			<object type="Server.Engines.Quests.Collector.Impresario" gfx="8454" hue="1024" />
 			<object type="Server.Mobiles.InnKeeper" gfx="8454" hue="1033" />
 			<object type="Server.Mobiles.IronWorker" gfx="8454" hue="1048" />
@@ -2147,10 +2129,7 @@
 			<object type="Server.Mobiles.KeeperOfChivalry" gfx="8455" hue="1037" />
 			<object type="Server.Mobiles.LeatherWorker" gfx="8455" hue="1026" />
 			<object type="Server.Mobiles.Mage" gfx="8454" hue="1008" />
-			<object type="Server.Engines.Quests.Haven.MansionGuard" gfx="8454" hue="1006" />
 			<object type="Server.Mobiles.Mapmaker" gfx="8455" hue="1043" />
-			<object type="Server.Engines.Quests.Necro.Mardoth" gfx="8454" hue="2121" />
-			<object type="Server.Engines.Quests.Haven.MilitiaCanoneer" gfx="8454" hue="1014" />
 			<object type="Server.Mobiles.Miner" gfx="8455" hue="1046" />
 			<object type="Server.Mobiles.Minter" gfx="8454" hue="1057" />
 			<object type="Server.Engines.Quests.Naturalist.Naturalist" gfx="8454" hue="1047" />
@@ -2160,7 +2139,6 @@
 			<object type="Server.Mobiles.RealEstateBroker" gfx="8454" hue="1016" />
 			<object type="Server.Engines.Quests.Ambitious.RedAmbitiousSolenQueen" gfx="9730" hue="1030" />
 			<object type="Server.Engines.Quests.Matriarch.RedSolenMatriarch" gfx="9730" hue="1032" />
-			<object type="Server.Engines.Quests.Haven.Schmendrick" gfx="8454" hue="1011" />
 			<object type="Server.Mobiles.Scribe" gfx="8455" hue="1030" />
 			<object type="Server.Mobiles.Shipwright" gfx="8455" hue="1029" />
 			<object type="Server.Mobiles.StoneCrafter" gfx="8455" hue="1021" />
@@ -2170,7 +2148,6 @@
 			<object type="Server.Mobiles.Thief" gfx="8455" hue="1058" />
 			<object type="Server.Mobiles.Tinker" gfx="8454" hue="1021" />
 			<object type="Server.Engines.Quests.Collector.TomasONeerlan" gfx="8454" hue="1016" />
-			<object type="Server.Engines.Quests.Haven.Uzeraan" gfx="8454" hue="1011" />
 			<object type="Server.Mobiles.Vagabond" gfx="8455" hue="1042" />
 			<object type="Server.Mobiles.VarietyDealer" gfx="8454" hue="1042" />
 			<object type="Server.Mobiles.Veterinarian" gfx="8454" hue="1030" />

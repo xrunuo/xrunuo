@@ -7,8 +7,6 @@ using Server.Engines.Guilds;
 using Server.Engines.PartySystem;
 using Server.Engines.Quests;
 using Server.Engines.Quests.Doom;
-using Server.Engines.Quests.Haven;
-using Server.Guilds;
 using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
@@ -92,7 +90,7 @@ namespace Server.Items
 
 		public void AssignInstancedLoot()
 		{
-			/* 
+			/*
 			 * As per OSI tests:
 			 *  - Each entity (player or party) gets their own instanced corpse.
 			 *  - Even if no items are in the corpse or only one instance is created.
@@ -198,7 +196,7 @@ namespace Server.Items
 				corpses[i % corpses.Length].TryDropItem( m_Unstackables[i] );
 			}
 
-			// Resend rummaged items to their owner's instance			
+			// Resend rummaged items to their owner's instance
 			if ( m_Owner is BaseCreature )
 			{
 				BaseCreature bcOwner = m_Owner as BaseCreature;
@@ -1165,38 +1163,13 @@ namespace Server.Items
 				{
 					QuestSystem qs = player.Quest;
 
-					if ( qs is UzeraanTurmoilQuest )
+					if ( qs is TheSummoningQuest )
 					{
-						GetDaemonBoneObjective obj = qs.FindObjective( typeof( GetDaemonBoneObjective ) ) as GetDaemonBoneObjective;
-
-						if ( obj != null && obj.CorpseWithBone == this && ( !obj.Completed || UzeraanTurmoilQuest.HasLostDaemonBone( player ) ) )
-						{
-							Item bone = new QuestDaemonBone();
-
-							if ( player.PlaceInBackpack( bone ) )
-							{
-								obj.CorpseWithBone = null;
-								player.SendLocalizedMessage( 1049341, "", 0x22 ); // You rummage through the bones and find a Daemon Bone!  You quickly place the item in your pack.
-
-								if ( !obj.Completed )
-									obj.Complete();
-							}
-							else
-							{
-								bone.Delete();
-								player.SendLocalizedMessage( 1049342, "", 0x22 ); // Rummaging through the bones you find a Daemon Bone, but can't pick it up because your pack is too full.  Come back when you have more room in your pack.
-							}
-
-							return;
-						}
-					}
-					else if ( qs is TheSummoningQuest )
-					{
-						VanquishDaemonObjective obj = qs.FindObjective( typeof( VanquishDaemonObjective ) ) as VanquishDaemonObjective;
+						var obj = qs.FindObjective<VanquishDaemonObjective>();
 
 						if ( obj != null && obj.Completed && obj.CorpseWithSkull == this )
 						{
-							GoldenSkull sk = new GoldenSkull();
+							var sk = new GoldenSkull();
 
 							if ( player.PlaceInBackpack( sk ) )
 							{

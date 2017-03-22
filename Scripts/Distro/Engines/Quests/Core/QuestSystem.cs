@@ -7,7 +7,6 @@ using Server.Items;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Network;
-using Server.Engines.MLQuests;
 
 namespace Server.Engines.Quests
 {
@@ -18,16 +17,11 @@ namespace Server.Engines.Quests
 		public static readonly Type[] QuestTypes = new Type[]
 			{
 				typeof( Doom.TheSummoningQuest ),
-				typeof( Necro.DarkTidesQuest ),
-				typeof( Haven.UzeraanTurmoilQuest ),
 				typeof( Collector.CollectorQuest ),
 				typeof( Hag.WitchApprenticeQuest ),
 				typeof( Naturalist.StudyOfSolenQuest ),
 				typeof( Matriarch.SolenMatriarchQuest ),
-				typeof( Ambitious.AmbitiousQueenQuest ),
-				typeof( SE.HaochisTrialsQuest ),
-				typeof( SE.EminosUndertakingQuest ),
-				typeof( SE.TerribleHatchlingsQuest )
+				typeof( Ambitious.AmbitiousQueenQuest )
 			};
 
 		public abstract object Name { get; }
@@ -207,6 +201,11 @@ namespace Server.Engines.Quests
 			QuestObjective obj = FindObjective( type );
 
 			return ( obj != null && !obj.Completed );
+		}
+
+		public T FindObjective<T>() where T : QuestObjective
+		{
+			return FindObjective( typeof( T ) ) as T;
 		}
 
 		public QuestObjective FindObjective( Type type )
@@ -413,16 +412,6 @@ namespace Server.Engines.Quests
 			}
 
 			if ( pm.HasGump( typeof( QuestOfferGump ) ) )
-			{
-				return false;
-			}
-
-			if ( questType == typeof( Necro.DarkTidesQuest ) && pm.Profession != 4 ) // necromancer
-			{
-				return false;
-			}
-
-			if ( questType == typeof( Haven.UzeraanTurmoilQuest ) && pm.Profession != 1 && pm.Profession != 2 && pm.Profession != 5 ) // warrior / magician / paladin
 			{
 				return false;
 			}
