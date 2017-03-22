@@ -3,7 +3,7 @@ XRunUO
 
 [![Join the chat at https://gitter.im/xrunuo/xrunuo](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/xrunuo/xrunuo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-**XRunUO** is a server emulator of the MMORPG game Ultima Online, forked from the RunUO project, adding support for the Stygian Abyss expansion, written in C# and targeting the .NET Framework 4.0 and Mono.
+**XRunUO** is a server emulator of the MMORPG game Ultima Online, forked from the RunUO project, adding support for the Stygian Abyss expansion, written in C# and targeting the .NET Framework 4.5 and Mono.
 
 ## Foreword
 
@@ -26,7 +26,7 @@ C:\runuo> C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc /optimize /unsafe 
 #### Linux Build (MONO)
 
 ```console
-~/runuo$ dmcs -optimize+ -unsafe -t:exe -out:Server.exe -nowarn:219,414 -d:MONO -recurse:Server/*.cs
+~/runuo$ mcs -optimize+ -unsafe -t:exe -out:Server.exe -nowarn:219,414 -d:MONO -recurse:Server/*.cs -reference:System.IO.Compression.FileSystem.dll
 ```
 
 #### zlib
