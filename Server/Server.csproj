@@ -159,7 +159,8 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accounting\Account.cs" />
+    <Compile Include="Accounting\IAccount.cs" />
+    <Compile Include="Accounting\AccountFeature.cs" />
     <Compile Include="AggressorInfo.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Attributes.cs" />
