@@ -58,7 +58,7 @@ namespace Server.Items
 			}
 
 
-			if ( type != HolidayTreeType.ClassicBare && type != HolidayTreeType.ModernBare && DateTime.Now.Month != 12 )
+			if ( type != HolidayTreeType.ClassicBare && type != HolidayTreeType.ModernBare && DateTime.UtcNow.Month != 12 )
 			{
 				from.SendLocalizedMessage( 1005700 ); // You will have to wait till next December to put your tree back up for display.
 				return false;

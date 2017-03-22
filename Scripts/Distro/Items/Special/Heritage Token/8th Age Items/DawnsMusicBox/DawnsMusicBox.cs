@@ -296,7 +296,7 @@ namespace Server.Items.MusicBox
 				: base( TimeSpan.FromSeconds( 1.0 ), TimeSpan.FromSeconds( 1.0 ) )
 			{
 				m_Box = box;
-				m_Until = DateTime.Now + TimeSpan.FromSeconds( duration );
+				m_Until = DateTime.UtcNow + TimeSpan.FromSeconds( duration );
 
 			}
 			#endregion
@@ -304,7 +304,7 @@ namespace Server.Items.MusicBox
 			#region members
 			protected override void OnTick()
 			{
-				if ( DateTime.Now > m_Until )
+				if ( DateTime.UtcNow > m_Until )
 				{
 					if ( m_Box != null && !m_Box.Deleted )
 						m_Box.TogglePlaying( false );

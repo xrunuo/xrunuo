@@ -15,7 +15,7 @@ namespace Server.Engines.Quests
 		{
 			if ( restartDelay < TimeSpan.MaxValue )
 			{
-				m_RestartTime = DateTime.Now + restartDelay;
+				m_RestartTime = DateTime.UtcNow + restartDelay;
 			}
 			else
 			{

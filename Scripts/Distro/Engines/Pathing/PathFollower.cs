@@ -88,7 +88,7 @@ namespace Server
 			{
 				repath = true;
 			}
-			else if ( ( !m_Path.Success || goal != m_LastGoalLoc ) && ( m_LastPathTime + RepathDelay ) <= DateTime.Now )
+			else if ( ( !m_Path.Success || goal != m_LastGoalLoc ) && ( m_LastPathTime + RepathDelay ) <= DateTime.UtcNow )
 			{
 				repath = true;
 			}
@@ -102,7 +102,7 @@ namespace Server
 				return false;
 			}
 
-			m_LastPathTime = DateTime.Now;
+			m_LastPathTime = DateTime.UtcNow;
 			m_LastGoalLoc = goal;
 
 			m_Path = new MovementPath( m_From, goal );

@@ -54,7 +54,7 @@ namespace Server.Mobiles
 		{
 			bool expired;
 
-			expired = ( DateTime.Now >= m_ExpireTime );
+			expired = ( DateTime.UtcNow >= m_ExpireTime );
 
 			if ( !expired && m_Owner != null )
 				expired = m_Owner.Deleted || Map != m_Owner.Map || !this.InRange( m_Owner, 16 );
@@ -74,7 +74,7 @@ namespace Server.Mobiles
 			: base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
 			m_Owner = owner;
-			m_ExpireTime = DateTime.Now + TimeSpan.FromMinutes( 1.0 );
+			m_ExpireTime = DateTime.UtcNow + TimeSpan.FromMinutes( 1.0 );
 
 			Name = "a plague spawn";
 			Hue = Utility.Random( 0x11, 15 );

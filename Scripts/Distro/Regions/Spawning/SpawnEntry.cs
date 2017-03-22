@@ -156,7 +156,7 @@ namespace Server.Regions
 				{
 					TimeSpan time = RandomTime();
 					m_SpawnTimer = Timer.DelayCall( time, new TimerCallback( TimerCallback ) );
-					m_NextSpawn = DateTime.Now + time;
+					m_NextSpawn = DateTime.UtcNow + time;
 				}
 			}
 			else if ( m_SpawnTimer != null )
@@ -289,7 +289,7 @@ namespace Server.Regions
 					if ( m_SpawnTimer != null )
 						m_SpawnTimer.Stop();
 
-					TimeSpan delay = m_NextSpawn - DateTime.Now;
+					TimeSpan delay = m_NextSpawn - DateTime.UtcNow;
 					m_SpawnTimer = Timer.DelayCall( delay > TimeSpan.Zero ? delay : TimeSpan.Zero, new TimerCallback( TimerCallback ) );
 				}
 			}

@@ -138,7 +138,7 @@ namespace Server.Items
 
 
 
-			if ( DateTime.Now < ( m_LastUse + UseDelay ) )
+			if ( DateTime.UtcNow < ( m_LastUse + UseDelay ) )
 			{
 				return;
 			}
@@ -201,7 +201,7 @@ namespace Server.Items
 				}
 			}
 
-			m_LastUse = DateTime.Now;
+			m_LastUse = DateTime.UtcNow;
 
 			BaseWeapon weapon = from.Weapon as BaseWeapon;
 

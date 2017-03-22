@@ -48,7 +48,7 @@ namespace Server.Misc
 
 				try
 				{
-					TimeSpan ts = ( m_StartTime + m_Duration ) - DateTime.Now;
+					TimeSpan ts = ( m_StartTime + m_Duration ) - DateTime.UtcNow;
 
 					if ( ts < TimeSpan.Zero )
 					{
@@ -79,7 +79,7 @@ namespace Server.Misc
 
 				if ( m_Active )
 				{
-					m_StartTime = DateTime.Now;
+					m_StartTime = DateTime.UtcNow;
 					m_ActivePollers.Add( this );
 				}
 				else

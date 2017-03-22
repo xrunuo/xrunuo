@@ -169,7 +169,7 @@ namespace Server.Items
 				MoveToWorld( loc, map );
 
 				m_Caster = caster;
-				m_End = DateTime.Now + TimeSpan.FromSeconds( 10 );
+				m_End = DateTime.UtcNow + TimeSpan.FromSeconds( 10 );
 
 				m_DamageMin = damageMin;
 				m_DamageMax = damageMax;
@@ -258,7 +258,7 @@ namespace Server.Items
 					if ( m_Item.Deleted )
 						return;
 
-					if ( DateTime.Now > m_Item.m_End )
+					if ( DateTime.UtcNow > m_Item.m_End )
 					{
 						m_Item.Delete();
 						Stop();

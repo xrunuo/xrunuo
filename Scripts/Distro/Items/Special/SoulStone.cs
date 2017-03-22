@@ -100,7 +100,7 @@ namespace Server.Items
 			{
 				AggressorInfo info = (AggressorInfo) m.Aggressed[i];
 
-				if ( DateTime.Now - info.LastCombatTime < time )
+				if ( DateTime.UtcNow - info.LastCombatTime < time )
 					return true;
 			}
 
@@ -109,7 +109,7 @@ namespace Server.Items
 
 		private bool CheckUse( Mobile from )
 		{
-			DateTime now = DateTime.Now;
+			DateTime now = DateTime.UtcNow;
 
 			if ( this.Deleted || !this.IsAccessibleTo( from ) )
 			{
@@ -621,7 +621,7 @@ namespace Server.Items
 				fromSkill.Base = skillValue;
 				m_Stone.SkillValue = 0.0;
 
-				m_Stone.NextUse = DateTime.Now + m_Stone.UseDelay;
+				m_Stone.NextUse = DateTime.UtcNow + m_Stone.UseDelay;
 
 				if ( m_Stone is SoulStoneFragment )
 				{

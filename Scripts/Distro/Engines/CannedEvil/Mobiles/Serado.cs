@@ -134,7 +134,7 @@ namespace Server.Mobiles
 				m_HitsLast = Hits;
 			}
 
-			if ( DateTime.Now >= m_NextAbilityTime )
+			if ( DateTime.UtcNow >= m_NextAbilityTime )
 			{
 				Mobile target = BaseAttackHelperSE.GetRandomAttacker( this, Yamandon.AbilityRange );
 
@@ -143,7 +143,7 @@ namespace Server.Mobiles
 					BaseAttackHelperSE.SpillAcid( target, true );
 				}
 
-				m_NextAbilityTime = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( m_MinTime, m_MaxTime ) );
+				m_NextAbilityTime = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( m_MinTime, m_MaxTime ) );
 			}
 
 			base.OnThink();

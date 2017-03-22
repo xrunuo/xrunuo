@@ -58,9 +58,9 @@ namespace Server
 				m_Profiling = value;
 
 				if ( m_ProfileStart > DateTime.MinValue )
-					m_ProfileTime += DateTime.Now - m_ProfileStart;
+					m_ProfileTime += DateTime.UtcNow - m_ProfileStart;
 
-				m_ProfileStart = ( m_Profiling ? DateTime.Now : DateTime.MinValue );
+				m_ProfileStart = ( m_Profiling ? DateTime.UtcNow : DateTime.MinValue );
 			}
 		}
 
@@ -69,7 +69,7 @@ namespace Server
 			get
 			{
 				if ( m_ProfileStart > DateTime.MinValue )
-					return m_ProfileTime + ( DateTime.Now - m_ProfileStart );
+					return m_ProfileTime + ( DateTime.UtcNow - m_ProfileStart );
 
 				return m_ProfileTime;
 			}

@@ -196,7 +196,7 @@ namespace Server.Engines.PuzzleBoard
 							PlayerMobile pm = from as PlayerMobile;
 
 							if ( pm != null && !Misc.TestCenter.Enabled )
-								pm.NextPuzzleAttempt = DateTime.Now + TimeSpan.FromDays( 1.0 );
+								pm.NextPuzzleAttempt = DateTime.UtcNow + TimeSpan.FromDays( 1.0 );
 						}
 						else
 						{

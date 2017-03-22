@@ -198,7 +198,7 @@ namespace Server.Spells.Mysticism
 
 				public int Seconds
 				{
-					get { return (int) ( DateTime.Now - m_LastHeal ).TotalSeconds; }
+					get { return (int) ( DateTime.UtcNow - m_LastHeal ).TotalSeconds; }
 				}
 
 				public bool UnderCooldown
@@ -213,7 +213,7 @@ namespace Server.Spells.Mysticism
 
 				public void Reset()
 				{
-					m_LastHeal = DateTime.Now;
+					m_LastHeal = DateTime.UtcNow;
 
 					m_Timer?.Stop();
 
@@ -227,7 +227,7 @@ namespace Server.Spells.Mysticism
 				public HealingStoneContext( Mobile owner, Timer t )
 				{
 					m_Owner = owner;
-					m_LastHeal = DateTime.Now;
+					m_LastHeal = DateTime.UtcNow;
 					m_Timer = t;
 				}
 			}

@@ -31,7 +31,7 @@ namespace Server
 				if ( m_Override != default( DateTime ) )
 					return m_Override;
 
-				return DateTime.Now;
+				return DateTime.UtcNow;
 			}
 			set
 			{

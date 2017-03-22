@@ -53,7 +53,7 @@ namespace Server.Factions
 
 							if ( pl != null )
 							{
-								pl.Leaving = DateTime.Now;
+								pl.Leaving = DateTime.UtcNow;
 
 								if ( Faction.LeavePeriod == TimeSpan.FromDays( 7.0 ) )
 								{
@@ -80,7 +80,7 @@ namespace Server.Factions
 
 								if ( pl != null )
 								{
-									pl.Leaving = DateTime.Now;
+									pl.Leaving = DateTime.UtcNow;
 
 									if ( Faction.LeavePeriod == TimeSpan.FromDays( 7.0 ) )
 									{

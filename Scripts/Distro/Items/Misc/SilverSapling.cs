@@ -44,7 +44,7 @@ namespace Server.Items
 
 			if ( pm != null && pm.Backpack != null )
 			{
-				if ( pm.NextSilverSaplingUse > DateTime.Now )
+				if ( pm.NextSilverSaplingUse > DateTime.UtcNow )
 				{
 					// You must wait a full day before receiving another Seed of the Silver Sapling
 					pm.SendLocalizedMessage( 1113042 );
@@ -56,7 +56,7 @@ namespace Server.Items
 					// The Silver Sapling pulses with light, and a shining seed appears in your hands.
 					pm.SendLocalizedMessage( 1113043 );
 
-					pm.NextSilverSaplingUse = DateTime.Now + TimeSpan.FromDays( 1.0 );
+					pm.NextSilverSaplingUse = DateTime.UtcNow + TimeSpan.FromDays( 1.0 );
 				}
 			}
 		}

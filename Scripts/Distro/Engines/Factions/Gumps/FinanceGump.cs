@@ -226,7 +226,7 @@ namespace Server.Factions
 
 									if ( m_From.AccessLevel == AccessLevel.Player && !m_Town.TaxChangeReady )
 									{
-										TimeSpan remaining = DateTime.Now - ( m_Town.LastTaxChange + Town.TaxChangePeriod );
+										TimeSpan remaining = DateTime.UtcNow - ( m_Town.LastTaxChange + Town.TaxChangePeriod );
 
 										if ( remaining.TotalMinutes < 4 )
 										{
@@ -255,7 +255,7 @@ namespace Server.Factions
 
 										if ( m_From.AccessLevel == AccessLevel.Player )
 										{
-											m_Town.LastTaxChange = DateTime.Now;
+											m_Town.LastTaxChange = DateTime.UtcNow;
 										}
 									}
 

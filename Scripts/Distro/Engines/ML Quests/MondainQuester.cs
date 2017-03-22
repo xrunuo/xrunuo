@@ -133,10 +133,10 @@ namespace Server.Engines.Quests
 
 				range = AutoSpeakRange;
 
-				if ( range >= 0 && this.InRange( m, range ) && !this.InRange( oldLocation, range ) && DateTime.Now >= m_Spoken + SpeakDelay )
+				if ( range >= 0 && this.InRange( m, range ) && !this.InRange( oldLocation, range ) && DateTime.UtcNow >= m_Spoken + SpeakDelay )
 				{
 					Advertise();
-					m_Spoken = DateTime.Now;
+					m_Spoken = DateTime.UtcNow;
 				}
 			}
 		}
@@ -175,7 +175,7 @@ namespace Server.Engines.Quests
 
 			int version = reader.ReadInt();
 
-			m_Spoken = DateTime.Now;
+			m_Spoken = DateTime.UtcNow;
 
 			if ( CantWalk )
 				Frozen = true;

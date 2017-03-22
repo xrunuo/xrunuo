@@ -65,18 +65,18 @@ namespace Server.Items
 				}
 			}
 
-			if ( CheckRange( m.Location, oldLocation, 0 ) && DateTime.Now >= m_NextActiveTrigger )
+			if ( CheckRange( m.Location, oldLocation, 0 ) && DateTime.UtcNow >= m_NextActiveTrigger )
 			{
-				m_NextActiveTrigger = m_NextPassiveTrigger = DateTime.Now + ResetDelay;
+				m_NextActiveTrigger = m_NextPassiveTrigger = DateTime.UtcNow + ResetDelay;
 
 				if ( RevealOnTrigger )
 					this.Visible = true;
 
 				OnTrigger( m );
 			}
-			else if ( PassivelyTriggered && CheckRange( m.Location, oldLocation, PassiveTriggerRange ) && DateTime.Now >= m_NextPassiveTrigger )
+			else if ( PassivelyTriggered && CheckRange( m.Location, oldLocation, PassiveTriggerRange ) && DateTime.UtcNow >= m_NextPassiveTrigger )
 			{
-				m_NextPassiveTrigger = DateTime.Now + PassiveTriggerDelay;
+				m_NextPassiveTrigger = DateTime.UtcNow + PassiveTriggerDelay;
 
 				if ( RevealOnTrigger )
 					this.Visible = true;

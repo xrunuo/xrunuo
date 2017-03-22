@@ -45,7 +45,7 @@ namespace Server.SkillHandlers
 			{
 				m_From = from;
 				m_Creature = creature;
-				m_EndTime = DateTime.Now + duration;
+				m_EndTime = DateTime.UtcNow + duration;
 				m_Effect = effect;
 				m_Mods = mods;
 
@@ -110,7 +110,7 @@ namespace Server.SkillHandlers
 			Mobile from = info.m_From;
 			Mobile targ = info.m_Creature;
 
-			if ( DateTime.Now >= info.m_EndTime || targ.Deleted || from.Map != targ.Map || targ.GetDistanceToSqrt( from ) > 16 )
+			if ( DateTime.UtcNow >= info.m_EndTime || targ.Deleted || from.Map != targ.Map || targ.GetDistanceToSqrt( from ) > 16 )
 			{
 				if ( info.m_Timer != null )
 					info.m_Timer.Stop();
@@ -152,7 +152,7 @@ namespace Server.SkillHandlers
 					}
 					else if ( !targ.IsPlayer )
 					{
-						from.NextSkillTime = DateTime.Now + BaseInstrument.GetBardSkillTimeout( SkillName.Discordance, from );
+						from.NextSkillTime = DateTime.UtcNow + BaseInstrument.GetBardSkillTimeout( SkillName.Discordance, from );
 
 						TimeSpan len = TimeSpan.FromSeconds( from.Skills[SkillName.Discordance].Value * 2 );
 						double diff = m_Instrument.GetDifficultyFor( targ ) - 10.0;
@@ -170,7 +170,7 @@ namespace Server.SkillHandlers
 						else if ( m_Table.Contains( targ ) )
 						{
 							from.SendLocalizedMessage( 1049537 ); // Your target is already in discord.
-							from.NextSkillTime = DateTime.Now;
+							from.NextSkillTime = DateTime.UtcNow;
 						}
 						else if ( BaseInstrument.CheckBardSkillChance( from, SkillName.Discordance, target, diff - 25.0, diff + 25.0 ) )
 						{

@@ -29,7 +29,7 @@ namespace Server.Spells.Sixth
 
 			if ( Caster is PlayerMobile )
 			{
-				if ( ( (PlayerMobile) Caster ).LastExplo + TimeSpan.FromSeconds( 3.0 ) <= DateTime.Now )
+				if ( ( (PlayerMobile) Caster ).LastExplo + TimeSpan.FromSeconds( 3.0 ) <= DateTime.UtcNow )
 				{
 					return true;
 				}
@@ -64,7 +64,7 @@ namespace Server.Spells.Sixth
 				SpellHelper.CheckReflect( (int) this.Circle, Caster, ref m );
 
 				if ( Caster is PlayerMobile )
-					( (PlayerMobile) Caster ).LastExplo = DateTime.Now;
+					( (PlayerMobile) Caster ).LastExplo = DateTime.UtcNow;
 
 				InternalTimer t = new InternalTimer( this, attacker, defender, m );
 				t.Start();

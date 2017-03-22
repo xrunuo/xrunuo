@@ -7,7 +7,7 @@ namespace Server.Network
 	public class AddBuffPacket : Packet
 	{
 		public AddBuffPacket( Mobile m, BuffInfo info )
-			: this( m, info.Id, info.TitleCliloc, info.SecondaryCliloc, info.Args, ( info.TimeStart != DateTime.MinValue ) ? ( ( info.TimeStart + info.TimeLength ) - DateTime.Now ) : TimeSpan.Zero )
+			: this( m, info.Id, info.TitleCliloc, info.SecondaryCliloc, info.Args, ( info.TimeStart != DateTime.MinValue ) ? ( ( info.TimeStart + info.TimeLength ) - DateTime.UtcNow ) : TimeSpan.Zero )
 		{
 		}
 

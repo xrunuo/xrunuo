@@ -258,7 +258,7 @@ namespace Server.Items
 			{
 				from.SendLocalizedMessage( 1080049 ); // You cannot summon your pet to this location.
 			}
-			else if ( from is PlayerMobile && DateTime.Now < ( (PlayerMobile) from ).LastPetBallTime.AddSeconds( 15.0 ) )
+			else if ( from is PlayerMobile && DateTime.UtcNow < ( (PlayerMobile) from ).LastPetBallTime.AddSeconds( 15.0 ) )
 			{
 				MessageHelper.SendLocalizedMessageTo( this, from, 1080072, 0x22 ); // You must wait a few seconds before you can summon your pet.
 			}
@@ -295,7 +295,7 @@ namespace Server.Items
 			MessageHelper.SendLocalizedMessageTo( this, from, 1054128, 0x43 ); // The Crystal Ball fills with a green mist. Your pet has been summoned.
 
 			if ( from is PlayerMobile )
-				( (PlayerMobile) from ).LastPetBallTime = DateTime.Now;
+				( (PlayerMobile) from ).LastPetBallTime = DateTime.UtcNow;
 		}
 
 		public void UnlinkPet( Mobile from )

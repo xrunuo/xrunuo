@@ -44,7 +44,7 @@ namespace Server.Engines.Quests
 
 		public static bool CheckLastEscort( PlayerMobile pm )
 		{
-			return pm.LastEscortTime + TimeSpan.FromDays( 1.0 ) > DateTime.Now;
+			return pm.LastEscortTime + TimeSpan.FromDays( 1.0 ) > DateTime.UtcNow;
 		}
 
 		public override void InitializeQuester()

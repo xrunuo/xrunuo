@@ -836,7 +836,7 @@ namespace Server.Items
 					if ( m_Item != null && value == null )
 					{
 						int delay = Utility.RandomMinMax( this.Entry.MinDelay * 2, this.Entry.MaxDelay * 2 );
-						this.NextRespawn = DateTime.Now + TimeSpan.FromSeconds( delay );
+						this.NextRespawn = DateTime.UtcNow + TimeSpan.FromSeconds( delay );
 					}
 
 					if ( Instance != null )
@@ -855,7 +855,7 @@ namespace Server.Items
 			public DateTime NextRespawn { get { return m_NextRespawn; } set { m_NextRespawn = value; } }
 
 			public ChestInstance( ChestEntry entry )
-				: this( entry, null, DateTime.Now )
+				: this( entry, null, DateTime.UtcNow )
 			{
 			}
 
@@ -868,7 +868,7 @@ namespace Server.Items
 
 			public void CheckRespawn()
 			{
-				if ( DateTime.Now >= this.NextRespawn )
+				if ( DateTime.UtcNow >= this.NextRespawn )
 				{
 					if ( this.Item != null )
 						this.Item.Delete();

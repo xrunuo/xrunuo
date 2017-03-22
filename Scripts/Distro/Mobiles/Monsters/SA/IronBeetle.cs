@@ -88,10 +88,10 @@ namespace Server.Mobiles
 		{
 			base.OnThink();
 
-			if ( Owners.Count > 0 || m_NextOreEat > DateTime.Now )
+			if ( Owners.Count > 0 || m_NextOreEat > DateTime.UtcNow )
 				return;
 
-			m_NextOreEat = DateTime.Now + TimeSpan.FromSeconds( 3.0 );
+			m_NextOreEat = DateTime.UtcNow + TimeSpan.FromSeconds( 3.0 );
 
 			if ( 0.5 > Utility.RandomDouble() )
 			{

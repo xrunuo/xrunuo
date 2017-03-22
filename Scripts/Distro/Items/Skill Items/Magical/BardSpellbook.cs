@@ -69,7 +69,7 @@ namespace Server.Items
 				}
 			}
 
-			if ( DateTime.Now > pm.NextBardMasterySwitch )
+			if ( DateTime.UtcNow > pm.NextBardMasterySwitch )
 			{
 				ContextMenuEntry titleEntry = new ContextMenuEntry( 1151948 ); // Switch Mastery
 				titleEntry.Enabled = false;
@@ -107,7 +107,7 @@ namespace Server.Items
 					return;
 				}
 
-				m_Owner.NextBardMasterySwitch = DateTime.Now + TimeSpan.FromMinutes( 10.0 );
+				m_Owner.NextBardMasterySwitch = DateTime.UtcNow + TimeSpan.FromMinutes( 10.0 );
 				m_Owner.BardMastery = m_Mastery;
 
 				// You have changed to ~1_val~

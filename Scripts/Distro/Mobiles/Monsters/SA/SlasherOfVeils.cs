@@ -203,7 +203,7 @@ namespace Server.Mobiles
 		{
 			base.OnDamage( amount, from, willKill );
 
-			if ( DateTime.Now > m_NextAbilityTime && 0.1 > Utility.RandomDouble() )
+			if ( DateTime.UtcNow > m_NextAbilityTime && 0.1 > Utility.RandomDouble() )
 			{
 				Mobile target = from;
 
@@ -241,7 +241,7 @@ namespace Server.Mobiles
 						}
 				}
 
-				m_NextAbilityTime = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( MinDelay, MaxDelay ) );
+				m_NextAbilityTime = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( MinDelay, MaxDelay ) );
 			}
 		}
 

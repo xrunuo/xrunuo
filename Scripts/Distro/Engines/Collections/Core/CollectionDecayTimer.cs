@@ -15,12 +15,12 @@ namespace Server.Engines.Collections
 
 		public static void Initialize()
 		{
-			m_NextDecayTime = DateTime.Now.Date + DecayHour;
+			m_NextDecayTime = DateTime.UtcNow.Date + DecayHour;
 
-			if ( m_NextDecayTime < DateTime.Now )
+			if ( m_NextDecayTime < DateTime.UtcNow )
 				m_NextDecayTime += TimeSpan.FromDays( 1.0 );
 
-			m_Timer = new CollectionDecayTimer( m_NextDecayTime - DateTime.Now );
+			m_Timer = new CollectionDecayTimer( m_NextDecayTime - DateTime.UtcNow );
 			m_Timer.Start();
 		}
 

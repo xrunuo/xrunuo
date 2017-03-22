@@ -278,7 +278,7 @@ namespace Server.Spells.Mysticism
 			writer.Write( (Mobile) Owner );
 			writer.Write( (int) Attribute );
 			writer.Write( (bool) SpellChanneling );
-			writer.Write( (TimeSpan) ( Timer.Next - DateTime.Now ) );
+			writer.Write( (TimeSpan) ( Timer.Next - DateTime.UtcNow ) );
 		}
 	}
 }

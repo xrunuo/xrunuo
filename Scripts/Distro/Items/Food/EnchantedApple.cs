@@ -148,7 +148,7 @@ namespace Server.Items
 				// A tasty bite of the enchanted apple lifts all curses from your soul.
 				m.SendLocalizedMessage( 1074846 );
 
-				m_CooldownTable.Add( m, DateTime.Now + Cooldown );
+				m_CooldownTable.Add( m, DateTime.UtcNow + Cooldown );
 
 				RemoveCurses( m );
 
@@ -172,10 +172,10 @@ namespace Server.Items
 			{
 				DateTime cooldownEnd = m_CooldownTable[m];
 
-				if ( cooldownEnd > DateTime.Now )
+				if ( cooldownEnd > DateTime.UtcNow )
 				{
 					// You must wait ~1_seconds~ seconds before you can use this item.
-					m.SendLocalizedMessage( 1079263, ( (int) ( cooldownEnd - DateTime.Now ).TotalSeconds + 1 ).ToString() );
+					m.SendLocalizedMessage( 1079263, ( (int) ( cooldownEnd - DateTime.UtcNow ).TotalSeconds + 1 ).ToString() );
 
 					return false;
 				}

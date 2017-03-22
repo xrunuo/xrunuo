@@ -27,12 +27,12 @@ namespace Server.Engines.Chat
 
 			try
 			{
-				m_Output = new StreamWriter( Path.Combine( directory, String.Format( "{0}.log", DateTime.Now.ToLongDateString() ) ), true );
+				m_Output = new StreamWriter( Path.Combine( directory, String.Format( "{0}.log", DateTime.UtcNow.ToLongDateString() ) ), true );
 
 				m_Output.AutoFlush = true;
 
 				m_Output.WriteLine( "##############################" );
-				m_Output.WriteLine( "Log started on {0}", DateTime.Now );
+				m_Output.WriteLine( "Log started on {0}", DateTime.UtcNow );
 				m_Output.WriteLine();
 			}
 			catch
@@ -52,7 +52,7 @@ namespace Server.Engines.Chat
 
 			try
 			{
-				m_Output.WriteLine( "{0}: [{1}] {2}", DateTime.Now, channel, text );
+				m_Output.WriteLine( "{0}: [{1}] {2}", DateTime.UtcNow, channel, text );
 
 				//StreamWriter channelOutput;
 
@@ -72,7 +72,7 @@ namespace Server.Engines.Chat
 				//    m_OutputPerChannel[channel] = channelOutput;
 				//}
 
-				//channelOutput.WriteLine( "{0}: {1}", DateTime.Now, text );
+				//channelOutput.WriteLine( "{0}: {1}", DateTime.UtcNow, text );
 			}
 			catch
 			{

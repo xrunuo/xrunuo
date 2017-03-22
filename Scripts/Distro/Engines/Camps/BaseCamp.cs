@@ -53,7 +53,7 @@ namespace Server.Multis
 
 			if ( setDecayTime )
 			{
-				m_DecayTime = DateTime.Now + DecayDelay;
+				m_DecayTime = DateTime.UtcNow + DecayDelay;
 			}
 
 			m_DecayTimer = Timer.DelayCall( DecayDelay, new TimerCallback( Delete ) );

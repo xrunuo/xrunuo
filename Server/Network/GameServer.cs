@@ -205,7 +205,7 @@ namespace Server.Network
 						}
 
 						PacketProfile profile = PacketProfile.GetIncomingProfile( packetID );
-						DateTime start = ( profile == null ? DateTime.MinValue : DateTime.Now );
+						DateTime start = ( profile == null ? DateTime.MinValue : DateTime.UtcNow );
 
 						byte[] packetBuffer;
 
@@ -235,7 +235,7 @@ namespace Server.Network
 							m_Buffers.ReleaseBuffer( packetBuffer );
 
 						if ( profile != null )
-							profile.Record( packetLength, DateTime.Now - start );
+							profile.Record( packetLength, DateTime.UtcNow - start );
 					}
 				}
 				else

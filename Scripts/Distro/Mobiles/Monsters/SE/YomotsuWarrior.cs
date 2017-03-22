@@ -95,13 +95,13 @@ namespace Server.Mobiles
 		{
 			if ( !BardPacified )
 			{
-				if ( DateTime.Now >= m_NextAbilityTime )
+				if ( DateTime.UtcNow >= m_NextAbilityTime )
 				{
 					ThrowingDaggerSE dagger = new ThrowingDaggerSE( this );
 
 					dagger.ThrowIt();
 
-					m_NextAbilityTime = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( m_MinTime, m_MaxTime ) );
+					m_NextAbilityTime = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( m_MinTime, m_MaxTime ) );
 				}
 			}
 

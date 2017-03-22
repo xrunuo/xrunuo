@@ -44,7 +44,7 @@ namespace Server.Items
 				from.SendLocalizedMessage( 1113075 ); // Your pet is still under the effect of armor essence.
 				return false;
 			}
-			else if ( DateTime.Now < pet.NextArmorEssence )
+			else if ( DateTime.UtcNow < pet.NextArmorEssence )
 			{
 				from.SendLocalizedMessage( 1113076 ); // Your pet is still recovering from the last armor essence it consumed.
 				return false;
@@ -78,7 +78,7 @@ namespace Server.Items
 						m_UnderEffect.Remove( pet );
 					} ) );
 
-				pet.NextArmorEssence = DateTime.Now + Duration + Cooldown;
+				pet.NextArmorEssence = DateTime.UtcNow + Duration + Cooldown;
 
 				Delete();
 

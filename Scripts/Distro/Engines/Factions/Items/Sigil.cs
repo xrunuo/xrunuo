@@ -234,7 +234,7 @@ namespace Server.Factions
 		private void BeginCorrupting( Faction faction )
 		{
 			m_Corrupting = faction;
-			m_CorruptionStart = DateTime.Now;
+			m_CorruptionStart = DateTime.UtcNow;
 		}
 
 		private void ClearCorrupting()
@@ -251,7 +251,7 @@ namespace Server.Factions
 				if ( !IsBeingCorrupted )
 					return TimeSpan.Zero;
 
-				TimeSpan ts = ( m_CorruptionStart + CorruptionPeriod ) - DateTime.Now;
+				TimeSpan ts = ( m_CorruptionStart + CorruptionPeriod ) - DateTime.UtcNow;
 
 				if ( ts < TimeSpan.Zero )
 					ts = TimeSpan.Zero;
@@ -337,7 +337,7 @@ namespace Server.Factions
 								BeginCorrupting( newController );
 							}
 						}
-						else if ( m_GraceStart > DateTime.MinValue && ( m_GraceStart + CorruptionGrace ) < DateTime.Now )
+						else if ( m_GraceStart > DateTime.MinValue && ( m_GraceStart + CorruptionGrace ) < DateTime.UtcNow )
 						{
 							if ( m_Corrupted != newController )
 							{
@@ -356,7 +356,7 @@ namespace Server.Factions
 						}
 						else if ( m_GraceStart == DateTime.MinValue )
 						{
-							m_GraceStart = DateTime.Now;
+							m_GraceStart = DateTime.UtcNow;
 						}
 
 						m_PurificationStart = DateTime.MinValue;
@@ -381,7 +381,7 @@ namespace Server.Factions
 						m.Sigil = this;
 
 						m_Corrupting = null;
-						m_PurificationStart = DateTime.Now;
+						m_PurificationStart = DateTime.UtcNow;
 						m_CorruptionStart = DateTime.MinValue;
 
 						bool isTownAlreadyOwned = ( m_Town.Owner == m_Corrupted );

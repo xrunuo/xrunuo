@@ -68,7 +68,7 @@ namespace Server.Mobiles
 
 				m_Caster = caster;
 
-				m_End = DateTime.Now + duration;
+				m_End = DateTime.UtcNow + duration;
 
 				m_Timer = new InternalTimer( this );
 				m_Timer.Start();
@@ -129,7 +129,7 @@ namespace Server.Mobiles
 					{
 						return;
 					}
-					else if ( DateTime.Now > m_Item.m_End )
+					else if ( DateTime.UtcNow > m_Item.m_End )
 					{
 						m_Item.Delete();
 						Stop();

@@ -54,7 +54,7 @@ namespace Server.Items
 				return;
 			}
 
-			var totalTime = ( DateTime.Now - acct.Created );
+			var totalTime = ( DateTime.UtcNow - acct.Created );
 			if ( totalTime >= TimeSpan.FromDays( 30.0 ) )
 			{
 				from.SendLocalizedMessage( 1116259 ); // This can only be used by accounts less than 1 month old.

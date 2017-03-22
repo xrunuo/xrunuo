@@ -55,9 +55,9 @@ namespace Server.Items
 				// You're still feeling lucky from the last time you touched the sculpture.
 				pm.SendLocalizedMessage( 1079534 );
 			}
-			else if ( pm.NextTenthAnniversarySculptureUse > DateTime.Now )
+			else if ( pm.NextTenthAnniversarySculptureUse > DateTime.UtcNow )
 			{
-				TimeSpan delta = pm.NextTenthAnniversarySculptureUse - DateTime.Now;
+				TimeSpan delta = pm.NextTenthAnniversarySculptureUse - DateTime.UtcNow;
 
 				if ( delta < TimeSpan.FromHours( 1.0 ) )
 				{
@@ -78,7 +78,7 @@ namespace Server.Items
 				pm.AddAttributeMod( luckMod );
 
 				m_Bonuses.Add( pm );
-				pm.NextTenthAnniversarySculptureUse = DateTime.Now + TimeSpan.FromDays( 1.0 );
+				pm.NextTenthAnniversarySculptureUse = DateTime.UtcNow + TimeSpan.FromDays( 1.0 );
 
 				pm.SendLocalizedMessage( 1079551 ); // Your luck just improved!
 

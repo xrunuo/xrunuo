@@ -12,7 +12,7 @@ namespace Server.Mobiles
 			return WeaponAbility.ParalyzingBlow;
 		}
 
-		//private DateTime m_Delay = DateTime.Now;
+		//private DateTime m_Delay = DateTime.UtcNow;
 
 		public override int GetDeathSound()
 		{

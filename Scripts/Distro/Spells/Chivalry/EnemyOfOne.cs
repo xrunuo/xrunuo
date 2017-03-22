@@ -66,7 +66,7 @@ namespace Server.Spells.Chivalry
 						RemoveEffect( Caster, true );
 					} );
 
-				DateTime expire = DateTime.Now + delay;
+				DateTime expire = DateTime.UtcNow + delay;
 
 				m_Table[Caster] = new EnemyOfOneContext( Caster, timer, expire );
 			}
@@ -195,7 +195,7 @@ namespace Server.Spells.Chivalry
 		private void UpdateBuffInfo()
 		{
 			// TODO: display friendly name attribute when target is not null.
-			BuffInfo.AddBuff( m_Owner, new BuffInfo( BuffIcon.EnemyOfOne, 1075653, 1075902, m_Expire - DateTime.Now, m_Owner, String.Format( "{0}\t{1}", m_DamageScalar.ToString(), 100.ToString() ) ) );
+			BuffInfo.AddBuff( m_Owner, new BuffInfo( BuffIcon.EnemyOfOne, 1075653, 1075902, m_Expire - DateTime.UtcNow, m_Owner, String.Format( "{0}\t{1}", m_DamageScalar.ToString(), 100.ToString() ) ) );
 		}
 	}
 }

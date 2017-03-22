@@ -87,7 +87,7 @@ namespace Server.Items
 					if ( pm == null )
 						return;
 
-					if ( pm.NextLuckyCoinWish > DateTime.Now )
+					if ( pm.NextLuckyCoinWish > DateTime.UtcNow )
 					{
 						// You already made a wish today. Try again tomorrow!
 						from.SendLocalizedMessage( 1113368 );
@@ -105,7 +105,7 @@ namespace Server.Items
 							FontOfFortune.Bless( from );
 						}
 
-						pm.NextLuckyCoinWish = DateTime.Now + TimeSpan.FromHours( 12.0 );
+						pm.NextLuckyCoinWish = DateTime.UtcNow + TimeSpan.FromHours( 12.0 );
 
 						m_Coin.Consume();
 					}

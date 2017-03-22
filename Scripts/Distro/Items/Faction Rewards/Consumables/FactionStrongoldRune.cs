@@ -68,7 +68,7 @@ namespace Server.Items
 				Timer cooldownTimer = m_CooldownTable[from];
 
 				// You must wait ~1_seconds~ seconds before you can use this item.
-				from.SendLocalizedMessage( 1079263, ( cooldownTimer.Next - DateTime.Now ).Seconds.ToString() );
+				from.SendLocalizedMessage( 1079263, ( cooldownTimer.Next - DateTime.UtcNow ).Seconds.ToString() );
 			}
 			else
 			{

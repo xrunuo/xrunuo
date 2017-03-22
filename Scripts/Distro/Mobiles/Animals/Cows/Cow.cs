@@ -88,14 +88,14 @@ namespace Server.Mobiles
 				from.SendLocalizedMessage( 1080400 ); // You can not milk the cow from this location.
 			else if ( Controlled && ControlMaster != from )
 				from.SendLocalizedMessage( 1071182 ); // The cow nimbly escapes your attempts to milk it.
-			else if ( m_Milk == 0 && m_MilkedOn + TimeSpan.FromDays( 1 ) > DateTime.Now )
+			else if ( m_Milk == 0 && m_MilkedOn + TimeSpan.FromDays( 1 ) > DateTime.UtcNow )
 				from.SendLocalizedMessage( 1080198 ); // This cow can not be milked now. Please wait for some time.
 			else
 			{
 				if ( m_Milk == 0 )
 					m_Milk = 4;
 
-				m_MilkedOn = DateTime.Now;
+				m_MilkedOn = DateTime.UtcNow;
 				m_Milk--;
 
 				return true;

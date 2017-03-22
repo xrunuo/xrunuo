@@ -165,7 +165,7 @@ namespace Server.Spells.Mysticism
 
 			public void OnDamage()
 			{
-				if ( DateTime.Now > ( m_LastExploded + TimeSpan.FromSeconds( 2.0 ) ) )
+				if ( DateTime.UtcNow > ( m_LastExploded + TimeSpan.FromSeconds( 2.0 ) ) )
 				{
 					int exploChance = 90 - ( m_Explosions * 30 );
 
@@ -181,7 +181,7 @@ namespace Server.Spells.Mysticism
 						double damage = m_Owner.GetNewAosDamage( 15 + ( m_Explosions * 3 ), 1, 5, m_Target );
 
 						m_Explosions++;
-						m_LastExploded = DateTime.Now;
+						m_LastExploded = DateTime.UtcNow;
 
 						int[] types = new int[4];
 						types[Utility.Random( types.Length )] = 100;

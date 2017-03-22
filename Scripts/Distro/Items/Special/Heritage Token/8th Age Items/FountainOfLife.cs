@@ -146,10 +146,10 @@ namespace Server.Items
 			m_Charges = reader.ReadInt();
 			DateTime next = reader.ReadDateTime();
 
-			if ( next < DateTime.Now )
+			if ( next < DateTime.UtcNow )
 				m_Timer = Timer.DelayCall( TimeSpan.Zero, RechargeTime, new TimerCallback( Recharge ) );
 			else
-				m_Timer = Timer.DelayCall( next - DateTime.Now, RechargeTime, new TimerCallback( Recharge ) );
+				m_Timer = Timer.DelayCall( next - DateTime.UtcNow, RechargeTime, new TimerCallback( Recharge ) );
 		}
 
 		private void Recharge()

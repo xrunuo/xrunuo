@@ -231,7 +231,7 @@ namespace Server.Gumps
 				{
 					Account a = (Account) m_List[i];
 
-					a.SetBanTags( from, DateTime.Now, duration );
+					a.SetBanTags( from, DateTime.UtcNow, duration );
 				}
 
 				if ( duration == TimeSpan.MaxValue )

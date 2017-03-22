@@ -31,7 +31,7 @@ namespace Server.Misc
 
 			foreach ( var account in eligibleAccounts )
 			{
-				int accountInactivityDays = (int) ( DateTime.Now - account.LastLogin ).TotalDays;
+				int accountInactivityDays = (int) ( DateTime.UtcNow - account.LastLogin ).TotalDays;
 				int accountRemainingDays = accountDecayPeriodDays - accountInactivityDays;
 
 				if ( accountRemainingDays <= 0 )
@@ -49,7 +49,7 @@ namespace Server.Misc
 		private static void Freeze( this Account account )
 		{
 			account.Banned = true;
-			account.SetTag( "InactiveSince", DateTime.Now.ToString() );
+			account.SetTag( "InactiveSince", DateTime.UtcNow.ToString() );
 		}
 
 		private static void SendCleanupRemainderEmail( this Account account )

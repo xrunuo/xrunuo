@@ -31,7 +31,7 @@ namespace Server.Items
 				// That must be in your pack for you to use it.
 				pm.SendLocalizedMessage( 1042001 );
 			}
-			else if ( DateTime.Now - pm.LastForgedPardonUse < TimeSpan.FromDays( 1.0 ) )
+			else if ( DateTime.UtcNow - pm.LastForgedPardonUse < TimeSpan.FromDays( 1.0 ) )
 			{
 				// You must wait 24 hours before using another forged pardon.
 				pm.SendLocalizedMessage( 1116587 );
@@ -46,9 +46,9 @@ namespace Server.Items
 				// You are not known for having commited any murders.
 				pm.SendLocalizedMessage( 1116207 );
 			}
-			else if ( DateTime.Now - m_LastUsed > TimeSpan.FromSeconds( 15.0 ) )
+			else if ( DateTime.UtcNow - m_LastUsed > TimeSpan.FromSeconds( 15.0 ) )
 			{
-				m_LastUsed = DateTime.Now;
+				m_LastUsed = DateTime.UtcNow;
 
 				// Using this pardon again will remove one murder count from your character and consume the pardon.
 				pm.SendLocalizedMessage( 1116235 );
@@ -56,7 +56,7 @@ namespace Server.Items
 			else
 			{
 				pm.Kills--;
-				pm.LastForgedPardonUse = DateTime.Now;
+				pm.LastForgedPardonUse = DateTime.UtcNow;
 
 				// Your murder count has been successfully updated.
 				pm.SendLocalizedMessage( 1116208 );

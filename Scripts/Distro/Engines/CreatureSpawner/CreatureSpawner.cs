@@ -332,7 +332,7 @@ namespace Server.Mobiles
 
 				m_GroupRespawnTimer = Timer.DelayCall( delay, GroupRespawn );
 
-				m_NextGroupRespawn = DateTime.Now + delay;
+				m_NextGroupRespawn = DateTime.UtcNow + delay;
 			}
 
 			InvalidateProperties();
@@ -587,7 +587,7 @@ namespace Server.Mobiles
 
 					TimeSpan respawnDelay = GetRespawnDelay();
 
-					m_NextSpawn = DateTime.Now + respawnDelay;
+					m_NextSpawn = DateTime.UtcNow + respawnDelay;
 
 					m_Timer = Timer.DelayCall( respawnDelay, Respawn );
 					m_Timer.Start();
@@ -668,7 +668,7 @@ namespace Server.Mobiles
 					case SpawnState.Respawning:
 						m_NextSpawn = reader.ReadDateTime();
 
-						TimeSpan delay = m_NextSpawn - DateTime.Now;
+						TimeSpan delay = m_NextSpawn - DateTime.UtcNow;
 
 						if ( delay.TotalMilliseconds < 0 )
 							delay = TimeSpan.Zero;
@@ -730,7 +730,7 @@ namespace Server.Mobiles
 
 						if ( Group )
 						{
-							TimeSpan delay = reader.ReadDateTime() - DateTime.Now;
+							TimeSpan delay = reader.ReadDateTime() - DateTime.UtcNow;
 
 							if ( delay.TotalMilliseconds < 0 )
 								delay = TimeSpan.Zero;

@@ -36,7 +36,7 @@ namespace Server.Items
 				}
 				else
 				{
-					if ( pm.SacredQuestNextChance > DateTime.Now )
+					if ( pm.SacredQuestNextChance > DateTime.UtcNow )
 					{
 						// You need more time to contemplate the Book of Circles before trying again.
 						PublicOverheadMessage( MessageType.Regular, 0x47E, 1112685 );

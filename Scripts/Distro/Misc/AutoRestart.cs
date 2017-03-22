@@ -42,7 +42,7 @@ namespace Server.Misc
 			{
 				Enabled = true;
 
-				if ( m_RestartTime < DateTime.Now )
+				if ( m_RestartTime < DateTime.UtcNow )
 					m_RestartTime += TimeSpan.FromDays( 1.0 );
 
 				e.Mobile.SendMessage( "You have enabled the server auto restart." );
@@ -61,7 +61,7 @@ namespace Server.Misc
 			{
 				e.Mobile.SendMessage( "You have initiated server shutdown." );
 				Enabled = true;
-				m_RestartTime = DateTime.Now;
+				m_RestartTime = DateTime.UtcNow;
 			}
 		}
 
@@ -69,9 +69,9 @@ namespace Server.Misc
 			: base( TimeSpan.FromSeconds( 1.0 ), TimeSpan.FromSeconds( 1.0 ) )
 		{
 
-			m_RestartTime = DateTime.Now.Date + RestartTime;
+			m_RestartTime = DateTime.UtcNow.Date + RestartTime;
 
-			if ( m_RestartTime < DateTime.Now )
+			if ( m_RestartTime < DateTime.UtcNow )
 				m_RestartTime += TimeSpan.FromDays( 1.0 );
 		}
 
@@ -102,7 +102,7 @@ namespace Server.Misc
 			if ( m_Restarting || !Enabled )
 				return;
 
-			if ( DateTime.Now < m_RestartTime )
+			if ( DateTime.UtcNow < m_RestartTime )
 				return;
 
 			if ( WarningDelay > TimeSpan.Zero )
@@ -128,7 +128,7 @@ namespace Server.Misc
 				string saves = Path.Combine( Environment.BaseDirectory, "Saves" );
 
 				if ( Directory.Exists( saves ) )
-					Directory.Move( saves, Path.Combine( root, String.Format( "Saves_{0}-{1}-{2}", DateTime.Now.Day.ToString(), DateTime.Now.Month.ToString(), DateTime.Now.Year.ToString() ) ) );
+					Directory.Move( saves, Path.Combine( root, String.Format( "Saves_{0}-{1}-{2}", DateTime.UtcNow.Day.ToString(), DateTime.UtcNow.Month.ToString(), DateTime.UtcNow.Year.ToString() ) ) );
 			}
 			catch
 			{

@@ -7,7 +7,7 @@ namespace Server.Mobiles
 	[CorpseName( "a cu sidhe corpse" )]
 	public class CuSidhe : BaseMount
 	{
-		private DateTime m_NextHeal = DateTime.Now;
+		private DateTime m_NextHeal = DateTime.UtcNow;
 
 		public override WeaponAbility GetWeaponAbility()
 		{
@@ -119,14 +119,14 @@ namespace Server.Mobiles
 		{
 			base.OnThink();
 
-			if ( DateTime.Now > m_NextHeal )
+			if ( DateTime.UtcNow > m_NextHeal )
 			{
 				if ( Controlled && ControlMaster != null )
 					HealMaster();
 				else if ( Hits < HitsMax )
 					HealSelf();
 
-				m_NextHeal = DateTime.Now + TimeSpan.FromSeconds( 10.0 );
+				m_NextHeal = DateTime.UtcNow + TimeSpan.FromSeconds( 10.0 );
 			}
 		}
 

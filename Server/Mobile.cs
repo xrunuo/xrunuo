@@ -110,7 +110,7 @@ namespace Server
 			if ( m_Duration == TimeSpan.Zero )
 				return false;
 
-			return ( DateTime.Now - m_Added ) >= m_Duration;
+			return ( DateTime.UtcNow - m_Added ) >= m_Duration;
 		}
 
 		public StatMod( StatType type, string name, int offset )
@@ -124,7 +124,7 @@ namespace Server
 			m_Name = string.Intern( name );
 			m_Offset = offset;
 			m_Duration = duration;
-			m_Added = DateTime.Now;
+			m_Added = DateTime.UtcNow;
 		}
 	}
 
@@ -155,7 +155,7 @@ namespace Server
 		public Mobile Damager { get { return m_Damager; } }
 		public int DamageGiven { get { return m_DamageGiven; } set { m_DamageGiven = value; } }
 		public DateTime LastDamage { get { return m_LastDamage; } set { m_LastDamage = value; } }
-		public bool HasExpired { get { return ( DateTime.Now > ( m_LastDamage + m_ExpireDelay ) ); } }
+		public bool HasExpired { get { return ( DateTime.UtcNow > ( m_LastDamage + m_ExpireDelay ) ); } }
 		public List<DamageEntry> Responsible { get { return m_Responsible; } set { m_Responsible = value; } }
 
 		private static TimeSpan m_ExpireDelay = TimeSpan.FromMinutes( 2.0 );
@@ -387,7 +387,7 @@ namespace Server
 
 			public bool Expired()
 			{
-				bool v = ( DateTime.Now >= m_End );
+				bool v = ( DateTime.UtcNow >= m_End );
 
 				if ( v )
 					m_InstancePool.Enqueue( this );
@@ -989,7 +989,7 @@ namespace Server
 			if ( m_Warmode == value )
 				return;
 
-			DateTime now = DateTime.Now, next = m_NextWarmodeChange;
+			DateTime now = DateTime.UtcNow, next = m_NextWarmodeChange;
 
 			if ( now > next || m_WarmodeChanges == 0 )
 			{
@@ -1478,20 +1478,20 @@ namespace Server
 
 		public virtual void SendSkillMessage()
 		{
-			if ( DateTime.Now < NextActionMessage )
+			if ( DateTime.UtcNow < NextActionMessage )
 				return;
 
-			NextActionMessage = DateTime.Now + ActionMessageDelay;
+			NextActionMessage = DateTime.UtcNow + ActionMessageDelay;
 
 			SendLocalizedMessage( 500118 ); // You must wait a few moments to use another skill.
 		}
 
 		public virtual void SendActionMessage()
 		{
-			if ( DateTime.Now < NextActionMessage )
+			if ( DateTime.UtcNow < NextActionMessage )
 				return;
 
-			NextActionMessage = DateTime.Now + ActionMessageDelay;
+			NextActionMessage = DateTime.UtcNow + ActionMessageDelay;
 
 			SendLocalizedMessage( 500119 ); // You must wait to perform another action.
 		}
@@ -2023,7 +2023,7 @@ namespace Server
 
 			protected override void OnTick()
 			{
-				if ( DateTime.Now > m_Mobile.NextCombatTime )
+				if ( DateTime.UtcNow > m_Mobile.NextCombatTime )
 				{
 					Mobile combatant = m_Mobile.Combatant;
 
@@ -2043,7 +2043,7 @@ namespace Server
 						weapon.OnBeforeSwing( m_Mobile, combatant );
 
 						m_Mobile.RevealingAction();
-						m_Mobile.NextCombatTime = DateTime.Now + weapon.OnSwing( m_Mobile, combatant );
+						m_Mobile.NextCombatTime = DateTime.UtcNow + weapon.OnSwing( m_Mobile, combatant );
 					}
 				}
 			}
@@ -2369,7 +2369,7 @@ namespace Server
 			if ( m_MoveRecords != null && m_MoveRecords.Count > 0 )
 				m_MoveRecords.Clear();
 
-			m_EndQueue = DateTime.Now;
+			m_EndQueue = DateTime.UtcNow;
 		}
 
 		public virtual bool CheckMovement( Direction d, out int newZ )
@@ -2562,7 +2562,7 @@ namespace Server
 			{
 				for ( int i = 0; i < m_StuckMenuUses.Length; ++i )
 				{
-					if ( ( DateTime.Now - m_StuckMenuUses[i] ) > TimeSpan.FromDays( 1.0 ) )
+					if ( ( DateTime.UtcNow - m_StuckMenuUses[i] ) > TimeSpan.FromDays( 1.0 ) )
 						return true;
 				}
 
@@ -2577,9 +2577,9 @@ namespace Server
 
 			for ( int i = 0; i < m_StuckMenuUses.Length; ++i )
 			{
-				if ( ( DateTime.Now - m_StuckMenuUses[i] ) > TimeSpan.FromDays( 1.0 ) )
+				if ( ( DateTime.UtcNow - m_StuckMenuUses[i] ) > TimeSpan.FromDays( 1.0 ) )
 				{
-					m_StuckMenuUses[i] = DateTime.Now;
+					m_StuckMenuUses[i] = DateTime.UtcNow;
 					return;
 				}
 			}
@@ -3506,7 +3506,7 @@ namespace Server
 				de = new DamageEntry( from );
 
 			de.DamageGiven += amount;
-			de.LastDamage = DateTime.Now;
+			de.LastDamage = DateTime.UtcNow;
 
 			m_DamageEntries.Remove( de );
 			m_DamageEntries.Add( de );
@@ -3537,7 +3537,7 @@ namespace Server
 					list.Add( resp = new DamageEntry( master ) );
 
 				resp.DamageGiven += amount;
-				resp.LastDamage = DateTime.Now;
+				resp.LastDamage = DateTime.UtcNow;
 			}
 
 			return de;
@@ -7487,7 +7487,7 @@ namespace Server
 			m_AutoPageNotify = true;
 			m_Virtues = new VirtueInfo();
 			m_Stabled = new List<Mobile>( 1 );
-			m_CreationTime = DateTime.Now;
+			m_CreationTime = DateTime.UtcNow;
 		}
 
 		private static Queue<Mobile> m_DeltaQueue = new Queue<Mobile>();
@@ -8729,14 +8729,14 @@ namespace Server
 						if ( m_MoveRecords.Count > 0 )
 							end = m_EndQueue + delay;
 						else
-							end = DateTime.Now + delay;
+							end = DateTime.UtcNow + delay;
 
 						m_MoveRecords.Enqueue( MovementRecord.NewInstance( end ) );
 
 						m_EndQueue = end;
 					}
 
-					m_LastMoveTime = DateTime.Now;
+					m_LastMoveTime = DateTime.UtcNow;
 					newLocation = new Point3D( x, y, newZ );
 				}
 				else
@@ -8904,7 +8904,7 @@ namespace Server
 			Mobile from = this;
 			NetState state = m_NetState;
 
-			if ( from.AccessLevel >= AccessLevel.GameMaster || DateTime.Now >= from.NextActionTime )
+			if ( from.AccessLevel >= AccessLevel.GameMaster || DateTime.UtcNow >= from.NextActionTime )
 			{
 				if ( from.CheckAlive() )
 				{
@@ -8979,7 +8979,7 @@ namespace Server
 
 							from.Holding = item;
 
-							from.NextActionTime = DateTime.Now + TimeSpan.FromSeconds( 0.5 );
+							from.NextActionTime = DateTime.UtcNow + TimeSpan.FromSeconds( 0.5 );
 
 							Point3D fixLoc = item.Location;
 							Map fixMap = item.Map;

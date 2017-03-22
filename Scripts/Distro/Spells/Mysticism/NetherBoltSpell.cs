@@ -33,7 +33,7 @@ namespace Server.Spells.Mysticism
 		{
 			var pm = Caster as PlayerMobile;
 
-			if ( pm != null && DateTime.Now < ( pm.LastArrow + DamageDelay ) )
+			if ( pm != null && DateTime.UtcNow < ( pm.LastArrow + DamageDelay ) )
 			{
 				DoFizzle();
 			}
@@ -51,7 +51,7 @@ namespace Server.Spells.Mysticism
 				Caster.PlaySound( 0x211 );
 
 				if ( pm != null )
-					pm.LastArrow = DateTime.Now;
+					pm.LastArrow = DateTime.UtcNow;
 
 				Timer.DelayCall( DamageDelay, delegate
 				{

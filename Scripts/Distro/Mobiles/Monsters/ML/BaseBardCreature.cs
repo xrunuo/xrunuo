@@ -30,7 +30,7 @@ namespace Server.Mobiles
 
 		public override void OnThink()
 		{
-			if ( m_NextAbilityTime < DateTime.Now )
+			if ( m_NextAbilityTime < DateTime.UtcNow )
 			{
 				if ( Combatant != null && !BardPacified )
 				{
@@ -41,7 +41,7 @@ namespace Server.Mobiles
 					else if ( UsesProvocation )
 						DoProvocation();
 
-					m_NextAbilityTime = DateTime.Now + TimeSpan.FromSeconds( 5.0 );
+					m_NextAbilityTime = DateTime.UtcNow + TimeSpan.FromSeconds( 5.0 );
 				}
 			}
 
@@ -172,7 +172,7 @@ namespace Server.Mobiles
 			Mobile from = info.m_From;
 			Mobile targ = info.m_Creature;
 
-			if ( DateTime.Now >= info.m_EndTime || targ.Deleted || from.Map != targ.Map || targ.GetDistanceToSqrt( from ) > 16 )
+			if ( DateTime.UtcNow >= info.m_EndTime || targ.Deleted || from.Map != targ.Map || targ.GetDistanceToSqrt( from ) > 16 )
 			{
 				if ( info.m_Timer != null )
 					info.m_Timer.Stop();
@@ -249,7 +249,7 @@ namespace Server.Mobiles
 
 					BaseCreature bc = (BaseCreature) Combatant;
 
-					bc.Pacify( this, DateTime.Now + TimeSpan.FromSeconds( seconds ) );
+					bc.Pacify( this, DateTime.UtcNow + TimeSpan.FromSeconds( seconds ) );
 				}
 				else
 				{

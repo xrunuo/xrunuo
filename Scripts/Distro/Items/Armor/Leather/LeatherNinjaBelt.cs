@@ -244,7 +244,7 @@ namespace Server.Items
 						}
 
 						// Throwing a shuriken restarts you weapon's swing delay
-						from.NextCombatTime = DateTime.Now + from.Weapon.GetDelay( from );
+						from.NextCombatTime = DateTime.UtcNow + from.Weapon.GetDelay( from );
 
 						m_belt.UsesRemaining--;
 					}

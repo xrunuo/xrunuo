@@ -74,7 +74,7 @@ namespace Server.Persistence
 				{
 					IVendor vendor = m as IVendor;
 
-					if ( ( vendor.LastRestock + vendor.RestockDelay ) < DateTime.Now )
+					if ( ( vendor.LastRestock + vendor.RestockDelay ) < DateTime.UtcNow )
 						m_RestockQueue.Enqueue( vendor );
 				}
 
@@ -102,7 +102,7 @@ namespace Server.Persistence
 			idx.Write( (int) items.Count );
 			foreach ( Item item in items.Values )
 			{
-				if ( item.Decays && item.Parent == null && item.Map != Map.Internal && ( item.LastMoved + item.DecayTime ) <= DateTime.Now )
+				if ( item.Decays && item.Parent == null && item.Map != Map.Internal && ( item.LastMoved + item.DecayTime ) <= DateTime.UtcNow )
 					m_DecayQueue.Enqueue( item );
 
 				long start = bin.Position;
@@ -181,7 +181,7 @@ namespace Server.Persistence
 			{
 				IVendor vendor = m_RestockQueue.Dequeue();
 				vendor.Restock();
-				vendor.LastRestock = DateTime.Now;
+				vendor.LastRestock = DateTime.UtcNow;
 			}
 		}
 	}

@@ -2180,7 +2180,7 @@ namespace Server.Network
 		public CurrentTime()
 			: base( 0x5B, 4 )
 		{
-			DateTime now = DateTime.Now;
+			DateTime now = DateTime.UtcNow;
 
 			m_Stream.Write( (byte) now.Hour );
 			m_Stream.Write( (byte) now.Minute );

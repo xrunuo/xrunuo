@@ -879,7 +879,7 @@ namespace Server.Mobiles
 					m_Mobile.FocusMob = null;
 					m_Mobile.Combatant = null;
 					m_Mobile.CurrentSpeed = m_Mobile.ActiveSpeed;
-					m_NextStopGuard = DateTime.Now + TimeSpan.FromSeconds( 10 );
+					m_NextStopGuard = DateTime.UtcNow + TimeSpan.FromSeconds( 10 );
 					m_Mobile.CurrentSpeed = m_Mobile.ActiveSpeed;
 					break;
 
@@ -980,7 +980,7 @@ namespace Server.Mobiles
 
 		public virtual bool DoActionGuard()
 		{
-			if ( DateTime.Now < m_NextStopGuard )
+			if ( DateTime.UtcNow < m_NextStopGuard )
 			{
 				m_Mobile.DebugSay( "I am on guard" );
 			}
@@ -1299,9 +1299,9 @@ namespace Server.Mobiles
 						return true;
 					}
 				}
-				else if ( DateTime.Now > gatherer.NextGatherAttempt )
+				else if ( DateTime.UtcNow > gatherer.NextGatherAttempt )
 				{
-					gatherer.NextGatherAttempt = DateTime.Now + TimeSpan.FromSeconds( 15.0 );
+					gatherer.NextGatherAttempt = DateTime.UtcNow + TimeSpan.FromSeconds( 15.0 );
 
 					m_Mobile.DebugSay( "Looking for partners to gather with" );
 
@@ -1933,7 +1933,7 @@ namespace Server.Mobiles
 
 		public virtual bool DoBardPacified()
 		{
-			if ( DateTime.Now < m_Mobile.BardEndTime )
+			if ( DateTime.UtcNow < m_Mobile.BardEndTime )
 			{
 				m_Mobile.DebugSay( "I am pacified, I wait" );
 				m_Mobile.Combatant = null;
@@ -1951,7 +1951,7 @@ namespace Server.Mobiles
 
 		public virtual bool DoBardProvoked()
 		{
-			if ( DateTime.Now >= m_Mobile.BardEndTime && ( m_Mobile.BardMaster == null || m_Mobile.BardMaster.Deleted || m_Mobile.BardMaster.Map != m_Mobile.Map || m_Mobile.GetDistanceToSqrt( m_Mobile.BardMaster ) > m_Mobile.RangePerception ) )
+			if ( DateTime.UtcNow >= m_Mobile.BardEndTime && ( m_Mobile.BardMaster == null || m_Mobile.BardMaster.Deleted || m_Mobile.BardMaster.Map != m_Mobile.Map || m_Mobile.GetDistanceToSqrt( m_Mobile.BardMaster ) > m_Mobile.RangePerception ) )
 			{
 				m_Mobile.DebugSay( "I have lost my provoker" );
 				m_Mobile.BardProvoked = false;
@@ -2093,7 +2093,7 @@ namespace Server.Mobiles
 
 		public virtual bool CheckMove()
 		{
-			return ( DateTime.Now >= m_NextMove );
+			return ( DateTime.UtcNow >= m_NextMove );
 		}
 
 		public virtual bool DoMove( Direction d )
@@ -2124,8 +2124,8 @@ namespace Server.Mobiles
 
 			m_NextMove += delay;
 
-			if ( m_NextMove < DateTime.Now )
-				m_NextMove = DateTime.Now;
+			if ( m_NextMove < DateTime.UtcNow )
+				m_NextMove = DateTime.UtcNow;
 
 			m_Mobile.Pushing = false;
 
@@ -2545,13 +2545,13 @@ namespace Server.Mobiles
 				return false;
 			}
 
-			if ( m_Mobile.NextReacquireTime > DateTime.Now )
+			if ( m_Mobile.NextReacquireTime > DateTime.UtcNow )
 			{
 				m_Mobile.FocusMob = null;
 				return false;
 			}
 
-			m_Mobile.NextReacquireTime = DateTime.Now + m_Mobile.ReacquireDelay;
+			m_Mobile.NextReacquireTime = DateTime.UtcNow + m_Mobile.ReacquireDelay;
 
 			m_Mobile.DebugSay( "Acquiring..." );
 
@@ -2753,7 +2753,7 @@ namespace Server.Mobiles
 			{
 				m_Owner = owner;
 
-				m_Owner.m_NextDetectHidden = DateTime.Now;
+				m_Owner.m_NextDetectHidden = DateTime.UtcNow;
 			}
 
 			protected override void OnTick()
@@ -2817,7 +2817,7 @@ namespace Server.Mobiles
 					}
 				}
 
-				if ( m_Owner.CanDetectHidden && DateTime.Now > m_Owner.m_NextDetectHidden )
+				if ( m_Owner.CanDetectHidden && DateTime.UtcNow > m_Owner.m_NextDetectHidden )
 				{
 					m_Owner.DetectHidden();
 
@@ -2830,7 +2830,7 @@ namespace Server.Mobiles
 					int min = delay * ( 9 / 10 ); // 13s at 1000 int, 33s at 400 int, 54s at <250 int
 					int max = delay * ( 10 / 9 ); // 16s at 1000 int, 41s at 400 int, 66s at <250 int
 
-					m_Owner.m_NextDetectHidden = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( min, max ) );
+					m_Owner.m_NextDetectHidden = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( min, max ) );
 				}
 			}
 		}

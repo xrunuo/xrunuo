@@ -479,7 +479,7 @@ namespace Server.Items
 		{
 			base.OnAfterEquip( from );
 
-			from.NextCombatTime = DateTime.Now + GetDelay( from );
+			from.NextCombatTime = DateTime.UtcNow + GetDelay( from );
 		}
 
 		public override void OnAdded( object parent )
@@ -523,7 +523,7 @@ namespace Server.Items
 				m.RemoveStatMod( modName + "Int" );
 
 				if ( weapon != null )
-					m.NextCombatTime = DateTime.Now + weapon.GetDelay( m );
+					m.NextCombatTime = DateTime.UtcNow + weapon.GetDelay( m );
 
 				if ( UseSkillMod && m_SkillMod != null )
 				{

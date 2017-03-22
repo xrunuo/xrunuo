@@ -480,7 +480,7 @@ namespace Server.Items
 			}
 			else if ( m_ChargeTimeLeft > 0 )
 			{
-				int tmptime = ( m_ChargeTimeLeft2 - ( DateTime.Now.Second - m_ChargeTimeLeft3.Second ) + 1 );
+				int tmptime = ( m_ChargeTimeLeft2 - ( DateTime.UtcNow.Second - m_ChargeTimeLeft3.Second ) + 1 );
 
 				if ( tmptime > ( m_ChargeTimeLeft2 + 1 ) )
 					tmptime -= 60;
@@ -520,7 +520,7 @@ namespace Server.Items
 						ChargeTimeLeft = 1800;
 						m_ChargeTimer = new ChargeTimeLeftTimer( this );
 						m_ChargeTimer.Start();
-						m_ChargeTimeLeft3 = DateTime.Now;
+						m_ChargeTimeLeft3 = DateTime.UtcNow;
 					}
 				}
 				else if ( m_TalismanType == TalismanType.SummonRandom )
@@ -538,7 +538,7 @@ namespace Server.Items
 						ChargeTimeLeft = 1800;
 						m_ChargeTimer = new ChargeTimeLeftTimer( this );
 						m_ChargeTimer.Start();
-						m_ChargeTimeLeft3 = DateTime.Now;
+						m_ChargeTimeLeft3 = DateTime.UtcNow;
 					}
 				}
 				else
@@ -576,7 +576,7 @@ namespace Server.Items
 
 					m_ChargeTimer = new ChargeTimeLeftTimer( this );
 					m_ChargeTimer.Start();
-					m_ChargeTimeLeft3 = DateTime.Now;
+					m_ChargeTimeLeft3 = DateTime.UtcNow;
 				}
 			}
 		}
@@ -674,7 +674,7 @@ namespace Server.Items
 				ChargeTimeLeft = 1200;
 				m_ChargeTimer = new ChargeTimeLeftTimer( this );
 				m_ChargeTimer.Start();
-				m_ChargeTimeLeft3 = DateTime.Now;
+				m_ChargeTimeLeft3 = DateTime.UtcNow;
 
 			}
 			else if ( m_TalismanType != 0 )
@@ -698,7 +698,7 @@ namespace Server.Items
 					ChargeTimeLeft2 = m_ChargeTimeLeft;
 					m_ChargeTimer = new ChargeTimeLeftTimer( this );
 					m_ChargeTimer.Start();
-					m_ChargeTimeLeft3 = DateTime.Now;
+					m_ChargeTimeLeft3 = DateTime.UtcNow;
 				}
 
 				//------ FIN Charged Time Left ---------
@@ -1101,7 +1101,7 @@ namespace Server.Items
 			protected override void OnTick()
 			{
 				m_talism.ChargeTimeLeft2 -= 10;
-				m_talism.m_ChargeTimeLeft3 = DateTime.Now;
+				m_talism.m_ChargeTimeLeft3 = DateTime.UtcNow;
 				if ( m_talism.ChargeTimeLeft2 <= 0 )
 				{
 					m_talism.ChargeTimeLeft = 0;

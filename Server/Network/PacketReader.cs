@@ -65,7 +65,7 @@ namespace Server.Network
 					try
 					{
 						using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "neterr.log" ) ) )
-							op.WriteLine( "{0}\tInstance pool contains reader", DateTime.Now );
+							op.WriteLine( "{0}\tInstance pool contains reader", DateTime.UtcNow );
 					}
 					catch
 					{

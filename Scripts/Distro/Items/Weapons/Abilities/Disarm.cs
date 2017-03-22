@@ -31,9 +31,9 @@ namespace Server.Items
 			m_Table[m] = t = Timer.DelayCall( duration, new TimerStateCallback( Expire_Callback ), m );
 
 			if ( m is PlayerMobile )
-				( (PlayerMobile) m ).NextDisarm = DateTime.Now + duration;
+				( (PlayerMobile) m ).NextDisarm = DateTime.UtcNow + duration;
 			else if ( m is BaseCreature )
-				( (BaseCreature) m ).NextDisarm = DateTime.Now + duration;
+				( (BaseCreature) m ).NextDisarm = DateTime.UtcNow + duration;
 		}
 
 		public static bool UnderEffect( Mobile m )
@@ -57,7 +57,7 @@ namespace Server.Items
 			if ( m is BaseCreature )
 				date = ( (BaseCreature) m ).NextDisarm;
 
-			if ( date < DateTime.Now )
+			if ( date < DateTime.UtcNow )
 				return false;
 
 			return true;

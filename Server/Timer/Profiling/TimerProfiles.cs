@@ -43,7 +43,7 @@ namespace Server
 
 		public static void DumpInfo( StreamWriter sw )
 		{
-			sw.WriteLine( "# Dump on {0:f}", DateTime.Now );
+			sw.WriteLine( "# Dump on {0:f}", DateTime.UtcNow );
 			sw.WriteLine( "# Core profiling for " + Environment.ProfileTime );
 			sw.WriteLine();
 

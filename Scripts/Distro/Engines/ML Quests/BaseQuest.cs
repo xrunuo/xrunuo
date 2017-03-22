@@ -190,7 +190,7 @@ namespace Server.Engines.Quests
 				if ( escort.SetControlMaster( m_Owner ) )
 				{
 					escort.Quest = this;
-					escort.LastSeenEscorter = DateTime.Now;
+					escort.LastSeenEscorter = DateTime.UtcNow;
 					escort.StartFollow();
 					escort.AddHash( Owner );
 
@@ -201,7 +201,7 @@ namespace Server.Engines.Quests
 					else
 						escort.Say( 1042806, "destination" ); // Lead on! Payment will be made when we arrive at ~1_DESTINATION~!
 
-					m_Owner.LastEscortTime = DateTime.Now;
+					m_Owner.LastEscortTime = DateTime.UtcNow;
 				}
 			}
 

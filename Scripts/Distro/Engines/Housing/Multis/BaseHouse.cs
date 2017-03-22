@@ -50,7 +50,7 @@ namespace Server.Engines.Housing.Multis
 			m_CurrentStage = level;
 
 			if ( DynamicDecay.Decays( level ) )
-				m_NextDecayStage = DateTime.Now + DynamicDecay.GetRandomDuration( level );
+				m_NextDecayStage = DateTime.UtcNow + DynamicDecay.GetRandomDuration( level );
 			else
 				m_NextDecayStage = DateTime.MinValue;
 		}
@@ -92,7 +92,7 @@ namespace Server.Engines.Housing.Multis
 				if ( IsGameMaster( acct ) )
 					return DecayType.Ageless;
 
-				if ( ( acct.LastLogin + TimeSpan.FromDays( 90.0 ) ) < DateTime.Now )
+				if ( ( acct.LastLogin + TimeSpan.FromDays( 90.0 ) ) < DateTime.UtcNow )
 					return DecayType.ManualRefresh;
 
 				if ( this == GetNewsestHouse( acct ) )
@@ -168,7 +168,7 @@ namespace Server.Engines.Housing.Multis
 
 		private DecayLevel GetOldDecayLevel()
 		{
-			TimeSpan timeAfterRefresh = DateTime.Now - m_LastRefreshed;
+			TimeSpan timeAfterRefresh = DateTime.UtcNow - m_LastRefreshed;
 			int percent = (int) ( ( timeAfterRefresh.Ticks * 1000 ) / DecayPeriod.Ticks );
 
 			if ( percent >= 1000 ) // 100.0%
@@ -194,7 +194,7 @@ namespace Server.Engines.Housing.Multis
 
 			DecayLevel oldLevel = this.DecayLevel;
 
-			m_LastRefreshed = DateTime.Now;
+			m_LastRefreshed = DateTime.UtcNow;
 
 			ResetDynamicDecay();
 
@@ -215,14 +215,14 @@ namespace Server.Engines.Housing.Multis
 			{
 				ResetDynamicDecay();
 
-				m_LastRefreshed = DateTime.Now;
+				m_LastRefreshed = DateTime.UtcNow;
 				result = DecayLevel.Ageless;
 			}
 			else
 			{
 				DecayLevel stage = m_CurrentStage;
 
-				if ( stage == DecayLevel.Ageless || ( DynamicDecay.Decays( stage ) && m_NextDecayStage <= DateTime.Now ) )
+				if ( stage == DecayLevel.Ageless || ( DynamicDecay.Decays( stage ) && m_NextDecayStage <= DateTime.UtcNow ) )
 					SetDynamicDecay( ++stage );
 
 				if ( stage == DecayLevel.Collapsed && ( HasRentedVendors || VendorInventories.Count > 0 ) )
@@ -1136,9 +1136,9 @@ namespace Server.Engines.Housing.Multis
 		{
 			m_AllHouses.Add( this );
 
-			m_LastRefreshed = DateTime.Now;
+			m_LastRefreshed = DateTime.UtcNow;
 
-			m_BuiltOn = DateTime.Now;
+			m_BuiltOn = DateTime.UtcNow;
 			m_LastTraded = DateTime.MinValue;
 
 			m_Doors = new ArrayList();
@@ -2007,7 +2007,7 @@ namespace Server.Engines.Housing.Multis
 				Guild attackerGuild = m.Guild as Guild;
 				Guild defenderGuild = info.Defender.Guild as Guild;
 
-				if ( info.Defender.IsPlayer && info.Defender.Alive && ( DateTime.Now - info.LastCombatTime ) < HouseRegion.CombatHeatDelay && ( attackerGuild == null || defenderGuild == null || defenderGuild != attackerGuild && !defenderGuild.IsEnemy( attackerGuild ) ) )
+				if ( info.Defender.IsPlayer && info.Defender.Alive && ( DateTime.UtcNow - info.LastCombatTime ) < HouseRegion.CombatHeatDelay && ( attackerGuild == null || defenderGuild == null || defenderGuild != attackerGuild && !defenderGuild.IsEnemy( attackerGuild ) ) )
 				{
 					return true;
 				}
@@ -2520,7 +2520,7 @@ namespace Server.Engines.Housing.Multis
 					{
 						Item child = children[j];
 
-						if ( child.Decays && !child.IsLockedDown && !child.IsSecure && ( child.LastMoved + child.DecayTime ) <= DateTime.Now )
+						if ( child.Decays && !child.IsLockedDown && !child.IsSecure && ( child.LastMoved + child.DecayTime ) <= DateTime.UtcNow )
 							Timer.DelayCall( TimeSpan.Zero, new TimerCallback( child.Delete ) );
 					}
 				}
@@ -2769,7 +2769,7 @@ namespace Server.Engines.Housing.Multis
 
 			if ( version < 11 )
 			{
-				m_LastRefreshed = DateTime.Now + TimeSpan.FromHours( 24 * Utility.RandomDouble() );
+				m_LastRefreshed = DateTime.UtcNow + TimeSpan.FromHours( 24 * Utility.RandomDouble() );
 			}
 
 			if ( !CheckDecay() )

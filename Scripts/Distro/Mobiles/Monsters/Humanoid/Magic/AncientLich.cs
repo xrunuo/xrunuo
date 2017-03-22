@@ -155,7 +155,7 @@ namespace Server.Mobiles
 				m_Minions.Add( minion );
 			}
 
-			m_NextReturnTime = DateTime.Now + TimeSpan.FromSeconds( m_ReturnTime );
+			m_NextReturnTime = DateTime.UtcNow + TimeSpan.FromSeconds( m_ReturnTime );
 		}
 
 		private void PoisonAttack()
@@ -170,7 +170,7 @@ namespace Server.Mobiles
 		{
 			if ( BodyMod != 0 )
 			{
-				if ( CountAliveMinions() == 0 || DateTime.Now > m_NextReturnTime )
+				if ( CountAliveMinions() == 0 || DateTime.UtcNow > m_NextReturnTime )
 				{
 					m_Minions.Clear();
 
@@ -187,7 +187,7 @@ namespace Server.Mobiles
 				return;
 			}
 
-			if ( DateTime.Now >= m_NextAbilityTime )
+			if ( DateTime.UtcNow >= m_NextAbilityTime )
 			{
 				if ( m_AbilityChance > Utility.RandomDouble() )
 				{
@@ -201,7 +201,7 @@ namespace Server.Mobiles
 					}
 				}
 
-				m_NextAbilityTime = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( m_MinTime, m_MaxTime ) );
+				m_NextAbilityTime = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( m_MinTime, m_MaxTime ) );
 			}
 
 			base.OnThink();

@@ -69,14 +69,14 @@ namespace Server.Mobiles
 		{
 			if ( !BardPacified )
 			{
-				if ( DateTime.Now >= m_NextAbilityTime )
+				if ( DateTime.UtcNow >= m_NextAbilityTime )
 				{
 					Mobile target = BaseAttackHelperSE.GetRandomAttacker( this, Kappa.AbilityRange );
 
 					if ( target != null )
 						BaseAttackHelperSE.LifeforceDrainAttack( this, target );
 
-					m_NextAbilityTime = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( m_MinTime, m_MaxTime ) );
+					m_NextAbilityTime = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( m_MinTime, m_MaxTime ) );
 				}
 			}
 

@@ -54,7 +54,7 @@ namespace Server.Mobiles
 			if ( 0.02 > Utility.RandomDouble() )
 				PackItem( new BlackthornWelcomeBook() );
 
-			m_NextAbilityTime = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( 5, 30 ) );
+			m_NextAbilityTime = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( 5, 30 ) );
 		}
 
 		#region Heritage
@@ -150,10 +150,10 @@ namespace Server.Mobiles
 		{
 			Mobile combatant = Combatant;
 
-			if ( DateTime.Now < m_NextAbilityTime || combatant == null || combatant.Deleted || combatant.Map != Map || !this.InRange( combatant, 3 ) || !CanBeHarmful( combatant ) || !this.InLOS( combatant ) )
+			if ( DateTime.UtcNow < m_NextAbilityTime || combatant == null || combatant.Deleted || combatant.Map != Map || !this.InRange( combatant, 3 ) || !CanBeHarmful( combatant ) || !this.InLOS( combatant ) )
 				return;
 
-			m_NextAbilityTime = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( 5, 30 ) );
+			m_NextAbilityTime = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( 5, 30 ) );
 
 			if ( Utility.RandomBool() )
 			{

@@ -68,7 +68,7 @@ namespace Server.Items
 					// "Ha! You missed!"
 					from.SendLocalizedMessage( 1062845 + Utility.Random( 3 ) );
 				}
-				else if ( Utility.RandomDouble() > .20 && ( from.Direction & Direction.Running ) != 0 && ( DateTime.Now - from.LastMoveTime ) < from.ComputeMovementSpeed( from.Direction ) )
+				else if ( Utility.RandomDouble() > .20 && ( from.Direction & Direction.Running ) != 0 && ( DateTime.UtcNow - from.LastMoveTime ) < from.ComputeMovementSpeed( from.Direction ) )
 				{
 					from.SendLocalizedMessage( 1063305 ); // Didn't your parents ever tell you not to run with scissors in your hand?!
 				}

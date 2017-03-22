@@ -22,7 +22,7 @@ namespace Server.Mobiles
 		{			
 			Name = "Elder Taellia";
 			
-			m_Spoken = DateTime.Now;
+			m_Spoken = DateTime.UtcNow;
 		}
 		
 		public Taellia( Serial serial ) : base( serial )
@@ -59,7 +59,7 @@ namespace Server.Mobiles
 					
 				int range = 5;
 
-				if ( range >= 0 && this.InRange( m, range ) && !this.InRange( oldLocation, range ) && DateTime.Now >= m_Spoken + TimeSpan.FromMinutes( 1 ) )
+				if ( range >= 0 && this.InRange( m, range ) && !this.InRange( oldLocation, range ) && DateTime.UtcNow >= m_Spoken + TimeSpan.FromMinutes( 1 ) )
 				{
 					/* Welcome Seeker.  Do you wish to embrace your elven heritage, casting 
 					aside your humanity, and accepting the responsibilities of a caretaker 
@@ -68,7 +68,7 @@ namespace Server.Mobiles
 					
 					Say( 1072800 );
 					
-					m_Spoken = DateTime.Now;
+					m_Spoken = DateTime.UtcNow;
 				}
 			}
 		}
@@ -86,7 +86,7 @@ namespace Server.Mobiles
 	
 			int version = reader.ReadInt();
 			
-			m_Spoken = DateTime.Now;
+			m_Spoken = DateTime.UtcNow;
 		}
 	}
 }

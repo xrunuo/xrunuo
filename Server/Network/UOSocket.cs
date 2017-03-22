@@ -117,7 +117,7 @@ namespace Server.Network
 			m_RecvBuffer = m_ReceiveBufferPool.AcquireBuffer();
 			m_SendQueue = new SendQueue();
 
-			m_NextCheckActivity = DateTime.Now + TimeSpan.FromMinutes( 0.5 );
+			m_NextCheckActivity = DateTime.UtcNow + TimeSpan.FromMinutes( 0.5 );
 
 			try
 			{
@@ -184,7 +184,7 @@ namespace Server.Network
 
 					if ( byteCount > 0 )
 					{
-						m_NextCheckActivity = DateTime.Now + TimeSpan.FromMinutes( 1.2 );
+						m_NextCheckActivity = DateTime.UtcNow + TimeSpan.FromMinutes( 1.2 );
 
 						byte[] buffer = m_RecvBuffer;
 
@@ -304,7 +304,7 @@ namespace Server.Network
 					return;
 				}
 
-				m_NextCheckActivity = DateTime.Now + TimeSpan.FromMinutes( 1.2 );
+				m_NextCheckActivity = DateTime.UtcNow + TimeSpan.FromMinutes( 1.2 );
 
 				if ( m_CoalesceSleep >= 0 )
 					Thread.Sleep( m_CoalesceSleep );
@@ -339,7 +339,7 @@ namespace Server.Network
 			if ( m_Socket == null )
 				return false;
 
-			if ( DateTime.Now < m_NextCheckActivity )
+			if ( DateTime.UtcNow < m_NextCheckActivity )
 				return true;
 
 			Console.WriteLine( "Client: {0}: Disconnecting due to inactivity...", this );
@@ -424,7 +424,7 @@ namespace Server.Network
 			{
 				using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "network-errors.log" ), true ) )
 				{
-					op.WriteLine( "# {0}", DateTime.Now );
+					op.WriteLine( "# {0}", DateTime.UtcNow );
 
 					op.WriteLine( ex );
 

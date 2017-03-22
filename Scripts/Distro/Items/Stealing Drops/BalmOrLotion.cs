@@ -88,7 +88,7 @@ namespace Server.Items
 
 				if ( context.Item is BalmOfStrength || context.Item is BalmOfSwiftness || context.Item is BalmOfSwiftness )
 				{
-					TimeSpan left = context.ExpireTimer.Next - DateTime.Now;
+					TimeSpan left = context.ExpireTimer.Next - DateTime.UtcNow;
 
 					context.ExpireTimer.Stop();
 					context.ExpireTimer = Timer.DelayCall( left + TimeSpan.FromHours( 1.0 ), new TimerStateCallback<Mobile>( context.Item.RemoveBuffCallback ), from );

@@ -783,11 +783,11 @@ namespace Server
 
 				if ( info.Callback != null )
 				{
-					if ( from.NextSkillTime <= DateTime.Now && from.Spell == null )
+					if ( from.NextSkillTime <= DateTime.UtcNow && from.Spell == null )
 					{
 						from.DisruptiveAction();
 
-						from.NextSkillTime = DateTime.Now + info.Callback( from );
+						from.NextSkillTime = DateTime.UtcNow + info.Callback( from );
 
 						return true;
 					}

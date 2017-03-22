@@ -55,7 +55,7 @@ namespace Server.Mobiles
 
         public override void OnDamage( int amount, Mobile from, bool willKill )
         {
-            if ( 0.25 > Utility.RandomDouble() && DateTime.Now > m_NextBodyChange )
+            if ( 0.25 > Utility.RandomDouble() && DateTime.UtcNow > m_NextBodyChange )
                 ChangeBody();
 
             base.OnDamage( amount, from, willKill );
@@ -155,7 +155,7 @@ namespace Server.Mobiles
                 {
                 }
 
-                m_NextBodyChange = DateTime.Now + TimeSpan.FromSeconds( 10.0 );
+                m_NextBodyChange = DateTime.UtcNow + TimeSpan.FromSeconds( 10.0 );
 
                 if ( m_ResetTimer != null )
                     m_ResetTimer.Stop();

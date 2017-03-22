@@ -94,7 +94,7 @@ namespace Server.Spells.Spellweaving
 
 				Damage = 15 + GetFocusLevel( caster );
 
-				m_End = DateTime.Now + duration;
+				m_End = DateTime.UtcNow + duration;
 
 				m_Timer = new InternalTimer( this, TimeSpan.FromSeconds( 0.5 ), caster.InLOS( this ), canFit );
 				m_Timer.Start();
@@ -170,7 +170,7 @@ namespace Server.Spells.Spellweaving
 					{
 						return;
 					}
-					else if ( DateTime.Now > m_Item.m_End )
+					else if ( DateTime.UtcNow > m_Item.m_End )
 					{
 						m_Item.Delete();
 						Stop();

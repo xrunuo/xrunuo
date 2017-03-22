@@ -88,13 +88,13 @@ namespace Server.Mobiles
 
 		public override void OnThink()
 		{
-			if ( DateTime.Now >= m_NextAbilityTime )
+			if ( DateTime.UtcNow >= m_NextAbilityTime )
 			{
 				Mobile target = BaseAttackHelperSE.GetRandomAttacker( this, KazeKemono.AbilityRange );
 
 				if ( target != null ) LowerResist( target );
 
-				m_NextAbilityTime = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( m_MinTime, m_MaxTime ) );
+				m_NextAbilityTime = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( m_MinTime, m_MaxTime ) );
 			}
 
 			base.OnThink();

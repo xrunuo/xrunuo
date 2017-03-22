@@ -42,7 +42,7 @@ namespace Server.Items
 			if ( m is BaseCreature )
 				date = ( (BaseCreature) m ).NextPBlow;
 
-			if ( date < DateTime.Now )
+			if ( date < DateTime.UtcNow )
 				return false;
 
 			return true;
@@ -63,9 +63,9 @@ namespace Server.Items
 			m_Table[m] = t = Timer.DelayCall( duration, new TimerStateCallback( Expire_Callback ), m );
 
 			if ( m is PlayerMobile )
-				( (PlayerMobile) m ).NextPBlow = DateTime.Now + duration;
+				( (PlayerMobile) m ).NextPBlow = DateTime.UtcNow + duration;
 			else if ( m is BaseCreature )
-				( (BaseCreature) m ).NextPBlow = DateTime.Now + duration;
+				( (BaseCreature) m ).NextPBlow = DateTime.UtcNow + duration;
 		}
 
 		public override void OnHit( Mobile attacker, Mobile defender, int damage )

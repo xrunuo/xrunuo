@@ -58,7 +58,7 @@ namespace Server.Mobiles
 
 				m_Mobile.Combatant = m_Mobile.FocusMob;
 				Action = ActionType.Combat;
-				m_NextCastTime = DateTime.Now;
+				m_NextCastTime = DateTime.UtcNow;
 			}
 			else if ( m_Mobile.Mana < m_Mobile.ManaMax )
 			{
@@ -98,7 +98,7 @@ namespace Server.Mobiles
 
 			if ( m_Mobile.Controlled )
 			{
-				if ( DateTime.Now < m_NextHealTime )
+				if ( DateTime.UtcNow < m_NextHealTime )
 					return null;
 			}
 
@@ -114,7 +114,7 @@ namespace Server.Mobiles
 			else
 				delay = Math.Sqrt( 600 - m_Mobile.Int );
 
-			m_NextHealTime = DateTime.Now + TimeSpan.FromSeconds( delay );
+			m_NextHealTime = DateTime.UtcNow + TimeSpan.FromSeconds( delay );
 
 			return spell;
 		}
@@ -537,7 +537,7 @@ namespace Server.Mobiles
 				}
 			}
 
-			if ( m_Mobile.Spell == null && DateTime.Now > m_NextCastTime && m_Mobile.InRange( c, 12 ) )
+			if ( m_Mobile.Spell == null && DateTime.UtcNow > m_NextCastTime && m_Mobile.InRange( c, 12 ) )
 			{
 				// We are ready to cast a spell
 
@@ -583,9 +583,9 @@ namespace Server.Mobiles
 				}
 
 				if ( m_Mobile.Mana < 20 )
-					m_NextCastTime = DateTime.Now + TimeSpan.FromSeconds( 10.0 ); // Let mana raise...
+					m_NextCastTime = DateTime.UtcNow + TimeSpan.FromSeconds( 10.0 ); // Let mana raise...
 				else
-					m_NextCastTime = DateTime.Now + delay;
+					m_NextCastTime = DateTime.UtcNow + delay;
 			}
 			else if ( m_Mobile.Spell == null || !m_Mobile.Spell.IsCasting )
 			{

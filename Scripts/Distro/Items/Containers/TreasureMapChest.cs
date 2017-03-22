@@ -62,7 +62,7 @@ namespace Server.Items
 		{
 			m_Owner = owner;
 			m_Level = level;
-			m_DeleteTime = DateTime.Now + TimeSpan.FromHours( 3.0 );
+			m_DeleteTime = DateTime.UtcNow + TimeSpan.FromHours( 3.0 );
 
 			m_Temporary = temporary;
 			m_Guardians = new List<Mobile>();
@@ -703,7 +703,7 @@ namespace Server.Items
 			private Item m_Item;
 
 			public DeleteTimer( Item item, DateTime time )
-				: base( time - DateTime.Now )
+				: base( time - DateTime.UtcNow )
 			{
 				m_Item = item;
 			}

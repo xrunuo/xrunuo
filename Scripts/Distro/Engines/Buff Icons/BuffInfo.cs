@@ -80,7 +80,7 @@ namespace Server.Engines.BuffIcons
 			: this( iconID, titleCliloc, secondaryCliloc )
 		{
 			m_TimeLength = length;
-			m_TimeStart = DateTime.Now;
+			m_TimeStart = DateTime.UtcNow;
 
 			m_Timer = Timer.DelayCall( length, new TimerStateCallback( RemoveBuffDelegate ), m );
 

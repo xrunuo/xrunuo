@@ -111,7 +111,7 @@ namespace Server.Items
 					int mins = Utility.RandomMinMax( this.MinRespawnMinutes, this.MaxRespawnMinutes );
 					TimeSpan delay = TimeSpan.FromMinutes( mins );
 
-					m_NextRespawnTime = DateTime.Now + delay;
+					m_NextRespawnTime = DateTime.UtcNow + delay;
 					m_RespawnTimer = Timer.DelayCall( delay, new TimerCallback( Respawn ) );
 				}
 			}
@@ -251,7 +251,7 @@ namespace Server.Items
 						{
 							m_NextRespawnTime = reader.ReadDeltaTime();
 
-							TimeSpan delay = m_NextRespawnTime - DateTime.Now;
+							TimeSpan delay = m_NextRespawnTime - DateTime.UtcNow;
 							m_RespawnTimer = Timer.DelayCall( delay > TimeSpan.Zero ? delay : TimeSpan.Zero, new TimerCallback( Respawn ) );
 						}
 						else

@@ -85,7 +85,7 @@ namespace Server.Mobiles
 		{
 			base.OnThink();
 
-			if ( Combatant != null && m_BarrierTimer == null && 0.1 > Utility.RandomDouble() && DateTime.Now > m_NextBarrierTime )
+			if ( Combatant != null && m_BarrierTimer == null && 0.1 > Utility.RandomDouble() && DateTime.UtcNow > m_NextBarrierTime )
 			{
 				HueMod = 1;
 				Frozen = true;
@@ -107,7 +107,7 @@ namespace Server.Mobiles
 			m_ActiveBarrier = false;
 
 			m_BarrierTimer = null;
-			m_NextBarrierTime = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( 24, 31 ) );
+			m_NextBarrierTime = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( 24, 31 ) );
 		}
 
 		private class BarrierTimer : Timer

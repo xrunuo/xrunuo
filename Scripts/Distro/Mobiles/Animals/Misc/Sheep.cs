@@ -16,12 +16,12 @@ namespace Server.Mobiles
 		public DateTime NextWoolTime
 		{
 			get { return m_NextWoolTime; }
-			set { m_NextWoolTime = value; Body = ( DateTime.Now >= m_NextWoolTime ) ? 0xCF : 0xDF; }
+			set { m_NextWoolTime = value; Body = ( DateTime.UtcNow >= m_NextWoolTime ) ? 0xCF : 0xDF; }
 		}
 
 		public void Carve( Mobile from, Item item )
 		{
-			if ( DateTime.Now < m_NextWoolTime )
+			if ( DateTime.UtcNow < m_NextWoolTime )
 			{
 				// This sheep is not yet ready to be shorn.
 				PrivateOverheadMessage( MessageType.Regular, 0x3B2, 500449, from.NetState );
@@ -50,7 +50,7 @@ namespace Server.Mobiles
 						from.AddToBackpack( new BritannianWool( Map == Map.Felucca ? 2 : 1 ) );
 					}
 
-					NextWoolTime = DateTime.Now + TimeSpan.FromHours( 3.0 ); // TODO: Proper time delay
+					NextWoolTime = DateTime.UtcNow + TimeSpan.FromHours( 3.0 ); // TODO: Proper time delay
 				}
 			}
 		}
@@ -58,7 +58,7 @@ namespace Server.Mobiles
 		public override void OnThink()
 		{
 			base.OnThink();
-			Body = ( DateTime.Now >= m_NextWoolTime ) ? 0xCF : 0xDF;
+			Body = ( DateTime.UtcNow >= m_NextWoolTime ) ? 0xCF : 0xDF;
 		}
 
 		[Constructable]

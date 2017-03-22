@@ -45,7 +45,7 @@ namespace Server.Gumps
 
 				AddLabel( 45, y, 0x481, String.Format( "{0} ({1})", inventory.ShopName, inventory.VendorName ) );
 
-				TimeSpan expire = inventory.ExpireTime - DateTime.Now;
+				TimeSpan expire = inventory.ExpireTime - DateTime.UtcNow;
 				int hours = (int) expire.TotalHours;
 
 				AddHtmlLocalized( 350, y, 50, 20, 1062466, 0x7FFF, false, false ); // hour(s)

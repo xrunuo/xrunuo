@@ -108,7 +108,7 @@ namespace Server.Mobiles
 
 		private void HideSelf()
 		{
-			if ( DateTime.Now >= m_Mobile.NextSkillTime )
+			if ( DateTime.UtcNow >= m_Mobile.NextSkillTime )
 			{
 				Effects.SendLocationParticles( EffectItem.Create( m_Mobile.Location, m_Mobile.Map, EffectItem.DefaultDuration ), 0x3728, 10, 10, 2023 );
 

@@ -151,12 +151,12 @@ namespace Server
 			DateTime start = DateTime.MinValue;
 
 			if ( prof != null )
-				start = DateTime.Now;
+				start = DateTime.UtcNow;
 
 			OnTick();
 
 			if ( prof != null )
-				prof.RegTicked( DateTime.Now - start );
+				prof.RegTicked( DateTime.UtcNow - start );
 		}
 
 		protected virtual void OnTick()

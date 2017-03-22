@@ -87,7 +87,7 @@ namespace Server.Engines.Quests.HumilityCloak
 			from.SendGump( new GenericQuestGump( 1075713 ) );
 
 			if ( from is PlayerMobile )
-				( (PlayerMobile) from ).HumilityQuestNextChance = DateTime.Now + TimeSpan.FromDays( 1.0 );
+				( (PlayerMobile) from ).HumilityQuestNextChance = DateTime.UtcNow + TimeSpan.FromDays( 1.0 );
 		}
 
 		public static void OnQuestionsPassed( Mobile from )

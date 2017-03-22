@@ -48,7 +48,7 @@ namespace Server.Items
 				from.SendLocalizedMessage( 1113051 ); // Your pet is still enjoying the last tasty treat!
 				return false;
 			}
-			else if ( DateTime.Now < pet.NextTastyTreat )
+			else if ( DateTime.UtcNow < pet.NextTastyTreat )
 			{
 				from.SendLocalizedMessage( 1113049 ); // Your pet is still recovering from the last tasty treat.
 				return false;
@@ -62,7 +62,7 @@ namespace Server.Items
 
 				AddEffect( pet );
 
-				pet.NextTastyTreat = DateTime.Now + Duration + Cooldown;
+				pet.NextTastyTreat = DateTime.UtcNow + Duration + Cooldown;
 
 				if ( this.Amount > 1 )
 				{

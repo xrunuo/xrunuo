@@ -31,7 +31,7 @@ namespace Server.Spells.First
 		{
 			PlayerMobile pm = Caster as PlayerMobile;
 
-			if ( pm != null && DateTime.Now < ( pm.LastArrow + DamageDelay ) )
+			if ( pm != null && DateTime.UtcNow < ( pm.LastArrow + DamageDelay ) )
 			{
 				DoFizzle();
 			}
@@ -45,7 +45,7 @@ namespace Server.Spells.First
 				Caster.PlaySound( 0x1E5 );
 
 				if ( pm != null )
-					pm.LastArrow = DateTime.Now;
+					pm.LastArrow = DateTime.UtcNow;
 
 				Timer.DelayCall( DamageDelay, new TimerCallback(
 					delegate

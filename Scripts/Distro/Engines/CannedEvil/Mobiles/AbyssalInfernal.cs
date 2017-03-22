@@ -151,7 +151,7 @@ namespace Server.Mobiles
 				}
 			}
 
-			if ( 0.1 > Utility.RandomDouble() && DateTime.Now > m_NextAbilityTime )
+			if ( 0.1 > Utility.RandomDouble() && DateTime.UtcNow > m_NextAbilityTime )
 			{
 				Say( 1112362 ); // You will burn to a pile of ash!
 
@@ -232,7 +232,7 @@ namespace Server.Mobiles
 						}
 					} ) );
 
-				m_NextAbilityTime = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( 35, 45 ) );
+				m_NextAbilityTime = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( 35, 45 ) );
 			}
 		}
 

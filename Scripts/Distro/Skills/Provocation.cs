@@ -111,7 +111,7 @@ namespace Server.SkillHandlers
 					}
 					else if ( m_Creature != creature )
 					{
-						from.NextSkillTime = DateTime.Now + BaseInstrument.GetBardSkillTimeout( SkillName.Provocation, from );
+						from.NextSkillTime = DateTime.UtcNow + BaseInstrument.GetBardSkillTimeout( SkillName.Provocation, from );
 
 						double diff = ( ( m_Instrument.GetDifficultyFor( m_Creature ) + m_Instrument.GetDifficultyFor( creature ) ) * 0.5 ) - 5.0;
 						double music = from.Skills[SkillName.Musicianship].Value;

@@ -464,7 +464,7 @@ namespace Server.Scripts.Commands
 			{
 				using ( StreamWriter sw = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "packetprofiles.log" ), true ) )
 				{
-					sw.WriteLine( "# Dump on {0:f}", DateTime.Now );
+					sw.WriteLine( "# Dump on {0:f}", DateTime.UtcNow );
 					sw.WriteLine( "# Core profiling for " + Environment.ProfileTime );
 
 					PacketProfile[] profiles = PacketProfile.OutgoingProfiles;
@@ -638,7 +638,7 @@ namespace Server.Scripts.Commands
 				items.Sort( new CountSorter() );
 				mobiles.Sort( new CountSorter() );
 
-				op.WriteLine( "# Object count table generated on {0}", DateTime.Now );
+				op.WriteLine( "# Object count table generated on {0}", DateTime.UtcNow );
 				op.WriteLine();
 				op.WriteLine();
 
@@ -777,7 +777,7 @@ namespace Server.Scripts.Commands
 				using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, opFile ) ) )
 				{
 					op.WriteLine( "# Profile of world {0}", type );
-					op.WriteLine( "# Generated on {0}", DateTime.Now );
+					op.WriteLine( "# Generated on {0}", DateTime.UtcNow );
 					op.WriteLine();
 					op.WriteLine();
 

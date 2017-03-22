@@ -29,7 +29,7 @@ namespace Server.Mobiles
 
 		public static int GetAge( DateTime birthdate )
 		{
-			TimeSpan ts = DateTime.Now - birthdate;
+			TimeSpan ts = DateTime.UtcNow - birthdate;
 			return (int) ( ts.TotalDays / 7 );
 		}
 
@@ -45,7 +45,7 @@ namespace Server.Mobiles
 		}
 
 		public Parrot( int hue )
-			: this( "a pet parrot", hue, DateTime.Now )
+			: this( "a pet parrot", hue, DateTime.UtcNow )
 		{
 		}
 

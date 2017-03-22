@@ -203,7 +203,7 @@ namespace Server.Misc
 					op.WriteLine( "X-RunUO Version {0}.{1}.{2}, Build {3}", ver.Major, ver.Minor, ver.Build, ver.Revision );
 					op.WriteLine( "Operating System: {0}", System.Environment.OSVersion );
 					op.WriteLine( ".NET Framework: {0}", System.Environment.Version );
-					op.WriteLine( "Time: {0}", DateTime.Now );
+					op.WriteLine( "Time: {0}", DateTime.UtcNow );
 
 					try { op.WriteLine( "Mobiles: {0}", World.Instance.MobileCount ); }
 					catch { }
@@ -259,7 +259,7 @@ namespace Server.Misc
 
 		private static string GetTimeStamp()
 		{
-			DateTime now = DateTime.Now;
+			DateTime now = DateTime.UtcNow;
 
 			return String.Format( "{0}-{1}-{2}-{3}-{4}-{5}",
 					now.Day,

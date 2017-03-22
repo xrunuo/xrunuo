@@ -284,7 +284,7 @@ namespace Server.Mobiles
 			public BlockMountType m_Type;
 			public DateTime m_Expiration;
 
-			public bool IsExpired { get { return ( DateTime.Now >= m_Expiration ); } }
+			public bool IsExpired { get { return ( DateTime.UtcNow >= m_Expiration ); } }
 
 			public BlockEntry( BlockMountType type, DateTime expiration )
 			{
@@ -300,7 +300,7 @@ namespace Server.Mobiles
 			if ( mob == null )
 				return;
 
-			DateTime expiration = DateTime.Now + duration;
+			DateTime expiration = DateTime.UtcNow + duration;
 
 			BlockEntry entry = m_Table[mob] as BlockEntry;
 
@@ -383,10 +383,10 @@ namespace Server.Mobiles
 			if ( attacker == null )
 				attacker = m_Rider.FindMostRecentDamager( true );
 
-			if ( !( attacker == this || attacker == m_Rider || willKill || DateTime.Now < m_NextMountAbility ) )
+			if ( !( attacker == this || attacker == m_Rider || willKill || DateTime.UtcNow < m_NextMountAbility ) )
 			{
 				if ( DoMountAbility( amount, from ) )
-					m_NextMountAbility = DateTime.Now + MountAbilityDelay;
+					m_NextMountAbility = DateTime.UtcNow + MountAbilityDelay;
 			}
 		}
 

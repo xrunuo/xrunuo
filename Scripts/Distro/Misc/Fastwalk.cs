@@ -30,12 +30,12 @@ namespace Server.Misc
 			Console.WriteLine( "Client: {0}: Fast movement detected (name={1})", e.NetState, e.NetState.Mobile.Name );
 
 			if ( e.NetState.Mobile.Map == Map.Felucca )
-				Server.Scripts.Commands.CommandHandlers.BroadcastMessage( AccessLevel.Counselor, 0x20, String.Format( "Fastwalk: {0}, {1}", DateTime.Now, e.NetState.Mobile.Name ) );
+				Server.Scripts.Commands.CommandHandlers.BroadcastMessage( AccessLevel.Counselor, 0x20, String.Format( "Fastwalk: {0}, {1}", DateTime.UtcNow, e.NetState.Mobile.Name ) );
 
 			try
 			{
 				using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "Fastwalk.log" ), true ) )
-					op.WriteLine( "{0}\t{1}\t{2}\t{3}", DateTime.Now, e.NetState, e.NetState.Account.ToString(), e.NetState.Mobile.Name );
+					op.WriteLine( "{0}\t{1}\t{2}\t{3}", DateTime.UtcNow, e.NetState, e.NetState.Account.ToString(), e.NetState.Mobile.Name );
 			}
 			catch { }
 

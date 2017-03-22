@@ -34,7 +34,7 @@ namespace Server.Mobiles
 			double scalar = caster.Skills[SkillName.SpiritSpeak].Value * 0.01;
 
 			m_Target = target;
-			m_ExpireTime = DateTime.Now + duration;
+			m_ExpireTime = DateTime.UtcNow + duration;
 
 			SetStr( 200 );
 			SetDex( 150 );
@@ -87,7 +87,7 @@ namespace Server.Mobiles
 
 		public override void OnThink()
 		{
-			if ( !m_Target.Alive || m_Target.IsDeadBondedPet || DateTime.Now > m_ExpireTime )
+			if ( !m_Target.Alive || m_Target.IsDeadBondedPet || DateTime.UtcNow > m_ExpireTime )
 			{
 				Kill();
 				return;
@@ -135,7 +135,7 @@ namespace Server.Mobiles
 				PlaySound( 0x37D );
 			}
 
-			if ( m_Target.Hidden && this.InRange( m_Target, 3 ) && DateTime.Now >= this.NextSkillTime && UseSkill( SkillName.DetectHidden ) )
+			if ( m_Target.Hidden && this.InRange( m_Target, 3 ) && DateTime.UtcNow >= this.NextSkillTime && UseSkill( SkillName.DetectHidden ) )
 			{
 				Target targ = this.Target;
 

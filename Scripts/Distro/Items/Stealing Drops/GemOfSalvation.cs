@@ -25,9 +25,9 @@ namespace Server.Items
 
 		public void Use( PlayerMobile pm )
 		{
-			if ( DateTime.Now < pm.NextGemOfSalvationUse )
+			if ( DateTime.UtcNow < pm.NextGemOfSalvationUse )
 			{
-				TimeSpan left = pm.NextGemOfSalvationUse - DateTime.Now;
+				TimeSpan left = pm.NextGemOfSalvationUse - DateTime.UtcNow;
 
 				if ( left >= TimeSpan.FromMinutes( 1.0 ) )
 					pm.SendLocalizedMessage( 1095131, ( ( left.Hours * 60 ) + left.Minutes ).ToString() ); // Your spirit lacks cohesion. You must wait ~1_minutes~ minutes before invoking the power of a Gem of Salvation.
@@ -93,7 +93,7 @@ namespace Server.Items
 
 				m_Gem.Delete();
 
-				m_Mobile.NextGemOfSalvationUse = DateTime.Now + GemOfSalvation.Cooldown;
+				m_Mobile.NextGemOfSalvationUse = DateTime.UtcNow + GemOfSalvation.Cooldown;
 			}
 		}
 	}

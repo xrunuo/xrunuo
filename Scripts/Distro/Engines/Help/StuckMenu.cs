@@ -251,12 +251,12 @@ namespace Server.Menus.Questions
 				: base( TimeSpan.Zero, TimeSpan.FromSeconds( 1.0 ) )
 			{
 				m_Mobile = m;
-				m_End = DateTime.Now + TimeSpan.FromMinutes( 3.0 );
+				m_End = DateTime.UtcNow + TimeSpan.FromMinutes( 3.0 );
 			}
 
 			protected override void OnTick()
 			{
-				if ( m_Mobile.NetState == null || DateTime.Now > m_End )
+				if ( m_Mobile.NetState == null || DateTime.UtcNow > m_End )
 				{
 					m_Mobile.Frozen = false;
 					m_Mobile.CloseGump( typeof( StuckMenu ) );
@@ -286,12 +286,12 @@ namespace Server.Menus.Questions
 				m_Map = mobile.Map;
 				m_Region = mobile.Region;
 				m_Destination = destination;
-				m_End = DateTime.Now + delay;
+				m_End = DateTime.UtcNow + delay;
 			}
 
 			protected override void OnTick()
 			{
-				if ( DateTime.Now < m_End )
+				if ( DateTime.UtcNow < m_End )
 				{
 					m_Mobile.Frozen = true;
 				}

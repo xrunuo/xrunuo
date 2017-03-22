@@ -22,7 +22,7 @@ namespace Server.Mobiles
 		{			
 			Name = "Yellienir";
 			
-			m_Spoken = DateTime.Now;
+			m_Spoken = DateTime.UtcNow;
 		}
 		
 		public Yellienir( Serial serial ) : base( serial )
@@ -61,7 +61,7 @@ namespace Server.Mobiles
 					
 				int range = 5;
 
-				if ( range >= 0 && this.InRange( m, range ) && !this.InRange( oldLocation, range ) && DateTime.Now >= m_Spoken + TimeSpan.FromMinutes( 1 ) )
+				if ( range >= 0 && this.InRange( m, range ) && !this.InRange( oldLocation, range ) && DateTime.UtcNow >= m_Spoken + TimeSpan.FromMinutes( 1 ) )
 				{
 					/* Human.  Do you crave the chance to denounce your humanity and prove your elven ancestry.  
 					Do you yearn to accept the responsibilities of a caretaker of our beloved Sosaria and so 
@@ -69,7 +69,7 @@ namespace Server.Mobiles
 					
 					Say( 1072801 );
 					
-					m_Spoken = DateTime.Now;
+					m_Spoken = DateTime.UtcNow;
 				}
 			}
 		}
@@ -87,7 +87,7 @@ namespace Server.Mobiles
 	
 			int version = reader.ReadInt();
 			
-			m_Spoken = DateTime.Now;
+			m_Spoken = DateTime.UtcNow;
 		}
 	}
 }

@@ -33,7 +33,7 @@ namespace Server.Items
 			from.SendLocalizedMessage( 1074847 );
 
 			m_InfluenceList.Add( from );
-			m_CooldownTable.Add( from, DateTime.Now + Cooldown );
+			m_CooldownTable.Add( from, DateTime.UtcNow + Cooldown );
 
 			Timer.DelayCall( Duration, new TimerStateCallback( delegate { m_InfluenceList.Remove( from ); } ), from );
 
@@ -59,10 +59,10 @@ namespace Server.Items
 			{
 				DateTime cooldownEnd = m_CooldownTable[m];
 
-				if ( cooldownEnd > DateTime.Now )
+				if ( cooldownEnd > DateTime.UtcNow )
 				{
 					// You must wait ~1_seconds~ seconds before you can use this item.
-					m.SendLocalizedMessage( 1079263, ( (int) ( cooldownEnd - DateTime.Now ).TotalSeconds + 1 ).ToString() );
+					m.SendLocalizedMessage( 1079263, ( (int) ( cooldownEnd - DateTime.UtcNow ).TotalSeconds + 1 ).ToString() );
 
 					return false;
 				}

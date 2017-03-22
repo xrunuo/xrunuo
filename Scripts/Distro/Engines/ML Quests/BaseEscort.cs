@@ -137,7 +137,7 @@ namespace Server.Engines.Quests
 			if ( reader.ReadBool() )
 			{
 				DateTime deleteTime = reader.ReadDeltaTime();
-				m_DeleteTimer = Timer.DelayCall( deleteTime - DateTime.Now, new TimerCallback( Delete ) );
+				m_DeleteTimer = Timer.DelayCall( deleteTime - DateTime.UtcNow, new TimerCallback( Delete ) );
 			}
 		}
 
@@ -218,9 +218,9 @@ namespace Server.Engines.Quests
 				Say( 500896 ); // I see you already have an escort.
 				return false;
 			}
-			else if ( m is PlayerMobile && ( ( (PlayerMobile) m ).LastEscortTime + m_EscortDelay ) >= DateTime.Now )
+			else if ( m is PlayerMobile && ( ( (PlayerMobile) m ).LastEscortTime + m_EscortDelay ) >= DateTime.UtcNow )
 			{
-				int minutes = (int) Math.Ceiling( ( ( ( (PlayerMobile) m ).LastEscortTime + m_EscortDelay ) - DateTime.Now ).TotalMinutes );
+				int minutes = (int) Math.Ceiling( ( ( ( (PlayerMobile) m ).LastEscortTime + m_EscortDelay ) - DateTime.UtcNow ).TotalMinutes );
 
 				Say( "You must rest {0} minute{1} before we set out on this journey.", minutes, minutes == 1 ? "" : "s" );
 				return false;
@@ -255,7 +255,7 @@ namespace Server.Engines.Quests
 			}
 			else if ( master.Map != Map || !master.InRange( Location, 30 ) || !master.Alive )
 			{
-				TimeSpan lastSeenDelay = DateTime.Now - m_LastSeenEscorter;
+				TimeSpan lastSeenDelay = DateTime.UtcNow - m_LastSeenEscorter;
 
 				if ( lastSeenDelay >= TimeSpan.FromMinutes( 2.0 ) )
 				{
@@ -287,7 +287,7 @@ namespace Server.Engines.Quests
 				if ( ControlOrder != OrderType.Follow )
 					StartFollow( master );
 
-				m_LastSeenEscorter = DateTime.Now;
+				m_LastSeenEscorter = DateTime.UtcNow;
 			}
 
 			return master;
@@ -348,7 +348,7 @@ namespace Server.Engines.Quests
 
 						if ( pm != null )
 						{
-							if ( pm.CompassionGains > 0 && DateTime.Now > pm.NextCompassionDay )
+							if ( pm.CompassionGains > 0 && DateTime.UtcNow > pm.NextCompassionDay )
 							{
 								pm.NextCompassionDay = DateTime.MinValue;
 								pm.CompassionGains = 0;
@@ -365,7 +365,7 @@ namespace Server.Engines.Quests
 								else
 									pm.SendLocalizedMessage( 1053002 ); // You have gained in compassion.
 
-								pm.NextCompassionDay = DateTime.Now + TimeSpan.FromDays( 1.0 ); // in one day CompassionGains gets reset to 0
+								pm.NextCompassionDay = DateTime.UtcNow + TimeSpan.FromDays( 1.0 ); // in one day CompassionGains gets reset to 0
 								++pm.CompassionGains;
 							}
 							else

@@ -87,7 +87,7 @@ namespace Server.Mobiles
 		{
 			base.OnThink();
 
-			if ( m_NextShout <= DateTime.Now )
+			if ( m_NextShout <= DateTime.UtcNow )
 			{
 				Packet shoutPacket = null;
 
@@ -106,7 +106,7 @@ namespace Server.Mobiles
 
 				Packet.Release( shoutPacket );
 
-				m_NextShout = DateTime.Now + m_ShoutDelay;
+				m_NextShout = DateTime.UtcNow + m_ShoutDelay;
 			}
 		}
 

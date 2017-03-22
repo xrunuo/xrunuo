@@ -51,9 +51,9 @@ namespace Server.Items
 				// You already feel ~1_VIRTUE~ from your earlier contemplation of the virtues.
 				pm.SendLocalizedMessage( 1079544, string.Format( "#{0}", currentBonusEntry.Cliloc ) );
 			}
-			else if ( pm.NextAnkhPendantUse > DateTime.Now )
+			else if ( pm.NextAnkhPendantUse > DateTime.UtcNow )
 			{
-				TimeSpan delta = pm.NextAnkhPendantUse - DateTime.Now;
+				TimeSpan delta = pm.NextAnkhPendantUse - DateTime.UtcNow;
 
 				if ( delta < TimeSpan.FromHours( 1.0 ) )
 				{
@@ -74,7 +74,7 @@ namespace Server.Items
 					pm.AddAttributeMod( mod );
 
 				m_Bonuses.Add( pm, bonusEntry );
-				pm.NextAnkhPendantUse = DateTime.Now + TimeSpan.FromDays( 1.0 );
+				pm.NextAnkhPendantUse = DateTime.UtcNow + TimeSpan.FromDays( 1.0 );
 
 				// Contemplating at the shrine has left you feeling more ~1_VIRTUE~.
 				pm.SendLocalizedMessage( 1079546, string.Format( "#{0}", bonusEntry.Cliloc ) );

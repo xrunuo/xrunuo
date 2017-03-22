@@ -92,7 +92,7 @@ namespace Server.Mobiles
 		{
 			base.OnThink();
 
-			if ( 0.1 > Utility.RandomDouble() && DateTime.Now > m_NextAbilityTime && Combatant != null && this.InRange( Combatant, RangePerception ) ) // as per OSI, no check for LOS
+			if ( 0.1 > Utility.RandomDouble() && DateTime.UtcNow > m_NextAbilityTime && Combatant != null && this.InRange( Combatant, RangePerception ) ) // as per OSI, no check for LOS
 			{
 				Mobile to = Combatant;
 
@@ -119,7 +119,7 @@ namespace Server.Mobiles
 							BaseMount.Dismount( to );
 							to.Damage( Utility.Random( 18, 27 ), this );
 
-							m_NextAbilityTime = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( MinAbilityTime, MaxAbilityTime ) );
+							m_NextAbilityTime = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( MinAbilityTime, MaxAbilityTime ) );
 
 							break;
 						}

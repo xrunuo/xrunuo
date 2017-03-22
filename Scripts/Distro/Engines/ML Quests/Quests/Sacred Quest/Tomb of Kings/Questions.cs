@@ -88,7 +88,7 @@ namespace Server.Engines.Quests.SacredQuest
 			from.SendGump( new GenericQuestGump( 1112680 ) );
 
 			if ( from is PlayerMobile )
-				( (PlayerMobile) from ).SacredQuestNextChance = DateTime.Now + TimeSpan.FromDays( 1.0 );
+				( (PlayerMobile) from ).SacredQuestNextChance = DateTime.UtcNow + TimeSpan.FromDays( 1.0 );
 		}
 
 		public static void OnQuestionsPassed( Mobile from )

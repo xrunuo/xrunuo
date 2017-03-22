@@ -40,7 +40,7 @@ namespace Server.Spells.Bushido
 				if ( messages )
 				{
 					// You must wait ~1_seconds~ seconds before you can this ability again
-					from.SendLocalizedMessage( 1079335, ( (int) ( date - DateTime.Now ).TotalSeconds + 1 ).ToString() );
+					from.SendLocalizedMessage( 1079335, ( (int) ( date - DateTime.UtcNow ).TotalSeconds + 1 ).ToString() );
 				}
 
 				return false;
@@ -194,7 +194,7 @@ namespace Server.Spells.Bushido
 
 			m_Table[m] = t;
 			m_Table2[m] = Timer.DelayCall( TimeSpan.FromSeconds( 20.0 ), new TimerStateCallback( Expire_Callback ), m );
-			m_Table3[m] = DateTime.Now + TimeSpan.FromSeconds( 20.0 );
+			m_Table3[m] = DateTime.UtcNow + TimeSpan.FromSeconds( 20.0 );
 
 			t.Start();
 		}

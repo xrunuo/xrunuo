@@ -112,7 +112,7 @@ namespace Server.Mobiles
 				from.SendLocalizedMessage( 1063141 ); // Your attack has been diverted to a nearby mirror image of your target!
 			}
 
-			if ( 0.25 > Utility.RandomDouble() && DateTime.Now > m_NextBodyChange )
+			if ( 0.25 > Utility.RandomDouble() && DateTime.UtcNow > m_NextBodyChange )
 				ChangeBody();
 
 			base.OnDamage( amount, from, willKill );
@@ -249,7 +249,7 @@ namespace Server.Mobiles
 			if ( Skills[SkillName.Necromancy].Value >= 50.0 )
 				ChangeAIType( AIType.AI_Necromancer );
 
-			m_NextBodyChange = DateTime.Now + TimeSpan.FromSeconds( 10.0 );
+			m_NextBodyChange = DateTime.UtcNow + TimeSpan.FromSeconds( 10.0 );
 
 			if ( m_ResetTimer != null )
 				m_ResetTimer.Stop();

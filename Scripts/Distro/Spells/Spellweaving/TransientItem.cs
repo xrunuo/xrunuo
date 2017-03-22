@@ -19,7 +19,7 @@ namespace Server.Items
 				if ( m_Timer != null )
 					m_Timer.Stop();
 
-				m_CreationTime = DateTime.Now;
+				m_CreationTime = DateTime.UtcNow;
 
 				m_Timer = Timer.DelayCall( TimeSpan.FromSeconds( 5 ), TimeSpan.FromSeconds( 5 ), new TimerCallback( CheckExpiry ) );
 			}
@@ -61,7 +61,7 @@ namespace Server.Items
 
 		public virtual void CheckExpiry()
 		{
-			if ( ( m_CreationTime + m_LifeSpan ) < DateTime.Now )
+			if ( ( m_CreationTime + m_LifeSpan ) < DateTime.UtcNow )
 				Expire( RootParent as Mobile );
 			else
 				InvalidateProperties();
@@ -71,7 +71,7 @@ namespace Server.Items
 		public TransientItem( int itemID, TimeSpan lifeSpan )
 			: base( itemID )
 		{
-			m_CreationTime = DateTime.Now;
+			m_CreationTime = DateTime.UtcNow;
 			m_LifeSpan = lifeSpan;
 
 			m_Timer = Timer.DelayCall( TimeSpan.FromSeconds( 5 ), TimeSpan.FromSeconds( 5 ), new TimerCallback( CheckExpiry ) );
@@ -96,7 +96,7 @@ namespace Server.Items
 
 			if ( m_Timer != null )
 			{
-				TimeSpan remaining = ( ( m_CreationTime + m_LifeSpan ) - DateTime.Now );
+				TimeSpan remaining = ( ( m_CreationTime + m_LifeSpan ) - DateTime.UtcNow );
 
 				list.Add( 1072517, ( (int) remaining.TotalSeconds ).ToString() ); // Lifespan: ~1_val~ seconds
 			}

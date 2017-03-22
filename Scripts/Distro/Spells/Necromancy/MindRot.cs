@@ -106,13 +106,13 @@ namespace Server.Spells.Necromancy
 				: base( TimeSpan.FromSeconds( 1.0 ), TimeSpan.FromSeconds( 1.0 ) )
 			{
 				m_Target = target;
-				m_End = DateTime.Now + delay;
+				m_End = DateTime.UtcNow + delay;
 
 			}
 
 			protected override void OnTick()
 			{
-				if ( m_Target.Deleted || !m_Target.Alive || DateTime.Now >= m_End )
+				if ( m_Target.Deleted || !m_Target.Alive || DateTime.UtcNow >= m_End )
 				{
 					m_Target.SendLocalizedMessage( 1060872 ); // Your mind feels normal again.
 					ClearMindRotScalar( m_Target );

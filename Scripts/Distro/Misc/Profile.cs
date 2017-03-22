@@ -83,7 +83,7 @@ namespace Server.Misc
 				return "";
 			}
 
-			TimeSpan ts = DateTime.Now - a.Created;
+			TimeSpan ts = DateTime.UtcNow - a.Created;
 
 			string v;
 

@@ -24,11 +24,11 @@ namespace Server.Scripts.Commands
 		{
 			World.Broadcast( 0x35, true, "Documentation is being generated, please wait." );
 
-			DateTime startTime = DateTime.Now;
+			DateTime startTime = DateTime.UtcNow;
 
 			Document();
 
-			DateTime endTime = DateTime.Now;
+			DateTime endTime = DateTime.UtcNow;
 
 			World.Broadcast( 0x35, true, "Documentation has been completed. The entire process took {0:F1} seconds.", ( endTime - startTime ).TotalSeconds );
 		}
@@ -39,11 +39,11 @@ namespace Server.Scripts.Commands
 		{
 			World.Broadcast( 0x35, true, "Command documentation is being generated, please wait." );
 
-			DateTime startTime = DateTime.Now;
+			DateTime startTime = DateTime.UtcNow;
 
 			DocumentCommands();
 
-			DateTime endTime = DateTime.Now;
+			DateTime endTime = DateTime.UtcNow;
 
 			World.Broadcast( 0x35, true, "Command documentation has been completed. The entire process took {0:F1} seconds.", ( endTime - startTime ).TotalSeconds );
 		}

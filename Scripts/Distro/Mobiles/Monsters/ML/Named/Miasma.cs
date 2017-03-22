@@ -12,7 +12,7 @@ namespace Server.Mobiles
 			return WeaponAbility.MortalStrike;
 		}
 
-		//private DateTime m_Delay = DateTime.Now;
+		//private DateTime m_Delay = DateTime.UtcNow;
 
 		public override int TreasureMapLevel { get { return 5; } }
 

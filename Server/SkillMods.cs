@@ -28,7 +28,7 @@ namespace Server
 		private DateTime m_Expire;
 
 		public TimedSkillMod( SkillName skill, bool relative, double value, TimeSpan delay )
-			: this( skill, relative, value, DateTime.Now + delay )
+			: this( skill, relative, value, DateTime.UtcNow + delay )
 		{
 		}
 
@@ -40,7 +40,7 @@ namespace Server
 
 		public override bool CheckCondition()
 		{
-			return ( DateTime.Now < m_Expire );
+			return ( DateTime.UtcNow < m_Expire );
 		}
 	}
 

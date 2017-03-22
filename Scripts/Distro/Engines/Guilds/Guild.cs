@@ -89,7 +89,7 @@ namespace Server.Engines.Guilds
 			m_Candidates = new ArrayList();
 			m_Accepted = new ArrayList();
 
-			m_LastFealty = DateTime.Now;
+			m_LastFealty = DateTime.UtcNow;
 
 			m_Name = name;
 			m_Abbreviation = abbreviation;
@@ -133,7 +133,7 @@ namespace Server.Engines.Guilds
 
 		public override void Serialize( GenericWriter writer )
 		{
-			if ( this.LastFealty + TimeSpan.FromMinutes( 1.0 ) < DateTime.Now )
+			if ( this.LastFealty + TimeSpan.FromMinutes( 1.0 ) < DateTime.UtcNow )
 			{
 				this.CalculateGuildmaster();
 			}
@@ -516,7 +516,7 @@ namespace Server.Engines.Guilds
 				( m_Leader as PlayerMobile ).GuildRank = 2;
 				m_Leader = winner;
 				( winner as PlayerMobile ).GuildRank = 5;
-				m_LastFealty = DateTime.Now;
+				m_LastFealty = DateTime.UtcNow;
 			}
 		}
 
@@ -590,7 +590,7 @@ namespace Server.Engines.Guilds
 				if ( m_Type != value )
 				{
 					m_Type = value;
-					m_TypeLastChange = DateTime.Now;
+					m_TypeLastChange = DateTime.UtcNow;
 
 					InvalidateMemberProperties();
 				}

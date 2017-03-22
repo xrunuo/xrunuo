@@ -29,7 +29,7 @@ namespace Server.Items
 			else if ( m_CooldownTable.ContainsKey( from ) )
 			{
 				Timer resetTimer = m_CooldownTable[from];
-				TimeSpan left = resetTimer.Next - DateTime.Now;
+				TimeSpan left = resetTimer.Next - DateTime.UtcNow;
 
 				if ( left >= TimeSpan.FromMinutes( 1.0 ) )
 					from.SendLocalizedMessage( 1079265, left.Minutes.ToString() ); // You must wait ~1_minutes~ minutes before you can use this item.

@@ -126,7 +126,7 @@ namespace Server.Mobiles
 			public int Count
 			{
 				get { return m_Count; }
-				set { m_Count = value; m_Stamp = DateTime.Now; }
+				set { m_Count = value; m_Stamp = DateTime.UtcNow; }
 			}
 		}
 
@@ -985,7 +985,7 @@ namespace Server.Mobiles
 
 			try
 			{
-				if ( ( pm.LastTierLoss + TimeSpan.FromDays( 1.0 ) ) < DateTime.Now ) // TODO: verify
+				if ( ( pm.LastTierLoss + TimeSpan.FromDays( 1.0 ) ) < DateTime.UtcNow ) // TODO: verify
 				{
 					for ( int i = 0; i < pm.ChampionTiers.Length; i++ )
 					{
@@ -995,10 +995,10 @@ namespace Server.Mobiles
 							pm.ChampionTiers[i] = 0;
 					}
 
-					pm.LastTierLoss = DateTime.Now;
+					pm.LastTierLoss = DateTime.UtcNow;
 				}
 
-				if ( ( pm.LastChampionTierLoss + TimeSpan.FromDays( 7.0 ) ) < DateTime.Now ) // TODO: verify
+				if ( ( pm.LastChampionTierLoss + TimeSpan.FromDays( 7.0 ) ) < DateTime.UtcNow ) // TODO: verify
 				{
 					for ( int i = 1; i < pm.SuperChampionTiers.Length; i++ )
 					{
@@ -1008,17 +1008,17 @@ namespace Server.Mobiles
 							pm.SuperChampionTiers[i] = 0;
 					}
 
-					pm.LastChampionTierLoss = DateTime.Now;
+					pm.LastChampionTierLoss = DateTime.UtcNow;
 				}
 
-				if ( ( pm.LastSuperChampionTierLoss + TimeSpan.FromDays( 30.0 ) ) < DateTime.Now ) // // TODO: verify
+				if ( ( pm.LastSuperChampionTierLoss + TimeSpan.FromDays( 30.0 ) ) < DateTime.UtcNow ) // // TODO: verify
 				{
 					pm.SuperChampionTiers[0]--; // TODO: verify
 
 					if ( pm.SuperChampionTiers[0] < 0 )
 						pm.SuperChampionTiers[0] = 0;
 
-					pm.LastSuperChampionTierLoss = DateTime.Now;
+					pm.LastSuperChampionTierLoss = DateTime.UtcNow;
 				}
 			}
 			catch
@@ -1345,7 +1345,7 @@ namespace Server.Mobiles
 
 			if ( pm != null )
 			{
-				pm.m_SessionStart = DateTime.Now;
+				pm.m_SessionStart = DateTime.UtcNow;
 
 				if ( pm.m_Quest != null )
 					pm.m_Quest.StartTimer();
@@ -1394,13 +1394,13 @@ namespace Server.Mobiles
 
 			if ( pm != null )
 			{
-				pm.m_GameTime += ( DateTime.Now - pm.m_SessionStart );
+				pm.m_GameTime += ( DateTime.UtcNow - pm.m_SessionStart );
 
 				if ( pm.m_Quest != null )
 					pm.m_Quest.StopTimer();
 
 				pm.m_SpeechLog = null;
-				pm.LastLogin = DateTime.Now;
+				pm.LastLogin = DateTime.UtcNow;
 			}
 		}
 
@@ -1604,7 +1604,7 @@ namespace Server.Mobiles
 			if ( !base.Move( d ) )
 				return false;
 
-			m_NextMovementTime = DateTime.Now + speed;
+			m_NextMovementTime = DateTime.UtcNow + speed;
 
 			return true;
 		}
@@ -2692,7 +2692,7 @@ namespace Server.Mobiles
 					k_Guild.AddKills( m_Guild, 1 );
 			}
 
-			if ( this.Kills >= 5 && DateTime.Now >= m_NextJustAward )
+			if ( this.Kills >= 5 && DateTime.UtcNow >= m_NextJustAward )
 			{
 				Mobile m = FindMostRecentDamager( false );
 
@@ -2719,7 +2719,7 @@ namespace Server.Mobiles
 						m.FixedParticles( 0x375A, 9, 20, 5027, EffectLayer.Waist );
 						m.PlaySound( 0x1F7 );
 
-						m_NextJustAward = DateTime.Now + TimeSpan.FromMinutes( pointsToGain / 3 );
+						m_NextJustAward = DateTime.UtcNow + TimeSpan.FromMinutes( pointsToGain / 3 );
 					}
 				}
 			}
@@ -2828,7 +2828,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				TimeSpan ts = m_NextDrinkConflagrationPotion - DateTime.Now;
+				TimeSpan ts = m_NextDrinkConflagrationPotion - DateTime.UtcNow;
 
 				if ( ts < TimeSpan.Zero )
 					ts = TimeSpan.Zero;
@@ -2839,7 +2839,7 @@ namespace Server.Mobiles
 			{
 				try
 				{
-					m_NextDrinkConflagrationPotion = DateTime.Now + value;
+					m_NextDrinkConflagrationPotion = DateTime.UtcNow + value;
 				}
 				catch
 				{
@@ -2852,7 +2852,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				TimeSpan ts = m_NextDrinkMaskOfDeathPotion - DateTime.Now;
+				TimeSpan ts = m_NextDrinkMaskOfDeathPotion - DateTime.UtcNow;
 
 				if ( ts < TimeSpan.Zero )
 					ts = TimeSpan.Zero;
@@ -2863,7 +2863,7 @@ namespace Server.Mobiles
 			{
 				try
 				{
-					m_NextDrinkMaskOfDeathPotion = DateTime.Now + value;
+					m_NextDrinkMaskOfDeathPotion = DateTime.UtcNow + value;
 				}
 				catch
 				{
@@ -2876,7 +2876,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				TimeSpan ts = m_NextDrinkConfusionPotion - DateTime.Now;
+				TimeSpan ts = m_NextDrinkConfusionPotion - DateTime.UtcNow;
 
 				if ( ts < TimeSpan.Zero )
 					ts = TimeSpan.Zero;
@@ -2887,7 +2887,7 @@ namespace Server.Mobiles
 			{
 				try
 				{
-					m_NextDrinkConfusionPotion = DateTime.Now + value;
+					m_NextDrinkConfusionPotion = DateTime.UtcNow + value;
 				}
 				catch
 				{
@@ -2900,7 +2900,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				TimeSpan ts = m_NextDrinkExplodingTarPotion - DateTime.Now;
+				TimeSpan ts = m_NextDrinkExplodingTarPotion - DateTime.UtcNow;
 
 				if ( ts < TimeSpan.Zero )
 					ts = TimeSpan.Zero;
@@ -2911,7 +2911,7 @@ namespace Server.Mobiles
 			{
 				try
 				{
-					m_NextDrinkExplodingTarPotion = DateTime.Now + value;
+					m_NextDrinkExplodingTarPotion = DateTime.UtcNow + value;
 				}
 				catch
 				{
@@ -2926,14 +2926,14 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				TimeSpan ts = m_SavagePaintExpiration - DateTime.Now;
+				TimeSpan ts = m_SavagePaintExpiration - DateTime.UtcNow;
 
 				if ( ts < TimeSpan.Zero )
 					ts = TimeSpan.Zero;
 
 				return ts;
 			}
-			set { m_SavagePaintExpiration = DateTime.Now + value; }
+			set { m_SavagePaintExpiration = DateTime.UtcNow + value; }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -2941,7 +2941,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				TimeSpan ts = m_NextSmithBulkOrder - DateTime.Now;
+				TimeSpan ts = m_NextSmithBulkOrder - DateTime.UtcNow;
 
 				if ( ts < TimeSpan.Zero )
 					ts = TimeSpan.Zero;
@@ -2950,7 +2950,7 @@ namespace Server.Mobiles
 			}
 			set
 			{
-				try { m_NextSmithBulkOrder = DateTime.Now + value; }
+				try { m_NextSmithBulkOrder = DateTime.UtcNow + value; }
 				catch { }
 			}
 		}
@@ -2960,7 +2960,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				TimeSpan ts = m_NextTailorBulkOrder - DateTime.Now;
+				TimeSpan ts = m_NextTailorBulkOrder - DateTime.UtcNow;
 
 				if ( ts < TimeSpan.Zero )
 					ts = TimeSpan.Zero;
@@ -2969,7 +2969,7 @@ namespace Server.Mobiles
 			}
 			set
 			{
-				try { m_NextTailorBulkOrder = DateTime.Now + value; }
+				try { m_NextTailorBulkOrder = DateTime.UtcNow + value; }
 				catch { }
 			}
 		}
@@ -3145,7 +3145,7 @@ namespace Server.Mobiles
 			CountAndTimeStamp count = (CountAndTimeStamp) tbl[obj];
 			if ( count != null )
 			{
-				if ( count.TimeStamp + SkillCheck.AntiMacroExpire <= DateTime.Now )
+				if ( count.TimeStamp + SkillCheck.AntiMacroExpire <= DateTime.UtcNow )
 				{
 					count.Count = 1;
 					return true;
@@ -3462,7 +3462,7 @@ namespace Server.Mobiles
 
 				foreach ( CountAndTimeStamp time in t.Values )
 				{
-					if ( time.TimeStamp + SkillCheck.AntiMacroExpire <= DateTime.Now )
+					if ( time.TimeStamp + SkillCheck.AntiMacroExpire <= DateTime.UtcNow )
 						remove.Add( time );
 				}
 
@@ -3717,7 +3717,7 @@ namespace Server.Mobiles
 			get
 			{
 				if ( NetState != null )
-					return m_GameTime + ( DateTime.Now - m_SessionStart );
+					return m_GameTime + ( DateTime.UtcNow - m_SessionStart );
 				else
 					return m_GameTime;
 			}
@@ -4107,7 +4107,7 @@ namespace Server.Mobiles
 			if ( pm == null || !pm.UsesFastwalkPrevention )
 				return true;
 
-			return ( pm.m_NextMovementTime < DateTime.Now );
+			return ( pm.m_NextMovementTime < DateTime.UtcNow );
 		}
 		#endregion
 
@@ -4146,12 +4146,12 @@ namespace Server.Mobiles
 
 			if ( weapon != null && weapon.WeaponAttributes[WeaponAttribute.BattleLust] != 0 )
 			{
-				if ( DateTime.Now > ( m_LastBattleLustGain + TimeSpan.FromSeconds( 2.0 ) ) )
+				if ( DateTime.UtcNow > ( m_LastBattleLustGain + TimeSpan.FromSeconds( 2.0 ) ) )
 				{
 					SendLocalizedMessage( 1113748 ); // The damage you received fuels your battle fury.
 					BattleLust++;
 
-					m_LastBattleLustGain = DateTime.Now;
+					m_LastBattleLustGain = DateTime.UtcNow;
 				}
 			}
 		}
@@ -4408,9 +4408,9 @@ namespace Server.Mobiles
 			if ( m_KRStartingQuestStep > 0 )
 				return false;
 
-			if ( DateTime.Now - m_LastYoungMessage > TimeSpan.FromMinutes( 1.0 ) )
+			if ( DateTime.UtcNow - m_LastYoungMessage > TimeSpan.FromMinutes( 1.0 ) )
 			{
-				m_LastYoungMessage = DateTime.Now;
+				m_LastYoungMessage = DateTime.UtcNow;
 				SendLocalizedMessage( 1019067 ); // A monster looks at you menacingly but does not attack.  You would be under attack now if not for your status as a new citizen of Britannia.
 			}
 
@@ -4421,9 +4421,9 @@ namespace Server.Mobiles
 
 		public bool CheckYoungHealTime()
 		{
-			if ( DateTime.Now - m_LastYoungHeal > TimeSpan.FromMinutes( 5.0 ) )
+			if ( DateTime.UtcNow - m_LastYoungHeal > TimeSpan.FromMinutes( 5.0 ) )
 			{
-				m_LastYoungHeal = DateTime.Now;
+				m_LastYoungHeal = DateTime.UtcNow;
 				return true;
 			}
 

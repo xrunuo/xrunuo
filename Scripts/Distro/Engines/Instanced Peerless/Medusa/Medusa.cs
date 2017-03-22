@@ -81,7 +81,7 @@ namespace Server.Mobiles
 		{
 			if ( m_ScalesLeft > 0 )
 			{
-				if ( DateTime.Now < m_NextCarve )
+				if ( DateTime.UtcNow < m_NextCarve )
 				{
 					// The creature is still recovering from the previous harvest. Try again in a few seconds.
 					from.SendLocalizedMessage( 1112677 );
@@ -108,7 +108,7 @@ namespace Server.Mobiles
 							scales.MoveToWorld( from.Location, from.Map );
 						}
 
-						m_NextCarve = DateTime.Now + TimeSpan.FromMinutes( 1.0 );
+						m_NextCarve = DateTime.UtcNow + TimeSpan.FromMinutes( 1.0 );
 					}
 					else
 					{
@@ -661,7 +661,7 @@ namespace Server.Mobiles
 			: base( orig )
 		{
 			m_Original = orig;
-			m_ExpireTime = DateTime.Now + TimeSpan.FromMinutes( 2.0 );
+			m_ExpireTime = DateTime.UtcNow + TimeSpan.FromMinutes( 2.0 );
 
 			HairItemID = orig.HairItemID;
 			HairHue = orig.HairHue;
@@ -683,7 +683,7 @@ namespace Server.Mobiles
 			if ( Petrified )
 				return;
 
-			if ( !m_Original.Alive || m_Original.IsDeadBondedPet || DateTime.Now > m_ExpireTime )
+			if ( !m_Original.Alive || m_Original.IsDeadBondedPet || DateTime.UtcNow > m_ExpireTime )
 			{
 				Kill();
 				return;
@@ -731,7 +731,7 @@ namespace Server.Mobiles
 				PlaySound( 0x37D );
 			}
 
-			if ( m_Original.Hidden && this.InRange( m_Original, 3 ) && DateTime.Now >= this.NextSkillTime && UseSkill( SkillName.DetectHidden ) )
+			if ( m_Original.Hidden && this.InRange( m_Original, 3 ) && DateTime.UtcNow >= this.NextSkillTime && UseSkill( SkillName.DetectHidden ) )
 			{
 				Target targ = this.Target;
 

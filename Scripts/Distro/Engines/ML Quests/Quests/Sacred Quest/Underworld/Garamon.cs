@@ -40,7 +40,7 @@ namespace Server.Mobiles
 
 		public override bool HandlesOnSpeech( Mobile from )
 		{
-			return DateTime.Now > m_NextTalk && from.InRange( Location, 2 );
+			return DateTime.UtcNow > m_NextTalk && from.InRange( Location, 2 );
 		}
 
 		public override void OnSpeech( SpeechEventArgs e )
@@ -51,7 +51,7 @@ namespace Server.Mobiles
 			{
 				if ( speech.Contains( m_Keywords[i].Keyword ) )
 				{
-					m_NextTalk = DateTime.Now + TimeSpan.FromSeconds( 10.0 );
+					m_NextTalk = DateTime.UtcNow + TimeSpan.FromSeconds( 10.0 );
 
 					Timer.DelayCall( TimeSpan.FromSeconds( 1.0 ), new TimerCallback(
 						delegate

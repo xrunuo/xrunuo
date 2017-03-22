@@ -393,7 +393,7 @@ namespace Server.Engines.Quests.HumilityCloak
 						if ( player.HasGump( typeof( GenericQuestGump ) ) || player.HasGump( typeof( QuestQuestionGump ) ) )
 							break;
 
-						if ( player.HumilityQuestNextChance < DateTime.Now )
+						if ( player.HumilityQuestNextChance < DateTime.UtcNow )
 							player.SendGump( new KnowThyHumilityGump() );
 						else
 							Say( 1075787 ); // I feel that thou hast yet more to learn about Humility... Please ponder these things further, and visit me again on the 'morrow.

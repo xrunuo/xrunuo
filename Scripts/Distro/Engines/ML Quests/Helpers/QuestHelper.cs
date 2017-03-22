@@ -115,7 +115,7 @@ namespace Server.Engines.Quests
 
 					DateTime endTime = restartInfo.RestartTime;
 
-					if ( DateTime.Now < endTime )
+					if ( DateTime.UtcNow < endTime )
 						return false;
 
 					if ( quest.RestartDelay > TimeSpan.Zero )

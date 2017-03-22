@@ -79,14 +79,14 @@ namespace Server.Mobiles
 		{
 			base.OnGaveMeleeAttack( defender );
 
-			if ( DateTime.Now >= m_NextAbilityTime )
+			if ( DateTime.UtcNow >= m_NextAbilityTime )
 			{
 				if ( BaseAttackHelperSE.IsUnderEffect( defender, BaseAttackHelperSE.m_RageTable ) )
 					return;
 
 				BaseAttackHelperSE.RageAttack( this, defender, ref m_Timer );
 
-				m_NextAbilityTime = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( m_MinTime, m_MaxTime ) );
+				m_NextAbilityTime = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( m_MinTime, m_MaxTime ) );
 			}
 		}
 

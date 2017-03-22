@@ -376,7 +376,7 @@ namespace Server.Items
 
 			m_Creatures = new ArrayList();
 
-			m_NextSpawn = DateTime.Now;
+			m_NextSpawn = DateTime.UtcNow;
 			m_Range = DefaultRange;
 		}
 
@@ -401,7 +401,7 @@ namespace Server.Items
 					return;
 			}
 
-			if ( DateTime.Now < m_NextSpawn )
+			if ( DateTime.UtcNow < m_NextSpawn )
 				return;
 
 			if ( m.InRange( this.Location, m_Range ) /*&& ( m.Direction & Direction.Running ) != 0*/ )
@@ -524,7 +524,7 @@ namespace Server.Items
 
 			m_DespawnTimer = Timer.DelayCall( DespawnTime, new TimerCallback( Despawn ) );
 
-			m_NextSpawn = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( 300, 600 ) );
+			m_NextSpawn = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( 300, 600 ) );
 		}
 
 		public void Despawn()

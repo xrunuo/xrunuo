@@ -40,7 +40,7 @@ namespace Server.Factions
 		public static readonly TimeSpan TaxChangePeriod = TimeSpan.FromHours( 12.0 );
 		public static readonly TimeSpan IncomePeriod = TimeSpan.FromDays( 1.0 );
 
-		public bool TaxChangeReady { get { return ( m_State.LastTaxChange + TaxChangePeriod ) < DateTime.Now; } }
+		public bool TaxChangeReady { get { return ( m_State.LastTaxChange + TaxChangePeriod ) < DateTime.UtcNow; } }
 
 		public static Town FromRegion( Region reg )
 		{
@@ -216,7 +216,7 @@ namespace Server.Factions
 
 		public void CheckIncome()
 		{
-			if ( ( LastIncome + IncomePeriod ) > DateTime.Now || Owner == null )
+			if ( ( LastIncome + IncomePeriod ) > DateTime.UtcNow || Owner == null )
 			{
 				return;
 			}
@@ -226,7 +226,7 @@ namespace Server.Factions
 
 		public void ProcessIncome()
 		{
-			LastIncome = DateTime.Now;
+			LastIncome = DateTime.UtcNow;
 
 			int flow = NetCashFlow;
 
@@ -469,7 +469,7 @@ namespace Server.Factions
 
 			if ( m_State.Owner == null ) // going from unowned to owned
 			{
-				LastIncome = DateTime.Now;
+				LastIncome = DateTime.UtcNow;
 			}
 			else if ( f == null ) // going from owned to unowned
 			{

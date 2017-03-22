@@ -254,7 +254,7 @@ namespace Server.Gumps
 						AddLabel( 150, 270, LabelHue, ScriptCompiler.ScriptItems.ToString() );
 
 						AddLabel( 20, 290, LabelHue, "Uptime:" );
-						AddLabel( 150, 290, LabelHue, FormatTimeSpan( DateTime.Now - Clock.ServerStart ) );
+						AddLabel( 150, 290, LabelHue, FormatTimeSpan( DateTime.UtcNow - Clock.ServerStart ) );
 
 						AddLabel( 20, 310, LabelHue, "Memory:" );
 						AddLabel( 150, 310, LabelHue, Utility.FormatByteAmount( GC.GetTotalMemory( false ) ) );
@@ -926,7 +926,7 @@ namespace Server.Gumps
 							}
 							else
 							{
-								TimeSpan remaining = ( DateTime.Now - banTime );
+								TimeSpan remaining = ( DateTime.UtcNow - banTime );
 
 								if ( remaining < TimeSpan.Zero )
 								{
@@ -2793,7 +2793,7 @@ namespace Server.Gumps
 								{
 									ArrayList results = new ArrayList();
 
-									DateTime minTime = DateTime.Now - ( Misc.TestCenter.Enabled ? TimeSpan.FromMinutes( 15.0 ) : Environment.Config.AccountDecay );
+									DateTime minTime = DateTime.UtcNow - ( Misc.TestCenter.Enabled ? TimeSpan.FromMinutes( 15.0 ) : Environment.Config.AccountDecay );
 
 									foreach ( Account acct in Accounts.GetAccounts() )
 									{

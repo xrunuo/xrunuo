@@ -91,7 +91,7 @@ namespace Server.Gumps
 			AddButton( 20, 465, 247, 248, 20, GumpButtonType.Reply, 0 );
 
 			if ( m_Spawner.Group && m_Spawner.TotalSpawned == 0 )
-				AddLabel( 220, 465, 0x481, String.Format( "Next Group Spawn: {0}", ( m_Spawner.NextGroupRespawn - DateTime.Now ).ToString() ) );
+				AddLabel( 220, 465, 0x481, String.Format( "Next Group Spawn: {0}", ( m_Spawner.NextGroupRespawn - DateTime.UtcNow ).ToString() ) );
 
 			// Column header
 
@@ -170,7 +170,7 @@ namespace Server.Gumps
 		private String GetNextSpawn( SpawnInstance si )
 		{
 			if ( si.State == SpawnInstance.SpawnState.Respawning )
-				return ( si.NextSpawn - DateTime.Now ).ToString();
+				return ( si.NextSpawn - DateTime.UtcNow ).ToString();
 			else
 				return "--";
 		}

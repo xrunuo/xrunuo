@@ -199,7 +199,7 @@ namespace Server.Items
 					ConsumeUse();
 
 				// Shooting a fukiya dart restarts your weapon swing delay
-				from.NextCombatTime = DateTime.Now + from.Weapon.GetDelay( from );
+				from.NextCombatTime = DateTime.UtcNow + from.Weapon.GetDelay( from );
 
 				Timer.DelayCall( TimeSpan.FromSeconds( 1.0 ), () => m_Using.Remove( from ) );
 			}

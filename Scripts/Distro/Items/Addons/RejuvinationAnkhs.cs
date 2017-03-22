@@ -96,14 +96,14 @@ namespace Server.Items
 
 			if ( m.IsPlayer && this.InRange( m, 3 ) && !this.InRange( oldLocation, 3 ) )
 			{
-				if ( DateTime.Now >= m_NextMessage )
+				if ( DateTime.UtcNow >= m_NextMessage )
 				{
 					if ( AddonComponents.Count > 0 )
 					{
 						( (AddonComponent) AddonComponents[0] ).SendLocalizedMessageTo( m, 1010061 ); // An overwhelming sense of peace fills you.
 					}
 
-					m_NextMessage = DateTime.Now + TimeSpan.FromSeconds( 25.0 );
+					m_NextMessage = DateTime.UtcNow + TimeSpan.FromSeconds( 25.0 );
 				}
 			}
 		}

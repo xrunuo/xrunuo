@@ -123,7 +123,7 @@ namespace Server.Persistence
 
 					writer.QueueForIndex( item, size );
 
-					if ( item.Decays && item.Parent == null && item.Map != Map.Internal && DateTime.Now > ( item.LastMoved + item.DecayTime ) )
+					if ( item.Decays && item.Parent == null && item.Map != Map.Internal && DateTime.UtcNow > ( item.LastMoved + item.DecayTime ) )
 						m_DecayBag.Add( item );
 
 					return writer;
@@ -163,7 +163,7 @@ namespace Server.Persistence
 					{
 						IVendor vendor = mobile as IVendor;
 
-						if ( ( vendor.LastRestock + vendor.RestockDelay < DateTime.Now ) )
+						if ( ( vendor.LastRestock + vendor.RestockDelay < DateTime.UtcNow ) )
 							m_RestockBag.Add( vendor );
 					}
 
@@ -238,7 +238,7 @@ namespace Server.Persistence
 			while ( m_RestockBag.TryTake( out vendor ) )
 			{
 				vendor.Restock();
-				vendor.LastRestock = DateTime.Now;
+				vendor.LastRestock = DateTime.UtcNow;
 			}
 		}
 

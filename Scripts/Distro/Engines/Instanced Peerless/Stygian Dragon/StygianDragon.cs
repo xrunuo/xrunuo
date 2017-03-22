@@ -69,12 +69,12 @@ namespace Server.Mobiles
 		{
 			base.OnDamage( amount, from, willKill );
 
-			if ( DateTime.Now > m_NextMeteorTime && 0.1 > Utility.RandomDouble() )
+			if ( DateTime.UtcNow > m_NextMeteorTime && 0.1 > Utility.RandomDouble() )
 			{
 				Say( true, "*Des-ailem Flam*" );
 				MonsterHelper.CrimsonMeteor( this );
 
-				m_NextMeteorTime = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( MinDelay, MaxDelay ) );
+				m_NextMeteorTime = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( MinDelay, MaxDelay ) );
 			}
 
 			if ( 0.1 > Utility.RandomDouble() )

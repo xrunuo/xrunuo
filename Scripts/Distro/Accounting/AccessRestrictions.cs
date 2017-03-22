@@ -32,7 +32,7 @@ namespace Server
 					Console.WriteLine( "Client: {0}: Past IP limit threshold", ip );
 
 					using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "ipLimits.log" ), true ) )
-						op.WriteLine( "{0}\tPast IP limit threshold\t{1}", ip, DateTime.Now );
+						op.WriteLine( "{0}\tPast IP limit threshold\t{1}", ip, DateTime.UtcNow );
 
 					e.AllowConnection = false;
 					return;

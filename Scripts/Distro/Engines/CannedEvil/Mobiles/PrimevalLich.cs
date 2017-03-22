@@ -377,7 +377,7 @@ namespace Server.Mobiles
 			if ( willKill || Map == null )
 				return;
 
-			if ( DateTime.Now > m_NextAbilityTime && 0.2 > Utility.RandomDouble() )
+			if ( DateTime.UtcNow > m_NextAbilityTime && 0.2 > Utility.RandomDouble() )
 			{
 				switch ( Utility.Random( 2 ) )
 				{
@@ -385,7 +385,7 @@ namespace Server.Mobiles
 					case 1: Lightning(); break;
 				}
 
-				m_NextAbilityTime = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( 25, 35 ) );
+				m_NextAbilityTime = DateTime.UtcNow + TimeSpan.FromSeconds( Utility.RandomMinMax( 25, 35 ) );
 			}
 		}
 

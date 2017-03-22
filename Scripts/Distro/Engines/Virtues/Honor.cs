@@ -26,12 +26,12 @@ namespace Server
 
 			try
 			{
-				if ( ( pm.LastHonorLoss + LossDelay ) < DateTime.Now )
+				if ( ( pm.LastHonorLoss + LossDelay ) < DateTime.UtcNow )
 				{
 					if ( VirtueHelper.Atrophy( from, VirtueName.Honor, LossAmount ) )
 						from.SendLocalizedMessage( 1063227 ); // You have lost some Honor.
 
-					pm.LastHonorLoss = DateTime.Now;
+					pm.LastHonorLoss = DateTime.UtcNow;
 				}
 			}
 			catch
@@ -101,7 +101,7 @@ namespace Server
 				return;
 			}
 
-			TimeSpan waitTime = DateTime.Now - pm.LastHonorUse;
+			TimeSpan waitTime = DateTime.UtcNow - pm.LastHonorUse;
 			if ( waitTime < UseDelay )
 			{
 				TimeSpan remainingTime = UseDelay - waitTime;
@@ -121,7 +121,7 @@ namespace Server
 				delegate()
 				{
 					pm.HonorActive = false;
-					pm.LastHonorUse = DateTime.Now;
+					pm.LastHonorUse = DateTime.UtcNow;
 					pm.SendLocalizedMessage( 1063236 ); // You no longer embrace your honor
 				} );
 		}

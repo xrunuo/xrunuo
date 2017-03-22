@@ -58,7 +58,7 @@ namespace Server.Gumps
 					m_Owner.Line2 = info.GetTextEntry( 1 ).Text;
 					m_Owner.Line3 = info.GetTextEntry( 2 ).Text;
 
-					m_Owner.EditEnd = DateTime.Now + TimeSpan.FromMinutes( 10.0 );
+					m_Owner.EditEnd = DateTime.UtcNow + TimeSpan.FromMinutes( 10.0 );
 				}
 			}
 		}

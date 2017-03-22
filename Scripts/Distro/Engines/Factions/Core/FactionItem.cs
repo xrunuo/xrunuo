@@ -28,13 +28,13 @@ namespace Server.Factions
 					return true;
 				}
 
-				return ( m_Expiration != DateTime.MinValue && DateTime.Now >= m_Expiration );
+				return ( m_Expiration != DateTime.MinValue && DateTime.UtcNow >= m_Expiration );
 			}
 		}
 
 		public void StartExpiration()
 		{
-			m_Expiration = DateTime.Now + ExpirationPeriod;
+			m_Expiration = DateTime.UtcNow + ExpirationPeriod;
 		}
 
 		public void Attach()

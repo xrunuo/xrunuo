@@ -84,7 +84,7 @@ namespace Server.Spells.Mysticism
 			{
 				BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Sleep, 1080139, TimeSpan.FromSeconds( seconds ), m, seconds.ToString() ) );
 
-				var t = new InternalTimer( m, DateTime.Now + TimeSpan.FromSeconds( seconds ) );
+				var t = new InternalTimer( m, DateTime.UtcNow + TimeSpan.FromSeconds( seconds ) );
 				t.Start();
 
 				var mods = new List<AttributeMod>();
@@ -178,7 +178,7 @@ namespace Server.Spells.Mysticism
 
 			protected override void OnTick()
 			{
-				if ( m_Target.Deleted || !m_Target.Alive || DateTime.Now > m_End )
+				if ( m_Target.Deleted || !m_Target.Alive || DateTime.UtcNow > m_End )
 				{
 					RemoveEffect( m_Target );
 				}

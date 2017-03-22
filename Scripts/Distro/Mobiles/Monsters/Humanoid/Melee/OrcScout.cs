@@ -116,7 +116,7 @@ namespace Server.Mobiles
 
 			if ( m != null )
 			{
-				if ( DateTime.Now >= this.NextSkillTime && UseSkill( SkillName.DetectHidden ) )
+				if ( DateTime.UtcNow >= this.NextSkillTime && UseSkill( SkillName.DetectHidden ) )
 				{
 					Target targ = this.Target;
 

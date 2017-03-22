@@ -125,7 +125,7 @@ namespace Server.Factions
 									break;
 								}
 
-								TimeSpan remaining = ( pl.Leaving + Faction.LeavePeriod ) - DateTime.Now;
+								TimeSpan remaining = ( pl.Leaving + Faction.LeavePeriod ) - DateTime.UtcNow;
 
 								if ( remaining.TotalDays >= 1 )
 								{

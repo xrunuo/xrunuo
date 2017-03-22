@@ -77,7 +77,7 @@ namespace Server.Engines.Housing.Regions
 			{
 				AggressorInfo info = (AggressorInfo) m.Aggressed[i];
 
-				if ( info.Attacker.IsPlayer && ( DateTime.Now - info.LastCombatTime ) < time )
+				if ( info.Attacker.IsPlayer && ( DateTime.UtcNow - info.LastCombatTime ) < time )
 					return true;
 			}
 
@@ -85,7 +85,7 @@ namespace Server.Engines.Housing.Regions
 			{
 				AggressorInfo info = (AggressorInfo) m.Aggressors[i];
 
-				if ( info.Attacker.IsPlayer && ( DateTime.Now - info.LastCombatTime ) < time )
+				if ( info.Attacker.IsPlayer && ( DateTime.UtcNow - info.LastCombatTime ) < time )
 					return true;
 			}
 
@@ -246,7 +246,7 @@ namespace Server.Engines.Housing.Regions
 				{
 					AggressorInfo info = (AggressorInfo) m.Aggressed[i];
 
-					if ( info.Defender.IsPlayer && ( DateTime.Now - info.LastCombatTime ) < CombatHeatDelay )
+					if ( info.Defender.IsPlayer && ( DateTime.UtcNow - info.LastCombatTime ) < CombatHeatDelay )
 						return base.GetLogoutDelay( m );
 				}
 
@@ -279,7 +279,7 @@ namespace Server.Engines.Housing.Regions
 				{
 					from.SendLocalizedMessage( 500295 ); // You are too far away to do that.
 				}
-				else if ( DateTime.Now <= m_House.BuiltOn.AddHours( 1.0 ) )
+				else if ( DateTime.UtcNow <= m_House.BuiltOn.AddHours( 1.0 ) )
 				{
 					from.SendLocalizedMessage( 1080178 ); // You must wait one hour between each house demolition.
 				}

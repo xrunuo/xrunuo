@@ -31,7 +31,7 @@ namespace Server.Items
 		public override TimeSpan OnSwing( Mobile attacker, Mobile defender )
 		{
 			// Make sure we've been standing still for 0.5 seconds
-			if ( DateTime.Now > ( attacker.LastMoveTime + TimeSpan.FromSeconds( 0.5 ) ) || ( WeaponAbility.GetCurrentAbility( attacker ) is MovingShot ) )
+			if ( DateTime.UtcNow > ( attacker.LastMoveTime + TimeSpan.FromSeconds( 0.5 ) ) || ( WeaponAbility.GetCurrentAbility( attacker ) is MovingShot ) )
 			{
 				if ( CanSwing( attacker ) && attacker.HarmfulCheck( defender ) )
 				{

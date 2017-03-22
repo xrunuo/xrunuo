@@ -167,7 +167,7 @@ namespace Server
 
 			Console.Write( "World: Loading..." );
 
-			DateTime start = DateTime.Now;
+			DateTime start = DateTime.UtcNow;
 
 			m_Loading = true;
 
@@ -202,7 +202,7 @@ namespace Server
 			if ( ManualGC )
 				System.GC.Collect();
 
-			Console.WriteLine( String.Format( "done: {1} items, {2} mobiles ({0:F1} seconds)", ( DateTime.Now - start ).TotalSeconds, m_Items.Count, m_Mobiles.Count ) );
+			Console.WriteLine( String.Format( "done: {1} items, {2} mobiles ({0:F1} seconds)", ( DateTime.UtcNow - start ).TotalSeconds, m_Items.Count, m_Mobiles.Count ) );
 		}
 
 		private void ProcessSafetyQueues()

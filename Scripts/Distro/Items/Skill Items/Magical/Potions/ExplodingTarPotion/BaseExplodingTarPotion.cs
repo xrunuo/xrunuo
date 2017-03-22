@@ -175,7 +175,7 @@ namespace Server.Items
 			if ( seconds > 0 )
 			{
 				BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Paralyze, 1095150, 1095151, TimeSpan.FromSeconds( seconds ), m, seconds.ToString() ) );
-				Timer t = new InternalTimer( m, DateTime.Now + TimeSpan.FromSeconds( seconds ) );
+				Timer t = new InternalTimer( m, DateTime.UtcNow + TimeSpan.FromSeconds( seconds ) );
 				t.Start();
 
 				m_SleptTable[m] = t;
@@ -204,7 +204,7 @@ namespace Server.Items
 
 			protected override void OnTick()
 			{
-				if ( m_Target.Deleted || !m_Target.Alive || DateTime.Now > m_End )
+				if ( m_Target.Deleted || !m_Target.Alive || DateTime.UtcNow > m_End )
 				{
 					RemoveEffect( m_Target );
 				}

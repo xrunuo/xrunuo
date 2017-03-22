@@ -33,7 +33,7 @@ namespace Server.Items
 
 				from.SendLocalizedMessage( 1063013, args ); // You need at least ~1_SKILL_REQUIREMENT~ ~2_SKILL_NAME~ skill to use that ability.
 			}
-			else if ( from.NextSkillTime > DateTime.Now )
+			else if ( from.NextSkillTime > DateTime.UtcNow )
 			{
 				from.SendLocalizedMessage( 1070772 ); // You must wait a few seconds before you can use that item.
 			}

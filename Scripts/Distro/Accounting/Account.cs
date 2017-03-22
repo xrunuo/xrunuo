@@ -193,7 +193,7 @@ namespace Server.Accounting
 
 				if ( GetBanTags( out banTime, out banDuration ) )
 				{
-					if ( banDuration != TimeSpan.MaxValue && DateTime.Now >= ( banTime + banDuration ) )
+					if ( banDuration != TimeSpan.MaxValue && DateTime.UtcNow >= ( banTime + banDuration ) )
 					{
 						SetUnspecifiedBan( null ); // clear
 						Banned = false;
@@ -246,7 +246,7 @@ namespace Server.Accounting
 
 		public TimeSpan Age
 		{
-			get { return DateTime.Now - Created; }
+			get { return DateTime.UtcNow - Created; }
 		}
 
 		/// <summary>
@@ -271,7 +271,7 @@ namespace Server.Accounting
 					PlayerMobile m = m_Mobiles[i] as PlayerMobile;
 
 					if ( m != null && m.NetState != null )
-						return m_TotalGameTime + ( DateTime.Now - m.SessionStart );
+						return m_TotalGameTime + ( DateTime.UtcNow - m.SessionStart );
 				}
 
 				return m_TotalGameTime;
@@ -557,7 +557,7 @@ namespace Server.Accounting
 			if ( m == null )
 				return;
 
-			acc.m_TotalGameTime += DateTime.Now - m.SessionStart;
+			acc.m_TotalGameTime += DateTime.UtcNow - m.SessionStart;
 		}
 
 		private static void EventSink_Login( LoginEventArgs e )
@@ -639,7 +639,7 @@ namespace Server.Accounting
 
 			m_AccessLevel = AccessLevel.Player;
 
-			m_Created = m_LastLogin = DateTime.Now;
+			m_Created = m_LastLogin = DateTime.UtcNow;
 			m_TotalGameTime = TimeSpan.Zero;
 
 			m_Comments = new List<AccountComment>();
@@ -713,8 +713,8 @@ namespace Server.Accounting
 
 			m_AccessLevel = (AccessLevel) Enum.Parse( typeof( AccessLevel ), Utility.GetText( node["accessLevel"], "Player" ), true );
 			m_Flags = Utility.GetInt32( Utility.GetText( node["flags"], "0" ), 0 );
-			m_Created = Utility.GetDateTime( Utility.GetText( node["created"], null ), DateTime.Now );
-			m_LastLogin = Utility.GetDateTime( Utility.GetText( node["lastLogin"], null ), DateTime.Now );
+			m_Created = Utility.GetDateTime( Utility.GetText( node["created"], null ), DateTime.UtcNow );
+			m_LastLogin = Utility.GetDateTime( Utility.GetText( node["lastLogin"], null ), DateTime.UtcNow );
 
 			m_Mobiles = LoadMobiles( node );
 			m_Comments = LoadComments( node );

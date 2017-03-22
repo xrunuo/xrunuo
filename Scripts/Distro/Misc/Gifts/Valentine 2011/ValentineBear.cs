@@ -67,7 +67,7 @@ namespace Server.Items
 			{
 				from.SendLocalizedMessage( 1116249 ); // That must be in your backpack for you to use it.
 			}
-			else if ( m_EditEnd > DateTime.Now )
+			else if ( m_EditEnd > DateTime.UtcNow )
 			{
 				from.CloseGump( typeof( ValentineBearGump ) );
 				from.SendGump( new ValentineBearGump( this ) );

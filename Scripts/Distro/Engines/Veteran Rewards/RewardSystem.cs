@@ -61,7 +61,7 @@ namespace Server.Engines.VeteranRewards
 				return false;
 			}
 
-			TimeSpan totalTime = ( DateTime.Now - acct.Created );
+			TimeSpan totalTime = ( DateTime.UtcNow - acct.Created );
 
 			ts = ( list.Age - totalTime );
 
@@ -83,7 +83,7 @@ namespace Server.Engines.VeteranRewards
 
 		public static int GetRewardLevel( Account acct )
 		{
-			TimeSpan totalTime = ( DateTime.Now - acct.Created );
+			TimeSpan totalTime = ( DateTime.UtcNow - acct.Created );
 
 			int level = (int) ( totalTime.TotalDays / RewardInterval.TotalDays );
 
@@ -509,7 +509,7 @@ namespace Server.Engines.VeteranRewards
 			if ( acct == null )
 				return false;
 
-			TimeSpan totalTime = ( DateTime.Now - acct.Created );
+			TimeSpan totalTime = ( DateTime.UtcNow - acct.Created );
 
 			return totalTime >= TimeSpan.FromDays( 180.0 );
 		}

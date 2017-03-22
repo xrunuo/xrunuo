@@ -23,7 +23,7 @@ namespace Server.Items
 			{
 				if ( pm.Map != this.Map || !pm.InRange( GetWorldLocation(), 2 ) )
 					pm.LocalOverheadMessage( MessageType.Regular, 0x3B2, 1019045 ); // I can't reach that.
-				else if ( pm.NextPuzzleAttempt > DateTime.Now )
+				else if ( pm.NextPuzzleAttempt > DateTime.UtcNow )
 					pm.SendLocalizedMessage( 1113386 ); // You are too tired to attempt solving more puzzles at this time.
 				else if ( pm.Backpack.FindItemByType<PuzzleBoardItem>( false ) != null )
 					pm.SendLocalizedMessage( 501885 ); // You already own one of those!

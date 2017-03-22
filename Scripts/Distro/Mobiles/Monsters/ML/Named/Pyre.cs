@@ -74,7 +74,7 @@ namespace Server.Mobiles
 
 		/*public override void OnThink()
 		{
-			if ( DateTime.Now > m_Delay )
+			if ( DateTime.UtcNow > m_Delay )
 			{
 				foreach ( Mobile m in Map.GetMobilesInRange( Location, 3 ) )
 				{
@@ -95,7 +95,7 @@ namespace Server.Mobiles
 					m.RevealingAction();
 				}
 
-				m_Delay = DateTime.Now + TimeSpan.FromSeconds( 4 );
+				m_Delay = DateTime.UtcNow + TimeSpan.FromSeconds( 4 );
 			}
 			base.OnThink();
 		}*/
