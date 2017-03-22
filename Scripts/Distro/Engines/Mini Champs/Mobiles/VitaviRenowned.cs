@@ -75,6 +75,7 @@ namespace Server.Mobiles
 		public override int Hides { get { return 8; } }
 		public override int Meat { get { return 1; } }
 		public override Poison HitPoison { get { return Poison.Lethal; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public VitaviRenowned( Serial serial )
 			: base( serial )

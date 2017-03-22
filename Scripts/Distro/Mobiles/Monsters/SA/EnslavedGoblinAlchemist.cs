@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Engines.Loyalty;
+using Server.Items;
 
 namespace Server.Mobiles
 {
@@ -39,6 +40,7 @@ namespace Server.Mobiles
 
 		public override LoyaltyGroup LoyaltyGroupEnemy { get { return LoyaltyGroup.GargoyleQueen; } }
 		public override int LoyaltyPointsAward { get { return 8; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public EnslavedGoblinAlchemist( Serial serial )
 			: base( serial )

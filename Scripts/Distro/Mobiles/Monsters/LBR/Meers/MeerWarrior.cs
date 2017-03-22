@@ -48,8 +48,8 @@ namespace Server.Mobiles
 
 		public override bool BardImmune { get { return false; } }
 		public override bool CanRummageCorpses { get { return true; } }
-
 		public override bool InitialInnocent { get { return true; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public override void OnDamage( int amount, Mobile from, bool willKill )
 		{

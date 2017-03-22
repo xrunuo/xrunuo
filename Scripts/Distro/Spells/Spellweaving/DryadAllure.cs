@@ -58,7 +58,7 @@ namespace Server.Spells.Spellweaving
 			{
 				Caster.SendLocalizedMessage( 1074379 ); // You cannot charm that!
 			}
-			else if ( bc is BaseChampion || bc.IsParagon || bc is Medusa || bc is Lurg || !SlayerGroup.GetEntryByName( SlayerName.Repond ).Slays( bc ) )
+			else if ( bc.AllureImmune || bc.IsParagon || !SlayerGroup.GetEntryByName( SlayerName.Repond ).Slays( bc ) )
 			{
 				Caster.SendLocalizedMessage( 1074379 ); // You cannot charm that!
 			}

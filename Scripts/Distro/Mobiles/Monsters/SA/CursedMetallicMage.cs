@@ -42,6 +42,7 @@ namespace Server.Mobiles
 		}
 
 		public override bool DeleteCorpseOnDeath { get { return true; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
 
 		public override bool OnBeforeDeath()
 		{

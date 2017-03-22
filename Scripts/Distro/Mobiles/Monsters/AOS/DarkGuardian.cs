@@ -67,6 +67,7 @@ namespace Server.Mobiles
 		public override bool Unprovokable { get { return true; } }
 		public override Poison PoisonImmune { get { return Poison.Lethal; } }
 		public override bool BleedImmune { get { return true; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
 
 		public DarkGuardian( Serial serial )
 			: base( serial )

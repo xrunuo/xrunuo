@@ -54,6 +54,7 @@ namespace Server.Mobiles
 		public override int Meat { get { return 4; } }
 		public override Poison PoisonImmune { get { return Poison.Regular; } }
 		public override int TreasureMapLevel { get { return 5; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public Titan( Serial serial )
 			: base( serial )

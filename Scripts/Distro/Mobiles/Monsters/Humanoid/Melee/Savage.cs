@@ -62,6 +62,7 @@ namespace Server.Mobiles
 
 		public override int Meat { get { return 1; } }
 		public override bool AlwaysMurderer { get { return true; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public override OppositionGroup OppositionGroup
 		{

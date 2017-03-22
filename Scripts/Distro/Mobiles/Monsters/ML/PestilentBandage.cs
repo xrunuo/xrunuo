@@ -45,6 +45,8 @@ namespace Server.Mobiles
 			Karma = -10000;
 		}
 
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
+
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.FilthyRich, 3 );

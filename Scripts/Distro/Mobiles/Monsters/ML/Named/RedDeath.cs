@@ -46,6 +46,8 @@ namespace Server.Mobiles
 				PackItem( new PetParrot() );
 		}
 
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
+
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.UltraRich, 2 );
@@ -53,8 +55,8 @@ namespace Server.Mobiles
 
 		protected override void OnAfterDeath( Container c )
 		{
-			base.OnAfterDeath( c );		
-			
+			base.OnAfterDeath( c );
+
 			c.DropItem( new ResolvesBridle() );
 
             if (2000 > Utility.Random(100000))

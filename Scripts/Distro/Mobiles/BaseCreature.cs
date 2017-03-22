@@ -461,6 +461,9 @@ namespace Server.Mobiles
 		public virtual bool Uncalmable { get { return BardImmune || m_IsDeadPet; } }
 
 		public virtual bool BleedImmune { get { return false; } }
+
+		public virtual bool AllureImmune { get { return false; } }
+
 		public virtual bool DeathAdderCharmable { get { return false; } }
 
 		public virtual double DispelDifficulty { get { return 0.0; } } // at this skill level we dispel 50% chance
@@ -468,6 +471,8 @@ namespace Server.Mobiles
 
 		public virtual LoyaltyGroup LoyaltyGroupEnemy { get { return LoyaltyGroup.GargoyleQueen; } }
 		public virtual int LoyaltyPointsAward { get { return 0; } }
+
+		public virtual SlayerName SlayerGroup { get { return SlayerName.None; } }
 
 		public virtual bool InstantCast { get { return false; } }
 		public virtual double ChangeCombatantChance { get { return 0.0; } }

@@ -64,6 +64,7 @@ namespace Server.Mobiles
 		public override bool AlwaysMurderer { get { return true; } }
 		public override int Meat { get { return 1; } }
 		public override int TreasureMapLevel { get { return 2; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public EvilMageLord( Serial serial )
 			: base( serial )

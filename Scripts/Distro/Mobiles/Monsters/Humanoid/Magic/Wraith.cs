@@ -49,13 +49,13 @@ namespace Server.Mobiles
 		}
 
 		public override bool BleedImmune { get { return true; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
+		public override Poison PoisonImmune { get { return Poison.Lethal; } }
 
 		public override OppositionGroup OppositionGroup
 		{
 			get { return OppositionGroup.FeyAndUndead; }
 		}
-
-		public override Poison PoisonImmune { get { return Poison.Lethal; } }
 
 		public Wraith( Serial serial )
 			: base( serial )

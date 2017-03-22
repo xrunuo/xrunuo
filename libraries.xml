@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <libraries>
 	<library name="Distro" />
-	<library name="Games">
+    <library name="InstancedPeerless">
+    	<depends>Distro</depends>
+    </library>
+	<library name="Games" disabled="true">
+		<depends>Distro</depends>
 		<path>https://github.com/ppardalj/xrunuo-games/archive/master.zip</path>
 	</library>
 </libraries>

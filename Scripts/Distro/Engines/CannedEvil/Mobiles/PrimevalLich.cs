@@ -21,7 +21,7 @@ namespace Server.Mobiles
 			{
 				return new Type[]
 				{
-					typeof( LightsRampart ),					
+					typeof( LightsRampart ),
 					typeof( ProtectorOfTheBattleMage ),
 					typeof( CastOffZombieSkin ),
 					typeof( BansheesCall )
@@ -116,7 +116,7 @@ namespace Server.Mobiles
 
 		public override LoyaltyGroup LoyaltyGroupEnemy { get { return LoyaltyGroup.GargoyleQueen; } }
 		public override int LoyaltyPointsAward { get { return 150; } }
-
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
 		public override bool CanRummageCorpses { get { return true; } }
 		public override bool BleedImmune { get { return true; } }
 		public override Poison PoisonImmune { get { return Poison.Lethal; } }

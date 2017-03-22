@@ -45,6 +45,8 @@ namespace Server.Mobiles
 			PackSpellweavingScroll();
 		}
 
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
+
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.FilthyRich );

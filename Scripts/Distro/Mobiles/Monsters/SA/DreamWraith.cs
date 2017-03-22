@@ -59,6 +59,7 @@ namespace Server.Mobiles
 
 		public override LoyaltyGroup LoyaltyGroupEnemy { get { return LoyaltyGroup.GargoyleQueen; } }
 		public override int LoyaltyPointsAward { get { return 5; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
 
 		public override int GetAttackSound() { return 0x646; }
 		public override int GetDeathSound() { return 0x647; }

@@ -58,8 +58,8 @@ namespace Server.Mobiles
 		public override bool CanRummageCorpses { get { return true; } }
 		public override Poison PoisonImmune { get { return Poison.Lethal; } }
 		public override int TreasureMapLevel { get { return 5; } }
-
 		public override bool InitialInnocent { get { return true; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public override int GetHurtSound()
 		{

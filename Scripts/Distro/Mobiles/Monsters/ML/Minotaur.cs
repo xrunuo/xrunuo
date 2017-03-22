@@ -69,7 +69,8 @@ namespace Server.Mobiles
 		}
 
 		public override int Meat { get { return 2; } }
-		public override int TreasureMapLevel { get { return 3; } }		
+		public override int TreasureMapLevel { get { return 3; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public Minotaur( Serial serial )
 			: base( serial )

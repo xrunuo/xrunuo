@@ -51,6 +51,7 @@ namespace Server.Mobiles
 
 		public override Poison PoisonImmune { get { return Poison.Regular; } }
 		public override int TreasureMapLevel { get { return 3; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Ogre; } }
 
 		public ArcticOgreLord( Serial serial )
 			: base( serial )

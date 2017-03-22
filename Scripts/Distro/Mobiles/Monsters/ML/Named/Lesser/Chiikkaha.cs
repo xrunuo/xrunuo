@@ -30,6 +30,8 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Wrestling, 50.1, 75.0 );
 		}
 
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
+
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Rich, 2 );

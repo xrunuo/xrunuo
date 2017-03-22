@@ -51,19 +51,6 @@ namespace Server.Configuration
 			return attributeList.Count == 0 ? null : attributeList.ToArray();
 		}
 
-		private static string[] LowerStringArray( string[] src )
-		{
-			if ( src == null )
-				return null;
-
-			var dst = new string[src.Length];
-
-			for ( uint i = 0; i < src.Length; i++ )
-				dst[i] = src[i].ToLower();
-
-			return dst;
-		}
-
 		public Library( string name )
 		{
 			m_Name = name;
@@ -114,7 +101,7 @@ namespace Server.Configuration
 
 			m_IgnoreSources = CollectStringArray( libConfigEl, "ignore-source", "name" );
 			m_IgnoreTypes = CollectStringArray( libConfigEl, "ignore-type", "name" );
-			m_Depends = LowerStringArray( CollectStringArray( libConfigEl, "depends", "name" ) );
+			m_Depends = CollectStringArray( libConfigEl, "depends", "name" );
 
 			var disabledString = libConfigEl.GetAttribute( "disabled" );
 			m_Disabled = Parser.ParseBool( disabledString, false );

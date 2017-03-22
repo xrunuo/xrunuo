@@ -69,8 +69,10 @@ namespace Server.Mobiles
 
 		// TODO: Self heal with bandages
 
-		public override int TreasureMapLevel { get { return 3; } }		
-		
+		public override int TreasureMapLevel { get { return 3; } }
+		public override bool AllureImmune{ get { return true; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
+
 		public Lurg( Serial serial )
 			: base( serial )
 		{

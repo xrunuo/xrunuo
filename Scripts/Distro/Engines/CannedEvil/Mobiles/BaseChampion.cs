@@ -35,6 +35,8 @@ namespace Server.Mobiles
 
 		public virtual bool NoGoodies { get { return false; } }
 
+		public override bool AllureImmune{ get { return true; } }
+
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );

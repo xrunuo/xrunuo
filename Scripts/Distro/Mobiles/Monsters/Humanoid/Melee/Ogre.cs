@@ -52,6 +52,7 @@ namespace Server.Mobiles
 		public override bool CanRummageCorpses { get { return true; } }
 		public override int TreasureMapLevel { get { return 1; } }
 		public override int Meat { get { return 2; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Ogre; } }
 
 		public Ogre( Serial serial )
 			: base( serial )

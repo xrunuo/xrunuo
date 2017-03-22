@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Engines.Loyalty;
+using Server.Items;
 
 namespace Server.Mobiles
 {
@@ -52,10 +53,11 @@ namespace Server.Mobiles
 
 		public override int Meat { get { return 1; } }
 		public override int Hides { get { return 8; } }
-		public override int TreasureMapLevel { get { return 2; } }		
+		public override int TreasureMapLevel { get { return 2; } }
 
 		public override LoyaltyGroup LoyaltyGroupEnemy { get { return LoyaltyGroup.GargoyleQueen; } }
 		public override int LoyaltyPointsAward { get { return 5; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public ClanRibbonCourtier( Serial serial )
 			: base( serial )

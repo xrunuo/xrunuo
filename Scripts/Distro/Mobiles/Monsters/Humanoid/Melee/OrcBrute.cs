@@ -61,6 +61,7 @@ namespace Server.Mobiles
 		public override bool BardImmune { get { return false; } }
 		public override Poison PoisonImmune { get { return Poison.Lethal; } }
 		public override int Meat { get { return 2; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Orc; } }
 
 		public override OppositionGroup OppositionGroup
 		{

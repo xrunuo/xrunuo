@@ -54,8 +54,9 @@ namespace Server.Mobiles
 		}
 
 		// TODO: Self heal with bandages
-		
-		public override int TreasureMapLevel { get { return 2; } }		
+
+		public override int TreasureMapLevel { get { return 2; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		protected override void OnAfterDeath( Container c )
 		{

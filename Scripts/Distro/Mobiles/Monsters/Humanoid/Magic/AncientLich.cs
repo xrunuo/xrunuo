@@ -69,6 +69,8 @@ namespace Server.Mobiles
 			m_Minions = new ArrayList();
 		}
 
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
+
 		public override bool CanPaperdollBeOpenedBy( Mobile from )
 		{
 			return false;

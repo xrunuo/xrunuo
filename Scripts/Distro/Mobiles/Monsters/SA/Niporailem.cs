@@ -60,6 +60,7 @@ namespace Server.Mobiles
 
 		public override LoyaltyGroup LoyaltyGroupEnemy { get { return LoyaltyGroup.GargoyleQueen; } }
 		public override int LoyaltyPointsAward { get { return 75; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
 
 		public override bool AlwaysMurderer { get { return true; } }
 		public override Poison PoisonImmune { get { return Poison.Lethal; } }
@@ -278,7 +279,7 @@ namespace Server.Items
 			public InternalTimer( NiporailemsTreasure owner )
 				: base( TimeSpan.FromSeconds( 60.0 ) )
 			{
-				
+
 				m_Owner = owner;
 			}
 

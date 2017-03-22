@@ -36,9 +36,9 @@ namespace Server.Mobiles
 
 			Fame = 600;
 			Karma = -600;
-			
+
 			PackItem( new Bone() );
-			
+
 			switch ( Utility.Random( 10 ) )
 			{
 				case 0: PackItem( new LeftArm() ); break;
@@ -77,6 +77,7 @@ namespace Server.Mobiles
 
 		public override bool BleedImmune { get { return true; } }
 		public override Poison PoisonImmune { get { return Poison.Regular; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
 
 		public Zombie( Serial serial )
 			: base( serial )

@@ -55,6 +55,8 @@ namespace Server.Mobiles
 		public override int GetHurtSound() { return 0x28B; }
 		public override int GetDeathSound() { return 0x108; }
 
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
+
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.UltraRich, 2 );

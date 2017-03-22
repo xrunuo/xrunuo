@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using Server.Items;
-using Server.Targeting;
 
 namespace Server.Mobiles
 {
@@ -48,6 +46,7 @@ namespace Server.Mobiles
 		public override bool CanRummageCorpses { get { return true; } }
 		public override int TreasureMapLevel { get { return 1; } }
 		public override int Meat { get { return 2; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Troll; } }
 
 		public Troll( Serial serial )
 			: base( serial )

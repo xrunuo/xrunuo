@@ -60,7 +60,8 @@ namespace Server.Mobiles
 		public override int Meat { get { return 1; } }
 		public override int Hides { get { return 8; } }
 		public override HideType HideType { get { return HideType.Spined; } }
-		public override int TreasureMapLevel { get { return 2; } }		
+		public override int TreasureMapLevel { get { return 2; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public RatmanMage( Serial serial )
 			: base( serial )

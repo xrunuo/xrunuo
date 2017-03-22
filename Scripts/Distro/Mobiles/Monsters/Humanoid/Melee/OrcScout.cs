@@ -71,6 +71,7 @@ namespace Server.Mobiles
 		}
 
 		public override OppositionGroup OppositionGroup { get { return OppositionGroup.SavagesAndOrcs; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Orc; } }
 
 		public override bool IsEnemy( Mobile m )
 		{

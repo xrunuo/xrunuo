@@ -61,7 +61,8 @@ namespace Server.Mobiles
 
 		public override bool CanRummageCorpses { get { return true; } }
 		public override bool AlwaysMurderer { get { return true; } }
-		public override int TreasureMapLevel { get { return 5; } }		
+		public override int TreasureMapLevel { get { return 5; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public MasterTheophilus( Serial serial )
 			: base( serial )

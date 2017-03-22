@@ -62,6 +62,7 @@ namespace Server.Mobiles
 		}
 
 		public override bool CanRummageCorpses { get { return true; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Orc; } }
 
 		public override OppositionGroup OppositionGroup
 		{

@@ -65,6 +65,7 @@ namespace Server.Mobiles
 
 		public override LoyaltyGroup LoyaltyGroupEnemy { get { return LoyaltyGroup.GargoyleQueen; } }
 		public override int LoyaltyPointsAward { get { return 50; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public override void GenerateLoot()
 		{

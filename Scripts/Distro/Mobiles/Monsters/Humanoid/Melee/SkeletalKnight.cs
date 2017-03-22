@@ -61,6 +61,7 @@ namespace Server.Mobiles
 		}
 
 		public override bool BleedImmune { get { return true; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
 
 		public SkeletalKnight( Serial serial )
 			: base( serial )

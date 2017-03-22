@@ -57,7 +57,7 @@ namespace Server.Mobiles
 
 		public override LoyaltyGroup LoyaltyGroupEnemy { get { return LoyaltyGroup.GargoyleQueen; } }
 		public override int LoyaltyPointsAward { get { return 10; } }
-
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 		public override bool CanRummageCorpses { get { return true; } }
 		public override int Meat { get { return 1; } }
 		public override FoodType FavoriteFood { get { return FoodType.Meat; } }
@@ -178,7 +178,7 @@ namespace Server.Mobiles
 			public AcidTimer( Mobile target )
 				: base( TimeSpan.FromSeconds( 1.0 ), TimeSpan.FromSeconds( 1.0 ) )
 			{
-				
+
 				m_Target = target;
 				m_Count = 3;
 			}

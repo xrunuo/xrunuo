@@ -10,7 +10,7 @@ namespace Server.Mobiles
 	public class OgreLord : BaseCreature
 	{
 		public override Faction FactionAllegiance { get { return Minax.Instance; } }
-		
+
 		[Constructable]
 		public OgreLord()
 			: base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
@@ -56,6 +56,7 @@ namespace Server.Mobiles
 		public override Poison PoisonImmune { get { return Poison.Regular; } }
 		public override int TreasureMapLevel { get { return 3; } }
 		public override int Meat { get { return 2; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Ogre; } }
 
 		public OgreLord( Serial serial )
 			: base( serial )

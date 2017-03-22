@@ -53,6 +53,7 @@ namespace Server.Mobiles
 
 		public override LoyaltyGroup LoyaltyGroupEnemy { get { return LoyaltyGroup.GargoyleQueen; } }
 		public override int LoyaltyPointsAward { get { return 8; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public override bool CanRummageCorpses { get { return true; } }
 		public override int Meat { get { return 1; } }

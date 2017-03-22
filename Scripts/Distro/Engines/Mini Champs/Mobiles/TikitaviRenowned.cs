@@ -73,6 +73,7 @@ namespace Server.Mobiles
 		public override bool CanRummageCorpses { get { return true; } }
 		public override int Hides { get { return 8; } }
 		public override int Meat { get { return 1; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public TikitaviRenowned( Serial serial )
 			: base( serial )

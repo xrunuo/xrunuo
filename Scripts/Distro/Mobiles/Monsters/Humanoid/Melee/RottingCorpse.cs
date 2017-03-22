@@ -54,6 +54,7 @@ namespace Server.Mobiles
 		public override Poison PoisonImmune { get { return Poison.Lethal; } }
 		public override Poison HitPoison { get { return Poison.Lethal; } }
 		public override int TreasureMapLevel { get { return 5; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
 
 		public RottingCorpse( Serial serial )
 			: base( serial )

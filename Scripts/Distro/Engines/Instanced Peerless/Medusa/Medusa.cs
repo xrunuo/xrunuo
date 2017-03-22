@@ -71,6 +71,8 @@ namespace Server.Mobiles
 			m_Statues = new List<BaseCreature>();
 		}
 
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
+		
 		public override int GetAttackSound() { return 0x612; }
 		public override int GetDeathSound() { return 0x613; }
 		public override int GetHurtSound() { return 0x614; }

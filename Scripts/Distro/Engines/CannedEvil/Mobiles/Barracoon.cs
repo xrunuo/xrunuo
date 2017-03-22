@@ -115,6 +115,7 @@ namespace Server.Mobiles
 		public override bool Unprovokable { get { return true; } }
 		public override bool Uncalmable { get { return true; } }
 		public override Poison PoisonImmune { get { return Poison.Deadly; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public override bool ShowFameTitle { get { return false; } }
 		public override bool ClickTitle { get { return false; } }

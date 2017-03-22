@@ -59,6 +59,7 @@ namespace Server.Mobiles
 
 		public override int Meat { get { return 1; } }
 		public override bool AlwaysMurderer { get { return true; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public override OppositionGroup OppositionGroup
 		{
@@ -96,10 +97,10 @@ namespace Server.Mobiles
 
 				aggressor.BodyMod = 0;
 				aggressor.HueMod = -1;
-				
+
 				aggressor.FixedParticles( 0x36BD, 20, 10, 5044, EffectLayer.Head );
 				aggressor.PlaySound( 0x307 );
-				
+
 				aggressor.SendLocalizedMessage( 1040008 ); // Your skin is scorched as the tribal paint burns away!
 
 				if ( aggressor is PlayerMobile )

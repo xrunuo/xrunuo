@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Misc;
 using Server.Engines.Loyalty;
+using Server.Items;
 
 namespace Server.Mobiles
 {
@@ -53,7 +54,8 @@ namespace Server.Mobiles
 		public override bool CanRummageCorpses { get { return true; } }
 		public override int Meat { get { return 1; } }
 		public override int Hides { get { return 8; } }
-		public override int TreasureMapLevel { get { return 2; } }		
+		public override int TreasureMapLevel { get { return 2; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Repond; } }
 
 		public ClanChitterAssistant( Serial serial )
 			: base( serial )

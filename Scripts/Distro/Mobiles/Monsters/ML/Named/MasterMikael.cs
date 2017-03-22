@@ -43,6 +43,8 @@ namespace Server.Mobiles
 				PackItem( new PetParrot() );
 		}
 
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
+
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.UltraRich, 1 );

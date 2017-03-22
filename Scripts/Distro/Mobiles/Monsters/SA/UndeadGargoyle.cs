@@ -58,6 +58,7 @@ namespace Server.Mobiles
 		public override bool BleedImmune { get { return true; } }
 		public override Poison PoisonImmune { get { return Poison.Lethal; } }
 		public override int TreasureMapLevel { get { return 3; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
 
 		public override int GetAttackSound() { return 0x646; }
 		public override int GetDeathSound() { return 0x647; }

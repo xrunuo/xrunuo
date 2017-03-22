@@ -56,6 +56,7 @@ namespace Server.Mobiles
 		}
 
 		public override Poison PoisonImmune { get { return Poison.Lethal; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
 
 		public Spectre( Serial serial )
 			: base( serial )

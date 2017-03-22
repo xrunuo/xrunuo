@@ -89,6 +89,7 @@ namespace Server.Mobiles
 
 		public override Poison PoisonImmune { get { return Poison.Greater; } }
 		public override Poison HitPoison { get { return Poison.Greater; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
 
 		public RevenantLion( Serial serial )
 			: base( serial )

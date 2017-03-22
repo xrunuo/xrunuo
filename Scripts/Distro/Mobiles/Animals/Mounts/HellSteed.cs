@@ -1,4 +1,5 @@
 using System;
+using Server.Items;
 using Server.Mobiles;
 
 namespace Server.Mobiles
@@ -41,6 +42,7 @@ namespace Server.Mobiles
 
 		public override Poison PoisonImmune { get { return Poison.Lethal; } }
 		public override bool BleedImmune { get { return true; } }
+		public override SlayerName SlayerGroup { get { return SlayerName.Undead; } }
 		// TODO: "This creature can breath chaos."
 
 		public HellSteed( Serial serial )
