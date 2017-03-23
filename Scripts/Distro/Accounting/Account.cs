@@ -496,19 +496,8 @@ namespace Server.Accounting
 			}
 			else
 			{
-				string username = GetTag( "OriginalUser" );
-				if ( username == null || username == "" )
-					username = m_Username;
-				ok = ( m_NewCryptPassword == HashSHA1( username + plainPassword ) );
+				ok = ( m_NewCryptPassword == HashSHA1( m_Username + plainPassword ) );
 				curProt = PasswordProtection.NewCrypt;
-
-				if ( ok )
-				{
-					RemoveTag( "OriginalUser" );
-					SetPassword( plainPassword );
-				}
-
-				return ok;
 			}
 
 			if ( ok && curProt != AccountHandler.ProtectPasswords )
