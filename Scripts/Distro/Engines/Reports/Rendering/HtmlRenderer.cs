@@ -25,7 +25,7 @@ namespace Server.Engines.Reports
 		{
 			m_Type = outputDirectory;
 			m_Title = ( m_Type == "staff" ? "Staff" : "Stats" );
-			m_OutputDirectory = Path.Combine( Environment.BaseDirectory, "output" );
+			m_OutputDirectory = Path.Combine( Core.BaseDirectory, "output" );
 
 			if ( !Directory.Exists( m_OutputDirectory ) )
 				Directory.CreateDirectory( m_OutputDirectory );
@@ -80,13 +80,13 @@ namespace Server.Engines.Reports
 			Console.WriteLine( "Reports: {0}: Render complete", m_Title );
 		}
 
-		private static readonly string FtpHost = Environment.Config.Reports.FtpHost;
+		private static readonly string FtpHost = Core.Config.Reports.FtpHost;
 
-		private static readonly string FtpUsername = Environment.Config.Reports.FtpUsername;
-		private static readonly string FtpPassword = Environment.Config.Reports.FtpPassword;
+		private static readonly string FtpUsername = Core.Config.Reports.FtpUsername;
+		private static readonly string FtpPassword = Core.Config.Reports.FtpPassword;
 
-		private static readonly string FtpStatsDirectory = Environment.Config.Reports.FtpStatsDirectory;
-		private static readonly string FtpStaffDirectory = Environment.Config.Reports.FtpStaffDirectory;
+		private static readonly string FtpStatsDirectory = Core.Config.Reports.FtpStatsDirectory;
+		private static readonly string FtpStaffDirectory = Core.Config.Reports.FtpStaffDirectory;
 
 		public void Upload()
 		{
@@ -168,7 +168,7 @@ namespace Server.Engines.Reports
 			}
 		}
 
-		private static readonly string ShardTitle = Environment.Config.ServerName;
+		private static readonly string ShardTitle = Core.Config.ServerName;
 
 		public void RenderFull( HtmlTextWriter html )
 		{

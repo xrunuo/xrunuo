@@ -260,10 +260,10 @@ namespace Server.Gumps
 						AddLabel( 150, 310, LabelHue, Utility.FormatByteAmount( GC.GetTotalMemory( false ) ) );
 
 						AddLabel( 20, 330, LabelHue, "Framework:" );
-						AddLabel( 150, 330, LabelHue, System.Environment.Version.ToString() );
+						AddLabel( 150, 330, LabelHue, Environment.Version.ToString() );
 
 						AddLabel( 20, 350, LabelHue, "Operating System: " );
-						AddLabel( 150, 350, LabelHue, System.Environment.OSVersion.ToString() );
+						AddLabel( 150, 350, LabelHue, Environment.OSVersion.ToString() );
 
 						/*string str;
 
@@ -370,7 +370,7 @@ namespace Server.Gumps
 
 						AddButtonLabeled( 20, 150, GetButtonID( 3, 200 ), "Save" );
 
-						if ( !Environment.Service )
+						if ( !Core.Service )
 						{
 							AddButtonLabeled( 20, 180, GetButtonID( 3, 201 ), "Shutdown (With Save)" );
 							AddButtonLabeled( 20, 200, GetButtonID( 3, 202 ), "Shutdown (Without Save)" );
@@ -2793,7 +2793,7 @@ namespace Server.Gumps
 								{
 									ArrayList results = new ArrayList();
 
-									DateTime minTime = DateTime.UtcNow - ( Misc.TestCenter.Enabled ? TimeSpan.FromMinutes( 15.0 ) : Environment.Config.AccountDecay );
+									DateTime minTime = DateTime.UtcNow - ( Misc.TestCenter.Enabled ? TimeSpan.FromMinutes( 15.0 ) : Core.Config.AccountDecay );
 
 									foreach ( Account acct in Accounts.GetAccounts() )
 									{
@@ -3270,8 +3270,8 @@ namespace Server.Gumps
 		{
 			MailMessage mail = new MailMessage();
 
-			mail.Subject = String.Format( "{0} Account Management", Environment.Config.ServerName );
-			mail.From = new MailAddress( Environment.Config.ServerEmail, Environment.Config.ServerName );
+			mail.Subject = String.Format( "{0} Account Management", Core.Config.ServerName );
+			mail.From = new MailAddress( Core.Config.ServerEmail, Core.Config.ServerName );
 			mail.To.Add( new MailAddress( a.GetTag( "email" ) ) );
 
 			using ( StringWriter writer = new StringWriter() )

@@ -64,9 +64,9 @@ namespace Server
 	{
 		public static string zlibVersion()
 		{
-			if ( Environment.Unix )
+			if ( Core.Unix )
 				return ZLibUnix.zlibVersion();
-			else if ( Environment.Is64Bit )
+			else if ( Core.Is64Bit )
 				return ZLibWin64.zlibVersion();
 			else
 				return ZLibWin32.zlibVersion();
@@ -74,14 +74,14 @@ namespace Server
 
 		public static ZLibError compress( byte[] dest, ref int destLength, byte[] source, int sourceLength )
 		{
-			if ( Environment.Unix )
+			if ( Core.Unix )
 			{
 				long dl2 = destLength;
 				ZLibError ret = ZLibUnix.compress( dest, ref dl2, source, sourceLength );
 				destLength = (int) dl2;
 				return ret;
 			}
-			else if ( Environment.Is64Bit )
+			else if ( Core.Is64Bit )
 			{
 				return ZLibWin64.compress( dest, ref destLength, source, sourceLength );
 			}
@@ -93,14 +93,14 @@ namespace Server
 
 		public static ZLibError compress2( byte[] dest, ref int destLength, byte[] source, int sourceLength, ZLibCompressionLevel level )
 		{
-			if ( Environment.Unix )
+			if ( Core.Unix )
 			{
 				long dl2 = destLength;
 				ZLibError ret = ZLibUnix.compress2( dest, ref dl2, source, sourceLength, level );
 				destLength = (int) dl2;
 				return ret;
 			}
-			else if ( Environment.Is64Bit )
+			else if ( Core.Is64Bit )
 			{
 				return ZLibWin64.compress2( dest, ref destLength, source, sourceLength, level );
 			}
@@ -112,14 +112,14 @@ namespace Server
 
 		public static ZLibError uncompress( byte[] dest, ref int destLen, byte[] source, int sourceLen )
 		{
-			if ( Environment.Unix )
+			if ( Core.Unix )
 			{
 				long dl2 = destLen;
 				ZLibError ret = ZLibUnix.uncompress( dest, ref dl2, source, sourceLen );
 				destLen = (int) dl2;
 				return ret;
 			}
-			else if ( Environment.Is64Bit )
+			else if ( Core.Is64Bit )
 			{
 				return ZLibWin64.uncompress( dest, ref destLen, source, sourceLen );
 			}

@@ -10,7 +10,7 @@ namespace Server
 
 		public static TimerProfile GetProfile( this Timer timer )
 		{
-			if ( !Environment.Profiling )
+			if ( !Core.Profiling )
 				return null;
 
 			string name = timer.ToString();
@@ -26,7 +26,7 @@ namespace Server
 		public static void DumpInfo( StreamWriter sw )
 		{
 			sw.WriteLine( "# Dump on {0:f}", DateTime.UtcNow );
-			sw.WriteLine( "# Core profiling for " + Environment.ProfileTime );
+			sw.WriteLine( "# Core profiling for " + Core.ProfileTime );
 			sw.WriteLine();
 
 			foreach ( DictionaryEntry de in m_Profiles )

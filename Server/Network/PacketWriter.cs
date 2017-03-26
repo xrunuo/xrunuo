@@ -53,7 +53,7 @@ namespace Server.Network
 				{
 					try
 					{
-						using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "neterr.log" ) ) )
+						using ( StreamWriter op = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "neterr.log" ) ) )
 						{
 							op.WriteLine( "{0}\tInstance pool contains writer", DateTime.UtcNow );
 						}

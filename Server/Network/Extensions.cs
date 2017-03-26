@@ -10,7 +10,7 @@ namespace Server.Network
 		{
 			try
 			{
-				using ( StreamWriter sw = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "Packets.log" ), true ) )
+				using ( StreamWriter sw = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "Packets.log" ), true ) )
 				{
 					byte[] buffer = reader.Buffer;
 

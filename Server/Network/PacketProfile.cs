@@ -96,7 +96,7 @@ namespace Server.Network
 
 		public static PacketProfile GetOutgoingProfile( int packetID )
 		{
-			if ( !Environment.Profiling )
+			if ( !Core.Profiling )
 				return null;
 
 			PacketProfile prof = m_OutgoingProfiles[packetID];
@@ -109,7 +109,7 @@ namespace Server.Network
 
 		public static PacketProfile GetIncomingProfile( int packetID )
 		{
-			if ( !Environment.Profiling )
+			if ( !Core.Profiling )
 				return null;
 
 			PacketProfile prof = m_IncomingProfiles[packetID];

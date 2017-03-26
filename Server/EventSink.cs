@@ -1037,14 +1037,6 @@ namespace Server.Events
 
 	public class EventSink
 	{
-		private static EventSink m_Instance;
-
-		public static EventSink Instance
-		{
-			get { return m_Instance; }
-			set { m_Instance = value; }
-		}
-
 		public static event DeletedEventHandler Deleted;
 		public static event BeforeDamageEventHandler BeforeDamage;
 		public static event CreateCharRequestEventHandler CreateCharRequest;

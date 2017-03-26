@@ -33,7 +33,7 @@ namespace Server
 
 			using ( var client = new WebClient() )
 			{
-				var zipPath = Path.Combine( Environment.BaseDirectory, $"deps/{library.Name}.zip" );
+				var zipPath = Path.Combine( Core.BaseDirectory, $"deps/{library.Name}.zip" );
 
 				if ( !File.Exists( zipPath ) )
 				{

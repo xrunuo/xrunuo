@@ -159,7 +159,7 @@ namespace Server.Network
 
 						try
 						{
-							using ( StreamWriter writer = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "net_opt.log" ), true ) )
+							using ( StreamWriter writer = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "net_opt.log" ), true ) )
 							{
 								writer.WriteLine( "Redundant compile for packet {0}, use Acquire() and Release()", base.GetType() );
 								writer.WriteLine( new StackTrace() );

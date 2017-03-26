@@ -89,7 +89,7 @@ namespace Server.Misc
 
 			if ( m_DetectClientRequirement )
 			{
-				string path = Environment.FindDataFile( "client.exe" );
+				string path = Core.FindDataFile( "client.exe" );
 
 				if ( File.Exists( path ) )
 				{

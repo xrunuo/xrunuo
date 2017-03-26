@@ -11,7 +11,7 @@ namespace Server.Engines.Housing.Items
 	[TypeAlias( "Server.Multis.HouseSign" )]
 	public class HouseSign : Item
 	{
-		private static readonly string UnownedName = Environment.Config.ServerName;
+		private static readonly string UnownedName = Core.Config.ServerName;
 
 		private BaseHouse m_Owner;
 		private Mobile m_OrgOwner;

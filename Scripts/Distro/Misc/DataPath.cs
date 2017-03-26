@@ -29,17 +29,17 @@ namespace Server.Misc
 			string pathTD = GetExePath( "Ultima Online Third Dawn" );
 
 			if ( pathReg != null )
-				Environment.DataDirectories.Add( pathReg );
+				Core.DataDirectories.Add( pathReg );
 
 			if ( pathTD != null )
-				Environment.DataDirectories.Add( pathTD );
+				Core.DataDirectories.Add( pathTD );
 
-			if ( Environment.DataDirectories.Count == 0 )
+			if ( Core.DataDirectories.Count == 0 )
 			{
 				Console.WriteLine( "Enter the Ultima Online directory:" );
 				Console.Write( "> " );
 
-				Environment.DataDirectories.Add( Console.ReadLine() );
+				Core.DataDirectories.Add( Console.ReadLine() );
 			}
 		}
 

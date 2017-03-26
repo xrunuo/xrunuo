@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+
 using Server;
 using Server.Accounting;
 using Server.Events;
@@ -20,10 +21,10 @@ namespace Server.Scripts.Commands
 		{
 			EventSink.Command += new CommandEventHandler( EventSink_Command );
 
-			if ( !Directory.Exists( Environment.Config.LogDirectory ) )
-				Directory.CreateDirectory( Environment.Config.LogDirectory );
+			if ( !Directory.Exists( Core.Config.LogDirectory ) )
+				Directory.CreateDirectory( Core.Config.LogDirectory );
 
-			string directory = Path.Combine( Environment.Config.LogDirectory, "commands" );
+			string directory = Path.Combine( Core.Config.LogDirectory, "commands" );
 
 			if ( !Directory.Exists( directory ) )
 				Directory.CreateDirectory( directory );
@@ -50,19 +51,15 @@ namespace Server.Scripts.Commands
 				Mobile m = (Mobile) o;
 
 				if ( m.Account == null )
-				{
-					return String.Format( "{0} (no account)", m );
-				}
+					return string.Format( "{0} (no account)", m );
 				else
-				{
-					return String.Format( "{0} ('{1}')", m, ( (Account) m.Account ).Username );
-				}
+					return string.Format( "{0} ('{1}')", m, ( (Account) m.Account ).Username );
 			}
 			else if ( o is Item )
 			{
 				Item item = (Item) o;
 
-				return String.Format( "0x{0:X} ({1})", item.Serial.Value, item.GetType().Name );
+				return string.Format( "0x{0:X} ({1})", item.Serial.Value, item.GetType().Name );
 			}
 
 			return o;
@@ -70,21 +67,19 @@ namespace Server.Scripts.Commands
 
 		public static void WriteLine( Mobile from, string format, params object[] args )
 		{
-			WriteLine( from, String.Format( format, args ) );
+			WriteLine( from, string.Format( format, args ) );
 		}
 
 		public static void WriteLine( Mobile from, string text )
 		{
 			if ( !m_Enabled )
-			{
 				return;
-			}
 
 			try
 			{
 				m_Output.WriteLine( "{0}: {1}: {2}", DateTime.UtcNow, from.NetState, text );
 
-				string path = Environment.Config.LogDirectory;
+				string path = Core.Config.LogDirectory;
 
 				Account acct = from.Account as Account;
 
@@ -109,9 +104,7 @@ namespace Server.Scripts.Commands
 			path = Path.Combine( path, toAppend );
 
 			if ( !Directory.Exists( path ) )
-			{
 				Directory.CreateDirectory( path );
-			}
 		}
 
 		public static string Safe( string ip )

@@ -65,7 +65,7 @@ namespace Server.Engines.BulkOrders
 
 		public static SmallBulkEntry[] LoadEntries( string path )
 		{
-			path = Path.Combine( Environment.BaseDirectory, path );
+			path = Path.Combine( Core.BaseDirectory, path );
 
 			ArrayList list = new ArrayList();
 

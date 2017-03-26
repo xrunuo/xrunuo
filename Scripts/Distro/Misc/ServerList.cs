@@ -10,12 +10,12 @@ namespace Server.Misc
 {
 	public class ServerList
 	{
-		public static string ServerName = Environment.Config.ServerName;
-		public static string Address = Environment.Config.Network.Bind[0].Address.ToString();
+		public static string ServerName = Core.Config.ServerName;
+		public static string Address = Core.Config.Network.Bind[0].Address.ToString();
 
 		public static void Initialize()
 		{
-			Listener.Port = Environment.Config.Network.Bind[0].Port;
+			Listener.Port = Core.Config.Network.Bind[0].Port;
 			EventSink.ServerList += new ServerListEventHandler( EventSink_ServerList );
 		}
 

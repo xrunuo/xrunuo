@@ -15,10 +15,10 @@ namespace Server.Engines.Chat
 
 		public static void Initialize()
 		{
-			if ( !Directory.Exists( Environment.Config.LogDirectory ) )
-				Directory.CreateDirectory( Environment.Config.LogDirectory );
+			if ( !Directory.Exists( Core.Config.LogDirectory ) )
+				Directory.CreateDirectory( Core.Config.LogDirectory );
 
-			string directory = Path.Combine( Environment.Config.LogDirectory, "chat" );
+			string directory = Path.Combine( Core.Config.LogDirectory, "chat" );
 
 			if ( !Directory.Exists( directory ) )
 				Directory.CreateDirectory( directory );
@@ -60,7 +60,7 @@ namespace Server.Engines.Chat
 				//    channelOutput = m_OutputPerChannel[channel];
 				//else
 				//{
-				//    string path = Environment.Config.LogDirectory;
+				//    string path = Core.Config.LogDirectory;
 
 				//    AppendPath( ref path, "chat" );
 				//    AppendPath( ref path, "channels" );

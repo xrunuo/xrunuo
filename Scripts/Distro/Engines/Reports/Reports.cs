@@ -12,7 +12,7 @@ namespace Server.Engines.Reports
 {
 	public class Reports
 	{
-		public static readonly bool Enabled = Environment.Config.Reports.Enabled;
+		public static readonly bool Enabled = Core.Config.Reports.Enabled;
 
 		public static void Initialize()
 		{

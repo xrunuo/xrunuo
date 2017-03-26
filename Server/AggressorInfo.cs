@@ -72,7 +72,7 @@ namespace Server
 
 		public static void DumpAccess()
 		{
-			using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "warnings.log" ), true ) )
+			using ( StreamWriter op = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "warnings.log" ), true ) )
 			{
 				op.WriteLine( "Warning: Access to queued AggressorInfo:" );
 				op.WriteLine( new System.Diagnostics.StackTrace() );

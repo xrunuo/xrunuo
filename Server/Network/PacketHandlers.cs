@@ -1,21 +1,16 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
 
 using Server;
 using Server.Accounting;
 using Server.ContextMenus;
 using Server.Events;
 using Server.Gumps;
-using Server.HuePickers;
 using Server.Items;
-using Server.Menus;
 using Server.Mobiles;
-using Server.Movement;
 using Server.Prompts;
 using Server.Targeting;
 using CV = Server.ClientVersion;
@@ -2123,7 +2118,7 @@ namespace Server.Network
 
 			IAccount a = state.Account;
 
-			if ( Utility.IsUsingMulticlient( state, Environment.Config.Login.MaxLoginsPerPC ) )
+			if ( Utility.IsUsingMulticlient( state, Core.Config.Login.MaxLoginsPerPC ) )
 			{
 				Console.WriteLine( "Login: {0}: Multiclient detected, disconnecting...", state );
 				state.Send( new PopupMessage( PMMessage.LoginSyncError ) );
@@ -2288,7 +2283,7 @@ namespace Server.Network
 			CityInfo[] info = state.CityInfo;
 			IAccount a = state.Account;
 
-			if ( Utility.IsUsingMulticlient( state, Environment.Config.Login.MaxLoginsPerPC ) )
+			if ( Utility.IsUsingMulticlient( state, Core.Config.Login.MaxLoginsPerPC ) )
 			{
 				Console.WriteLine( "Login: {0}: Multiclient detected, disconnecting...", state );
 				state.Send( new PopupMessage( PMMessage.LoginSyncError ) );
@@ -2440,7 +2435,7 @@ namespace Server.Network
 			CityInfo[] info = state.CityInfo;
 			IAccount a = state.Account;
 
-			if ( Utility.IsUsingMulticlient( state, Environment.Config.Login.MaxLoginsPerPC ) )
+			if ( Utility.IsUsingMulticlient( state, Core.Config.Login.MaxLoginsPerPC ) )
 			{
 				Console.WriteLine( "Login: {0}: Multiclient detected, disconnecting...", state );
 				state.Send( new PopupMessage( PMMessage.LoginSyncError ) );
@@ -2680,7 +2675,7 @@ namespace Server.Network
 			}
 		}
 
-		private bool m_ClientVerification = !Environment.Config.Login.IgnoreAuthID;
+		private bool m_ClientVerification = !Core.Config.Login.IgnoreAuthID;
 
 		public bool ClientVerification
 		{

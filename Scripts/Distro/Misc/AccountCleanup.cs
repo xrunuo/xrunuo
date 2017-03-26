@@ -25,7 +25,7 @@ namespace Server.Misc
 
 		private static void Run()
 		{
-			int accountDecayPeriodDays = (int) Environment.Config.AccountDecay.TotalDays;
+			int accountDecayPeriodDays = (int) Core.Config.AccountDecay.TotalDays;
 
 			var eligibleAccounts = Accounts.GetAccounts().Where( a => a.CanExpire() ).ToArray();
 
@@ -59,8 +59,8 @@ namespace Server.Misc
 
 			MailMessage mail = new MailMessage();
 
-			mail.Subject = String.Format( "{0} Account Management", Environment.Config.ServerName );
-			mail.From = new MailAddress( Environment.Config.ServerEmail, Environment.Config.ServerName );
+			mail.Subject = String.Format( "{0} Account Management", Core.Config.ServerName );
+			mail.From = new MailAddress( Core.Config.ServerEmail, Core.Config.ServerName );
 			mail.To.Add( new MailAddress( account.GetTag( "email" ) ) );
 
 			using ( StringWriter writer = new StringWriter() )
@@ -68,7 +68,7 @@ namespace Server.Misc
 				writer.WriteLine( String.Format( "Hello, {0}!", account.Username ) );
 				writer.WriteLine();
 
-				writer.WriteLine( String.Format( "We want to inform you with this email that your account on {0} will be cancelled within 5 days by the Automatic Old-Account Purge System.", Environment.Config.ServerName ) );
+				writer.WriteLine( String.Format( "We want to inform you with this email that your account on {0} will be cancelled within 5 days by the Automatic Old-Account Purge System.", Core.Config.ServerName ) );
 				writer.WriteLine();
 
 				writer.WriteLine( "If you want to avoid this, you must log into the shard before this period. Otherwise it will be permanently deleted with no possibilities of recovery." );
@@ -80,7 +80,7 @@ namespace Server.Misc
 				writer.WriteLine( "Regards!" );
 				writer.WriteLine();
 
-				writer.WriteLine( String.Format( "{0} Staff.", Environment.Config.ServerName ) );
+				writer.WriteLine( String.Format( "{0} Staff.", Core.Config.ServerName ) );
 
 				mail.Body = writer.ToString();
 			}

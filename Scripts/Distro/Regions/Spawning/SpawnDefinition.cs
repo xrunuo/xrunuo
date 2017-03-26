@@ -307,7 +307,7 @@ namespace Server.Regions
 
 		static SpawnGroup()
 		{
-			string path = Path.Combine( Environment.BaseDirectory, "Data/SpawnDefinitions.xml" );
+			string path = Path.Combine( Core.BaseDirectory, "Data/SpawnDefinitions.xml" );
 			if ( !File.Exists( path ) )
 				return;
 

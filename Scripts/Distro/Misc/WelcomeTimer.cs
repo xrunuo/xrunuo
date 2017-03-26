@@ -13,7 +13,7 @@ namespace Server.Misc
 
 		private static string[] m_Messages = new string[]
 			{
-				String.Format( "Welcome to {0}. You are able to customize your character's stats and skills at anytime to anything you wish.  To see the commands to do this just say 'help'.", Environment.Config.ServerName ),
+				String.Format( "Welcome to {0}. You are able to customize your character's stats and skills at anytime to anything you wish.  To see the commands to do this just say 'help'.", Core.Config.ServerName ),
 			};
 
 		public WelcomeTimer( Mobile m )

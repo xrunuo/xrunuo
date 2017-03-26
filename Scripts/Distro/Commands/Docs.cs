@@ -248,7 +248,7 @@ namespace Server.Scripts.Commands
 
 		private static string[,] m_Aliases = new string[,] { { "System.Object", "<font color=\"blue\">object</font>" }, { "System.String", "<font color=\"blue\">string</font>" }, { "System.Boolean", "<font color=\"blue\">bool</font>" }, { "System.Byte", "<font color=\"blue\">byte</font>" }, { "System.SByte", "<font color=\"blue\">sbyte</font>" }, { "System.Int16", "<font color=\"blue\">short</font>" }, { "System.UInt16", "<font color=\"blue\">ushort</font>" }, { "System.Int32", "<font color=\"blue\">int</font>" }, { "System.UInt32", "<font color=\"blue\">uint</font>" }, { "System.Int64", "<font color=\"blue\">long</font>" }, { "System.UInt64", "<font color=\"blue\">ulong</font>" }, { "System.Single", "<font color=\"blue\">float</font>" }, { "System.Double", "<font color=\"blue\">double</font>" }, { "System.Decimal", "<font color=\"blue\">decimal</font>" }, { "System.Char", "<font color=\"blue\">char</font>" }, { "System.Void", "<font color=\"blue\">void</font>" } };
 
-		private static string m_RootDirectory = Path.GetDirectoryName( System.Environment.GetCommandLineArgs()[0] );
+		private static string m_RootDirectory = Path.GetDirectoryName( Environment.GetCommandLineArgs()[0] );
 
 		private const string RefString = "<font color=\"blue\">ref</font> ";
 
@@ -396,7 +396,7 @@ namespace Server.Scripts.Commands
 
 			ArrayList assemblies = new ArrayList();
 
-			assemblies.Add( Environment.Assembly );
+			assemblies.Add( Core.Assembly );
 
 			Assembly[] asms = (Assembly[]) assemblies.ToArray( typeof( Assembly ) );
 
@@ -1319,7 +1319,7 @@ namespace Server.Scripts.Commands
 		{
 			ArrayList list = new ArrayList();
 
-			string path = Environment.FindDataFile( "models/models.txt" );
+			string path = Core.FindDataFile( "models/models.txt" );
 
 			if ( File.Exists( path ) )
 			{
@@ -1566,7 +1566,7 @@ namespace Server.Scripts.Commands
 
 			Hashtable table = null;
 
-			string path = Environment.FindDataFile( "Speech.mul" );
+			string path = Core.FindDataFile( "Speech.mul" );
 
 			if ( File.Exists( path ) )
 			{

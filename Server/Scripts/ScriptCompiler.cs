@@ -34,7 +34,7 @@ namespace Server
 		{
 			var assemblies = new List<string>();
 
-			var path = Path.Combine( Environment.Config.ConfigDirectory, "Assemblies.cfg" );
+			var path = Path.Combine( Core.Config.ConfigDirectory, "Assemblies.cfg" );
 
 			if ( File.Exists( path ) )
 			{
@@ -44,7 +44,7 @@ namespace Server
 				assemblies.AddRange( lines );
 			}
 
-			assemblies.Add( Environment.ExePath );
+			assemblies.Add( Core.ExePath );
 			assemblies.AddRange( m_AdditionalReferences );
 
 			return assemblies.ToArray();
@@ -180,7 +180,7 @@ namespace Server
 				{
 					Console.WriteLine( "Fatal: Could not find the compiler - are you sure MCS is installed?" );
 					Console.WriteLine( "       (on Debian, try: apt-get install mono-mcs)" );
-					System.Environment.Exit( 2 );
+					Environment.Exit( 2 );
 				}
 				else
 				{
@@ -234,34 +234,37 @@ namespace Server
 					Console.WriteLine( "Scripts: compilation done ({0} errors, {1} warnings)", errors.Count, warnings.Count );
 
 				string scriptRoot = Path.GetFullPath(
-					Path.Combine( Environment.BaseDirectory, "src" + Path.DirectorySeparatorChar ) );
+					Path.Combine( Core.BaseDirectory, "src" + Path.DirectorySeparatorChar ) );
 				Uri scriptRootUri = new Uri( scriptRoot );
-				/*
-				Utility.PushColor( ConsoleColor.Yellow );
 
-				if ( warnings.Count > 0 )
-					Console.WriteLine( "Warnings:" );
-
-				foreach ( KeyValuePair<string, List<CompilerError>> kvp in warnings )
+				if ( Core.Debug )
 				{
-					string fileName = kvp.Key;
-					List<CompilerError> list = kvp.Value;
+					Utility.PushColor( ConsoleColor.Yellow );
 
-					string fullPath = Path.GetFullPath( fileName );
-					string usedPath = Uri.UnescapeDataString( scriptRootUri.MakeRelativeUri( new Uri( fullPath ) ).OriginalString );
+					if ( warnings.Count > 0 )
+						Console.WriteLine( "Warnings:" );
 
-					Console.WriteLine( " + {0}:", usedPath );
+					foreach ( KeyValuePair<string, List<CompilerError>> kvp in warnings )
+					{
+						string fileName = kvp.Key;
+						List<CompilerError> list = kvp.Value;
 
-					Utility.PushColor( ConsoleColor.DarkYellow );
+						string fullPath = Path.GetFullPath( fileName );
+						string usedPath = Uri.UnescapeDataString( scriptRootUri.MakeRelativeUri( new Uri( fullPath ) ).OriginalString );
 
-					foreach ( CompilerError e in list )
-						Console.WriteLine( "    {0}: Line {1}: {3}", e.ErrorNumber, e.Line, e.Column, e.ErrorText );
+						Console.WriteLine( " + {0}:", usedPath );
+
+						Utility.PushColor( ConsoleColor.DarkYellow );
+
+						foreach ( CompilerError e in list )
+							Console.WriteLine( "    {0}: Line {1}: {3}", e.ErrorNumber, e.Line, e.Column, e.ErrorText );
+
+						Utility.PopColor();
+					}
 
 					Utility.PopColor();
 				}
 
-				Utility.PopColor();
-				*/
 				Utility.PushColor( ConsoleColor.Red );
 
 				if ( errors.Count > 0 )
@@ -331,7 +334,7 @@ namespace Server
 				return true;
 			}
 
-			var cache = new DirectoryInfo( Environment.Config.CacheDirectory ).CreateSubdirectory( libConfig.Name );
+			var cache = new DirectoryInfo( Core.Config.CacheDirectory ).CreateSubdirectory( libConfig.Name );
 
 			if ( !cache.Exists )
 			{
@@ -391,7 +394,7 @@ namespace Server
 				return;
 			}
 
-			if ( libConfig.IsRemote && ( !libConfig.Exists || Environment.ForceUpdateDeps ) )
+			if ( libConfig.IsRemote && ( !libConfig.Exists || Core.ForceUpdateDeps ) )
 			{
 				var srcPath = Dependencies.Fetch( libConfig );
 				libConfig.SourcePath = new DirectoryInfo( srcPath );
@@ -418,7 +421,7 @@ namespace Server
 						throw new ApplicationException();
 					}
 
-					var next = Environment.LibraryConfig.GetLibrary( depend );
+					var next = Core.LibraryConfig.GetLibrary( depend );
 					if ( next == null || !next.Exists )
 					{
 						Console.WriteLine( "Error: Unresolved library dependency: {0} depends on {1}, which does not exist",
@@ -447,12 +450,12 @@ namespace Server
 
 		private static IEnumerable<Configuration.Library> SortLibrariesByDepends()
 		{
-			var libs = new List<Configuration.Library>( Environment.LibraryConfig.Libraries );
+			var libs = new List<Configuration.Library>( Core.LibraryConfig.Libraries );
 			var queue = new HashSet<string>();
 			var dst = new List<Configuration.Library>();
 
 			// Handle 'Distro' first, for most compatibility.
-			var libConfig = Environment.LibraryConfig.GetLibrary( "Distro" );
+			var libConfig = Core.LibraryConfig.GetLibrary( "Distro" );
 
 			if ( libConfig != null )
 				EnqueueLibrary( dst, libs, queue, libConfig );
@@ -471,7 +474,7 @@ namespace Server
 			m_AdditionalReferences = new List<string>();
 
 			m_Libraries = new List<Library>();
-			m_Libraries.Add( new Library( Environment.LibraryConfig.GetLibrary( "Core" ), Environment.Assembly ) );
+			m_Libraries.Add( new Library( Core.LibraryConfig.GetLibrary( "Core" ), Core.Assembly ) );
 
 			// Collect Config.Library objects, sort them and compile.
 			var libConfigs = SortLibrariesByDepends();
@@ -485,7 +488,7 @@ namespace Server
 			}
 
 			// Delete unused cache directories.
-			var cacheDir = new DirectoryInfo( Environment.Config.CacheDirectory );
+			var cacheDir = new DirectoryInfo( Core.Config.CacheDirectory );
 
 			foreach ( var sub in cacheDir.GetDirectories() )
 			{

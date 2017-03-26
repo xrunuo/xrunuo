@@ -176,10 +176,9 @@
     <Compile Include="Configuration\Modules\Network.cs" />
     <Compile Include="Configuration\Modules\Reports.cs" />
     <Compile Include="Configuration\Parser.cs" />
-    <Compile Include="Core.cs" />
+    <Compile Include="Main.cs" />
     <Compile Include="CurrentTime.cs" />
     <Compile Include="Dependencies.cs" />
-    <Compile Include="Environment.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Expansion.cs" />
     <Compile Include="FileLogger.cs" />

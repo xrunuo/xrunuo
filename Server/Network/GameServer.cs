@@ -46,7 +46,7 @@ namespace Server.Network
 			{
 				var trace = new System.Diagnostics.StackTrace();
 				Logger.Error( "Inconsistent game server state: game client for {0} not found: {1}", state, trace );
-				
+
 				return;
 			}
 
@@ -131,7 +131,7 @@ namespace Server.Network
 					byte[] data = new byte[length];
 					length = buffer.Dequeue( data, 0, length );
 
-					if ( Environment.Logging )
+					if ( Core.Logging )
 					{
 						PacketReader reader = PacketReader.CreateInstance( data, length, false );
 						reader.Trace( client );

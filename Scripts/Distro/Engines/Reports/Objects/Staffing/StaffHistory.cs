@@ -83,7 +83,7 @@ namespace Server.Engines.Reports
 		{
 			lock ( SaveLock )
 			{
-				string path = Path.Combine( Environment.BaseDirectory, "staffHistory.xml" );
+				string path = Path.Combine( Core.BaseDirectory, "staffHistory.xml" );
 				PersistanceWriter pw = new XmlPersistanceWriter( path, "Staff" );
 
 				pw.WriteDocument( this );
@@ -94,7 +94,7 @@ namespace Server.Engines.Reports
 
 		public void Load()
 		{
-			string path = Path.Combine( Environment.BaseDirectory, "staffHistory.xml" );
+			string path = Path.Combine( Core.BaseDirectory, "staffHistory.xml" );
 
 			if ( !File.Exists( path ) )
 				return;

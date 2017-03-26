@@ -810,7 +810,7 @@ namespace Server.Mobiles
 				{
 					Console.WriteLine( "Warning: {0} bad spawns detected, logged: 'badspawn.log'", m_List.Count );
 
-					using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "badspawn.log" ), true ) )
+					using ( StreamWriter op = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "badspawn.log" ), true ) )
 					{
 						op.WriteLine( "# Bad spawns : {0}", DateTime.UtcNow );
 						op.WriteLine( "# Format: X Y Z F Name" );

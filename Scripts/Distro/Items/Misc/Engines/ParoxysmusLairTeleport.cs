@@ -50,20 +50,20 @@ namespace Server.Engines.MLQuests
 				{
 					if ( rope is MagicalRope )
 					{
-						m.SendLocalizedMessage( 1075097 ); // Your rope is severely damaged by the acidic environment.  You're lucky to have made it safely to the ground.
+						m.SendLocalizedMessage( 1075097 ); // Your rope is severely damaged by the acidic Core.  You're lucky to have made it safely to the ground.
 						rope.Delete();
 					}
 					else
 					{
 						if ( Utility.RandomBool() )
 						{
-							m.SendLocalizedMessage( 1075098 ); // Your rope has been weakened by the acidic environment.
+							m.SendLocalizedMessage( 1075098 ); // Your rope has been weakened by the acidic Core.
 							if ( rope.LifeSpan != null && rope.LifeSpan.TotalSeconds == 0 )
 								rope.LifeSpan = TimeSpan.FromSeconds( 600 );
 						}
 						else
 						{
-							m.SendLocalizedMessage( 1075097 ); // Your rope is severely damaged by the acidic environment.  You're lucky to have made it safely to the ground.
+							m.SendLocalizedMessage( 1075097 ); // Your rope is severely damaged by the acidic Core.  You're lucky to have made it safely to the ground.
 							rope.Delete();
 						}
 					}

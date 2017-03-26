@@ -119,7 +119,7 @@ namespace Server
 
 			if ( fileIndex != 0x7F )
 			{
-				string mapPath = Environment.FindDataFile( "map{0}.mul", fileIndex );
+				string mapPath = Core.FindDataFile( "map{0}.mul", fileIndex );
 
 				if ( File.Exists( mapPath ) )
 				{
@@ -127,7 +127,7 @@ namespace Server
 				}
 				else
 				{
-					mapPath = Environment.FindDataFile( "map{0}LegacyMUL.uop", fileIndex );
+					mapPath = Core.FindDataFile( "map{0}LegacyMUL.uop", fileIndex );
 
 					if ( File.Exists( mapPath ) )
 					{
@@ -136,7 +136,7 @@ namespace Server
 					}
 				}
 
-				string indexPath = Environment.FindDataFile( "staidx{0}.mul", fileIndex );
+				string indexPath = Core.FindDataFile( "staidx{0}.mul", fileIndex );
 
 				if ( File.Exists( indexPath ) )
 				{
@@ -144,7 +144,7 @@ namespace Server
 					m_IndexReader = new BinaryReader( m_Index );
 				}
 
-				string staticsPath = Environment.FindDataFile( "statics{0}.mul", fileIndex );
+				string staticsPath = Core.FindDataFile( "statics{0}.mul", fileIndex );
 
 				if ( File.Exists( staticsPath ) )
 					m_Statics = new FileStream( staticsPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite );

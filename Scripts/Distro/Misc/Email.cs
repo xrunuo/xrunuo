@@ -9,13 +9,13 @@ namespace Server.Misc
 {
 	public class Email
 	{
-		public static readonly string SmtpServer = Environment.Config.Email.SmtpServer;
+		public static readonly string SmtpServer = Core.Config.Email.SmtpServer;
 
-		public static readonly string SmtpUser = Environment.Config.Email.SmtpUser;
-		public static readonly string SmtpPassword = Environment.Config.Email.SmtpPassword;
+		public static readonly string SmtpUser = Core.Config.Email.SmtpUser;
+		public static readonly string SmtpPassword = Core.Config.Email.SmtpPassword;
 
-		public static readonly int SmtpPort = Environment.Config.Email.SmtpPort;
-		public static readonly bool EnableSsl = Environment.Config.Email.EnableSsl;
+		public static readonly int SmtpPort = Core.Config.Email.SmtpPort;
+		public static readonly bool EnableSsl = Core.Config.Email.EnableSsl;
 
 		private static Regex _pattern = new Regex( @"^[a-z0-9.+_-]+@([a-z0-9-]+.)+[a-z]+$", RegexOptions.IgnoreCase );
 

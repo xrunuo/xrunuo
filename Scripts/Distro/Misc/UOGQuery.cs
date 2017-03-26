@@ -14,7 +14,7 @@ namespace Server.Misc
 		public static void OnReceive( NetState state, PacketReader pvSrc )
 		{
 			if ( pvSrc.ReadByte() == 0xFF )
-				state.Send( new UOGInfo( String.Format( ", Name={0}, Age={1}, Clients={2}, Items={3}, Chars={4}, Mem={5}K", Environment.Config.ServerName, (int) ( DateTime.UtcNow - Server.Items.Clock.ServerStart ).TotalHours, GameServer.Instance.ClientCount, World.Instance.ItemCount, World.Instance.MobileCount, (int) ( System.GC.GetTotalMemory( false ) / 1024 ) ) ) );
+				state.Send( new UOGInfo( String.Format( ", Name={0}, Age={1}, Clients={2}, Items={3}, Chars={4}, Mem={5}K", Core.Config.ServerName, (int) ( DateTime.UtcNow - Server.Items.Clock.ServerStart ).TotalHours, GameServer.Instance.ClientCount, World.Instance.ItemCount, World.Instance.MobileCount, (int) ( System.GC.GetTotalMemory( false ) / 1024 ) ) ) );
 
 			state.Dispose();
 		}

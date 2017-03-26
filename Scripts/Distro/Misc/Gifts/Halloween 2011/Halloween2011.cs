@@ -27,10 +27,10 @@ namespace Server.Misc
 			switch ( GiveGift( mob, bag ) )
 			{
 				case GiftResult.Backpack:
-					mob.SendMessage( String.Format( "Have a creepy Halloween 2011 from the entire {0} Staff Team. We have placed a goddie bag for you in your backpack.", Environment.Config.ServerName ) );
+					mob.SendMessage( String.Format( "Have a creepy Halloween 2011 from the entire {0} Staff Team. We have placed a goddie bag for you in your backpack.", Core.Config.ServerName ) );
 					break;
 				case GiftResult.BankBox:
-					mob.SendMessage( String.Format( "Have a creepy Halloween 2011 from the entire {0} Staff Team. We have placed a goddie bag for you in your bank box.", Environment.Config.ServerName ) );
+					mob.SendMessage( String.Format( "Have a creepy Halloween 2011 from the entire {0} Staff Team. We have placed a goddie bag for you in your bank box.", Core.Config.ServerName ) );
 					break;
 			}
 		}

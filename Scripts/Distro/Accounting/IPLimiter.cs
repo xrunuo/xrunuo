@@ -11,10 +11,10 @@ namespace Server.Misc
 {
 	public class IPLimiter
 	{
-		public static readonly bool Enabled = Environment.Config.Login.MaxLoginsPerIP > 0;
+		public static readonly bool Enabled = Core.Config.Login.MaxLoginsPerIP > 0;
 		public static readonly bool SocketBlock = false; // true to block at connection, false to block at login request
 
-		public static readonly int MaxAddresses = Environment.Config.Login.MaxLoginsPerIP;
+		public static readonly int MaxAddresses = Core.Config.Login.MaxLoginsPerIP;
 
 		public static bool Verify( IPAddress ourAddress, Account account )
 		{

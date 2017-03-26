@@ -19,8 +19,8 @@ namespace Server.Misc
 
 	public class AccountHandler
 	{
-		private static readonly int MaxAccountsPerIP = Environment.Config.Login.MaxAccountsPerIP;
-		private static readonly bool AutoAccountCreation = Environment.Config.Login.AutoCreateAccounts;
+		private static readonly int MaxAccountsPerIP = Core.Config.Login.MaxAccountsPerIP;
+		private static readonly bool AutoAccountCreation = Core.Config.Login.AutoCreateAccounts;
 
 		private static readonly bool RestrictDeletion = !TestCenter.Enabled;
 		private static readonly TimeSpan DeleteDelay = TimeSpan.FromDays( 7.0 );
@@ -151,7 +151,7 @@ namespace Server.Misc
 
 				Console.WriteLine( "Login: {0}: Past IP limit threshold", e.State );
 
-				using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "ipLimits.log" ), true ) )
+				using ( StreamWriter op = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "ipLimits.log" ), true ) )
 					op.WriteLine( "{0}\tPast IP limit threshold\t{1}", e.State, DateTime.UtcNow );
 
 				return;
@@ -227,7 +227,7 @@ namespace Server.Misc
 
 				Console.WriteLine( "Login: {0}: Past IP limit threshold", e.State );
 
-				using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "ipLimits.log" ), true ) )
+				using ( StreamWriter op = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "ipLimits.log" ), true ) )
 					op.WriteLine( "{0}\tPast IP limit threshold\t{1}", e.State, DateTime.UtcNow );
 			}
 			else if ( !acct.HasAccess( e.State ) )

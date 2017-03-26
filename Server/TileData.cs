@@ -221,7 +221,7 @@ namespace Server
 
 		public static void Configure()
 		{
-			string filePath = Environment.FindDataFile( "TileData.mul" );
+			string filePath = Core.FindDataFile( "TileData.mul" );
 
 			if ( File.Exists( filePath ) )
 			{

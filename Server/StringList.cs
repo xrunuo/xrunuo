@@ -54,7 +54,7 @@ namespace Server
 			m_Language = language;
 			m_Table = new Dictionary<int, string>();
 
-			string path = Environment.FindDataFile( string.Format( "Cliloc.{0}", language ) );
+			string path = Core.FindDataFile( string.Format( "Cliloc.{0}", language ) );
 
 			if ( path == null )
 			{

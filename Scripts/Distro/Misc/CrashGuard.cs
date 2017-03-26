@@ -19,8 +19,8 @@ namespace Server.Misc
 		private static bool RestartServer = false;
 		private static bool GenerateReport = true;
 
-		private static string FromAddress = Environment.Config.ServerEmail;
-		private static string CrashAddresses = Environment.Config.ServerEmail;
+		private static string FromAddress = Core.Config.ServerEmail;
+		private static string CrashAddresses = Core.Config.ServerEmail;
 
 		public static void Initialize()
 		{
@@ -67,7 +67,7 @@ namespace Server.Misc
 		{
 			try
 			{
-				return Path.GetDirectoryName( System.Environment.GetCommandLineArgs()[0] );
+				return Path.GetDirectoryName( Environment.GetCommandLineArgs()[0] );
 			}
 			catch
 			{
@@ -85,7 +85,7 @@ namespace Server.Misc
 
 		private static void Shutdown()
 		{
-			Environment.Process.Kill();
+			Core.Process.Kill();
 		}
 
 		private static void Restart( CrashedEventArgs e )
@@ -96,7 +96,7 @@ namespace Server.Misc
 
 			try
 			{
-				Process.Start( Environment.ExePath/*, Core.Arguments*/ );
+				Process.Start( Core.ExePath/*, Core.Arguments*/ );
 				Console.WriteLine( "done" );
 
 				e.Close = true;
@@ -188,21 +188,21 @@ namespace Server.Misc
 			try
 			{
 				string timeStamp = GetTimeStamp();
-				string fileName = Path.Combine( Environment.Config.LogDirectory, String.Format( "Crash {0}.log", timeStamp ) );
+				string fileName = Path.Combine( Core.Config.LogDirectory, String.Format( "Crash {0}.log", timeStamp ) );
 
 				string root = GetRoot();
 				string filePath = Combine( root, fileName );
 
 				using ( StreamWriter op = new StreamWriter( filePath ) )
 				{
-					Version ver = Environment.Assembly.GetName().Version;
+					Version ver = Core.Assembly.GetName().Version;
 
 					op.WriteLine( "Server Crash Report" );
 					op.WriteLine( "===================" );
 					op.WriteLine();
 					op.WriteLine( "X-RunUO Version {0}.{1}.{2}, Build {3}", ver.Major, ver.Minor, ver.Build, ver.Revision );
-					op.WriteLine( "Operating System: {0}", System.Environment.OSVersion );
-					op.WriteLine( ".NET Framework: {0}", System.Environment.Version );
+					op.WriteLine( "Operating System: {0}", Environment.OSVersion );
+					op.WriteLine( ".NET Framework: {0}", Environment.Version );
 					op.WriteLine( "Time: {0}", DateTime.UtcNow );
 
 					try { op.WriteLine( "Mobiles: {0}", World.Instance.MobileCount ); }

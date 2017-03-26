@@ -1006,7 +1006,7 @@ namespace Server
 
 		public static bool IsUsingMulticlient( NetState state, int maxclients )
 		{
-			if ( Environment.Config.Login.MaxLoginsPerPC <= 0 )
+			if ( Core.Config.Login.MaxLoginsPerPC <= 0 )
 				return false;
 
 			IPAddress ippublic = state.Address;

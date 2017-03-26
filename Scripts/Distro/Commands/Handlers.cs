@@ -462,14 +462,14 @@ namespace Server.Scripts.Commands
 		{
 			try
 			{
-				using ( StreamWriter sw = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "packetprofiles.log" ), true ) )
+				using ( StreamWriter sw = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "packetprofiles.log" ), true ) )
 				{
 					sw.WriteLine( "# Dump on {0:f}", DateTime.UtcNow );
-					sw.WriteLine( "# Core profiling for " + Environment.ProfileTime );
+					sw.WriteLine( "# Core profiling for " + Core.ProfileTime );
 
 					PacketProfile[] profiles = PacketProfile.OutgoingProfiles;
 
-					int totalSeconds = (int) Environment.ProfileTime.TotalSeconds;
+					int totalSeconds = (int) Core.ProfileTime.TotalSeconds;
 
 					if ( totalSeconds < 1 )
 					{
@@ -523,7 +523,7 @@ namespace Server.Scripts.Commands
 		{
 			try
 			{
-				using ( StreamWriter sw = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "timerprofiles.log" ), true ) )
+				using ( StreamWriter sw = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "timerprofiles.log" ), true ) )
 				{
 					TimerProfiles.DumpInfo( sw );
 				}
@@ -539,14 +539,14 @@ namespace Server.Scripts.Commands
 		{
 			if ( e.Length == 1 )
 			{
-				Environment.Profiling = e.GetBoolean( 0 );
+				Core.Profiling = e.GetBoolean( 0 );
 			}
 			else
 			{
-				Environment.Profiling = !Environment.Profiling;
+				Core.Profiling = !Core.Profiling;
 			}
 
-			e.Mobile.SendMessage( "Profiling has been {0}.", Environment.Profiling ? "enabled" : "disabled" );
+			e.Mobile.SendMessage( "Profiling has been {0}.", Core.Profiling ? "enabled" : "disabled" );
 		}
 
 		[Usage( "DumpTimers" )]
@@ -555,7 +555,7 @@ namespace Server.Scripts.Commands
 		{
 			try
 			{
-				using ( StreamWriter sw = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "timerdump.log" ), true ) )
+				using ( StreamWriter sw = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "timerdump.log" ), true ) )
 				{
 					TimerScheduler.Instance.DumpInfo( sw );
 				}
@@ -593,7 +593,7 @@ namespace Server.Scripts.Commands
 		[Description( "Generates a log file detailing all item and mobile types in the world." )]
 		public static void CountObjects_OnCommand( CommandEventArgs e )
 		{
-			using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "objects.log" ) ) )
+			using ( StreamWriter op = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "objects.log" ) ) )
 			{
 				Hashtable table = new Hashtable();
 
@@ -691,7 +691,7 @@ namespace Server.Scripts.Commands
 				parms[1] += item.Amount;
 			}
 
-			using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "internal.log" ) ) )
+			using ( StreamWriter op = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "internal.log" ) ) )
 			{
 				op.WriteLine( "# {0} items found", totalCount );
 				op.WriteLine( "# {0} different types", table.Count );
@@ -774,7 +774,7 @@ namespace Server.Scripts.Commands
 
 				list.Sort( new CountSorter() );
 
-				using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, opFile ) ) )
+				using ( StreamWriter op = new StreamWriter( Path.Combine( Core.Config.LogDirectory, opFile ) ) )
 				{
 					op.WriteLine( "# Profile of world {0}", type );
 					op.WriteLine( "# Generated on {0}", DateTime.UtcNow );

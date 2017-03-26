@@ -12,7 +12,7 @@ namespace Server
 
 			try
 			{
-				using ( StreamWriter op = new StreamWriter( Path.Combine( Environment.Config.LogDirectory, "Exceptions.log" ), true ) )
+				using ( StreamWriter op = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "Exceptions.log" ), true ) )
 				{
 					op.WriteLine( "{0}, {1}", DateTime.UtcNow, log );
 					op.WriteLine();

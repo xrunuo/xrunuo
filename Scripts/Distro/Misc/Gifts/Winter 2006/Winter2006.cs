@@ -37,10 +37,10 @@ namespace Server.Misc
 			switch ( GiveGift( mob, stocking ) )
 			{
 				case GiftResult.Backpack:
-					mob.SendMessage( String.Format( "Happy Holidays from the entire {0} Staff Team. We have placed a stocking for you in your backpack.", Environment.Config.ServerName ) );
+					mob.SendMessage( String.Format( "Happy Holidays from the entire {0} Staff Team. We have placed a stocking for you in your backpack.", Core.Config.ServerName ) );
 					break;
 				case GiftResult.BankBox:
-					mob.SendMessage( String.Format( "Happy Holidays from the entire {0} Staff Team. We have placed a stocking for you in your bank box.", Environment.Config.ServerName ) );
+					mob.SendMessage( String.Format( "Happy Holidays from the entire {0} Staff Team. We have placed a stocking for you in your bank box.", Core.Config.ServerName ) );
 					break;
 			}
 		}

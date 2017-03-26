@@ -92,9 +92,9 @@ namespace Server.Misc
 
 			World.Instance.Save();
 
-			//Process.Start( Environment.ExePath );
+			//Process.Start( Core.ExePath );
 
-			Environment.Process.Kill();
+			Core.Process.Kill();
 		}
 
 		protected override void OnTick()
@@ -120,12 +120,12 @@ namespace Server.Misc
 		{
 			try
 			{
-				string root = Path.Combine( Environment.BaseDirectory, Path.Combine( "Backups", "Daily" ) );
+				string root = Path.Combine( Core.BaseDirectory, Path.Combine( "Backups", "Daily" ) );
 
 				if ( !Directory.Exists( root ) )
 					Directory.CreateDirectory( root );
 
-				string saves = Path.Combine( Environment.BaseDirectory, "Saves" );
+				string saves = Path.Combine( Core.BaseDirectory, "Saves" );
 
 				if ( Directory.Exists( saves ) )
 					Directory.Move( saves, Path.Combine( root, String.Format( "Saves_{0}-{1}-{2}", DateTime.UtcNow.Day.ToString(), DateTime.UtcNow.Month.ToString(), DateTime.UtcNow.Year.ToString() ) ) );

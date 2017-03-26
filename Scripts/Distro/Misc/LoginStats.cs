@@ -19,13 +19,13 @@ namespace Server.Misc
 			Mobile m = args.Mobile;
 
 			m.SendMessage( "Welcome to {0}, {1}! There {2} currently {3} user{4} online.",
-				String.Format( "{0}{1}", Environment.Config.ServerName, TestCenter.Enabled ? " Test Center" : String.Empty ),
+				String.Format( "{0}{1}", Core.Config.ServerName, TestCenter.Enabled ? " Test Center" : String.Empty ),
 				args.Mobile.Name,
 				userCount == 1 ? "is" : "are",
 				userCount, userCount == 1 ? "" : "s" );
 
 			if ( TestCenter.Enabled )
-				m.SendMessage( "Server Version: X-RunUO {0}.{1}.{2}, Build {3}", Environment.CoreVersion.Major, Environment.CoreVersion.Minor, Environment.CoreVersion.Build, Environment.CoreVersion.Revision );
+				m.SendMessage( "Server Version: X-RunUO {0}.{1}.{2}, Build {3}", Core.CoreVersion.Major, Core.CoreVersion.Minor, Core.CoreVersion.Build, Core.CoreVersion.Revision );
 		}
 	}
 }

@@ -54,8 +54,8 @@ namespace Server
 
 		static MultiData()
 		{
-			string idxPath = Environment.FindDataFile( "Multi.idx" );
-			string mulPath = Environment.FindDataFile( "Multi.mul" );
+			string idxPath = Core.FindDataFile( "Multi.idx" );
+			string mulPath = Core.FindDataFile( "Multi.mul" );
 
 			if ( File.Exists( idxPath ) && File.Exists( mulPath ) )
 			{
@@ -67,7 +67,7 @@ namespace Server
 
 				m_Components = new MultiComponentList[(int) ( m_Index.Length / 12 )];
 
-				string vdPath = Environment.FindDataFile( "Verdata.mul" );
+				string vdPath = Core.FindDataFile( "Verdata.mul" );
 
 				if ( File.Exists( vdPath ) )
 				{

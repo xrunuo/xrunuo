@@ -61,7 +61,7 @@ namespace Server
 		{
 			m_Table = new Hashtable( StringComparer.OrdinalIgnoreCase );
 
-			string filePath = Path.Combine( Environment.BaseDirectory, "Data/names.xml" );
+			string filePath = Path.Combine( Core.BaseDirectory, "Data/names.xml" );
 
 			if ( !File.Exists( filePath ) )
 				return;

@@ -7,7 +7,7 @@ namespace Server.Misc
 {
 	public class AutoSave : Timer
 	{
-		private static TimeSpan m_Delay = Environment.Config.SaveInterval;
+		private static TimeSpan m_Delay = Core.Config.SaveInterval;
 		private static TimeSpan m_Warning = TimeSpan.FromSeconds( 30.0 );
 
 		public static void Initialize()
@@ -100,7 +100,7 @@ namespace Server.Misc
 			if ( m_Backups.Length == 0 )
 				return;
 
-			string root = Path.Combine( Environment.BaseDirectory, Path.Combine( "Backups", "Automatic" ) );
+			string root = Path.Combine( Core.BaseDirectory, Path.Combine( "Backups", "Automatic" ) );
 
 			if ( !Directory.Exists( root ) )
 				Directory.CreateDirectory( root );
@@ -131,7 +131,7 @@ namespace Server.Misc
 				}
 			}
 
-			string saves = Path.Combine( Environment.BaseDirectory, "Saves" );
+			string saves = Path.Combine( Core.BaseDirectory, "Saves" );
 
 			if ( Directory.Exists( saves ) )
 				Directory.Move( saves, FormatDirectory( root, m_Backups[m_Backups.Length - 1], GetTimeStamp() ) );

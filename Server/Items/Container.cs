@@ -1700,7 +1700,7 @@ namespace Server.Items
 		{
 			m_Table = new Hashtable();
 
-			string path = Path.Combine( Environment.BaseDirectory, "Data/containers.cfg" );
+			string path = Path.Combine( Core.BaseDirectory, "Data/containers.cfg" );
 
 			if ( !File.Exists( path ) )
 			{

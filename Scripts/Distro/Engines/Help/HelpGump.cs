@@ -124,7 +124,7 @@ namespace Server.Engines.Help
 
 			AddPage( 0 );
 
-			AddHtml( 150, 50, 360, 40, String.Format( "<CENTER><U>{0} Help Menu</U></CENTER>", Environment.Config.ServerName ), false, false );
+			AddHtml( 150, 50, 360, 40, String.Format( "<CENTER><U>{0} Help Menu</U></CENTER>", Core.Config.ServerName ), false, false );
 			AddButton( 450, 468, 2073, 2072, 0, GumpButtonType.Reply, 0 ); // Close
 
 			AddPage( 1 );

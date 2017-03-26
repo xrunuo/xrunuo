@@ -28,7 +28,7 @@ namespace Server.Engines.Reports
 
 		public void Save()
 		{
-			string path = Path.Combine( Environment.BaseDirectory, "reportHistory.xml" );
+			string path = Path.Combine( Core.BaseDirectory, "reportHistory.xml" );
 			PersistanceWriter pw = new XmlPersistanceWriter( path, "Stats" );
 
 			pw.WriteDocument( this );
@@ -38,7 +38,7 @@ namespace Server.Engines.Reports
 
 		public void Load()
 		{
-			string path = Path.Combine( Environment.BaseDirectory, "reportHistory.xml" );
+			string path = Path.Combine( Core.BaseDirectory, "reportHistory.xml" );
 
 			if ( !File.Exists( path ) )
 			{

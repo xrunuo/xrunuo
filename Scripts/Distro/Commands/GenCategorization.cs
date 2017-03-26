@@ -173,7 +173,7 @@ namespace Server.Custom
 		{
 			ArrayList types = new ArrayList();
 
-			AddTypes( Environment.Assembly, types );
+			AddTypes( Core.Assembly, types );
 
 			m_RootItems = Load( types, "Data/items.cfg" );
 			m_RootMobiles = Load( types, "Data/mobiles.cfg" );

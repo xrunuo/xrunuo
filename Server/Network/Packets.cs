@@ -491,7 +491,7 @@ namespace Server.Network
 			: base( 0xC9, 6 )
 		{
 			m_Stream.Write( (byte) unk );
-			m_Stream.Write( (int) System.Environment.TickCount );
+			m_Stream.Write( (int) Environment.TickCount );
 		}
 	}
 
@@ -501,7 +501,7 @@ namespace Server.Network
 			: base( 0xCA, 6 )
 		{
 			m_Stream.Write( (byte) unk );
-			m_Stream.Write( (int) System.Environment.TickCount );
+			m_Stream.Write( (int) Environment.TickCount );
 		}
 	}
 

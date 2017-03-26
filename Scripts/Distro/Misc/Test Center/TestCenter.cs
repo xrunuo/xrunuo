@@ -13,7 +13,7 @@ namespace Server.Misc
 {
 	public class TestCenter
 	{
-		public static readonly bool Enabled = Environment.Config.Features["test-center"];
+		public static readonly bool Enabled = Core.Config.Features["test-center"];
 
 		public static void Initialize()
 		{
@@ -181,7 +181,7 @@ namespace Server.Misc
 				AddBackground( 0, 0, 160, 120, 5054 );
 
 				AddButton( 10, 10, 0xFB7, 0xFB9, 1, GumpButtonType.Reply, 0 );
-				AddLabel( 45, 10, 0x34, Environment.Config.Website );
+				AddLabel( 45, 10, 0x34, Core.Config.Website );
 
 				AddButton( 10, 35, 0xFB7, 0xFB9, 2, GumpButtonType.Reply, 0 );
 				AddLabel( 45, 35, 0x34, "List of skills" );
@@ -199,7 +199,7 @@ namespace Server.Misc
 				{
 					case 1: // Go to shard website
 						{
-							sender.LaunchBrowser( Environment.Config.Website );
+							sender.LaunchBrowser( Core.Config.Website );
 							break;
 						}
 					case 2: // List of skills

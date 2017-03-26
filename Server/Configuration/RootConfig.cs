@@ -283,7 +283,7 @@ namespace Server.Configuration
 				ObjectPropertyListPacket.Enabled = true;
 				Mobile.InsuranceEnabled = true;
 
-				Environment.Logging = Features["logging"];
+				Core.Logging = Features["logging"];
 
 				World.ManualGC = Features["manual-gc"];
 				World.DualSave = Features["dual-save"];
@@ -373,7 +373,7 @@ namespace Server.Configuration
 		{
 			var serializer = new XmlSerializer( moduleType );
 
-			var reader = new StreamReader( Path.Combine( Environment.BaseDirectory, "Config", $"{moduleType.Name}.xml" ) );
+			var reader = new StreamReader( Path.Combine( Core.BaseDirectory, "Config", $"{moduleType.Name}.xml" ) );
 			return serializer.Deserialize( reader );
 		}
 
