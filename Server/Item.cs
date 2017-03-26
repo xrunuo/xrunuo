@@ -113,9 +113,9 @@ namespace Server
 				Serial serial = reader.ReadInt();
 
 				if ( serial.IsItem )
-					parent = World.Instance.FindItem( serial );
+					parent = World.FindItem( serial );
 				else if ( serial.IsMobile )
-					parent = World.Instance.FindMobile( serial );
+					parent = World.FindMobile( serial );
 				else
 					parent = null;
 
@@ -1239,7 +1239,7 @@ namespace Server
 			if ( !ObjectPropertyListPacket.Enabled )
 				return;
 
-			if ( m_Map != null && m_Map != Map.Internal && !World.Instance.Loading )
+			if ( m_Map != null && m_Map != Map.Internal && !World.Loading )
 			{
 				ObjectPropertyListPacket oldList = m_PropertyList;
 				m_PropertyList = null;
@@ -1872,9 +1872,9 @@ namespace Server
 							Serial parent = reader.ReadInt();
 
 							if ( parent.IsMobile )
-								m_Parent = World.Instance.FindMobile( parent );
+								m_Parent = World.FindMobile( parent );
 							else if ( parent.IsItem )
-								m_Parent = World.Instance.FindItem( parent );
+								m_Parent = World.FindItem( parent );
 							else
 								m_Parent = null;
 
@@ -2638,7 +2638,7 @@ namespace Server
 		{
 			if ( Deleted )
 				return;
-			else if ( !World.Instance.OnDelete( this ) )
+			else if ( !World.OnDelete( this ) )
 				return;
 
 			OnDelete();
@@ -2675,7 +2675,7 @@ namespace Server
 				m_Map = null;
 			}
 
-			World.Instance.RemoveItem( this );
+			World.RemoveItem( this );
 
 			OnAfterDelete();
 
@@ -3886,7 +3886,7 @@ namespace Server
 		{
 			DefaultItemInit();
 
-			World.Instance.AddItem( this );
+			World.AddItem( this );
 		}
 
 		/// <summary>

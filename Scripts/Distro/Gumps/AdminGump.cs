@@ -242,13 +242,13 @@ namespace Server.Gumps
 						AddLabel( 150, 190, LabelHue, GameServer.Instance.ClientCount.ToString() );
 
 						AddLabel( 20, 210, LabelHue, "Mobiles:" );
-						AddLabel( 150, 210, LabelHue, World.Instance.MobileCount.ToString() );
+						AddLabel( 150, 210, LabelHue, World.MobileCount.ToString() );
 
 						AddLabel( 20, 230, LabelHue, "Mobile Scripts:" );
 						AddLabel( 150, 230, LabelHue, ScriptCompiler.ScriptMobiles.ToString() );
 
 						AddLabel( 20, 250, LabelHue, "Items:" );
-						AddLabel( 150, 250, LabelHue, World.Instance.ItemCount.ToString() );
+						AddLabel( 150, 250, LabelHue, World.ItemCount.ToString() );
 
 						AddLabel( 20, 270, LabelHue, "Item Scripts:" );
 						AddLabel( 150, 270, LabelHue, ScriptCompiler.ScriptItems.ToString() );

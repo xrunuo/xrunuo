@@ -90,7 +90,7 @@ namespace Server.Misc
 
 			DailyBackup();
 
-			World.Instance.Save();
+			World.Save();
 
 			//Process.Start( Core.ExePath );
 

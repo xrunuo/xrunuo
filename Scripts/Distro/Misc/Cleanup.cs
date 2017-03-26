@@ -23,7 +23,7 @@ namespace Server.Misc
 
 			int boxes = 0;
 
-			foreach ( Item item in World.Instance.Items )
+			foreach ( Item item in World.Items )
 			{
 				if ( item.Map == null )
 				{

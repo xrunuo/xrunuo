@@ -69,7 +69,7 @@ namespace Server.Scripts.Commands
 		{
 			if ( e.Length == 1 )
 			{
-				IEntity ent = World.Instance.FindEntity( e.GetInt32( 0 ) );
+				IEntity ent = World.FindEntity( e.GetInt32( 0 ) );
 
 				if ( ent == null )
 				{

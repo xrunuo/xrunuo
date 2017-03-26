@@ -27,12 +27,12 @@ namespace Server.Persistence
 			SaveGuilds();
 
 			if ( permitBackgroundWrite )
-				World.Instance.NotifyDiskWriteComplete();
+				World.NotifyDiskWriteComplete();
 		}
 
 		protected void SaveMobiles()
 		{
-			Dictionary<Serial, Mobile> mobiles = World.Instance.m_Mobiles;
+			Dictionary<Serial, Mobile> mobiles = World.m_Mobiles;
 
 			GenericWriter idx = new BinaryFileWriter( World.MobileIndexPath, false );
 			GenericWriter tdb = new BinaryFileWriter( World.MobileTypesPath, false );
@@ -75,7 +75,7 @@ namespace Server.Persistence
 
 		protected void SaveItems()
 		{
-			Dictionary<Serial, Item> items = World.Instance.m_Items;
+			Dictionary<Serial, Item> items = World.m_Items;
 
 			GenericWriter idx = new BinaryFileWriter( World.ItemIndexPath, false );
 			GenericWriter tdb = new BinaryFileWriter( World.ItemTypesPath, false );

@@ -30,7 +30,7 @@ namespace Server.Scripts.Commands
 				{
 					int ser = e.GetInt32( 0 );
 
-					IEntity ent = World.Instance.FindEntity( ser );
+					IEntity ent = World.FindEntity( ser );
 
 					if ( ent is Item )
 					{

@@ -38,7 +38,7 @@ namespace Server.Mobiles
 		{
 			List<Mobile> list = new List<Mobile>();
 
-			foreach ( Mobile m in World.Instance.Mobiles )
+			foreach ( Mobile m in World.Mobiles )
 			{
 				if ( m is BaseCreature )
 				{
@@ -656,7 +656,7 @@ namespace Server.Mobiles
 						break;
 
 					case SpawnState.Active:
-						m_Spawned = World.Instance.FindEntity( reader.ReadInt() ) as ISpawnable;
+						m_Spawned = World.FindEntity( reader.ReadInt() ) as ISpawnable;
 
 						if ( m_Spawned != null )
 							m_Spawned.Spawner = this;

@@ -248,7 +248,7 @@ namespace Server.Items
 
 		private IEntity ReadEntity( GenericReader reader )
 		{
-			return World.Instance.FindEntity( reader.ReadInt() );
+			return World.FindEntity( reader.ReadInt() );
 		}
 
 		public override void Deserialize( GenericReader reader )

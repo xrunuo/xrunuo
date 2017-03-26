@@ -938,12 +938,12 @@ namespace Server
 
 		public override Item ReadItem()
 		{
-			return World.Instance.FindItem( ReadInt() );
+			return World.FindItem( ReadInt() );
 		}
 
 		public override Mobile ReadMobile()
 		{
-			return World.Instance.FindMobile( ReadInt() );
+			return World.FindMobile( ReadInt() );
 		}
 
 		public override BaseGuild ReadGuild()

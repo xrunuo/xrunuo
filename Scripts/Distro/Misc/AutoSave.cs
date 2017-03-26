@@ -80,12 +80,12 @@ namespace Server.Misc
 			if ( AutoRestart.Restarting )
 				return;
 
-			World.Instance.WaitForWriteCompletion();
+			World.WaitForWriteCompletion();
 
 			try { Backup(); }
 			catch ( Exception e ) { Console.WriteLine( "WARNING: Automatic backup FAILED: {0}", e ); }
 
-			World.Instance.Save( true, permitBackgroundWrite );
+			World.Save( true, permitBackgroundWrite );
 		}
 
 		private static string[] m_Backups = new string[]

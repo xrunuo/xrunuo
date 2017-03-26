@@ -51,7 +51,7 @@ namespace Server.Persistence
 					{
 						CloseFiles();
 
-						World.Instance.NotifyDiskWriteComplete();
+						World.NotifyDiskWriteComplete();
 					} );
 			}
 			else
@@ -91,7 +91,7 @@ namespace Server.Persistence
 			// Start the blocking consumer; this runs in background.
 			Task commitTask = StartCommitTask( m_ItemThreadWriters, m_ItemData, m_ItemIndex );
 
-			var items = World.Instance.Items;
+			var items = World.Items;
 
 			// Start the producer.
 			Parallel.ForEach( items, () => new QueuedMemoryWriter(),
@@ -127,7 +127,7 @@ namespace Server.Persistence
 			// Start the blocking consumer; this runs in background.
 			Task commitTask = StartCommitTask( m_MobileThreadWriters, m_MobileData, m_MobileIndex );
 
-			var mobiles = World.Instance.Mobiles;
+			var mobiles = World.Mobiles;
 
 			// Start the producer.
 			Parallel.ForEach( mobiles, () => new QueuedMemoryWriter(),
@@ -235,8 +235,8 @@ namespace Server.Persistence
 			m_GuildData = new FileStream( World.GuildDataPath, FileMode.Create );
 			m_GuildIndex = new FileStream( World.GuildIndexPath, FileMode.Create );
 
-			WriteCount( m_ItemIndex, World.Instance.m_Items.Count );
-			WriteCount( m_MobileIndex, World.Instance.m_Mobiles.Count );
+			WriteCount( m_ItemIndex, World.m_Items.Count );
+			WriteCount( m_MobileIndex, World.m_Mobiles.Count );
 			WriteCount( m_GuildIndex, BaseGuild.List.Count );
 		}
 

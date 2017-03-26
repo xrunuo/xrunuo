@@ -16,7 +16,7 @@ namespace Server
 
 		public static void RemoveHighlightKRUIElement( NetState state, PacketReader pvSrc )
 		{
-			Mobile m = World.Instance.FindMobile( (Serial) pvSrc.ReadInt32() );
+			Mobile m = World.FindMobile( (Serial) pvSrc.ReadInt32() );
 
 			int elementID = pvSrc.ReadInt16();
 
@@ -57,7 +57,7 @@ namespace Server
 			objectID |= pvSrc.ReadByte() << 24;
 
 			#region KR Starting Quest
-			Item item = World.Instance.FindItem( (Serial) objectID );
+			Item item = World.FindItem( (Serial) objectID );
 
 			if ( type == 6 && item != null && item is MagicArrowScroll )
 			{

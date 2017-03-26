@@ -33,7 +33,7 @@ namespace Server.Scripts.Commands
 
 				if ( items )
 				{
-					foreach ( Item item in World.Instance.Items )
+					foreach ( Item item in World.Items )
 					{
 						if ( cond.CheckCondition( item ) )
 						{
@@ -44,7 +44,7 @@ namespace Server.Scripts.Commands
 
 				if ( mobiles )
 				{
-					foreach ( Mobile mob in World.Instance.Mobiles )
+					foreach ( Mobile mob in World.Mobiles )
 					{
 						if ( cond.CheckCondition( mob ) )
 						{

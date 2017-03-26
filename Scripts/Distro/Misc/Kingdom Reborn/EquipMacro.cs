@@ -72,7 +72,7 @@ namespace Server.Misc
 
 				for ( int i = 0; i < e.List.Count; ++i )
 				{
-					Item item = World.Instance.FindItem( e.List[i] );
+					Item item = World.FindItem( e.List[i] );
 
 					if ( item != null && item.IsChildOf( m ) )
 						m.EquipItem( item );

@@ -50,7 +50,7 @@ namespace Server.Engines.VendorSearch
 
 		private IEnumerable<IVendorSearchItem> FindWorldVendorItems()
 		{
-			var allVendors = World.Instance.Mobiles.OfType<PlayerVendor>();
+			var allVendors = World.Mobiles.OfType<PlayerVendor>();
 			var allVendorItems = allVendors.SelectMany( v => v.GetAllVendorItems().Where( vi => vi.IsForSale ) );
 
 			foreach ( VendorItem vi in allVendorItems )

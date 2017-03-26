@@ -44,7 +44,7 @@ namespace Server.Items
 
 		private bool Check()
 		{
-			foreach ( Item item in World.Instance.Items )
+			foreach ( Item item in World.Items )
 			{
 				if ( item is LampController && !item.Deleted && item != this )
 					return true;

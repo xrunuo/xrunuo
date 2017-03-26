@@ -34,17 +34,17 @@ namespace Server.Persistence
 
 		public override void Initialize()
 		{
-			World.Instance.m_Mobiles = new Dictionary<Serial, Mobile>();
+			World.m_Mobiles = new Dictionary<Serial, Mobile>();
 		}
 
 		public override void Initialize( int count )
 		{
-			World.Instance.m_Mobiles = new Dictionary<Serial, Mobile>( count );
+			World.m_Mobiles = new Dictionary<Serial, Mobile>( count );
 		}
 
 		public override void AddObject( Mobile m )
 		{
-			World.Instance.AddMobile( m );
+			World.AddMobile( m );
 		}
 	}
 
@@ -57,17 +57,17 @@ namespace Server.Persistence
 
 		public override void Initialize()
 		{
-			World.Instance.m_Items = new Dictionary<Serial, Item>();
+			World.m_Items = new Dictionary<Serial, Item>();
 		}
 
 		public override void Initialize( int count )
 		{
-			World.Instance.m_Items = new Dictionary<Serial, Item>( count );
+			World.m_Items = new Dictionary<Serial, Item>( count );
 		}
 
 		public override void AddObject( Item item )
 		{
-			World.Instance.AddItem( item );
+			World.AddItem( item );
 		}
 	}
 

@@ -182,7 +182,7 @@ namespace Server.Gumps
 				{
 					int serial = Utility.ToInt32( text );
 
-					toSet = World.Instance.FindEntity( serial );
+					toSet = World.FindEntity( serial );
 
 					if ( toSet == null )
 					{

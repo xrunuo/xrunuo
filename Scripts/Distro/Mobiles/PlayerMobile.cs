@@ -1086,7 +1086,7 @@ namespace Server.Mobiles
 		{
 			ArrayList list = new ArrayList();
 
-			foreach ( Mobile m in World.Instance.Mobiles )
+			foreach ( Mobile m in World.Mobiles )
 			{
 				BaseCreature creature = m as BaseCreature;
 

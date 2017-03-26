@@ -37,7 +37,7 @@ namespace Server.Mobiles
 
 		private static void EventSink_WorldBeforeSave()
 		{
-			foreach ( Mobile m in World.Instance.Mobiles )
+			foreach ( Mobile m in World.Mobiles )
 			{
 				BaseVendor vendor = m as BaseVendor;
 
@@ -993,7 +993,7 @@ namespace Server.Mobiles
 
 				if ( ser.IsItem )
 				{
-					Item item = World.Instance.FindItem( ser );
+					Item item = World.FindItem( ser );
 
 					if ( item == null )
 						continue;
@@ -1028,7 +1028,7 @@ namespace Server.Mobiles
 				}
 				else if ( ser.IsMobile )
 				{
-					Mobile mob = World.Instance.FindMobile( ser );
+					Mobile mob = World.FindMobile( ser );
 
 					if ( mob == null )
 						continue;
@@ -1096,7 +1096,7 @@ namespace Server.Mobiles
 
 				if ( ser.IsItem )
 				{
-					Item item = World.Instance.FindItem( ser );
+					Item item = World.FindItem( ser );
 
 					if ( item == null )
 						continue;
@@ -1143,7 +1143,7 @@ namespace Server.Mobiles
 				}
 				else if ( ser.IsMobile )
 				{
-					Mobile mob = World.Instance.FindMobile( ser );
+					Mobile mob = World.FindMobile( ser );
 
 					if ( mob == null )
 						continue;

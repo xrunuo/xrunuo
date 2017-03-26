@@ -5396,7 +5396,7 @@ namespace Server.Mobiles
 			// added array for wild creatures in house regions to be removed
 			ArrayList toRemove = new ArrayList();
 
-			foreach ( Mobile m in World.Instance.Mobiles )
+			foreach ( Mobile m in World.Mobiles )
 			{
 				if ( m is BaseMount && ( (BaseMount) m ).Rider != null )
 				{

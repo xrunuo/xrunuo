@@ -256,7 +256,7 @@ namespace Server.Network
 
 		public void EncodedCommand( NetState state, PacketReader pvSrc )
 		{
-			IEntity e = World.Instance.FindEntity( pvSrc.ReadInt32() );
+			IEntity e = World.FindEntity( pvSrc.ReadInt32() );
 			int packetID = pvSrc.ReadUInt16();
 
 			EncodedPacketHandler ph = GetEncodedHandler( packetID );
@@ -286,7 +286,7 @@ namespace Server.Network
 		public void RenameRequest( NetState state, PacketReader pvSrc )
 		{
 			Mobile from = state.Mobile;
-			Mobile targ = World.Instance.FindMobile( pvSrc.ReadInt32() );
+			Mobile targ = World.FindMobile( pvSrc.ReadInt32() );
 
 			if ( targ != null )
 				EventSink.InvokeRenameRequest( new RenameRequestEventArgs( from, targ, pvSrc.ReadStringSafe() ) );
@@ -305,7 +305,7 @@ namespace Server.Network
 					{
 						Serial serial = pvSrc.ReadInt32();
 
-						SecureTradeContainer cont = World.Instance.FindItem( serial ) as SecureTradeContainer;
+						SecureTradeContainer cont = World.FindItem( serial ) as SecureTradeContainer;
 
 						if ( cont != null && cont.Trade != null && ( cont.Trade.From.Mobile == state.Mobile || cont.Trade.To.Mobile == state.Mobile ) )
 							cont.Trade.Cancel();
@@ -316,7 +316,7 @@ namespace Server.Network
 					{
 						Serial serial = pvSrc.ReadInt32();
 
-						SecureTradeContainer cont = World.Instance.FindItem( serial ) as SecureTradeContainer;
+						SecureTradeContainer cont = World.FindItem( serial ) as SecureTradeContainer;
 
 						if ( cont != null )
 						{
@@ -346,7 +346,7 @@ namespace Server.Network
 			pvSrc.Seek( 1, SeekOrigin.Begin );
 
 			int msgSize = pvSrc.ReadUInt16();
-			Mobile vendor = World.Instance.FindMobile( pvSrc.ReadInt32() );
+			Mobile vendor = World.FindMobile( pvSrc.ReadInt32() );
 			byte flag = pvSrc.ReadByte();
 
 			if ( vendor == null )
@@ -394,7 +394,7 @@ namespace Server.Network
 		public void VendorSellReply( NetState state, PacketReader pvSrc )
 		{
 			Serial serial = pvSrc.ReadInt32();
-			Mobile vendor = World.Instance.FindMobile( serial );
+			Mobile vendor = World.FindMobile( serial );
 
 			if ( vendor == null )
 			{
@@ -413,7 +413,7 @@ namespace Server.Network
 
 				for ( int i = 0; i < count; i++ )
 				{
-					Item item = World.Instance.FindItem( pvSrc.ReadInt32() );
+					Item item = World.FindItem( pvSrc.ReadInt32() );
 					int Amount = pvSrc.ReadInt16();
 
 					if ( item != null && Amount > 0 )
@@ -491,14 +491,14 @@ namespace Server.Network
 
 			if ( serial.IsItem )
 			{
-				Item item = World.Instance.FindItem( serial );
+				Item item = World.FindItem( serial );
 
 				if ( item != null && from.Map == item.Map && item.GetWorldLocation().InUpdateRange( from.Location ) && from.CanSee( item ) )
 					item.OnHelpRequest( from );
 			}
 			else if ( serial.IsMobile )
 			{
-				Mobile m = World.Instance.FindMobile( serial );
+				Mobile m = World.FindMobile( serial );
 
 				if ( m != null && from.Map == m.Map && m.Location.InUpdateRange( from.Location ) && from.CanSee( m ) )
 					m.OnHelpRequest( m );
@@ -507,7 +507,7 @@ namespace Server.Network
 
 		public void MobileNameRequest( NetState state, PacketReader pvSrc )
 		{
-			Mobile m = World.Instance.FindMobile( pvSrc.ReadInt32() );
+			Mobile m = World.FindMobile( pvSrc.ReadInt32() );
 
 			if ( m != null && state.Mobile.InUpdateRange( m ) && state.Mobile.CanSee( m ) )
 				state.Send( new MobileName( m ) );
@@ -524,7 +524,7 @@ namespace Server.Network
 		public void AttackReq( NetState state, PacketReader pvSrc )
 		{
 			Mobile from = state.Mobile;
-			Mobile m = World.Instance.FindMobile( pvSrc.ReadInt32() );
+			Mobile m = World.FindMobile( pvSrc.ReadInt32() );
 
 			if ( m != null )
 				from.Attack( m );
@@ -794,7 +794,7 @@ namespace Server.Network
 
 							try
 							{
-								m.CastSpell( spellId, book: World.Instance.FindItem( serial ) );
+								m.CastSpell( spellId, book: World.FindItem( serial ) );
 							}
 							catch ( Exception e )
 							{
@@ -964,7 +964,7 @@ namespace Server.Network
 			Serial serial = pvSrc.ReadInt32();
 
 			Mobile beholder = state.Mobile;
-			Mobile beheld = World.Instance.FindMobile( serial );
+			Mobile beheld = World.FindMobile( serial );
 
 			if ( beheld == null )
 				return;
@@ -1004,7 +1004,7 @@ namespace Server.Network
 		{
 			Serial serial = pvSrc.ReadInt32();
 			int amount = pvSrc.ReadUInt16();
-			Item item = World.Instance.FindItem( serial );
+			Item item = World.FindItem( serial );
 
 			bool rejected;
 			LRReason reject;
@@ -1030,7 +1030,7 @@ namespace Server.Network
 			from.Holding = null;
 
 			pvSrc.Seek( 5, SeekOrigin.Current );
-			Mobile to = World.Instance.FindMobile( pvSrc.ReadInt32() );
+			Mobile to = World.FindMobile( pvSrc.ReadInt32() );
 
 			if ( to == null )
 				to = from;
@@ -1078,7 +1078,7 @@ namespace Server.Network
 
 			if ( dest.IsMobile )
 			{
-				Mobile m = World.Instance.FindMobile( dest );
+				Mobile m = World.FindMobile( dest );
 
 				try
 				{
@@ -1095,7 +1095,7 @@ namespace Server.Network
 			}
 			else if ( dest.IsItem )
 			{
-				Item i = World.Instance.FindItem( dest );
+				Item i = World.FindItem( dest );
 
 				try
 				{
@@ -1226,11 +1226,11 @@ namespace Server.Network
 					}
 					else if ( serial.IsMobile )
 					{
-						toTarget = World.Instance.FindMobile( serial );
+						toTarget = World.FindMobile( serial );
 					}
 					else if ( serial.IsItem )
 					{
-						toTarget = World.Instance.FindItem( serial );
+						toTarget = World.FindItem( serial );
 					}
 					else
 					{
@@ -1317,7 +1317,7 @@ namespace Server.Network
 
 				if ( buttonID == 1 && switchCount > 0 )
 				{
-					Mobile beheld = World.Instance.FindMobile( pvSrc.ReadInt32() );
+					Mobile beheld = World.FindMobile( pvSrc.ReadInt32() );
 
 					if ( beheld != null )
 						EventSink.InvokeVirtueGumpRequest( new VirtueGumpRequestEventArgs( state.Mobile, beheld ) );
@@ -1328,7 +1328,7 @@ namespace Server.Network
 				}
 				else
 				{
-					Mobile beheld = World.Instance.FindMobile( serial );
+					Mobile beheld = World.FindMobile( serial );
 
 					if ( beheld != null )
 						EventSink.InvokeVirtueItemRequest( new VirtueItemRequestEventArgs( state.Mobile, beheld, buttonID ) );
@@ -1466,7 +1466,7 @@ namespace Server.Network
 
 					if ( s.IsMobile )
 					{
-						Mobile m = World.Instance.FindMobile( s );
+						Mobile m = World.FindMobile( s );
 
 						try
 						{
@@ -1480,7 +1480,7 @@ namespace Server.Network
 					}
 					else if ( s.IsItem )
 					{
-						Item item = World.Instance.FindItem( s );
+						Item item = World.FindItem( s );
 
 						try
 						{
@@ -1510,14 +1510,14 @@ namespace Server.Network
 
 			if ( s.IsMobile )
 			{
-				Mobile m = World.Instance.FindMobile( s );
+				Mobile m = World.FindMobile( s );
 
 				if ( m != null && from.CanSee( m ) && m.InUpdateRange( from ) )
 					m.OnAosSingleClick( from );
 			}
 			else if ( s.IsItem )
 			{
-				Item item = World.Instance.FindItem( s );
+				Item item = World.FindItem( s );
 
 				if ( item != null && !item.Deleted && from.CanSee( item ) && from.InUpdateRange( item.GetWorldLocation() ) )
 					item.OnAosSingleClick( from );
@@ -1634,7 +1634,7 @@ namespace Server.Network
 			Item spellbook = null;
 
 			if ( pvSrc.ReadInt16() == 1 )
-				spellbook = World.Instance.FindItem( pvSrc.ReadInt32() );
+				spellbook = World.FindItem( pvSrc.ReadInt32() );
 
 			int spellId = pvSrc.ReadInt16() - 1;
 
@@ -1647,7 +1647,7 @@ namespace Server.Network
 
 			int spellId = pvSrc.ReadInt16() - 1;
 
-			from.CastSpell( spellId, target: World.Instance.FindEntity( pvSrc.ReadInt32() ) );
+			from.CastSpell( spellId, target: World.FindEntity( pvSrc.ReadInt32() ) );
 		}
 
 		public void TargetedSkillUse( NetState state, PacketReader pvSrc )
@@ -1655,7 +1655,7 @@ namespace Server.Network
 			Mobile from = state.Mobile;
 
 			int skillId = pvSrc.ReadInt16();
-			IEntity target = World.Instance.FindEntity( pvSrc.ReadInt32() );
+			IEntity target = World.FindEntity( pvSrc.ReadInt32() );
 
 			Target oldTarget = from.Target;
 			from.TargetLocked = true;
@@ -1674,8 +1674,8 @@ namespace Server.Network
 		{
 			Mobile from = state.Mobile;
 
-			Item item = World.Instance.FindItem( pvSrc.ReadInt32() );
-			IEntity target = World.Instance.FindEntity( pvSrc.ReadInt32() );
+			Item item = World.FindItem( pvSrc.ReadInt32() );
+			IEntity target = World.FindEntity( pvSrc.ReadInt32() );
 
 			if ( item != null )
 			{
@@ -1732,7 +1732,7 @@ namespace Server.Network
 
 			if ( serial.IsItem )
 			{
-				TargetByResourceMacroEventArgs e = new TargetByResourceMacroEventArgs( ns, World.Instance.FindItem( serial ), resourceType );
+				TargetByResourceMacroEventArgs e = new TargetByResourceMacroEventArgs( ns, World.FindItem( serial ), resourceType );
 				EventSink.InvokeTargetByResourceMacro( e );
 			}
 		}
@@ -1757,14 +1757,14 @@ namespace Server.Network
 
 				if ( s.IsMobile )
 				{
-					Mobile m = World.Instance.FindMobile( s );
+					Mobile m = World.FindMobile( s );
 
 					if ( m != null && from.CanSee( m ) && from.InUpdateRange( m ) )
 						m.SendPropertiesTo( from );
 				}
 				else if ( s.IsItem )
 				{
-					Item item = World.Instance.FindItem( s );
+					Item item = World.FindItem( s );
 
 					if ( item != null && !item.Deleted && from.CanSee( item ) && from.InUpdateRange( item.GetWorldLocation() ) )
 						item.SendPropertiesTo( from );
@@ -1783,14 +1783,14 @@ namespace Server.Network
 
 			if ( s.IsMobile )
 			{
-				Mobile m = World.Instance.FindMobile( s );
+				Mobile m = World.FindMobile( s );
 
 				if ( m != null && from.CanSee( m ) && from.InUpdateRange( m ) )
 					m.SendPropertiesTo( from );
 			}
 			else if ( s.IsItem )
 			{
-				Item item = World.Instance.FindItem( s );
+				Item item = World.FindItem( s );
 
 				if ( item != null && !item.Deleted && from.CanSee( item ) && from.InUpdateRange( item.GetWorldLocation() ) )
 					item.SendPropertiesTo( from );
@@ -1840,13 +1840,13 @@ namespace Server.Network
 		public void PartyMessage_RemoveMember( NetState state, PacketReader pvSrc )
 		{
 			if ( PartyCommands.Handler != null )
-				PartyCommands.Handler.OnRemove( state.Mobile, World.Instance.FindMobile( pvSrc.ReadInt32() ) );
+				PartyCommands.Handler.OnRemove( state.Mobile, World.FindMobile( pvSrc.ReadInt32() ) );
 		}
 
 		public void PartyMessage_PrivateMessage( NetState state, PacketReader pvSrc )
 		{
 			if ( PartyCommands.Handler != null )
-				PartyCommands.Handler.OnPrivateMessage( state.Mobile, World.Instance.FindMobile( pvSrc.ReadInt32() ), pvSrc.ReadUnicodeStringSafe() );
+				PartyCommands.Handler.OnPrivateMessage( state.Mobile, World.FindMobile( pvSrc.ReadInt32() ), pvSrc.ReadUnicodeStringSafe() );
 		}
 
 		public void PartyMessage_PublicMessage( NetState state, PacketReader pvSrc )
@@ -1864,13 +1864,13 @@ namespace Server.Network
 		public void PartyMessage_Accept( NetState state, PacketReader pvSrc )
 		{
 			if ( PartyCommands.Handler != null )
-				PartyCommands.Handler.OnAccept( state.Mobile, World.Instance.FindMobile( pvSrc.ReadInt32() ) );
+				PartyCommands.Handler.OnAccept( state.Mobile, World.FindMobile( pvSrc.ReadInt32() ) );
 		}
 
 		public void PartyMessage_Decline( NetState state, PacketReader pvSrc )
 		{
 			if ( PartyCommands.Handler != null )
-				PartyCommands.Handler.OnDecline( state.Mobile, World.Instance.FindMobile( pvSrc.ReadInt32() ) );
+				PartyCommands.Handler.OnDecline( state.Mobile, World.FindMobile( pvSrc.ReadInt32() ) );
 		}
 
 		public void StunRequest( NetState state, PacketReader pvSrc )
@@ -1927,7 +1927,7 @@ namespace Server.Network
 
 				if ( menu != null && from != null && from == menu.From )
 				{
-					IEntity entity = World.Instance.FindEntity( pvSrc.ReadInt32() );
+					IEntity entity = World.FindEntity( pvSrc.ReadInt32() );
 
 					if ( entity != null && entity == menu.Target && from.CanSee( entity ) )
 					{
@@ -1962,7 +1962,7 @@ namespace Server.Network
 		public void ContextMenuRequest( NetState state, PacketReader pvSrc )
 		{
 			Mobile from = state.Mobile;
-			IEntity target = World.Instance.FindEntity( pvSrc.ReadInt32() );
+			IEntity target = World.FindEntity( pvSrc.ReadInt32() );
 
 			if ( from != null && target != null && from.Map == target.Map && from.CanSee( target ) )
 			{
@@ -2067,7 +2067,7 @@ namespace Server.Network
 
 			pvSrc.ReadInt32(); // 0xEDEDEDED
 			int type = pvSrc.ReadByte();
-			Mobile m = World.Instance.FindMobile( pvSrc.ReadInt32() );
+			Mobile m = World.FindMobile( pvSrc.ReadInt32() );
 
 			if ( m != null )
 			{

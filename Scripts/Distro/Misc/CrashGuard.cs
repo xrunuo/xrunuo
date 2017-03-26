@@ -33,7 +33,7 @@ namespace Server.Misc
 			if ( GenerateReport )
 				GenerateCrashReport( e );
 
-			World.Instance.WaitForWriteCompletion();
+			World.WaitForWriteCompletion();
 
 			if ( SaveBackup )
 				Backup();
@@ -205,10 +205,10 @@ namespace Server.Misc
 					op.WriteLine( ".NET Framework: {0}", Environment.Version );
 					op.WriteLine( "Time: {0}", DateTime.UtcNow );
 
-					try { op.WriteLine( "Mobiles: {0}", World.Instance.MobileCount ); }
+					try { op.WriteLine( "Mobiles: {0}", World.MobileCount ); }
 					catch { }
 
-					try { op.WriteLine( "Items: {0}", World.Instance.ItemCount ); }
+					try { op.WriteLine( "Items: {0}", World.ItemCount ); }
 					catch { }
 
 					op.WriteLine( "Exception:" );

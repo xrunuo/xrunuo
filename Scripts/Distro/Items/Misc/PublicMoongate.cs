@@ -118,7 +118,7 @@ namespace Server.Items
 		{
 			ArrayList list = new ArrayList();
 
-			foreach ( Item item in World.Instance.Items )
+			foreach ( Item item in World.Items )
 			{
 				if ( item is PublicMoongate )
 					list.Add( item );

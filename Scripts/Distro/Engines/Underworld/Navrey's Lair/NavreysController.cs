@@ -33,7 +33,7 @@ namespace Server.Items
 
 		private static bool Check()
 		{
-			foreach ( Item item in World.Instance.Items )
+			foreach ( Item item in World.Items )
 				if ( item is NavreysController && !item.Deleted )
 					return true;
 

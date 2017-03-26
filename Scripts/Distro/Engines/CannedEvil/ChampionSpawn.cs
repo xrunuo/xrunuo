@@ -16,7 +16,7 @@ namespace Server.Engines.CannedEvil
 	{
 		public static void Initialize()
 		{
-			foreach ( Item item in World.Instance.Items )
+			foreach ( Item item in World.Items )
 			{
 				if ( item is ChampionSpawn )
 				{

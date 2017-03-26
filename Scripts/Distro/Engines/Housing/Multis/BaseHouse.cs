@@ -2561,7 +2561,7 @@ namespace Server.Engines.Housing.Multis
 						for ( int i = 0; i < relocatedCount; i++ )
 						{
 							Point3D relLocation = reader.ReadPoint3D();
-							IEntity entity = World.Instance.FindEntity( reader.ReadInt() );
+							IEntity entity = World.FindEntity( reader.ReadInt() );
 
 							if ( entity != null )
 								m_RelocatedEntities.Add( new RelocatedEntity( entity, relLocation ) );

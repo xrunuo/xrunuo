@@ -756,7 +756,7 @@ namespace Server.Mobiles
 
 						for ( int i = 0; i < count; ++i )
 						{
-							IEntity e = World.Instance.FindEntity( reader.ReadInt() );
+							IEntity e = World.FindEntity( reader.ReadInt() );
 
 							if ( e != null )
 							{

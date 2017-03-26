@@ -172,7 +172,7 @@ namespace Server.Factions
 			mob.InvalidateProperties();
 			mob.Delta( MobileDelta.Noto );
 
-			var followers = World.Instance.Mobiles
+			var followers = World.Mobiles
 				.OfType<BaseCreature>()
 				.Where( bc => bc.Controlled && bc.ControlMaster == mob );
 
@@ -264,7 +264,7 @@ namespace Server.Factions
 			mob.Delta( MobileDelta.Noto );
 
 			// TODO: refactor this, maybe a Mobile.GetFollowers() ?
-			var followers = World.Instance.Mobiles
+			var followers = World.Mobiles
 				.OfType<BaseCreature>()
 				.Where( bc => bc.Controlled && bc.ControlMaster == mob );
 
@@ -792,7 +792,7 @@ namespace Server.Factions
 		{
 			ArrayList pots = new ArrayList();
 
-			foreach ( Item item in World.Instance.Items )
+			foreach ( Item item in World.Items )
 			{
 				if ( item is IFactionItem && !( item is HoodedShroudOfShadows ) )
 					pots.Add( item );

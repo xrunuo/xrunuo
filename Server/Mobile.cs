@@ -2691,7 +2691,7 @@ namespace Server
 		{
 			if ( m_Deleted )
 				return;
-			else if ( !World.Instance.OnDelete( this ) )
+			else if ( !World.OnDelete( this ) )
 				return;
 
 			if ( m_NetState != null )
@@ -2739,7 +2739,7 @@ namespace Server
 
 			m_MountItem = null;
 
-			World.Instance.RemoveMobile( this );
+			World.RemoveMobile( this );
 
 			EventSink.InvokeDeleted( new DeletedEventArgs( this ) );
 
@@ -6770,7 +6770,7 @@ namespace Server
 			if ( !ObjectPropertyListPacket.Enabled )
 				return;
 
-			if ( m_Map != null && m_Map != Map.Internal && !World.Instance.Loading )
+			if ( m_Map != null && m_Map != Map.Internal && !World.Loading )
 			{
 				ObjectPropertyListPacket oldList = m_PropertyList;
 
@@ -7427,7 +7427,7 @@ namespace Server
 		{
 			DefaultMobileInit();
 
-			World.Instance.AddMobile( this );
+			World.AddMobile( this );
 		}
 
 		/// <summary>
@@ -9130,7 +9130,7 @@ namespace Server
 						if ( AccessLevel == AccessLevel.Player )
 							return;
 
-						var listeners = World.Instance.Mobiles.Where( m => m.AccessLevel >= AccessLevel.Counselor );
+						var listeners = World.Mobiles.Where( m => m.AccessLevel >= AccessLevel.Counselor );
 
 						if ( listeners.Any() )
 							listeners.SendPacket( new UnicodeMessage( Serial, Body, MessageType.GM, SpeechHue, 3, Language, Name, text ) );

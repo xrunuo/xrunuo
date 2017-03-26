@@ -54,7 +54,7 @@ namespace Server.Accounting
 
 					ArrayList toDelete = new ArrayList();
 
-					foreach ( Item item in World.Instance.Items )
+					foreach ( Item item in World.Items )
 					{
 						if ( HousingHelper.FindHouseAt( item ) == house && !( item is BaseHouse ) )
 						{
@@ -886,7 +886,7 @@ namespace Server.Accounting
 						int serial = Utility.GetInt32( Utility.GetText( ele, "0" ), 0 );
 
 						if ( index >= 0 && index < list.Length )
-							list[index] = World.Instance.FindMobile( serial );
+							list[index] = World.FindMobile( serial );
 					}
 					catch
 					{

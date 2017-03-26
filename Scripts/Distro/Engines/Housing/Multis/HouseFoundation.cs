@@ -1844,7 +1844,7 @@ namespace Server.Engines.Housing.Multis
 			Mobile from = state.Mobile;
 			DesignContext context = DesignContext.Find( from );
 
-			HouseFoundation foundation = World.Instance.FindItem( pvSrc.ReadInt32() ) as HouseFoundation;
+			HouseFoundation foundation = World.FindItem( pvSrc.ReadInt32() ) as HouseFoundation;
 
 			if ( foundation != null && from.Map == foundation.Map && from.InRange( foundation.GetWorldLocation(), 24 ) && from.CanSee( foundation ) )
 			{

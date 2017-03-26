@@ -272,7 +272,7 @@ namespace Server.Regions
 			for ( int i = 0; i < count; i++ )
 			{
 				int serial = reader.ReadInt();
-				IEntity entity = World.Instance.FindEntity( serial );
+				IEntity entity = World.FindEntity( serial );
 
 				if ( entity != null )
 					Add( entity );
@@ -306,7 +306,7 @@ namespace Server.Regions
 			for ( int i = 0; i < count; i++ )
 			{
 				int serial = reader.ReadInt();
-				IEntity entity = World.Instance.FindEntity( serial );
+				IEntity entity = World.FindEntity( serial );
 
 				if ( entity != null )
 				{

@@ -20,7 +20,7 @@ namespace Server.Factions
 
 		private static void EventSink_ServerStarted()
 		{
-			foreach ( var item in World.Instance.Items )
+			foreach ( var item in World.Items )
 			{
 				if ( item is IFactionArtifact )
 					CheckItem( item, null );

@@ -9,7 +9,7 @@ namespace Server
 
 		public static Serial GetNewMobileSerial()
 		{
-			while ( World.Instance.FindMobile( ++m_LastMobile ) != null )
+			while ( World.FindMobile( ++m_LastMobile ) != null )
 				;
 
 			return m_LastMobile;
@@ -17,7 +17,7 @@ namespace Server
 
 		public static Serial GetNewItemSerial()
 		{
-			while ( World.Instance.FindItem( ++m_LastItem ) != null )
+			while ( World.FindItem( ++m_LastItem ) != null )
 				;
 
 			return m_LastItem;

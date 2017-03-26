@@ -10,97 +10,80 @@ using Server.Persistence;
 
 namespace Server
 {
-	public class World
+	public static class World
 	{
-		private static World m_Instance;
-
-		public static World Instance
-		{
-			get
-			{
-				if ( m_Instance == null )
-					m_Instance = new World();
-
-				return m_Instance;
-			}
-		}
-
-		private World()
-		{
-		}
-
 		public static bool ManualGC;
 		public static bool DualSave;
 
-		private List<IEntityRepository> m_Repositories = new List<IEntityRepository>
+		private static List<IEntityRepository> m_Repositories = new List<IEntityRepository>
 			{
 				new MobileRepository(),
 				new ItemRepository(),
 				new GuildRepository(),
-			}; 
+			};
 
-		internal Dictionary<Serial, Mobile> m_Mobiles;
-		internal Dictionary<Serial, Item> m_Items;
-		
-		private bool m_Loading;
-		private bool m_Loaded;
-		private bool m_Saving;
+		internal static Dictionary<Serial, Mobile> m_Mobiles;
+		internal static Dictionary<Serial, Item> m_Items;
 
-		public bool Saving { get { return m_Saving; } }
-		public bool Loaded { get { return m_Loaded; } }
-		public bool Loading { get { return m_Loading; } }
+		private static bool m_Loading;
+		private static bool m_Loaded;
+		private static bool m_Saving;
 
-		private ManualResetEvent m_DiskWriteHandle = new ManualResetEvent( true );
+		public static bool Saving { get { return m_Saving; } }
+		public static bool Loaded { get { return m_Loaded; } }
+		public static bool Loading { get { return m_Loading; } }
 
-		private Queue<IEntity> m_AddQueue, m_DeleteQueue;
+		private static ManualResetEvent m_DiskWriteHandle = new ManualResetEvent( true );
 
-		public readonly static string MobileBasePath = Path.Combine( "Saves", "Mobiles" );
-		public readonly static string MobileIndexPath = Path.Combine( MobileBasePath, "Mobiles.idx" );
-		public readonly static string MobileTypesPath = Path.Combine( MobileBasePath, "Mobiles.tdb" );
-		public readonly static string MobileDataPath = Path.Combine( MobileBasePath, "Mobiles.bin" );
+		private static Queue<IEntity> m_AddQueue, m_DeleteQueue;
 
-		public readonly static string ItemBasePath = Path.Combine( "Saves", "Items" );
-		public readonly static string ItemIndexPath = Path.Combine( ItemBasePath, "Items.idx" );
-		public readonly static string ItemTypesPath = Path.Combine( ItemBasePath, "Items.tdb" );
-		public readonly static string ItemDataPath = Path.Combine( ItemBasePath, "Items.bin" );
+		public static readonly string MobileBasePath = Path.Combine( "Saves", "Mobiles" );
+		public static readonly string MobileIndexPath = Path.Combine( MobileBasePath, "Mobiles.idx" );
+		public static readonly string MobileTypesPath = Path.Combine( MobileBasePath, "Mobiles.tdb" );
+		public static readonly string MobileDataPath = Path.Combine( MobileBasePath, "Mobiles.bin" );
 
-		public readonly static string GuildBasePath = Path.Combine( "Saves", "Guilds" );
-		public readonly static string GuildIndexPath = Path.Combine( GuildBasePath, "Guilds.idx" );
-		public readonly static string GuildTypesPath = Path.Combine( GuildBasePath, "Guilds.tdb" );
-		public readonly static string GuildDataPath = Path.Combine( GuildBasePath, "Guilds.bin" );
-		
-		public void NotifyDiskWriteComplete()
+		public static readonly string ItemBasePath = Path.Combine( "Saves", "Items" );
+		public static readonly string ItemIndexPath = Path.Combine( ItemBasePath, "Items.idx" );
+		public static readonly string ItemTypesPath = Path.Combine( ItemBasePath, "Items.tdb" );
+		public static readonly string ItemDataPath = Path.Combine( ItemBasePath, "Items.bin" );
+
+		public static readonly string GuildBasePath = Path.Combine( "Saves", "Guilds" );
+		public static readonly string GuildIndexPath = Path.Combine( GuildBasePath, "Guilds.idx" );
+		public static readonly string GuildTypesPath = Path.Combine( GuildBasePath, "Guilds.tdb" );
+		public static readonly string GuildDataPath = Path.Combine( GuildBasePath, "Guilds.bin" );
+
+		public static void NotifyDiskWriteComplete()
 		{
 			if ( m_DiskWriteHandle.Set() )
 				Console.WriteLine( "World: Closing Save Files..." );
 		}
 
-		public void WaitForWriteCompletion()
+		public static void WaitForWriteCompletion()
 		{
 			m_DiskWriteHandle.WaitOne();
 		}
 
-		public int MobileCount
+		public static int MobileCount
 		{
 			get { return m_Mobiles.Count; }
 		}
 
-		public int ItemCount
+		public static int ItemCount
 		{
 			get { return m_Items.Count; }
 		}
 
-		public IEnumerable<Mobile> Mobiles
+		public static IEnumerable<Mobile> Mobiles
 		{
 			get { return m_Mobiles.Values; }
 		}
 
-		public IEnumerable<Item> Items
+		public static IEnumerable<Item> Items
 		{
 			get { return m_Items.Values; }
 		}
 
-		public bool OnDelete( IEntity entity )
+		public static bool OnDelete( IEntity entity )
 		{
 			if ( m_Saving || m_Loading )
 			{
@@ -120,7 +103,7 @@ namespace Server
 				p = new AsciiMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "System", text );
 			else
 				p = new UnicodeMessage( Serial.MinusOne, -1, MessageType.Regular, hue, 3, "ENU", "System", text );
-			
+
 			p.Acquire();
 
 			foreach ( var client in GameServer.Instance.Clients )
@@ -140,7 +123,7 @@ namespace Server
 			Broadcast( hue, ascii, String.Format( format, args ) );
 		}
 
-		public void Load()
+		public static void Load()
 		{
 			if ( m_Loaded )
 				return;
@@ -182,12 +165,12 @@ namespace Server
 			}
 
 			if ( ManualGC )
-				System.GC.Collect();
+				GC.Collect();
 
-			Console.WriteLine( String.Format( "done: {1} items, {2} mobiles ({0:F1} seconds)", ( DateTime.UtcNow - start ).TotalSeconds, m_Items.Count, m_Mobiles.Count ) );
+			Console.WriteLine( "done: {1} items, {2} mobiles ({0:F1} seconds)", ( DateTime.UtcNow - start ).TotalSeconds, m_Items.Count, m_Mobiles.Count );
 		}
 
-		private void ProcessSafetyQueues()
+		private static void ProcessSafetyQueues()
 		{
 			while ( m_AddQueue.Count > 0 )
 			{
@@ -228,7 +211,7 @@ namespace Server
 			}
 		}
 
-		public void Save( bool message = true, bool permitBackgroundWrite = false )
+		public static void Save( bool message = true, bool permitBackgroundWrite = false )
 		{
 			if ( m_Saving )
 				return;
@@ -304,7 +287,7 @@ namespace Server
 		internal static List<Type> m_MobileTypes = new List<Type>();
 		internal static List<Type> m_GuildTypes = new List<Type>();
 
-		public IEntity FindEntity( Serial serial )
+		public static IEntity FindEntity( Serial serial )
 		{
 			if ( serial.IsItem )
 				return FindItem( serial );
@@ -314,7 +297,7 @@ namespace Server
 			return null;
 		}
 
-		public Mobile FindMobile( Serial serial )
+		public static Mobile FindMobile( Serial serial )
 		{
 			Mobile mob;
 
@@ -323,7 +306,7 @@ namespace Server
 			return mob;
 		}
 
-		public void AddMobile( Mobile m )
+		public static void AddMobile( Mobile m )
 		{
 			if ( m_Saving )
 				m_AddQueue.Enqueue( m );
@@ -331,7 +314,7 @@ namespace Server
 				m_Mobiles[m.Serial] = m;
 		}
 
-		public Item FindItem( Serial serial )
+		public static Item FindItem( Serial serial )
 		{
 			Item item;
 
@@ -340,7 +323,7 @@ namespace Server
 			return item;
 		}
 
-		public void AddItem( Item item )
+		public static void AddItem( Item item )
 		{
 			if ( m_Saving )
 				m_AddQueue.Enqueue( item );
@@ -348,12 +331,12 @@ namespace Server
 				m_Items[item.Serial] = item;
 		}
 
-		public void RemoveMobile( Mobile m )
+		public static void RemoveMobile( Mobile m )
 		{
 			m_Mobiles.Remove( m.Serial );
 		}
 
-		public void RemoveItem( Item item )
+		public static void RemoveItem( Item item )
 		{
 			m_Items.Remove( item.Serial );
 		}

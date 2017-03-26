@@ -229,7 +229,7 @@ namespace Server.Scripts.Commands
 
 			ArrayList list = new ArrayList();
 
-			foreach ( Item item in World.Instance.Items )
+			foreach ( Item item in World.Items )
 			{
 				if ( item.Map == map && item.Parent == null )
 				{
@@ -237,7 +237,7 @@ namespace Server.Scripts.Commands
 				}
 			}
 
-			foreach ( Mobile m in World.Instance.Mobiles )
+			foreach ( Mobile m in World.Mobiles )
 			{
 				if ( m.Map == map && !m.Player )
 				{
@@ -272,7 +272,7 @@ namespace Server.Scripts.Commands
 				Mobile master = (Mobile) obj;
 				ArrayList pets = new ArrayList();
 
-				foreach ( Mobile m in World.Instance.Mobiles )
+				foreach ( Mobile m in World.Mobiles )
 				{
 					if ( m is BaseCreature )
 					{
@@ -319,7 +319,7 @@ namespace Server.Scripts.Commands
 		{
 			ArrayList list = new ArrayList();
 
-			foreach ( Mobile m in World.Instance.Mobiles )
+			foreach ( Mobile m in World.Mobiles )
 			{
 				if ( ( m is Banker ) && !( m is BaseCreature ) )
 				{
@@ -597,7 +597,7 @@ namespace Server.Scripts.Commands
 			{
 				Hashtable table = new Hashtable();
 
-				foreach ( Item item in World.Instance.Items )
+				foreach ( Item item in World.Items )
 				{
 					Type type = item.GetType();
 
@@ -617,7 +617,7 @@ namespace Server.Scripts.Commands
 
 				table.Clear();
 
-				foreach ( Mobile m in World.Instance.Mobiles )
+				foreach ( Mobile m in World.Mobiles )
 				{
 					Type type = m.GetType();
 
@@ -646,7 +646,7 @@ namespace Server.Scripts.Commands
 
 				foreach ( DictionaryEntry de in items )
 				{
-					op.WriteLine( "{0}\t{1:F2}%\t{2}", de.Value, ( 100 * (int) de.Value ) / (double) World.Instance.ItemCount, de.Key );
+					op.WriteLine( "{0}\t{1:F2}%\t{2}", de.Value, ( 100 * (int) de.Value ) / (double) World.ItemCount, de.Key );
 				}
 
 				op.WriteLine();
@@ -656,7 +656,7 @@ namespace Server.Scripts.Commands
 
 				foreach ( DictionaryEntry de in mobiles )
 				{
-					op.WriteLine( "{0}\t{1:F2}%\t{2}", de.Value, ( 100 * (int) de.Value ) / (double) World.Instance.MobileCount, de.Key );
+					op.WriteLine( "{0}\t{1:F2}%\t{2}", de.Value, ( 100 * (int) de.Value ) / (double) World.MobileCount, de.Key );
 				}
 			}
 
@@ -670,7 +670,7 @@ namespace Server.Scripts.Commands
 			int totalCount = 0;
 			Hashtable table = new Hashtable();
 
-			foreach ( Item item in World.Instance.Items )
+			foreach ( Item item in World.Items )
 			{
 				if ( item.Parent != null || item.Map != Map.Internal )
 				{
@@ -1249,8 +1249,8 @@ namespace Server.Scripts.Commands
 		public static void Stats_OnCommand( CommandEventArgs e )
 		{
 			e.Mobile.SendMessage( "Open Connections: {0}", GameServer.Instance.ClientCount );
-			e.Mobile.SendMessage( "Mobiles: {0}", World.Instance.MobileCount );
-			e.Mobile.SendMessage( "Items: {0}", World.Instance.ItemCount );
+			e.Mobile.SendMessage( "Mobiles: {0}", World.MobileCount );
+			e.Mobile.SendMessage( "Items: {0}", World.ItemCount );
 		}
 	}
 }

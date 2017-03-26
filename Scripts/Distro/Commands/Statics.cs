@@ -90,7 +90,7 @@ namespace Server
 					CommandLogging.WriteLine( from, "{0} {1} invoking freeze for every item in {0}", from.AccessLevel, CommandLogging.Format( from ), targetMap );
 				}
 
-				foreach ( Item item in World.Instance.Items )
+				foreach ( Item item in World.Items )
 				{
 					if ( targetMap != null && item.Map != targetMap )
 					{

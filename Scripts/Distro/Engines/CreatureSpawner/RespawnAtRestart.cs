@@ -18,7 +18,7 @@ namespace Server.Mobiles
 		{
 			Timer.DelayCall( TimeSpan.Zero, () =>
 			{
-				var spawners = World.Instance.Items.OfType<CreatureSpawner>().Where( spawner => spawner.RespawnAtRestart ).ToArray();
+				var spawners = World.Items.OfType<CreatureSpawner>().Where( spawner => spawner.RespawnAtRestart ).ToArray();
 				spawners.Each( spawner => spawner.TotalRespawn() );
 			} );
 		}

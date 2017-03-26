@@ -98,7 +98,7 @@ namespace Server.Engines.Reports
 
 			int npcs = 0, players = 0;
 
-			foreach ( Mobile mob in World.Instance.Mobiles )
+			foreach ( Mobile mob in World.Mobiles )
 			{
 				if ( mob.Player )
 					++players;
@@ -110,7 +110,7 @@ namespace Server.Engines.Reports
 			report.Items.Add( "Players", players, "N0" );
 			report.Items.Add( "Clients", GameServer.Instance.ClientCount, "N0" );
 			report.Items.Add( "Accounts", Accounts.Count, "N0" );
-			report.Items.Add( "Items", World.Instance.ItemCount, "N0" );
+			report.Items.Add( "Items", World.ItemCount, "N0" );
 			report.Items.Add( "Memory (MB)", GC.GetTotalMemory( false ) / ( 1024 * 1024 ), "N0" );
 
 			return report;

@@ -364,7 +364,7 @@ namespace Server
 			SaveConfig();
 
 			Region.Load();
-			World.Instance.Load();
+			World.Load();
 
 			try
 			{

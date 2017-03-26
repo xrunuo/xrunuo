@@ -70,7 +70,7 @@ namespace Server.Mobiles
 
 			if ( !m.PlayerRangeSensitive || m.Controlled )
 				activate = true;
-			else if ( World.Instance.Loading )
+			else if ( World.Loading )
 				activate = false;
 			else if ( m.Map == null || m.Map == Map.Internal || !m.Map.GetSector( m ).Active )
 				activate = false;
