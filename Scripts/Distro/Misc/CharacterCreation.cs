@@ -201,17 +201,6 @@ namespace Server.Misc
 				AddShoes( newChar );
 			}
 
-			var acct = args.Account as Account;
-
-			if ( acct.GetTag( "GivenStarterKit" ) == null && newChar.Backpack != null )
-			{
-				var token = new StarterKitToken();
-				token.Owner = newChar;
-				newChar.Backpack.DropItem( token );
-
-				acct.SetTag( "GivenStarterKit", "true" );
-			}
-
 			CityInfo city = GetStartLocation( args, young );
 
 			newChar.MoveToWorld( city.Location, city.Map );
