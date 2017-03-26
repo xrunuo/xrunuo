@@ -29,8 +29,8 @@ namespace Server.Engines.Quests
 
 		public static void Override()
 		{
-			PacketHandlers.Instance.RegisterEncoded( 0x32, true, new OnEncodedPacketReceive( QuestButton ) );
-			PacketHandlers.Instance.RegisterExtended( 0x2A, true, new OnPacketReceive( HeritageTransform ) );
+			PacketHandlers.RegisterEncoded( 0x32, true, new OnEncodedPacketReceive( QuestButton ) );
+			PacketHandlers.RegisterExtended( 0x2A, true, new OnPacketReceive( HeritageTransform ) );
 		}
 
 		public static void QuestButton( NetState state, IEntity e, EncodedReader reader )

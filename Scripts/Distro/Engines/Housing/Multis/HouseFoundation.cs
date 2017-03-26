@@ -943,23 +943,23 @@ namespace Server.Engines.Housing.Multis
 
 		public static void Initialize()
 		{
-			PacketHandlers.Instance.RegisterExtended( 0x1E, true, new OnPacketReceive( QueryDesignDetails ) );
+			PacketHandlers.RegisterExtended( 0x1E, true, new OnPacketReceive( QueryDesignDetails ) );
 
-			PacketHandlers.Instance.RegisterEncoded( 0x02, true, new OnEncodedPacketReceive( Designer_Backup ) );
-			PacketHandlers.Instance.RegisterEncoded( 0x03, true, new OnEncodedPacketReceive( Designer_Restore ) );
-			PacketHandlers.Instance.RegisterEncoded( 0x04, true, new OnEncodedPacketReceive( Designer_Commit ) );
-			PacketHandlers.Instance.RegisterEncoded( 0x05, true, new OnEncodedPacketReceive( Designer_Delete ) );
-			PacketHandlers.Instance.RegisterEncoded( 0x06, true, new OnEncodedPacketReceive( Designer_Build ) );
-			PacketHandlers.Instance.RegisterEncoded( 0x0C, true, new OnEncodedPacketReceive( Designer_Close ) );
-			PacketHandlers.Instance.RegisterEncoded( 0x0D, true, new OnEncodedPacketReceive( Designer_Stairs ) );
-			PacketHandlers.Instance.RegisterEncoded( 0x0E, true, new OnEncodedPacketReceive( Designer_Sync ) );
-			PacketHandlers.Instance.RegisterEncoded( 0x10, true, new OnEncodedPacketReceive( Designer_Clear ) );
-			PacketHandlers.Instance.RegisterEncoded( 0x12, true, new OnEncodedPacketReceive( Designer_Level ) );
+			PacketHandlers.RegisterEncoded( 0x02, true, new OnEncodedPacketReceive( Designer_Backup ) );
+			PacketHandlers.RegisterEncoded( 0x03, true, new OnEncodedPacketReceive( Designer_Restore ) );
+			PacketHandlers.RegisterEncoded( 0x04, true, new OnEncodedPacketReceive( Designer_Commit ) );
+			PacketHandlers.RegisterEncoded( 0x05, true, new OnEncodedPacketReceive( Designer_Delete ) );
+			PacketHandlers.RegisterEncoded( 0x06, true, new OnEncodedPacketReceive( Designer_Build ) );
+			PacketHandlers.RegisterEncoded( 0x0C, true, new OnEncodedPacketReceive( Designer_Close ) );
+			PacketHandlers.RegisterEncoded( 0x0D, true, new OnEncodedPacketReceive( Designer_Stairs ) );
+			PacketHandlers.RegisterEncoded( 0x0E, true, new OnEncodedPacketReceive( Designer_Sync ) );
+			PacketHandlers.RegisterEncoded( 0x10, true, new OnEncodedPacketReceive( Designer_Clear ) );
+			PacketHandlers.RegisterEncoded( 0x12, true, new OnEncodedPacketReceive( Designer_Level ) );
 
-			PacketHandlers.Instance.RegisterEncoded( 0x13, true, new OnEncodedPacketReceive( Designer_Roof ) ); // UnrealUO - Samurai Empire roof
-			PacketHandlers.Instance.RegisterEncoded( 0x14, true, new OnEncodedPacketReceive( Designer_RoofDelete ) ); // UnrealUO - Samurai Empire roof
+			PacketHandlers.RegisterEncoded( 0x13, true, new OnEncodedPacketReceive( Designer_Roof ) ); // UnrealUO - Samurai Empire roof
+			PacketHandlers.RegisterEncoded( 0x14, true, new OnEncodedPacketReceive( Designer_RoofDelete ) ); // UnrealUO - Samurai Empire roof
 
-			PacketHandlers.Instance.RegisterEncoded( 0x1A, true, new OnEncodedPacketReceive( Designer_Revert ) );
+			PacketHandlers.RegisterEncoded( 0x1A, true, new OnEncodedPacketReceive( Designer_Revert ) );
 
 			CommandSystem.Register( "DesignInsert", AccessLevel.GameMaster, new CommandEventHandler( DesignInsert_OnCommand ) );
 

@@ -10,8 +10,8 @@ namespace Server
 	{
 		public static void Initialize()
 		{
-			PacketHandlers.Instance.Register( 0xE8, 13, true, new OnPacketReceive( RemoveHighlightKRUIElement ) );
-			PacketHandlers.Instance.Register( 0xEB, 0, true, new OnPacketReceive( ReportUseKRHotbarIcon ) );
+			PacketHandlers.Register( 0xE8, 13, true, new OnPacketReceive( RemoveHighlightKRUIElement ) );
+			PacketHandlers.Register( 0xEB, 0, true, new OnPacketReceive( ReportUseKRHotbarIcon ) );
 		}
 
 		public static void RemoveHighlightKRUIElement( NetState state, PacketReader pvSrc )

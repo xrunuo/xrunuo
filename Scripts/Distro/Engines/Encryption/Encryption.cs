@@ -39,7 +39,7 @@ namespace Scripts.Engines.Encryption
 
 				// Overwrite the packet handler for the relay packet since we need to change the
 				// encryption mode then.
-				PacketHandlers.Instance.Register( 0xA0, 3, false, new OnPacketReceive( HookedPlayServer ) );
+				PacketHandlers.Register( 0xA0, 3, false, new OnPacketReceive( HookedPlayServer ) );
 			}
 		}
 
@@ -51,7 +51,7 @@ namespace Scripts.Engines.Encryption
 		public static void HookedPlayServer( NetState client, PacketReader pvSrc )
 		{
 			// Call the original handler
-			PacketHandlers.Instance.PlayServer( client, pvSrc );
+			PacketHandlers.PlayServer( client, pvSrc );
 
 			// Now indicate, that the state has been relayed already. If it's used again,
 			// it means we're entering a special encryption state

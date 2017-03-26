@@ -13,12 +13,12 @@ namespace Server.Engines.BuffIcons
 		{
 			// To Ensure that it's sent only AFTER we get the client's version, and right after.
 			if ( Enabled )
-				PacketHandlers.Instance.Register( 0xBD, 0, false, new OnPacketReceive( HandleBuff ) );
+				PacketHandlers.Register( 0xBD, 0, false, new OnPacketReceive( HandleBuff ) );
 		}
 
 		private static void HandleBuff( NetState state, PacketReader pvSrc )
 		{
-			PacketHandlers.Instance.ClientVersion( state, pvSrc );
+			PacketHandlers.ClientVersion( state, pvSrc );
 
 			PlayerMobile pm = state.Mobile as PlayerMobile;
 

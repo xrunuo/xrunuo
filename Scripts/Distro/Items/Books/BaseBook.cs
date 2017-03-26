@@ -199,9 +199,9 @@ namespace Server.Items
 
 		public static void Initialize()
 		{
-			PacketHandlers.Instance.Register( 0xD4, 0, true, new OnPacketReceive( HeaderChange ) );
-			PacketHandlers.Instance.Register( 0x66, 0, true, new OnPacketReceive( ContentChange ) );
-			PacketHandlers.Instance.Register( 0x93, 99, true, new OnPacketReceive( OldHeaderChange ) );
+			PacketHandlers.Register( 0xD4, 0, true, new OnPacketReceive( HeaderChange ) );
+			PacketHandlers.Register( 0x66, 0, true, new OnPacketReceive( ContentChange ) );
+			PacketHandlers.Register( 0x93, 99, true, new OnPacketReceive( OldHeaderChange ) );
 		}
 
 		public static void OldHeaderChange( NetState state, PacketReader pvSrc )

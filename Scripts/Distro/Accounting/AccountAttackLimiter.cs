@@ -23,7 +23,7 @@ namespace Server.Accounting
 
 		public static void RegisterThrottler( int packetID )
 		{
-			PacketHandler ph = PacketHandlers.Instance.GetHandler( packetID );
+			PacketHandler ph = PacketHandlers.GetHandler( packetID );
 
 			if ( ph == null )
 				return;

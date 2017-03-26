@@ -347,8 +347,6 @@ namespace Server
 
 			var timerExecutor = new TimerExecutor( timerQueue );
 
-			PacketHandlers.Instance = new PacketHandlers();
-
 			try
 			{
 				ScriptCompiler.Configure();
@@ -381,7 +379,7 @@ namespace Server
 			NetServer netServer = new NetServer( new Listener( Listener.Port ) );
 			netServer.Initialize();
 
-			GameServer.Instance = new GameServer( netServer, PacketHandlers.Instance );
+			GameServer.Instance = new GameServer( netServer );
 			GameServer.Instance.Initialize();
 
 			EventSink.InvokeServerStarted();

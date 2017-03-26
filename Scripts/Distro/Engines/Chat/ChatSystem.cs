@@ -15,8 +15,8 @@ namespace Server.Engines.Chat
 
 		public static void Initialize()
 		{
-			PacketHandlers.Instance.Register( 0xB5, 0x40, true, new OnPacketReceive( OpenChatWindowRequest ) );
-			PacketHandlers.Instance.Register( 0xB3, 0, true, new OnPacketReceive( ChatAction ) );
+			PacketHandlers.Register( 0xB5, 0x40, true, new OnPacketReceive( OpenChatWindowRequest ) );
+			PacketHandlers.Register( 0xB3, 0, true, new OnPacketReceive( ChatAction ) );
 		}
 
 		public static void OpenChatWindowRequest( NetState state, PacketReader pvSrc )

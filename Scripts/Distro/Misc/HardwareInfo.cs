@@ -99,7 +99,7 @@ namespace Server
 
 		public static void Initialize()
 		{
-			PacketHandlers.Instance.Register( 0xD9, 268, false, new OnPacketReceive( OnReceive ) );
+			PacketHandlers.Register( 0xD9, 268, false, new OnPacketReceive( OnReceive ) );
 			CommandSystem.Register( "HWInfo", AccessLevel.GameMaster, new CommandEventHandler( HWInfo_OnCommand ) );
 		}
 

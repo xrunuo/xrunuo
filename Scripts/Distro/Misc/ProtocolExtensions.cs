@@ -12,7 +12,7 @@ namespace Server.Misc
 
 		public static void Initialize()
 		{
-			PacketHandlers.Instance.Register( 0xF0, 0, true, new OnPacketReceive( DecodeBundledPacket ) );
+			PacketHandlers.Register( 0xF0, 0, true, new OnPacketReceive( DecodeBundledPacket ) );
 
 			Register( 0x00, true, new OnPacketReceive( QueryPartyLocations ) );
 		}

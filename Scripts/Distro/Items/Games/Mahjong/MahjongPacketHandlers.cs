@@ -29,7 +29,7 @@ namespace Server.Engines.Mahjong
 
 		public static void Initialize()
 		{
-			PacketHandlers.Instance.Register( 0xDA, 0, true, new OnPacketReceive( OnPacket ) );
+			PacketHandlers.Register( 0xDA, 0, true, new OnPacketReceive( OnPacket ) );
 
 			RegisterSubCommand( 0x6, new OnMahjongPacketReceive( ExitGame ) );
 			RegisterSubCommand( 0xA, new OnMahjongPacketReceive( GivePoints ) );

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Server.Accounting;
 
 namespace Server.Network
 {
@@ -16,12 +15,10 @@ namespace Server.Network
 		}
 
 		private NetServer m_Server;
-		private PacketHandlers m_Handlers;
 
-		public GameServer( NetServer server, PacketHandlers handlers )
+		public GameServer( NetServer server )
 		{
 			m_Server = server;
-			m_Handlers = handlers;
 		}
 
 		public void Initialize()
@@ -124,7 +121,7 @@ namespace Server.Network
 					return;
 				}
 
-				PacketHandler handler = m_Handlers.GetHandler( packetID );
+				PacketHandler handler = PacketHandlers.GetHandler( packetID );
 
 				if ( handler == null )
 				{
@@ -178,7 +175,7 @@ namespace Server.Network
 					}
 					else
 					{
-						ThrottlePacketCallback throttler = handler.ThrottleCallback;
+						var throttler = handler.ThrottleCallback;
 
 						if ( throttler != null && !throttler( client ) )
 						{
@@ -186,8 +183,8 @@ namespace Server.Network
 							return;
 						}
 
-						PacketProfile profile = PacketProfile.GetIncomingProfile( packetID );
-						DateTime start = ( profile == null ? DateTime.MinValue : DateTime.UtcNow );
+						var profile = PacketProfile.GetIncomingProfile( packetID );
+						var start = ( profile == null ? DateTime.MinValue : DateTime.UtcNow );
 
 						byte[] packetBuffer;
 
@@ -198,7 +195,7 @@ namespace Server.Network
 
 						packetLength = buffer.Dequeue( packetBuffer, 0, packetLength );
 
-						PacketReader reader = PacketReader.CreateInstance( packetBuffer, packetLength, handler.Length != 0 );
+						var reader = PacketReader.CreateInstance( packetBuffer, packetLength, handler.Length != 0 );
 
 						try
 						{

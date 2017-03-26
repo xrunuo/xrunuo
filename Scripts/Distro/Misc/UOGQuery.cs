@@ -8,7 +8,7 @@ namespace Server.Misc
 	{
 		public static void Configure()
 		{
-			PacketHandlers.Instance.Register( 0xF1, 0, false, new OnPacketReceive( OnReceive ) );
+			PacketHandlers.Register( 0xF1, 0, false, new OnPacketReceive( OnReceive ) );
 		}
 
 		public static void OnReceive( NetState state, PacketReader pvSrc )

@@ -883,7 +883,7 @@ namespace Server.Mobiles
 		{
 			if ( FastwalkPrevention )
 			{
-				PacketHandler ph = PacketHandlers.Instance.GetHandler( 0x02 );
+				PacketHandler ph = PacketHandlers.GetHandler( 0x02 );
 
 				ph.ThrottleCallback = new ThrottlePacketCallback( MovementThrottle_Callback );
 			}
