@@ -21,7 +21,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Server</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject>Server.Program</StartupObject>
+    <StartupObject>Server.Core</StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -278,7 +278,6 @@
     <Compile Include="Items\VirtualHair.cs" />
     <Compile Include="KeywordList.cs" />
     <Compile Include="AosAttributes.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Menus\IMenu.cs" />
     <Compile Include="Menus\ItemLists\ItemListMenu.cs" />
