@@ -130,11 +130,6 @@ namespace Server.Configuration
 			get { return GetConfigModule<Login>(); }
 		}
 
-		public Email Email
-		{
-			get { return GetConfigModule<Email>(); }
-		}
-
 		public Reports Reports
 		{
 			get { return GetConfigModule<Reports>(); }

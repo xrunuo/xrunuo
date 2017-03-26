@@ -3,19 +3,16 @@ using System.Net;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Threading;
-using Server;
 
 namespace Server.Misc
 {
 	public class Email
 	{
-		public static readonly string SmtpServer = Core.Config.Email.SmtpServer;
-
-		public static readonly string SmtpUser = Core.Config.Email.SmtpUser;
-		public static readonly string SmtpPassword = Core.Config.Email.SmtpPassword;
-
-		public static readonly int SmtpPort = Core.Config.Email.SmtpPort;
-		public static readonly bool EnableSsl = Core.Config.Email.EnableSsl;
+		public static readonly string SmtpServer = Config.Get( "Email.SmtpServer", null );
+		public static readonly int SmtpPort = Config.Get( "Email.SmtpPort", 25 );
+		public static readonly bool EnableSsl = Config.Get( "Email.EnableSsl", false );
+		public static readonly string SmtpUser = Config.Get( "Email.SmtpUser", null );
+		public static readonly string SmtpPassword = Config.Get( "Email.SmtpPassword", null );
 
 		private static Regex _pattern = new Regex( @"^[a-z0-9.+_-]+@([a-z0-9-]+.)+[a-z]+$", RegexOptions.IgnoreCase );
 

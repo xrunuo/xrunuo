@@ -167,11 +167,11 @@
     <Compile Include="Commands\CommandEventArgs.cs" />
     <Compile Include="Commands\CommandEntry.cs" />
     <Compile Include="Commands\CommandSystem.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="Configuration\ConfigModuleAttribute.cs" />
     <Compile Include="Configuration\Features.cs" />
     <Compile Include="Configuration\Library.cs" />
     <Compile Include="Configuration\LibraryConfig.cs" />
-    <Compile Include="Configuration\Modules\Email.cs" />
     <Compile Include="Configuration\Modules\Login.cs" />
     <Compile Include="Configuration\Modules\Network.cs" />
     <Compile Include="Configuration\Modules\Reports.cs" />

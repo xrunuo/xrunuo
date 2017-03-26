@@ -320,6 +320,8 @@ namespace Server
 
 			m_Config = new RootConfig( BaseDirectory, "x-runuo.xml" );
 
+			Server.Config.Load();
+
 			#region Dependency management
 			m_LibraryConfig = new LibraryConfig( BaseDirectory, "libraries.xml" );
 
