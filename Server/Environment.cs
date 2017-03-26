@@ -11,6 +11,8 @@ namespace Server
 {
 	public static class Environment
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private static string m_BaseDirectory;
 		private static string m_ExePath;
 
@@ -204,16 +206,15 @@ namespace Server
 
 			GCSettings.LatencyMode = GCLatencyMode.LowLatency;
 
-			Console.WriteLine( "X-RunUO Server - Version {0}.{1}.{2}, Build {3}", version.Major, version.Minor, version.Build,
-				version.Revision );
-			Console.WriteLine( "Core: Running on OS {0}", System.Environment.OSVersion );
-			Console.WriteLine( "Core: Running on {0} {1}", Unix ? "Mono" : ".NET Framework", System.Environment.Version );
+			log.Info( "X-RunUO Server - Version {0}.{1}.{2}, Build {3}", version.Major, version.Minor, version.Build, version.Revision );
+			log.Info( "Running on OS {0}", System.Environment.OSVersion );
+			log.Info( "Running on {0} {1}", Unix ? "Mono" : ".NET Framework", System.Environment.Version );
 
 			if ( MultiProcessor || Is64Bit )
-				Console.WriteLine( "Core: Optimizing for {0} {2}processor{1}", ProcessorCount, ProcessorCount == 1 ? "" : "s",
+				log.Info( "Optimizing for {0} {2}processor{1}", ProcessorCount, ProcessorCount == 1 ? "" : "s",
 					Is64Bit ? "64-bit " : "" );
 
-			Console.WriteLine( "Core: Using GC {0} {1} mode", GCSettings.IsServerGC ? "Server" : "Workstation",
+			log.Info( "Using GC {0} {1} mode", GCSettings.IsServerGC ? "Server" : "Workstation",
 				GCSettings.LatencyMode );
 
 			m_Config = new RootConfig( BaseDirectory, "x-runuo.xml" );

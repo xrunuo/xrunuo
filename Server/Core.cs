@@ -12,6 +12,8 @@ namespace Server
 {
 	public static class Core
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private static bool m_Crashed;
 		private static bool m_Closing;
 
@@ -64,7 +66,7 @@ namespace Server
 
 			if ( !ScriptCompiler.Compile( Environment.Debug ) )
 			{
-				Console.WriteLine( "Fatal: Compilation failed. Press any key to exit." );
+				log.Fatal( "Fatal: Compilation failed. Press any key to exit." );
 				Console.ReadLine();
 				return;
 			}
@@ -92,7 +94,7 @@ namespace Server
 			}
 			catch ( TargetInvocationException e )
 			{
-				Console.WriteLine( "Fatal: Configure exception: {0}", e.InnerException );
+				log.Fatal( "Fatal: Configure exception: {0}", e.InnerException );
 				return;
 			}
 
@@ -107,7 +109,7 @@ namespace Server
 			}
 			catch ( TargetInvocationException e )
 			{
-				Logger.Error( "Initialize exception: {0}", e.InnerException );
+				log.Fatal( "Initialize exception: {0}", e.InnerException );
 				return;
 			}
 
@@ -168,8 +170,7 @@ namespace Server
 
 		public static void HandleCrashed( Exception e )
 		{
-			Console.WriteLine( "Error:" );
-			Console.WriteLine( e );
+			log.Error( "Error: {0}", e );
 
 			m_Crashed = true;
 
@@ -189,7 +190,7 @@ namespace Server
 
 			if ( !close && !Environment.Service )
 			{
-				Console.WriteLine( "This exception is fatal, press return to exit" );
+				log.Error( "This exception is fatal, press return to exit" );
 				Console.ReadLine();
 			}
 
@@ -213,7 +214,7 @@ namespace Server
 
 			m_Closing = true;
 
-			Console.Write( "Exiting..." );
+			log.Info( "Exiting..." );
 
 			if ( !m_Crashed )
 				EventSink.InvokeShutdown( new ShutdownEventArgs() );
@@ -221,7 +222,7 @@ namespace Server
 			if ( m_TimerThread != null )
 				m_TimerThread.Stop();
 
-			Console.WriteLine( "done" );
+			log.Info( "done" );
 		}
 	}
 }
