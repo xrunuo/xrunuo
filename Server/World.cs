@@ -12,6 +12,8 @@ namespace Server
 {
 	public static class World
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		public static bool ManualGC;
 		public static bool DualSave;
 
@@ -55,7 +57,7 @@ namespace Server
 		public static void NotifyDiskWriteComplete()
 		{
 			if ( m_DiskWriteHandle.Set() )
-				Console.WriteLine( "World: Closing Save Files..." );
+				log.Info( "Closing Save files");
 		}
 
 		public static void WaitForWriteCompletion()
@@ -130,7 +132,7 @@ namespace Server
 
 			m_Loaded = true;
 
-			Console.Write( "World: Loading..." );
+			log.Info( "Loading started" );
 
 			DateTime start = DateTime.UtcNow;
 
@@ -167,7 +169,7 @@ namespace Server
 			if ( ManualGC )
 				GC.Collect();
 
-			Console.WriteLine( "done: {1} items, {2} mobiles ({0:F1} seconds)", ( DateTime.UtcNow - start ).TotalSeconds, m_Items.Count, m_Mobiles.Count );
+			log.Info( "Loading done: {1} items, {2} mobiles ({0:F1} seconds)", ( DateTime.UtcNow - start ).TotalSeconds, m_Items.Count, m_Mobiles.Count );
 		}
 
 		private static void ProcessSafetyQueues()
@@ -227,10 +229,10 @@ namespace Server
 			if ( message )
 				Broadcast( 0x35, true, "The world is saving, please wait." );
 
-			Console.WriteLine( "World: Save started" );
+			log.Info( "Save started" );
 
 			SaveStrategy strategy = SaveStrategy.Acquire();
-			Console.WriteLine( "Core: Using {0} save strategy", strategy.Name.ToLowerInvariant() );
+			log.Info( "Using {0} save strategy", strategy.Name.ToLowerInvariant() );
 
 			Stopwatch watch = Stopwatch.StartNew();
 
@@ -252,7 +254,7 @@ namespace Server
 
 			strategy.Save( permitBackgroundWrite );
 
-			Console.WriteLine( "World: Entities saved in {0:F2} seconds.", watch.Elapsed.TotalSeconds );
+			log.Info( "Entities saved in {0:F2} seconds.", watch.Elapsed.TotalSeconds );
 
 			try
 			{
@@ -264,7 +266,7 @@ namespace Server
 			}
 
 			if ( ManualGC )
-				System.GC.Collect();
+				GC.Collect();
 
 			watch.Stop();
 
@@ -277,7 +279,7 @@ namespace Server
 
 			strategy.OnFinished();
 
-			Console.WriteLine( "World: Save done in {0:F2} seconds.", watch.Elapsed.TotalSeconds );
+			log.Info( "Save done in {0:F2} seconds.", watch.Elapsed.TotalSeconds );
 
 			if ( message )
 				Broadcast( 0x35, true, "World save complete. The entire process took {0:F2} seconds.", watch.Elapsed.TotalSeconds );

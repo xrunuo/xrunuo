@@ -34,7 +34,7 @@ namespace Server.Network
 		{
 			m_Clients.Add( state, new NetState( state ) );
 
-			Console.WriteLine( "Client: {0}: Connected. [{1} Online]", state, m_Clients.Count );
+			log.Info( "Client: {0}: Connected. [{1} Online]", state, m_Clients.Count );
 		}
 
 		private void OnDisconnected( UOSocket state )
@@ -59,9 +59,9 @@ namespace Server.Network
 			var account = client.Account;
 
 			if ( account == null )
-				Console.WriteLine( "Client: {0}: Disconnected. [{1} Online]", client, m_Clients.Count );
+				log.Info( "Client: {0}: Disconnected. [{1} Online]", client, m_Clients.Count );
 			else
-				Console.WriteLine( "Client: {0}: Disconnected. [{1} Online] [{2}]", client, m_Clients.Count, account );
+				log.Info( "Client: {0}: Disconnected. [{1} Online] [{2}]", client, m_Clients.Count, account );
 
 			client.Clear();
 		}
@@ -95,7 +95,7 @@ namespace Server.Network
 
 					if ( seed == 0 )
 					{
-						Console.WriteLine( "Login: {0}: Invalid client detected, disconnecting", client );
+						log.Info( "Login: {0}: Invalid client detected, disconnecting", client );
 						client.Dispose();
 
 						return;
@@ -118,7 +118,7 @@ namespace Server.Network
 
 				if ( !client.SentFirstPacket && packetID != 0xF1 && packetID != 0xCF && packetID != 0x80 && packetID != 0x91 && packetID != 0xA4 && packetID != 0xEF )
 				{
-					Console.WriteLine( "Client: {0}: Encrypted client detected, disconnecting", client );
+					log.Info( "Client: {0}: Encrypted client detected, disconnecting", client );
 					client.Dispose();
 					return;
 				}
@@ -166,7 +166,7 @@ namespace Server.Network
 				{
 					if ( handler.Ingame && client.Mobile == null )
 					{
-						Console.WriteLine( "Client: {0}: Sent ingame packet (0x{1:X2}) before having been attached to a mobile", client, packetID );
+						log.Info( "Client: {0}: Sent ingame packet (0x{1:X2}) before having been attached to a mobile", client, packetID );
 						client.Dispose();
 						return;
 					}

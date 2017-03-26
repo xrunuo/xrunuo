@@ -16,6 +16,8 @@ namespace Server.Network
 
 	public class UOSocket
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private Socket m_Socket;
 		private NetServer m_NetServer;
 		private IPAddress m_Address;
@@ -324,7 +326,7 @@ namespace Server.Network
 			if ( DateTime.UtcNow < m_NextCheckActivity )
 				return true;
 
-			Console.WriteLine( "Client: {0}: Disconnecting due to inactivity...", this );
+			log.Info( "Client: {0}: Disconnecting due to inactivity...", this );
 
 			Dispose();
 			return false;
@@ -418,7 +420,7 @@ namespace Server.Network
 
 			try
 			{
-				Console.WriteLine( ex );
+				log.Info( "{0}", ex );
 			}
 			catch { }
 		}

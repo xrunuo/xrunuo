@@ -2507,7 +2507,7 @@ namespace Server
 			set
 			{
 				if ( m_Spell != null && value != null )
-					Console.WriteLine( "Warning: Spell has been overwritten" );
+					log.Info( "Warning: Spell has been overwritten" );
 
 				m_Spell = value;
 			}
@@ -3196,7 +3196,7 @@ namespace Server
 			}
 			catch
 			{
-				Console.WriteLine( "Warning: 0x{0:X}: Item must have a zero paramater constructor to be separated from a stack. '{1}'.", oldItem.Serial.Value, oldItem.GetType().Name );
+				log.Info( "Warning: 0x{0:X}: Item must have a zero paramater constructor to be separated from a stack. '{1}'.", oldItem.Serial.Value, oldItem.GetType().Name );
 				return null;
 			}
 			item.Visible = oldItem.Visible;

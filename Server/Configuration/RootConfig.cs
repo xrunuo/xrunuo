@@ -12,6 +12,8 @@ namespace Server.Configuration
 {
 	public class RootConfig
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private string m_Filename;
 		private XmlDocument m_Document;
 		private string m_ServerName;
@@ -257,7 +259,7 @@ namespace Server.Configuration
 							double saveInterval = Convert.ToDouble( element.GetAttribute( "value" ) );
 
 							if ( saveInterval < 1.0 )
-								Console.WriteLine( "Warning: Invalid value of save-interval, setting it to default" );
+								log.Warning( "Invalid value of save-interval, setting it to default" );
 							else
 								m_SaveInterval = TimeSpan.FromMinutes( saveInterval );
 
@@ -271,7 +273,7 @@ namespace Server.Configuration
 						}
 						default:
 						{
-							Console.WriteLine( "Warning: Invalid element global/{0}", node.Name );
+							log.Warning( "Invalid element global/{0}", node.Name );
 							break;
 						}
 					}
@@ -336,7 +338,7 @@ namespace Server.Configuration
 						}
 						default:
 						{
-							Console.WriteLine( "Warning: Ignoring unknown location tag in {0}: {1}", m_Filename, element.Name );
+							log.Warning( "Ignoring unknown location tag in {0}: {1}", m_Filename, element.Name );
 							break;
 						}
 					}
@@ -480,6 +482,8 @@ namespace Server.Configuration
 
 	public class GameServerList : IEnumerable
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private List<GameServer> m_Servers = new List<GameServer>();
 
 		public GameServerList()
@@ -494,7 +498,7 @@ namespace Server.Configuration
 
 				if ( name == null )
 				{
-					Console.WriteLine( "Warning: Game server without name ignored" );
+					log.Warning( "Game server without name ignored" );
 					continue;
 				}
 
@@ -502,7 +506,7 @@ namespace Server.Configuration
 
 				if ( addressString == null )
 				{
-					Console.WriteLine( "Warning: Game server without address ignored" );
+					log.Warning( "Game server without address ignored" );
 					continue;
 				}
 
@@ -510,7 +514,7 @@ namespace Server.Configuration
 
 				if ( splitted.Length != 2 )
 				{
-					Console.WriteLine( "Warning: Game server without port ignored" );
+					log.Warning( "Game server without port ignored" );
 					continue;
 				}
 
@@ -522,7 +526,7 @@ namespace Server.Configuration
 
 					if ( he.AddressList.Length == 0 )
 					{
-						Console.WriteLine( "Warning: Failed to resolve {0}", splitted[0] );
+						log.Warning( "Failed to resolve {0}", splitted[0] );
 						continue;
 					}
 
@@ -530,7 +534,7 @@ namespace Server.Configuration
 				}
 				catch ( Exception e )
 				{
-					Console.WriteLine( String.Format( "Warning: Failed to resolve {0}", splitted[0] ), e );
+					log.Warning( "Failed to resolve {0}: {1}", splitted[0], e );
 					continue;
 				}
 
@@ -542,7 +546,7 @@ namespace Server.Configuration
 				}
 				catch
 				{
-					Console.WriteLine( "Warning: Invalid game server port ignored" );
+					log.Warning( "Invalid game server port ignored" );
 					continue;
 				}
 

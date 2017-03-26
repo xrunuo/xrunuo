@@ -8,6 +8,8 @@ namespace Server
 {
 	public class TileMatrix
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private Tile[][][][][] m_StaticTiles;
 		private Tile[][][] m_LandTiles;
 
@@ -408,7 +410,7 @@ namespace Server
 			{
 				if ( DateTime.UtcNow >= m_NextStaticWarning )
 				{
-					Console.WriteLine( "Warning: Static EOS for {0} ({1}, {2})", m_Owner, x, y );
+					log.Warning( "Static EOS for {0} ({1}, {2})", m_Owner, x, y );
 					m_NextStaticWarning = DateTime.UtcNow + TimeSpan.FromMinutes( 1.0 );
 				}
 
@@ -448,7 +450,7 @@ namespace Server
 			{
 				if ( DateTime.UtcNow >= m_NextLandWarning )
 				{
-					Console.WriteLine( "Warning: Land EOS for {0} ({1}, {2})", m_Owner, x, y );
+					log.Warning( "Land EOS for {0} ({1}, {2})", m_Owner, x, y );
 					m_NextLandWarning = DateTime.UtcNow + TimeSpan.FromMinutes( 1.0 );
 				}
 

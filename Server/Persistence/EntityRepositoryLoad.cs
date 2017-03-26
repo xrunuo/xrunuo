@@ -107,7 +107,7 @@ namespace Server.Persistence
 		{
 			int count = idxReader.ReadInt32();
 			m_Repository.Initialize( count );
-			
+
 			var entries = new HashSet<IEntityEntry>();
 
 			for ( int i = 0; i < count; ++i )
@@ -146,11 +146,11 @@ namespace Server.Persistence
 		{
 			if ( !File.Exists( m_Repository.DataPath ) )
 				return;
-			
+
 			using ( var bin = new FileStream( m_Repository.DataPath, FileMode.Open, FileAccess.Read, FileShare.Read ) )
 			{
 				var reader = new BinaryFileReader( new BinaryReader( bin ) );
-			
+
 				foreach ( var entry in m_EntityEntries )
 				{
 					var obj = entry.Object;

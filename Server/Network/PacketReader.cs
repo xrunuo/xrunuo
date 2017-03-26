@@ -7,6 +7,8 @@ namespace Server.Network
 {
 	public class PacketReader
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private static Stack<PacketReader> m_Pool = new Stack<PacketReader>();
 
 		public static PacketReader CreateInstance( byte[] data, int size, bool fixedSize )
@@ -51,7 +53,7 @@ namespace Server.Network
 					}
 					catch
 					{
-						Console.WriteLine( "net error" );
+						log.Error( "net error" );
 					}
 				}
 			}

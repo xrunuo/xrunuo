@@ -6,6 +6,8 @@ namespace Server.Network
 {
 	public abstract class Packet
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		[Flags]
 		private enum State
 		{
@@ -197,7 +199,7 @@ namespace Server.Network
 			{
 				int diff = (int) m_Stream.Length - m_Length;
 
-				Console.WriteLine( "Packet: 0x{0:X2}: Bad packet length! ({1}{2} bytes)", m_PacketID, diff >= 0 ? "+" : "", diff );
+				log.Warning( "0x{0:X2}: Bad packet length! ({1}{2} bytes)", m_PacketID, diff >= 0 ? "+" : "", diff );
 			}
 
 			MemoryStream ms = m_Stream.UnderlyingStream;
@@ -213,7 +215,7 @@ namespace Server.Network
 				}
 				catch ( IndexOutOfRangeException )
 				{
-					Console.WriteLine( "Warning: Compression buffer overflowed on packet 0x{0:X2} ('{1}') (length={2})", m_PacketID, GetType().Name, length );
+					log.Warning( "Compression buffer overflowed on packet 0x{0:X2} ('{1}') (length={2})", m_PacketID, GetType().Name, length );
 
 					m_CompiledBuffer = null;
 				}

@@ -5,27 +5,26 @@ namespace Server
 {
 	public class ItemBounds
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private static Rectangle2D[] m_Bounds;
 
-		public static Rectangle2D[] Table
-		{
-			get
-			{
-				return m_Bounds;
-			}
-		}
+		public static Rectangle2D[] Table { get { return m_Bounds; } }
+
+		private static readonly string BoundsFilename = "Data/Binary/Bounds.bin";
+		private static readonly int BoundsSize = 0x10000;
 
 		static ItemBounds()
 		{
-			if ( File.Exists( "Data/Binary/Bounds.bin" ) )
+			m_Bounds = new Rectangle2D[BoundsSize];
+
+			if ( File.Exists( BoundsFilename ) )
 			{
-				using ( FileStream fs = new FileStream( "Data/Binary/Bounds.bin", FileMode.Open, FileAccess.Read, FileShare.Read ) )
+				using ( var fs = new FileStream( BoundsFilename, FileMode.Open, FileAccess.Read, FileShare.Read ) )
 				{
-					BinaryReader bin = new BinaryReader( fs );
+					var bin = new BinaryReader( fs );
 
-					m_Bounds = new Rectangle2D[0x10000];
-
-					for ( int i = 0; i < 0x10000; ++i )
+					for ( var i = 0; i < BoundsSize; ++i )
 					{
 						int xMin = bin.ReadInt16();
 						int yMin = bin.ReadInt16();
@@ -40,9 +39,7 @@ namespace Server
 			}
 			else
 			{
-				Console.WriteLine( "Warning: Data/Binary/Bounds.bin does not exist" );
-
-				m_Bounds = new Rectangle2D[0x10000];
+				log.Warning( "{0} does not exist", BoundsFilename );
 			}
 		}
 	}

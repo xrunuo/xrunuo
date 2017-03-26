@@ -329,7 +329,7 @@ namespace Server
 
 			if ( !ScriptCompiler.Compile( m_Debug ) )
 			{
-				log.Fatal( "Fatal: Compilation failed. Press any key to exit." );
+				log.Fatal( "Compilation failed. Press any key to exit." );
 				Console.ReadLine();
 				return;
 			}
@@ -355,7 +355,7 @@ namespace Server
 			}
 			catch ( TargetInvocationException e )
 			{
-				log.Fatal( "Fatal: Configure exception: {0}", e.InnerException );
+				log.Fatal( "Configure exception: {0}", e.InnerException );
 				return;
 			}
 

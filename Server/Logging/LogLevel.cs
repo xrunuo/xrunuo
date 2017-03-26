@@ -6,7 +6,7 @@ namespace Server
 	{
 		Debug,
 		Info,
-		Warn,
+		Warning,
 		Error,
 		Fatal
 	}

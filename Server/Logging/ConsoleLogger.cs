@@ -18,7 +18,7 @@ namespace Server
 			if ( color != null )
 				Utility.PushColor( color.Value );
 
-			Console.WriteLine( "{0}: {1}", m_Category, string.Format( msg, args ) );
+			Console.WriteLine( Format( level, msg, args ) );
 
 			if ( color != null )
 				Utility.PopColor();
@@ -29,7 +29,7 @@ namespace Server
 			switch ( level )
 			{
 				case LogLevel.Debug:
-					return ConsoleColor.Yellow;
+					return ConsoleColor.Gray;
 
 				case LogLevel.Warn:
 					return ConsoleColor.DarkYellow;
@@ -42,6 +42,14 @@ namespace Server
 			}
 
 			return null;
+		}
+
+		private string Format( LogLevel level, string msg, params object[] args )
+		{
+			if ( level >= LogLevel.Warn )
+				msg = string.Format( "{0}: {1}", level, msg );
+
+			return string.Format( "{0}: {1}", m_Category, string.Format( msg, args ) );
 		}
 	}
 }

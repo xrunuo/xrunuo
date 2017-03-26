@@ -888,6 +888,8 @@ namespace Server.Network
 
 	public sealed class EquipUpdate : Packet
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		public EquipUpdate( Item item )
 			: base( 0x2E, 15 )
 		{
@@ -899,7 +901,7 @@ namespace Server.Network
 			}
 			else
 			{
-				Console.WriteLine( "Warning: EquipUpdate on item with !(parent is Mobile)" );
+				log.Warning( "EquipUpdate on item with !(parent is Mobile)" );
 				parentSerial = Serial.Zero;
 			}
 
@@ -1420,6 +1422,8 @@ namespace Server.Network
 
 	public sealed class ContainerContentUpdate : Packet
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		public ContainerContentUpdate( Item item )
 			: base( 0x25, 21 )
 		{
@@ -1431,7 +1435,7 @@ namespace Server.Network
 			}
 			else
 			{
-				Console.WriteLine( "Warning: ContainerContentUpdate on item with !(parent is Item)" );
+				log.Info( "ContainerContentUpdate on item with !(parent is Item)" );
 				parentSerial = Serial.Zero;
 			}
 

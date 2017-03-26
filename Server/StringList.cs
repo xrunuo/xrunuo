@@ -8,6 +8,8 @@ namespace Server
 {
 	public class StringList
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private static StringList m_Localization;
 
 		public static StringList Localization
@@ -58,12 +60,12 @@ namespace Server
 
 			if ( path == null )
 			{
-				Console.WriteLine( "Warning: Cliloc.{0} not found", language );
+				log.Warning( "Cliloc.{0} not found", language );
 				m_Entries = new StringEntry[0];
 				return;
 			}
 
-			Console.WriteLine( "Localization strings: Loading..." );
+			log.Info( "Loading localization strings");
 
 			List<StringEntry> list = new List<StringEntry>();
 

@@ -1,15 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.IO;
 using System.Net;
-using System.Net.Sockets;
-using System.Threading;
 
 using Server;
 using Server.Accounting;
-using Server.Network;
 using Server.Items;
 using Server.Gumps;
 using Server.Menus;
@@ -19,6 +14,8 @@ namespace Server.Network
 {
 	public class NetState
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private UOSocket m_UOSocket;
 		private IPAddress m_ClientAddress;
 		private bool m_Seeded;
@@ -209,7 +206,7 @@ namespace Server.Network
 
 			if ( m_Menus.Count >= m_MenuCap )
 			{
-				Console.WriteLine( "Client: {0}: Exceeded menu cap, disconnecting...", this );
+				log.Warning( "Client: {0}: Exceeded menu cap, disconnecting...", this );
 				Dispose();
 			}
 			else
@@ -233,7 +230,7 @@ namespace Server.Network
 
 			if ( m_HuePickers.Count >= m_HuePickerCap )
 			{
-				Console.WriteLine( "Client: {0}: Exceeded hue picker cap, disconnecting...", this );
+				log.Warning( "Client: {0}: Exceeded hue picker cap, disconnecting...", this );
 				Dispose();
 			}
 			else
@@ -257,7 +254,7 @@ namespace Server.Network
 
 			if ( m_Gumps.Count >= m_GumpCap )
 			{
-				Console.WriteLine( "Client: {0}: Exceeded gump cap, disconnecting...", this );
+				log.Warning( "Client: {0}: Exceeded gump cap, disconnecting...", this );
 				Dispose();
 			}
 			else

@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Net.NetworkInformation;
@@ -11,6 +10,8 @@ namespace Server.Network
 {
 	public class Listener : IDisposable
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private Socket m_Listener;
 		private bool m_Disposed;
 		private int m_ThisPort;
@@ -59,7 +60,7 @@ namespace Server.Network
 				var properties = adapter.GetIPProperties();
 				foreach ( var unicast in properties.UnicastAddresses )
 					if ( ipep.AddressFamily == unicast.Address.AddressFamily )
-						Console.WriteLine( "Address: {0}:{1}", unicast.Address, ipep.Port );
+						log.Info( "Address: {0}:{1}", unicast.Address, ipep.Port );
 			}
 		}
 
@@ -80,8 +81,7 @@ namespace Server.Network
 			}
 			catch ( Exception e )
 			{
-				Console.WriteLine( "Listener bind exception:" );
-				Console.WriteLine( e );
+				log.Error( "Bind exception: ", e );
 
 				try { s.Shutdown( SocketShutdown.Both ); }
 				catch { }

@@ -7,6 +7,8 @@ namespace Server.Accounting
 {
 	public static class AccountPersistence
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		public static void Configure()
 		{
 			EventSink.WorldLoad += new WorldLoadEventHandler( Load );
@@ -35,7 +37,7 @@ namespace Server.Accounting
 				}
 				catch
 				{
-					Console.WriteLine( "Warning: Account instance load failed" );
+					log.Warning( "Account instance load failed" );
 				}
 			}
 		}

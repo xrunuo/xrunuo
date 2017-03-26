@@ -7,6 +7,8 @@ namespace Server
 {
 	public class Library
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private string m_Name;
 		private Assembly m_Assembly;
 		private Type[] m_Types;
@@ -97,13 +99,13 @@ namespace Server
 					try
 					{
 						if ( t.GetConstructor( ctorTypes ) == null )
-							Console.WriteLine( "Warning: {0} has no serialization constructor", t );
+							log.Warning( "{0} has no serialization constructor", t );
 
 						if ( t.GetMethod( "Serialize", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly ) == null )
-							Console.WriteLine( "Warning: {0} has no Serialize() method", t );
+							log.Warning( "{0} has no Serialize() method", t );
 
 						if ( t.GetMethod( "Deserialize", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly ) == null )
-							Console.WriteLine( "Warning: {0} has no Deserialize() method", t );
+							log.Warning( "{0} has no Deserialize() method", t );
 					}
 					catch
 					{

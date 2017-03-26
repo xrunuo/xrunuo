@@ -11,6 +11,8 @@ namespace Server
 {
 	public class ScriptCompiler
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private static List<Library> m_Libraries;
 
 		public static Library[] Libraries
@@ -129,7 +131,7 @@ namespace Server
 
 			string[] files;
 
-			Console.WriteLine( "Scripts: Compiling library {0}, {1} C# sources", libConfig.Name, fileColl.Count );
+			log.Info( "Compiling library {0}, {1} C# sources", libConfig.Name, fileColl.Count );
 
 			string tempFile = compiler.GetType().FullName == "Mono.CSharp.CSharpCodeCompiler"
 				? Path.GetTempFileName()
@@ -178,8 +180,7 @@ namespace Server
 				 */
 				if ( e.NativeErrorCode == 2 || e.NativeErrorCode == 3 )
 				{
-					Console.WriteLine( "Fatal: Could not find the compiler - are you sure MCS is installed?" );
-					Console.WriteLine( "       (on Debian, try: apt-get install mono-mcs)" );
+					log.Fatal( "Could not find the compiler - are you sure MCS is installed? (on Debian, try: apt-get install mono-mcs)" );
 					Environment.Exit( 2 );
 				}
 				else
@@ -229,9 +230,9 @@ namespace Server
 				}
 
 				if ( errors.Count > 0 )
-					Console.WriteLine( "Scripts: compilation failed ({0} errors, {1} warnings)", errors.Count, warnings.Count );
+					log.Error( "compilation failed ({0} errors, {1} warnings)", errors.Count, warnings.Count );
 				else
-					Console.WriteLine( "Scripts: compilation done ({0} errors, {1} warnings)", errors.Count, warnings.Count );
+					log.Info( "compilation done ({0} errors, {1} warnings)", errors.Count, warnings.Count );
 
 				string scriptRoot = Path.GetFullPath(
 					Path.Combine( Core.BaseDirectory, "src" + Path.DirectorySeparatorChar ) );
@@ -292,7 +293,7 @@ namespace Server
 			}
 			else
 			{
-				Console.WriteLine( "Scripts: compilation done (0 errors, 0 warnings)" );
+				log.Info( "compilation done (0 errors, 0 warnings)" );
 			}
 		}
 
@@ -312,16 +313,16 @@ namespace Server
 			{
 				if ( libConfig.BinaryPath == null )
 				{
-					Console.WriteLine( "Warning: library {0} does not exist", libConfig.Name );
+					log.Warning( "Library {0} does not exist", libConfig.Name );
 					return true;
 				}
 				if ( !libConfig.BinaryPath.Exists )
 				{
-					Console.WriteLine( "Warning: library {0} does not exist: {1}", libConfig.Name, libConfig.BinaryPath );
+					log.Warning( "Library {0} does not exist: {1}", libConfig.Name, libConfig.BinaryPath );
 					return false;
 				}
 
-				Console.WriteLine( "Libraries: Loading library {0}", libConfig.Name );
+				log.Info( "Loading library {0}", libConfig.Name );
 
 				m_Libraries.Add( new Library( libConfig, Assembly.LoadFrom( libConfig.BinaryPath.FullName ) ) );
 				m_AdditionalReferences.Add( libConfig.BinaryPath.FullName );
@@ -330,7 +331,7 @@ namespace Server
 			}
 			if ( !libConfig.SourcePath.Exists )
 			{
-				Console.WriteLine( "Warning: library {0} does not exist", libConfig.Name );
+				log.Warning( "Library {0} does not exist", libConfig.Name );
 				return true;
 			}
 
@@ -338,7 +339,7 @@ namespace Server
 
 			if ( !cache.Exists )
 			{
-				Console.WriteLine( "Scripts: Failed to create directory {0}", cache.FullName );
+				log.Error( "Failed to create directory {0}", cache.FullName );
 				return false;
 			}
 
@@ -353,7 +354,7 @@ namespace Server
 				{
 					m_Libraries.Add( new Library( libConfig, Assembly.LoadFrom( csFile ) ) );
 					m_AdditionalReferences.Add( csFile );
-					Console.WriteLine( "Libraries: Loaded binary library {0}", libConfig.Name );
+					log.Info( "Loaded binary library {0}", libConfig.Name );
 				}
 				else
 				{
@@ -403,7 +404,7 @@ namespace Server
 			if ( !libConfig.Exists )
 			{
 				libs.Remove( libConfig );
-				Console.WriteLine( "Warning: library {0} does not exist", libConfig.Name );
+				log.Warning( "Library {0} does not exist", libConfig.Name );
 				return;
 			}
 
@@ -417,22 +418,20 @@ namespace Server
 					// If the depended library is already in the queue, there is a circular dependency.
 					if ( queue.Contains( depend ) )
 					{
-						Console.WriteLine( "Error: Circular library dependency {0} on {1}", libConfig.Name, depend );
+						log.Error( "Circular library dependency {0} on {1}", libConfig.Name, depend );
 						throw new ApplicationException();
 					}
 
 					var next = Core.LibraryConfig.GetLibrary( depend );
 					if ( next == null || !next.Exists )
 					{
-						Console.WriteLine( "Error: Unresolved library dependency: {0} depends on {1}, which does not exist",
-							libConfig.Name, depend );
+						log.Error( "Unresolved library dependency: {0} depends on {1}, which does not exist", libConfig.Name, depend );
 						throw new ApplicationException();
 					}
 
 					if ( next.Disabled )
 					{
-						Console.WriteLine( "Error: Unresolved library dependency: {0} depends on {1}, which is disabled", libConfig.Name,
-							depend );
+						log.Error( "Unresolved library dependency: {0} depends on {1}, which is disabled", libConfig.Name, depend );
 						throw new ApplicationException();
 					}
 
@@ -612,14 +611,13 @@ namespace Server
 			{
 				int itemCount = 0, mobileCount = 0;
 				library.Verify( ref itemCount, ref mobileCount );
-				Console.WriteLine( "Scripts: Library {0} verified: {1} items, {2} mobiles",
-					library.Name, itemCount, mobileCount );
+				log.Info( "Library {0} verified: {1} items, {2} mobiles", library.Name, itemCount, mobileCount );
 
 				m_ItemCount += itemCount;
 				m_MobileCount += mobileCount;
 			}
 
-			Console.WriteLine( "Scripts: All libraries verified: {0} items, {1} mobiles)", m_ItemCount, m_MobileCount );
+			log.Info( "All libraries verified: {0} items, {1} mobiles)", m_ItemCount, m_MobileCount );
 		}
 	}
 

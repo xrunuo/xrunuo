@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using System.Net;
-using System.Net.Sockets;
 using Server;
 using Server.Events;
 using Server.Misc;
@@ -10,6 +9,8 @@ namespace Server
 {
 	public class AccessRestrictions
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		public static void Initialize()
 		{
 			EventSink.SocketConnect += new SocketConnectEventHandler( EventSink_SocketConnect );
@@ -23,19 +24,17 @@ namespace Server
 
 				if ( Firewall.IsBlocked( ip ) )
 				{
-					Console.WriteLine( "Client: {0}: Firewall blocked connection attempt.", ip );
+					log.Warning( "Client: {0}: Firewall blocked connection attempt.", ip );
 					e.AllowConnection = false;
-					return;
 				}
 				else if ( IPLimiter.SocketBlock && !IPLimiter.Verify( ip, null ) )
 				{
-					Console.WriteLine( "Client: {0}: Past IP limit threshold", ip );
+					log.Warning( "Client: {0}: Past IP limit threshold", ip );
 
 					using ( StreamWriter op = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "ipLimits.log" ), true ) )
 						op.WriteLine( "{0}\tPast IP limit threshold\t{1}", ip, DateTime.UtcNow );
 
 					e.AllowConnection = false;
-					return;
 				}
 			}
 			catch

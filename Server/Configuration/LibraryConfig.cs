@@ -7,6 +7,8 @@ namespace Server.Configuration
 {
 	public class LibraryConfig
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private string m_BaseDirectory;
 		private string m_Filename;
 		private XmlDocument m_Document;
@@ -54,7 +56,7 @@ namespace Server.Configuration
 
 				if ( m_LibraryConfig.ContainsKey( libName ) )
 				{
-					Console.WriteLine( "Warning: duplicate library '{0}' in '{1}'", libName, libFile );
+					log.Warning( "Duplicate library '{0}' in '{1}'", libName, libFile );
 					continue;
 				}
 
@@ -70,7 +72,7 @@ namespace Server.Configuration
 
 				if ( m_LibraryConfig.ContainsKey( libName ) )
 				{
-					Console.WriteLine( "Warning: duplicate library '{0}' in '{1}'", libName, sub.FullName );
+					log.Warning( "Duplicate library '{0}' in '{1}'", libName, sub.FullName );
 					continue;
 				}
 
@@ -108,7 +110,7 @@ namespace Server.Configuration
 
 				if ( string.IsNullOrEmpty( name ) )
 				{
-					Console.WriteLine( "Warning: library element without name attribute" );
+					log.Warning( "library element without name attribute" );
 					continue;
 				}
 

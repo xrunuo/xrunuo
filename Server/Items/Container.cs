@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Server.Mobiles;
 using System.IO;
 using Server.Network;
 
@@ -1696,6 +1695,8 @@ namespace Server.Items
 
 	public class ContainerData
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		static ContainerData()
 		{
 			m_Table = new Hashtable();
@@ -1755,7 +1756,7 @@ namespace Server.Items
 
 									if ( m_Table.ContainsKey( id ) )
 									{
-										Console.WriteLine( @"Warning: double ItemID entry in Data\containers.cfg" );
+										log.Warning( @"double ItemID entry in Data\containers.cfg" );
 									}
 									else
 									{

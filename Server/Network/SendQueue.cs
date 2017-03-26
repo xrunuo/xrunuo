@@ -6,6 +6,8 @@ namespace Server.Network
 {
 	public class SendQueue
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private class Entry
 		{
 			public byte[] m_Buffer;
@@ -76,7 +78,7 @@ namespace Server.Network
 		public static void ReleaseBuffer( byte[] buffer )
 		{
 			if ( buffer == null )
-				Console.WriteLine( "Warning: Attempting to release null packet buffer" );
+				log.Warning( "Attempting to release null packet buffer" );
 			else if ( buffer.Length == m_CoalesceBufferSize )
 				m_UnusedBuffers.ReleaseBuffer( buffer );
 		}
@@ -152,7 +154,7 @@ namespace Server.Network
 		{
 			if ( buffer == null )
 			{
-				Console.WriteLine( "Warning: Attempting to send null packet buffer" );
+				log.Warning( "Attempting to send null packet buffer" );
 				return false;
 			}
 

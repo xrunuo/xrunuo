@@ -6,6 +6,8 @@ namespace Server
 {
 	public class MultiData
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private static MultiComponentList[] m_Components;
 
 		private static FileStream m_Index, m_Stream;
@@ -102,7 +104,7 @@ namespace Server
 			}
 			else
 			{
-				Console.WriteLine( "Warning: Multi data files not found" );
+				log.Warning( "Multi data files not found" );
 
 				m_Components = new MultiComponentList[0];
 			}

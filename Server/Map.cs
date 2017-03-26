@@ -23,6 +23,8 @@ namespace Server
 	[Parsable]
 	public sealed class Map : IMap, IComparable, IComparable<Map>
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		public const int SectorSize = 16;
 		public const int SectorShift = 4;
 		public static int SectorActiveRange = 2;
@@ -985,7 +987,7 @@ namespace Server
 			if ( regName != null )
 			{
 				if ( m_Regions.ContainsKey( regName ) )
-					Console.WriteLine( "Warning: Duplicate region name '{0}' for map '{1}'", regName, this.Name );
+					log.Warning( "Duplicate region name '{0}' for map '{1}'", regName, this.Name );
 				else
 					m_Regions[regName] = reg;
 			}
@@ -1107,7 +1109,7 @@ namespace Server
 			}
 			else
 			{
-				Console.WriteLine( "Warning: Invalid object ({0}) in line of sight", o );
+				log.Warning( "Invalid object ({0}) in line of sight", o );
 				p = Point3D.Zero;
 			}
 

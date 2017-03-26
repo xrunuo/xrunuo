@@ -15,6 +15,8 @@ namespace Server
 
 	public struct Body
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private int m_BodyID;
 
 		private static BodyType[] m_Types;
@@ -49,15 +51,14 @@ namespace Server
 						}
 						catch
 						{
-							Console.WriteLine( "Warning: Invalid bodyTable entry:" );
-							Console.WriteLine( line );
+							log.Warning( "Invalid bodyTable entry: {0}", line );
 							continue;
 						}
 					}
 					return;
 				}
 			}
-			Console.WriteLine( "Warning: Data/bodyTable.cfg does not exist" );
+			log.Warning( "Data/bodyTable.cfg does not exist" );
 		}
 
 		public Body( int bodyID )
