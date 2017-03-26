@@ -6,6 +6,8 @@ namespace Server.Network
 {
 	public class GameServer
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private static GameServer m_Instance;
 
 		public static GameServer Instance
@@ -42,7 +44,7 @@ namespace Server.Network
 			if ( !m_Clients.TryGetValue( state, out client ) )
 			{
 				var trace = new System.Diagnostics.StackTrace();
-				Logger.Error( "Inconsistent game server state: game client for {0} not found: {1}", state, trace );
+				log.Error( "Inconsistent game server state: game client for {0} not found: {1}", state, trace );
 
 				return;
 			}
@@ -74,7 +76,7 @@ namespace Server.Network
 
 			if ( !m_Clients.TryGetValue( state, out client ) )
 			{
-				Logger.Error( "Inconsistent game server state: game client for {0} not found", state );
+				log.Error( "Inconsistent game server state: game client for {0} not found", state );
 				return;
 			}
 
@@ -203,7 +205,7 @@ namespace Server.Network
 						}
 						catch ( Exception e )
 						{
-							Logger.Error( "Exception disarmed in HandleReceive from {0}: {1}", client.Address, e );
+							log.Error( "Exception disarmed in HandleReceive from {0}: {1}", client.Address, e );
 						}
 
 						PacketReader.ReleaseInstance( reader );

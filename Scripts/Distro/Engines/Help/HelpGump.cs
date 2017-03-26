@@ -66,13 +66,6 @@ namespace Server.Engines.Help
 			var state = from.NetState;
 			var gumps = state.Gumps;
 
-			if ( gumps == null )
-			{
-				// Temporary code
-				Logger.Error( "Help request with gumps == null, from={0}, state={1}", from, state );
-				return;
-			}
-
 			foreach ( Gump g in gumps )
 			{
 				if ( g is HelpGump )

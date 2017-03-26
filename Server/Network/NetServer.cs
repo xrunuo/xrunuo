@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
 using System.Linq;
-using System.Net.Sockets;
-using Server.Accounting;
 
 namespace Server.Network
 {
@@ -13,6 +11,8 @@ namespace Server.Network
 
 	public class NetServer
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		public event ConnectionCreated Connected;
 		public event DataReceived Received;
 		public event ConnectionDisposed Disconnected;
@@ -80,7 +80,7 @@ namespace Server.Network
 			}
 			catch ( Exception ex )
 			{
-				Logger.Error( "NetServer: Error checking connection activity: {0}", ex );
+				log.Error( "NetServer: Error checking connection activity: {0}", ex );
 			}
 		}
 

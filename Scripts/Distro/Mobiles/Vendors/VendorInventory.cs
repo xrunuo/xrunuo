@@ -9,6 +9,8 @@ namespace Server.Mobiles
 {
 	public class VendorInventory
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		public static readonly TimeSpan GracePeriod = TimeSpan.FromDays( 9.0 );
 
 		private IHouse m_House;
@@ -77,7 +79,7 @@ namespace Server.Mobiles
 			}
 			catch ( Exception e )
 			{
-				Logger.Error( "{0}", e );
+				log.Error( "{0}", e );
 			}
 		}
 

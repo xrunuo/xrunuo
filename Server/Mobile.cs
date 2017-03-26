@@ -257,6 +257,8 @@ namespace Server
 	/// </summary>
 	public partial class Mobile : IMobile, IHued, ISerializable, ISpawnable
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		#region Handlers
 
 		public static AllowBeneficialHandler AllowBeneficialHandler { get; set; }
@@ -7820,7 +7822,7 @@ namespace Server
 				}
 				catch ( Exception e )
 				{
-					Logger.Error( "Exception disarmed in Mobile.ProcessDeltaQueue in {0}: {1}", mobile, e );
+					log.Error( "Exception disarmed in Mobile.ProcessDeltaQueue in {0}: {1}", mobile, e );
 				}
 			}
 		}

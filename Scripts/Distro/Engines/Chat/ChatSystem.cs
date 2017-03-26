@@ -1,13 +1,13 @@
 using System;
 using Server;
-using Server.Misc;
 using Server.Network;
-using Server.Accounting;
 
 namespace Server.Engines.Chat
 {
 	public class ChatSystem
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		public static readonly bool Enabled = true;
 
 		public static readonly bool AllowCreateChannels = false;
@@ -81,7 +81,7 @@ namespace Server.Engines.Chat
 			}
 			catch ( Exception e )
 			{
-				Logger.Error( e.ToString() );
+				log.Error( e.ToString() );
 			}
 		}
 

@@ -8,6 +8,8 @@ namespace Server.Mobiles
     [CorpseName( "Guiles corpse" )]
     public class Guile : BaseCreature
     {
+	    private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
         public override bool AlwaysAttackable
         {
             get
@@ -172,7 +174,7 @@ namespace Server.Mobiles
             }
             catch ( NullReferenceException e )
             {
-				Logger.Error( e.ToString() );
+				log.Error( e.ToString() );
             }
         }
 

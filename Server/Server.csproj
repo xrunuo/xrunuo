@@ -176,6 +176,8 @@
     <Compile Include="Configuration\Modules\Network.cs" />
     <Compile Include="Configuration\Modules\Reports.cs" />
     <Compile Include="Configuration\Parser.cs" />
+    <Compile Include="Logging\CompositeLogger.cs" />
+    <Compile Include="Logging\ErrorFileLogger.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="CurrentTime.cs" />
     <Compile Include="Dependencies.cs" />
@@ -186,7 +188,6 @@
     <Compile Include="Gumps\GumpItemProperty.cs" />
     <Compile Include="Gumps\GumpTextEntryLimited.cs" />
     <Compile Include="LocalizedText.cs" />
-    <Compile Include="Logger.cs" />
     <Compile Include="Logging\BaseLogger.cs" />
     <Compile Include="Logging\ConsoleLogger.cs" />
     <Compile Include="Logging\ILog.cs" />

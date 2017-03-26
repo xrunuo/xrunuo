@@ -8,6 +8,8 @@ namespace Server.Items
 {
 	public abstract class BaseThrowing : BaseMeleeWeapon
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		public override int HitSound { get { return 0x5D2; } }
 		public override int MissSound { get { return 0x5D3; } }
 
@@ -64,11 +66,11 @@ namespace Server.Items
 				/*
 				 * Each weapon has a base and max range available to it, where the base
 				 * range is modified by the player’s strength to determine the actual range.
-				 * 
+				 *
 				 * Determining the maximum range of each weapon while in use:
 				 * - Range = BaseRange + ((PlayerStrength - MinWeaponStrReq) / ((150 - MinWeaponStrReq) / 3))
 				 * - The absolute maximum range is capped at 11 tiles.
-				 * 
+				 *
 				 * As per OSI tests: with 140 Strength you achieve max range for all throwing weapons.
 				 */
 
@@ -108,7 +110,7 @@ namespace Server.Items
 			}
 			catch ( Exception ex )
 			{
-				Logger.Error( "Exception in Throwing code, maxRange={0}, dist={1}, attacker={2}, defender={3}, exception={4}", maxRange, dist, attacker, defender, ex );
+				log.Error( "Exception in Throwing code, maxRange={0}, dist={1}, attacker={2}, defender={3}, exception={4}", maxRange, dist, attacker, defender, ex );
 			}
 
 			if ( dist < 2 )
@@ -143,7 +145,7 @@ namespace Server.Items
 			}
 			catch ( Exception ex )
 			{
-				Logger.Error( "Exception in Throwing code, maxRange={0}, dist={1}, attacker={2}, defender={3}, exception={4}", maxRange, dist, attacker, defender, ex );
+				log.Error( "Exception in Throwing code, maxRange={0}, dist={1}, attacker={2}, defender={3}, exception={4}", maxRange, dist, attacker, defender, ex );
 			}
 
 			if ( m_Debug )

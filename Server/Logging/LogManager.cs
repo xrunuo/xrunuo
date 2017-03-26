@@ -17,7 +17,12 @@ namespace Server
 
 		private static ILog CreateLogger( Type declaringType )
 		{
-			return new ConsoleLogger( declaringType.Name );
+			var category = declaringType.Name;
+
+			return new CompositeLogger(
+				new ConsoleLogger( category ),
+				new ErrorFileLogger( category )
+			);
 		}
 	}
 }

@@ -5,6 +5,8 @@ namespace Server
 {
 	public class TimerExecutor
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		/// <summary>
 		/// Max number of timers that we process in a single slice.
 		/// </summary>
@@ -34,7 +36,7 @@ namespace Server
 					}
 					catch ( Exception ex )
 					{
-						Logger.Error( "Exception disarmed in Timer {0}: {1}", timer.GetType().FullName, ex );
+						log.Error( "Exception disarmed in Timer {0}: {1}", timer.GetType().FullName, ex );
 					}
 
 					timer.m_Queued = false;

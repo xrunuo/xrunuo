@@ -153,6 +153,8 @@ namespace Server
 
 	public class Item : IEntity, IHued, ISerializable, ISpawnable
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		public static readonly List<Item> EmptyItems = new List<Item>();
 
 		#region Standard fields
@@ -513,12 +515,12 @@ namespace Server
 		}
 
 		/// <summary>
-		/// Overridable. Determines whether the item will show <see cref="AddWeightProperty" />. 
+		/// Overridable. Determines whether the item will show <see cref="AddWeightProperty" />.
 		/// </summary>
 		public virtual bool DisplayWeight { get { return true; } }
 
 		/// <summary>
-		/// Overridable. Displays cliloc 1072788-1072789. 
+		/// Overridable. Displays cliloc 1072788-1072789.
 		/// </summary>
 		public virtual void AddWeightProperty( ObjectPropertyList list )
 		{
@@ -706,10 +708,10 @@ namespace Server
 		///	{
 		///		if ( from.Int &gt;= 100 )
 		///			return true;
-		///		
+		///
 		///		return base.AllowEquipedCast( from );
 		/// }</code>
-		/// 
+		///
 		/// When placed in an Item script, the item may be cast when equiped if the <paramref name="from" /> has 100 or more intelligence. Otherwise, it will drop to their backpack.
 		/// </example>
 		public virtual bool AllowEquipedCast( Mobile from )
@@ -2601,7 +2603,7 @@ namespace Server
 				}
 				catch ( Exception e )
 				{
-					Logger.Error( "Exception disarmed in Item.ProcessDeltaQueue in {0}: {1}", item, e );
+					log.Error( "Exception disarmed in Item.ProcessDeltaQueue in {0}: {1}", item, e );
 				}
 
 				if ( i >= count )

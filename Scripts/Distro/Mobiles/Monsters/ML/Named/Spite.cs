@@ -7,6 +7,8 @@ namespace Server.Mobiles
 {
     public class Spite : BaseCreature
     {
+	    private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
         public override bool AlwaysAttackable { get { return true; } }
         public override bool CheckResistancesInItems { get { return false; } }
 
@@ -164,7 +166,7 @@ namespace Server.Mobiles
             }
             catch ( NullReferenceException e )
             {
-				Logger.Error( e.ToString() );
+				log.Error( e.ToString() );
             }
         }
 

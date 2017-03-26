@@ -38,6 +38,8 @@ namespace Server.Network
 
 	public static class PacketHandlers
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		private static PacketHandler[] m_Handlers;
 
 		private static PacketHandler[] m_ExtendedHandlersLow;
@@ -759,7 +761,7 @@ namespace Server.Network
 						}
 						catch ( Exception e )
 						{
-							Logger.Error( "Exception disarmed in UseSkill {0} > {1}: {2}", state.Mobile, skillIndex, e );
+							log.Error( "Exception disarmed in UseSkill {0} > {1}: {2}", state.Mobile, skillIndex, e );
 						}
 
 						break;
@@ -790,7 +792,7 @@ namespace Server.Network
 							}
 							catch ( Exception e )
 							{
-								Logger.Error( "Exception disarmed in CastSpell I {0}, spell {1}: {2}", state.Mobile, spellId, e );
+								log.Error( "Exception disarmed in CastSpell I {0}, spell {1}: {2}", state.Mobile, spellId, e );
 							}
 						}
 
@@ -804,7 +806,7 @@ namespace Server.Network
 						}
 						catch ( Exception e )
 						{
-							Logger.Error( "Exception disarmed in OpenDoor {0}: {1}", state.Mobile, e );
+							log.Error( "Exception disarmed in OpenDoor {0}: {1}", state.Mobile, e );
 						}
 
 						break;
@@ -819,7 +821,7 @@ namespace Server.Network
 						}
 						catch ( Exception e )
 						{
-							Logger.Error( "Exception disarmed in CastSpell II {0}, spell {1}: {2}", state.Mobile, spellId, e );
+							log.Error( "Exception disarmed in CastSpell II {0}, spell {1}: {2}", state.Mobile, spellId, e );
 						}
 
 						break;
@@ -834,7 +836,7 @@ namespace Server.Network
 						}
 						catch ( Exception e )
 						{
-							Logger.Error( "Exception disarmed in VirtueMacroUsed {0}, virtueid: {1}, {2}", state.Mobile, virtueID, e );
+							log.Error( "Exception disarmed in VirtueMacroUsed {0}, virtueid: {1}, {2}", state.Mobile, virtueID, e );
 						}
 
 						break;
@@ -879,7 +881,7 @@ namespace Server.Network
 				}
 				catch ( Exception e )
 				{
-					Logger.Error( "Exception disarmed in AsciiPrompt response {0}, type {1}: {2}", state.Mobile, type, e );
+					log.Error( "Exception disarmed in AsciiPrompt response {0}, type {1}: {2}", state.Mobile, type, e );
 				}
 			}
 		}
@@ -914,7 +916,7 @@ namespace Server.Network
 				}
 				catch ( Exception e )
 				{
-					Logger.Error( "Exception disarmed in UnicodePrompt response {0}, type {1}: {2}", state.Mobile, type, e );
+					log.Error( "Exception disarmed in UnicodePrompt response {0}, type {1}: {2}", state.Mobile, type, e );
 				}
 			}
 		}
@@ -943,7 +945,7 @@ namespace Server.Network
 				}
 				catch ( Exception e )
 				{
-					Logger.Error( "Exception disarmed in menu response {0} > {1}[index]: {2}", state.Mobile, menu, e );
+					log.Error( "Exception disarmed in menu response {0} > {1}[index]: {2}", state.Mobile, menu, e );
 				}
 
 				state.RemoveMenu( menu );
@@ -1007,7 +1009,7 @@ namespace Server.Network
 			}
 			catch ( Exception e )
 			{
-				Logger.Error( "Exception disarmed in lift {0}, {1} x {2}: {3}", state.Mobile, item, amount, e );
+				log.Error( "Exception disarmed in lift {0}, {1} x {2}: {3}", state.Mobile, item, amount, e );
 			}
 		}
 
@@ -1036,7 +1038,7 @@ namespace Server.Network
 			}
 			catch ( Exception e )
 			{
-				Logger.Error( "Exception disarmed in equip {0} < {1}: {2}", to, item, e );
+				log.Error( "Exception disarmed in equip {0} < {1}: {2}", to, item, e );
 			}
 
 			if ( !success )
@@ -1082,7 +1084,7 @@ namespace Server.Network
 				}
 				catch ( Exception e )
 				{
-					Logger.Error( "Exception disarmed in drop {0} > {1}: {2}", from, m, e );
+					log.Error( "Exception disarmed in drop {0} > {1}: {2}", from, m, e );
 				}
 			}
 			else if ( dest.IsItem )
@@ -1099,7 +1101,7 @@ namespace Server.Network
 				}
 				catch ( Exception e )
 				{
-					Logger.Error( "Exception disarmed in drop {0} > {1}: {2}", from, i, e );
+					log.Error( "Exception disarmed in drop {0} > {1}: {2}", from, i, e );
 				}
 			}
 			else
@@ -1236,7 +1238,7 @@ namespace Server.Network
 					}
 					catch ( Exception e )
 					{
-						Logger.Error( "Exception disarmed in target {0} > {1} > {2}: {3}", from, t, toTarget, e );
+						log.Error( "Exception disarmed in target {0} > {1} > {2}: {3}", from, t, toTarget, e );
 					}
 				}
 			}
@@ -1295,7 +1297,7 @@ namespace Server.Network
 					}
 					catch ( Exception e )
 					{
-						Logger.Error( "Exception disarmed in gump response of {0}: {1}", gump, e );
+						log.Error( "Exception disarmed in gump response of {0}: {1}", gump, e );
 					}
 
 					state.RemoveGump( gump );
@@ -1467,7 +1469,7 @@ namespace Server.Network
 						}
 						catch ( Exception e )
 						{
-							Logger.Error( "Exception disarmed in use {0} > {1}: {2}", from, m, e );
+							log.Error( "Exception disarmed in use {0} > {1}: {2}", from, m, e );
 						}
 					}
 					else if ( s.IsItem )
@@ -1481,7 +1483,7 @@ namespace Server.Network
 						}
 						catch ( Exception e )
 						{
-							Logger.Error( "Exception disarmed in use {0} > {1}: {2}", from, item, e );
+							log.Error( "Exception disarmed in use {0} > {1}: {2}", from, item, e );
 						}
 					}
 				}
@@ -2007,7 +2009,7 @@ namespace Server.Network
 			}
 			catch ( Exception e )
 			{
-				Logger.Error( "Exception disarmed in RacialAbility {0}, ability {1}: {2}", from, abilityId, e );
+				log.Error( "Exception disarmed in RacialAbility {0}, ability {1}: {2}", from, abilityId, e );
 			}
 		}
 
@@ -2026,7 +2028,7 @@ namespace Server.Network
 			}
 			catch ( Exception e )
 			{
-				Logger.Error( "Exception disarmed in MouseBoatMovement {0}, direction {1}, speed {2}: {3}", from, direction, speed, e );
+				log.Error( "Exception disarmed in MouseBoatMovement {0}, direction {1}, speed {2}: {3}", from, direction, speed, e );
 			}
 		}
 
@@ -2205,7 +2207,7 @@ namespace Server.Network
 			}
 			catch ( Exception ex )
 			{
-				Logger.Error( "Exception disarmed in Login: {0}", ex );
+				log.Error( "Exception disarmed in Login: {0}", ex );
 			}
 
 			m.ClearFastwalkStack();
@@ -2330,7 +2332,7 @@ namespace Server.Network
 				}
 				catch ( Exception ex )
 				{
-					Logger.Error( "Exception disarmed in CreateCharRequest {0}: {1}", name, ex );
+					log.Error( "Exception disarmed in CreateCharRequest {0}: {1}", name, ex );
 				}
 
 				Mobile m = args.Mobile;
@@ -2348,7 +2350,7 @@ namespace Server.Network
 					}
 					catch ( Exception ex )
 					{
-						Logger.Error( "Exception disarmed in CharacterCreated {0}: {1}", m, ex );
+						log.Error( "Exception disarmed in CharacterCreated {0}: {1}", m, ex );
 					}
 
 					DoLogin( state, m );
@@ -2483,7 +2485,7 @@ namespace Server.Network
 				}
 				catch ( Exception ex )
 				{
-					Logger.Error( "Exception disarmed in CreateCharRequest {0}: {1}", name, ex );
+					log.Error( "Exception disarmed in CreateCharRequest {0}: {1}", name, ex );
 				}
 
 				Mobile m = args.Mobile;
@@ -2501,7 +2503,7 @@ namespace Server.Network
 					}
 					catch ( Exception ex )
 					{
-						Logger.Error( "Exception disarmed in CharacterCreated {0}: {1}", m, ex );
+						log.Error( "Exception disarmed in CharacterCreated {0}: {1}", m, ex );
 					}
 
 					DoLogin( state, m );
@@ -2636,7 +2638,7 @@ namespace Server.Network
 				}
 				catch ( Exception ex )
 				{
-					Logger.Error( "Exception disarmed in CreateCharRequest {0}: {1}", name, ex );
+					log.Error( "Exception disarmed in CreateCharRequest {0}: {1}", name, ex );
 				}
 
 				Mobile m = args.Mobile;
@@ -2654,7 +2656,7 @@ namespace Server.Network
 					}
 					catch ( Exception ex )
 					{
-						Logger.Error( "Exception disarmed in CharacterCreated {0}: {1}", m, ex );
+						log.Error( "Exception disarmed in CharacterCreated {0}: {1}", m, ex );
 					}
 
 					DoLogin( state, m );
@@ -2775,7 +2777,7 @@ namespace Server.Network
 			}
 			catch ( Exception ex )
 			{
-				Logger.Error( "Exception disarmed in GameLogin {0}: {1}", username, ex );
+				log.Error( "Exception disarmed in GameLogin {0}: {1}", username, ex );
 			}
 
 			if ( e.Accepted )
@@ -2868,7 +2870,7 @@ namespace Server.Network
 			}
 			catch ( Exception ex )
 			{
-				Logger.Error( "Exception disarmed in AccountLogin {0}: {1}", username, ex );
+				log.Error( "Exception disarmed in AccountLogin {0}: {1}", username, ex );
 			}
 
 			if ( e.Accepted )
@@ -2887,7 +2889,7 @@ namespace Server.Network
 			}
 			catch ( Exception ex )
 			{
-				Logger.Error( "Exception disarmed in ServerList: {0}", ex );
+				log.Error( "Exception disarmed in ServerList: {0}", ex );
 				e.Rejected = true;
 			}
 
