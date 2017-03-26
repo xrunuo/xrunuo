@@ -31,7 +31,7 @@ namespace Server
 				case LogLevel.Debug:
 					return ConsoleColor.Gray;
 
-				case LogLevel.Warn:
+				case LogLevel.Warning:
 					return ConsoleColor.DarkYellow;
 
 				case LogLevel.Error:
@@ -46,7 +46,7 @@ namespace Server
 
 		private string Format( LogLevel level, string msg, params object[] args )
 		{
-			if ( level >= LogLevel.Warn )
+			if ( level >= LogLevel.Warning )
 				msg = string.Format( "{0}: {1}", level, msg );
 
 			return string.Format( "{0}: {1}", m_Category, string.Format( msg, args ) );

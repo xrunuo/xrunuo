@@ -16,7 +16,7 @@ namespace Server
 
 		public void Warning( string msg, params object[] args )
 		{
-			Log( LogLevel.Warn, msg, args );
+			Log( LogLevel.Warning, msg, args );
 		}
 
 		public void Error( string msg, params object[] args )
