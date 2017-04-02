@@ -1,0 +1,1251 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>OphidianWarrior</Name>
+		<Count>1</Count>
+		<Location X="5345" Y="1754" Z="-125" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanWarrior</Name>
+		<Count>1</Count>
+		<Location X="5343" Y="1554" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanAvenger</Name>
+		<Count>1</Count>
+		<Location X="5343" Y="1551" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianMage</Name>
+		<Count>1</Count>
+		<Location X="5298" Y="1562" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianMatriarch</Name>
+		<Count>1</Count>
+		<Location X="5296" Y="1565" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>1</Count>
+		<Location X="5176" Y="1702" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Nightmare</Name>
+		<Count>1</Count>
+		<Location X="5345" Y="1553" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianArchmage</Name>
+		<Count>1</Count>
+		<Location X="5176" Y="1701" Z="2" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanAvenger</Name>
+		<Count>1</Count>
+		<Location X="5346" Y="1756" Z="-125" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianArchmage</Name>
+		<Count>1</Count>
+		<Location X="5334" Y="1614" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianKnight</Name>
+		<Count>1</Count>
+		<Location X="5177" Y="1701" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5336" Y="1613" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanMatriarch</Name>
+		<Count>1</Count>
+		<Location X="5337" Y="1615" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanDrone</Name>
+		<Count>1</Count>
+		<Location X="5344" Y="1551" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanWarrior</Name>
+		<Count>10</Count>
+		<Location X="5454" Y="3136" Z="-60" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Nightmare</Name>
+		<Count>1</Count>
+		<Location X="5179" Y="1702" Z="-2" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Nightmare</Name>
+		<Count>1</Count>
+		<Location X="5299" Y="1561" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanAvenger</Name>
+		<Count>1</Count>
+		<Location X="5271" Y="1693" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianKnight</Name>
+		<Count>1</Count>
+		<Location X="5336" Y="1707" Z="-69" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5178" Y="1702" Z="-2" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianArchmage</Name>
+		<Count>1</Count>
+		<Location X="5345" Y="1757" Z="-125" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanWarrior</Name>
+		<Count>1</Count>
+		<Location X="5175" Y="1702" Z="-2" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanMatriarch</Name>
+		<Count>1</Count>
+		<Location X="5346" Y="1754" Z="-125" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianWarrior</Name>
+		<Count>1</Count>
+		<Location X="5273" Y="1694" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianArchmage</Name>
+		<Count>1</Count>
+		<Location X="5270" Y="1694" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>1</Count>
+		<Location X="5270" Y="1695" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanAvenger</Name>
+		<Count>1</Count>
+		<Location X="5336" Y="1708" Z="-70" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianKnight</Name>
+		<Count>1</Count>
+		<Location X="5343" Y="1552" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanAvenger</Name>
+		<Count>4</Count>
+		<Location X="5454" Y="3136" Z="-60" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianWarrior</Name>
+		<Count>1</Count>
+		<Location X="5345" Y="1552" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanDrone</Name>
+		<Count>1</Count>
+		<Location X="5346" Y="1755" Z="-125" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5337" Y="1706" Z="-75" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Nightmare</Name>
+		<Count>1</Count>
+		<Location X="5273" Y="1695" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianWarrior</Name>
+		<Count>1</Count>
+		<Location X="5179" Y="1701" Z="-3" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanMatriarch</Name>
+		<Count>1</Count>
+		<Location X="5345" Y="1551" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>1</Count>
+		<Location X="5334" Y="1613" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanDrone</Name>
+		<Count>10</Count>
+		<Location X="5454" Y="3136" Z="-60" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanDrone</Name>
+		<Count>1</Count>
+		<Location X="5336" Y="1615" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianArchmage</Name>
+		<Count>1</Count>
+		<Location X="5335" Y="1707" Z="-70" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>1</Count>
+		<Location X="5342" Y="1553" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5344" Y="1553" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianMage</Name>
+		<Count>1</Count>
+		<Location X="5345" Y="1755" Z="-125" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanAvenger</Name>
+		<Count>1</Count>
+		<Location X="5177" Y="1700" Z="1" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>1</Count>
+		<Location X="5297" Y="1561" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Nightmare</Name>
+		<Count>1</Count>
+		<Location X="5344" Y="1754" Z="-125" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianMatriarch</Name>
+		<Count>1</Count>
+		<Location X="5176" Y="1700" Z="1" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianArchmage</Name>
+		<Count>1</Count>
+		<Location X="5296" Y="1562" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianMage</Name>
+		<Count>1</Count>
+		<Location X="5344" Y="1552" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianKnight</Name>
+		<Count>1</Count>
+		<Location X="5271" Y="1694" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanDrone</Name>
+		<Count>1</Count>
+		<Location X="5272" Y="1693" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanDrone</Name>
+		<Count>1</Count>
+		<Location X="5298" Y="1565" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianKnight</Name>
+		<Count>1</Count>
+		<Location X="5345" Y="1756" Z="-125" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>1</Count>
+		<Location X="5336" Y="1706" Z="-72" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianWarrior</Name>
+		<Count>1</Count>
+		<Location X="5299" Y="1562" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanMatriarch</Name>
+		<Count>2</Count>
+		<Location X="5454" Y="3136" Z="-60" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianArchmage</Name>
+		<Count>1</Count>
+		<Location X="5342" Y="1552" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianMage</Name>
+		<Count>1</Count>
+		<Location X="5337" Y="1707" Z="-70" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>1</Count>
+		<Location X="5335" Y="1613" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>1</Count>
+		<Location X="5344" Y="1756" Z="-125" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianMage</Name>
+		<Count>1</Count>
+		<Location X="5336" Y="1614" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Nightmare</Name>
+		<Count>1</Count>
+		<Location X="5337" Y="1613" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanWarrior</Name>
+		<Count>1</Count>
+		<Location X="5270" Y="1692" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanWarrior</Name>
+		<Count>1</Count>
+		<Location X="5295" Y="1561" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianKnight</Name>
+		<Count>1</Count>
+		<Location X="5335" Y="1614" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianMatriarch</Name>
+		<Count>1</Count>
+		<Location X="5346" Y="1757" Z="-125" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanMatriarch</Name>
+		<Count>1</Count>
+		<Location X="5299" Y="1565" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianMage</Name>
+		<Count>1</Count>
+		<Location X="5178" Y="1701" Z="-2" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanMatriarch</Name>
+		<Count>1</Count>
+		<Location X="5179" Y="1700" Z="-1" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Banker</Name>
+		<Count>1</Count>
+		<Location X="5139" Y="1760" Z="1" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanWarrior</Name>
+		<Count>1</Count>
+		<Location X="5333" Y="1613" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianMatriarch</Name>
+		<Count>1</Count>
+		<Location X="5334" Y="1615" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianWarrior</Name>
+		<Count>1</Count>
+		<Location X="5338" Y="1707" Z="-70" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianMage</Name>
+		<Count>1</Count>
+		<Location X="5272" Y="1694" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianMatriarch</Name>
+		<Count>1</Count>
+		<Location X="5270" Y="1693" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanWarrior</Name>
+		<Count>1</Count>
+		<Location X="5347" Y="1757" Z="-125" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianWarrior</Name>
+		<Count>1</Count>
+		<Location X="5337" Y="1614" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanWarrior</Name>
+		<Count>1</Count>
+		<Location X="5334" Y="1707" Z="-73" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanAvenger</Name>
+		<Count>1</Count>
+		<Location X="5335" Y="1615" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5298" Y="1561" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianMatriarch</Name>
+		<Count>1</Count>
+		<Location X="5342" Y="1551" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>1</Count>
+		<Location X="5296" Y="1561" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanAvenger</Name>
+		<Count>1</Count>
+		<Location X="5297" Y="1565" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5344" Y="1755" Z="-125" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Nightmare</Name>
+		<Count>1</Count>
+		<Location X="5338" Y="1706" Z="-69" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanMatriarch</Name>
+		<Count>1</Count>
+		<Location X="5338" Y="1708" Z="-73" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>1</Count>
+		<Location X="5344" Y="1757" Z="-125" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanMatriarch</Name>
+		<Count>1</Count>
+		<Location X="5273" Y="1693" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>1</Count>
+		<Location X="5271" Y="1695" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanDrone</Name>
+		<Count>1</Count>
+		<Location X="5178" Y="1700" Z="1" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>1</Count>
+		<Location X="5335" Y="1706" Z="-70" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>1</Count>
+		<Location X="5177" Y="1702" Z="2" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianKnight</Name>
+		<Count>1</Count>
+		<Location X="5297" Y="1562" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5272" Y="1695" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OphidianMatriarch</Name>
+		<Count>1</Count>
+		<Location X="5335" Y="1708" Z="-70" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerathanDrone</Name>
+		<Count>1</Count>
+		<Location X="5337" Y="1708" Z="-73" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>1</Count>
+		<Location X="5343" Y="1553" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

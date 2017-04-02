@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>Lizardman</Name>
+		<Count>6</Count>
+		<Location X="299" Y="1355" Z="-25" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>35</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Lizardman</Name>
+		<Count>6</Count>
+		<Location X="295" Y="1307" Z="-25" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>35</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

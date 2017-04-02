@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>EnforcerGargoyle</Name>
+		<Count>2</Count>
+		<Location X="2031" Y="48" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ExodusMinion</Name>
+		<Count>1</Count>
+		<Location X="2044" Y="143" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GolemController</Name>
+		<Count>1</Count>
+		<Location X="1932" Y="164" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Golem</Name>
+		<Count>1</Count>
+		<Location X="1932" Y="35" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GolemController</Name>
+		<Count>1</Count>
+		<Location X="2044" Y="143" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GolemController</Name>
+		<Count>2</Count>
+		<Location X="1980" Y="116" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>40</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ExodusOverseer</Name>
+		<Count>2</Count>
+		<Location X="1979" Y="192" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GolemController</Name>
+		<Count>1</Count>
+		<Location X="1931" Y="67" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ExodusMinion</Name>
+		<Count>1</Count>
+		<Location X="1979" Y="192" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Golem</Name>
+		<Count>1</Count>
+		<Location X="2044" Y="87" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GolemController</Name>
+		<Count>2</Count>
+		<Location X="1894" Y="116" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ExodusOverseer</Name>
+		<Count>2</Count>
+		<Location X="2071" Y="116" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ExodusOverseer</Name>
+		<Count>2</Count>
+		<Location X="1980" Y="39" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EnslavedGargoyle</Name>
+		<Count>2</Count>
+		<Location X="1980" Y="116" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>40</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GolemController</Name>
+		<Count>2</Count>
+		<Location X="1932" Y="35" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ExodusMinion</Name>
+		<Count>1</Count>
+		<Location X="1939" Y="116" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Golem</Name>
+		<Count>1</Count>
+		<Location X="1932" Y="196" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GolemController</Name>
+		<Count>1</Count>
+		<Location X="1995" Y="67" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EnforcerGargoyle</Name>
+		<Count>1</Count>
+		<Location X="2057" Y="163" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GolemController</Name>
+		<Count>2</Count>
+		<Location X="2071" Y="116" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GolemController</Name>
+		<Count>1</Count>
+		<Location X="1996" Y="164" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ExodusMinion</Name>
+		<Count>1</Count>
+		<Location X="2044" Y="87" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EnforcerGargoyle</Name>
+		<Count>1</Count>
+		<Location X="2032" Y="184" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EnforcerGargoyle</Name>
+		<Count>1</Count>
+		<Location X="2063" Y="183" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GolemController</Name>
+		<Count>2</Count>
+		<Location X="1932" Y="196" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Golem</Name>
+		<Count>1</Count>
+		<Location X="2044" Y="143" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ExodusMinion</Name>
+		<Count>1</Count>
+		<Location X="1980" Y="39" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GolemController</Name>
+		<Count>1</Count>
+		<Location X="1980" Y="39" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GolemController</Name>
+		<Count>2</Count>
+		<Location X="1964" Y="164" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ExodusOverseer</Name>
+		<Count>2</Count>
+		<Location X="1894" Y="116" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

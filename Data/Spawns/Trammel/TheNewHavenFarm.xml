@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>Guardian</Name>
+		<Count>1</Count>
+		<Location X="3732" Y="2605" Z="40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>WanderingHealer</Name>
+		<Count>2</Count>
+		<Location X="3709" Y="2568" Z="20" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Bird</Name>
+		<Count>5</Count>
+		<Location X="3740" Y="2604" Z="40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Sheep</Name>
+		<Count>5</Count>
+		<Location X="3740" Y="2605" Z="40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT1M30S</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Andric</Name>
+		<Count>1</Count>
+		<Location X="3742" Y="2583" Z="40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>NewHavenSeekerOfAdventure</Name>
+		<Count>1</Count>
+		<Location X="3709" Y="2574" Z="20" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Bird</Name>
+		<Count>3</Count>
+		<Location X="3708" Y="2568" Z="20" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>NewHavenSeekerOfAdventure</Name>
+		<Count>1</Count>
+		<Location X="3736" Y="2612" Z="40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>NewHavenSeekerOfAdventure</Name>
+		<Count>1</Count>
+		<Location X="3739" Y="2670" Z="40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HireMage</Name>
+		<Count>1</Count>
+		<Location X="3739" Y="2573" Z="40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Sewerrat</Name>
+		<Count>2</Count>
+		<Location X="3740" Y="2603" Z="40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

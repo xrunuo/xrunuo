@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>ChagaMushroom</Name>
+		<Count>3</Count>
+		<Location X="6996" Y="1338" Z="-15" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ChagaMushroom</Name>
+		<Count>3</Count>
+		<Location X="6967" Y="1249" Z="-15" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ChagaMushroom</Name>
+		<Count>3</Count>
+		<Location X="7003" Y="1277" Z="-15" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+</Spawners>

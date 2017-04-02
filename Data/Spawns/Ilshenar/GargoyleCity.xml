@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>Provisioner</Name>
+		<Count>2</Count>
+		<Location X="825" Y="603" Z="-40" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>8</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Mage</Name>
+		<Count>2</Count>
+		<Location X="840" Y="570" Z="0" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HealerGuildmaster</Name>
+		<Count>1</Count>
+		<Location X="872" Y="586" Z="-40" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>3</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GolemCrafter</Name>
+		<Count>2</Count>
+		<Location X="768" Y="642" Z="0" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Healer</Name>
+		<Count>2</Count>
+		<Location X="872" Y="586" Z="-40" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Glassblower</Name>
+		<Count>2</Count>
+		<Location X="840" Y="570" Z="0" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Blacksmith</Name>
+		<Count>2</Count>
+		<Location X="793" Y="667" Z="0" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Weaponsmith</Name>
+		<Count>1</Count>
+		<Location X="808" Y="586" Z="-40" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>StoneCrafter</Name>
+		<Count>2</Count>
+		<Location X="872" Y="685" Z="-40" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>3</SpawnRange>
+		<HomeRange>8</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Provisioner</Name>
+		<Count>2</Count>
+		<Location X="825" Y="681" Z="-40" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Jeweler</Name>
+		<Count>2</Count>
+		<Location X="859" Y="698" Z="-40" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>3</SpawnRange>
+		<HomeRange>8</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Tailor</Name>
+		<Count>2</Count>
+		<Location X="894" Y="610" Z="-40" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>6</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>StoneCrafter</Name>
+		<Count>2</Count>
+		<Location X="790" Y="617" Z="0" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Banker</Name>
+		<Count>2</Count>
+		<Location X="854" Y="680" Z="-40" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Banker</Name>
+		<Count>2</Count>
+		<Location X="852" Y="602" Z="-40" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>7</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Blacksmith</Name>
+		<Count>1</Count>
+		<Location X="808" Y="586" Z="-40" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Armorer</Name>
+		<Count>2</Count>
+		<Location X="808" Y="697" Z="-40" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Minter</Name>
+		<Count>1</Count>
+		<Location X="852" Y="602" Z="-40" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>7</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Minter</Name>
+		<Count>1</Count>
+		<Location X="854" Y="680" Z="-40" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>CommonerGargoyle</Name>
+		<Count>10</Count>
+		<Location X="837" Y="642" Z="-20" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>60</SpawnRange>
+		<HomeRange>70</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

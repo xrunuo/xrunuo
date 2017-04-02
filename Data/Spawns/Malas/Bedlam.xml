@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>MasterTheophilus</Name>
+		<Count>1</Count>
+		<Location X="88" Y="1626" Z="0" />
+		<Map>Malas</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>3</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PatchworkSkeleton</Name>
+		<Count>10</Count>
+		<Location X="105" Y="1656" Z="0" />
+		<Map>Malas</Map>
+		<MinDelay>PT15S</MinDelay>
+		<MaxDelay>PT30S</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Cook</Name>
+		<Count>1</Count>
+		<Location X="82" Y="1648" Z="0" />
+		<Map>Malas</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>SirPatrick</Name>
+		<Count>1</Count>
+		<Location X="97" Y="1664" Z="0" />
+		<Map>Malas</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Zombie</Name>
+		<Count>5</Count>
+		<Location X="104" Y="1657" Z="0" />
+		<Map>Malas</Map>
+		<MinDelay>PT15S</MinDelay>
+		<MaxDelay>PT30S</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>MasterJonath</Name>
+		<Count>1</Count>
+		<Location X="112" Y="1655" Z="0" />
+		<Map>Malas</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Gnosos</Name>
+		<Count>1</Count>
+		<Location X="87" Y="1639" Z="0" />
+		<Map>Malas</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Skeleton</Name>
+		<Count>5</Count>
+		<Location X="104" Y="1656" Z="0" />
+		<Map>Malas</Map>
+		<MinDelay>PT15S</MinDelay>
+		<MaxDelay>PT30S</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BoneMagi</Name>
+		<Count>2</Count>
+		<Location X="105" Y="1657" Z="0" />
+		<Map>Malas</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT30S</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>RedDeath</Name>
+		<Count>1</Count>
+		<Location X="103" Y="1646" Z="0" />
+		<Map>Malas</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GoreFiend</Name>
+		<Count>10</Count>
+		<Location X="103" Y="1656" Z="0" />
+		<Map>Malas</Map>
+		<MinDelay>PT15S</MinDelay>
+		<MaxDelay>PT30S</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Emerillo</Name>
+		<Count>1</Count>
+		<Location X="82" Y="1649" Z="0" />
+		<Map>Malas</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Cohenn</Name>
+		<Count>1</Count>
+		<Location X="88" Y="1639" Z="0" />
+		<Map>Malas</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>LadyMarai</Name>
+		<Count>1</Count>
+		<Location X="112" Y="1671" Z="0" />
+		<Map>Malas</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Kia</Name>
+		<Count>1</Count>
+		<Location X="82" Y="1644" Z="0" />
+		<Map>Malas</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>RottingCorpse</Name>
+		<Count>4</Count>
+		<Location X="103" Y="1657" Z="0" />
+		<Map>Malas</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

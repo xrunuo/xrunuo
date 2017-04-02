@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>EvilHealer</Name>
+		<Count>1</Count>
+		<Location X="5458" Y="1184" Z="10" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Flags>
+			<CantWalk />
+			<Blessed />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+</Spawners>

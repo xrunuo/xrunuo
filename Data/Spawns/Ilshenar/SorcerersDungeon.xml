@@ -1,0 +1,939 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>Skeleton</Name>
+		<Count>4</Count>
+		<Location X="428" Y="92" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Lich</Name>
+		<Count>1</Count>
+		<Location X="447" Y="11" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>35</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GazerLarva</Name>
+		<Count>2</Count>
+		<Location X="282" Y="20" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Shade</Name>
+		<Count>1</Count>
+		<Location X="447" Y="11" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>35</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HeadlessOne</Name>
+		<Count>4</Count>
+		<Location X="447" Y="11" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>35</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ElderGazer</Name>
+		<Count>1</Count>
+		<Location X="282" Y="20" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>2</Count>
+		<Location X="238" Y="49" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Efreet</Name>
+		<Count>2</Count>
+		<Location X="157" Y="23" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Lich</Name>
+		<Count>1</Count>
+		<Location X="282" Y="20" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Skeleton</Name>
+		<Count>2</Count>
+		<Location X="398" Y="69" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Zombie</Name>
+		<Count>1</Count>
+		<Location X="238" Y="49" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ElderGazer</Name>
+		<Count>1</Count>
+		<Location X="157" Y="23" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Lich</Name>
+		<Count>1</Count>
+		<Location X="310" Y="90" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Shade</Name>
+		<Count>1</Count>
+		<Location X="310" Y="90" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>SkeletalKnight</Name>
+		<Count>1</Count>
+		<Location X="236" Y="128" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>DullCopperElemental</Name>
+		<Count>4</Count>
+		<Location X="310" Y="43" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BoneKnight</Name>
+		<Count>2</Count>
+		<Location X="428" Y="92" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>SkeletalKnight</Name>
+		<Count>1</Count>
+		<Location X="72" Y="71" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BloodElemental</Name>
+		<Count>2</Count>
+		<Location X="158" Y="67" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BloodElemental</Name>
+		<Count>2</Count>
+		<Location X="341" Y="42" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Zombie</Name>
+		<Count>1</Count>
+		<Location X="261" Y="84" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Spectre</Name>
+		<Count>1</Count>
+		<Location X="447" Y="11" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>35</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>1</Count>
+		<Location X="238" Y="49" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>DreadSpider</Name>
+		<Count>1</Count>
+		<Location X="261" Y="84" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Gargoyle</Name>
+		<Count>4</Count>
+		<Location X="447" Y="11" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>35</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>StoneGargoyle</Name>
+		<Count>1</Count>
+		<Location X="447" Y="11" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>35</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Zombie</Name>
+		<Count>2</Count>
+		<Location X="398" Y="69" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>StrongMongbat</Name>
+		<Count>5</Count>
+		<Location X="398" Y="69" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Wraith</Name>
+		<Count>1</Count>
+		<Location X="341" Y="42" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Mummy</Name>
+		<Count>2</Count>
+		<Location X="236" Y="128" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Wyvern</Name>
+		<Count>1</Count>
+		<Location X="261" Y="84" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Lich</Name>
+		<Count>1</Count>
+		<Location X="457" Y="72" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>12</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HellHound</Name>
+		<Count>6</Count>
+		<Location X="264" Y="49" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BoneKnight</Name>
+		<Count>1</Count>
+		<Location X="115" Y="20" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>SkeletalMage</Name>
+		<Count>1</Count>
+		<Location X="236" Y="128" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>SkeletalMage</Name>
+		<Count>1</Count>
+		<Location X="72" Y="71" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Mummy</Name>
+		<Count>2</Count>
+		<Location X="72" Y="71" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GazerLarva</Name>
+		<Count>1</Count>
+		<Location X="398" Y="69" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>StrongMongbat</Name>
+		<Count>4</Count>
+		<Location X="447" Y="11" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>35</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EarthElemental</Name>
+		<Count>2</Count>
+		<Location X="447" Y="11" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>35</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BoneMagi</Name>
+		<Count>2</Count>
+		<Location X="109" Y="44" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>LichLord</Name>
+		<Count>2</Count>
+		<Location X="310" Y="90" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Mummy</Name>
+		<Count>3</Count>
+		<Location X="109" Y="44" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BloodElemental</Name>
+		<Count>1</Count>
+		<Location X="310" Y="90" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>LichLord</Name>
+		<Count>2</Count>
+		<Location X="72" Y="71" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Skeleton</Name>
+		<Count>1</Count>
+		<Location X="261" Y="84" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>SkeletalMage</Name>
+		<Count>1</Count>
+		<Location X="109" Y="44" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PoisonElemental</Name>
+		<Count>1</Count>
+		<Location X="310" Y="90" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FireElemental</Name>
+		<Count>2</Count>
+		<Location X="457" Y="72" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>12</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Imp</Name>
+		<Count>3</Count>
+		<Location X="214" Y="66" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BloodElemental</Name>
+		<Count>1</Count>
+		<Location X="390" Y="33" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Gazer</Name>
+		<Count>4</Count>
+		<Location X="282" Y="20" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EvilMage</Name>
+		<Count>3</Count>
+		<Location X="261" Y="84" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BoneMagi</Name>
+		<Count>1</Count>
+		<Location X="236" Y="128" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Lich</Name>
+		<Count>1</Count>
+		<Location X="428" Y="92" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>SkeletalMage</Name>
+		<Count>1</Count>
+		<Location X="104" Y="84" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BoneKnight</Name>
+		<Count>1</Count>
+		<Location X="236" Y="128" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>WanderingMonk</Name>
+		<Count>2</Count>
+		<Location X="261" Y="84" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>LichLord</Name>
+		<Count>1</Count>
+		<Location X="236" Y="128" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BloodElemental</Name>
+		<Count>2</Count>
+		<Location X="133" Y="114" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>28</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>2</Count>
+		<Location X="157" Y="23" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Mummy</Name>
+		<Count>1</Count>
+		<Location X="157" Y="23" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BloodElemental</Name>
+		<Count>1</Count>
+		<Location X="257" Y="23" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Gazer</Name>
+		<Count>2</Count>
+		<Location X="398" Y="69" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Wraith</Name>
+		<Count>1</Count>
+		<Location X="457" Y="72" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>12</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Gargoyle</Name>
+		<Count>2</Count>
+		<Location X="261" Y="84" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>WaterElemental</Name>
+		<Count>2</Count>
+		<Location X="457" Y="72" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>12</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EvilMageLord</Name>
+		<Count>1</Count>
+		<Location X="158" Y="67" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Gargoyle</Name>
+		<Count>3</Count>
+		<Location X="341" Y="42" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Skeleton</Name>
+		<Count>1</Count>
+		<Location X="457" Y="72" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>12</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Lich</Name>
+		<Count>1</Count>
+		<Location X="261" Y="84" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Wraith</Name>
+		<Count>1</Count>
+		<Location X="261" Y="84" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>Sheep</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Boar</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>WanderingHealer</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GreatHart</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BlackBear</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BrownBear</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Pig</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TimberWolf</Name>
+		<Count>10</Count>
+		<Location X="1675" Y="593" Z="16" />
+		<Map>Trammel</Map>
+		<MinDelay>PT20S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Panther</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>AirElemental</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="650" Z="16" />
+		<Map>Trammel</Map>
+		<MinDelay>PT1H</MinDelay>
+		<MaxDelay>PT1H</MaxDelay>
+		<SpawnRange>60</SpawnRange>
+		<HomeRange>60</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Cougar</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Huntsman</Name>
+		<Count>1</Count>
+		<Location X="1673" Y="594" Z="16" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>2</SpawnRange>
+		<HomeRange>2</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Goat</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TimberWolf</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Horse</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Bird</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Hind</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Cow</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Bull</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Reaper</Name>
+		<Count>1</Count>
+		<Location X="1694" Y="571" Z="16" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GrizzlyBear</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Eagle</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ettin</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="650" Z="16" />
+		<Map>Trammel</Map>
+		<MinDelay>PT1H</MinDelay>
+		<MaxDelay>PT1H</MaxDelay>
+		<SpawnRange>60</SpawnRange>
+		<HomeRange>60</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Orc</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="650" Z="16" />
+		<Map>Trammel</Map>
+		<MinDelay>PT1H</MinDelay>
+		<MaxDelay>PT1H</MaxDelay>
+		<SpawnRange>60</SpawnRange>
+		<HomeRange>60</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>DireWolf</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="640" Z="22" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Harpy</Name>
+		<Count>1</Count>
+		<Location X="1631" Y="650" Z="16" />
+		<Map>Trammel</Map>
+		<MinDelay>PT1H</MinDelay>
+		<MaxDelay>PT1H</MaxDelay>
+		<SpawnRange>60</SpawnRange>
+		<HomeRange>60</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

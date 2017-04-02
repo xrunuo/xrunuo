@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>GolemController</Name>
+		<Count>1</Count>
+		<Location X="1091" Y="701" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>8</SpawnRange>
+		<HomeRange>12</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>JukaMage</Name>
+		<Count>2</Count>
+		<Location X="1085" Y="644" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Golem</Name>
+		<Count>1</Count>
+		<Location X="1091" Y="702" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>8</SpawnRange>
+		<HomeRange>12</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>JukaMage</Name>
+		<Count>2</Count>
+		<Location X="1100" Y="668" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Betrayer</Name>
+		<Count>1</Count>
+		<Location X="1089" Y="668" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>JukaMage</Name>
+		<Count>2</Count>
+		<Location X="1082" Y="638" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Juggernaut</Name>
+		<Count>1</Count>
+		<Location X="1082" Y="660" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>JukaLord</Name>
+		<Count>3</Count>
+		<Location X="1064" Y="654" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT15S</MinDelay>
+		<MaxDelay>PT45S</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>JukaMage</Name>
+		<Count>2</Count>
+		<Location X="1082" Y="664" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GolemController</Name>
+		<Count>2</Count>
+		<Location X="1092" Y="704" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>8</SpawnRange>
+		<HomeRange>12</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>JukaWarrior</Name>
+		<Count>3</Count>
+		<Location X="1055" Y="669" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Golem</Name>
+		<Count>1</Count>
+		<Location X="1092" Y="703" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>8</SpawnRange>
+		<HomeRange>12</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>JukaMage</Name>
+		<Count>2</Count>
+		<Location X="1057" Y="622" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>JukaLord</Name>
+		<Count>3</Count>
+		<Location X="1070" Y="643" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT15S</MinDelay>
+		<MaxDelay>PT45S</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>JukaWarrior</Name>
+		<Count>2</Count>
+		<Location X="1104" Y="676" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Golem</Name>
+		<Count>2</Count>
+		<Location X="1086" Y="655" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>JukaMage</Name>
+		<Count>1</Count>
+		<Location X="1102" Y="635" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Betrayer</Name>
+		<Count>1</Count>
+		<Location X="1097" Y="659" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>JukaWarrior</Name>
+		<Count>2</Count>
+		<Location X="1094" Y="637" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>JukaMage</Name>
+		<Count>2</Count>
+		<Location X="1106" Y="646" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>JukaMage</Name>
+		<Count>2</Count>
+		<Location X="1058" Y="675" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>JukaWarrior</Name>
+		<Count>2</Count>
+		<Location X="1077" Y="673" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>JukaLord</Name>
+		<Count>3</Count>
+		<Location X="1071" Y="626" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>JukaMage</Name>
+		<Count>2</Count>
+		<Location X="1085" Y="626" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Betrayer</Name>
+		<Count>1</Count>
+		<Location X="1097" Y="641" Z="-80" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

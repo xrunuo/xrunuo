@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>GreatHart</Name>
+		<Count>10</Count>
+		<Location X="2696" Y="692" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT10M</MinDelay>
+		<MaxDelay>PT20M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

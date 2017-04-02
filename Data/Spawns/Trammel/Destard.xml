@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>2</Count>
+		<Location X="5169" Y="836" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ShadowWyrm</Name>
+		<Count>1</Count>
+		<Location X="5140" Y="834" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT45S</MinDelay>
+		<MaxDelay>PT1M30S</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5149" Y="908" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FireElemental</Name>
+		<Count>1</Count>
+		<Location X="5141" Y="968" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GiantSerpent</Name>
+		<Count>1</Count>
+		<Location X="5157" Y="997" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Wyvern</Name>
+		<Count>1</Count>
+		<Location X="5157" Y="997" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5235" Y="993" Z="-2" />
+		<Map>Trammel</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT45S</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ShadowWyrm</Name>
+		<Count>1</Count>
+		<Location X="5153" Y="869" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT45S</MinDelay>
+		<MaxDelay>PT1M30S</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>1</Count>
+		<Location X="5245" Y="960" Z="-40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M15S</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Wyvern</Name>
+		<Count>1</Count>
+		<Location X="5293" Y="967" Z="-5" />
+		<Map>Trammel</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Wyvern</Name>
+		<Count>1</Count>
+		<Location X="5152" Y="868" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT45S</MinDelay>
+		<MaxDelay>PT1M30S</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Wyvern</Name>
+		<Count>1</Count>
+		<Location X="5213" Y="918" Z="-40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT45S</MinDelay>
+		<MaxDelay>PT1M30S</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5256" Y="984" Z="-40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M45S</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>1</Count>
+		<Location X="5214" Y="917" Z="-40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT45S</MinDelay>
+		<MaxDelay>PT1M30S</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>1</Count>
+		<Location X="5284" Y="926" Z="-40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>WaterElemental</Name>
+		<Count>4</Count>
+		<Location X="5351" Y="934" Z="-5" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5152" Y="869" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT45S</MinDelay>
+		<MaxDelay>PT1M30S</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Wyvern</Name>
+		<Count>1</Count>
+		<Location X="5284" Y="927" Z="-40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>2</Count>
+		<Location X="5213" Y="917" Z="-40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT45S</MinDelay>
+		<MaxDelay>PT1M30S</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5307" Y="815" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Wyvern</Name>
+		<Count>1</Count>
+		<Location X="5149" Y="907" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Wyvern</Name>
+		<Count>1</Count>
+		<Location X="5306" Y="815" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EvilMage</Name>
+		<Count>1</Count>
+		<Location X="5168" Y="836" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>WaterElemental</Name>
+		<Count>4</Count>
+		<Location X="5203" Y="787" Z="5" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>12</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5268" Y="953" Z="-33" />
+		<Map>Trammel</Map>
+		<MinDelay>PT1M30S</MinDelay>
+		<MaxDelay>PT2M30S</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Wyvern</Name>
+		<Count>1</Count>
+		<Location X="5216" Y="987" Z="-1" />
+		<Map>Trammel</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT45S</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5206" Y="971" Z="-39" />
+		<Map>Trammel</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT45S</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Wyvern</Name>
+		<Count>1</Count>
+		<Location X="5141" Y="835" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT45S</MinDelay>
+		<MaxDelay>PT1M30S</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>AncientWyrm</Name>
+		<Count>1</Count>
+		<Location X="5185" Y="1006" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GiantSerpent</Name>
+		<Count>6</Count>
+		<Location X="5161" Y="940" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>1</Count>
+		<Location X="5317" Y="969" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>1</Count>
+		<Location X="5150" Y="907" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5141" Y="834" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT45S</MinDelay>
+		<MaxDelay>PT1M30S</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>1</Count>
+		<Location X="5270" Y="969" Z="-40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M45S</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GreaterDragon</Name>
+		<Count>1</Count>
+		<Location X="5256" Y="969" Z="-39" />
+		<Map>Trammel</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>8</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+</Spawners>

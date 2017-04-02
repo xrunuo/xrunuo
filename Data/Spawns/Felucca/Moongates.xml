@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>EvilHealer</Name>
+		<Count>3</Count>
+		<Location X="4467" Y="1284" Z="5" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EvilHealer</Name>
+		<Count>1</Count>
+		<Location X="1336" Y="1997" Z="5" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EvilHealer</Name>
+		<Count>3</Count>
+		<Location X="771" Y="752" Z="5" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GreatHart</Name>
+		<Count>10</Count>
+		<Location X="2696" Y="692" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10M</MinDelay>
+		<MaxDelay>PT20M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>WanderingHealer</Name>
+		<Count>1</Count>
+		<Location X="1336" Y="1997" Z="6" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EvilHealer</Name>
+		<Count>3</Count>
+		<Location X="643" Y="2067" Z="5" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EvilHealer</Name>
+		<Count>3</Count>
+		<Location X="1828" Y="2948" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EvilHealer</Name>
+		<Count>3</Count>
+		<Location X="1499" Y="3771" Z="5" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>Alchemist</Name>
+		<Count>1</Count>
+		<Location X="4416" Y="1133" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Banker</Name>
+		<Count>1</Count>
+		<Location X="4471" Y="1156" Z="20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PlagueBeast</Name>
+		<Count>0</Count>
+		<Location X="4485" Y="1385" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EscortableSeekerOfAdventure</Name>
+		<Count>1</Count>
+		<Location X="4398" Y="1049" Z="-2" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Cobbler</Name>
+		<Count>1</Count>
+		<Location X="4417" Y="1064" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Herbalist</Name>
+		<Count>1</Count>
+		<Location X="4409" Y="1111" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>CustomHairstylist</Name>
+		<Count>1</Count>
+		<Location X="4416" Y="1133" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>0</Count>
+		<Location X="4512" Y="1371" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HireFighter</Name>
+		<Count>1</Count>
+		<Location X="4400" Y="1097" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Sphynx</Name>
+		<Count>0</Count>
+		<Location X="4531" Y="1363" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Quagmire</Name>
+		<Count>0</Count>
+		<Location X="4485" Y="1385" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BogThing</Name>
+		<Count>0</Count>
+		<Location X="4485" Y="1385" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>SilverSteed</Name>
+		<Count>0</Count>
+		<Location X="4506" Y="1358" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Reptalon</Name>
+		<Count>0</Count>
+		<Location X="4529" Y="1386" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>MageGuildmaster</Name>
+		<Count>1</Count>
+		<Location X="4545" Y="860" Z="30" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Yamandon</Name>
+		<Count>0</Count>
+		<Location X="4498" Y="1393" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Butcher</Name>
+		<Count>1</Count>
+		<Location X="4481" Y="1085" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Weaponsmith</Name>
+		<Count>1</Count>
+		<Location X="4392" Y="1117" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GreyWolf</Name>
+		<Count>0</Count>
+		<Location X="4494" Y="1363" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Alchemist</Name>
+		<Count>1</Count>
+		<Location X="4409" Y="1111" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HireMage</Name>
+		<Count>1</Count>
+		<Location X="4372" Y="1107" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Farmer</Name>
+		<Count>1</Count>
+		<Location X="4481" Y="1085" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Mage</Name>
+		<Count>1</Count>
+		<Location X="4289" Y="952" Z="10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Herbalist</Name>
+		<Count>1</Count>
+		<Location X="4416" Y="1133" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Fisherman</Name>
+		<Count>1</Count>
+		<Location X="4406" Y="1038" Z="-2" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Alchemist</Name>
+		<Count>1</Count>
+		<Location X="4448" Y="1090" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>MageGuildmaster</Name>
+		<Count>1</Count>
+		<Location X="4448" Y="1090" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Darius</Name>
+		<Count>1</Count>
+		<Location X="4309" Y="950" Z="10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Crane</Name>
+		<Count>0</Count>
+		<Location X="4500" Y="1382" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>WhiteWolf</Name>
+		<Count>0</Count>
+		<Location X="4494" Y="1363" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>CustomHairstylist</Name>
+		<Count>1</Count>
+		<Location X="4409" Y="1111" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>RealEstateBroker</Name>
+		<Count>1</Count>
+		<Location X="4416" Y="1085" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Butcher</Name>
+		<Count>1</Count>
+		<Location X="4395" Y="1137" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EscortableSeekerOfAdventure</Name>
+		<Count>1</Count>
+		<Location X="4372" Y="1096" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Architect</Name>
+		<Count>1</Count>
+		<Location X="4416" Y="1085" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HealerGuildmaster</Name>
+		<Count>1</Count>
+		<Location X="4394" Y="1083" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Armorer</Name>
+		<Count>1</Count>
+		<Location X="4392" Y="1117" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Minter</Name>
+		<Count>1</Count>
+		<Location X="4471" Y="1156" Z="20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TailorGuildmaster</Name>
+		<Count>1</Count>
+		<Location X="4458" Y="1060" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Carpenter</Name>
+		<Count>1</Count>
+		<Location X="4416" Y="1085" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Weaver</Name>
+		<Count>1</Count>
+		<Location X="4458" Y="1060" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Weaponsmith</Name>
+		<Count>1</Count>
+		<Location X="4440" Y="1162" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Scribe</Name>
+		<Count>1</Count>
+		<Location X="4289" Y="953" Z="10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Armorer</Name>
+		<Count>1</Count>
+		<Location X="4440" Y="1162" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Mage</Name>
+		<Count>1</Count>
+		<Location X="4448" Y="1090" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Healer</Name>
+		<Count>1</Count>
+		<Location X="4394" Y="1083" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Tailor</Name>
+		<Count>1</Count>
+		<Location X="4458" Y="1060" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Baker</Name>
+		<Count>1</Count>
+		<Location X="4392" Y="1068" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PolarBear</Name>
+		<Count>0</Count>
+		<Location X="4511" Y="1393" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Changeling</Name>
+		<Count>0</Count>
+		<Location X="4519" Y="1358" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Provisioner</Name>
+		<Count>1</Count>
+		<Location X="4417" Y="1064" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EscortableMage</Name>
+		<Count>1</Count>
+		<Location X="4398" Y="1049" Z="-2" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>0</Count>
+		<Location X="4512" Y="1371" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Fabrizio</Name>
+		<Count>1</Count>
+		<Location X="4290" Y="995" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Rat</Name>
+		<Count>12</Count>
+		<Location X="4437" Y="1115" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>70</SpawnRange>
+		<HomeRange>70</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>DireWolf</Name>
+		<Count>0</Count>
+		<Location X="4494" Y="1363" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Wyvern</Name>
+		<Count>0</Count>
+		<Location X="4512" Y="1381" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

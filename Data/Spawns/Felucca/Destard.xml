@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>ShadowWyrm</Name>
+		<Count>1</Count>
+		<Location X="5140" Y="834" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT45S</MinDelay>
+		<MaxDelay>PT1M30S</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GreaterDragon</Name>
+		<Count>2</Count>
+		<Location X="5205" Y="935" Z="-39" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT45S</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5235" Y="993" Z="-2" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>3</Count>
+		<Location X="5245" Y="960" Z="-40" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GreaterDragon</Name>
+		<Count>1</Count>
+		<Location X="5229" Y="921" Z="-36" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT45S</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>2</Count>
+		<Location X="5213" Y="917" Z="-40" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5256" Y="984" Z="-40" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Wyvern</Name>
+		<Count>1</Count>
+		<Location X="5157" Y="997" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GreaterDragon</Name>
+		<Count>2</Count>
+		<Location X="5276" Y="932" Z="-40" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT45S</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>WaterElemental</Name>
+		<Count>4</Count>
+		<Location X="5351" Y="934" Z="-5" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5206" Y="971" Z="-39" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>AncientWyrm</Name>
+		<Count>1</Count>
+		<Location X="5185" Y="1006" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ShadowWyrm</Name>
+		<Count>1</Count>
+		<Location X="5153" Y="869" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT45S</MinDelay>
+		<MaxDelay>PT1M30S</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EvilMage</Name>
+		<Count>1</Count>
+		<Location X="5168" Y="836" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GreaterDragon</Name>
+		<Count>1</Count>
+		<Location X="5165" Y="947" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT45S</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>1</Count>
+		<Location X="5214" Y="917" Z="-40" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GreaterDragon</Name>
+		<Count>2</Count>
+		<Location X="5220" Y="971" Z="-40" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT45S</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>1</Count>
+		<Location X="5284" Y="926" Z="-40" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FireElemental</Name>
+		<Count>4</Count>
+		<Location X="5141" Y="968" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>2</Count>
+		<Location X="5169" Y="836" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Drake</Name>
+		<Count>1</Count>
+		<Location X="5268" Y="953" Z="-33" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>4</Count>
+		<Location X="5257" Y="925" Z="-40" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dragon</Name>
+		<Count>1</Count>
+		<Location X="5270" Y="969" Z="-40" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

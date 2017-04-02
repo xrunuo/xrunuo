@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>Scorpion</Name>
+		<Count>0</Count>
+		<Location X="4296" Y="3357" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>6</SpawnRange>
+		<HomeRange>12</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Corpser</Name>
+		<Count>0</Count>
+		<Location X="4281" Y="3369" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BrownBear</Name>
+		<Count>2</Count>
+		<Location X="4159" Y="3381" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>150</SpawnRange>
+		<HomeRange>150</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Corpser</Name>
+		<Count>0</Count>
+		<Location X="4292" Y="3366" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>8</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GreyWolf</Name>
+		<Count>5</Count>
+		<Location X="4159" Y="3380" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>150</SpawnRange>
+		<HomeRange>150</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Gorilla</Name>
+		<Count>2</Count>
+		<Location X="4161" Y="3379" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>150</SpawnRange>
+		<HomeRange>150</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Corpser</Name>
+		<Count>0</Count>
+		<Location X="4294" Y="3330" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EvilHealer</Name>
+		<Count>0</Count>
+		<Location X="4277" Y="3392" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT1S</MinDelay>
+		<MaxDelay>PT2S</MaxDelay>
+		<SpawnRange>8</SpawnRange>
+		<HomeRange>8</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Scorpion</Name>
+		<Count>0</Count>
+		<Location X="4280" Y="3364" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>11</SpawnRange>
+		<HomeRange>12</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Hind</Name>
+		<Count>2</Count>
+		<Location X="4160" Y="3380" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>150</SpawnRange>
+		<HomeRange>150</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Harpy</Name>
+		<Count>3</Count>
+		<Location X="4160" Y="3378" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>150</SpawnRange>
+		<HomeRange>150</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GiantSerpent</Name>
+		<Count>3</Count>
+		<Location X="4161" Y="3380" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>150</SpawnRange>
+		<HomeRange>150</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TimberWolf</Name>
+		<Count>5</Count>
+		<Location X="4159" Y="3378" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>150</SpawnRange>
+		<HomeRange>150</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TropicalBird</Name>
+		<Count>5</Count>
+		<Location X="4160" Y="3379" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>150</SpawnRange>
+		<HomeRange>150</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GreatHart</Name>
+		<Count>3</Count>
+		<Location X="4161" Y="3378" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>150</SpawnRange>
+		<HomeRange>150</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>AncientWyrm</Name>
+		<Count>0</Count>
+		<Location X="4267" Y="3393" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>12</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Bird</Name>
+		<Count>5</Count>
+		<Location X="4159" Y="3379" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>150</SpawnRange>
+		<HomeRange>150</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Harpy</Name>
+		<Count>2</Count>
+		<Location X="4160" Y="3381" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>150</SpawnRange>
+		<HomeRange>150</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Sewerrat</Name>
+		<Count>3</Count>
+		<Location X="4161" Y="3381" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>150</SpawnRange>
+		<HomeRange>150</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>WanderingHealer</Name>
+		<Count>1</Count>
+		<Location X="4173" Y="3324" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Scorpion</Name>
+		<Count>0</Count>
+		<Location X="4290" Y="3328" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>7</SpawnRange>
+		<HomeRange>35</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Scorpion</Name>
+		<Count>0</Count>
+		<Location X="4268" Y="3352" Z="0" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>2</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+</Spawners>

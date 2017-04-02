@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>Ronin</Name>
+		<Count>8</Count>
+		<Location X="284" Y="423" Z="31" />
+		<Map>Tokuno</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>40</SpawnRange>
+		<HomeRange>40</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ronin</Name>
+		<Count>8</Count>
+		<Location X="323" Y="374" Z="32" />
+		<Map>Tokuno</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>40</SpawnRange>
+		<HomeRange>40</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ronin</Name>
+		<Count>8</Count>
+		<Location X="326" Y="454" Z="32" />
+		<Map>Tokuno</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>40</SpawnRange>
+		<HomeRange>40</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

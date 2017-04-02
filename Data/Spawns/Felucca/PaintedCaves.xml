@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>Lurg</Name>
+		<Count>1</Count>
+		<Location X="6263" Y="880" Z="2" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M30S</MinDelay>
+		<MaxDelay>PT4M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Rat</Name>
+		<Count>4</Count>
+		<Location X="6280" Y="881" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Troglodyte</Name>
+		<Count>10</Count>
+		<Location X="6280" Y="882" Z="-3" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Grobu</Name>
+		<Count>1</Count>
+		<Location X="6281" Y="879" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M30S</MinDelay>
+		<MaxDelay>PT4M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

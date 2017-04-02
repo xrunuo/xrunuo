@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>CorrosiveSlime</Name>
+		<Count>2</Count>
+		<Location X="6321" Y="354" Z="60" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PoisonElemental</Name>
+		<Count>2</Count>
+		<Location X="6329" Y="533" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ChaosDaemon</Name>
+		<Count>1</Count>
+		<Location X="6276" Y="464" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ToxicElemental</Name>
+		<Count>1</Count>
+		<Location X="6225" Y="340" Z="60" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PoisonElemental</Name>
+		<Count>3</Count>
+		<Location X="6346" Y="583" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EarthElemental</Name>
+		<Count>2</Count>
+		<Location X="6355" Y="355" Z="60" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Succubus</Name>
+		<Count>2</Count>
+		<Location X="6277" Y="464" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Putrefier</Name>
+		<Count>1</Count>
+		<Location X="6283" Y="623" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Succubus</Name>
+		<Count>1</Count>
+		<Location X="6386" Y="578" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Moloch</Name>
+		<Count>3</Count>
+		<Location X="6276" Y="463" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ToxicElemental</Name>
+		<Count>2</Count>
+		<Location X="6343" Y="454" Z="-40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PlagueBeast</Name>
+		<Count>3</Count>
+		<Location X="6346" Y="582" Z="-51" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PoisonElemental</Name>
+		<Count>3</Count>
+		<Location X="6300" Y="599" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EarthElemental</Name>
+		<Count>2</Count>
+		<Location X="6281" Y="353" Z="60" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PlagueBeast</Name>
+		<Count>1</Count>
+		<Location X="6414" Y="348" Z="-39" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PlagueBeast</Name>
+		<Count>2</Count>
+		<Location X="6343" Y="453" Z="-41" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>CorrosiveSlime</Name>
+		<Count>3</Count>
+		<Location X="6474" Y="538" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>InterredGrizzle</Name>
+		<Count>3</Count>
+		<Location X="6475" Y="538" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>InterredGrizzle</Name>
+		<Count>3</Count>
+		<Location X="6346" Y="581" Z="-51" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PlagueBeast</Name>
+		<Count>3</Count>
+		<Location X="6425" Y="573" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>CorrosiveSlime</Name>
+		<Count>1</Count>
+		<Location X="6414" Y="347" Z="-39" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>3</Count>
+		<Location X="6275" Y="464" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>CorrosiveSlime</Name>
+		<Count>3</Count>
+		<Location X="6347" Y="582" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>1</Count>
+		<Location X="6474" Y="537" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>CorrosiveSlime</Name>
+		<Count>1</Count>
+		<Location X="6247" Y="386" Z="60" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ToxicElemental</Name>
+		<Count>2</Count>
+		<Location X="6321" Y="355" Z="60" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ToxicElemental</Name>
+		<Count>1</Count>
+		<Location X="6384" Y="400" Z="60" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>InterredGrizzle</Name>
+		<Count>3</Count>
+		<Location X="6426" Y="573" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>1</Count>
+		<Location X="6386" Y="579" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>CorrosiveSlime</Name>
+		<Count>3</Count>
+		<Location X="6427" Y="573" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PlagueBeast</Name>
+		<Count>2</Count>
+		<Location X="6384" Y="579" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PoisonElemental</Name>
+		<Count>2</Count>
+		<Location X="6344" Y="454" Z="-40" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PoisonElemental</Name>
+		<Count>1</Count>
+		<Location X="6415" Y="348" Z="-38" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>InterredGrizzle</Name>
+		<Count>3</Count>
+		<Location X="6385" Y="578" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PlagueBeast</Name>
+		<Count>2</Count>
+		<Location X="6476" Y="537" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PlagueBeastLord</Name>
+		<Count>1</Count>
+		<Location X="6347" Y="583" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>2</Count>
+		<Location X="6426" Y="572" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ToxicElemental</Name>
+		<Count>1</Count>
+		<Location X="6415" Y="347" Z="-39" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>CorrosiveSlime</Name>
+		<Count>1</Count>
+		<Location X="6275" Y="463" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Succubus</Name>
+		<Count>1</Count>
+		<Location X="6475" Y="537" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ToxicElemental</Name>
+		<Count>2</Count>
+		<Location X="6356" Y="355" Z="60" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PoisonElemental</Name>
+		<Count>2</Count>
+		<Location X="6336" Y="546" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PoisonElemental</Name>
+		<Count>1</Count>
+		<Location X="6248" Y="386" Z="60" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Succubus</Name>
+		<Count>1</Count>
+		<Location X="6476" Y="538" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Slime</Name>
+		<Count>3</Count>
+		<Location X="6385" Y="579" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>CorrosiveSlime</Name>
+		<Count>2</Count>
+		<Location X="6344" Y="453" Z="-41" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>2</Count>
+		<Location X="6303" Y="461" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ArcaneDaemon</Name>
+		<Count>3</Count>
+		<Location X="6277" Y="463" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>InterredGrizzle</Name>
+		<Count>1</Count>
+		<Location X="6301" Y="599" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EarthElemental</Name>
+		<Count>1</Count>
+		<Location X="6384" Y="399" Z="60" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>CorrosiveSlime</Name>
+		<Count>3</Count>
+		<Location X="6299" Y="599" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>1</Count>
+		<Location X="6427" Y="572" Z="-50" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EarthElemental</Name>
+		<Count>1</Count>
+		<Location X="6226" Y="340" Z="60" />
+		<Map>Trammel</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

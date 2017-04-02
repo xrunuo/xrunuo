@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>GreaterExplosionPotion</Name>
+		<Count>1</Count>
+		<Location X="6070" Y="1228" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT11S</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ConflagrationPotion</Name>
+		<Count>1</Count>
+		<Location X="6076" Y="1230" Z="1" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT11S</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Succubus</Name>
+		<Count>1</Count>
+		<Location X="5502" Y="1189" Z="7" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT15S</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>8</HomeRange>
+	</Spawner>
+	<Spawner>
+		<Name>GreaterConflagrationPotion</Name>
+		<Count>1</Count>
+		<Location X="6067" Y="1222" Z="1" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT11S</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FireDaemon</Name>
+		<Count>1</Count>
+		<Location X="5487" Y="1189" Z="7" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT15S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GreaterDragon</Name>
+		<Count>1</Count>
+		<Location X="5494" Y="1189" Z="7" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT15S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>RefreshPotion</Name>
+		<Count>1</Count>
+		<Location X="5505" Y="1187" Z="7" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT20S</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ExplodingTarPotion</Name>
+		<Count>1</Count>
+		<Location X="6076" Y="1220" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT11S</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EvilHealer</Name>
+		<Count>1</Count>
+		<Location X="5550" Y="1151" Z="1" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>RefreshPotion</Name>
+		<Count>1</Count>
+		<Location X="5504" Y="1199" Z="7" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT20S</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Necromancer</Name>
+		<Count>1</Count>
+		<Location X="5993" Y="1032" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>AnimalTrainer</Name>
+		<Count>1</Count>
+		<Location X="5757" Y="1215" Z="5" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<CantWalk />
+			<Blessed />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EvilHealer</Name>
+		<Count>1</Count>
+		<Location X="5478" Y="1187" Z="27" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<CantWalk />
+			<Blessed />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EvilHealer</Name>
+		<Count>1</Count>
+		<Location X="5556" Y="1270" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ConflagrationPotion</Name>
+		<Count>1</Count>
+		<Location X="6022" Y="1216" Z="23" />
+		<Map>Felucca</Map>
+		<MinDelay>PT15S</MinDelay>
+		<MaxDelay>PT20S</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>RefreshPotion</Name>
+		<Count>1</Count>
+		<Location X="5484" Y="1199" Z="7" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT20S</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ConflagrationPotion</Name>
+		<Count>1</Count>
+		<Location X="6063" Y="1235" Z="1" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT11S</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>RefreshPotion</Name>
+		<Count>1</Count>
+		<Location X="5497" Y="1197" Z="7" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT20S</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GreaterConflagrationPotion</Name>
+		<Count>1</Count>
+		<Location X="6067" Y="1237" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT11S</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Banker</Name>
+		<Count>1</Count>
+		<Location X="6002" Y="1031" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<CantWalk />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>AnimalTrainer</Name>
+		<Count>1</Count>
+		<Location X="5554" Y="1162" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Bowyer</Name>
+		<Count>2</Count>
+		<Location X="5993" Y="1027" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>1</HomeRange>
+		<Flags>
+			<CantWalk />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>WhippingVine</Name>
+		<Count>1</Count>
+		<Location X="5487" Y="1200" Z="7" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT20S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EvilHealer</Name>
+		<Count>1</Count>
+		<Location X="5473" Y="1230" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ConflagrationPotion</Name>
+		<Count>1</Count>
+		<Location X="6061" Y="1228" Z="1" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT11S</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Pixie</Name>
+		<Count>4</Count>
+		<Location X="5482" Y="1189" Z="7" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>ConflagrationPotion</Name>
+		<Count>1</Count>
+		<Location X="6021" Y="1222" Z="25" />
+		<Map>Felucca</Map>
+		<MinDelay>PT15S</MinDelay>
+		<MaxDelay>PT20S</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>InterredGrizzle</Name>
+		<Count>1</Count>
+		<Location X="5506" Y="1199" Z="7" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT15S</MaxDelay>
+		<SpawnRange>1</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+</Spawners>

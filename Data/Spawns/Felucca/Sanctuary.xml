@@ -1,0 +1,1004 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>OgreLord</Name>
+		<Count>1</Count>
+		<Location X="6266" Y="79" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ratman</Name>
+		<Count>4</Count>
+		<Location X="6351" Y="39" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>18</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Orc</Name>
+		<Count>10</Count>
+		<Location X="6180" Y="79" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Cow</Name>
+		<Count>3</Count>
+		<Location X="6263" Y="111" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Dallid</Name>
+		<Count>1</Count>
+		<Location X="6276" Y="105" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Doppleganger</Name>
+		<Count>2</Count>
+		<Location X="6267" Y="78" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Rat</Name>
+		<Count>2</Count>
+		<Location X="6352" Y="101" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>6</SpawnRange>
+		<HomeRange>18</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Beotham</Name>
+		<Count>1</Count>
+		<Location X="6286" Y="115" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ratman</Name>
+		<Count>1</Count>
+		<Location X="6323" Y="60" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>6</SpawnRange>
+		<HomeRange>8</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OrcishLord</Name>
+		<Count>1</Count>
+		<Location X="6170" Y="148" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Rat</Name>
+		<Count>1</Count>
+		<Location X="6330" Y="98" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>6</SpawnRange>
+		<HomeRange>13</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Gargoyle</Name>
+		<Count>2</Count>
+		<Location X="6176" Y="159" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ettin</Name>
+		<Count>1</Count>
+		<Location X="6179" Y="74" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Gargoyle</Name>
+		<Count>1</Count>
+		<Location X="6195" Y="130" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Koole</Name>
+		<Count>1</Count>
+		<Location X="6254" Y="109" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5S</MinDelay>
+		<MaxDelay>PT10S</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Tallinin</Name>
+		<Count>1</Count>
+		<Location X="6283" Y="121" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Rollarn</Name>
+		<Count>1</Count>
+		<Location X="6245" Y="113" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Changeling</Name>
+		<Count>2</Count>
+		<Location X="6266" Y="78" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Bird</Name>
+		<Count>10</Count>
+		<Location X="6262" Y="110" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GargoyleDestroyer</Name>
+		<Count>1</Count>
+		<Location X="6178" Y="143" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>2</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Rat</Name>
+		<Count>3</Count>
+		<Location X="6373" Y="56" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>12</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Rat</Name>
+		<Count>1</Count>
+		<Location X="6322" Y="125" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>6</SpawnRange>
+		<HomeRange>13</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Oolua</Name>
+		<Count>1</Count>
+		<Location X="6251" Y="125" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Danoel</Name>
+		<Count>1</Count>
+		<Location X="6282" Y="116" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>0</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Chiikkaha</Name>
+		<Count>1</Count>
+		<Location X="6380" Y="131" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>6</HomeRange>
+	</Spawner>
+	<Spawner>
+		<Name>RatmanArcher</Name>
+		<Count>5</Count>
+		<Location X="6173" Y="142" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ratman</Name>
+		<Count>2</Count>
+		<Location X="6373" Y="54" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>12</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Rat</Name>
+		<Count>1</Count>
+		<Location X="6380" Y="95" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>6</SpawnRange>
+		<HomeRange>13</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Doppleganger</Name>
+		<Count>1</Count>
+		<Location X="6188" Y="74" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ratman</Name>
+		<Count>5</Count>
+		<Location X="6320" Y="32" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Cyclops</Name>
+		<Count>1</Count>
+		<Location X="6180" Y="74" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Rat</Name>
+		<Count>2</Count>
+		<Location X="6366" Y="139" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>12</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ratman</Name>
+		<Count>1</Count>
+		<Location X="6339" Y="128" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>6</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ettin</Name>
+		<Count>1</Count>
+		<Location X="6195" Y="131" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ratman</Name>
+		<Count>1</Count>
+		<Location X="6328" Y="48" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>6</SpawnRange>
+		<HomeRange>8</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Cyclops</Name>
+		<Count>1</Count>
+		<Location X="6202" Y="106" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>RatmanMage</Name>
+		<Count>3</Count>
+		<Location X="6250" Y="46" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Szavetra</Name>
+		<Count>1</Count>
+		<Location X="6236" Y="40" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>6</HomeRange>
+	</Spawner>
+	<Spawner>
+		<Name>Ogre</Name>
+		<Count>1</Count>
+		<Location X="6267" Y="79" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Canir</Name>
+		<Count>1</Count>
+		<Location X="6275" Y="129" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Boar</Name>
+		<Count>4</Count>
+		<Location X="6263" Y="110" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ratman</Name>
+		<Count>2</Count>
+		<Location X="6380" Y="102" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ratman</Name>
+		<Count>2</Count>
+		<Location X="6317" Y="74" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>6</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Brae</Name>
+		<Count>1</Count>
+		<Location X="6267" Y="123" Z="-1" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>RatmanArcher</Name>
+		<Count>3</Count>
+		<Location X="6250" Y="47" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Cyclops</Name>
+		<Count>1</Count>
+		<Location X="6250" Y="48" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ratman</Name>
+		<Count>1</Count>
+		<Location X="6366" Y="123" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>9</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Rat</Name>
+		<Count>5</Count>
+		<Location X="6185" Y="130" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT30S</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ratman</Name>
+		<Count>5</Count>
+		<Location X="6171" Y="142" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ratman</Name>
+		<Count>1</Count>
+		<Location X="6323" Y="108" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>6</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>RatmanMage</Name>
+		<Count>5</Count>
+		<Location X="6172" Y="142" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OrcBrute</Name>
+		<Count>1</Count>
+		<Location X="6179" Y="80" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Rat</Name>
+		<Count>2</Count>
+		<Location X="6353" Y="38" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ratman</Name>
+		<Count>3</Count>
+		<Location X="6352" Y="100" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>12</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Tiana</Name>
+		<Count>1</Count>
+		<Location X="6259" Y="113" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Rat</Name>
+		<Count>2</Count>
+		<Location X="6368" Y="85" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>6</SpawnRange>
+		<HomeRange>13</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>MougGuur</Name>
+		<Count>1</Count>
+		<Location X="6179" Y="90" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>6</HomeRange>
+	</Spawner>
+	<Spawner>
+		<Name>OrcChopper</Name>
+		<Count>5</Count>
+		<Location X="6180" Y="80" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Onallan</Name>
+		<Count>1</Count>
+		<Location X="6258" Y="113" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Rat</Name>
+		<Count>5</Count>
+		<Location X="6255" Y="52" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT30S</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ogre</Name>
+		<Count>1</Count>
+		<Location X="6178" Y="137" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Rat</Name>
+		<Count>3</Count>
+		<Location X="6320" Y="27" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>18</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ratman</Name>
+		<Count>5</Count>
+		<Location X="6250" Y="45" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Titan</Name>
+		<Count>1</Count>
+		<Location X="6251" Y="47" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ratman</Name>
+		<Count>1</Count>
+		<Location X="6325" Y="135" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>6</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Orc</Name>
+		<Count>10</Count>
+		<Location X="6251" Y="46" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OrcishLord</Name>
+		<Count>1</Count>
+		<Location X="6251" Y="48" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Rat</Name>
+		<Count>3</Count>
+		<Location X="6351" Y="72" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>12</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Chicken</Name>
+		<Count>5</Count>
+		<Location X="6262" Y="111" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ratman</Name>
+		<Count>1</Count>
+		<Location X="6356" Y="140" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>6</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OrcishMage</Name>
+		<Count>3</Count>
+		<Location X="6179" Y="79" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ratman</Name>
+		<Count>2</Count>
+		<Location X="6326" Y="84" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>6</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Titan</Name>
+		<Count>1</Count>
+		<Location X="6203" Y="106" Z="0" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>OgreLord</Name>
+		<Count>1</Count>
+		<Location X="6186" Y="120" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BatteredBucket</Name>
+		<Count>1</Count>
+		<Location X="6247" Y="50" Z="-10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>30</SpawnRange>
+		<HomeRange>30</HomeRange>
+	</Spawner>
+	<Spawner>
+		<Name>Rat</Name>
+		<Count>1</Count>
+		<Location X="6340" Y="127" Z="-20" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>6</SpawnRange>
+		<HomeRange>13</HomeRange>
+		<Flags>
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+</Spawners>

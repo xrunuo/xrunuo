@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>HellHound</Name>
+		<Count>1</Count>
+		<Location X="111" Y="537" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>7</SpawnRange>
+		<HomeRange>7</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HeadlessOne</Name>
+		<Count>1</Count>
+		<Location X="96" Y="491" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>7</SpawnRange>
+		<HomeRange>7</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>1</Count>
+		<Location X="182" Y="676" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>7</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>1</Count>
+		<Location X="95" Y="492" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>1</Count>
+		<Location X="78" Y="553" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Succubus</Name>
+		<Count>1</Count>
+		<Location X="99" Y="461" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FanDancer</Name>
+		<Count>1</Count>
+		<Location X="65" Y="391" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>1</Count>
+		<Location X="159" Y="611" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>7</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>1</Count>
+		<Location X="53" Y="475" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FanDancer</Name>
+		<Count>1</Count>
+		<Location X="98" Y="386" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>1</Count>
+		<Location X="106" Y="685" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT4M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>13</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>1</Count>
+		<Location X="178" Y="646" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>8</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FanDancer</Name>
+		<Count>1</Count>
+		<Location X="79" Y="373" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HordeMinion</Name>
+		<Count>1</Count>
+		<Location X="99" Y="387" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Ronin</Name>
+		<Count>1</Count>
+		<Location X="84" Y="537" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HellHound</Name>
+		<Count>1</Count>
+		<Location X="134" Y="651" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HordeMinion</Name>
+		<Count>2</Count>
+		<Location X="170" Y="666" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FanDancer</Name>
+		<Count>1</Count>
+		<Location X="147" Y="646" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>8</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HeadlessOne</Name>
+		<Count>2</Count>
+		<Location X="120" Y="414" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>1</Count>
+		<Location X="61" Y="370" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FanDancer</Name>
+		<Count>2</Count>
+		<Location X="110" Y="361" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HordeMinion</Name>
+		<Count>2</Count>
+		<Location X="119" Y="415" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FanDancer</Name>
+		<Count>1</Count>
+		<Location X="82" Y="331" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>3</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HeadlessOne</Name>
+		<Count>1</Count>
+		<Location X="98" Y="387" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Succubus</Name>
+		<Count>1</Count>
+		<Location X="66" Y="547" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT1M30S</MinDelay>
+		<MaxDelay>PT2M30S</MaxDelay>
+		<SpawnRange>3</SpawnRange>
+		<HomeRange>3</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HordeMinion</Name>
+		<Count>2</Count>
+		<Location X="70" Y="383" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>7</SpawnRange>
+		<HomeRange>7</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Oni</Name>
+		<Count>1</Count>
+		<Location X="183" Y="630" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>9</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FanDancer</Name>
+		<Count>1</Count>
+		<Location X="82" Y="342" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>3</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HeadlessOne</Name>
+		<Count>3</Count>
+		<Location X="71" Y="384" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>7</SpawnRange>
+		<HomeRange>7</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>1</Count>
+		<Location X="74" Y="474" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>1</Count>
+		<Location X="110" Y="650" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HellHound</Name>
+		<Count>2</Count>
+		<Location X="173" Y="619" Z="1" />
+		<Map>Malas</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>1</Count>
+		<Location X="173" Y="619" Z="1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>7</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>1</Count>
+		<Location X="112" Y="537" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>8</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FanDancer</Name>
+		<Count>1</Count>
+		<Location X="94" Y="328" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>3</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HellCat</Name>
+		<Count>1</Count>
+		<Location X="134" Y="651" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HeadlessOne</Name>
+		<Count>2</Count>
+		<Location X="148" Y="645" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>8</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FanDancer</Name>
+		<Count>1</Count>
+		<Location X="75" Y="563" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HordeMinion</Name>
+		<Count>2</Count>
+		<Location X="152" Y="623" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>8</SpawnRange>
+		<HomeRange>8</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HeadlessOne</Name>
+		<Count>3</Count>
+		<Location X="64" Y="489" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>7</SpawnRange>
+		<HomeRange>7</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Succubus</Name>
+		<Count>1</Count>
+		<Location X="142" Y="692" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT4M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>12</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HellHound</Name>
+		<Count>1</Count>
+		<Location X="106" Y="684" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>7</SpawnRange>
+		<HomeRange>7</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HordeMinion</Name>
+		<Count>1</Count>
+		<Location X="111" Y="361" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FanDancer</Name>
+		<Count>1</Count>
+		<Location X="153" Y="622" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>8</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HordeMinion</Name>
+		<Count>1</Count>
+		<Location X="99" Y="463" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>7</SpawnRange>
+		<HomeRange>7</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HeadlessOne</Name>
+		<Count>1</Count>
+		<Location X="99" Y="462" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>7</SpawnRange>
+		<HomeRange>7</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HordeMinion</Name>
+		<Count>3</Count>
+		<Location X="64" Y="488" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>7</SpawnRange>
+		<HomeRange>7</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Succubus</Name>
+		<Count>2</Count>
+		<Location X="63" Y="488" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>14</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FanDancer</Name>
+		<Count>1</Count>
+		<Location X="134" Y="651" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>9</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>1</Count>
+		<Location X="56" Y="495" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HellHound</Name>
+		<Count>2</Count>
+		<Location X="79" Y="552" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>1</Count>
+		<Location X="73" Y="503" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HeadlessOne</Name>
+		<Count>1</Count>
+		<Location X="110" Y="360" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HellCat</Name>
+		<Count>2</Count>
+		<Location X="169" Y="665" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FanDancer</Name>
+		<Count>1</Count>
+		<Location X="120" Y="415" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M30S</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HellHound</Name>
+		<Count>2</Count>
+		<Location X="127" Y="625" Z="-1" />
+		<Map>Malas</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>9</SpawnRange>
+		<HomeRange>9</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

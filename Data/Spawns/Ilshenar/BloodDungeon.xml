@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>1</Count>
+		<Location X="2102" Y="925" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M30S</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Imp</Name>
+		<Count>4</Count>
+		<Location X="2074" Y="838" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BloodElemental</Name>
+		<Count>1</Count>
+		<Location X="2170" Y="908" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HellCat</Name>
+		<Count>1</Count>
+		<Location X="2050" Y="861" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Balron</Name>
+		<Count>1</Count>
+		<Location X="2118" Y="904" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M30S</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>1</Count>
+		<Location X="2114" Y="954" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M30S</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>1</Count>
+		<Location X="2146" Y="953" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M30S</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Succubus</Name>
+		<Count>1</Count>
+		<Location X="2114" Y="1028" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BloodElemental</Name>
+		<Count>1</Count>
+		<Location X="2144" Y="868" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>8</SpawnRange>
+		<HomeRange>8</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Imp</Name>
+		<Count>2</Count>
+		<Location X="2114" Y="870" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BloodElemental</Name>
+		<Count>1</Count>
+		<Location X="2058" Y="907" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PredatorHellCat</Name>
+		<Count>3</Count>
+		<Location X="2114" Y="1002" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT4M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Daemon</Name>
+		<Count>1</Count>
+		<Location X="2082" Y="953" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT2M30S</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BloodElemental</Name>
+		<Count>1</Count>
+		<Location X="2056" Y="934" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Healer</Name>
+		<Count>1</Count>
+		<Location X="2109" Y="840" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Imp</Name>
+		<Count>7</Count>
+		<Location X="2161" Y="850" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>HellCat</Name>
+		<Count>1</Count>
+		<Location X="2090" Y="870" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>BloodElemental</Name>
+		<Count>1</Count>
+		<Location X="2168" Y="929" Z="-28" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT3M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

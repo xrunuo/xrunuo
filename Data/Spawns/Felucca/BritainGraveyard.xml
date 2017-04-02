@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>Wraith</Name>
+		<Count>1</Count>
+		<Location X="1369" Y="1475" Z="10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Lich</Name>
+		<Count>1</Count>
+		<Location X="1372" Y="1463" Z="10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>0</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Zombie</Name>
+		<Count>5</Count>
+		<Location X="1368" Y="1476" Z="10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Lich</Name>
+		<Count>1</Count>
+		<Location X="1361" Y="1482" Z="10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT2M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Skeleton</Name>
+		<Count>5</Count>
+		<Location X="1369" Y="1476" Z="10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT7M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>LichLord</Name>
+		<Count>0</Count>
+		<Location X="1369" Y="1488" Z="10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT20S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>8</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Spectre</Name>
+		<Count>2</Count>
+		<Location X="1369" Y="1475" Z="10" />
+		<Map>Felucca</Map>
+		<MinDelay>PT3M</MinDelay>
+		<MaxDelay>PT6M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>30</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

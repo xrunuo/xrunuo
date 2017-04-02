@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>DireWolf</Name>
+		<Count>3</Count>
+		<Location X="2140" Y="1219" Z="-60" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Corpser</Name>
+		<Count>3</Count>
+		<Location X="2141" Y="1220" Z="-60" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Quagmire</Name>
+		<Count>3</Count>
+		<Location X="2140" Y="1220" Z="-60" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>25</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Gnaw</Name>
+		<Count>1</Count>
+		<Location X="2133" Y="1174" Z="-46" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT30S</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Guile</Name>
+		<Count>1</Count>
+		<Location X="2151" Y="1211" Z="-60" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>WhippingVine</Name>
+		<Count>3</Count>
+		<Location X="2141" Y="1219" Z="-60" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>DireWolf</Name>
+		<Count>3</Count>
+		<Location X="2133" Y="1175" Z="-46" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT2M</MinDelay>
+		<MaxDelay>PT5M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>LadyLissith</Name>
+		<Count>1</Count>
+		<Location X="2175" Y="1206" Z="-60" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT30S</MaxDelay>
+		<SpawnRange>5</SpawnRange>
+		<HomeRange>5</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Irk</Name>
+		<Count>1</Count>
+		<Location X="2150" Y="1211" Z="-60" />
+		<Map>Ilshenar</Map>
+		<MinDelay>PT10S</MinDelay>
+		<MaxDelay>PT30S</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+</Spawners>

@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Spawners>
+	<Spawner>
+		<Name>EffetePutridGargoyle</Name>
+		<Count>5</Count>
+		<Location X="996" Y="3893" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Murderer />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FarmerNash</Name>
+		<Count>1</Count>
+		<Location X="948" Y="3863" Z="-40" />
+		<Map>TerMur</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>20</SpawnRange>
+		<HomeRange>10</HomeRange>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>PutridUndeadGargoyle</Name>
+		<Count>1</Count>
+		<Location X="997" Y="3951" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>10</SpawnRange>
+		<HomeRange>20</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Murderer />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EffeteUndeadGargoyle</Name>
+		<Count>5</Count>
+		<Location X="996" Y="3862" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT15S</MinDelay>
+		<MaxDelay>PT30S</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Murderer />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Bird</Name>
+		<Count>3</Count>
+		<Location X="1052" Y="3934" Z="-29" />
+		<Map>TerMur</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Agracharinlem</Name>
+		<Count>1</Count>
+		<Location X="1014" Y="3881" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EffeteUndeadGargoyle</Name>
+		<Count>5</Count>
+		<Location X="996" Y="3917" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT15S</MinDelay>
+		<MaxDelay>PT30S</MaxDelay>
+		<SpawnRange>40</SpawnRange>
+		<HomeRange>40</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Murderer />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GargoyleShade</Name>
+		<Count>2</Count>
+		<Location X="996" Y="3864" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT1M30S</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Murderer />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Kurlem</Name>
+		<Count>1</Count>
+		<Location X="944" Y="3924" Z="-41" />
+		<Map>TerMur</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>TerMurWanderingHealer</Name>
+		<Count>1</Count>
+		<Location X="949" Y="3838" Z="-21" />
+		<Map>TerMur</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>GargoyleShade</Name>
+		<Count>2</Count>
+		<Location X="997" Y="3951" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT1M</MinDelay>
+		<MaxDelay>PT1M30S</MaxDelay>
+		<SpawnRange>35</SpawnRange>
+		<HomeRange>35</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Murderer />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EffeteUndeadGargoyle</Name>
+		<Count>5</Count>
+		<Location X="996" Y="3951" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT15S</MinDelay>
+		<MaxDelay>PT30S</MaxDelay>
+		<SpawnRange>35</SpawnRange>
+		<HomeRange>35</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Murderer />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Inmanilem</Name>
+		<Count>1</Count>
+		<Location X="1019" Y="3905" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EffetePutridGargoyle</Name>
+		<Count>5</Count>
+		<Location X="996" Y="3952" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>35</SpawnRange>
+		<HomeRange>35</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Murderer />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Naxatilor</Name>
+		<Count>1</Count>
+		<Location X="1015" Y="3935" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EffetePutridGargoyle</Name>
+		<Count>5</Count>
+		<Location X="996" Y="3863" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Murderer />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Rabbit</Name>
+		<Count>1</Count>
+		<Location X="1053" Y="3934" Z="-29" />
+		<Map>TerMur</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>15</SpawnRange>
+		<HomeRange>25</HomeRange>
+		<Flags>
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>FarmerKrill</Name>
+		<Count>1</Count>
+		<Location X="1041" Y="3863" Z="-41" />
+		<Map>TerMur</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>15</HomeRange>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Kansinlem</Name>
+		<Count>1</Count>
+		<Location X="976" Y="3882" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Bolesh</Name>
+		<Count>1</Count>
+		<Location X="1012" Y="3910" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EffetePutridGargoyle</Name>
+		<Count>5</Count>
+		<Location X="996" Y="3918" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT30S</MinDelay>
+		<MaxDelay>PT1M</MaxDelay>
+		<SpawnRange>40</SpawnRange>
+		<HomeRange>40</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Murderer />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>EffeteUndeadGargoyle</Name>
+		<Count>5</Count>
+		<Location X="996" Y="3892" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT15S</MinDelay>
+		<MaxDelay>PT30S</MaxDelay>
+		<SpawnRange>50</SpawnRange>
+		<HomeRange>50</HomeRange>
+		<Active>False</Active>
+		<Flags>
+			<Murderer />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+	<Spawner>
+		<Name>Beninlem</Name>
+		<Count>1</Count>
+		<Location X="976" Y="3909" Z="-42" />
+		<Map>TerMur</Map>
+		<MinDelay>PT5M</MinDelay>
+		<MaxDelay>PT10M</MaxDelay>
+		<SpawnRange>4</SpawnRange>
+		<HomeRange>4</HomeRange>
+		<Flags>
+			<Blessed />
+			<ScaledDelay />
+			<Saturable />
+		</Flags>
+	</Spawner>
+</Spawners>
