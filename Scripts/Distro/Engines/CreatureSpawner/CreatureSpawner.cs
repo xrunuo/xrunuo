@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Xml;
+
 using Server;
 using Server.Items;
 using Server.Gumps;
@@ -805,6 +808,77 @@ namespace Server.Mobiles
 						break;
 					}
 			}
+		}
+
+		#endregion
+
+		#region XML Serialization
+		public void XmlSerialize( XmlTextWriter xml )
+		{
+			xml.WriteStartElement( "Spawner" );
+
+			xml.WriteStartElement( "Name" );
+			xml.WriteString( SpawnName );
+			xml.WriteEndElement();
+
+			xml.WriteStartElement( "Count" );
+			xml.WriteString( m_Count.ToString() );
+			xml.WriteEndElement();
+
+			xml.WriteStartElement( "MinDelay" );
+			xml.WriteString( XmlConvert.ToString( m_MinDelay ) );
+			xml.WriteEndElement();
+
+			xml.WriteStartElement( "MaxDelay" );
+			xml.WriteString( XmlConvert.ToString( m_MaxDelay ) );
+			xml.WriteEndElement();
+
+			xml.WriteStartElement( "SpawnRange" );
+			xml.WriteString( m_SpawnRange.ToString() );
+			xml.WriteEndElement();
+
+			xml.WriteStartElement( "HomeRange" );
+			xml.WriteString( m_HomeRange.ToString() );
+			xml.WriteEndElement();
+
+			if ( m_Team != 0 )
+			{
+				xml.WriteStartElement( "Team" );
+				xml.WriteString( m_Team.ToString() );
+				xml.WriteEndElement();
+			}
+
+			if ( !m_Active )
+			{
+				xml.WriteStartElement( "Active" );
+				xml.WriteString( m_Active.ToString() );
+				xml.WriteEndElement();
+			}
+
+			if ( m_Flags != SpawnFlag.None )
+			{
+				xml.WriteStartElement( "Flags" );
+
+				foreach ( SpawnFlag flag in Enum.GetValues(typeof(SpawnFlag)).Cast<SpawnFlag>() )
+				{
+					if ( ( m_Flags & flag ) != 0 )
+					{
+						xml.WriteStartElement( flag.ToString() );
+						xml.WriteEndElement();
+					}
+				}
+
+				xml.WriteEndElement();
+			}
+
+			if ( m_WayPoint != null )
+			{
+				xml.WriteStartElement( "Waypoint" );
+				// TODO: serialize m_Waypoint
+				xml.WriteEndElement();
+			}
+
+			xml.WriteEndElement();
 		}
 
 		#endregion

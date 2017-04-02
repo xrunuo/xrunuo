@@ -199,6 +199,7 @@
     <Compile Include="Commands\Traffic.cs" />
     <Compile Include="Commands\VisibilityList.cs" />
     <Compile Include="Commands\Wipe.cs" />
+    <Compile Include="Engines\CreatureSpawner\XmlSpawnerSerialization.cs" />
     <Compile Include="Engines\Party\AddPartyMemberEntry.cs" />
     <Compile Include="Context Menus\AddToSpellbookEntry.cs" />
     <Compile Include="Context Menus\EatEntry.cs" />
