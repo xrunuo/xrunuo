@@ -98,8 +98,9 @@ namespace Server.Misc
 			{
 				var ti = new CultureInfo( "en-US", false ).TextInfo;
 				name = ti.ToTitleCase( name )
-					.Replace( " ", String.Empty )
-					.Replace( "'", String.Empty );
+					.Replace( " ", string.Empty )
+					.Replace( "'", string.Empty )
+					.Replace( "-", string.Empty );
 			}
 			else
 			{

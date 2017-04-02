@@ -825,6 +825,16 @@ namespace Server.Mobiles
 			xml.WriteString( m_Count.ToString() );
 			xml.WriteEndElement();
 
+			xml.WriteStartElement( "Location" );
+			xml.WriteAttributeString( "X", Location.X.ToString() );
+			xml.WriteAttributeString( "Y", Location.Y.ToString() );
+			xml.WriteAttributeString( "Z", Location.Z.ToString() );
+			xml.WriteEndElement();
+
+			xml.WriteStartElement( "Map" );
+			xml.WriteString( Map.Name );
+			xml.WriteEndElement();
+
 			xml.WriteStartElement( "MinDelay" );
 			xml.WriteString( XmlConvert.ToString( m_MinDelay ) );
 			xml.WriteEndElement();
