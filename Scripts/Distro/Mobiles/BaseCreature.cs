@@ -801,6 +801,14 @@ namespace Server.Mobiles
 			return ( m_iTeam != c.m_iTeam || ( ( m_bSummoned || m_bControlled ) != ( c.m_bSummoned || c.m_bControlled ) ) );
 		}
 
+		public override bool IsGoodAligned()
+		{
+			if ( Controlled && ControlMaster != null )
+				return ControlMaster.IsGoodAligned();
+
+			return base.IsGoodAligned();
+		}
+
 		public override string ApplyNameSuffix( string suffix )
 		{
 			if ( IsParagon )
@@ -3518,7 +3526,7 @@ namespace Server.Mobiles
 			if ( m_NoDupeGuards == m )
 				return;
 
-			if ( !Body.IsHuman || Kills >= 5 || AlwaysMurderer || AlwaysAttackable || m.Kills < 5 || !m.InRange( Location, 12 ) || !m.Alive )
+			if ( !Body.IsHuman || Murderer || AlwaysMurderer || AlwaysAttackable || m.Kills < 5 || !m.InRange( Location, 12 ) || !m.Alive )
 				return;
 
 			GuardedRegion guardedRegion = (GuardedRegion) this.Region.GetRegion( typeof( GuardedRegion ) );

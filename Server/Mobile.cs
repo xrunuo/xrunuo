@@ -7845,7 +7845,7 @@ namespace Server
 					if ( m_Kills < 0 )
 						m_Kills = 0;
 
-					if ( ( oldValue >= 5 ) != ( m_Kills >= 5 ) )
+					if ( ( oldValue >= 5 ) != ( m_Kills > 5 ) )
 					{
 						Delta( MobileDelta.Noto );
 						InvalidateProperties();
@@ -7911,6 +7911,8 @@ namespace Server
 				}
 			}
 		}
+
+		public bool Murderer => m_Kills >= 5;
 
 		public bool CheckAlive( bool message = true )
 		{
@@ -9338,6 +9340,16 @@ namespace Server
 			}
 
 			return false;
+		}
+
+		public virtual bool IsGoodAligned()
+		{
+			return Karma >= 0 && !Murderer;
+		}
+
+		public virtual bool IsEvilAligned()
+		{
+			return !IsGoodAligned();
 		}
 	}
 }

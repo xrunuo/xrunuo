@@ -131,7 +131,7 @@ namespace Server.Items
 							{
 								PlayerMobile member = pmi.Mobile as PlayerMobile;
 
-								if ( m_key.Map != Map.Felucca && member.Kills >= 5 )
+								if ( m_key.Map != Map.Felucca && member.Murderer )
 									continue;
 
 								if ( member.Map == @from.Map && member.Region == @from.Region )
@@ -192,7 +192,7 @@ namespace Server.Items
 						break;
 
 					case 1:
-						if ( m_Key.Map != Map.Felucca && from.Kills >= 5 )
+						if ( m_Key.Map != Map.Felucca && from.Murderer )
 							return;
 
 						Effects.SendLocationParticles( EffectItem.Create( from.Location, from.Map, EffectItem.DefaultDuration ), 0x3728, 10, 10, 2023 );

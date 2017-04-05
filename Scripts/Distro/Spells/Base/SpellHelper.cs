@@ -379,7 +379,7 @@ namespace Server.Spells
 
 			int noto = Notoriety.Compute( from, to );
 
-			return ( noto != Notoriety.Innocent || from.Kills >= 5 );
+			return ( noto != Notoriety.Innocent || from.Murderer );
 		}
 
 		private static int[] m_Offsets = new int[]

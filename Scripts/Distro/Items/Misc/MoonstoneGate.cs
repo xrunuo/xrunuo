@@ -30,7 +30,7 @@ namespace Server.Items
 
 		public override void CheckGate( Mobile m, int range )
 		{
-			if ( m.Kills >= 5 )
+			if ( m.Murderer )
 			{
 				return;
 			}
@@ -46,7 +46,7 @@ namespace Server.Items
 
 		public override void UseGate( Mobile m )
 		{
-			if ( m.Kills >= 5 )
+			if ( m.Murderer )
 			{
 				return;
 			}

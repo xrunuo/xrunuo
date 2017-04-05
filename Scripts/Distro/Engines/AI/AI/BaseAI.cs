@@ -2541,9 +2541,7 @@ namespace Server.Mobiles
 				double val = double.MinValue;
 				double theirVal;
 
-				var eable = map.GetMobilesInRange( m_Mobile.Location, iRange );
-
-				foreach ( Mobile m in eable )
+				foreach ( Mobile m in map.GetMobilesInRange( m_Mobile.Location, iRange ) )
 				{
 					if ( m.Deleted || m.Blessed )
 						continue;
@@ -2596,7 +2594,7 @@ namespace Server.Mobiles
 						continue;
 
 					// Ignore players with activated honor
-					if ( m is PlayerMobile && ( (PlayerMobile) m ).HonorActive && !( m_Mobile.Combatant == m ) )
+					if ( m is PlayerMobile && ( (PlayerMobile) m ).HonorActive && m_Mobile.Combatant != m )
 						continue;
 
 					// Same goes for faction enemies.
@@ -2609,26 +2607,16 @@ namespace Server.Mobiles
 						bool bValid = false;
 
 						for ( int a = 0; !bValid && a < m_Mobile.Aggressors.Count; ++a )
-							bValid = ( ( (AggressorInfo) m_Mobile.Aggressors[a] ).Attacker == m );
+							bValid = m_Mobile.Aggressors[a].Attacker == m;
 
 						for ( int a = 0; !bValid && a < m_Mobile.Aggressed.Count; ++a )
-							bValid = ( ( (AggressorInfo) m_Mobile.Aggressed[a] ).Defender == m );
+							bValid = m_Mobile.Aggressed[a].Defender == m;
 
 						if ( acqType == FightMode.Evil && !bValid )
-						{
-							if ( m is BaseCreature && ( (BaseCreature) m ).Controlled && ( (BaseCreature) m ).ControlMaster != null )
-								bValid = ( ( (BaseCreature) m ).ControlMaster.Karma < 0 || ( (BaseCreature) m ).ControlMaster.Kills >= 5 );
-							else
-								bValid = ( m.Karma < 0 || m.Kills >= 5 );
-						}
+							bValid = m.IsEvilAligned();
 
 						if ( acqType == FightMode.Good && !bValid )
-						{
-							if ( m is BaseCreature && ( (BaseCreature) m ).Controlled && ( (BaseCreature) m ).ControlMaster != null )
-								bValid = ( ( (BaseCreature) m ).ControlMaster.Karma >= 0 && ( (BaseCreature) m ).ControlMaster.Kills < 5 );
-							else
-								bValid = ( m.Karma >= 0 && m.Kills < 5 );
-						}
+							bValid = m.IsGoodAligned();
 
 						if ( !bValid )
 							continue;
@@ -2646,7 +2634,6 @@ namespace Server.Mobiles
 						val = theirVal;
 					}
 				}
-
 
 				m_Mobile.FocusMob = newFocusMob;
 			}

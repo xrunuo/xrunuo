@@ -2692,7 +2692,7 @@ namespace Server.Mobiles
 					k_Guild.AddKills( m_Guild, 1 );
 			}
 
-			if ( this.Kills >= 5 && DateTime.UtcNow >= m_NextJustAward )
+			if ( this.Murderer && DateTime.UtcNow >= m_NextJustAward )
 			{
 				Mobile m = FindMostRecentDamager( false );
 

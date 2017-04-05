@@ -19,7 +19,7 @@ namespace Server.Items
 
 		public override bool OnMoveOver( Mobile m )
 		{
-			if ( m.Kills >= 5 )
+			if ( m.Murderer )
 			{
 				m.SendLocalizedMessage( 1074569 ); // Slayers of innocent souls are not welcome to enter here!
 				return true;

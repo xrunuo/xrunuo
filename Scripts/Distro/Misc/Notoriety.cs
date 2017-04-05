@@ -361,7 +361,7 @@ namespace Server.Misc
 			if ( srcFaction != null && trgFaction != null && srcFaction != trgFaction && source.Map == Faction.Facet )
 				return Notoriety.Enemy;
 
-			if ( target.Kills >= 5 )
+			if ( target.Murderer )
 				return Notoriety.Murderer;
 
 			if ( target.Body.IsMonster

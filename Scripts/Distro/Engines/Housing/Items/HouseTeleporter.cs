@@ -55,7 +55,7 @@ namespace Server.Engines.Housing.Items
 		{
 			if ( m_Target != null && !m_Target.Deleted && !Movable && !m_Target.Movable )
 			{
-				if ( m.Player && m.Kills >= 5 && m_Target.Map != Map.Felucca )
+				if ( m.Player && m.Murderer && m_Target.Map != Map.Felucca )
 				{
 					m.SendLocalizedMessage( 1019004 ); // You are not allowed to travel there.
 				}

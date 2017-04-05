@@ -324,7 +324,7 @@ namespace Server.Menus.Questions
 					else if ( m_Map == Map.TerMur )
 						destMap = Map.TerMur;
 					else
-						destMap = m_Mobile.Kills >= 5 ? Map.Felucca : Map.Trammel;
+						destMap = m_Mobile.Murderer ? Map.Felucca : Map.Trammel;
 
 					Mobiles.BaseCreature.TeleportPets( m_Mobile, dest, destMap );
 					m_Mobile.MoveToWorld( dest, destMap );
