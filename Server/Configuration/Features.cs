@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 
 namespace Server.Configuration
 {
 	public class Features
 	{
-		private Hashtable m_Table = new Hashtable();
+		private readonly Hashtable m_Table = new Hashtable();
 
 		public bool this[string name]
 		{

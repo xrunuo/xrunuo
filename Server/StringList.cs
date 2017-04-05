@@ -10,32 +10,25 @@ namespace Server
 	{
 		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
 
-		private static StringList m_Localization;
-
-		public static StringList Localization
-		{
-			get { return m_Localization; }
-		}
+		public static StringList Localization { get; }
 
 		static StringList()
 		{
-			m_Localization = new StringList();
+			Localization = new StringList();
 		}
 
-		private StringEntry[] m_Entries;
-		private Dictionary<int, string> m_Table;
-		private string m_Language;
+		public StringEntry[] Entries { get; }
 
-		public StringEntry[] Entries { get { return m_Entries; } }
-		public Dictionary<int, string> Table { get { return m_Table; } }
-		public string Language { get { return m_Language; } }
+		public Dictionary<int, string> Table { get; }
+
+		public string Language { get; }
 
 		public string this[int number]
 		{
 			get
 			{
-				if ( m_Table.ContainsKey( number ) )
-					return m_Table[number];
+				if ( Table.ContainsKey( number ) )
+					return Table[number];
 				else
 					return null;
 			}
@@ -53,15 +46,15 @@ namespace Server
 
 		public StringList( string language, bool format )
 		{
-			m_Language = language;
-			m_Table = new Dictionary<int, string>();
+			Language = language;
+			Table = new Dictionary<int, string>();
 
 			string path = Core.FindDataFile( string.Format( "Cliloc.{0}", language ) );
 
 			if ( path == null )
 			{
 				log.Warning( "Cliloc.{0} not found", language );
-				m_Entries = new StringEntry[0];
+				Entries = new StringEntry[0];
 				return;
 			}
 
@@ -92,11 +85,11 @@ namespace Server
 						text = FormatArguments( text );
 
 					list.Add( new StringEntry( number, text ) );
-					m_Table[number] = text;
+					Table[number] = text;
 				}
 			}
 
-			m_Entries = list.ToArray();
+			Entries = list.ToArray();
 		}
 
 		//C# argument support

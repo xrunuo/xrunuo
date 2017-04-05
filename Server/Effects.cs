@@ -24,18 +24,12 @@ namespace Server
 
 	public class Effects
 	{
-		private static ParticleSupportType m_ParticleSupportType = ParticleSupportType.Full;
-
-		public static ParticleSupportType ParticleSupportType
-		{
-			get { return m_ParticleSupportType; }
-			set { m_ParticleSupportType = value; }
-		}
+		public static ParticleSupportType ParticleSupportType { get; set; } = ParticleSupportType.Full;
 
 		public static bool SendParticlesTo( NetState state )
 		{
 			// TODO: Does current 2d client support particle effects packets?
-			return ( m_ParticleSupportType == ParticleSupportType.Full || ( m_ParticleSupportType == ParticleSupportType.Detect && state.Version.IsEnhanced ) );
+			return ( ParticleSupportType == ParticleSupportType.Full || ( ParticleSupportType == ParticleSupportType.Detect && state.Version.IsEnhanced ) );
 		}
 
 		public static void PlaySound( IPoint3D p, Map map, int soundId )

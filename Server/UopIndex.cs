@@ -9,7 +9,7 @@ namespace Server
 		private class UopEntry : IComparable<UopEntry>
 		{
 			public int m_Offset;
-			public int m_Length;
+			public readonly int m_Length;
 			public int m_Order;
 
 			public UopEntry( int offset, int length )
@@ -39,15 +39,11 @@ namespace Server
 			}
 		}
 
-		private BinaryReader m_Reader;
-		private int m_Length;
-		private int m_Version;
-		private UopEntry[] m_Entries;
+		private readonly BinaryReader m_Reader;
+		private readonly int m_Length;
+		private readonly UopEntry[] m_Entries;
 
-		public int Version
-		{
-			get { return m_Version; }
-		}
+		public int Version { get; }
 
 		public UopIndex( FileStream stream )
 		{
@@ -57,7 +53,7 @@ namespace Server
 			if ( m_Reader.ReadInt32() != 0x50594D )
 				throw new ArgumentException( "Invalid UOP file." );
 
-			m_Version = m_Reader.ReadInt32();
+			Version = m_Reader.ReadInt32();
 			m_Reader.ReadInt32();
 			int nextTable = m_Reader.ReadInt32();
 

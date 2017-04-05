@@ -24,62 +24,38 @@ namespace Server.Gumps
 
 		public int X
 		{
-			get
-			{
-				return m_X;
-			}
-			set
-			{
-				Delta( ref m_X, value );
-			}
+			get { return m_X; }
+			set { Delta( ref m_X, value ); }
 		}
 
 		public int Y
 		{
-			get
-			{
-				return m_Y;
-			}
-			set
-			{
-				Delta( ref m_Y, value );
-			}
+			get { return m_Y; }
+			set { Delta( ref m_Y, value ); }
 		}
 
 		public int GumpID
 		{
-			get
-			{
-				return m_GumpID;
-			}
-			set
-			{
-				Delta( ref m_GumpID, value );
-			}
+			get { return m_GumpID; }
+			set { Delta( ref m_GumpID, value ); }
 		}
 
 		public int Hue
 		{
-			get
-			{
-				return m_Hue;
-			}
-			set
-			{
-				Delta( ref m_Hue, value );
-			}
+			get { return m_Hue; }
+			set { Delta( ref m_Hue, value ); }
 		}
 
 		public override string Compile()
 		{
 			if ( m_Hue == 0 )
-				return String.Format( "{{ gumppic {0} {1} {2} }}", m_X, m_Y, m_GumpID );
+				return $"{{ gumppic {m_X} {m_Y} {m_GumpID} }}";
 			else
-				return String.Format( "{{ gumppic {0} {1} {2} hue={3} }}", m_X, m_Y, m_GumpID, m_Hue );
+				return $"{{ gumppic {m_X} {m_Y} {m_GumpID} hue={m_Hue} }}";
 		}
 
-		private static byte[] m_LayoutName = Gump.StringToBuffer( "gumppic" );
-		private static byte[] m_HueEquals = Gump.StringToBuffer( " hue=" );
+		private static readonly byte[] m_LayoutName = Gump.StringToBuffer( "gumppic" );
+		private static readonly byte[] m_HueEquals = Gump.StringToBuffer( " hue=" );
 
 		public override void AppendTo( IGumpWriter disp )
 		{

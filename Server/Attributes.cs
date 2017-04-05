@@ -77,17 +77,11 @@ namespace Server
 	[AttributeUsage( AttributeTargets.Method )]
 	public class CallPriorityAttribute : Attribute
 	{
-		private int m_Priority;
-
-		public int Priority
-		{
-			get { return m_Priority; }
-			set { m_Priority = value; }
-		}
+		public int Priority { get; set; }
 
 		public CallPriorityAttribute( int priority )
 		{
-			m_Priority = priority;
+			Priority = priority;
 		}
 	}
 
@@ -131,19 +125,11 @@ namespace Server
 	[AttributeUsage( AttributeTargets.Class )]
 	public class TypeAliasAttribute : Attribute
 	{
-		private string[] m_Aliases;
-
-		public string[] Aliases
-		{
-			get
-			{
-				return m_Aliases;
-			}
-		}
+		public string[] Aliases { get; }
 
 		public TypeAliasAttribute( params string[] aliases )
 		{
-			m_Aliases = aliases;
+			Aliases = aliases;
 		}
 	}
 

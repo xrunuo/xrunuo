@@ -6,7 +6,7 @@ namespace Server.Targeting
 	{
 		private class SimpleTarget : Target
 		{
-			private TargetCallback m_Callback;
+			private readonly TargetCallback m_Callback;
 
 			public SimpleTarget( int range, TargetFlags flags, bool allowGround, TargetCallback callback )
 				: base( range, allowGround, flags )
@@ -23,8 +23,8 @@ namespace Server.Targeting
 
 		private class SimpleStateTarget : Target
 		{
-			private TargetStateCallback m_Callback;
-			private object m_State;
+			private readonly TargetStateCallback m_Callback;
+			private readonly object m_State;
 
 			public SimpleStateTarget( int range, TargetFlags flags, bool allowGround, TargetStateCallback callback, object state )
 				: base( range, allowGround, flags )
@@ -42,8 +42,8 @@ namespace Server.Targeting
 
 		private class GenericStateTarget<T> : Target
 		{
-			private TargetStateCallback<T> m_Callback;
-			private T m_State;
+			private readonly TargetStateCallback<T> m_Callback;
+			private readonly T m_State;
 
 			public GenericStateTarget( int range, TargetFlags flags, bool allowGround, TargetStateCallback<T> callback, T state )
 				: base( range, allowGround, flags )

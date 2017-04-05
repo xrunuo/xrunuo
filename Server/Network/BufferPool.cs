@@ -5,22 +5,16 @@ namespace Server.Network
 {
 	public class BufferPool
 	{
-		private static List<BufferPool> m_Pools = new List<BufferPool>();
+		public static List<BufferPool> Pools { get; set; } = new List<BufferPool>();
 
-		public static List<BufferPool> Pools
-		{
-			get { return m_Pools; }
-			set { m_Pools = value; }
-		}
+		private readonly string m_Name;
 
-		private string m_Name;
-
-		private int m_InitialCapacity;
-		private int m_BufferSize;
+		private readonly int m_InitialCapacity;
+		private readonly int m_BufferSize;
 
 		private int m_Misses;
 
-		private Queue<byte[]> m_FreeBuffers;
+		private readonly Queue<byte[]> m_FreeBuffers;
 
 		public void GetInfo( out string name, out int freeCount, out int initialCapacity, out int currentCapacity, out int bufferSize, out int misses )
 		{
@@ -43,11 +37,11 @@ namespace Server.Network
 			m_BufferSize = bufferSize;
 			m_FreeBuffers = new Queue<byte[]>( initialCapacity );
 
-			for ( int i = 0; i < initialCapacity; ++i )
+			for ( var i = 0; i < initialCapacity; ++i )
 				m_FreeBuffers.Enqueue( new byte[bufferSize] );
 
-			lock ( m_Pools )
-				m_Pools.Add( this );
+			lock ( Pools )
+				Pools.Add( this );
 		}
 
 		public byte[] AcquireBuffer()
@@ -59,7 +53,7 @@ namespace Server.Network
 
 				++m_Misses;
 
-				for ( int i = 0; i < m_InitialCapacity; ++i )
+				for ( var i = 0; i < m_InitialCapacity; ++i )
 					m_FreeBuffers.Enqueue( new byte[m_BufferSize] );
 
 				return m_FreeBuffers.Dequeue();
@@ -77,8 +71,8 @@ namespace Server.Network
 
 		public void Free()
 		{
-			lock ( m_Pools )
-				m_Pools.Remove( this );
+			lock ( Pools )
+				Pools.Remove( this );
 		}
 	}
 }

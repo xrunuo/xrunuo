@@ -15,31 +15,22 @@ namespace Server.Profiler
 			Count
 		}
 
-		private DateTime m_Start;
-		private ulong m_Iterations;
-
 		[MarshalAs( UnmanagedType.ByValArray, ArraySubType = UnmanagedType.I8, SizeConst = (int) TimerId.Count )]
-		private TimeSpan[] m_Timers;
+		private readonly TimeSpan[] m_Timers;
 
 		public MainProfile( DateTime start )
 		{
-			m_Start = start;
-			m_Iterations = 0;
+			Start = start;
+			Iterations = 0;
 
 			m_Timers = new TimeSpan[(int) TimerId.Count];
 			for ( int i = 0; i < (int) TimerId.Count; i++ )
 				m_Timers[i] = TimeSpan.Zero;
 		}
 
-		public DateTime Start
-		{
-			get { return m_Start; }
-		}
+		public DateTime Start { get; }
 
-		public ulong Iterations
-		{
-			get { return m_Iterations; }
-		}
+		public ulong Iterations { get; private set; }
 
 		public TimeSpan Timer( TimerId id )
 		{
@@ -56,7 +47,7 @@ namespace Server.Profiler
 
 		public void Next()
 		{
-			m_Iterations++;
+			Iterations++;
 		}
 	}
 }

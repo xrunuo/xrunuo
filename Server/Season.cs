@@ -57,7 +57,7 @@ namespace Server
 			return tiles;
 		}
 
-		private static Dictionary<int, int>[] m_TileChanges;
+		private static readonly Dictionary<int, int>[] m_TileChanges;
 
 		private static void RegisterSeason( int seasonID, string name )
 		{

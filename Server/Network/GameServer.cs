@@ -8,15 +8,9 @@ namespace Server.Network
 	{
 		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
 
-		private static GameServer m_Instance;
+		public static GameServer Instance { get; set; }
 
-		public static GameServer Instance
-		{
-			get { return m_Instance; }
-			set { m_Instance = value; }
-		}
-
-		private NetServer m_Server;
+		private readonly NetServer m_Server;
 
 		public GameServer( NetServer server )
 		{
@@ -25,9 +19,9 @@ namespace Server.Network
 
 		public void Initialize()
 		{
-			m_Server.Connected += new ConnectionCreated( OnConnected );
-			m_Server.Disconnected += new ConnectionDisposed( OnDisconnected );
-			m_Server.Received += new DataReceived( OnReceived );
+			m_Server.Connected += OnConnected;
+			m_Server.Disconnected += OnDisconnected;
+			m_Server.Received += OnReceived;
 		}
 
 		private void OnConnected( UOSocket state )
@@ -67,7 +61,7 @@ namespace Server.Network
 		}
 
 		private const int BufferSize = 4096;
-		private BufferPool m_Buffers = new BufferPool( "Processor", 4, BufferSize );
+		private readonly BufferPool m_Buffers = new BufferPool( "Processor", 4, BufferSize );
 
 		private void OnReceived( UOSocket state, ByteQueue buffer, out bool throttle )
 		{
@@ -88,10 +82,10 @@ namespace Server.Network
 				}
 				else if ( buffer.Length >= 4 )
 				{
-					byte[] peek = new byte[4];
+					var peek = new byte[4];
 					buffer.Dequeue( peek, 0, 4 );
 
-					int seed = ( peek[0] << 24 ) | ( peek[1] << 16 ) | ( peek[2] << 8 ) | peek[3];
+					var seed = ( peek[0] << 24 ) | ( peek[1] << 16 ) | ( peek[2] << 8 ) | peek[3];
 
 					if ( seed == 0 )
 					{
@@ -110,7 +104,7 @@ namespace Server.Network
 				}
 			}
 
-			int length = buffer.Length;
+			var length = buffer.Length;
 
 			while ( length > 0 && buffer.Length > 0 )
 			{
@@ -123,16 +117,16 @@ namespace Server.Network
 					return;
 				}
 
-				PacketHandler handler = PacketHandlers.GetHandler( packetID );
+				var handler = PacketHandlers.GetHandler( packetID );
 
 				if ( handler == null )
 				{
-					byte[] data = new byte[length];
+					var data = new byte[length];
 					length = buffer.Dequeue( data, 0, length );
 
 					if ( Core.Logging )
 					{
-						PacketReader reader = PacketReader.CreateInstance( data, length, false );
+						var reader = PacketReader.CreateInstance( data, length, false );
 						reader.Trace( client );
 						PacketReader.ReleaseInstance( reader );
 					}
@@ -140,7 +134,7 @@ namespace Server.Network
 					return;
 				}
 
-				int packetLength = handler.Length;
+				var packetLength = handler.Length;
 
 				if ( packetLength == 0 )
 				{
@@ -226,17 +220,11 @@ namespace Server.Network
 			}
 		}
 
-		private Dictionary<UOSocket, NetState> m_Clients = new Dictionary<UOSocket, NetState>();
+		private readonly Dictionary<UOSocket, NetState> m_Clients = new Dictionary<UOSocket, NetState>();
 
-		public IEnumerable<NetState> Clients
-		{
-			get { return m_Clients.Values; }
-		}
+		public IEnumerable<NetState> Clients => m_Clients.Values;
 
-		public int ClientCount
-		{
-			get { return m_Clients.Count; }
-		}
+		public int ClientCount => m_Clients.Count;
 
 		public IEnumerable<Mobile> OnlinePlayers
 		{
@@ -248,7 +236,8 @@ namespace Server.Network
 			m_Server.ProcessDisposedQueue();
 		}
 
-		public long Incoming { get { return m_Server.Incoming; } }
-		public long Outgoing { get { return m_Server.Outgoing; } }
+		public long Incoming => m_Server.Incoming;
+
+		public long Outgoing => m_Server.Outgoing;
 	}
 }

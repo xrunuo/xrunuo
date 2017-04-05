@@ -24,12 +24,12 @@ namespace Server.Network
 
 	public class PromptGumpStub : Gump
 	{
-		public override int TypeID { get { return 0x2AE; } }
+		public override int TypeID => 0x2AE;
 
 		public PromptGumpStub( Prompt prompt, Mobile to )
 			: base( 0, 0 )
 		{
-			Serial senderSerial = prompt.Sender != null ? prompt.Sender.Serial : to.Serial;
+			var senderSerial = prompt.Sender != null ? prompt.Sender.Serial : to.Serial;
 
 			Serial = senderSerial;
 

@@ -6,11 +6,10 @@ namespace Server
 {
 	public class FileLogger : TextWriter, IDisposable
 	{
-		private string m_FileName;
 		private bool m_NewLine;
 		public const string DateFormat = "[MMMM dd hh:mm:ss.f tt]: ";
 
-		public string FileName { get { return m_FileName; } }
+		public string FileName { get; }
 
 		public FileLogger( string file )
 			: this( file, false )
@@ -19,9 +18,9 @@ namespace Server
 
 		public FileLogger( string file, bool append )
 		{
-			m_FileName = file;
+			FileName = file;
 
-			using ( StreamWriter writer = new StreamWriter( new FileStream( m_FileName, append ? FileMode.Append : FileMode.Create, FileAccess.Write, FileShare.Read ) ) )
+			using ( StreamWriter writer = new StreamWriter( new FileStream( FileName, append ? FileMode.Append : FileMode.Create, FileAccess.Write, FileShare.Read ) ) )
 				writer.WriteLine( ">>>Logging started on {0}.", DateTime.UtcNow.ToString( "f" ) ); //f = Tuesday, April 10, 2001 3:51 PM 
 
 			m_NewLine = true;
@@ -29,7 +28,7 @@ namespace Server
 
 		public override void Write( char ch )
 		{
-			using ( StreamWriter writer = new StreamWriter( new FileStream( m_FileName, FileMode.Append, FileAccess.Write, FileShare.Read ) ) )
+			using ( StreamWriter writer = new StreamWriter( new FileStream( FileName, FileMode.Append, FileAccess.Write, FileShare.Read ) ) )
 			{
 				if ( m_NewLine )
 				{
@@ -43,7 +42,7 @@ namespace Server
 
 		public override void Write( string str )
 		{
-			using ( StreamWriter writer = new StreamWriter( new FileStream( m_FileName, FileMode.Append, FileAccess.Write, FileShare.Read ) ) )
+			using ( StreamWriter writer = new StreamWriter( new FileStream( FileName, FileMode.Append, FileAccess.Write, FileShare.Read ) ) )
 			{
 				if ( m_NewLine )
 				{
@@ -57,7 +56,7 @@ namespace Server
 
 		public override void WriteLine( string line )
 		{
-			using ( StreamWriter writer = new StreamWriter( new FileStream( m_FileName, FileMode.Append, FileAccess.Write, FileShare.Read ) ) )
+			using ( StreamWriter writer = new StreamWriter( new FileStream( FileName, FileMode.Append, FileAccess.Write, FileShare.Read ) ) )
 			{
 				if ( m_NewLine )
 					writer.Write( DateTime.UtcNow.ToString( DateFormat ) );
@@ -67,9 +66,6 @@ namespace Server
 			}
 		}
 
-		public override Encoding Encoding
-		{
-			get { return Encoding.Default; }
-		}
+		public override Encoding Encoding => Encoding.Default;
 	}
 }

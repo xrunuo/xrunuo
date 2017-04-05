@@ -10,50 +10,26 @@ namespace Server.Gumps
 
 		public int X
 		{
-			get
-			{
-				return m_X;
-			}
-			set
-			{
-				Delta( ref m_X, value );
-			}
+			get { return m_X; }
+			set { Delta( ref m_X, value ); }
 		}
 
 		public int Y
 		{
-			get
-			{
-				return m_Y;
-			}
-			set
-			{
-				Delta( ref m_Y, value );
-			}
+			get { return m_Y; }
+			set { Delta( ref m_Y, value ); }
 		}
 
 		public int Width
 		{
-			get
-			{
-				return m_Width;
-			}
-			set
-			{
-				Delta( ref m_Width, value );
-			}
+			get { return m_Width; }
+			set { Delta( ref m_Width, value ); }
 		}
 
 		public int Height
 		{
-			get
-			{
-				return m_Height;
-			}
-			set
-			{
-				Delta( ref m_Height, value );
-			}
+			get { return m_Height; }
+			set { Delta( ref m_Height, value ); }
 		}
 
 		public GumpAlphaRegion( int x, int y, int width, int height )
@@ -66,10 +42,10 @@ namespace Server.Gumps
 
 		public override string Compile()
 		{
-			return String.Format( "{{ checkertrans {0} {1} {2} {3} }}", m_X, m_Y, m_Width, m_Height );
+			return $"{{ checkertrans {m_X} {m_Y} {m_Width} {m_Height} }}";
 		}
 
-		private static byte[] m_LayoutName = Gump.StringToBuffer( "checkertrans" );
+		private static readonly byte[] m_LayoutName = Gump.StringToBuffer( "checkertrans" );
 
 		public override void AppendTo( IGumpWriter disp )
 		{

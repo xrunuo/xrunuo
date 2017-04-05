@@ -8,15 +8,8 @@ namespace Server.Configuration
 {
 	public class Library
 	{
-		private string m_Name;
-		private DirectoryInfo m_SourcePath;
-		private FileInfo m_BinaryPath;
-		private Uri m_Uri;
-		private bool m_Disabled = false;
 		private string[] m_IgnoreSources;
 		private string[] m_IgnoreTypes;
-		private string[] m_Depends;
-		private int m_WarningLevel = -1;
 
 		private static string[] CollectStringArray( XmlElement parent, string tag, string attr )
 		{
@@ -48,25 +41,25 @@ namespace Server.Configuration
 
 		public Library( string name )
 		{
-			m_Name = name;
+			Name = name;
 		}
 
 		public Library( string name, DirectoryInfo path )
 		{
-			m_Name = name;
-			m_SourcePath = path;
+			Name = name;
+			SourcePath = path;
 		}
 
 		public Library( string name, FileInfo path )
 		{
-			m_Name = name;
-			m_BinaryPath = path;
+			Name = name;
+			BinaryPath = path;
 		}
 
 		public Library( string name, Uri uri )
 		{
-			m_Name = name;
-			m_Uri = uri;
+			Name = name;
+			Uri = uri;
 		}
 
 		public void Load( XmlElement libConfigEl )
@@ -77,76 +70,50 @@ namespace Server.Configuration
 			{
 				if ( sourceString.StartsWith( "http" ) )
 				{
-					m_BinaryPath = null;
-					m_Uri = new Uri( sourceString );
+					BinaryPath = null;
+					Uri = new Uri( sourceString );
 				}
 				else if ( sourceString.EndsWith( ".dll" ) )
 				{
-					m_SourcePath = null;
-					m_BinaryPath = new FileInfo( sourceString );
-					m_Uri = null;
+					SourcePath = null;
+					BinaryPath = new FileInfo( sourceString );
+					Uri = null;
 				}
 				else
 				{
-					m_SourcePath = new DirectoryInfo( sourceString );
-					m_BinaryPath = null;
-					m_Uri = null;
+					SourcePath = new DirectoryInfo( sourceString );
+					BinaryPath = null;
+					Uri = null;
 				}
 			}
 
 			m_IgnoreSources = CollectStringArray( libConfigEl, "ignore-source", "name" );
 			m_IgnoreTypes = CollectStringArray( libConfigEl, "ignore-type", "name" );
-			m_Depends = LowerStringArray( CollectStringArray( libConfigEl, "depends", "name" ) );
+			Depends = LowerStringArray( CollectStringArray( libConfigEl, "depends", "name" ) );
 
 			var disabledString = libConfigEl.GetAttribute( "disabled" );
-			m_Disabled = Parser.ParseBool( disabledString, false );
+			Disabled = Parser.ParseBool( disabledString, false );
 
 			var warnString = libConfigEl.GetAttribute( "warn" );
 
 			if ( !string.IsNullOrEmpty( warnString ) )
-				m_WarningLevel = int.Parse( warnString );
+				WarningLevel = int.Parse( warnString );
 		}
 
-		public string Name
-		{
-			get { return m_Name; }
-		}
+		public string Name { get; }
 
-		public DirectoryInfo SourcePath
-		{
-			get { return m_SourcePath; }
-			set { m_SourcePath = value; }
-		}
+		public DirectoryInfo SourcePath { get; set; }
 
-		public FileInfo BinaryPath
-		{
-			get { return m_BinaryPath; }
-		}
+		public FileInfo BinaryPath { get; private set; }
 
-		public bool Exists
-		{
-			get
-			{
-				return ( m_SourcePath != null && m_SourcePath.Exists ) ||
-				       ( m_BinaryPath != null && m_BinaryPath.Exists );
-			}
-		}
+		public bool Exists => ( SourcePath != null && SourcePath.Exists ) ||
+		                      ( BinaryPath != null && BinaryPath.Exists );
 
-		public bool Disabled
-		{
-			get { return m_Disabled; }
-			set { m_Disabled = value; }
-		}
+		public bool Disabled { get; set; }
 
-		public int WarningLevel
-		{
-			get { return m_WarningLevel; }
-		}
+		public int WarningLevel { get; private set; } = -1;
 
-		public string[] Depends
-		{
-			get { return m_Depends; }
-		}
+		public string[] Depends { get; private set; }
 
 		public bool GetIgnoreSource( string filename )
 		{
@@ -158,14 +125,8 @@ namespace Server.Configuration
 			return m_IgnoreTypes != null && m_IgnoreTypes.Any( t => t == type.FullName );
 		}
 
-		public Uri Uri
-		{
-			get { return m_Uri; }
-		}
+		public Uri Uri { get; private set; }
 
-		public bool IsRemote
-		{
-			get { return Uri != null; }
-		}
+		public bool IsRemote => Uri != null;
 	}
 }

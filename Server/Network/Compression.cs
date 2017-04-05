@@ -7,7 +7,7 @@ namespace Server.Network
 	/// </summary>
 	public class Compression
 	{
-		private static int[] m_Table = new int[514]
+		private static readonly int[] m_Table = new int[514]
 		{
 			0x2, 0x000,	0x5, 0x01F,	0x6, 0x022,	0x7, 0x034,	0x7, 0x075,	0x6, 0x028,	0x6, 0x03B,	0x7, 0x032,
 			0x8, 0x0E0,	0x8, 0x062,	0x7, 0x056,	0x8, 0x079,	0x9, 0x19D,	0x8, 0x097,	0x6, 0x02A,	0x7, 0x057,
@@ -44,25 +44,25 @@ namespace Server.Network
 			0x4, 0x00D
 		};
 
-		private static byte[] m_OutputBuffer = new byte[0x40000];
-		private static object m_SyncRoot = new object();
+		private static readonly byte[] m_OutputBuffer = new byte[0x40000];
+		private static readonly object m_SyncRoot = new object();
 
 		public unsafe static void Compress( byte[] input, int length, out byte[] output, out int outputLength )
 		{
 			lock ( m_SyncRoot )
 			{
-				int holdCount = 0;
-				int holdValue = 0;
+				var holdCount = 0;
+				var holdValue = 0;
 
-				int packCount = 0;
-				int packValue = 0;
+				var packCount = 0;
+				var packValue = 0;
 
-				int byteValue = 0;
+				var byteValue = 0;
 
-				int inputLength = length;
-				int inputIndex = 0;
+				var inputLength = length;
+				var inputIndex = 0;
 
-				int outputCount = 0;
+				var outputCount = 0;
 
 				fixed ( int* pTable = m_Table )
 				{

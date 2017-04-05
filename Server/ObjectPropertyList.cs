@@ -16,31 +16,24 @@ namespace Server
 
 	public class ObjectPropertyListPacket : Packet, ObjectPropertyList
 	{
-		private IEntity m_Entity;
 		private int m_Hash;
-		private int m_Header;
-		private string m_HeaderArgs;
 
-		public IEntity Entity { get { return m_Entity; } }
-		public int Hash { get { return 0x40000000 + m_Hash; } }
+		public IEntity Entity { get; }
 
-		public int Header { get { return m_Header; } set { m_Header = value; } }
-		public string HeaderArgs { get { return m_HeaderArgs; } set { m_HeaderArgs = value; } }
+		public int Hash => 0x40000000 + m_Hash;
 
-		private static bool m_Enabled;
+		public int Header { get; set; }
 
-		public static bool Enabled
-		{
-			get { return m_Enabled; }
-			set { m_Enabled = value; }
-		}
+		public string HeaderArgs { get; set; }
+
+		public static bool Enabled { get; set; }
 
 		public ObjectPropertyListPacket( IEntity e )
 			: base( 0xD6 )
 		{
 			EnsureCapacity( 128 );
 
-			m_Entity = e;
+			Entity = e;
 
 			m_Stream.Write( (short) 1 );
 			m_Stream.Write( (int) e.Serial );
@@ -56,10 +49,10 @@ namespace Server
 
 			AddHash( number );
 
-			if ( m_Header == 0 )
+			if ( Header == 0 )
 			{
-				m_Header = number;
-				m_HeaderArgs = "";
+				Header = number;
+				HeaderArgs = "";
 			}
 
 			m_Stream.Write( number );
@@ -75,7 +68,7 @@ namespace Server
 		}
 
 		private static byte[] m_Buffer = new byte[1024];
-		private static Encoding m_Encoding = Encoding.Unicode;
+		private static readonly Encoding m_Encoding = Encoding.Unicode;
 
 		public void AddHash( int val )
 		{
@@ -91,10 +84,10 @@ namespace Server
 			if ( arguments == null )
 				arguments = "";
 
-			if ( m_Header == 0 )
+			if ( Header == 0 )
 			{
-				m_Header = number;
-				m_HeaderArgs = arguments;
+				Header = number;
+				HeaderArgs = arguments;
 			}
 
 			AddHash( number );

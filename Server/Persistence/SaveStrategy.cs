@@ -1,5 +1,3 @@
-using System;
-
 namespace Server.Persistence
 {
 	public abstract class SaveStrategy
@@ -8,8 +6,8 @@ namespace Server.Persistence
 		{
 			if ( World.DualSave )
 				return new DynamicSaveStrategy();
-			else
-				return new StandardSaveStrategy();
+
+			return new StandardSaveStrategy();
 		}
 
 		public abstract string Name { get; }

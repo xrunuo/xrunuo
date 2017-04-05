@@ -6,39 +6,17 @@ namespace Server.Network
 
 	public class EncodedPacketHandler
 	{
-		private int m_PacketID;
-		private bool m_Ingame;
-		private OnEncodedPacketReceive m_OnReceive;
-
 		public EncodedPacketHandler( int packetID, bool ingame, OnEncodedPacketReceive onReceive )
 		{
-			m_PacketID = packetID;
-			m_Ingame = ingame;
-			m_OnReceive = onReceive;
+			PacketID = packetID;
+			Ingame = ingame;
+			OnReceive = onReceive;
 		}
 
-		public int PacketID
-		{
-			get
-			{
-				return m_PacketID;
-			}
-		}
+		public int PacketID { get; }
 
-		public OnEncodedPacketReceive OnReceive
-		{
-			get
-			{
-				return m_OnReceive;
-			}
-		}
+		public OnEncodedPacketReceive OnReceive { get; }
 
-		public bool Ingame
-		{
-			get
-			{
-				return m_Ingame;
-			}
-		}
+		public bool Ingame { get; }
 	}
 }

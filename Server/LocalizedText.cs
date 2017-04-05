@@ -1,16 +1,11 @@
-﻿using System;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace Server
 {
 	public class LocalizedText
 	{
-		private int m_Number;
-		private string m_Args;
-
-		public int Number { get { return m_Number; } }
-		public string Args { get { return m_Args; } }
+		public int Number { get; }
+		public string Args { get; }
 
 		public LocalizedText( int number )
 			: this( number, null )
@@ -34,33 +29,32 @@ namespace Server
 
 		public LocalizedText( int number, string args )
 		{
-			m_Number = number;
-			m_Args = args;
+			Number = number;
+			Args = args;
 		}
 
 		public void AddTo( ObjectPropertyList list )
 		{
-			if ( m_Args == null )
-				list.Add( m_Number );
+			if ( Args == null )
+				list.Add( Number );
 			else
-				list.Add( m_Number, m_Args );
+				list.Add( Number, Args );
 		}
 
-		private static Regex LocalizedTextExpression = new Regex( @"#(\d+)", RegexOptions.IgnoreCase );
+		private static readonly Regex LocalizedTextExpression = new Regex( @"#(\d+)", RegexOptions.IgnoreCase );
 
 		public string Delocalize()
 		{
-			string format = StringList.Localization[m_Number];
+			string format = StringList.Localization[Number];
 
 			if ( format == null )
 				return "(empty)";
-			else if ( string.IsNullOrEmpty( m_Args ) )
+
+			if ( string.IsNullOrEmpty( Args ) )
 				return format;
-			else
-			{
-				string args = LocalizedTextExpression.Replace( m_Args, m => StringList.Localization[Utility.ToInt32( m.Groups[1].Value )] ?? string.Empty );
-				return StringList.CombineArguments( format, args );
-			}
+
+			string args = LocalizedTextExpression.Replace( Args, m => StringList.Localization[Utility.ToInt32( m.Groups[1].Value )] ?? string.Empty );
+			return StringList.CombineArguments( format, args );
 		}
 	}
 }

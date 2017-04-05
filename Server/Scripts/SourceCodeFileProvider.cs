@@ -7,13 +7,12 @@ namespace Server
 {
 	public class SourceCodeFileProvider
 	{
-		private static string[] m_IgnoreNames = new string[]
-			{
+		private static readonly string[] m_IgnoreNames = {
 				".svn", "_svn", "_darcs", ".git", ".hg", "cvs"
 			};
 
-		private Configuration.Library m_LibraryConfig;
-		private string m_Type;
+		private readonly Configuration.Library m_LibraryConfig;
+		private readonly string m_Type;
 
 		public SourceCodeFileProvider( Configuration.Library libConfig, string type )
 		{

@@ -6,13 +6,7 @@ namespace Server
 {
 	public class TimerScheduler
 	{
-		private static TimerScheduler m_Instance;
-
-		public static TimerScheduler Instance
-		{
-			get { return m_Instance; }
-			set { m_Instance = value; }
-		}
+		public static TimerScheduler Instance { get; set; }
 
 		private readonly Queue<Timer> m_Queue;
 		private readonly Queue<TimerChangeEntry> m_ChangeQueue;
@@ -55,18 +49,18 @@ namespace Server
 
 			ProcessChangeQueue( now );
 
-			for ( int i = 0; i < m_Timers.Length; i++ )
+			for ( var i = 0; i < m_Timers.Length; i++ )
 			{
 				if ( now < m_NextPriorities[i] )
 					break;
 
 				m_NextPriorities[i] = now + PriorityDelays[i];
 
-				for ( int j = 0; j < m_Timers[i].Count; j++ )
+				for ( var j = 0; j < m_Timers[i].Count; j++ )
 				{
-					Timer timer = m_Timers[i][j];
+					var timer = m_Timers[i][j];
 
-					if ( !timer.m_Queued && now > timer.m_Next )
+					if ( !timer.m_Queued && now > timer.Next )
 					{
 						timer.m_Queued = true;
 
@@ -79,7 +73,7 @@ namespace Server
 						}
 						else
 						{
-							timer.m_Next = now + timer.Interval;
+							timer.Next = now + timer.Interval;
 						}
 					}
 				}
@@ -92,16 +86,16 @@ namespace Server
 			{
 				while ( m_ChangeQueue.Count > 0 )
 				{
-					TimerChangeEntry tce = m_ChangeQueue.Dequeue();
-					Timer timer = tce.Timer;
-					int newIndex = tce.NewIndex;
+					var tce = m_ChangeQueue.Dequeue();
+					var timer = tce.Timer;
+					var newIndex = tce.NewIndex;
 
 					if ( timer.m_List != null )
 						timer.m_List.Remove( timer );
 
 					if ( tce.IsAdd )
 					{
-						timer.m_Next = now + timer.Delay;
+						timer.Next = now + timer.Delay;
 						timer.m_Index = 0;
 					}
 
@@ -162,7 +156,7 @@ namespace Server
 
 		private void Change( Timer timer, int newIndex, bool isAdd )
 		{
-			TimerChangeEntry entry = TimerChangeEntry.GetInstance( timer, newIndex, isAdd );
+			var entry = TimerChangeEntry.GetInstance( timer, newIndex, isAdd );
 
 			lock ( m_ChangeQueue )
 				m_ChangeQueue.Enqueue( entry );
@@ -189,7 +183,7 @@ namespace Server
 					m_InstancePool.Enqueue( this );
 			}
 
-			private static Queue<TimerChangeEntry> m_InstancePool = new Queue<TimerChangeEntry>();
+			private static readonly Queue<TimerChangeEntry> m_InstancePool = new Queue<TimerChangeEntry>();
 
 			public static TimerChangeEntry GetInstance( Timer t, int newIndex, bool isAdd )
 			{
@@ -215,18 +209,18 @@ namespace Server
 
 		public void DumpInfo( TextWriter tw )
 		{
-			for ( int i = 0; i < m_Timers.Length; ++i )
+			for ( var i = 0; i < m_Timers.Length; ++i )
 			{
 				tw.WriteLine( "Priority: {0}", (TimerPriority) i );
 				tw.WriteLine();
 
 				var hash = new Dictionary<string, List<Timer>>();
 
-				for ( int j = 0; j < m_Timers[i].Count; ++j )
+				for ( var j = 0; j < m_Timers[i].Count; ++j )
 				{
-					Timer t = m_Timers[i][j];
+					var t = m_Timers[i][j];
 
-					string key = t.ToString();
+					var key = t.ToString();
 
 					List<Timer> list;
 					hash.TryGetValue( key, out list );
@@ -237,10 +231,10 @@ namespace Server
 					list.Add( t );
 				}
 
-				foreach ( KeyValuePair<string, List<Timer>> kv in hash )
+				foreach ( var kv in hash )
 				{
-					string key = kv.Key;
-					List<Timer> list = kv.Value;
+					var key = kv.Key;
+					var list = kv.Value;
 
 					tw.WriteLine( "Type: {0}; Count: {1}; Percent: {2}%", key, list.Count, (int) ( 100 * ( list.Count / (double) m_Timers[i].Count ) ) );
 				}

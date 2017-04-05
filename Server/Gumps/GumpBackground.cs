@@ -11,62 +11,32 @@ namespace Server.Gumps
 
 		public int X
 		{
-			get
-			{
-				return m_X;
-			}
-			set
-			{
-				Delta( ref m_X, value );
-			}
+			get { return m_X; }
+			set { Delta( ref m_X, value ); }
 		}
 
 		public int Y
 		{
-			get
-			{
-				return m_Y;
-			}
-			set
-			{
-				Delta( ref m_Y, value );
-			}
+			get { return m_Y; }
+			set { Delta( ref m_Y, value ); }
 		}
 
 		public int Width
 		{
-			get
-			{
-				return m_Width;
-			}
-			set
-			{
-				Delta( ref m_Width, value );
-			}
+			get { return m_Width; }
+			set { Delta( ref m_Width, value ); }
 		}
 
 		public int Height
 		{
-			get
-			{
-				return m_Height;
-			}
-			set
-			{
-				Delta( ref m_Height, value );
-			}
+			get { return m_Height; }
+			set { Delta( ref m_Height, value ); }
 		}
 
 		public int GumpID
 		{
-			get
-			{
-				return m_GumpID;
-			}
-			set
-			{
-				Delta( ref m_GumpID, value );
-			}
+			get { return m_GumpID; }
+			set { Delta( ref m_GumpID, value ); }
 		}
 
 		public GumpBackground( int x, int y, int width, int height, int gumpID )
@@ -80,10 +50,10 @@ namespace Server.Gumps
 
 		public override string Compile()
 		{
-			return String.Format( "{{ resizepic {0} {1} {2} {3} {4} }}", m_X, m_Y, m_GumpID, m_Width, m_Height );
+			return $"{{ resizepic {m_X} {m_Y} {m_GumpID} {m_Width} {m_Height} }}";
 		}
 
-		private static byte[] m_LayoutName = Gump.StringToBuffer( "resizepic" );
+		private static readonly byte[] m_LayoutName = Gump.StringToBuffer( "resizepic" );
 
 		public override void AppendTo( IGumpWriter disp )
 		{

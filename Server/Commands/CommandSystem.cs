@@ -9,24 +9,18 @@ namespace Server.Commands
 
 	public class CommandSystem
 	{
-		private static string m_CommandPrefix = ".";
-
-		public static string CommandPrefix
-		{
-			get { return m_CommandPrefix; }
-			set { m_CommandPrefix = value; }
-		}
+		public static string CommandPrefix { get; set; } = ".";
 
 		public static string[] Split( string value )
 		{
-			char[] array = value.ToCharArray();
-			List<string> list = new List<string>();
+			var array = value.ToCharArray();
+			var list = new List<string>();
 
 			int start = 0, end = 0;
 
 			while ( start < array.Length )
 			{
-				char c = array[start];
+				var c = array[start];
 
 				if ( c == '"' )
 				{
@@ -70,43 +64,33 @@ namespace Server.Commands
 			return list.ToArray();
 		}
 
-		private static Hashtable m_Entries;
-
-		public static Hashtable Entries
-		{
-			get
-			{
-				return m_Entries;
-			}
-		}
+		public static Hashtable Entries { get; }
 
 		static CommandSystem()
 		{
-			m_Entries = new Hashtable( StringComparer.OrdinalIgnoreCase );
+			Entries = new Hashtable( StringComparer.OrdinalIgnoreCase );
 		}
 
 		public static void Register( string command, AccessLevel access, CommandEventHandler handler )
 		{
-			Register( new string[] { command }, access, handler );
+			Register( new[] { command }, access, handler );
 		}
 
 		public static void Register( string[] commands, AccessLevel access, CommandEventHandler handler )
 		{
-			foreach ( string command in commands )
-				m_Entries[command] = new CommandEntry( command, handler, access );
+			foreach ( var command in commands )
+				Entries[command] = new CommandEntry( command, handler, access );
 		}
 
-		private static AccessLevel m_BadCommandIngoreLevel = AccessLevel.Player;
-
-		public static AccessLevel BadCommandIgnoreLevel { get { return m_BadCommandIngoreLevel; } set { m_BadCommandIngoreLevel = value; } }
+		public static AccessLevel BadCommandIgnoreLevel { get; set; } = AccessLevel.Player;
 
 		public static bool Handle( Mobile from, string text )
 		{
-			if ( text.StartsWith( m_CommandPrefix ) )
+			if ( text.StartsWith( CommandPrefix ) )
 			{
-				text = text.Substring( m_CommandPrefix.Length );
+				text = text.Substring( CommandPrefix.Length );
 
-				int indexOf = text.IndexOf( ' ' );
+				var indexOf = text.IndexOf( ' ' );
 
 				string command;
 				string[] args;
@@ -126,7 +110,7 @@ namespace Server.Commands
 					args = new string[0];
 				}
 
-				CommandEntry entry = (CommandEntry) m_Entries[command];
+				var entry = (CommandEntry) Entries[command];
 
 				if ( entry != null )
 				{
@@ -134,14 +118,14 @@ namespace Server.Commands
 					{
 						if ( entry.Handler != null )
 						{
-							CommandEventArgs e = new CommandEventArgs( from, command, argString, args );
+							var e = new CommandEventArgs( from, command, argString, args );
 							entry.Handler( e );
 							EventSink.InvokeCommand( e );
 						}
 					}
 					else
 					{
-						if ( from.AccessLevel <= m_BadCommandIngoreLevel )
+						if ( from.AccessLevel <= BadCommandIgnoreLevel )
 							return false;
 
 						from.SendMessage( "You do not have access to that command." );
@@ -149,7 +133,7 @@ namespace Server.Commands
 				}
 				else
 				{
-					if ( from.AccessLevel <= m_BadCommandIngoreLevel )
+					if ( from.AccessLevel <= BadCommandIgnoreLevel )
 						return false;
 
 					from.SendMessage( "That is not a valid command." );

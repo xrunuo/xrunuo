@@ -18,67 +18,30 @@ namespace Server.Network
 	{
 		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
 
-		private Socket m_Socket;
-		private NetServer m_NetServer;
-		private IPAddress m_Address;
-		private ByteQueue m_Buffer;
+		private readonly NetServer m_NetServer;
 		private byte[] m_RecvBuffer;
-		private SendQueue m_SendQueue;
-		private bool m_Running, m_Disposing, m_DisposeFinished, m_Sending;
-		private IPacketEncoder m_Encoder;
+		private readonly SendQueue m_SendQueue;
+		private bool m_Disposing, m_DisposeFinished, m_Sending;
 		private DateTime m_NextCheckActivity;
 		private string m_ToString;
 
 		#region Traffic
-		private long m_Incoming = 0;
-		private long m_Outgoing = 0;
+		public long Incoming { get; set; } = 0;
 
-		public long Incoming
-		{
-			get { return m_Incoming; }
-			set { m_Incoming = value; }
-		}
-
-		public long Outgoing
-		{
-			get { return m_Outgoing; }
-			set { m_Outgoing = value; }
-		}
+		public long Outgoing { get; set; } = 0;
 		#endregion
 
-		public Socket Socket
-		{
-			get { return m_Socket; }
-		}
+		public Socket Socket { get; private set; }
 
-		public ByteQueue Buffer
-		{
-			get { return m_Buffer; }
-		}
+		public ByteQueue Buffer { get; private set; }
 
-		public IPacketEncoder PacketEncoder
-		{
-			get { return m_Encoder; }
-			set { m_Encoder = value; }
-		}
+		public IPacketEncoder PacketEncoder { get; set; }
 
-		public IPAddress Address
-		{
-			get { return m_Address; }
-		}
+		public IPAddress Address { get; }
 
-		public bool Running
-		{
-			get { return m_Running; }
-		}
+		public bool Running { get; private set; }
 
-		private static NetStateCreatedCallback m_CreatedCallback;
-
-		public static NetStateCreatedCallback CreatedCallback
-		{
-			get { return m_CreatedCallback; }
-			set { m_CreatedCallback = value; }
-		}
+		public static NetStateCreatedCallback CreatedCallback { get; set; }
 
 		public void SetName( string name )
 		{
@@ -90,14 +53,14 @@ namespace Server.Network
 			return m_ToString;
 		}
 
-		private static BufferPool m_ReceiveBufferPool = new BufferPool( "Receive", 2048, 2048 );
+		private static readonly BufferPool m_ReceiveBufferPool = new BufferPool( "Receive", 2048, 2048 );
 
 		public UOSocket( Socket socket, NetServer netServer )
 		{
-			m_Socket = socket;
+			Socket = socket;
 			m_NetServer = netServer;
-			m_Buffer = new ByteQueue();
-			m_Running = false;
+			Buffer = new ByteQueue();
+			Running = false;
 			m_RecvBuffer = m_ReceiveBufferPool.AcquireBuffer();
 			m_SendQueue = new SendQueue();
 
@@ -105,32 +68,32 @@ namespace Server.Network
 
 			try
 			{
-				m_Address = ( (IPEndPoint) m_Socket.RemoteEndPoint ).Address;
-				m_ToString = m_Address.ToString();
+				Address = ( (IPEndPoint) Socket.RemoteEndPoint ).Address;
+				m_ToString = Address.ToString();
 			}
 			catch ( Exception ex )
 			{
 				TraceException( ex );
-				m_Address = IPAddress.None;
+				Address = IPAddress.None;
 				m_ToString = "(error)";
 			}
 
-			if ( m_CreatedCallback != null )
-				m_CreatedCallback( this );
+			if ( CreatedCallback != null )
+				CreatedCallback( this );
 		}
 
 		public void Start()
 		{
-			if ( m_Socket == null )
+			if ( Socket == null )
 				return;
 
-			m_Running = true;
+			Running = true;
 
 			m_NetServer.OnStarted( this );
 
 			try
 			{
-				m_Socket.BeginReceive( m_RecvBuffer, 0, 32, SocketFlags.None, OnReceive, null );
+				Socket.BeginReceive( m_RecvBuffer, 0, 32, SocketFlags.None, OnReceive, null );
 			}
 			catch ( Exception ex )
 			{
@@ -141,12 +104,12 @@ namespace Server.Network
 
 		public void Continue()
 		{
-			if ( m_Socket == null )
+			if ( Socket == null )
 				return;
 
 			try
 			{
-				m_Socket.BeginReceive( m_RecvBuffer, 0, 2048, SocketFlags.None, OnReceive, null );
+				Socket.BeginReceive( m_RecvBuffer, 0, 2048, SocketFlags.None, OnReceive, null );
 			}
 			catch ( Exception ex )
 			{
@@ -159,25 +122,25 @@ namespace Server.Network
 		{
 			lock ( this )
 			{
-				if ( m_Socket == null )
+				if ( Socket == null )
 					return;
 
 				try
 				{
-					int byteCount = m_Socket.EndReceive( asyncResult );
+					var byteCount = Socket.EndReceive( asyncResult );
 
 					if ( byteCount > 0 )
 					{
 						m_NextCheckActivity = DateTime.UtcNow + TimeSpan.FromMinutes( 1.2 );
 
-						byte[] buffer = m_RecvBuffer;
+						var buffer = m_RecvBuffer;
 
-						if ( m_Encoder != null )
-							m_Encoder.DecodeIncomingPacket( this, ref buffer, ref byteCount );
+						if ( PacketEncoder != null )
+							PacketEncoder.DecodeIncomingPacket( this, ref buffer, ref byteCount );
 
-						m_Buffer.Enqueue( buffer, 0, byteCount );
+						Buffer.Enqueue( buffer, 0, byteCount );
 
-						m_Incoming += byteCount;
+						Incoming += byteCount;
 
 						m_NetServer.OnReceive( this, byteCount );
 					}
@@ -196,25 +159,25 @@ namespace Server.Network
 
 		public void Send( byte[] buffer, int length )
 		{
-			if ( m_Socket == null )
+			if ( Socket == null )
 				return;
 
-			if ( m_Encoder != null )
-				m_Encoder.EncodeOutgoingPacket( this, ref buffer, ref length );
+			if ( PacketEncoder != null )
+				PacketEncoder.EncodeOutgoingPacket( this, ref buffer, ref length );
 
-			bool shouldBegin = false;
+			var shouldBegin = false;
 
 			lock ( m_SendQueue )
 				shouldBegin = ( m_SendQueue.Enqueue( buffer, length ) );
 
 			if ( shouldBegin )
 			{
-				int sendLength = 0;
-				byte[] sendBuffer = m_SendQueue.Peek( ref sendLength );
+				var sendLength = 0;
+				var sendBuffer = m_SendQueue.Peek( ref sendLength );
 
 				try
 				{
-					m_Socket.BeginSend( sendBuffer, 0, sendLength, SocketFlags.None, OnSend, null );
+					Socket.BeginSend( sendBuffer, 0, sendLength, SocketFlags.None, OnSend, null );
 					m_Sending = true;
 				}
 				catch ( Exception ex )
@@ -227,10 +190,10 @@ namespace Server.Network
 
 		public bool Flush()
 		{
-			if ( m_Socket == null || !m_SendQueue.IsFlushReady )
+			if ( Socket == null || !m_SendQueue.IsFlushReady )
 				return false;
 
-			int length = 0;
+			var length = 0;
 			byte[] buffer;
 
 			lock ( m_SendQueue )
@@ -240,7 +203,7 @@ namespace Server.Network
 			{
 				try
 				{
-					m_Socket.BeginSend( buffer, 0, length, SocketFlags.None, OnSend, null );
+					Socket.BeginSend( buffer, 0, length, SocketFlags.None, OnSend, null );
 					m_Sending = true;
 					return true;
 				}
@@ -254,24 +217,18 @@ namespace Server.Network
 			return false;
 		}
 
-		private static int m_CoalesceSleep = -1;
-
-		public static int CoalesceSleep
-		{
-			get { return m_CoalesceSleep; }
-			set { m_CoalesceSleep = value; }
-		}
+		public static int CoalesceSleep { get; set; } = -1;
 
 		private void OnSend( IAsyncResult asyncResult )
 		{
 			m_Sending = false;
 
-			if ( m_Socket == null )
+			if ( Socket == null )
 				return;
 
 			try
 			{
-				int bytes = m_Socket.EndSend( asyncResult );
+				var bytes = Socket.EndSend( asyncResult );
 
 				if ( bytes <= 0 )
 				{
@@ -279,7 +236,7 @@ namespace Server.Network
 					return;
 				}
 
-				m_Outgoing += bytes;
+				Outgoing += bytes;
 				m_NetServer.OnSend( this, bytes );
 
 				if ( m_Disposing && !m_DisposeFinished )
@@ -290,10 +247,10 @@ namespace Server.Network
 
 				m_NextCheckActivity = DateTime.UtcNow + TimeSpan.FromMinutes( 1.2 );
 
-				if ( m_CoalesceSleep >= 0 )
-					Thread.Sleep( m_CoalesceSleep );
+				if ( CoalesceSleep >= 0 )
+					Thread.Sleep( CoalesceSleep );
 
-				int length = 0;
+				var length = 0;
 				byte[] queued;
 
 				lock ( m_SendQueue )
@@ -301,7 +258,7 @@ namespace Server.Network
 
 				if ( queued != null )
 				{
-					m_Socket.BeginSend( queued, 0, length, SocketFlags.None, OnSend, null );
+					Socket.BeginSend( queued, 0, length, SocketFlags.None, OnSend, null );
 					m_Sending = true;
 				}
 			}
@@ -320,7 +277,7 @@ namespace Server.Network
 				return false;
 			}
 
-			if ( m_Socket == null )
+			if ( Socket == null )
 				return false;
 
 			if ( DateTime.UtcNow < m_NextCheckActivity )
@@ -346,7 +303,7 @@ namespace Server.Network
 				return;
 			}
 
-			if ( m_Socket == null || m_Disposing )
+			if ( Socket == null || m_Disposing )
 				return;
 
 			m_Disposing = true;
@@ -368,7 +325,7 @@ namespace Server.Network
 
 			try
 			{
-				m_Socket.Shutdown( SocketShutdown.Both );
+				Socket.Shutdown( SocketShutdown.Both );
 			}
 			catch ( SocketException ex )
 			{
@@ -377,7 +334,7 @@ namespace Server.Network
 
 			try
 			{
-				m_Socket.Close();
+				Socket.Close();
 			}
 			catch ( SocketException ex )
 			{
@@ -387,11 +344,11 @@ namespace Server.Network
 			if ( m_RecvBuffer != null )
 				m_ReceiveBufferPool.ReleaseBuffer( m_RecvBuffer );
 
-			m_Socket = null;
+			Socket = null;
 
-			m_Buffer = null;
+			Buffer = null;
 			m_RecvBuffer = null;
-			m_Running = false;
+			Running = false;
 
 			m_NetServer.OnDisposed( this );
 
@@ -406,7 +363,7 @@ namespace Server.Network
 		{
 			try
 			{
-				using ( StreamWriter op = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "network-errors.log" ), true ) )
+				using ( var op = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "network-errors.log" ), true ) )
 				{
 					op.WriteLine( "# {0}", DateTime.UtcNow );
 

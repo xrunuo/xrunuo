@@ -6,33 +6,15 @@ namespace Server.Prompts
 {
 	public abstract class Prompt
 	{
-		private IEntity m_Sender;
-		private String m_MessageArgs;
+		public IEntity Sender { get; }
 
-		public IEntity Sender
-		{
-			get { return m_Sender; }
-		}
+		public String MessageArgs { get; }
 
-		public String MessageArgs
-		{
-			get { return m_MessageArgs; }
-		}
+		public virtual int MessageCliloc => 1042971;
 
-		public virtual int MessageCliloc
-		{
-			get { return 1042971; } // ~1_NOTHING~
-		}
+		public virtual int MessageHue => 0;
 
-		public virtual int MessageHue
-		{
-			get { return 0; }
-		}
-
-		public virtual int TypeId
-		{
-			get { return GetType().FullName.GetHashCode(); }
-		}
+		public virtual int TypeId => GetType().FullName.GetHashCode();
 
 		public Prompt()
 			: this( null )
@@ -46,8 +28,8 @@ namespace Server.Prompts
 
 		public Prompt( IEntity sender, String args )
 		{
-			m_Sender = sender;
-			m_MessageArgs = args;
+			Sender = sender;
+			MessageArgs = args;
 		}
 
 		public virtual void OnCancel( Mobile from )

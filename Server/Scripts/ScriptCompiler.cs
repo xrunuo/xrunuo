@@ -15,10 +15,7 @@ namespace Server
 
 		private static List<Library> m_Libraries;
 
-		public static Library[] Libraries
-		{
-			get { return m_Libraries.ToArray(); }
-		}
+		public static Library[] Libraries => m_Libraries.ToArray();
 
 		/// <summary>
 		/// Find a loaded library by its name.
@@ -500,10 +497,7 @@ namespace Server
 			return true;
 		}
 
-		private static bool AlreadyCompiled
-		{
-			get { return m_AdditionalReferences != null; }
-		}
+		private static bool AlreadyCompiled => m_AdditionalReferences != null;
 
 		public static void Configure()
 		{
@@ -517,7 +511,7 @@ namespace Server
 				library.Initialize();
 		}
 
-		private static Hashtable m_TypeCaches = new Hashtable();
+		private static readonly Hashtable m_TypeCaches = new Hashtable();
 		private static TypeCache m_NullCache;
 
 		private static Library FindLibrary( Assembly assembly )
@@ -590,22 +584,14 @@ namespace Server
 			return null;
 		}
 
-		private static int m_ItemCount, m_MobileCount;
+		public static int ScriptItems { get; private set; }
 
-		public static int ScriptItems
-		{
-			get { return m_ItemCount; }
-		}
-
-		public static int ScriptMobiles
-		{
-			get { return m_MobileCount; }
-		}
+		public static int ScriptMobiles { get; private set; }
 
 		public static void VerifyLibraries()
 		{
-			m_ItemCount = 0;
-			m_MobileCount = 0;
+			ScriptItems = 0;
+			ScriptMobiles = 0;
 
 			foreach ( var library in ScriptCompiler.Libraries )
 			{
@@ -613,55 +599,44 @@ namespace Server
 				library.Verify( ref itemCount, ref mobileCount );
 				log.Info( "Library {0} verified: {1} items, {2} mobiles", library.Name, itemCount, mobileCount );
 
-				m_ItemCount += itemCount;
-				m_MobileCount += mobileCount;
+				ScriptItems += itemCount;
+				ScriptMobiles += mobileCount;
 			}
 
-			log.Info( "All libraries verified: {0} items, {1} mobiles)", m_ItemCount, m_MobileCount );
+			log.Info( "All libraries verified: {0} items, {1} mobiles)", ScriptItems, ScriptMobiles );
 		}
 	}
 
 	public class TypeCache
 	{
-		private Type[] m_Types;
-		private TypeTable m_Names, m_FullNames;
+		public Type[] Types { get; }
 
-		public Type[] Types
-		{
-			get { return m_Types; }
-		}
+		public TypeTable Names { get; }
 
-		public TypeTable Names
-		{
-			get { return m_Names; }
-		}
-
-		public TypeTable FullNames
-		{
-			get { return m_FullNames; }
-		}
+		public TypeTable FullNames { get; }
 
 		public Type GetTypeByName( string name, bool ignoreCase )
 		{
-			return m_Names.Get( name, ignoreCase );
+			return Names.Get( name, ignoreCase );
 		}
 
 		public Type GetTypeByFullName( string fullName, bool ignoreCase )
 		{
-			return m_FullNames.Get( fullName, ignoreCase );
+			return FullNames.Get( fullName, ignoreCase );
 		}
 
 		public TypeCache( Type[] types, TypeTable names, TypeTable fullNames )
 		{
-			m_Types = types;
-			m_Names = names;
-			m_FullNames = fullNames;
+			Types = types;
+			Names = names;
+			FullNames = fullNames;
 		}
 	}
 
 	public class TypeTable
 	{
-		private Dictionary<string, Type> m_Sensitive, m_Insensitive;
+		private readonly Dictionary<string, Type> m_Sensitive;
+		private readonly Dictionary<string, Type> m_Insensitive;
 
 		public void Add( string key, Type type )
 		{

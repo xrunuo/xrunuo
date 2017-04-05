@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Server.Configuration
+﻿namespace Server.Configuration
 {
 	[ConfigModule]
 	public class Reports

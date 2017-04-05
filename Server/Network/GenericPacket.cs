@@ -5,7 +5,7 @@ namespace Server.Network
 {
 	public class GenericPacket : Packet
 	{
-		private static Stack<GenericPacket> m_Stack = new Stack<GenericPacket>();
+		private static readonly Stack<GenericPacket> m_Stack = new Stack<GenericPacket>();
 
 		public static GenericPacket Instantiate( int id, int len )
 		{

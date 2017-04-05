@@ -7,7 +7,7 @@ namespace Server
 {
 	public class MultiTextWriter : TextWriter
 	{
-		private List<TextWriter> m_Streams;
+		private readonly List<TextWriter> m_Streams;
 
 		public MultiTextWriter( params TextWriter[] streams )
 		{
@@ -44,9 +44,6 @@ namespace Server
 			WriteLine( String.Format( line, args ) );
 		}
 
-		public override Encoding Encoding
-		{
-			get { return Encoding.Default; }
-		}
+		public override Encoding Encoding => Encoding.Default;
 	}
 }

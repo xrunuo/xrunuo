@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -12,141 +13,55 @@ namespace Server.Configuration
 {
 	public class RootConfig
 	{
-		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+		private static readonly ILog log = LogManager.GetLogger( MethodBase.GetCurrentMethod().DeclaringType );
 
-		private string m_Filename;
+		private readonly string m_Filename;
 		private XmlDocument m_Document;
-		private string m_ServerName;
-		private string m_Website;
-		private string m_ServerEmail;
-		private TimeSpan m_SaveInterval = TimeSpan.FromMinutes( 15.0 );
-		private TimeSpan m_AccountDecay = TimeSpan.FromDays( 90.0 );
-		private Features m_Features = new Features();
-
-		private string m_BaseDirectory,
-			m_ConfigDirectory,
-			m_SaveDirectory,
-			m_BackupDirectory,
-			m_LogDirectory,
-			m_CacheDirectory;
-
-		private List<string> m_DataDirectories;
-		private Network m_Network;
-		private GameServerList m_GameServers;
 
 		public RootConfig( string baseDirectory, string filename )
 		{
-			m_BaseDirectory = baseDirectory;
-			m_ConfigDirectory = Path.Combine( m_BaseDirectory, "Data" );
-			m_SaveDirectory = Path.Combine( m_BaseDirectory, "Saves" );
-			m_BackupDirectory = Path.Combine( m_BaseDirectory, "Backups" );
+			BaseDirectory = baseDirectory;
+			ConfigDirectory = Path.Combine( BaseDirectory, "Data" );
+			SaveDirectory = Path.Combine( BaseDirectory, "Saves" );
+			BackupDirectory = Path.Combine( BaseDirectory, "Backups" );
 
-			var baseDir = new DirectoryInfo( m_BaseDirectory );
-			m_LogDirectory = baseDir.CreateSubdirectory( "log" ).FullName;
-			m_CacheDirectory = baseDir.CreateSubdirectory( "cache" ).FullName;
+			var baseDir = new DirectoryInfo( BaseDirectory );
+			LogDirectory = baseDir.CreateSubdirectory( "log" ).FullName;
+			CacheDirectory = baseDir.CreateSubdirectory( "cache" ).FullName;
 
 			m_Filename = filename;
 
 			Load();
 		}
 
-		public bool Exists
-		{
-			get { return File.Exists( m_Filename ); }
-		}
+		public bool Exists => File.Exists( m_Filename );
 
-		public string ServerName
-		{
-			get { return m_ServerName; }
-		}
+		public string ServerName { get; private set; }
+		public string Website { get; private set; }
+		public string ServerEmail { get; private set; }
+		public TimeSpan SaveInterval { get; private set; } = TimeSpan.FromMinutes( 15.0 );
+		public TimeSpan AccountDecay { get; private set; } = TimeSpan.FromDays( 90.0 );
+		public Features Features { get; } = new Features();
+		public string BaseDirectory { get; }
+		public string ConfigDirectory { get; private set; }
+		public string SaveDirectory { get; private set; }
+		public string BackupDirectory { get; private set; }
+		public string LogDirectory { get; private set; }
+		public string CacheDirectory { get; private set; }
+		public List<string> DataDirectories { get; private set; }
+		public Network Network { get; private set; }
 
-		public string Website
-		{
-			get { return m_Website; }
-		}
-
-		public string ServerEmail
-		{
-			get { return m_ServerEmail; }
-		}
-
-		public TimeSpan SaveInterval
-		{
-			get { return m_SaveInterval; }
-		}
-
-		public TimeSpan AccountDecay
-		{
-			get { return m_AccountDecay; }
-		}
-
-		public Features Features
-		{
-			get { return m_Features; }
-		}
-
-		public string BaseDirectory
-		{
-			get { return m_BaseDirectory; }
-		}
-
-		public string ConfigDirectory
-		{
-			get { return m_ConfigDirectory; }
-		}
-
-		public string SaveDirectory
-		{
-			get { return m_SaveDirectory; }
-		}
-
-		public string BackupDirectory
-		{
-			get { return m_BackupDirectory; }
-		}
-
-		public string LogDirectory
-		{
-			get { return m_LogDirectory; }
-		}
-
-		public string CacheDirectory
-		{
-			get { return m_CacheDirectory; }
-		}
-
-		public List<string> DataDirectories
-		{
-			get { return m_DataDirectories; }
-		}
-
-		public Network Network
-		{
-			get { return m_Network; }
-		}
-
-		public Login Login
-		{
-			get { return GetConfigModule<Login>(); }
-		}
-
-		public Reports Reports
-		{
-			get { return GetConfigModule<Reports>(); }
-		}
-
-		public GameServerList GameServers
-		{
-			get { return m_GameServers; }
-		}
+		public Login Login => GetConfigModule<Login>();
+		public Reports Reports => GetConfigModule<Reports>();
+		public GameServerList GameServers { get; private set; }
 
 		public XmlElement GetConfiguration( string path )
 		{
-			XmlElement element = m_Document.DocumentElement;
+			var element = m_Document.DocumentElement;
 
-			foreach ( string seg in path.Split( '/' ) )
+			foreach ( var seg in path.Split( '/' ) )
 			{
-				XmlElement child = (XmlElement) element.SelectSingleNode( seg );
+				var child = (XmlElement) element.SelectSingleNode( seg );
 
 				if ( child == null )
 				{
@@ -190,11 +105,11 @@ namespace Server.Configuration
 		{
 			m_Document = new XmlDocument();
 
-			m_DataDirectories = new List<string>();
+			DataDirectories = new List<string>();
 
 			if ( Exists )
 			{
-				XmlTextReader reader = new XmlTextReader( m_Filename );
+				var reader = new XmlTextReader( m_Filename );
 
 				try
 				{
@@ -211,7 +126,7 @@ namespace Server.Configuration
 			}
 
 			// Section "global"
-			XmlElement global = GetConfiguration( "global" );
+			var global = GetConfiguration( "global" );
 
 			if ( global != null )
 			{
@@ -220,49 +135,49 @@ namespace Server.Configuration
 					if ( node.NodeType != XmlNodeType.Element )
 						continue;
 
-					XmlElement element = (XmlElement) node;
+					var element = (XmlElement) node;
 
 					switch ( node.Name )
 					{
 						case "server-name":
 						{
-							m_ServerName = element.GetAttribute( "value" );
+							ServerName = element.GetAttribute( "value" );
 							break;
 						}
 						case "website":
 						{
-							m_Website = element.GetAttribute( "value" );
+							Website = element.GetAttribute( "value" );
 							break;
 						}
 						case "server-email":
 						{
-							m_ServerEmail = element.GetAttribute( "value" );
+							ServerEmail = element.GetAttribute( "value" );
 							break;
 						}
 						case "multi-threading":
 						{
-							m_Features[node.Name] = Parser.ParseBool( element.GetAttribute( "value" ), true );
+							Features[node.Name] = Parser.ParseBool( element.GetAttribute( "value" ), true );
 							break;
 						}
 						case "feature":
 						{
-							m_Features[element.GetAttribute( "name" )] = Parser.ParseBool( element.GetAttribute( "value" ), true );
+							Features[element.GetAttribute( "name" )] = Parser.ParseBool( element.GetAttribute( "value" ), true );
 							break;
 						}
 						case "save-interval":
 						{
-							double saveInterval = Convert.ToDouble( element.GetAttribute( "value" ) );
+							var saveInterval = Convert.ToDouble( element.GetAttribute( "value" ) );
 
 							if ( saveInterval < 1.0 )
 								log.Warning( "Invalid value of save-interval, setting it to default" );
 							else
-								m_SaveInterval = TimeSpan.FromMinutes( saveInterval );
+								SaveInterval = TimeSpan.FromMinutes( saveInterval );
 
 							break;
 						}
 						case "account-decay":
 						{
-							m_AccountDecay = TimeSpan.FromDays( Convert.ToDouble( element.GetAttribute( "value" ) ) );
+							AccountDecay = TimeSpan.FromDays( Convert.ToDouble( element.GetAttribute( "value" ) ) );
 
 							break;
 						}
@@ -287,48 +202,48 @@ namespace Server.Configuration
 			}
 
 			// Section "locations"
-			XmlElement locations = GetConfiguration( "locations" );
+			var locations = GetConfiguration( "locations" );
 
 			foreach ( XmlNode node in locations.ChildNodes )
 			{
-				XmlElement element = node as XmlElement;
+				var element = node as XmlElement;
 
 				if ( element != null )
 				{
-					string path = element.InnerText;
+					var path = element.InnerText;
 
 					switch ( element.Name )
 					{
 						case "config-dir":
 						{
-							m_ConfigDirectory = path;
+							ConfigDirectory = path;
 							break;
 						}
 						case "save-dir":
 						{
-							m_SaveDirectory = path;
+							SaveDirectory = path;
 							break;
 						}
 						case "backup-dir":
 						{
-							m_BackupDirectory = path;
+							BackupDirectory = path;
 							break;
 						}
 						case "data-path":
 						{
 							if ( Directory.Exists( path ) )
-								m_DataDirectories.Add( path );
+								DataDirectories.Add( path );
 
 							break;
 						}
 						case "log-dir":
 						{
-							m_LogDirectory = path;
+							LogDirectory = path;
 							break;
 						}
 						case "cache-dir":
 						{
-							m_CacheDirectory = path;
+							CacheDirectory = path;
 							break;
 						}
 						default:
@@ -341,20 +256,20 @@ namespace Server.Configuration
 			}
 
 			// Section "network"
-			XmlElement networkEl = GetConfiguration( "network" );
+			var networkEl = GetConfiguration( "network" );
 
-			m_Network = networkEl == null
+			Network = networkEl == null
 				? new Network()
 				: new Network( networkEl );
 
 			// Section "server-list"
-			XmlElement serverListEl = GetConfiguration( "server-list" );
+			var serverListEl = GetConfiguration( "server-list" );
 
 			if ( serverListEl != null )
-				m_GameServers = new GameServerList( serverListEl );
+				GameServers = new GameServerList( serverListEl );
 
 			// Config modules
-			foreach ( Type t in GetTypesWithAttribute( Assembly.GetExecutingAssembly(), typeof( ConfigModuleAttribute ) ) )
+			foreach ( var t in GetTypesWithAttribute( Assembly.GetExecutingAssembly(), typeof( ConfigModuleAttribute ) ) )
 			{
 				m_ConfigModules[t] = DeserializeModule( t );
 			}
@@ -374,7 +289,7 @@ namespace Server.Configuration
 			return serializer.Deserialize( reader );
 		}
 
-		private Dictionary<Type, object> m_ConfigModules = new Dictionary<Type, object>();
+		private readonly Dictionary<Type, object> m_ConfigModules = new Dictionary<Type, object>();
 
 		private T GetConfigModule<T>() where T : class
 		{
@@ -382,8 +297,8 @@ namespace Server.Configuration
 
 			if ( m_ConfigModules.ContainsKey( t ) )
 				return m_ConfigModules[t] as T;
-			else
-				return null;
+
+			return null;
 		}
 
 		public void Save()
@@ -396,12 +311,12 @@ namespace Server.Configuration
 				tempFilename = m_Filename + ".new";
 
 			// Section "locations"
-			XmlElement locations = GetConfiguration( "locations" );
+			var locations = GetConfiguration( "locations" );
 			RemoveElement( locations, "data-path" );
 
-			Hashtable dirHash = new Hashtable();
+			var dirHash = new Hashtable();
 
-			foreach ( string path in m_DataDirectories )
+			foreach ( var path in DataDirectories )
 			{
 				// Check for double path.
 				if ( dirHash.ContainsKey( path ) )
@@ -409,13 +324,13 @@ namespace Server.Configuration
 
 				dirHash[path] = true;
 
-				XmlElement el = m_Document.CreateElement( "data-path" );
+				var el = m_Document.CreateElement( "data-path" );
 				el.InnerText = path;
 				locations.AppendChild( el );
 			}
 
 			// Write to file.
-			XmlTextWriter writer = new XmlTextWriter( tempFilename, System.Text.Encoding.UTF8 );
+			var writer = new XmlTextWriter( tempFilename, Encoding.UTF8 );
 			writer.Formatting = Formatting.Indented;
 
 			try
@@ -436,50 +351,31 @@ namespace Server.Configuration
 
 	public class GameServer
 	{
-		private string m_Name;
-		private IPEndPoint m_Address;
-		private bool m_SendAuthId, m_Query, m_Optional;
-
 		public GameServer( string name, IPEndPoint address, bool sendAuthId, bool query, bool optional )
 		{
-			m_Name = name;
-			m_Address = address;
-			m_SendAuthId = sendAuthId;
-			m_Query = query;
-			m_Optional = optional;
+			Name = name;
+			Address = address;
+			SendAuthID = sendAuthId;
+			Query = query;
+			Optional = optional;
 		}
 
-		public string Name
-		{
-			get { return m_Name; }
-		}
+		public string Name { get; }
 
-		public IPEndPoint Address
-		{
-			get { return m_Address; }
-		}
+		public IPEndPoint Address { get; }
 
-		public bool SendAuthID
-		{
-			get { return m_SendAuthId; }
-		}
+		public bool SendAuthID { get; }
 
-		public bool Query
-		{
-			get { return m_Query; }
-		}
+		public bool Query { get; }
 
-		public bool Optional
-		{
-			get { return m_Optional; }
-		}
+		public bool Optional { get; }
 	}
 
 	public class GameServerList : IEnumerable
 	{
-		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+		private static readonly ILog log = LogManager.GetLogger( MethodBase.GetCurrentMethod().DeclaringType );
 
-		private List<GameServer> m_Servers = new List<GameServer>();
+		private readonly List<GameServer> m_Servers = new List<GameServer>();
 
 		public GameServerList()
 		{
@@ -489,7 +385,7 @@ namespace Server.Configuration
 		{
 			foreach ( XmlElement gameServerElem in element.GetElementsByTagName( "game-server" ) )
 			{
-				string name = Parser.GetElementString( gameServerElem, "name" );
+				var name = Parser.GetElementString( gameServerElem, "name" );
 
 				if ( name == null )
 				{
@@ -497,7 +393,7 @@ namespace Server.Configuration
 					continue;
 				}
 
-				string addressString = Parser.GetElementString( gameServerElem, "address" );
+				var addressString = Parser.GetElementString( gameServerElem, "address" );
 
 				if ( addressString == null )
 				{
@@ -505,7 +401,7 @@ namespace Server.Configuration
 					continue;
 				}
 
-				string[] splitted = addressString.Split( new char[] {':'}, 2 );
+				var splitted = addressString.Split( new[] {':'}, 2 );
 
 				if ( splitted.Length != 2 )
 				{
@@ -517,7 +413,7 @@ namespace Server.Configuration
 
 				try
 				{
-					IPHostEntry he = Dns.GetHostEntry( splitted[0] );
+					var he = Dns.GetHostEntry( splitted[0] );
 
 					if ( he.AddressList.Length == 0 )
 					{
@@ -545,11 +441,11 @@ namespace Server.Configuration
 					continue;
 				}
 
-				IPEndPoint address = new IPEndPoint( ip, port );
+				var address = new IPEndPoint( ip, port );
 
-				bool sendAuthId = Parser.GetElementBool( gameServerElem, "send-auth-id", false );
-				bool query = Parser.GetElementBool( gameServerElem, "query", false );
-				bool optional = Parser.GetElementBool( gameServerElem, "optional", false );
+				var sendAuthId = Parser.GetElementBool( gameServerElem, "send-auth-id", false );
+				var query = Parser.GetElementBool( gameServerElem, "query", false );
+				var optional = Parser.GetElementBool( gameServerElem, "optional", false );
 
 				m_Servers.Add( new GameServer( name, address, sendAuthId, query, optional ) );
 			}
@@ -560,15 +456,9 @@ namespace Server.Configuration
 			return m_Servers.GetEnumerator();
 		}
 
-		public int Count
-		{
-			get { return m_Servers.Count; }
-		}
+		public int Count => m_Servers.Count;
 
-		public GameServer this[ int index ]
-		{
-			get { return m_Servers[index]; }
-		}
+		public GameServer this[ int index ] => m_Servers[index];
 
 		public GameServer this[ string name ]
 		{

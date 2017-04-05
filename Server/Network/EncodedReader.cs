@@ -4,20 +4,14 @@ namespace Server.Network
 {
 	public class EncodedReader
 	{
-		private PacketReader m_Reader;
+		private readonly PacketReader m_Reader;
 
 		public EncodedReader( PacketReader reader )
 		{
 			m_Reader = reader;
 		}
 
-		public byte[] Buffer
-		{
-			get
-			{
-				return m_Reader.Buffer;
-			}
-		}
+		public byte[] Buffer => m_Reader.Buffer;
 
 		public int ReadInt32()
 		{
@@ -26,18 +20,6 @@ namespace Server.Network
 
 			return m_Reader.ReadInt32();
 		}
-
-		// TODO: ReadPoint3D?
-
-		/*
-		public Point3D ReadPoint3D()
-		{
-			if ( m_Reader.ReadByte() != 3 )
-				return Point3D.Zero;
-
-			return new Point3D( m_Reader.ReadInt16(), m_Reader.ReadInt16(), m_Reader.ReadByte() );
-		}
-		*/
 
 		public string ReadUnicodeStringSafe()
 		{

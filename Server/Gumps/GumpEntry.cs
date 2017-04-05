@@ -7,10 +7,6 @@ namespace Server.Gumps
 	{
 		private Gump m_Parent;
 
-		public GumpEntry()
-		{
-		}
-
 		protected void Delta( ref int var, int val )
 		{
 			if ( var != val )

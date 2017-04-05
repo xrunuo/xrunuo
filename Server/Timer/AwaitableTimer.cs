@@ -20,7 +20,7 @@ namespace Server
 			m_TimeSpan = ts;
 		}
 
-		public bool IsCompleted { get { return false; } }
+		public bool IsCompleted => false;
 
 		public void OnCompleted( Action continuation )
 		{

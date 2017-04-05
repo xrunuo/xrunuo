@@ -14,22 +14,16 @@ namespace Server.Gumps
 
 		public int Serial
 		{
-			get
-			{
-				return m_Serial;
-			}
-			set
-			{
-				Delta( ref m_Serial, value );
-			}
+			get { return m_Serial; }
+			set { Delta( ref m_Serial, value ); }
 		}
 
 		public override string Compile()
 		{
-			return String.Format( "{{ itemproperty {0} }}", m_Serial.ToString() );
+			return $"{{ itemproperty {m_Serial.ToString()} }}";
 		}
 
-		private static byte[] m_LayoutName = Gump.StringToBuffer( "itemproperty" );
+		private static readonly byte[] m_LayoutName = Gump.StringToBuffer( "itemproperty" );
 
 		public override void AppendTo( IGumpWriter disp )
 		{

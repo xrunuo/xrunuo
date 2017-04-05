@@ -16,85 +16,35 @@ namespace Server.Network
 	{
 		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
 
-		private UOSocket m_UOSocket;
-		private IPAddress m_ClientAddress;
-		private bool m_Seeded;
-		private ServerInfo[] m_ServerInfo;
-		private IAccount m_Account;
-		private Mobile m_Mobile;
-		private CityInfo[] m_CityInfo;
-		private IList<Gump> m_Gumps;
-		private ISet<HuePicker> m_HuePickers;
-		private ISet<IMenu> m_Menus;
-		private ISet<SecureTrade> m_Trades;
-		private int m_Sequence;
-		private bool m_CompressionEnabled;
-		private ClientVersion m_Version;
-		private bool m_SentFirstPacket;
-		private bool m_BlockAllPackets;
-		private bool m_Running;
+		private readonly IList<Gump> m_Gumps;
+		private readonly ISet<HuePicker> m_HuePickers;
+		private readonly ISet<IMenu> m_Menus;
+		private readonly ISet<SecureTrade> m_Trades;
 
 		internal int m_Seed;
 		internal int m_AuthID;
 
 		#region Traffic
-		public long Incoming
-		{
-			get { return m_UOSocket.Incoming; }
-		}
+		public long Incoming => UOSocket.Incoming;
 
-		public long Outgoing
-		{
-			get { return m_UOSocket.Outgoing; }
-		}
+		public long Outgoing => UOSocket.Outgoing;
 		#endregion
 
-		public UOSocket UOSocket
-		{
-			get { return m_UOSocket; }
-		}
+		public UOSocket UOSocket { get; }
 
-		public IPAddress Address
-		{
-			get { return m_UOSocket.Address; }
-		}
+		public IPAddress Address => UOSocket.Address;
 
-		public IPAddress ClientAddress
-		{
-			get { return m_ClientAddress; }
-			set { m_ClientAddress = value; }
-		}
+		public IPAddress ClientAddress { get; set; }
 
-		private int m_Flags;
+		public bool SentFirstPacket { get; set; }
 
-		public bool SentFirstPacket
-		{
-			get { return m_SentFirstPacket; }
-			set { m_SentFirstPacket = value; }
-		}
+		public bool BlockAllPackets { get; set; }
 
-		public bool BlockAllPackets
-		{
-			get { return m_BlockAllPackets; }
-			set { m_BlockAllPackets = value; }
-		}
+		public int Flags { get; set; }
 
-		public int Flags
-		{
-			get { return m_Flags; }
-			set { m_Flags = value; }
-		}
+		public ClientVersion Version { get; set; }
 
-		public ClientVersion Version
-		{
-			get { return m_Version; }
-			set { m_Version = value; }
-		}
-
-		public IEnumerable<SecureTrade> Trades
-		{
-			get { return m_Trades; }
-		}
+		public IEnumerable<SecureTrade> Trades => m_Trades;
 
 		public void ValidateAllTrades()
 		{
@@ -130,12 +80,12 @@ namespace Server.Network
 		{
 			foreach ( var trade in m_Trades )
 			{
-				SecureTradeInfo from = trade.From;
-				SecureTradeInfo to = trade.To;
+				var from = trade.From;
+				var to = trade.To;
 
-				if ( from.Mobile == m_Mobile && to.Mobile == m )
+				if ( from.Mobile == Mobile && to.Mobile == m )
 					return from.Container;
-				else if ( from.Mobile == m && to.Mobile == m_Mobile )
+				else if ( from.Mobile == m && to.Mobile == Mobile )
 					return to.Container;
 			}
 
@@ -144,7 +94,7 @@ namespace Server.Network
 
 		public SecureTradeContainer AddTrade( NetState state )
 		{
-			SecureTrade newTrade = new SecureTrade( m_Mobile, state.m_Mobile );
+			var newTrade = new SecureTrade( Mobile, state.Mobile );
 
 			m_Trades.Add( newTrade );
 			state.m_Trades.Add( newTrade );
@@ -152,59 +102,28 @@ namespace Server.Network
 			return newTrade.From.Container;
 		}
 
-		public bool CompressionEnabled
-		{
-			get { return m_CompressionEnabled; }
-			set { m_CompressionEnabled = value; }
-		}
+		public bool CompressionEnabled { get; set; }
 
-		public int Sequence
-		{
-			get { return m_Sequence; }
-			set { m_Sequence = value; }
-		}
+		public int Sequence { get; set; }
 
-		public IEnumerable<Gump> Gumps
-		{
-			get { return m_Gumps; }
-		}
+		public IEnumerable<Gump> Gumps => m_Gumps;
 
-		public IEnumerable<HuePicker> HuePickers
-		{
-			get { return m_HuePickers; }
-		}
+		public IEnumerable<HuePicker> HuePickers => m_HuePickers;
 
-		public IEnumerable<IMenu> Menus
-		{
-			get { return m_Menus; }
-		}
+		public IEnumerable<IMenu> Menus => m_Menus;
 
-		private static int m_GumpCap = 512, m_HuePickerCap = 512, m_MenuCap = 512;
+		public static int GumpCap { get; set; } = 512;
 
-		public static int GumpCap
-		{
-			get { return m_GumpCap; }
-			set { m_GumpCap = value; }
-		}
+		public static int HuePickerCap { get; set; } = 512;
 
-		public static int HuePickerCap
-		{
-			get { return m_HuePickerCap; }
-			set { m_HuePickerCap = value; }
-		}
-
-		public static int MenuCap
-		{
-			get { return m_MenuCap; }
-			set { m_MenuCap = value; }
-		}
+		public static int MenuCap { get; set; } = 512;
 
 		public void AddMenu( IMenu menu )
 		{
 			if ( m_Menus == null )
 				return;
 
-			if ( m_Menus.Count >= m_MenuCap )
+			if ( m_Menus.Count >= MenuCap )
 			{
 				log.Warning( "Client: {0}: Exceeded menu cap, disconnecting...", this );
 				Dispose();
@@ -228,7 +147,7 @@ namespace Server.Network
 			if ( m_HuePickers == null )
 				return;
 
-			if ( m_HuePickers.Count >= m_HuePickerCap )
+			if ( m_HuePickers.Count >= HuePickerCap )
 			{
 				log.Warning( "Client: {0}: Exceeded hue picker cap, disconnecting...", this );
 				Dispose();
@@ -252,7 +171,7 @@ namespace Server.Network
 			if ( m_Gumps == null )
 				return;
 
-			if ( m_Gumps.Count >= m_GumpCap )
+			if ( m_Gumps.Count >= GumpCap )
 			{
 				log.Warning( "Client: {0}: Exceeded gump cap, disconnecting...", this );
 				Dispose();
@@ -275,73 +194,54 @@ namespace Server.Network
 				m_Gumps.Clear();
 		}
 
-		public CityInfo[] CityInfo
-		{
-			get { return m_CityInfo; }
-			set { m_CityInfo = value; }
-		}
+		public CityInfo[] CityInfo { get; set; }
 
-		public Mobile Mobile
-		{
-			get { return m_Mobile; }
-			set { m_Mobile = value; }
-		}
+		public Mobile Mobile { get; set; }
 
-		public ServerInfo[] ServerInfo
-		{
-			get { return m_ServerInfo; }
-			set { m_ServerInfo = value; }
-		}
+		public ServerInfo[] ServerInfo { get; set; }
 
-		public IAccount Account
-		{
-			get { return m_Account; }
-			set { m_Account = value; }
-		}
+		public IAccount Account { get; set; }
 
-		public bool Running
-		{
-			get { return m_Running; }
-		}
+		public bool Running { get; private set; }
 
 		public override string ToString()
 		{
-			return m_UOSocket.ToString();
+			return UOSocket.ToString();
 		}
 
 		public NetState( UOSocket uoSocket )
 		{
-			m_UOSocket = uoSocket;
+			UOSocket = uoSocket;
 
-			m_Seeded = false;
+			Seeded = false;
 			m_Gumps = new List<Gump>();
 			m_HuePickers = new HashSet<HuePicker>();
 			m_Menus = new HashSet<IMenu>();
 			m_Trades = new HashSet<SecureTrade>();
 
 			// Ensure client version is NEVER null.
-			m_Version = new ClientVersion( 0, 0, 0, 0, ClientType.Classic );
+			Version = new ClientVersion( 0, 0, 0, 0, ClientType.Classic );
 
-			m_Running = true;
+			Running = true;
 		}
 
 		public void Send( Packet p )
 		{
-			if ( m_BlockAllPackets )
+			if ( BlockAllPackets )
 			{
 				p.OnSend();
 				return;
 			}
 
-			PacketProfile prof = PacketProfile.GetOutgoingProfile( (byte) p.PacketID );
-			DateTime start = ( prof == null ? DateTime.MinValue : DateTime.UtcNow );
+			var prof = PacketProfile.GetOutgoingProfile( (byte) p.PacketID );
+			var start = ( prof == null ? DateTime.MinValue : DateTime.UtcNow );
 
 			int length;
-			byte[] buffer = p.Compile( m_CompressionEnabled, out length );
+			var buffer = p.Compile( CompressionEnabled, out length );
 
 			if ( buffer != null && buffer.Length > 0 && length > 0 )
 			{
-				m_UOSocket.Send( buffer, length );
+				UOSocket.Send( buffer, length );
 			}
 
 			if ( prof != null )
@@ -358,42 +258,32 @@ namespace Server.Network
 
 		public void Flush()
 		{
-			m_UOSocket.Flush();
+			UOSocket.Flush();
 		}
 
 		public void Dispose()
 		{
-			m_Running = false;
+			Running = false;
 
-			m_UOSocket.Dispose();
+			UOSocket.Dispose();
 		}
 
 		public void Clear()
 		{
-			m_Mobile = null;
-			m_Account = null;
-			m_ServerInfo = null;
-			m_CityInfo = null;
+			Mobile = null;
+			Account = null;
+			ServerInfo = null;
+			CityInfo = null;
 
 			m_Gumps.Clear();
 			m_Menus.Clear();
 			m_HuePickers.Clear();
 		}
 
-		public bool Seeded
-		{
-			get { return m_Seeded; }
-			set { m_Seeded = value; }
-		}
+		public bool Seeded { get; set; }
 
 		public const int MaxNullTargets = 5;
 
-		private int m_NullTargets;
-
-		public int NullTargets
-		{
-			get { return m_NullTargets; }
-			set { m_NullTargets = value; }
-		}
+		public int NullTargets { get; set; }
 	}
 }

@@ -17,25 +17,23 @@ namespace Server
 		public static bool ManualGC;
 		public static bool DualSave;
 
-		private static List<IEntityRepository> m_Repositories = new List<IEntityRepository>
-			{
-				new MobileRepository(),
-				new ItemRepository(),
-				new GuildRepository(),
-			};
+		private static readonly List<IEntityRepository> m_Repositories = new List<IEntityRepository>
+		{
+			new MobileRepository(),
+			new ItemRepository(),
+			new GuildRepository(),
+		};
 
 		internal static Dictionary<Serial, Mobile> m_Mobiles;
 		internal static Dictionary<Serial, Item> m_Items;
 
-		private static bool m_Loading;
-		private static bool m_Loaded;
-		private static bool m_Saving;
+		public static bool Saving { get; private set; }
 
-		public static bool Saving { get { return m_Saving; } }
-		public static bool Loaded { get { return m_Loaded; } }
-		public static bool Loading { get { return m_Loading; } }
+		public static bool Loaded { get; private set; }
 
-		private static ManualResetEvent m_DiskWriteHandle = new ManualResetEvent( true );
+		public static bool Loading { get; private set; }
+
+		private static readonly ManualResetEvent m_DiskWriteHandle = new ManualResetEvent( true );
 
 		private static Queue<IEntity> m_AddQueue, m_DeleteQueue;
 
@@ -57,7 +55,7 @@ namespace Server
 		public static void NotifyDiskWriteComplete()
 		{
 			if ( m_DiskWriteHandle.Set() )
-				log.Info( "Closing Save files");
+				log.Info( "Closing Save files" );
 		}
 
 		public static void WaitForWriteCompletion()
@@ -65,29 +63,15 @@ namespace Server
 			m_DiskWriteHandle.WaitOne();
 		}
 
-		public static int MobileCount
-		{
-			get { return m_Mobiles.Count; }
-		}
+		public static int MobileCount => m_Mobiles.Count;
+		public static int ItemCount => m_Items.Count;
 
-		public static int ItemCount
-		{
-			get { return m_Items.Count; }
-		}
-
-		public static IEnumerable<Mobile> Mobiles
-		{
-			get { return m_Mobiles.Values; }
-		}
-
-		public static IEnumerable<Item> Items
-		{
-			get { return m_Items.Values; }
-		}
+		public static IEnumerable<Mobile> Mobiles => m_Mobiles.Values;
+		public static IEnumerable<Item> Items => m_Items.Values;
 
 		public static bool OnDelete( IEntity entity )
 		{
-			if ( m_Saving || m_Loading )
+			if ( Saving || Loading )
 			{
 				m_DeleteQueue.Enqueue( entity );
 
@@ -127,30 +111,30 @@ namespace Server
 
 		public static void Load()
 		{
-			if ( m_Loaded )
+			if ( Loaded )
 				return;
 
-			m_Loaded = true;
+			Loaded = true;
 
 			log.Info( "Loading started" );
 
-			DateTime start = DateTime.UtcNow;
+			var start = DateTime.UtcNow;
 
-			m_Loading = true;
+			Loading = true;
 
 			m_AddQueue = new Queue<IEntity>();
 			m_DeleteQueue = new Queue<IEntity>();
 
-			LoadStrategy strategy = LoadStrategy.Acquire();
+			var strategy = LoadStrategy.Acquire();
 			strategy.LoadEntities( m_Repositories );
 
 			EventSink.InvokeWorldLoad();
 
-			m_Loading = false;
+			Loading = false;
 
 			ProcessSafetyQueues();
 
-			foreach ( Item item in m_Items.Values )
+			foreach ( var item in m_Items.Values )
 			{
 				if ( item.Parent == null )
 					item.UpdateTotals();
@@ -158,7 +142,7 @@ namespace Server
 				item.ClearProperties();
 			}
 
-			foreach ( Mobile m in m_Mobiles.Values )
+			foreach ( var m in m_Mobiles.Values )
 			{
 				m.UpdateRegion(); // Is this really needed?
 				m.UpdateTotals();
@@ -176,9 +160,9 @@ namespace Server
 		{
 			while ( m_AddQueue.Count > 0 )
 			{
-				IEntity entity = m_AddQueue.Dequeue();
+				var entity = m_AddQueue.Dequeue();
 
-				Item item = entity as Item;
+				var item = entity as Item;
 
 				if ( item != null )
 				{
@@ -186,7 +170,7 @@ namespace Server
 				}
 				else
 				{
-					Mobile mob = entity as Mobile;
+					var mob = entity as Mobile;
 
 					if ( mob != null )
 						AddMobile( mob );
@@ -195,9 +179,9 @@ namespace Server
 
 			while ( m_DeleteQueue.Count > 0 )
 			{
-				IEntity entity = m_DeleteQueue.Dequeue();
+				var entity = m_DeleteQueue.Dequeue();
 
-				Item item = entity as Item;
+				var item = entity as Item;
 
 				if ( item != null )
 				{
@@ -205,7 +189,7 @@ namespace Server
 				}
 				else
 				{
-					Mobile mob = entity as Mobile;
+					var mob = entity as Mobile;
 
 					if ( mob != null )
 						mob.Delete();
@@ -215,14 +199,14 @@ namespace Server
 
 		public static void Save( bool message = true, bool permitBackgroundWrite = false )
 		{
-			if ( m_Saving )
+			if ( Saving )
 				return;
 
 			GameServer.Instance.Clients.Each( c => c.Flush() );
 
 			WaitForWriteCompletion(); // Blocks Save until current disk flush is done.
 
-			m_Saving = true;
+			Saving = true;
 
 			m_DiskWriteHandle.Reset();
 
@@ -231,10 +215,10 @@ namespace Server
 
 			log.Info( "Save started" );
 
-			SaveStrategy strategy = SaveStrategy.Acquire();
+			var strategy = SaveStrategy.Acquire();
 			log.Info( "Using {0} save strategy", strategy.Name.ToLowerInvariant() );
 
-			Stopwatch watch = Stopwatch.StartNew();
+			var watch = Stopwatch.StartNew();
 
 			try
 			{
@@ -270,7 +254,7 @@ namespace Server
 
 			watch.Stop();
 
-			m_Saving = false;
+			Saving = false;
 
 			if ( !permitBackgroundWrite )
 				NotifyDiskWriteComplete(); // Sets the DiskWriteHandle. If we allow background writes, we leave this upto the individual save strategies.
@@ -310,7 +294,7 @@ namespace Server
 
 		public static void AddMobile( Mobile m )
 		{
-			if ( m_Saving )
+			if ( Saving )
 				m_AddQueue.Enqueue( m );
 			else
 				m_Mobiles[m.Serial] = m;
@@ -327,7 +311,7 @@ namespace Server
 
 		public static void AddItem( Item item )
 		{
-			if ( m_Saving )
+			if ( Saving )
 				m_AddQueue.Enqueue( item );
 			else
 				m_Items[item.Serial] = item;

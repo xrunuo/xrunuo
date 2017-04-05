@@ -6,11 +6,10 @@ namespace Server.Network
 	{
 		private int m_Head;
 		private int m_Tail;
-		private int m_Size;
 
 		private byte[] m_Buffer;
 
-		public int Length { get { return m_Size; } }
+		public int Length { get; private set; }
 
 		public ByteQueue()
 		{
@@ -21,18 +20,18 @@ namespace Server.Network
 		{
 			m_Head = 0;
 			m_Tail = 0;
-			m_Size = 0;
+			Length = 0;
 		}
 
 		private void SetCapacity( int capacity )
 		{
-			byte[] newBuffer = new byte[capacity];
+			var newBuffer = new byte[capacity];
 
-			if ( m_Size > 0 )
+			if ( Length > 0 )
 			{
 				if ( m_Head < m_Tail )
 				{
-					Buffer.BlockCopy( m_Buffer, m_Head, newBuffer, 0, m_Size );
+					Buffer.BlockCopy( m_Buffer, m_Head, newBuffer, 0, Length );
 				}
 				else
 				{
@@ -42,13 +41,13 @@ namespace Server.Network
 			}
 
 			m_Head = 0;
-			m_Tail = m_Size;
+			m_Tail = Length;
 			m_Buffer = newBuffer;
 		}
 
 		public byte GetPacketID()
 		{
-			if ( m_Size >= 1 )
+			if ( Length >= 1 )
 				return m_Buffer[m_Head];
 
 			return 0xFF;
@@ -56,7 +55,7 @@ namespace Server.Network
 
 		public int GetPacketLength()
 		{
-			if ( m_Size >= 3 )
+			if ( Length >= 3 )
 				return ( m_Buffer[( m_Head + 1 ) % m_Buffer.Length] << 8 ) | m_Buffer[( m_Head + 2 ) % m_Buffer.Length];
 
 			return 0;
@@ -72,8 +71,8 @@ namespace Server.Network
 
 		public int Dequeue( byte[] buffer, int offset, int size )
 		{
-			if ( size > m_Size )
-				size = m_Size;
+			if ( size > Length )
+				size = Length;
 
 			if ( size == 0 )
 				return 0;
@@ -84,7 +83,7 @@ namespace Server.Network
 			}
 			else
 			{
-				int rightLength = ( m_Buffer.Length - m_Head );
+				var rightLength = ( m_Buffer.Length - m_Head );
 
 				if ( rightLength >= size )
 				{
@@ -98,9 +97,9 @@ namespace Server.Network
 			}
 
 			m_Head = ( m_Head + size ) % m_Buffer.Length;
-			m_Size -= size;
+			Length -= size;
 
-			if ( m_Size == 0 )
+			if ( Length == 0 )
 			{
 				m_Head = 0;
 				m_Tail = 0;
@@ -111,12 +110,12 @@ namespace Server.Network
 
 		public void Enqueue( byte[] buffer, int offset, int size )
 		{
-			if ( ( m_Size + size ) > m_Buffer.Length )
-				SetCapacity( ( m_Size + size + 2047 ) & ~2047 );
+			if ( ( Length + size ) > m_Buffer.Length )
+				SetCapacity( ( Length + size + 2047 ) & ~2047 );
 
 			if ( m_Head < m_Tail )
 			{
-				int rightLength = ( m_Buffer.Length - m_Tail );
+				var rightLength = ( m_Buffer.Length - m_Tail );
 
 				if ( rightLength >= size )
 				{
@@ -134,7 +133,7 @@ namespace Server.Network
 			}
 
 			m_Tail = ( m_Tail + size ) % m_Buffer.Length;
-			m_Size += size;
+			Length += size;
 		}
 	}
 }

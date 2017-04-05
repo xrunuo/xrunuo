@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 using Server.Guilds;
 
 namespace Server.Persistence
@@ -27,10 +28,13 @@ namespace Server.Persistence
 
 	public class MobileRepository : EntityRepository<Mobile>
 	{
-		public override string BasePath { get { return World.MobileBasePath; } }
-		public override string IndexPath { get { return World.MobileIndexPath; } }
-		public override string TypesPath { get { return World.MobileTypesPath; } }
-		public override string DataPath { get { return World.MobileDataPath; } }
+		public override string BasePath => World.MobileBasePath;
+
+		public override string IndexPath => World.MobileIndexPath;
+
+		public override string TypesPath => World.MobileTypesPath;
+
+		public override string DataPath => World.MobileDataPath;
 
 		public override void Initialize()
 		{
@@ -50,10 +54,13 @@ namespace Server.Persistence
 
 	public class ItemRepository : EntityRepository<Item>
 	{
-		public override string BasePath { get { return World.ItemBasePath; } }
-		public override string IndexPath { get { return World.ItemIndexPath; } }
-		public override string TypesPath { get { return World.ItemTypesPath; } }
-		public override string DataPath { get { return World.ItemDataPath; } }
+		public override string BasePath => World.ItemBasePath;
+
+		public override string IndexPath => World.ItemIndexPath;
+
+		public override string TypesPath => World.ItemTypesPath;
+
+		public override string DataPath => World.ItemDataPath;
 
 		public override void Initialize()
 		{
@@ -73,10 +80,13 @@ namespace Server.Persistence
 
 	public class GuildRepository : EntityRepository<BaseGuild>
 	{
-		public override string BasePath { get { return World.GuildBasePath; } }
-		public override string IndexPath { get { return World.GuildIndexPath; } }
-		public override string TypesPath { get { return World.GuildTypesPath; } }
-		public override string DataPath { get { return World.GuildDataPath; } }
+		public override string BasePath => World.GuildBasePath;
+
+		public override string IndexPath => World.GuildIndexPath;
+
+		public override string TypesPath => World.GuildTypesPath;
+
+		public override string DataPath => World.GuildDataPath;
 
 		public override void Initialize()
 		{

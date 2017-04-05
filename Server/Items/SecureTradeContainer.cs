@@ -5,20 +5,12 @@ namespace Server.Items
 {
 	public class SecureTradeContainer : Container
 	{
-		private SecureTrade m_Trade;
-
-		public SecureTrade Trade
-		{
-			get
-			{
-				return m_Trade;
-			}
-		}
+		public SecureTrade Trade { get; }
 
 		public SecureTradeContainer( SecureTrade trade )
 			: base( 0x1E5E )
 		{
-			m_Trade = trade;
+			Trade = trade;
 
 			Movable = false;
 		}
@@ -76,11 +68,11 @@ namespace Server.Items
 
 		public void ClearChecks()
 		{
-			if ( m_Trade != null )
+			if ( Trade != null )
 			{
-				m_Trade.From.Accepted = false;
-				m_Trade.To.Accepted = false;
-				m_Trade.Update();
+				Trade.From.Accepted = false;
+				Trade.To.Accepted = false;
+				Trade.Update();
 			}
 		}
 

@@ -32,50 +32,26 @@ namespace Server.Gumps
 
 		public int X
 		{
-			get
-			{
-				return m_X;
-			}
-			set
-			{
-				Delta( ref m_X, value );
-			}
+			get { return m_X; }
+			set { Delta( ref m_X, value ); }
 		}
 
 		public int Y
 		{
-			get
-			{
-				return m_Y;
-			}
-			set
-			{
-				Delta( ref m_Y, value );
-			}
+			get { return m_Y; }
+			set { Delta( ref m_Y, value ); }
 		}
 
 		public int NormalID
 		{
-			get
-			{
-				return m_ID1;
-			}
-			set
-			{
-				Delta( ref m_ID1, value );
-			}
+			get { return m_ID1; }
+			set { Delta( ref m_ID1, value ); }
 		}
 
 		public int PressedID
 		{
-			get
-			{
-				return m_ID2;
-			}
-			set
-			{
-				Delta( ref m_ID2, value );
-			}
+			get { return m_ID2; }
+			set { Delta( ref m_ID2, value ); }
 		}
 
 		public GumpButtonType Type
@@ -93,82 +69,46 @@ namespace Server.Gumps
 
 		public int Param
 		{
-			get
-			{
-				return m_Param;
-			}
-			set
-			{
-				Delta( ref m_Param, value );
-			}
+			get { return m_Param; }
+			set { Delta( ref m_Param, value ); }
 		}
 
 		public int ButtonID
 		{
-			get
-			{
-				return m_ButtonID;
-			}
-			set
-			{
-				Delta( ref m_ButtonID, value );
-			}
+			get { return m_ButtonID; }
+			set { Delta( ref m_ButtonID, value ); }
 		}
 
 		public int ItemID
 		{
-			get
-			{
-				return m_ItemID;
-			}
-			set
-			{
-				Delta( ref m_ItemID, value );
-			}
+			get { return m_ItemID; }
+			set { Delta( ref m_ItemID, value ); }
 		}
 
 		public int Hue
 		{
-			get
-			{
-				return m_Hue;
-			}
-			set
-			{
-				Delta( ref m_Hue, value );
-			}
+			get { return m_Hue; }
+			set { Delta( ref m_Hue, value ); }
 		}
 
 		public int Width
 		{
-			get
-			{
-				return m_Width;
-			}
-			set
-			{
-				Delta( ref m_Width, value );
-			}
+			get { return m_Width; }
+			set { Delta( ref m_Width, value ); }
 		}
 
 		public int Height
 		{
-			get
-			{
-				return m_Height;
-			}
-			set
-			{
-				Delta( ref m_Height, value );
-			}
+			get { return m_Height; }
+			set { Delta( ref m_Height, value ); }
 		}
 
 		public override string Compile()
 		{
-			return String.Format( "{{ buttontileart {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} }}", m_X, m_Y, m_ID1, m_ID2, (int) m_Type, m_Param, m_ButtonID, m_ItemID, m_Hue, m_Width, m_Height );
+			return $"{{ buttontileart {m_X} {m_Y} {m_ID1} {m_ID2} {(int)m_Type} {m_Param} {m_ButtonID} {m_ItemID} {m_Hue} {m_Width} {m_Height} }}";
 		}
 
-		private static byte[] m_LayoutName = Gump.StringToBuffer( "buttontileart" );
+		private static readonly byte[] m_LayoutName = Gump.StringToBuffer( "buttontileart" );
 
 		public override void AppendTo( IGumpWriter disp )
 		{

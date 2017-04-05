@@ -14,98 +14,50 @@ namespace Server.Gumps
 
 		public int X
 		{
-			get
-			{
-				return m_X;
-			}
-			set
-			{
-				Delta( ref m_X, value );
-			}
+			get { return m_X; }
+			set { Delta( ref m_X, value ); }
 		}
 
 		public int Y
 		{
-			get
-			{
-				return m_Y;
-			}
-			set
-			{
-				Delta( ref m_Y, value );
-			}
+			get { return m_Y; }
+			set { Delta( ref m_Y, value ); }
 		}
 
 		public int Width
 		{
-			get
-			{
-				return m_Width;
-			}
-			set
-			{
-				Delta( ref m_Width, value );
-			}
+			get { return m_Width; }
+			set { Delta( ref m_Width, value ); }
 		}
 
 		public int Height
 		{
-			get
-			{
-				return m_Height;
-			}
-			set
-			{
-				Delta( ref m_Height, value );
-			}
+			get { return m_Height; }
+			set { Delta( ref m_Height, value ); }
 		}
 
 		public int Hue
 		{
-			get
-			{
-				return m_Hue;
-			}
-			set
-			{
-				Delta( ref m_Hue, value );
-			}
+			get { return m_Hue; }
+			set { Delta( ref m_Hue, value ); }
 		}
 
 		public int EntryID
 		{
-			get
-			{
-				return m_EntryID;
-			}
-			set
-			{
-				Delta( ref m_EntryID, value );
-			}
+			get { return m_EntryID; }
+			set { Delta( ref m_EntryID, value ); }
 		}
 
 		public string InitialText
 		{
-			get
-			{
-				return m_InitialText;
-			}
-			set
-			{
-				Delta( ref m_InitialText, value );
-			}
+			get { return m_InitialText; }
+			set { Delta( ref m_InitialText, value ); }
 		}
 
 		public int Size
 		{
-			get
-			{
-				return m_Size;
-			}
-			set
-			{
-				Delta( ref m_Size, value );
-			}
+			get { return m_Size; }
+			set { Delta( ref m_Size, value ); }
 		}
 
 		public GumpTextEntryLimited( int x, int y, int width, int height, int hue, int entryID, string initialText, int size )
@@ -122,10 +74,10 @@ namespace Server.Gumps
 
 		public override string Compile()
 		{
-			return String.Format( "{{ textentrylimited {0} {1} {2} {3} {4} {5} {6} {7} }}", m_X, m_Y, m_Width, m_Height, m_Hue, m_EntryID, Parent.Intern( m_InitialText ), m_Size );
+			return $"{{ textentrylimited {m_X} {m_Y} {m_Width} {m_Height} {m_Hue} {m_EntryID} {Parent.Intern( m_InitialText )} {m_Size} }}";
 		}
 
-		private static byte[] m_LayoutName = Gump.StringToBuffer( "textentrylimited" );
+		private static readonly byte[] m_LayoutName = Gump.StringToBuffer( "textentrylimited" );
 
 		public override void AppendTo( IGumpWriter disp )
 		{

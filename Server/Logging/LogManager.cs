@@ -5,7 +5,7 @@ namespace Server
 {
 	public class LogManager
 	{
-		private static Dictionary<Type, ILog> m_Loggers = new Dictionary<Type, ILog>();
+		private static readonly Dictionary<Type, ILog> m_Loggers = new Dictionary<Type, ILog>();
 
 		public static ILog GetLogger( Type declaringType )
 		{

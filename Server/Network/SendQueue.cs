@@ -19,7 +19,7 @@ namespace Server.Network
 				m_Length = length;
 			}
 
-			private static Stack<Entry> m_Pool = new Stack<Entry>();
+			private static readonly Stack<Entry> m_Pool = new Stack<Entry>();
 
 			public static Entry Pool( byte[] buffer, int length )
 			{
@@ -28,7 +28,7 @@ namespace Server.Network
 					if ( m_Pool.Count == 0 )
 						return new Entry( buffer, length );
 
-					Entry e = m_Pool.Pop();
+					var e = m_Pool.Pop();
 
 					e.m_Buffer = buffer;
 					e.m_Length = length;
@@ -53,10 +53,7 @@ namespace Server.Network
 
 		public static int CoalesceBufferSize
 		{
-			get
-			{
-				return m_CoalesceBufferSize;
-			}
+			get { return m_CoalesceBufferSize; }
 			set
 			{
 				if ( m_CoalesceBufferSize == value )
@@ -83,11 +80,12 @@ namespace Server.Network
 				m_UnusedBuffers.ReleaseBuffer( buffer );
 		}
 
-		private Queue m_Queue;
+		private readonly Queue m_Queue;
 		private Entry m_Buffered;
 
-		public bool IsFlushReady { get { return ( m_Queue.Count == 0 && m_Buffered != null ); } }
-		public bool IsEmpty { get { return ( m_Queue.Count == 0 && m_Buffered == null ); } }
+		public bool IsFlushReady => ( m_Queue.Count == 0 && m_Buffered != null );
+
+		public bool IsEmpty => ( m_Queue.Count == 0 && m_Buffered == null );
 
 		public void Clear()
 		{
@@ -103,7 +101,7 @@ namespace Server.Network
 
 		public byte[] CheckFlushReady( ref int length )
 		{
-			Entry buffered = m_Buffered;
+			var buffered = m_Buffered;
 
 			if ( m_Queue.Count == 0 && buffered != null )
 			{
@@ -126,7 +124,7 @@ namespace Server.Network
 		{
 			if ( m_Queue.Count > 0 )
 			{
-				Entry entry = (Entry) m_Queue.Peek();
+				var entry = (Entry) m_Queue.Peek();
 
 				length = entry.m_Length;
 				return entry.m_Buffer;
@@ -141,7 +139,7 @@ namespace Server.Network
 
 			if ( m_Queue.Count > 0 )
 			{
-				Entry entry = (Entry) m_Queue.Peek();
+				var entry = (Entry) m_Queue.Peek();
 
 				length = entry.m_Length;
 				return entry.m_Buffer;
@@ -158,17 +156,17 @@ namespace Server.Network
 				return false;
 			}
 
-			int space = 0;
+			var space = 0;
 
-			bool success = false;
+			var success = false;
 			while ( length > 0 )
 			{
 				if ( m_Buffered == null )
 					m_Buffered = Entry.Pool( GetUnusedBuffer(), 0 );
 
-				byte[] tempbuffer = m_Buffered.m_Buffer;
-				int differenceSpace = tempbuffer.Length - m_Buffered.m_Length;
-				int availableSpace = ( length > differenceSpace ) ? differenceSpace : length;
+				var tempbuffer = m_Buffered.m_Buffer;
+				var differenceSpace = tempbuffer.Length - m_Buffered.m_Length;
+				var availableSpace = ( length > differenceSpace ) ? differenceSpace : length;
 				Buffer.BlockCopy( buffer, space, tempbuffer, m_Buffered.m_Length, availableSpace );
 				m_Buffered.m_Length += availableSpace;
 				space += availableSpace;

@@ -4,7 +4,7 @@ namespace Server
 {
 	public class ConsoleLogger : BaseLogger
 	{
-		private string m_Category;
+		private readonly string m_Category;
 
 		public ConsoleLogger( string category )
 		{

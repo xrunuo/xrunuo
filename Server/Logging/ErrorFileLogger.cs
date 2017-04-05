@@ -5,7 +5,7 @@ namespace Server
 {
 	public class ErrorFileLogger : BaseLogger
 	{
-		private string m_Category;
+		private readonly string m_Category;
 
 		public ErrorFileLogger( string category )
 		{

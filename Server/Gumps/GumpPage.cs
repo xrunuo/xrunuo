@@ -14,22 +14,16 @@ namespace Server.Gumps
 
 		public int Page
 		{
-			get
-			{
-				return m_Page;
-			}
-			set
-			{
-				Delta( ref m_Page, value );
-			}
+			get { return m_Page; }
+			set { Delta( ref m_Page, value ); }
 		}
 
 		public override string Compile()
 		{
-			return String.Format( "{{ page {0} }}", m_Page );
+			return $"{{ page {m_Page} }}";
 		}
 
-		private static byte[] m_LayoutName = Gump.StringToBuffer( "page" );
+		private static readonly byte[] m_LayoutName = Gump.StringToBuffer( "page" );
 
 		public override void AppendTo( IGumpWriter disp )
 		{

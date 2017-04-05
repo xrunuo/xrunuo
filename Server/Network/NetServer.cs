@@ -17,12 +17,11 @@ namespace Server.Network
 		public event DataReceived Received;
 		public event ConnectionDisposed Disconnected;
 
-		private List<Listener> m_Listeners;
-		private List<UOSocket> m_NetStates;
-		private Queue<UOSocket> m_PendingQueue;
-		private Queue<UOSocket> m_ThrottledQueue;
-		private ConcurrentQueue<UOSocket> m_DisposedQueue;
-		private long m_Incoming, m_Outgoing;
+		private readonly List<Listener> m_Listeners;
+		private readonly List<UOSocket> m_NetStates;
+		private readonly Queue<UOSocket> m_PendingQueue;
+		private readonly Queue<UOSocket> m_ThrottledQueue;
+		private readonly ConcurrentQueue<UOSocket> m_DisposedQueue;
 
 		public NetServer( Listener listener )
 		{
@@ -33,8 +32,9 @@ namespace Server.Network
 			m_DisposedQueue = new ConcurrentQueue<UOSocket>();
 		}
 
-		public long Incoming { get { return m_Incoming; } }
-		public long Outgoing { get { return m_Outgoing; } }
+		public long Incoming { get; private set; }
+
+		public long Outgoing { get; private set; }
 
 		public void AddListener( Listener listener )
 		{
@@ -48,7 +48,7 @@ namespace Server.Network
 
 		public void OnSend( UOSocket ns, int byteCount )
 		{
-			m_Outgoing += byteCount;
+			Outgoing += byteCount;
 		}
 
 		public void OnReceive( UOSocket ns, int byteCount )
@@ -56,7 +56,7 @@ namespace Server.Network
 			lock ( m_PendingQueue )
 				m_PendingQueue.Enqueue( ns );
 
-			m_Incoming += byteCount;
+			Incoming += byteCount;
 
 			//Core.WakeUp();
 		}
@@ -96,7 +96,7 @@ namespace Server.Network
 		{
 			foreach ( var socket in m_Listeners.SelectMany( listener => listener.Slice() ) )
 			{
-				UOSocket ns = new UOSocket( socket, this );
+				var ns = new UOSocket( socket, this );
 				ns.Start();
 
 				if ( ns.Running )
@@ -110,12 +110,12 @@ namespace Server.Network
 			{
 				while ( m_PendingQueue.Count > 0 )
 				{
-					UOSocket ns = m_PendingQueue.Dequeue();
+					var ns = m_PendingQueue.Dequeue();
 
 					if ( ns.Running )
 					{
-						ByteQueue buffer = ns.Buffer;
-						bool throttle = false;
+						var buffer = ns.Buffer;
+						var throttle = false;
 
 						if ( buffer != null && buffer.Length > 0 )
 						{
@@ -148,7 +148,7 @@ namespace Server.Network
 
 		public void ProcessDisposedQueue()
 		{
-			int breakout = 0;
+			var breakout = 0;
 
 			while ( breakout < 200 && !m_DisposedQueue.IsEmpty )
 			{

@@ -3,6 +3,7 @@
 namespace Server
 {
 	[CustomEnum( new string[] { "North", "Right", "East", "Down", "South", "Left", "West", "Up" } )]
+	[Flags]
 	public enum Direction : byte
 	{
 		North = 0x0,

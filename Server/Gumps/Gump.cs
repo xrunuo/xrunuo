@@ -7,15 +7,13 @@ namespace Server.Gumps
 {
 	public abstract class Gump
 	{
-		private List<GumpEntry> m_Entries;
-		private List<string> m_Strings;
+		private readonly List<string> m_Strings;
 
 		internal int m_TextEntries, m_Switches;
 
 		private static int m_NextSerial = 1;
 
 		private int m_Serial;
-		private int m_TypeID;
 		private int m_X, m_Y;
 
 		private bool m_Dragable = true;
@@ -23,7 +21,7 @@ namespace Server.Gumps
 		private bool m_Resizable = true;
 		private bool m_Disposable = true;
 
-		public virtual int TypeID { get { return m_TypeID; } }
+		public virtual int TypeID { get; }
 
 		public Gump( int x, int y )
 		{
@@ -32,19 +30,16 @@ namespace Server.Gumps
 				m_Serial = m_NextSerial++;
 			} while ( m_Serial == 0 ); // standard client apparently doesn't send a gump response packet if serial == 0
 
-			m_TypeID = GetType().FullName.GetHashCode();
+			TypeID = GetType().FullName.GetHashCode();
 
 			m_X = x;
 			m_Y = y;
 
-			m_Entries = new List<GumpEntry>();
+			Entries = new List<GumpEntry>();
 			m_Strings = new List<string>();
 		}
 
-		public List<GumpEntry> Entries
-		{
-			get { return m_Entries; }
-		}
+		public List<GumpEntry> Entries { get; }
 
 		public int Serial
 		{
@@ -305,15 +300,15 @@ namespace Server.Gumps
 			{
 				g.Parent = this;
 			}
-			else if ( !m_Entries.Contains( g ) )
+			else if ( !Entries.Contains( g ) )
 			{
-				m_Entries.Add( g );
+				Entries.Add( g );
 			}
 		}
 
 		public void Remove( GumpEntry g )
 		{
-			m_Entries.Remove( g );
+			Entries.Remove( g );
 			g.Parent = null;
 		}
 
@@ -347,13 +342,13 @@ namespace Server.Gumps
 			return Encoding.ASCII.GetBytes( str );
 		}
 
-		private static byte[] m_BeginLayout = StringToBuffer( "{ " );
-		private static byte[] m_EndLayout = StringToBuffer( " }" );
+		private static readonly byte[] m_BeginLayout = StringToBuffer( "{ " );
+		private static readonly byte[] m_EndLayout = StringToBuffer( " }" );
 
-		private static byte[] m_NoMove = StringToBuffer( "{ nomove }" );
-		private static byte[] m_NoClose = StringToBuffer( "{ noclose }" );
-		private static byte[] m_NoDispose = StringToBuffer( "{ nodispose }" );
-		private static byte[] m_NoResize = StringToBuffer( "{ noresize }" );
+		private static readonly byte[] m_NoMove = StringToBuffer( "{ nomove }" );
+		private static readonly byte[] m_NoClose = StringToBuffer( "{ noclose }" );
+		private static readonly byte[] m_NoDispose = StringToBuffer( "{ nodispose }" );
+		private static readonly byte[] m_NoResize = StringToBuffer( "{ noresize }" );
 
 		protected Packet Compile()
 		{
@@ -371,12 +366,12 @@ namespace Server.Gumps
 			if ( !m_Resizable )
 				disp.AppendLayout( m_NoResize );
 
-			int count = m_Entries.Count;
+			int count = Entries.Count;
 			GumpEntry e;
 
 			for ( int i = 0; i < count; ++i )
 			{
-				e = m_Entries[i];
+				e = Entries[i];
 
 				disp.AppendLayout( m_BeginLayout );
 				e.AppendTo( disp );

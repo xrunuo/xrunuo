@@ -31,7 +31,7 @@ namespace Server.Items
 			}
 		}
 
-		public override GraphicData GraphicData { get { return GraphicData.MultiData; } }
+		public override GraphicData GraphicData => GraphicData.MultiData;
 
 		public override int LabelNumber
 		{
@@ -63,13 +63,7 @@ namespace Server.Items
 			return 22;
 		}
 
-		public virtual MultiComponentList Components
-		{
-			get
-			{
-				return MultiData.GetComponents( ItemID );
-			}
-		}
+		public virtual MultiComponentList Components => MultiData.GetComponents( ItemID );
 
 		public virtual bool Contains( Point2D p )
 		{

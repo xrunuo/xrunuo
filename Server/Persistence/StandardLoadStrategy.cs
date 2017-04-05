@@ -6,10 +6,7 @@ namespace Server.Persistence
 {
 	public class StandardLoadStrategy : LoadStrategy
 	{
-		public override string Name
-		{
-			get { return "Standard"; }
-		}
+		public override string Name => "Standard";
 
 		public override void LoadEntities( IEnumerable<IEntityRepository> repositories )
 		{

@@ -16,10 +16,9 @@ namespace Server
 {
 	public static class Utility
 	{
-		private static Random m_Random = new Random();
 		private static Encoding m_UTF8, m_UTF8WithEncoding;
 
-		public static Random RandomGenerator { get { return m_Random; } }
+		public static Random RandomGenerator { get; } = new Random();
 
 		public static Encoding UTF8
 		{
@@ -388,7 +387,7 @@ namespace Server
 
 		public static double RandomDouble()
 		{
-			return m_Random.NextDouble();
+			return RandomGenerator.NextDouble();
 		}
 
 		public static Direction GetDirection( IPoint2D from, IPoint2D to )
@@ -511,22 +510,22 @@ namespace Server
 
 		public static string RandomList( params string[] list )
 		{
-			return list[m_Random.Next( list.Length )];
+			return list[RandomGenerator.Next( list.Length )];
 		}
 
 		public static int RandomList( params int[] list )
 		{
-			return list[m_Random.Next( list.Length )];
+			return list[RandomGenerator.Next( list.Length )];
 		}
 
 		public static T RandomList<T>( params T[] list )
 		{
-			return list[m_Random.Next( list.Length )];
+			return list[RandomGenerator.Next( list.Length )];
 		}
 
 		public static bool RandomBool()
 		{
-			return ( m_Random.Next( 2 ) == 0 );
+			return ( RandomGenerator.Next( 2 ) == 0 );
 		}
 
 		public static int RandomMinMax( int min, int max )
@@ -542,7 +541,7 @@ namespace Server
 				return min;
 			}
 
-			return min + m_Random.Next( ( max - min ) + 1 );
+			return min + RandomGenerator.Next( ( max - min ) + 1 );
 		}
 
 		public static int Random( int from, int count )
@@ -553,17 +552,17 @@ namespace Server
 			}
 			else if ( count > 0 )
 			{
-				return from + m_Random.Next( count );
+				return from + RandomGenerator.Next( count );
 			}
 			else
 			{
-				return from - m_Random.Next( -count );
+				return from - RandomGenerator.Next( -count );
 			}
 		}
 
 		public static int Random( int count )
 		{
-			return m_Random.Next( count );
+			return RandomGenerator.Next( count );
 		}
 
 		#region FixValues
@@ -734,8 +733,7 @@ namespace Server
 
 		#endregion
 
-		private static SkillName[] m_AllSkills = new SkillName[]
-			{
+		private static readonly SkillName[] m_AllSkills = {
 				SkillName.Alchemy,
 				SkillName.Anatomy,
 				SkillName.AnimalLore,
@@ -796,8 +794,7 @@ namespace Server
 				SkillName.Imbuing
 			};
 
-		private static SkillName[] m_CombatSkills = new SkillName[]
-			{
+		private static readonly SkillName[] m_CombatSkills = {
 				SkillName.Archery,
 				SkillName.Swords,
 				SkillName.Macing,
@@ -805,8 +802,7 @@ namespace Server
 				SkillName.Wrestling
 			};
 
-		private static SkillName[] m_CraftSkills = new SkillName[]
-			{
+		private static readonly SkillName[] m_CraftSkills = {
 				SkillName.Alchemy,
 				SkillName.Blacksmith,
 				SkillName.Fletching,
@@ -958,7 +954,7 @@ namespace Server
 		}
 
 		#region ConsoleColor
-		private static Stack<ConsoleColor> m_ConsoleColors = new Stack<ConsoleColor>();
+		private static readonly Stack<ConsoleColor> m_ConsoleColors = new Stack<ConsoleColor>();
 
 		public static void PushColor( ConsoleColor color )
 		{
@@ -1080,7 +1076,7 @@ namespace Server
 
 			source.CopyTo( sorted, 0 );
 
-			m_Random.NextBytes( randoms );
+			RandomGenerator.NextBytes( randoms );
 			Array.Sort( randoms, sorted, index, length );
 
 			return sorted;

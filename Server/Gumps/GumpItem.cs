@@ -24,62 +24,38 @@ namespace Server.Gumps
 
 		public int X
 		{
-			get
-			{
-				return m_X;
-			}
-			set
-			{
-				Delta( ref m_X, value );
-			}
+			get { return m_X; }
+			set { Delta( ref m_X, value ); }
 		}
 
 		public int Y
 		{
-			get
-			{
-				return m_Y;
-			}
-			set
-			{
-				Delta( ref m_Y, value );
-			}
+			get { return m_Y; }
+			set { Delta( ref m_Y, value ); }
 		}
 
 		public int ItemID
 		{
-			get
-			{
-				return m_ItemID;
-			}
-			set
-			{
-				Delta( ref m_ItemID, value );
-			}
+			get { return m_ItemID; }
+			set { Delta( ref m_ItemID, value ); }
 		}
 
 		public int Hue
 		{
-			get
-			{
-				return m_Hue;
-			}
-			set
-			{
-				Delta( ref m_Hue, value );
-			}
+			get { return m_Hue; }
+			set { Delta( ref m_Hue, value ); }
 		}
 
 		public override string Compile()
 		{
 			if ( m_Hue == 0 )
-				return String.Format( "{{ tilepic {0} {1} {2} }}", m_X, m_Y, m_ItemID );
+				return $"{{ tilepic {m_X} {m_Y} {m_ItemID} }}";
 			else
-				return String.Format( "{{ tilepichue {0} {1} {2} {3} }}", m_X, m_Y, m_ItemID, m_Hue );
+				return $"{{ tilepichue {m_X} {m_Y} {m_ItemID} {m_Hue} }}";
 		}
 
-		private static byte[] m_LayoutName = Gump.StringToBuffer( "tilepic" );
-		private static byte[] m_LayoutNameHue = Gump.StringToBuffer( "tilepichue" );
+		private static readonly byte[] m_LayoutName = Gump.StringToBuffer( "tilepic" );
+		private static readonly byte[] m_LayoutNameHue = Gump.StringToBuffer( "tilepichue" );
 
 		public override void AppendTo( IGumpWriter disp )
 		{

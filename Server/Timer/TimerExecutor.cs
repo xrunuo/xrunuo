@@ -24,11 +24,11 @@ namespace Server
 		{
 			lock ( m_Queue )
 			{
-				int index = 0;
+				var index = 0;
 
 				while ( index < BreakCount && m_Queue.Count != 0 )
 				{
-					Timer timer = m_Queue.Dequeue();
+					var timer = m_Queue.Dequeue();
 
 					try
 					{

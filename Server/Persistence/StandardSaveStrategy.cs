@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using Server.Guilds;
 
 namespace Server.Persistence
 {
 	public class StandardSaveStrategy : SaveStrategy
 	{
-		public override string Name
-		{
-			get { return "Standard"; }
-		}
+		public override string Name => "Standard";
 
-		private Queue<Item> m_DecayQueue;
-		private Queue<IVendor> m_RestockQueue;
+		private readonly Queue<Item> m_DecayQueue;
+		private readonly Queue<IVendor> m_RestockQueue;
 
 		public StandardSaveStrategy()
 		{
@@ -32,21 +30,21 @@ namespace Server.Persistence
 
 		protected void SaveMobiles()
 		{
-			Dictionary<Serial, Mobile> mobiles = World.m_Mobiles;
+			var mobiles = World.m_Mobiles;
 
 			GenericWriter idx = new BinaryFileWriter( World.MobileIndexPath, false );
 			GenericWriter tdb = new BinaryFileWriter( World.MobileTypesPath, false );
 			GenericWriter bin = new BinaryFileWriter( World.MobileDataPath, true );
 
-			idx.Write( (int) mobiles.Count );
+			idx.Write( mobiles.Count );
 
-			foreach ( Mobile m in mobiles.Values )
+			foreach ( var m in mobiles.Values )
 			{
-				long start = bin.Position;
+				var start = bin.Position;
 
-				idx.Write( (int) m.m_TypeRef );
-				idx.Write( (int) m.Serial );
-				idx.Write( (long) start );
+				idx.Write( m.m_TypeRef );
+				idx.Write( m.Serial );
+				idx.Write( start );
 
 				m.Serialize( bin );
 
@@ -54,7 +52,7 @@ namespace Server.Persistence
 
 				if ( m is IVendor )
 				{
-					IVendor vendor = m as IVendor;
+					var vendor = m as IVendor;
 
 					if ( ( vendor.LastRestock + vendor.RestockDelay ) < DateTime.UtcNow )
 						m_RestockQueue.Enqueue( vendor );
@@ -63,9 +61,9 @@ namespace Server.Persistence
 				m.FreeCache();
 			}
 
-			tdb.Write( (int) World.m_MobileTypes.Count );
+			tdb.Write( World.m_MobileTypes.Count );
 
-			for ( int i = 0; i < World.m_MobileTypes.Count; ++i )
+			for ( var i = 0; i < World.m_MobileTypes.Count; ++i )
 				tdb.Write( World.m_MobileTypes[i].FullName );
 
 			idx.Close();
@@ -75,23 +73,23 @@ namespace Server.Persistence
 
 		protected void SaveItems()
 		{
-			Dictionary<Serial, Item> items = World.m_Items;
+			var items = World.m_Items;
 
 			GenericWriter idx = new BinaryFileWriter( World.ItemIndexPath, false );
 			GenericWriter tdb = new BinaryFileWriter( World.ItemTypesPath, false );
 			GenericWriter bin = new BinaryFileWriter( World.ItemDataPath, true );
 
-			idx.Write( (int) items.Count );
-			foreach ( Item item in items.Values )
+			idx.Write( items.Count );
+			foreach ( var item in items.Values )
 			{
 				if ( item.Decays && item.Parent == null && item.Map != Map.Internal && ( item.LastMoved + item.DecayTime ) <= DateTime.UtcNow )
 					m_DecayQueue.Enqueue( item );
 
-				long start = bin.Position;
+				var start = bin.Position;
 
-				idx.Write( (int) item.m_TypeRef );
-				idx.Write( (int) item.Serial );
-				idx.Write( (long) start );
+				idx.Write( item.m_TypeRef );
+				idx.Write( item.Serial );
+				idx.Write( start );
 
 				item.Serialize( bin );
 
@@ -100,9 +98,9 @@ namespace Server.Persistence
 				item.FreeCache();
 			}
 
-			tdb.Write( (int) World.m_ItemTypes.Count );
+			tdb.Write( World.m_ItemTypes.Count );
 
-			for ( int i = 0; i < World.m_ItemTypes.Count; ++i )
+			for ( var i = 0; i < World.m_ItemTypes.Count; ++i )
 				tdb.Write( World.m_ItemTypes[i].FullName );
 
 			idx.Close();
@@ -116,23 +114,23 @@ namespace Server.Persistence
 			GenericWriter tdb = new BinaryFileWriter( World.GuildTypesPath, false );
 			GenericWriter bin = new BinaryFileWriter( World.GuildDataPath, true );
 
-			idx.Write( (int) BaseGuild.List.Count );
-			foreach ( BaseGuild guild in BaseGuild.List.Values )
+			idx.Write( BaseGuild.List.Count );
+			foreach ( var guild in BaseGuild.List.Values )
 			{
-				long start = bin.Position;
+				var start = bin.Position;
 
-				idx.Write( (int) guild.m_TypeRef );
-				idx.Write( (int) guild.Serial );
-				idx.Write( (long) start );
+				idx.Write( guild.m_TypeRef );
+				idx.Write( guild.Serial );
+				idx.Write( start );
 
 				guild.Serialize( bin );
 
 				idx.Write( (int) ( bin.Position - start ) );
 			}
 
-			tdb.Write( (int) World.m_GuildTypes.Count );
+			tdb.Write( World.m_GuildTypes.Count );
 
-			for ( int i = 0; i < World.m_GuildTypes.Count; ++i )
+			for ( var i = 0; i < World.m_GuildTypes.Count; ++i )
 				tdb.Write( World.m_GuildTypes[i].FullName );
 
 			idx.Close();
@@ -150,7 +148,7 @@ namespace Server.Persistence
 		{
 			while ( m_DecayQueue.Count > 0 )
 			{
-				Item item = m_DecayQueue.Dequeue();
+				var item = m_DecayQueue.Dequeue();
 
 				if ( item.OnDecay() )
 					item.Delete();
@@ -161,7 +159,7 @@ namespace Server.Persistence
 		{
 			while ( m_RestockQueue.Count > 0 )
 			{
-				IVendor vendor = m_RestockQueue.Dequeue();
+				var vendor = m_RestockQueue.Dequeue();
 				vendor.Restock();
 				vendor.LastRestock = DateTime.UtcNow;
 			}

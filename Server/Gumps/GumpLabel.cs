@@ -8,7 +8,7 @@ namespace Server.Gumps
 		private int m_X, m_Y;
 		private int m_Hue;
 		private string m_Text;
-		private int m_TextID;
+		private readonly int m_TextID;
 
 		public GumpLabel( int x, int y, int hue, string text )
 		{
@@ -28,58 +28,34 @@ namespace Server.Gumps
 
 		public int X
 		{
-			get
-			{
-				return m_X;
-			}
-			set
-			{
-				Delta( ref m_X, value );
-			}
+			get { return m_X; }
+			set { Delta( ref m_X, value ); }
 		}
 
 		public int Y
 		{
-			get
-			{
-				return m_Y;
-			}
-			set
-			{
-				Delta( ref m_Y, value );
-			}
+			get { return m_Y; }
+			set { Delta( ref m_Y, value ); }
 		}
 
 		public int Hue
 		{
-			get
-			{
-				return m_Hue;
-			}
-			set
-			{
-				Delta( ref m_Hue, value );
-			}
+			get { return m_Hue; }
+			set { Delta( ref m_Hue, value ); }
 		}
 
 		public string Text
 		{
-			get
-			{
-				return m_Text;
-			}
-			set
-			{
-				Delta( ref m_Text, value );
-			}
+			get { return m_Text; }
+			set { Delta( ref m_Text, value ); }
 		}
 
 		public override string Compile()
 		{
-			return String.Format( "{{ text {0} {1} {2} {3} }}", m_X, m_Y, m_Hue, m_Text == null ? m_TextID : Parent.Intern( m_Text ) );
+			return $"{{ text {m_X} {m_Y} {m_Hue} {( m_Text == null ? m_TextID : Parent.Intern( m_Text ) )} }}";
 		}
 
-		private static byte[] m_LayoutName = Gump.StringToBuffer( "text" );
+		private static readonly byte[] m_LayoutName = Gump.StringToBuffer( "text" );
 
 		public override void AppendTo( IGumpWriter disp )
 		{

@@ -5,47 +5,26 @@ namespace Server.Items
 {
 	public class BankBox : Container
 	{
-		private Mobile m_Owner;
-		private bool m_Open;
-
-		public override int DefaultMaxWeight
-		{
-			get
-			{
-				return 0;
-			}
-		}
+		public override int DefaultMaxWeight => 0;
 
 		public BankBox( Serial serial )
 			: base( serial )
 		{
 		}
 
-		public Mobile Owner
-		{
-			get
-			{
-				return m_Owner;
-			}
-		}
+		public Mobile Owner { get; private set; }
 
-		public bool Opened
-		{
-			get
-			{
-				return m_Open;
-			}
-		}
+		public bool Opened { get; private set; }
 
 		public void Open()
 		{
-			m_Open = true;
+			Opened = true;
 
-			if ( m_Owner != null )
+			if ( Owner != null )
 			{
-				m_Owner.PrivateOverheadMessage( MessageType.Regular, 0x3B2, true, String.Format( "Bank container has {0} items, {1} stones", TotalItems, TotalWeight ), m_Owner.NetState );
-				m_Owner.Send( new EquipUpdate( this ) );
-				DisplayTo( m_Owner );
+				Owner.PrivateOverheadMessage( MessageType.Regular, 0x3B2, true, String.Format( "Bank container has {0} items, {1} stones", TotalItems, TotalWeight ), Owner.NetState );
+				Owner.Send( new EquipUpdate( this ) );
+				DisplayTo( Owner );
 			}
 		}
 
@@ -55,8 +34,8 @@ namespace Server.Items
 
 			writer.Write( (int) 0 ); // version
 
-			writer.Write( (Mobile) m_Owner );
-			writer.Write( (bool) m_Open );
+			writer.Write( (Mobile) Owner );
+			writer.Write( (bool) Opened );
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -69,10 +48,10 @@ namespace Server.Items
 			{
 				case 0:
 					{
-						m_Owner = reader.ReadMobile();
-						m_Open = reader.ReadBool();
+						Owner = reader.ReadMobile();
+						Opened = reader.ReadBool();
 
-						if ( m_Owner == null )
+						if ( Owner == null )
 							Delete();
 
 						break;
@@ -83,16 +62,14 @@ namespace Server.Items
 				ItemID = 0xE7C;
 		}
 
-		private static bool m_SendRemovePacket;
-
-		public static bool SendDeleteOnClose { get { return m_SendRemovePacket; } set { m_SendRemovePacket = value; } }
+		public static bool SendDeleteOnClose { get; set; }
 
 		public void Close()
 		{
-			m_Open = false;
+			Opened = false;
 
-			if ( m_Owner != null && m_SendRemovePacket )
-				m_Owner.Send( this.RemovePacket );
+			if ( Owner != null && SendDeleteOnClose )
+				Owner.Send( this.RemovePacket );
 		}
 
 		public override void OnDoubleClick( Mobile from )
@@ -109,12 +86,12 @@ namespace Server.Items
 		{
 			Layer = Layer.Bank;
 			Movable = false;
-			m_Owner = owner;
+			Owner = owner;
 		}
 
 		public override bool IsAccessibleTo( Mobile check )
 		{
-			if ( ( check == m_Owner && m_Open ) || check.AccessLevel >= AccessLevel.GameMaster )
+			if ( ( check == Owner && Opened ) || check.AccessLevel >= AccessLevel.GameMaster )
 				return base.IsAccessibleTo( check );
 			else
 				return false;
@@ -122,7 +99,7 @@ namespace Server.Items
 
 		public override bool OnDragDrop( Mobile from, Item dropped )
 		{
-			if ( ( from == m_Owner && m_Open ) || from.AccessLevel >= AccessLevel.GameMaster )
+			if ( ( from == Owner && Opened ) || from.AccessLevel >= AccessLevel.GameMaster )
 				return base.OnDragDrop( from, dropped );
 			else
 				return false;
@@ -130,7 +107,7 @@ namespace Server.Items
 
 		public override bool OnDragDropInto( Mobile from, Item item, Point3D p, byte gridloc )
 		{
-			if ( ( from == m_Owner && m_Open ) || from.AccessLevel >= AccessLevel.GameMaster )
+			if ( ( from == Owner && Opened ) || from.AccessLevel >= AccessLevel.GameMaster )
 				return base.OnDragDropInto( from, item, p, gridloc );
 			else
 				return false;

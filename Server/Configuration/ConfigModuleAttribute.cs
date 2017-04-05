@@ -4,8 +4,5 @@ namespace Server.Configuration
 {
 	public class ConfigModuleAttribute : Attribute
 	{
-		public ConfigModuleAttribute()
-		{
-		}
 	}
 }

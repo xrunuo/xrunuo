@@ -12,7 +12,7 @@ namespace Server.Network
 	{
 		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
 
-		private static Stack<PacketWriter> m_Pool = new Stack<PacketWriter>();
+		private static readonly Stack<PacketWriter> m_Pool = new Stack<PacketWriter>();
 
 		public static PacketWriter CreateInstance()
 		{
@@ -55,7 +55,7 @@ namespace Server.Network
 				{
 					try
 					{
-						using ( StreamWriter op = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "neterr.log" ) ) )
+						using ( var op = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "neterr.log" ) ) )
 						{
 							op.WriteLine( "{0}\tInstance pool contains writer", DateTime.UtcNow );
 						}
@@ -71,14 +71,14 @@ namespace Server.Network
 		/// <summary>
 		/// Internal stream which holds the entire packet.
 		/// </summary>
-		private MemoryStream m_Stream;
+		private readonly MemoryStream m_Stream;
 
 		private int m_Capacity;
 
 		/// <summary>
 		/// Internal format buffer.
 		/// </summary>
-		private static byte[] m_Buffer = new byte[4];
+		private static readonly byte[] m_Buffer = new byte[4];
 
 		/// <summary>
 		/// Instantiates a new PacketWriter instance with the default capacity of 4 bytes.
@@ -189,7 +189,7 @@ namespace Server.Network
 				value = String.Empty;
 			}
 
-			byte[] buffer = Encoding.ASCII.GetBytes( value );
+			var buffer = Encoding.ASCII.GetBytes( value );
 
 			if ( buffer.Length >= size )
 			{
@@ -213,7 +213,7 @@ namespace Server.Network
 				value = String.Empty;
 			}
 
-			byte[] buffer = Encoding.ASCII.GetBytes( value );
+			var buffer = Encoding.ASCII.GetBytes( value );
 
 			m_Stream.Write( buffer, 0, buffer.Length );
 			m_Stream.WriteByte( 0 );
@@ -230,7 +230,7 @@ namespace Server.Network
 				value = String.Empty;
 			}
 
-			byte[] buffer = Encoding.Unicode.GetBytes( value );
+			var buffer = Encoding.Unicode.GetBytes( value );
 
 			m_Stream.Write( buffer, 0, buffer.Length );
 
@@ -252,7 +252,7 @@ namespace Server.Network
 
 			size *= 2;
 
-			byte[] buffer = Encoding.Unicode.GetBytes( value );
+			var buffer = Encoding.Unicode.GetBytes( value );
 
 			if ( buffer.Length >= size )
 			{
@@ -276,7 +276,7 @@ namespace Server.Network
 				value = String.Empty;
 			}
 
-			byte[] buffer = Encoding.BigEndianUnicode.GetBytes( value );
+			var buffer = Encoding.BigEndianUnicode.GetBytes( value );
 
 			m_Stream.Write( buffer, 0, buffer.Length );
 
@@ -298,7 +298,7 @@ namespace Server.Network
 
 			size *= 2;
 
-			byte[] buffer = Encoding.BigEndianUnicode.GetBytes( value );
+			var buffer = Encoding.BigEndianUnicode.GetBytes( value );
 
 			if ( buffer.Length >= size )
 			{
@@ -338,39 +338,21 @@ namespace Server.Network
 		/// <summary>
 		/// Gets the total stream length.
 		/// </summary>
-		public long Length
-		{
-			get
-			{
-				return m_Stream.Length;
-			}
-		}
+		public long Length => m_Stream.Length;
 
 		/// <summary>
 		/// Gets or sets the current stream position.
 		/// </summary>
 		public long Position
 		{
-			get
-			{
-				return m_Stream.Position;
-			}
-			set
-			{
-				m_Stream.Position = value;
-			}
+			get { return m_Stream.Position; }
+			set { m_Stream.Position = value; }
 		}
 
 		/// <summary>
 		/// The internal stream used by this PacketWriter instance.
 		/// </summary>
-		public MemoryStream UnderlyingStream
-		{
-			get
-			{
-				return m_Stream;
-			}
-		}
+		public MemoryStream UnderlyingStream => m_Stream;
 
 		/// <summary>
 		/// Offsets the current position from an origin.

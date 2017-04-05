@@ -14,22 +14,16 @@ namespace Server.Gumps
 
 		public int Group
 		{
-			get
-			{
-				return m_Group;
-			}
-			set
-			{
-				Delta( ref m_Group, value );
-			}
+			get { return m_Group; }
+			set { Delta( ref m_Group, value ); }
 		}
 
 		public override string Compile()
 		{
-			return String.Format( "{{ group {0} }}", m_Group );
+			return $"{{ group {m_Group} }}";
 		}
 
-		private static byte[] m_LayoutName = Gump.StringToBuffer( "group" );
+		private static readonly byte[] m_LayoutName = Gump.StringToBuffer( "group" );
 
 		public override void AppendTo( IGumpWriter disp )
 		{

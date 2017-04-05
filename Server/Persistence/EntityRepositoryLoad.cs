@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 
 namespace Server.Persistence
 {
@@ -30,7 +29,7 @@ namespace Server.Persistence
 		{
 			if ( File.Exists( m_Repository.IndexPath ) && File.Exists( m_Repository.TypesPath ) )
 			{
-				EntityType[] types = LoadEntityTypes( m_Repository.TypesPath );
+				var types = LoadEntityTypes( m_Repository.TypesPath );
 				m_EntityEntries = LoadEntityIndex( types );
 			}
 			else
@@ -41,33 +40,33 @@ namespace Server.Persistence
 
 		private EntityType[] LoadEntityTypes( string path )
 		{
-			using ( FileStream tdb = new FileStream( path, FileMode.Open, FileAccess.Read, FileShare.Read ) )
+			using ( var tdb = new FileStream( path, FileMode.Open, FileAccess.Read, FileShare.Read ) )
 			{
-				using ( BinaryReader tdbReader = new BinaryReader( tdb ) )
+				using ( var tdbReader = new BinaryReader( tdb ) )
 				{
 					return LoadEntityTypes( tdbReader );
 				}
 			}
 		}
 
-		private static readonly Type[] m_CtorTypes = new[] { typeof( Serial ) };
+		private static readonly Type[] m_CtorTypes = { typeof( Serial ) };
 
 		private EntityType[] LoadEntityTypes( BinaryReader tdbReader )
 		{
-			int count = tdbReader.ReadInt32();
+			var count = tdbReader.ReadInt32();
 
-			EntityType[] types = new EntityType[count];
+			var types = new EntityType[count];
 
-			for ( int i = 0; i < count; ++i )
+			for ( var i = 0; i < count; ++i )
 			{
-				string typeName = tdbReader.ReadString();
+				var typeName = tdbReader.ReadString();
 
 				if ( string.IsNullOrEmpty( typeName ) )
 					continue;
 
 				typeName = string.Intern( typeName );
 
-				Type t = ScriptCompiler.FindTypeByFullName( typeName );
+				var t = ScriptCompiler.FindTypeByFullName( typeName );
 
 				if ( t == null )
 				{
@@ -81,15 +80,15 @@ namespace Server.Persistence
 					}
 
 					Console.WriteLine( "Types will not be deleted. An exception will be thrown when you press return" );
-					throw new Exception( String.Format( "Bad type '{0}'", typeName ) );
+					throw new Exception( $"Bad type '{typeName}'" );
 				}
 
-				ConstructorInfo ctor = t.GetConstructor( m_CtorTypes );
+				var ctor = t.GetConstructor( m_CtorTypes );
 
 				if ( ctor != null )
 					types[i] = new EntityType( typeName, ctor );
 				else
-					throw new Exception( String.Format( "Type '{0}' does not have a serialization constructor", t ) );
+					throw new Exception( $"Type '{t}' does not have a serialization constructor" );
 			}
 
 			return types;
@@ -97,7 +96,7 @@ namespace Server.Persistence
 
 		private IEntityEntry[] LoadEntityIndex( EntityType[] ctors )
 		{
-			using ( BinaryReader idxReader = new BinaryReader( new FileStream( m_Repository.IndexPath, FileMode.Open, FileAccess.Read, FileShare.Read ) ) )
+			using ( var idxReader = new BinaryReader( new FileStream( m_Repository.IndexPath, FileMode.Open, FileAccess.Read, FileShare.Read ) ) )
 			{
 				return LoadEntityIndex( idxReader, ctors );
 			}
@@ -105,19 +104,19 @@ namespace Server.Persistence
 
 		private IEntityEntry[] LoadEntityIndex( BinaryReader idxReader, EntityType[] types )
 		{
-			int count = idxReader.ReadInt32();
+			var count = idxReader.ReadInt32();
 			m_Repository.Initialize( count );
 
 			var entries = new HashSet<IEntityEntry>();
 
-			for ( int i = 0; i < count; ++i )
+			for ( var i = 0; i < count; ++i )
 			{
-				int typeId = idxReader.ReadInt32();
-				int serial = idxReader.ReadInt32();
-				long pos = idxReader.ReadInt64();
-				int length = idxReader.ReadInt32();
+				var typeId = idxReader.ReadInt32();
+				var serial = idxReader.ReadInt32();
+				var pos = idxReader.ReadInt64();
+				var length = idxReader.ReadInt32();
 
-				EntityType type = types[typeId];
+				var type = types[typeId];
 
 				if ( type.Constructor == null )
 					continue;
@@ -164,7 +163,7 @@ namespace Server.Persistence
 							obj.Deserialize( reader );
 
 							if ( reader.Position != ( entry.Position + entry.Length ) )
-								throw new Exception( String.Format( "***** Bad serialize on {0} *****", obj.GetType() ) );
+								throw new Exception( $"***** Bad serialize on {obj.GetType()} *****" );
 						}
 						catch ( Exception e )
 						{
@@ -212,7 +211,7 @@ namespace Server.Persistence
 
 			if ( Console.ReadKey().Key == ConsoleKey.Y )
 			{
-				for ( int i = 0; i < m_EntityEntries.Length; ++i )
+				for ( var i = 0; i < m_EntityEntries.Length; ++i )
 				{
 					if ( m_EntityEntries[i].TypeId == failedTypeId )
 						m_EntityEntries[i].Clear();

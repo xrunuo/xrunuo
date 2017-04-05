@@ -14,7 +14,7 @@ namespace Server
 
 		private bool m_Queued;
 
-		private static Queue<AggressorInfo> m_Pool = new Queue<AggressorInfo>();
+		private static readonly Queue<AggressorInfo> m_Pool = new Queue<AggressorInfo>();
 
 		public static AggressorInfo Create( Mobile attacker, Mobile defender, bool criminal )
 		{
@@ -62,13 +62,7 @@ namespace Server
 			Refresh();
 		}
 
-		private static TimeSpan m_ExpireDelay = TimeSpan.FromMinutes( 2.0 );
-
-		public static TimeSpan ExpireDelay
-		{
-			get { return m_ExpireDelay; }
-			set { m_ExpireDelay = value; }
-		}
+		public static TimeSpan ExpireDelay { get; set; } = TimeSpan.FromMinutes( 2.0 );
 
 		public static void DumpAccess()
 		{
@@ -88,7 +82,7 @@ namespace Server
 				if ( m_Queued )
 					DumpAccess();
 
-				return ( m_Attacker.Deleted || m_Defender.Deleted || DateTime.UtcNow >= ( m_LastCombatTime + m_ExpireDelay ) );
+				return ( m_Attacker.Deleted || m_Defender.Deleted || DateTime.UtcNow >= ( m_LastCombatTime + ExpireDelay ) );
 			}
 		}
 

@@ -4,39 +4,17 @@ namespace Server.Commands
 {
 	public class CommandEntry : IComparable
 	{
-		private string m_Command;
-		private CommandEventHandler m_Handler;
-		private AccessLevel m_AccessLevel;
+		public string Command { get; }
 
-		public string Command
-		{
-			get
-			{
-				return m_Command;
-			}
-		}
+		public CommandEventHandler Handler { get; }
 
-		public CommandEventHandler Handler
-		{
-			get
-			{
-				return m_Handler;
-			}
-		}
-
-		public AccessLevel AccessLevel
-		{
-			get
-			{
-				return m_AccessLevel;
-			}
-		}
+		public AccessLevel AccessLevel { get; }
 
 		public CommandEntry( string command, CommandEventHandler handler, AccessLevel accessLevel )
 		{
-			m_Command = command;
-			m_Handler = handler;
-			m_AccessLevel = accessLevel;
+			Command = command;
+			Handler = handler;
+			AccessLevel = accessLevel;
 		}
 
 		public int CompareTo( object obj )
@@ -51,7 +29,7 @@ namespace Server.Commands
 			if ( e == null )
 				throw new ArgumentException();
 
-			return m_Command.CompareTo( e.m_Command );
+			return Command.CompareTo( e.Command );
 		}
 	}
 }

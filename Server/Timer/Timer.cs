@@ -11,42 +11,15 @@ namespace Server
 	{
 		private readonly TimerScheduler m_Scheduler;
 
-		private TimeSpan m_Delay;
-		private TimeSpan m_Interval;
-		private int m_Count;
-		private bool m_Running;
-
-		internal DateTime m_Next;
 		internal bool m_Queued;
 		internal int m_Index;
 		internal List<Timer> m_List;
 
-		public DateTime Next
-		{
-			get { return m_Next; }
-		}
-
-		public TimeSpan Delay
-		{
-			get { return m_Delay; }
-			set { m_Delay = value; }
-		}
-
-		public TimeSpan Interval
-		{
-			get { return m_Interval; }
-			set { m_Interval = value; }
-		}
-
-		public int Count
-		{
-			get { return m_Count; }
-		}
-
-		public bool Running
-		{
-			get { return m_Running; }
-		}
+		public DateTime Next { get; internal set; }
+		public TimeSpan Delay { get; set; }
+		public TimeSpan Interval { get; set; }
+		public int Count { get; }
+		public bool Running { get; private set; }
 
 		public Timer( TimeSpan delay )
 			: this( delay, TimeSpan.Zero, 1 )
@@ -62,25 +35,21 @@ namespace Server
 		{
 			m_Scheduler = TimerScheduler.Instance;
 
-			m_Delay = delay;
-			m_Interval = interval;
-			m_Count = count;
+			Delay = delay;
+			Interval = interval;
+			Count = count;
 
 			if ( DefRegCreation )
 				RegCreation();
 		}
 
-		protected virtual bool DefRegCreation
-		{
-			get { return true; }
-		}
+		protected virtual bool DefRegCreation => true;
 
 		private void RegCreation()
 		{
-			TimerProfile prof = this.GetProfile();
+			var prof = this.GetProfile();
 
-			if ( prof != null )
-				prof.RegCreation();
+			prof?.RegCreation();
 		}
 
 		public override string ToString()
@@ -93,52 +62,49 @@ namespace Server
 			if ( callback == null )
 				return "null";
 
-			return String.Format( "{0}.{1}", callback.Method.DeclaringType.FullName, callback.Method.Name );
+			return $"{callback.Method.DeclaringType.FullName}.{callback.Method.Name}";
 		}
 
 		public void Start()
 		{
-			if ( !m_Running )
+			if ( !Running )
 			{
-				m_Running = true;
+				Running = true;
 
 				m_Scheduler.AddTimer( this );
 
-				TimerProfile prof = this.GetProfile();
+				var prof = this.GetProfile();
 
-				if ( prof != null )
-					prof.RegStart();
+				prof?.RegStart();
 			}
 		}
 
 		public void Stop()
 		{
-			if ( m_Running )
+			if ( Running )
 			{
-				m_Running = false;
+				Running = false;
 
 				m_Scheduler.RemoveTimer( this );
 
-				TimerProfile prof = this.GetProfile();
+				var prof = this.GetProfile();
 
-				if ( prof != null )
-					prof.RegStopped();
+				prof?.RegStopped();
 			}
 		}
 
 		internal void Tick()
 		{
-			TimerProfile prof = this.GetProfile();
+			var prof = this.GetProfile();
 
-			DateTime start = DateTime.MinValue;
+			var start = DateTime.MinValue;
 
 			if ( prof != null )
 				start = DateTime.UtcNow;
 
 			OnTick();
 
-			if ( prof != null )
-				prof.RegTicked( DateTime.UtcNow - start );
+			prof?.RegTicked( DateTime.UtcNow - start );
 		}
 
 		protected virtual void OnTick()
@@ -212,7 +178,7 @@ namespace Server
 		{
 			private readonly TimerCallback m_Callback;
 
-			protected override bool DefRegCreation { get { return false; } }
+			protected override bool DefRegCreation => false;
 
 			public DelayCallTimer( TimeSpan delay, TimeSpan interval, int count, TimerCallback callback )
 				: base( delay, interval, count )
@@ -229,7 +195,7 @@ namespace Server
 
 			public override string ToString()
 			{
-				return String.Format( "DelayCallTimer[{0}]", FormatDelegate( m_Callback ) );
+				return $"DelayCallTimer[{FormatDelegate( m_Callback )}]";
 			}
 		}
 
@@ -238,7 +204,7 @@ namespace Server
 			private readonly TimerStateCallback m_Callback;
 			private readonly object m_State;
 
-			protected override bool DefRegCreation { get { return false; } }
+			protected override bool DefRegCreation => false;
 
 			public DelayStateCallTimer( TimeSpan delay, TimeSpan interval, int count, TimerStateCallback callback, object state )
 				: base( delay, interval, count )
@@ -251,13 +217,12 @@ namespace Server
 
 			protected override void OnTick()
 			{
-				if ( m_Callback != null )
-					m_Callback( m_State );
+				m_Callback?.Invoke( m_State );
 			}
 
 			public override string ToString()
 			{
-				return String.Format( "DelayStateCall[{0}]", FormatDelegate( m_Callback ) );
+				return $"DelayStateCall[{FormatDelegate( m_Callback )}]";
 			}
 		}
 
@@ -266,9 +231,7 @@ namespace Server
 			private readonly TimerStateCallback<T> m_Callback;
 			private readonly T m_State;
 
-			public TimerStateCallback<T> Callback { get { return m_Callback; } }
-
-			protected override bool DefRegCreation { get { return false; } }
+			protected override bool DefRegCreation => false;
 
 			public DelayStateCallTimer( TimeSpan delay, TimeSpan interval, int count, TimerStateCallback<T> callback, T state )
 				: base( delay, interval, count )
@@ -281,13 +244,12 @@ namespace Server
 
 			protected override void OnTick()
 			{
-				if ( m_Callback != null )
-					m_Callback( m_State );
+				m_Callback?.Invoke( m_State );
 			}
 
 			public override string ToString()
 			{
-				return String.Format( "DelayStateCall[{0}]", FormatDelegate( m_Callback ) );
+				return $"DelayStateCall[{FormatDelegate( m_Callback )}]";
 			}
 		}
 		#endregion

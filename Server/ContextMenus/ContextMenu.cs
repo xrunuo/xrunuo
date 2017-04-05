@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Server.ContextMenus
@@ -10,33 +9,20 @@ namespace Server.ContextMenus
 	/// </summary>
 	public class ContextMenu
 	{
-		private Mobile m_From;
-		private object m_Target;
-		private ContextMenuEntry[] m_Entries;
-
 		/// <summary>
 		/// Gets the <see cref="Mobile" /> who opened this ContextMenu.
 		/// </summary>
-		public Mobile From
-		{
-			get { return m_From; }
-		}
+		public Mobile From { get; }
 
 		/// <summary>
 		/// Gets an object of the <see cref="Mobile" /> or <see cref="Item" /> for which this ContextMenu is on.
 		/// </summary>
-		public object Target
-		{
-			get { return m_Target; }
-		}
+		public object Target { get; }
 
 		/// <summary>
 		/// Gets the list of <see cref="ContextMenuEntry">entries</see> contained in this ContextMenu.
 		/// </summary>
-		public ContextMenuEntry[] Entries
-		{
-			get { return m_Entries; }
-		}
+		public ContextMenuEntry[] Entries { get; }
 
 		/// <summary>
 		/// Instantiates a new ContextMenu instance.
@@ -51,20 +37,20 @@ namespace Server.ContextMenus
 		/// </param>
 		public ContextMenu( Mobile from, object target )
 		{
-			m_From = from;
-			m_Target = target;
+			From = from;
+			Target = target;
 
-			List<ContextMenuEntry> list = new List<ContextMenuEntry>();
+			var list = new List<ContextMenuEntry>();
 
 			if ( target is Mobile )
 				( (Mobile) target ).GetContextMenuEntries( from, list );
 			else if ( target is Item )
 				( (Item) target ).GetContextMenuEntries( from, list );
 
-			m_Entries = list.ToArray();
+			Entries = list.ToArray();
 
-			for ( int i = 0; i < m_Entries.Length; ++i )
-				m_Entries[i].Owner = this;
+			for ( var i = 0; i < Entries.Length; ++i )
+				Entries[i].Owner = this;
 		}
 	}
 }

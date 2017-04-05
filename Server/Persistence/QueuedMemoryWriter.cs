@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 
 namespace Server.Persistence
@@ -13,18 +12,15 @@ namespace Server.Persistence
 			public int Serial;
 		}
 
-		private MemoryStream m_Stream;
-		private List<IndexInfo> m_OrderedIndexInfo = new List<IndexInfo>();
+		private readonly MemoryStream m_Stream;
+		private readonly List<IndexInfo> m_OrderedIndexInfo = new List<IndexInfo>();
 
-		protected override int BufferSize
-		{
-			get { return 512; }
-		}
+		protected override int BufferSize => 512;
 
 		public QueuedMemoryWriter()
 			: base( new MemoryStream( 1024 * 1024 ), true )
 		{
-			m_Stream = this.UnderlyingStream as MemoryStream;
+			m_Stream = UnderlyingStream as MemoryStream;
 		}
 
 		public void QueueForIndex( ISerializable serializable, int size )
@@ -41,23 +37,23 @@ namespace Server.Persistence
 
 		public void CommitTo( FileStream dataFile, FileStream indexFile )
 		{
-			this.Flush();
+			Flush();
 
-			int memLength = (int) m_Stream.Position;
+			var memLength = (int) m_Stream.Position;
 
 			if ( memLength > 0 )
 			{
-				byte[] memBuffer = m_Stream.GetBuffer();
+				var memBuffer = m_Stream.GetBuffer();
 
-				long actualPosition = dataFile.Position;
+				var actualPosition = dataFile.Position;
 
 				dataFile.Write( memBuffer, 0, memLength ); // The buffer contains the data from many items.
 
-				byte[] indexBuffer = new byte[20];
+				var indexBuffer = new byte[20];
 
-				for ( int i = 0; i < m_OrderedIndexInfo.Count; i++ )
+				for ( var i = 0; i < m_OrderedIndexInfo.Count; i++ )
 				{
-					IndexInfo info = m_OrderedIndexInfo[i];
+					var info = m_OrderedIndexInfo[i];
 
 					indexBuffer[0] = (byte) ( info.TypeCode );
 					indexBuffer[1] = (byte) ( info.TypeCode >> 8 );
@@ -89,7 +85,7 @@ namespace Server.Persistence
 				}
 			}
 
-			this.Close(); // We're done with this writer.
+			Close(); // We're done with this writer.
 		}
 	}
 }

@@ -1,19 +1,20 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
+using System.Text;
 using System.Xml;
 
 namespace Server.Configuration
 {
 	public class LibraryConfig
 	{
-		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+		private static readonly ILog log = LogManager.GetLogger( MethodBase.GetCurrentMethod().DeclaringType );
 
-		private string m_BaseDirectory;
-		private string m_Filename;
+		private readonly string m_BaseDirectory;
+		private readonly string m_Filename;
 		private XmlDocument m_Document;
 
-		private Dictionary<string, Library> m_LibraryConfig = new Dictionary<string, Library>();
+		private readonly Dictionary<string, Library> m_LibraryConfig = new Dictionary<string, Library>();
 
 		public LibraryConfig( string baseDirectory, string filename )
 		{
@@ -24,20 +25,14 @@ namespace Server.Configuration
 			Load();
 		}
 
-		public bool Exists
-		{
-			get { return File.Exists( m_Filename ); }
-		}
+		public bool Exists => File.Exists( m_Filename );
 
 		public Library GetLibrary( string name )
 		{
 			return m_LibraryConfig[name];
 		}
 
-		public ICollection<Library> Libraries
-		{
-			get { return m_LibraryConfig.Values; }
-		}
+		public ICollection<Library> Libraries => m_LibraryConfig.Values;
 
 		private void Defaults()
 		{
@@ -138,7 +133,7 @@ namespace Server.Configuration
 				tempFilename = m_Filename + ".new";
 
 			// Write to file.
-			XmlTextWriter writer = new XmlTextWriter( tempFilename, System.Text.Encoding.UTF8 );
+			var writer = new XmlTextWriter( tempFilename, Encoding.UTF8 );
 			writer.Formatting = Formatting.Indented;
 
 			try

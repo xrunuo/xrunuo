@@ -15,10 +15,7 @@ namespace Server
 
 				return DateTime.UtcNow;
 			}
-			set
-			{
-				m_Override = value;
-			}
+			set { m_Override = value; }
 		}
 	}
 }

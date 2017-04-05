@@ -10,14 +10,14 @@ namespace Server.Network
 		{
 			try
 			{
-				using ( StreamWriter sw = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "Packets.log" ), true ) )
+				using ( var sw = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "Packets.log" ), true ) )
 				{
-					byte[] buffer = reader.Buffer;
+					var buffer = reader.Buffer;
 
 					if ( buffer.Length > 0 )
 						sw.WriteLine( "Client: {0}: Unhandled packet 0x{1:X2}", client, buffer[0] );
 
-					using ( MemoryStream ms = new MemoryStream( buffer ) )
+					using ( var ms = new MemoryStream( buffer ) )
 						Utility.FormatBuffer( sw, ms, buffer.Length );
 
 					sw.WriteLine();

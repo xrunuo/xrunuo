@@ -7,7 +7,7 @@ namespace Server
 {
 	public class TimedSkillMod : SkillMod
 	{
-		private DateTime m_Expire;
+		private readonly DateTime m_Expire;
 
 		public TimedSkillMod( SkillName skill, bool relative, double value, TimeSpan delay )
 			: this( skill, relative, value, DateTime.UtcNow + delay )
@@ -28,8 +28,8 @@ namespace Server
 
 	public class EquipedSkillMod : SkillMod
 	{
-		private Item m_Item;
-		private Mobile m_Mobile;
+		private readonly Item m_Item;
+		private readonly Mobile m_Mobile;
 
 		public EquipedSkillMod( SkillName skill, bool relative, double value, Item item, Mobile mobile )
 			: base( skill, relative, value )
@@ -268,7 +268,7 @@ namespace Server
 			return m_SkillMods[m];
 		}
 
-		private static Dictionary<Mobile, IList<SkillMod>> m_SkillMods = new Dictionary<Mobile, IList<SkillMod>>();
+		private static readonly Dictionary<Mobile, IList<SkillMod>> m_SkillMods = new Dictionary<Mobile, IList<SkillMod>>();
 
 		private static void InternalAddSkillMod( this Mobile m, SkillMod mod )
 		{

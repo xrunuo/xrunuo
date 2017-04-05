@@ -19,14 +19,7 @@ namespace Server
 	{
 		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
 
-		private static Assembly m_Assembly;
-		private static Process m_Process;
 		private static Thread m_Thread;
-		private static bool m_Service;
-		private static bool m_Debug;
-
-		private static RootConfig m_Config;
-		private static LibraryConfig m_LibraryConfig;
 
 		private static string m_BaseDirectory;
 		private static string m_ExePath;
@@ -34,8 +27,6 @@ namespace Server
 		private static bool m_Profiling;
 		private static DateTime m_ProfileStart;
 		private static TimeSpan m_ProfileTime;
-
-		private static bool m_Logging;
 
 		public static bool Profiling
 		{
@@ -65,52 +56,24 @@ namespace Server
 			}
 		}
 
-		private static bool m_Unix;
-
-		public static bool Unix
-		{
-			get { return m_Unix; }
-		}
+		public static bool Unix { get; private set; }
 
 		public static readonly bool Is64Bit = IntPtr.Size == 8;
 		private static readonly int ProcessorCount = Environment.ProcessorCount;
 
-		private static bool MultiProcessor
-		{
-			get { return ProcessorCount > 1; }
-		}
+		private static bool MultiProcessor => ProcessorCount > 1;
 
-		public static bool Logging
-		{
-			get { return m_Logging; }
-			set { m_Logging = value; }
-		}
+		public static bool Logging { get; set; }
 
-		public static bool Service
-		{
-			get { return m_Service; }
-		}
+		public static bool Service { get; private set; }
 
-		public static bool Debug
-		{
-			get { return m_Debug; }
-		}
+		public static bool Debug { get; private set; }
 
-		public static List<string> DataDirectories
-		{
-			get { return m_Config.DataDirectories; }
-		}
+		public static List<string> DataDirectories => Config.DataDirectories;
 
-		public static Assembly Assembly
-		{
-			get { return m_Assembly; }
-			set { m_Assembly = value; }
-		}
+		public static Assembly Assembly { get; set; }
 
-		public static Process Process
-		{
-			get { return m_Process; }
-		}
+		public static Process Process { get; private set; }
 
 		public static string FindDataFile( string path )
 		{
@@ -148,16 +111,10 @@ namespace Server
 			}
 		}
 
-		public static RootConfig Config
-		{
-			get { return m_Config; }
-		}
+		public static RootConfig Config { get; private set; }
 
 		#region Dependency management
-		public static LibraryConfig LibraryConfig
-		{
-			get { return m_LibraryConfig; }
-		}
+		public static LibraryConfig LibraryConfig { get; private set; }
 
 		public static bool ForceUpdateDeps { get; set; }
 		#endregion
@@ -192,9 +149,9 @@ namespace Server
 			for ( int i = 0; i < args.Length; ++i )
 			{
 				if ( Insensitive.Equals( args[i], "--debug" ) )
-					m_Debug = true;
+					Debug = true;
 				else if ( Insensitive.Equals( args[i], "--service" ) )
-					m_Service = true;
+					Service = true;
 				else if ( Insensitive.Equals( args[i], "--profile" ) )
 					Profiling = true;
 				#region Dependency management
@@ -208,13 +165,13 @@ namespace Server
 		{
 			try
 			{
-				if ( m_Service )
+				if ( Service )
 				{
-					if ( !Directory.Exists( m_Config.LogDirectory ) )
-						Directory.CreateDirectory( m_Config.LogDirectory );
+					if ( !Directory.Exists( Config.LogDirectory ) )
+						Directory.CreateDirectory( Config.LogDirectory );
 
 					Console.SetOut( new MultiTextWriter( Console.Out,
-						new FileLogger( Path.Combine( m_Config.LogDirectory, "Console.log" ) ) ) );
+						new FileLogger( Path.Combine( Config.LogDirectory, "Console.log" ) ) ) );
 				}
 				else
 				{
@@ -228,55 +185,41 @@ namespace Server
 
 		public static void SaveConfig()
 		{
-			if ( !m_Config.Exists )
-				m_Config.Save();
+			if ( !Config.Exists )
+				Config.Save();
 
-			if ( !m_LibraryConfig.Exists )
-				m_LibraryConfig.Save();
+			if ( !LibraryConfig.Exists )
+				LibraryConfig.Save();
 		}
 
 		private static bool m_Crashed;
-		private static bool m_Closing;
 
-		public static bool Closing { get { return m_Closing; } }
+		public static bool Closing { get; private set; }
 
 		private static TimerThread m_TimerThread;
 
 		/* current time */
-		private static DateTime m_Now = DateTime.UtcNow;
-		public static DateTime Now
-		{
-			get
-			{
-				return m_Now;
-			}
-		}
+		public static DateTime Now { get; private set; } = DateTime.UtcNow;
 
 		/* main loop profiler */
 		private static MainProfile m_TotalProfile;
 		private static MainProfile m_CurrentProfile;
 
-		public static MainProfile TotalProfile
-		{
-			get { return m_TotalProfile; }
-		}
+		public static MainProfile TotalProfile => m_TotalProfile;
 
-		public static MainProfile CurrentProfile
-		{
-			get { return m_CurrentProfile; }
-		}
+		public static MainProfile CurrentProfile => m_CurrentProfile;
 
 		public static void ResetCurrentProfile()
 		{
-			m_CurrentProfile = new MainProfile( m_Now );
+			m_CurrentProfile = new MainProfile( Now );
 		}
 
 		private static void ClockProfile( MainProfile.TimerId id )
 		{
-			DateTime prev = m_Now;
-			m_Now = DateTime.UtcNow;
+			DateTime prev = Now;
+			Now = DateTime.UtcNow;
 
-			TimeSpan diff = m_Now - prev;
+			TimeSpan diff = Now - prev;
 			m_TotalProfile.Add( id, diff );
 			m_CurrentProfile.Add( id, diff );
 		}
@@ -291,8 +234,8 @@ namespace Server
 			SetupConsoleLogging();
 
 			m_Thread = Thread.CurrentThread;
-			m_Process = Process.GetCurrentProcess();
-			m_Assembly = Assembly.GetEntryAssembly();
+			Process = Process.GetCurrentProcess();
+			Assembly = Assembly.GetEntryAssembly();
 
 			if ( m_Thread != null )
 				m_Thread.Name = "Core Thread";
@@ -300,12 +243,12 @@ namespace Server
 			if ( BaseDirectory.Length > 0 )
 				Directory.SetCurrentDirectory( BaseDirectory );
 
-			var version = m_Assembly.GetName().Version;
+			var version = Assembly.GetName().Version;
 			CoreVersion = version;
 
 			var platform = (int) Environment.OSVersion.Platform;
 			if ( platform == 4 || platform == 128 )
-				m_Unix = true;
+				Unix = true;
 
 			GCSettings.LatencyMode = GCLatencyMode.LowLatency;
 
@@ -318,18 +261,18 @@ namespace Server
 
 			log.Info( "Using GC {0} {1} mode", GCSettings.IsServerGC ? "Server" : "Workstation", GCSettings.LatencyMode );
 
-			m_Config = new RootConfig( BaseDirectory, "x-runuo.xml" );
+			Config = new RootConfig( BaseDirectory, "x-runuo.xml" );
 
 			Server.Config.Load();
 
 			#region Dependency management
-			m_LibraryConfig = new LibraryConfig( BaseDirectory, "libraries.xml" );
+			LibraryConfig = new LibraryConfig( BaseDirectory, "libraries.xml" );
 
 			if ( ForceUpdateDeps )
 				Directory.Delete( Path.Combine( BaseDirectory, "deps" ), recursive: true );
 			#endregion
 
-			if ( !ScriptCompiler.Compile( m_Debug ) )
+			if ( !ScriptCompiler.Compile( Debug ) )
 			{
 				log.Fatal( "Compilation failed. Press any key to exit." );
 				Console.ReadLine();
@@ -388,15 +331,15 @@ namespace Server
 
 			PacketDispatcher.Initialize();
 
-			m_Now = DateTime.UtcNow;
-			m_TotalProfile = new MainProfile( m_Now );
-			m_CurrentProfile = new MainProfile( m_Now );
+			Now = DateTime.UtcNow;
+			m_TotalProfile = new MainProfile( Now );
+			m_CurrentProfile = new MainProfile( Now );
 
 			try
 			{
-				while ( !m_Closing )
+				while ( !Closing )
 				{
-					m_Now = DateTime.UtcNow;
+					Now = DateTime.UtcNow;
 
 					Thread.Sleep( 1 );
 
@@ -461,13 +404,13 @@ namespace Server
 			{
 			}
 
-			if ( !close && !m_Service )
+			if ( !close && !Service )
 			{
 				log.Error( "This exception is fatal, press return to exit" );
 				Console.ReadLine();
 			}
 
-			m_Closing = true;
+			Closing = true;
 		}
 
 		public static void Kill( bool restart = false )
@@ -477,15 +420,15 @@ namespace Server
 			if ( restart )
 				Process.Start( m_ExePath );
 
-			m_Process.Kill();
+			Process.Kill();
 		}
 
 		private static void HandleClosed()
 		{
-			if ( m_Closing )
+			if ( Closing )
 				return;
 
-			m_Closing = true;
+			Closing = true;
 
 			log.Info( "Exiting..." );
 

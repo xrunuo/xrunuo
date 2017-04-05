@@ -7,16 +7,14 @@ namespace Server
 	{
 		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
 
-		private static Rectangle2D[] m_Bounds;
-
-		public static Rectangle2D[] Table { get { return m_Bounds; } }
+		public static Rectangle2D[] Table { get; }
 
 		private static readonly string BoundsFilename = "Data/Binary/Bounds.bin";
 		private static readonly int BoundsSize = 0x10000;
 
 		static ItemBounds()
 		{
-			m_Bounds = new Rectangle2D[BoundsSize];
+			Table = new Rectangle2D[BoundsSize];
 
 			if ( File.Exists( BoundsFilename ) )
 			{
@@ -31,7 +29,7 @@ namespace Server
 						int xMax = bin.ReadInt16();
 						int yMax = bin.ReadInt16();
 
-						m_Bounds[i].Set( xMin, yMin, ( xMax - xMin ) + 1, ( yMax - yMin ) + 1 );
+						Table[i].Set( xMin, yMin, ( xMax - xMin ) + 1, ( yMax - yMin ) + 1 );
 					}
 
 					bin.Close();

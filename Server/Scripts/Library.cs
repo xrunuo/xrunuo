@@ -9,29 +9,24 @@ namespace Server
 	{
 		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
 
-		private string m_Name;
-		private Assembly m_Assembly;
-		private Type[] m_Types;
-		private TypeTable m_TypesByName, m_TypesByFullName;
 		private bool m_Configured, m_Initialized;
-		private TypeCache m_TypeCache;
 
 		public Library( Configuration.Library libConfig, Assembly assembly )
 		{
-			m_Name = libConfig.Name;
-			m_Assembly = assembly;
+			Name = libConfig.Name;
+			Assembly = assembly;
 
-			m_Assembly.GetTypes();
+			Assembly.GetTypes();
 
-			m_Types = m_Assembly.GetTypes().Where( type => !libConfig.GetIgnoreType( type ) ).ToArray();
+			Types = Assembly.GetTypes().Where( type => !libConfig.GetIgnoreType( type ) ).ToArray();
 
-			m_TypesByName = new TypeTable( m_Types.Length );
-			m_TypesByFullName = new TypeTable( m_Types.Length );
+			TypesByName = new TypeTable( Types.Length );
+			TypesByFullName = new TypeTable( Types.Length );
 
-			foreach ( var type in m_Types )
+			foreach ( var type in Types )
 			{
-				m_TypesByName.Add( type.Name, type );
-				m_TypesByFullName.Add( type.FullName, type );
+				TypesByName.Add( type.Name, type );
+				TypesByFullName.Add( type.FullName, type );
 
 				if ( type.IsDefined( typeof( TypeAliasAttribute ), false ) )
 				{
@@ -42,49 +37,31 @@ namespace Server
 						var attr = attrs[0] as TypeAliasAttribute;
 
 						foreach ( var alias in attr.Aliases )
-							m_TypesByFullName.Add( alias, type );
+							TypesByFullName.Add( alias, type );
 					}
 				}
 			}
 
-			m_TypeCache = new TypeCache( m_Types, m_TypesByName, m_TypesByFullName );
+			TypeCache = new TypeCache( Types, TypesByName, TypesByFullName );
 		}
 
-		public string Name
-		{
-			get { return m_Name; }
-		}
+		public string Name { get; }
 
-		public Assembly Assembly
-		{
-			get { return m_Assembly; }
-		}
+		public Assembly Assembly { get; }
 
-		public TypeCache TypeCache
-		{
-			get { return m_TypeCache; }
-		}
+		public TypeCache TypeCache { get; }
 
-		public Type[] Types
-		{
-			get { return m_Types; }
-		}
+		public Type[] Types { get; }
 
-		public TypeTable TypesByName
-		{
-			get { return m_TypesByName; }
-		}
+		public TypeTable TypesByName { get; }
 
-		public TypeTable TypesByFullName
-		{
-			get { return m_TypesByFullName; }
-		}
+		public TypeTable TypesByFullName { get; }
 
 		public void Verify( ref int itemCount, ref int mobileCount )
 		{
-			Type[] ctorTypes = new Type[] { typeof( Serial ) };
+			Type[] ctorTypes = { typeof( Serial ) };
 
-			foreach ( Type t in m_Types )
+			foreach ( Type t in Types )
 			{
 				bool isItem = t.IsSubclassOf( typeof( Item ) );
 				bool isMobile = t.IsSubclassOf( typeof( Mobile ) );
@@ -118,7 +95,7 @@ namespace Server
 		{
 			List<MethodInfo> invoke = new List<MethodInfo>();
 
-			foreach ( Type type in m_Types )
+			foreach ( Type type in Types )
 			{
 				MethodInfo m = type.GetMethod( methodName, BindingFlags.Static | BindingFlags.Public );
 
@@ -134,7 +111,7 @@ namespace Server
 
 		public void Configure()
 		{
-			if ( m_Name == "Core" )
+			if ( Name == "Core" )
 			{
 				m_Configured = true;
 				return;
@@ -150,7 +127,7 @@ namespace Server
 
 		public void Initialize()
 		{
-			if ( m_Name == "Core" )
+			if ( Name == "Core" )
 			{
 				m_Initialized = true;
 				return;
@@ -168,12 +145,12 @@ namespace Server
 
 		public Type GetTypeByName( string name, bool ignoreCase )
 		{
-			return m_TypesByName.Get( name, ignoreCase );
+			return TypesByName.Get( name, ignoreCase );
 		}
 
 		public Type GetTypeByFullName( string fullName, bool ignoreCase )
 		{
-			return m_TypesByFullName.Get( fullName, ignoreCase );
+			return TypesByFullName.Get( fullName, ignoreCase );
 		}
 	}
 }

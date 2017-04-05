@@ -5,33 +5,9 @@ namespace Server.Menus.ItemLists
 {
 	public class ItemListEntry
 	{
-		private string m_Name;
-		private int m_ItemID;
-		private int m_Hue;
-
-		public string Name
-		{
-			get
-			{
-				return m_Name;
-			}
-		}
-
-		public int ItemID
-		{
-			get
-			{
-				return m_ItemID;
-			}
-		}
-
-		public int Hue
-		{
-			get
-			{
-				return m_Hue;
-			}
-		}
+		public string Name { get; }
+		public int ItemID { get; }
+		public int Hue { get; }
 
 		public ItemListEntry( string name, int itemID )
 			: this( name, itemID, 0 )
@@ -40,60 +16,28 @@ namespace Server.Menus.ItemLists
 
 		public ItemListEntry( string name, int itemID, int hue )
 		{
-			m_Name = name;
-			m_ItemID = itemID;
-			m_Hue = hue;
+			Name = name;
+			ItemID = itemID;
+			Hue = hue;
 		}
 	}
 
 	public class ItemListMenu : IMenu
 	{
-		private string m_Question;
-		private ItemListEntry[] m_Entries;
-
-		private int m_Serial;
 		private static int m_NextSerial;
 
-		int IMenu.Serial
-		{
-			get
-			{
-				return m_Serial;
-			}
-		}
+		private readonly int m_Serial;
 
-		int IMenu.EntryLength
-		{
-			get
-			{
-				return m_Entries.Length;
-			}
-		}
+		int IMenu.Serial => m_Serial;
+		int IMenu.EntryLength => Entries.Length;
 
-		public string Question
-		{
-			get
-			{
-				return m_Question;
-			}
-		}
-
-		public ItemListEntry[] Entries
-		{
-			get
-			{
-				return m_Entries;
-			}
-			set
-			{
-				m_Entries = value;
-			}
-		}
+		public string Question { get; }
+		public ItemListEntry[] Entries { get; set; }
 
 		public ItemListMenu( string question, ItemListEntry[] entries )
 		{
-			m_Question = question;
-			m_Entries = entries;
+			Question = question;
+			Entries = entries;
 
 			do
 			{

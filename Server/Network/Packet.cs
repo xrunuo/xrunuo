@@ -20,24 +20,16 @@ namespace Server.Network
 		}
 
 		protected PacketWriter m_Stream;
-		private int m_PacketID;
-		private int m_Length;
 		private State m_State;
 
-		public int Length
-		{
-			get { return m_Length; }
-		}
+		public int Length { get; private set; }
 
-		public int PacketID
-		{
-			get { return m_PacketID; }
-		}
+		public int PacketID { get; private set; }
 
 		public void EnsureCapacity( int length )
 		{
 			m_Stream = PacketWriter.CreateInstance( length );// new PacketWriter( length );
-			m_Stream.Write( (byte) m_PacketID );
+			m_Stream.Write( (byte) PacketID );
 			m_Stream.Write( (short) 0 );
 		}
 
@@ -57,11 +49,11 @@ namespace Server.Network
 
 		protected void Initialize( int packetID, int length )
 		{
-			m_PacketID = packetID;
-			m_Length = length;
+			PacketID = packetID;
+			Length = length;
 			m_State = State.Inactive;
 
-			if ( m_Length > 0 )
+			if ( Length > 0 )
 			{
 				m_Stream = PacketWriter.CreateInstance( length );
 				m_Stream.Write( (byte) packetID );
@@ -70,16 +62,10 @@ namespace Server.Network
 			// TODO: raise an event OnInitialize, in order to do profiling stuff.
 		}
 
-		public PacketWriter Stream
-		{
-			get
-			{
-				return m_Stream;
-			}
-		}
+		public PacketWriter Stream => m_Stream;
 
 		private const int BufferSize = 4096;
-		private static BufferPool m_Buffers = new BufferPool( "Compressed", 16, BufferSize );
+		private static readonly BufferPool m_Buffers = new BufferPool( "Compressed", 16, BufferSize );
 
 		public static Packet SetStatic( Packet p )
 		{
@@ -161,7 +147,7 @@ namespace Server.Network
 
 						try
 						{
-							using ( StreamWriter writer = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "net_opt.log" ), true ) )
+							using ( var writer = new StreamWriter( Path.Combine( Core.Config.LogDirectory, "net_opt.log" ), true ) )
 							{
 								writer.WriteLine( "Redundant compile for packet {0}, use Acquire() and Release()", base.GetType() );
 								writer.WriteLine( new StackTrace() );
@@ -188,24 +174,24 @@ namespace Server.Network
 
 		private void InternalCompile( bool compress )
 		{
-			if ( m_Length == 0 )
+			if ( Length == 0 )
 			{
-				long streamLen = m_Stream.Length;
+				var streamLen = m_Stream.Length;
 
 				m_Stream.Seek( 1, SeekOrigin.Begin );
 				m_Stream.Write( (ushort) streamLen );
 			}
-			else if ( m_Stream.Length != m_Length )
+			else if ( m_Stream.Length != Length )
 			{
-				int diff = (int) m_Stream.Length - m_Length;
+				var diff = (int) m_Stream.Length - Length;
 
-				log.Warning( "0x{0:X2}: Bad packet length! ({1}{2} bytes)", m_PacketID, diff >= 0 ? "+" : "", diff );
+				log.Warning( "0x{0:X2}: Bad packet length! ({1}{2} bytes)", PacketID, diff >= 0 ? "+" : "", diff );
 			}
 
-			MemoryStream ms = m_Stream.UnderlyingStream;
+			var ms = m_Stream.UnderlyingStream;
 
 			m_CompiledBuffer = ms.GetBuffer();
-			int length = (int) ms.Length;
+			var length = (int) ms.Length;
 
 			if ( compress )
 			{
@@ -215,7 +201,7 @@ namespace Server.Network
 				}
 				catch ( IndexOutOfRangeException )
 				{
-					log.Warning( "Compression buffer overflowed on packet 0x{0:X2} ('{1}') (length={2})", m_PacketID, GetType().Name, length );
+					log.Warning( "Compression buffer overflowed on packet 0x{0:X2} ('{1}') (length={2})", PacketID, GetType().Name, length );
 
 					m_CompiledBuffer = null;
 				}
@@ -225,7 +211,7 @@ namespace Server.Network
 			{
 				m_CompiledLength = length;
 
-				byte[] old = m_CompiledBuffer;
+				var old = m_CompiledBuffer;
 
 				if ( length > BufferSize || ( m_State & State.Static ) != 0 )
 				{

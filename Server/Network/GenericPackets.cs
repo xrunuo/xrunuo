@@ -8,7 +8,7 @@ namespace Server.Network
 	{
 		public static GenericPacket PlaySound( int soundID, IPoint3D target )
 		{
-			GenericPacket p = GenericPacket.Instantiate( 0x54, 12 );
+			var p = GenericPacket.Instantiate( 0x54, 12 );
 
 			p.Stream.Write( (byte) 1 ); // flags
 			p.Stream.Write( (short) soundID );
@@ -22,11 +22,11 @@ namespace Server.Network
 
 		public static GenericPacket MobileMoving( Mobile m, int noto )
 		{
-			GenericPacket p = GenericPacket.Instantiate( 0x77, 17 );
+			var p = GenericPacket.Instantiate( 0x77, 17 );
 
-			Point3D loc = m.Location;
+			var loc = m.Location;
 
-			int hue = m.Hue;
+			var hue = m.Hue;
 
 			if ( m.SolidHueOverride >= 0 )
 				hue = m.SolidHueOverride;

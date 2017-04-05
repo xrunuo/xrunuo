@@ -158,10 +158,8 @@ namespace Server
 		public static readonly List<Item> EmptyItems = new List<Item>();
 
 		#region Standard fields
-		private Serial m_Serial;
 		private Point3D m_Location;
 		private int m_ItemID;
-		private int m_Hue;
 		private int m_Amount;
 		private Layer m_Layer;
 		private string m_Name;
@@ -173,7 +171,6 @@ namespace Server
 		private int m_TotalGold;
 		private Map m_Map;
 		private LootType m_LootType;
-		private DateTime m_LastMovedTime;
 		private Direction m_Direction;
 		private LightType m_LightType;
 		#endregion
@@ -191,42 +188,14 @@ namespace Server
 		private ObjectPropertyListPacket m_PropertyList;
 		#endregion
 
-		private int m_TempFlags, m_SavedFlags;
+		public int TempFlags { get; set; }
 
-		public int TempFlags
-		{
-			get
-			{
-				return m_TempFlags;
-			}
-			set
-			{
-				m_TempFlags = value;
-			}
-		}
-
-		public int SavedFlags
-		{
-			get
-			{
-				return m_SavedFlags;
-			}
-			set
-			{
-				m_SavedFlags = value;
-			}
-		}
-
-		private Mobile m_HeldBy;
+		public int SavedFlags { get; set; }
 
 		/// <summary>
 		/// The <see cref="Mobile" /> who is currently <see cref="Mobile.Holding">holding</see> this item.
 		/// </summary>
-		public Mobile HeldBy
-		{
-			get { return m_HeldBy; }
-			set { m_HeldBy = value; }
-		}
+		public Mobile HeldBy { get; set; }
 
 		#region Labels
 		public static readonly int MaxLabelCount = 3;
@@ -291,21 +260,16 @@ namespace Server
 		#endregion
 
 		// _UOKR_
-		private byte m_GridLocation = 0xFF;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public byte GridLocation
-		{
-			get { return m_GridLocation; }
-			set { m_GridLocation = value; }
-		}
+		public byte GridLocation { get; set; } = 0xFF;
 
 		public void SetGridLocation( byte pos, Container parent )
 		{
 			if ( parent.IsFreePosition( pos ) )
-				m_GridLocation = pos;
+				GridLocation = pos;
 			else
-				m_GridLocation = parent.GetNewPosition();
+				GridLocation = parent.GetNewPosition();
 		}
 
 		#region Instances
@@ -517,7 +481,7 @@ namespace Server
 		/// <summary>
 		/// Overridable. Determines whether the item will show <see cref="AddWeightProperty" />.
 		/// </summary>
-		public virtual bool DisplayWeight { get { return true; } }
+		public virtual bool DisplayWeight => true;
 
 		/// <summary>
 		/// Overridable. Displays cliloc 1072788-1072789.
@@ -811,17 +775,17 @@ namespace Server
 
 		public void LabelTo( Mobile to, int number )
 		{
-			to.Send( new MessageLocalized( m_Serial, m_ItemID, MessageType.Label, 0x3B2, 3, number, "", "" ) );
+			to.Send( new MessageLocalized( Serial, m_ItemID, MessageType.Label, 0x3B2, 3, number, "", "" ) );
 		}
 
 		public void LabelTo( Mobile to, int number, string args )
 		{
-			to.Send( new MessageLocalized( m_Serial, m_ItemID, MessageType.Label, 0x3B2, 3, number, "", args ) );
+			to.Send( new MessageLocalized( Serial, m_ItemID, MessageType.Label, 0x3B2, 3, number, "", args ) );
 		}
 
 		public void LabelTo( Mobile to, string text )
 		{
-			to.Send( new UnicodeMessage( m_Serial, m_ItemID, MessageType.Label, 0x3B2, 3, "ENU", "", text ) );
+			to.Send( new UnicodeMessage( Serial, m_ItemID, MessageType.Label, 0x3B2, 3, "ENU", "", text ) );
 		}
 
 		public void LabelTo( Mobile to, string format, params object[] args )
@@ -831,12 +795,12 @@ namespace Server
 
 		public void LabelToAffix( Mobile to, int number, AffixType type, string affix )
 		{
-			to.Send( new MessageLocalizedAffix( m_Serial, m_ItemID, MessageType.Label, 0x3B2, 3, number, "", type, affix, "" ) );
+			to.Send( new MessageLocalizedAffix( Serial, m_ItemID, MessageType.Label, 0x3B2, 3, number, "", type, affix, "" ) );
 		}
 
 		public void LabelToAffix( Mobile to, int number, AffixType type, string affix, string args )
 		{
-			to.Send( new MessageLocalizedAffix( m_Serial, m_ItemID, MessageType.Label, 0x3B2, 3, number, "", type, affix, args ) );
+			to.Send( new MessageLocalizedAffix( Serial, m_ItemID, MessageType.Label, 0x3B2, 3, number, "", type, affix, args ) );
 		}
 
 		public bool AtWorldPoint( int x, int y )
@@ -976,26 +940,14 @@ namespace Server
 			}
 		}
 
-		IPoint3D IEntity.Location
-		{
-			get
-			{
-				return m_Location;
-			}
-		}
+		IPoint3D IEntity.Location => m_Location;
 
-		IMap IEntity.Map
-		{
-			get
-			{
-				return m_Map;
-			}
-		}
+		IMap IEntity.Map => m_Map;
 
 		/// <summary>
 		/// Has the item been deleted?
 		/// </summary>
-		public bool Deleted { get { return GetFlag( ImplFlag.Deleted ); } }
+		public bool Deleted => GetFlag( ImplFlag.Deleted );
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public LootType LootType
@@ -1019,37 +971,17 @@ namespace Server
 		[Obsolete( "Use LootType instead", true )]
 		public bool Newbied
 		{
-			get
-			{
-				return ( m_LootType == LootType.Newbied );
-			}
-			set
-			{
-				m_LootType = ( value ? LootType.Newbied : LootType.Regular );
-			}
+			get { return ( m_LootType == LootType.Newbied ); }
+			set { m_LootType = ( value ? LootType.Newbied : LootType.Regular ); }
 		}
 
-		private static TimeSpan m_DDT = TimeSpan.FromHours( 1.0 );
-
-		public static TimeSpan DefaultDecayTime { get { return m_DDT; } set { m_DDT = value; } }
+		public static TimeSpan DefaultDecayTime { get; set; } = TimeSpan.FromHours( 1.0 );
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public virtual TimeSpan DecayTime
-		{
-			get
-			{
-				return m_DDT;
-			}
-		}
+		public virtual TimeSpan DecayTime => DefaultDecayTime;
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public virtual bool Decays
-		{
-			get
-			{
-				return ( Movable && Visible );
-			}
-		}
+		public virtual bool Decays => ( Movable && Visible );
 
 		public virtual bool OnDecay()
 		{
@@ -1058,20 +990,10 @@ namespace Server
 
 		public void SetLastMoved()
 		{
-			m_LastMovedTime = DateTime.UtcNow;
+			LastMoved = DateTime.UtcNow;
 		}
 
-		public DateTime LastMoved
-		{
-			get
-			{
-				return m_LastMovedTime;
-			}
-			set
-			{
-				m_LastMovedTime = value;
-			}
-		}
+		public DateTime LastMoved { get; set; }
 
 		public virtual bool StackWith( Mobile from, Item dropped )
 		{
@@ -1332,7 +1254,7 @@ namespace Server
 			}
 		}
 
-		public virtual bool ForceShowProperties { get { return false; } }
+		public virtual bool ForceShowProperties => false;
 
 		public virtual int GetPacketFlags()
 		{
@@ -1357,7 +1279,7 @@ namespace Server
 			return true;
 		}
 
-		public virtual bool HandlesOnMovement { get { return false; } }
+		public virtual bool HandlesOnMovement => false;
 
 		public virtual void OnMovement( Mobile m, Point3D oldLocation )
 		{
@@ -1465,15 +1387,9 @@ namespace Server
 			return ( ( flags & toGet ) != 0 );
 		}
 
-		int ISerializable.TypeReference
-		{
-			get { return m_TypeRef; }
-		}
+		int ISerializable.TypeReference => m_TypeRef;
 
-		Serial ISerializable.SerialIdentity
-		{
-			get { return m_Serial; }
-		}
+		Serial ISerializable.SerialIdentity => Serial;
 
 		public virtual void Serialize( GenericWriter writer )
 		{
@@ -1516,7 +1432,7 @@ namespace Server
 				flags |= SaveFlag.LootType;
 			if ( m_ItemID != 0 )
 				flags |= SaveFlag.ItemID;
-			if ( m_Hue != 0 )
+			if ( PrivateHue != 0 )
 				flags |= SaveFlag.Hue;
 			if ( m_Amount != 1 )
 				flags |= SaveFlag.Amount;
@@ -1532,13 +1448,13 @@ namespace Server
 				flags |= SaveFlag.Map;
 			if ( m_BlessedFor != null && !m_BlessedFor.Deleted )
 				flags |= SaveFlag.BlessedFor;
-			if ( m_HeldBy != null && !m_HeldBy.Deleted )
+			if ( HeldBy != null && !HeldBy.Deleted )
 				flags |= SaveFlag.HeldBy;
 			#region Labels
 			if ( m_Labels != null )
 				flags |= SaveFlag.Labels;
 			#endregion
-			if ( m_SavedFlags != 0 )
+			if ( SavedFlags != 0 )
 				flags |= SaveFlag.SavedFlags;
 
 			if ( m_Weight == 0.0 )
@@ -1564,7 +1480,7 @@ namespace Server
 			writer.Write( (int) flags );
 
 			/* begin last moved time optimization */
-			long ticks = m_LastMovedTime.Ticks;
+			long ticks = LastMoved.Ticks;
 			long now = DateTime.UtcNow.Ticks;
 
 			TimeSpan d;
@@ -1621,7 +1537,7 @@ namespace Server
 				writer.WriteEncodedInt( (int) m_ItemID );
 
 			if ( GetSaveFlag( flags, SaveFlag.Hue ) )
-				writer.WriteEncodedInt( (int) m_Hue );
+				writer.WriteEncodedInt( (int) PrivateHue );
 
 			if ( GetSaveFlag( flags, SaveFlag.Amount ) )
 				writer.WriteEncodedInt( (int) m_Amount );
@@ -1660,7 +1576,7 @@ namespace Server
 				writer.Write( m_BlessedFor );
 
 			if ( GetSaveFlag( flags, SaveFlag.HeldBy ) )
-				writer.Write( m_HeldBy );
+				writer.Write( HeldBy );
 
 			if ( GetSaveFlag( flags, SaveFlag.LabelNumber ) )
 				writer.Write( m_LabelNumber );
@@ -1676,7 +1592,7 @@ namespace Server
 			#endregion
 
 			if ( GetSaveFlag( flags, SaveFlag.SavedFlags ) )
-				writer.WriteEncodedInt( m_SavedFlags );
+				writer.WriteEncodedInt( SavedFlags );
 		}
 
 		public IEnumerable<object> GetObjectsInRange( int range )
@@ -1731,27 +1647,16 @@ namespace Server
 			return map.GetClientsInRange( GetWorldLocation(), range );
 		}
 
-		private static int m_LockedDownFlag;
-		private static int m_SecureFlag;
+		public static int LockedDownFlag { get; set; }
 
-		public static int LockedDownFlag
-		{
-			get { return m_LockedDownFlag; }
-			set { m_LockedDownFlag = value; }
-		}
-
-		public static int SecureFlag
-		{
-			get { return m_SecureFlag; }
-			set { m_SecureFlag = value; }
-		}
+		public static int SecureFlag { get; set; }
 
 		public bool IsLockedDown
 		{
-			get { return GetTempFlag( m_LockedDownFlag ); }
+			get { return GetTempFlag( LockedDownFlag ); }
 			set
 			{
-				SetTempFlag( m_LockedDownFlag, value );
+				SetTempFlag( LockedDownFlag, value );
 				InvalidateProperties();
 
 				OnLockDownChange();
@@ -1764,34 +1669,34 @@ namespace Server
 
 		public bool IsSecure
 		{
-			get { return GetTempFlag( m_SecureFlag ); }
-			set { SetTempFlag( m_SecureFlag, value ); InvalidateProperties(); }
+			get { return GetTempFlag( SecureFlag ); }
+			set { SetTempFlag( SecureFlag, value ); InvalidateProperties(); }
 		}
 
 		private bool GetTempFlag( int flag )
 		{
-			return ( ( m_TempFlags & flag ) != 0 );
+			return ( ( TempFlags & flag ) != 0 );
 		}
 
 		private void SetTempFlag( int flag, bool value )
 		{
 			if ( value )
-				m_TempFlags |= flag;
+				TempFlags |= flag;
 			else
-				m_TempFlags &= ~flag;
+				TempFlags &= ~flag;
 		}
 
 		private bool GetSavedFlag( int flag )
 		{
-			return ( ( m_SavedFlags & flag ) != 0 );
+			return ( ( SavedFlags & flag ) != 0 );
 		}
 
 		private void SetSavedFlag( int flag, bool value )
 		{
 			if ( value )
-				m_SavedFlags |= flag;
+				SavedFlags |= flag;
 			else
-				m_SavedFlags &= ~flag;
+				SavedFlags &= ~flag;
 		}
 
 		public virtual void Deserialize( GenericReader reader )
@@ -1856,7 +1761,7 @@ namespace Server
 							m_ItemID = reader.ReadEncodedInt();
 
 						if ( GetSaveFlag( flags, SaveFlag.Hue ) )
-							m_Hue = reader.ReadEncodedInt();
+							PrivateHue = reader.ReadEncodedInt();
 
 						if ( GetSaveFlag( flags, SaveFlag.Amount ) )
 							m_Amount = reader.ReadEncodedInt();
@@ -1921,7 +1826,7 @@ namespace Server
 							m_BlessedFor = reader.ReadMobile();
 
 						if ( GetSaveFlag( flags, SaveFlag.HeldBy ) )
-							m_HeldBy = reader.ReadMobile();
+							HeldBy = reader.ReadMobile();
 
 						if ( GetSaveFlag( flags, SaveFlag.LabelNumber ) )
 							m_LabelNumber = reader.ReadInt();
@@ -1939,7 +1844,7 @@ namespace Server
 						#endregion
 
 						if ( GetSaveFlag( flags, SaveFlag.SavedFlags ) )
-							m_SavedFlags = reader.ReadEncodedInt();
+							SavedFlags = reader.ReadEncodedInt();
 
 						if ( m_Map != null && m_Parent == null )
 							m_Map.OnEnter( this );
@@ -1948,13 +1853,13 @@ namespace Server
 					}
 			}
 
-			if ( m_HeldBy != null )
+			if ( HeldBy != null )
 				Timer.DelayCall( TimeSpan.Zero, new TimerCallback( FixHolding_Sandbox ) );
 		}
 
 		private void FixHolding_Sandbox()
 		{
-			Mobile heldBy = m_HeldBy;
+			Mobile heldBy = HeldBy;
 
 			if ( heldBy != null )
 			{
@@ -1981,7 +1886,7 @@ namespace Server
 			return 18;
 		}
 
-		public virtual bool SendOplPacket { get { return ObjectPropertyListPacket.Enabled && GraphicData == GraphicData.TileData; } }
+		public virtual bool SendOplPacket => ObjectPropertyListPacket.Enabled && GraphicData == GraphicData.TileData;
 
 		public virtual void SendInfoTo( NetState state )
 		{
@@ -1991,7 +1896,7 @@ namespace Server
 				state.Send( OPLPacket );
 		}
 
-		public virtual GraphicData GraphicData { get { return GraphicData.TileData; } }
+		public virtual GraphicData GraphicData => GraphicData.TileData;
 
 		protected virtual Packet GetWorldPacketFor( NetState state )
 		{
@@ -2013,7 +1918,7 @@ namespace Server
 			m_TotalWeight = value;
 		}
 
-		public virtual bool IsVirtualItem { get { return false; } }
+		public virtual bool IsVirtualItem => false;
 
 		public virtual void UpdateTotals()
 		{
@@ -2074,10 +1979,7 @@ namespace Server
 			}
 		}
 
-		public bool IsNamed
-		{
-			get { return m_LabelNumber != 0; }
-		}
+		public bool IsNamed => m_LabelNumber != 0;
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int TotalGold
@@ -2206,39 +2108,24 @@ namespace Server
 		}
 
 		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
-		public int PileWeight
-		{
-			get
-			{
-				return (int) Math.Ceiling( m_Weight * m_Amount );
-			}
-		}
+		public int PileWeight => (int)Math.Ceiling( m_Weight * m_Amount );
 
-		public virtual int HuedItemID
-		{
-			get
-			{
-				return ( m_ItemID & TileData.MaxItemValue );
-			}
-		}
+		public virtual int HuedItemID => ( m_ItemID & TileData.MaxItemValue );
 
-		public int PrivateHue
-		{
-			get { return m_Hue; }
-		}
+		public int PrivateHue { get; private set; }
 
 		[Hue, CommandProperty( AccessLevel.GameMaster )]
 		public virtual int Hue
 		{
 			get
 			{
-				return ( QuestItem ? QuestItemHue : m_Hue );
+				return ( QuestItem ? QuestItemHue : PrivateHue );
 			}
 			set
 			{
-				if ( m_Hue != value )
+				if ( PrivateHue != value )
 				{
-					m_Hue = value;
+					PrivateHue = value;
 					ReleaseWorldPackets();
 
 					Delta( ItemDelta.Update );
@@ -2246,15 +2133,9 @@ namespace Server
 			}
 		}
 
-		public virtual int QuestItemHue
-		{
-			get { return 0x04EA; }
-		}
+		public virtual int QuestItemHue => 0x04EA;
 
-		public virtual bool NonTransferable
-		{
-			get { return QuestItem; }
-		}
+		public virtual bool NonTransferable => QuestItem;
 
 		public virtual void HandleInvalidTransfer( Mobile from )
 		{
@@ -2367,7 +2248,7 @@ namespace Server
 			OnItemAdded( item );
 		}
 
-		private static List<Item> m_DeltaQueue = new List<Item>();
+		private static readonly List<Item> m_DeltaQueue = new List<Item>();
 
 		public void Delta( ItemDelta flags )
 		{
@@ -2665,10 +2546,10 @@ namespace Server
 
 			ClearBounce();
 
-			if ( m_Spawner != null )
+			if ( Spawner != null )
 			{
-				m_Spawner.Remove( this );
-				m_Spawner = null;
+				Spawner.Remove( this );
+				Spawner = null;
 			}
 
 			if ( m_Map != null )
@@ -2700,9 +2581,9 @@ namespace Server
 						if ( p == null )
 						{
 							if ( ascii )
-								p = new AsciiMessage( m_Serial, m_ItemID, type, hue, 3, m_Name, text );
+								p = new AsciiMessage( Serial, m_ItemID, type, hue, 3, m_Name, text );
 							else
-								p = new UnicodeMessage( m_Serial, m_ItemID, type, hue, 3, "ENU", m_Name, text );
+								p = new UnicodeMessage( Serial, m_ItemID, type, hue, 3, "ENU", m_Name, text );
 
 							p.Acquire();
 						}
@@ -2729,7 +2610,7 @@ namespace Server
 					if ( m.CanSee( this ) && m.InRange( worldLoc, GetUpdateRange( m ) ) )
 					{
 						if ( p == null )
-							p = Packet.Acquire( new MessageLocalized( m_Serial, m_ItemID, type, hue, 3, number, m_Name, args ) );
+							p = Packet.Acquire( new MessageLocalized( Serial, m_ItemID, type, hue, 3, number, m_Name, args ) );
 
 						state.Send( p );
 					}
@@ -2789,9 +2670,9 @@ namespace Server
 			return true;
 		}
 
-		public virtual Race RequiredRace { get { return null; } }
+		public virtual Race RequiredRace => null;
 
-		public virtual bool WearableByGargoyles { get { return RequiredRace == Race.Gargoyle; } }
+		public virtual bool WearableByGargoyles => RequiredRace == Race.Gargoyle;
 
 		public virtual bool OnEquip( Mobile from )
 		{
@@ -2802,9 +2683,7 @@ namespace Server
 		{
 		}
 
-		private ISpawner m_Spawner;
-
-		public ISpawner Spawner { get { return m_Spawner; } set { m_Spawner = value; } }
+		public ISpawner Spawner { get; set; }
 
 		public virtual void OnBeforeSpawn( Point3D location, Map m )
 		{
@@ -2814,20 +2693,18 @@ namespace Server
 		{
 		}
 
-		public virtual int PhysicalResistance { get { return 0; } }
-		public virtual int FireResistance { get { return 0; } }
-		public virtual int ColdResistance { get { return 0; } }
-		public virtual int PoisonResistance { get { return 0; } }
-		public virtual int EnergyResistance { get { return 0; } }
+		public virtual int PhysicalResistance => 0;
+
+		public virtual int FireResistance => 0;
+
+		public virtual int ColdResistance => 0;
+
+		public virtual int PoisonResistance => 0;
+
+		public virtual int EnergyResistance => 0;
 
 		[CommandProperty( AccessLevel.Counselor )]
-		public Serial Serial
-		{
-			get
-			{
-				return m_Serial;
-			}
-		}
+		public Serial Serial { get; }
 
 		public virtual void OnLocationChange( Point3D oldLocation )
 		{
@@ -2836,14 +2713,8 @@ namespace Server
 		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
 		public Point3D Location
 		{
-			get
-			{
-				return m_Location;
-			}
-			set
-			{
-				SetLocation( value, true );
-			}
+			get { return m_Location; }
+			set { SetLocation( value, true ); }
 		}
 
 		public void SetLocation( Point3D newLocation, bool forceResend )
@@ -2955,10 +2826,7 @@ namespace Server
 		[CommandProperty( AccessLevel.GameMaster )]
 		public virtual string Name
 		{
-			get
-			{
-				return m_Name;
-			}
+			get { return m_Name; }
 			set
 			{
 				m_Name = value;
@@ -2972,10 +2840,7 @@ namespace Server
 
 		public object Parent
 		{
-			get
-			{
-				return m_Parent;
-			}
+			get { return m_Parent; }
 			set
 			{
 				if ( m_Parent == value )
@@ -3052,10 +2917,7 @@ namespace Server
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Amount
 		{
-			get
-			{
-				return m_Amount;
-			}
+			get { return m_Amount; }
 			set
 			{
 				int oldValue = m_Amount;
@@ -3088,7 +2950,7 @@ namespace Server
 						InvalidateProperties();
 
 					if ( !Stackable && m_Amount > 1 )
-						log.Info( "Warning: 0x{0:X}: Amount changed for non-stackable item '{2}'. ({1})", m_Serial.Value, m_Amount, GetType().Name );
+						log.Info( "Warning: 0x{0:X}: Amount changed for non-stackable item '{2}'. ({1})", Serial.Value, m_Amount, GetType().Name );
 				}
 			}
 		}
@@ -3097,7 +2959,7 @@ namespace Server
 		{
 		}
 
-		public virtual bool HandlesOnSpeech { get { return false; } }
+		public virtual bool HandlesOnSpeech => false;
 
 		public virtual void OnSpeech( SpeechEventArgs e )
 		{
@@ -3493,7 +3355,7 @@ namespace Server
 			//return root == null ? m_Location : new Point3D( (IPoint3D) root );
 		}
 
-		public virtual bool BlocksFit { get { return false; } }
+		public virtual bool BlocksFit => false;
 
 		public Point3D GetSurfaceTop()
 		{
@@ -3547,7 +3409,7 @@ namespace Server
 			to.Send( new AsciiMessage( Serial, -1, MessageType.Regular, hue, 3, "", text ) );
 		}
 
-		public virtual bool CheckLOSOnUse { get { return Parent == null; } }
+		public virtual bool CheckLOSOnUse => Parent == null;
 
 		public virtual void OnDoubleClick( Mobile from )
 		{
@@ -3581,13 +3443,7 @@ namespace Server
 		{
 		}
 
-		public bool InSecureTrade
-		{
-			get
-			{
-				return ( GetSecureTradeCont() != null );
-			}
-		}
+		public bool InSecureTrade => ( GetSecureTradeCont() != null );
 
 		public SecureTradeContainer GetSecureTradeCont()
 		{
@@ -3707,13 +3563,7 @@ namespace Server
 			return false;
 		}
 
-		public ItemData ItemData
-		{
-			get
-			{
-				return TileData.ItemTable[m_ItemID & TileData.MaxItemValue];
-			}
-		}
+		public ItemData ItemData => TileData.ItemTable[m_ItemID & TileData.MaxItemValue];
 
 		public virtual void OnItemUsed( Mobile from, Item item )
 		{
@@ -3751,26 +3601,21 @@ namespace Server
 				return true;
 		}
 
-		public virtual bool CanInsure { get { return true; } }
+		public virtual bool CanInsure => true;
 
-		public virtual bool CanTarget { get { return true; } }
-		public virtual bool DisplayLootType { get { return true; } }
+		public virtual bool CanTarget => true;
+
+		public virtual bool DisplayLootType => true;
 
 		public virtual void OnAosSingleClick( Mobile from )
 		{
 			ObjectPropertyListPacket opl = this.PropertyList;
 
 			if ( opl.Header > 0 )
-				from.Send( new MessageLocalized( m_Serial, m_ItemID, MessageType.Label, 0x3B2, 3, opl.Header, m_Name, opl.HeaderArgs ) );
+				from.Send( new MessageLocalized( Serial, m_ItemID, MessageType.Label, 0x3B2, 3, opl.Header, m_Name, opl.HeaderArgs ) );
 		}
 
-		private static bool m_ScissorCopyLootType;
-
-		public static bool ScissorCopyLootType
-		{
-			get { return m_ScissorCopyLootType; }
-			set { m_ScissorCopyLootType = value; }
-		}
+		public static bool ScissorCopyLootType { get; set; }
 
 		public virtual void ScissorHelper( Mobile from, Item newItem, int amountPerOldItem )
 		{
@@ -3799,7 +3644,7 @@ namespace Server
 			if ( carryHue )
 				newItem.Hue = ourHue;
 
-			if ( m_ScissorCopyLootType )
+			if ( ScissorCopyLootType )
 				newItem.LootType = type;
 
 			if ( from.Backpack == null || !from.Backpack.TryDropItem( from, newItem, false ) )
@@ -3871,7 +3716,7 @@ namespace Server
 
 		public override string ToString()
 		{
-			return String.Format( "0x{0:X} \"{1}\"", m_Serial.Value, GetType().Name );
+			return String.Format( "0x{0:X} \"{1}\"", Serial.Value, GetType().Name );
 		}
 
 		internal int m_TypeRef;
@@ -3896,7 +3741,7 @@ namespace Server
 		/// </summary>
 		public Item( Serial serial )
 		{
-			m_Serial = serial;
+			Serial = serial;
 
 			RegisterType();
 		}

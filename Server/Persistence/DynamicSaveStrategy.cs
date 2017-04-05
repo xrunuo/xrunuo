@@ -3,24 +3,25 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+
 using Server.Guilds;
 
 namespace Server.Persistence
 {
 	public sealed class DynamicSaveStrategy : SaveStrategy
 	{
-		public override string Name { get { return "Dynamic"; } }
+		public override string Name => "Dynamic";
 
 		private FileStream m_ItemData, m_ItemIndex;
 		private FileStream m_MobileData, m_MobileIndex;
 		private FileStream m_GuildData, m_GuildIndex;
 
-		private ConcurrentBag<Item> m_DecayBag;
-		private ConcurrentBag<IVendor> m_RestockBag;
+		private readonly ConcurrentBag<Item> m_DecayBag;
+		private readonly ConcurrentBag<IVendor> m_RestockBag;
 
-		private BlockingCollection<QueuedMemoryWriter> m_ItemThreadWriters;
-		private BlockingCollection<QueuedMemoryWriter> m_MobileThreadWriters;
-		private BlockingCollection<QueuedMemoryWriter> m_GuildThreadWriters;
+		private readonly BlockingCollection<QueuedMemoryWriter> m_ItemThreadWriters;
+		private readonly BlockingCollection<QueuedMemoryWriter> m_MobileThreadWriters;
+		private readonly BlockingCollection<QueuedMemoryWriter> m_GuildThreadWriters;
 
 		public DynamicSaveStrategy()
 		{
@@ -36,7 +37,7 @@ namespace Server.Persistence
 		{
 			OpenFiles();
 
-			Task[] saveTasks = new Task[3];
+			var saveTasks = new Task[3];
 
 			saveTasks[0] = SaveItems();
 			saveTasks[1] = SaveMobiles();
@@ -61,9 +62,9 @@ namespace Server.Persistence
 			}
 		}
 
-		private Task StartCommitTask( BlockingCollection<QueuedMemoryWriter> threadWriter, FileStream data, FileStream index )
+		private static Task StartCommitTask( BlockingCollection<QueuedMemoryWriter> threadWriter, FileStream data, FileStream index )
 		{
-			Task commitTask = Task.Factory.StartNew( () =>
+			var commitTask = Task.Factory.StartNew( () =>
 			{
 				while ( !threadWriter.IsCompleted )
 				{
@@ -89,19 +90,19 @@ namespace Server.Persistence
 		private Task SaveItems()
 		{
 			// Start the blocking consumer; this runs in background.
-			Task commitTask = StartCommitTask( m_ItemThreadWriters, m_ItemData, m_ItemIndex );
+			var commitTask = StartCommitTask( m_ItemThreadWriters, m_ItemData, m_ItemIndex );
 
 			var items = World.Items;
 
 			// Start the producer.
 			Parallel.ForEach( items, () => new QueuedMemoryWriter(),
-				( Item item, ParallelLoopState state, QueuedMemoryWriter writer ) =>
+				( item, state, writer ) =>
 				{
-					long startPosition = writer.Position;
+					var startPosition = writer.Position;
 
 					item.Serialize( writer );
 
-					int size = (int) ( writer.Position - startPosition );
+					var size = (int) ( writer.Position - startPosition );
 
 					writer.QueueForIndex( item, size );
 
@@ -109,15 +110,14 @@ namespace Server.Persistence
 						m_DecayBag.Add( item );
 
 					return writer;
-				},
-				( writer ) =>
+				}, writer =>
 				{
 					writer.Flush();
 
 					m_ItemThreadWriters.Add( writer );
 				} );
 
-			m_ItemThreadWriters.CompleteAdding(); // We only get here after the Parallel.ForEach completes.  Lets our task 
+			m_ItemThreadWriters.CompleteAdding(); // We only get here after the Parallel.ForEach completes.  Lets our task
 
 			return commitTask;
 		}
@@ -125,33 +125,32 @@ namespace Server.Persistence
 		private Task SaveMobiles()
 		{
 			// Start the blocking consumer; this runs in background.
-			Task commitTask = StartCommitTask( m_MobileThreadWriters, m_MobileData, m_MobileIndex );
+			var commitTask = StartCommitTask( m_MobileThreadWriters, m_MobileData, m_MobileIndex );
 
 			var mobiles = World.Mobiles;
 
 			// Start the producer.
 			Parallel.ForEach( mobiles, () => new QueuedMemoryWriter(),
-				( Mobile mobile, ParallelLoopState state, QueuedMemoryWriter writer ) =>
+				( mobile, state, writer ) =>
 				{
-					long startPosition = writer.Position;
+					var startPosition = writer.Position;
 
 					mobile.Serialize( writer );
 
-					int size = (int) ( writer.Position - startPosition );
+					var size = (int) ( writer.Position - startPosition );
 
 					writer.QueueForIndex( mobile, size );
 
 					if ( mobile is IVendor )
 					{
-						IVendor vendor = mobile as IVendor;
+						var vendor = mobile as IVendor;
 
 						if ( ( vendor.LastRestock + vendor.RestockDelay < DateTime.UtcNow ) )
 							m_RestockBag.Add( vendor );
 					}
 
 					return writer;
-				},
-				( writer ) =>
+				}, writer =>
 				{
 					writer.Flush();
 
@@ -166,32 +165,31 @@ namespace Server.Persistence
 		private Task SaveGuilds()
 		{
 			// Start the blocking consumer; this runs in background.
-			Task commitTask = StartCommitTask( m_GuildThreadWriters, m_GuildData, m_GuildIndex );
+			var commitTask = StartCommitTask( m_GuildThreadWriters, m_GuildData, m_GuildIndex );
 
 			IEnumerable<BaseGuild> guilds = BaseGuild.List.Values;
 
 			// Start the producer.
 			Parallel.ForEach( guilds, () => new QueuedMemoryWriter(),
-				( BaseGuild guild, ParallelLoopState state, QueuedMemoryWriter writer ) =>
+				( guild, state, writer ) =>
 				{
-					long startPosition = writer.Position;
+					var startPosition = writer.Position;
 
 					guild.Serialize( writer );
 
-					int size = (int) ( writer.Position - startPosition );
+					var size = (int) ( writer.Position - startPosition );
 
 					writer.QueueForIndex( guild, size );
 
 					return writer;
-				},
-				( writer ) =>
+				}, writer =>
 				{
 					writer.Flush();
 
 					m_GuildThreadWriters.Add( writer );
 				} );
 
-			m_GuildThreadWriters.CompleteAdding(); // We only get here after the Parallel.ForEach completes.  Lets our task 
+			m_GuildThreadWriters.CompleteAdding(); // We only get here after the Parallel.ForEach completes.  Lets our task
 
 			return commitTask;
 		}
@@ -255,7 +253,7 @@ namespace Server.Persistence
 		private void WriteCount( FileStream indexFile, int count )
 		{
 			// Equiv to GenericWriter.Write( (int)count );
-			byte[] buffer = new byte[4];
+			var buffer = new byte[4];
 
 			buffer[0] = (byte) ( count );
 			buffer[1] = (byte) ( count >> 8 );
@@ -274,11 +272,11 @@ namespace Server.Persistence
 
 		private void SaveTypeDatabase( string path, List<Type> types )
 		{
-			BinaryFileWriter bfw = new BinaryFileWriter( path, false );
+			var bfw = new BinaryFileWriter( path, false );
 
 			bfw.Write( types.Count );
 
-			foreach ( Type type in types )
+			foreach ( var type in types )
 			{
 				bfw.Write( type.FullName );
 			}

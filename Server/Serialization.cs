@@ -140,22 +140,16 @@ namespace Server
 
 	public class BinaryFileWriter : GenericWriter
 	{
-		private bool m_PrefixStrings;
-		private Stream m_File;
+		private readonly bool m_PrefixStrings;
+		private readonly Stream m_File;
 
-		protected virtual int BufferSize
-		{
-			get
-			{
-				return 64 * 1024;
-			}
-		}
+		protected virtual int BufferSize => 64 * 1024;
 
-		private byte[] m_Buffer;
+		private readonly byte[] m_Buffer;
 
 		private int m_Index;
 
-		private Encoding m_Encoding;
+		private readonly Encoding m_Encoding;
 
 		public BinaryFileWriter( Stream strm, bool prefixStr )
 		{
@@ -186,13 +180,7 @@ namespace Server
 
 		private long m_Position;
 
-		public override long Position
-		{
-			get
-			{
-				return m_Position + m_Index;
-			}
-		}
+		public override long Position => m_Position + m_Index;
 
 		public Stream UnderlyingStream
 		{
@@ -442,7 +430,7 @@ namespace Server
 			Write( BitConverter.GetBytes( value ) );
 		}
 
-		private char[] m_SingleCharBuffer = new char[1];
+		private readonly char[] m_SingleCharBuffer = new char[1];
 
 		public override void Write( char value )
 		{
@@ -777,7 +765,7 @@ namespace Server
 
 	public sealed class BinaryFileReader : GenericReader
 	{
-		private BinaryReader m_File;
+		private readonly BinaryReader m_File;
 
 		public BinaryFileReader( BinaryReader br ) { m_File = br; }
 
@@ -786,13 +774,7 @@ namespace Server
 			m_File.Close();
 		}
 
-		public long Position
-		{
-			get
-			{
-				return m_File.BaseStream.Position;
-			}
-		}
+		public long Position => m_File.BaseStream.Position;
 
 		public long Seek( long offset, SeekOrigin origin )
 		{

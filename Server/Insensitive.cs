@@ -5,12 +5,7 @@ namespace Server
 {
 	public class Insensitive
 	{
-		private static IComparer m_Comparer = CaseInsensitiveComparer.Default;
-
-		public static IComparer Comparer
-		{
-			get { return m_Comparer; }
-		}
+		public static IComparer Comparer { get; } = CaseInsensitiveComparer.Default;
 
 		private Insensitive()
 		{
@@ -18,7 +13,7 @@ namespace Server
 
 		public static int Compare( string a, string b )
 		{
-			return m_Comparer.Compare( a, b );
+			return Comparer.Compare( a, b );
 		}
 
 		public static bool Equals( string a, string b )
@@ -28,7 +23,7 @@ namespace Server
 			else if ( a == null || b == null || a.Length != b.Length )
 				return false;
 
-			return ( m_Comparer.Compare( a, b ) == 0 );
+			return ( Comparer.Compare( a, b ) == 0 );
 		}
 
 		public static bool StartsWith( string a, string b )
@@ -36,7 +31,7 @@ namespace Server
 			if ( a == null || b == null || a.Length < b.Length )
 				return false;
 
-			return ( m_Comparer.Compare( a.Substring( 0, b.Length ), b ) == 0 );
+			return ( Comparer.Compare( a.Substring( 0, b.Length ), b ) == 0 );
 		}
 
 		public static bool EndsWith( string a, string b )
@@ -44,7 +39,7 @@ namespace Server
 			if ( a == null || b == null || a.Length < b.Length )
 				return false;
 
-			return ( m_Comparer.Compare( a.Substring( a.Length - b.Length ), b ) == 0 );
+			return ( Comparer.Compare( a.Substring( a.Length - b.Length ), b ) == 0 );
 		}
 
 		public static bool Contains( string a, string b )

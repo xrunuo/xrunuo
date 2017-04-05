@@ -8,27 +8,23 @@ namespace Server.Persistence
 
 	public struct EntityType
 	{
-		private string m_Name;
-		private ConstructorInfo m_CtorInfo;
-		private CtorDelegate m_CtorDelegate;
-
-		public string Name { get { return m_Name; } }
-		public ConstructorInfo Constructor { get { return m_CtorInfo; } }
-		public CtorDelegate CtorDelegate { get { return m_CtorDelegate; } }
+		public string Name { get; }
+		public ConstructorInfo Constructor { get; }
+		public CtorDelegate CtorDelegate { get; }
 
 		public EntityType( string name, ConstructorInfo ctorInfo )
 		{
-			m_Name = name;
-			m_CtorInfo = ctorInfo;
-			m_CtorDelegate = CreateCtorDelegate( ctorInfo );
+			Name = name;
+			Constructor = ctorInfo;
+			CtorDelegate = CreateCtorDelegate( ctorInfo );
 		}
 
-		private static readonly Type[] m_CtorTypes = new[] { typeof( Serial ) };
+		private static readonly Type[] m_CtorTypes = { typeof( Serial ) };
 
 		private static CtorDelegate CreateCtorDelegate( ConstructorInfo cInfo )
 		{
-			DynamicMethod dynamic = new DynamicMethod( string.Empty, typeof( object ), m_CtorTypes, cInfo.DeclaringType );
-			ILGenerator il = dynamic.GetILGenerator();
+			var dynamic = new DynamicMethod( string.Empty, typeof( object ), m_CtorTypes, cInfo.DeclaringType );
+			var il = dynamic.GetILGenerator();
 
 			il.DeclareLocal( cInfo.DeclaringType );
 			il.Emit( OpCodes.Ldarg_0 );
@@ -51,55 +47,27 @@ namespace Server.Persistence
 
 	public struct EntityEntry : IEntityEntry
 	{
-		private ISerializable m_Entity;
-		private int m_TypeId;
-		private string m_TypeName;
-		private long m_Position;
-		private int m_Length;
+		public ISerializable Object { get; private set; }
+		public int TypeId { get; }
+		public string TypeName { get; private set; }
+		public long Position { get; }
+		public int Length { get; }
 
-		public ISerializable Object
-		{
-			get { return m_Entity; }
-		}
-
-		public Serial Serial
-		{
-			get { return m_Entity == null ? Serial.MinusOne : m_Entity.SerialIdentity; }
-		}
-
-		public int TypeId
-		{
-			get { return m_TypeId; }
-		}
-
-		public string TypeName
-		{
-			get { return m_TypeName; }
-		}
-
-		public long Position
-		{
-			get { return m_Position; }
-		}
-
-		public int Length
-		{
-			get { return m_Length; }
-		}
+		public Serial Serial => Object?.SerialIdentity ?? Serial.MinusOne;
 
 		public EntityEntry( ISerializable entity, int typeId, string typeName, long pos, int length )
 		{
-			m_Entity = entity;
-			m_TypeId = typeId;
-			m_TypeName = typeName;
-			m_Position = pos;
-			m_Length = length;
+			Object = entity;
+			TypeId = typeId;
+			TypeName = typeName;
+			Position = pos;
+			Length = length;
 		}
 
 		public void Clear()
 		{
-			m_Entity = null;
-			m_TypeName = null;
+			Object = null;
+			TypeName = null;
 		}
 	}
 }

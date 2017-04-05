@@ -4,63 +4,23 @@ namespace Server
 {
 	public class DummyEntity : IEntity
 	{
-		private Serial m_Serial;
-		private IPoint3D m_Location;
-		private IMap m_Map;
-
 		public DummyEntity( Serial serial, IPoint3D loc, IMap map )
 		{
-			m_Serial = serial;
-			m_Location = loc;
-			m_Map = map;
+			Serial = serial;
+			Location = loc;
+			Map = map;
 		}
 
-		public Serial Serial
-		{
-			get
-			{
-				return m_Serial;
-			}
-		}
+		public Serial Serial { get; }
 
-		public IPoint3D Location
-		{
-			get
-			{
-				return m_Location;
-			}
-		}
+		public IPoint3D Location { get; }
 
-		public IMap Map
-		{
-			get
-			{
-				return m_Map;
-			}
-		}
+		public IMap Map { get; }
 
-		public int X
-		{
-			get
-			{
-				return m_Location.X;
-			}
-		}
+		public int X => Location.X;
 
-		public int Y
-		{
-			get
-			{
-				return m_Location.Y;
-			}
-		}
+		public int Y => Location.Y;
 
-		public int Z
-		{
-			get
-			{
-				return m_Location.Z;
-			}
-		}
+		public int Z => Location.Z;
 	}
 }

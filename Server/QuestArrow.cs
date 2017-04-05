@@ -1,75 +1,46 @@
 using System;
-using Server;
 using Server.Network;
 
 namespace Server
 {
 	public class QuestArrow
 	{
-		private Mobile m_Mobile;
-		private Mobile m_Target;
-		private bool m_Running;
-
-		public Mobile Mobile
-		{
-			get
-			{
-				return m_Mobile;
-			}
-		}
-
-		public Mobile Target
-		{
-			get
-			{
-				return m_Target;
-			}
-		}
-
-		public bool Running
-		{
-			get
-			{
-				return m_Running;
-			}
-		}
+		public Mobile Mobile { get; }
+		public Mobile Target { get; }
+		public bool Running { get; private set; }
 
 		public void Update()
 		{
-			Update( m_Target.X, m_Target.Y );
+			Update( Target.X, Target.Y );
 		}
 
 		public void Update( int x, int y )
 		{
-			if ( !m_Running )
+			if ( !Running )
 				return;
 
-			NetState ns = m_Mobile.NetState;
+			var ns = Mobile.NetState;
 
-			if ( ns == null )
-				return;
-
-			ns.Send( new SetArrow( x, y, m_Target.Serial ) );
+			ns?.Send( new SetArrow( x, y, Target.Serial ) );
 		}
 
 		public void Stop()
 		{
-			Stop( m_Target.X, m_Target.Y );
+			Stop( Target.X, Target.Y );
 		}
 
 		public void Stop( int x, int y )
 		{
-			if ( !m_Running )
+			if ( !Running )
 				return;
 
-			m_Mobile.ClearQuestArrow();
+			Mobile.ClearQuestArrow();
 
-			NetState ns = m_Mobile.NetState;
+			var ns = Mobile.NetState;
 
-			if ( ns != null )
-				ns.Send( new CancelArrow( x, y, m_Target.Serial ) );
+			ns?.Send( new CancelArrow( x, y, Target.Serial ) );
 
-			m_Running = false;
+			Running = false;
 			OnStop();
 		}
 
@@ -83,9 +54,9 @@ namespace Server
 
 		public QuestArrow( Mobile m, Mobile t )
 		{
-			m_Running = true;
-			m_Mobile = m;
-			m_Target = t;
+			Running = true;
+			Mobile = m;
+			Target = t;
 		}
 
 		public QuestArrow( Mobile m, Mobile t, int x, int y )

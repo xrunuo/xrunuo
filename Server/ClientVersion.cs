@@ -17,43 +17,23 @@ namespace Server
 		public static readonly ClientVersion Client70130 = new ClientVersion( "7.0.13.0" );
 		public static readonly ClientVersion Client70330 = new ClientVersion( "7.0.33.0" );
 
-		private static TimeSpan m_KickDelay = TimeSpan.FromSeconds( 10.0 );
+		public static ClientVersion Required { get; set; } = new ClientVersion( "7.0.9.0" );
 
-		private static ClientVersion m_Required = new ClientVersion( "7.0.9.0" );
+		public static TimeSpan KickDelay { get; set; } = TimeSpan.FromSeconds( 10.0 );
 
-		public static ClientVersion Required
-		{
-			get { return m_Required; }
-			set { m_Required = value; }
-		}
+		public int Major { get; }
 
-		public static TimeSpan KickDelay
-		{
-			get { return m_KickDelay; }
-			set { m_KickDelay = value; }
-		}
+		public int Minor { get; }
 
-		private int m_Major, m_Minor, m_Revision, m_Patch;
-		private ClientType m_Type;
-		private string m_SourceString;
+		public int Revision { get; }
 
-		public int Major { get { return m_Major; } }
-		public int Minor { get { return m_Minor; } }
-		public int Revision { get { return m_Revision; } }
-		public int Patch { get { return m_Patch; } }
+		public int Patch { get; }
 
-		public ClientType Type
-		{
-			get { return m_Type; }
-			set { m_Type = value; }
-		}
+		public ClientType Type { get; set; }
 
-		public bool IsEnhanced
-		{
-			get { return m_Type == ClientType.Enhanced; }
-		}
+		public bool IsEnhanced => Type == ClientType.Enhanced;
 
-		public string SourceString { get { return m_SourceString; } }
+		public string SourceString { get; }
 
 		public ClientVersion( int maj, int min, int rev, int pat )
 			: this( maj, min, rev, pat, ClientType.Classic )
@@ -62,13 +42,13 @@ namespace Server
 
 		public ClientVersion( int maj, int min, int rev, int pat, ClientType type )
 		{
-			m_Major = maj;
-			m_Minor = min;
-			m_Revision = rev;
-			m_Patch = pat;
-			m_Type = type;
+			Major = maj;
+			Minor = min;
+			Revision = rev;
+			Patch = pat;
+			Type = type;
 
-			m_SourceString = ToString();
+			SourceString = ToString();
 		}
 
 		public static bool operator ==( ClientVersion l, ClientVersion r )
@@ -103,7 +83,7 @@ namespace Server
 
 		public override int GetHashCode()
 		{
-			return m_Major ^ m_Minor ^ m_Revision ^ m_Patch ^ (int) m_Type;
+			return Major ^ Minor ^ Revision ^ Patch ^ (int) Type;
 		}
 
 		public override bool Equals( object obj )
@@ -116,29 +96,29 @@ namespace Server
 			if ( v == null )
 				return false;
 
-			return m_Major == v.m_Major
-				&& m_Minor == v.m_Minor
-				&& m_Revision == v.m_Revision
-				&& m_Patch == v.m_Patch
-				&& m_Type == v.m_Type;
+			return Major == v.Major
+				&& Minor == v.Minor
+				&& Revision == v.Revision
+				&& Patch == v.Patch
+				&& Type == v.Type;
 		}
 
 		public override string ToString()
 		{
 			StringBuilder builder = new StringBuilder( 16 );
 
-			builder.Append( m_Major );
+			builder.Append( Major );
 			builder.Append( '.' );
-			builder.Append( m_Minor );
+			builder.Append( Minor );
 			builder.Append( '.' );
-			builder.Append( m_Revision );
+			builder.Append( Revision );
 			builder.Append( '.' );
-			builder.Append( m_Patch );
+			builder.Append( Patch );
 
-			if ( m_Type != ClientType.Classic )
+			if ( Type != ClientType.Classic )
 			{
 				builder.Append( ' ' );
-				builder.Append( m_Type.ToString() );
+				builder.Append( Type.ToString() );
 			}
 
 			return builder.ToString();
@@ -146,7 +126,7 @@ namespace Server
 
 		public ClientVersion( string fmt )
 		{
-			m_SourceString = fmt;
+			SourceString = fmt;
 
 			try
 			{
@@ -154,10 +134,10 @@ namespace Server
 
 				string[] version = format[0].Split( '.' );
 
-				m_Major = Utility.ToInt32( version[0] );
-				m_Minor = Utility.ToInt32( version[1] );
-				m_Revision = Utility.ToInt32( version[2] );
-				m_Patch = Utility.ToInt32( version[3] );
+				Major = Utility.ToInt32( version[0] );
+				Minor = Utility.ToInt32( version[1] );
+				Revision = Utility.ToInt32( version[2] );
+				Patch = Utility.ToInt32( version[3] );
 
 				if ( format.Length > 1 )
 				{
@@ -169,7 +149,7 @@ namespace Server
 
 						if ( type == cType.ToString().ToLower() )
 						{
-							m_Type = cType;
+							Type = cType;
 							break;
 						}
 					}
@@ -177,12 +157,12 @@ namespace Server
 			}
 			catch
 			{
-				m_Major = 0;
-				m_Minor = 0;
-				m_Revision = 0;
-				m_Patch = 0;
+				Major = 0;
+				Minor = 0;
+				Revision = 0;
+				Patch = 0;
 
-				m_Type = ClientType.Classic;
+				Type = ClientType.Classic;
 			}
 		}
 
@@ -196,21 +176,21 @@ namespace Server
 			if ( o == null )
 				throw new ArgumentException();
 
-			if ( m_Major > o.m_Major )
+			if ( Major > o.Major )
 				return 1;
-			else if ( m_Major < o.m_Major )
+			else if ( Major < o.Major )
 				return -1;
-			else if ( m_Minor > o.m_Minor )
+			else if ( Minor > o.Minor )
 				return 1;
-			else if ( m_Minor < o.m_Minor )
+			else if ( Minor < o.Minor )
 				return -1;
-			else if ( m_Revision > o.m_Revision )
+			else if ( Revision > o.Revision )
 				return 1;
-			else if ( m_Revision < o.m_Revision )
+			else if ( Revision < o.Revision )
 				return -1;
-			else if ( m_Patch > o.m_Patch )
+			else if ( Patch > o.Patch )
 				return 1;
-			else if ( m_Patch < o.m_Patch )
+			else if ( Patch < o.Patch )
 				return -1;
 			else
 				return 0;

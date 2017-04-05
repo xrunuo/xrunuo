@@ -80,12 +80,8 @@ namespace Server
 	[PropertyObject]
 	public class Skill
 	{
-		private readonly Skills m_Owner;
-		private readonly SkillInfo m_Info;
-
 		private ushort m_Base;
 		private ushort m_Cap;
-		private SkillLock m_Lock;
 
 		public override string ToString()
 		{
@@ -94,8 +90,8 @@ namespace Server
 
 		public Skill( Skills owner, SkillInfo info, GenericReader reader )
 		{
-			m_Owner = owner;
-			m_Info = info;
+			Owner = owner;
+			Info = info;
 
 			int version = reader.ReadByte();
 
@@ -105,7 +101,7 @@ namespace Server
 					{
 						m_Base = reader.ReadUShort();
 						m_Cap = reader.ReadUShort();
-						m_Lock = (SkillLock) reader.ReadByte();
+						Lock = (SkillLock) reader.ReadByte();
 
 						break;
 					}
@@ -113,7 +109,7 @@ namespace Server
 					{
 						m_Base = 0;
 						m_Cap = 1000;
-						m_Lock = SkillLock.Up;
+						Lock = SkillLock.Up;
 
 						break;
 					}
@@ -130,7 +126,7 @@ namespace Server
 								m_Cap = 1000;
 
 							if ( ( version & 0x4 ) != 0 )
-								m_Lock = (SkillLock) reader.ReadByte();
+								Lock = (SkillLock) reader.ReadByte();
 						}
 
 						break;
@@ -140,21 +136,21 @@ namespace Server
 
 		public Skill( Skills owner, SkillInfo info, int baseValue, int cap, SkillLock skillLock )
 		{
-			m_Owner = owner;
-			m_Info = info;
+			Owner = owner;
+			Info = info;
 			m_Base = (ushort) baseValue;
 			m_Cap = (ushort) cap;
-			m_Lock = skillLock;
+			Lock = skillLock;
 		}
 
 		public void SetLockNoRelay( SkillLock skillLock )
 		{
-			m_Lock = skillLock;
+			Lock = skillLock;
 		}
 
 		public void Serialize( GenericWriter writer )
 		{
-			if ( m_Base == 0 && m_Cap == 1000 && m_Lock == SkillLock.Up )
+			if ( m_Base == 0 && m_Cap == 1000 && Lock == SkillLock.Up )
 			{
 				writer.Write( (byte) 0xFF ); // default
 			}
@@ -168,7 +164,7 @@ namespace Server
 				if ( m_Cap != 1000 )
 					flags |= 0x2;
 
-				if ( m_Lock != SkillLock.Up )
+				if ( Lock != SkillLock.Up )
 					flags |= 0x4;
 
 				writer.Write( (byte) flags ); // version
@@ -179,67 +175,28 @@ namespace Server
 				if ( m_Cap != 1000 )
 					writer.Write( (short) m_Cap );
 
-				if ( m_Lock != SkillLock.Up )
-					writer.Write( (byte) m_Lock );
+				if ( Lock != SkillLock.Up )
+					writer.Write( (byte) Lock );
 			}
 		}
 
-		public Skills Owner
-		{
-			get
-			{
-				return m_Owner;
-			}
-		}
+		public Skills Owner { get; }
 
-		public SkillName SkillName
-		{
-			get
-			{
-				return (SkillName) m_Info.SkillId;
-			}
-		}
+		public SkillName SkillName => (SkillName)Info.SkillId;
 
-		public int SkillId
-		{
-			get
-			{
-				return m_Info.SkillId;
-			}
-		}
+		public int SkillId => Info.SkillId;
 
 		[CommandProperty( AccessLevel.Counselor )]
-		public string Name
-		{
-			get
-			{
-				return m_Info.Name;
-			}
-		}
+		public string Name => Info.Name;
 
-		public SkillInfo Info
-		{
-			get
-			{
-				return m_Info;
-			}
-		}
+		public SkillInfo Info { get; }
 
 		[CommandProperty( AccessLevel.Counselor )]
-		public SkillLock Lock
-		{
-			get
-			{
-				return m_Lock;
-			}
-		}
+		public SkillLock Lock { get; private set; }
 
 		public int BaseFixedPoint
 		{
-			get
-			{
-				return m_Base;
-			}
+			get { return m_Base; }
 			set
 			{
 				if ( value < 0 )
@@ -253,13 +210,13 @@ namespace Server
 
 				if ( m_Base != sv )
 				{
-					m_Owner.Total = ( m_Owner.Total - m_Base ) + sv;
+					Owner.Total = ( Owner.Total - m_Base ) + sv;
 
 					m_Base = sv;
 
-					m_Owner.OnSkillChange( this );
+					Owner.OnSkillChange( this );
 
-					Mobile m = m_Owner.Owner;
+					Mobile m = Owner.Owner;
 
 					if ( m != null )
 						m.OnSkillChange( SkillName, (double) oldBase / 10 );
@@ -270,22 +227,13 @@ namespace Server
 		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
 		public double Base
 		{
-			get
-			{
-				return m_Base / 10.0;
-			}
-			set
-			{
-				BaseFixedPoint = (int) ( value * 10.0 );
-			}
+			get { return m_Base / 10.0; }
+			set { BaseFixedPoint = (int)( value * 10.0 ); }
 		}
 
 		public int CapFixedPoint
 		{
-			get
-			{
-				return m_Cap;
-			}
+			get { return m_Cap; }
 			set
 			{
 				if ( value < 0 )
@@ -299,7 +247,7 @@ namespace Server
 				{
 					m_Cap = sv;
 
-					m_Owner.OnSkillChange( this );
+					Owner.OnSkillChange( this );
 				}
 			}
 		}
@@ -307,22 +255,13 @@ namespace Server
 		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
 		public double Cap
 		{
-			get
-			{
-				return m_Cap / 10.0;
-			}
-			set
-			{
-				CapFixedPoint = (int) ( value * 10.0 );
-			}
+			get { return m_Cap / 10.0; }
+			set { CapFixedPoint = (int)( value * 10.0 ); }
 		}
 
 		public static bool UseStatMods { get; set; }
 
-		public int Fixed
-		{
-			get { return (int) ( Value * 10 ); }
-		}
+		public int Fixed => (int)( Value * 10 );
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public double Value
@@ -332,15 +271,15 @@ namespace Server
 				double value = NonRacialValue;
 
 				// Gargoyle Racial Ability: Mystic Insight
-				if ( m_Owner.Owner.Race == Race.Gargoyle && SkillName == SkillName.Mysticism && value < 30.0 )
+				if ( Owner.Owner.Race == Race.Gargoyle && SkillName == SkillName.Mysticism && value < 30.0 )
 					value = 30.0;
 
 				// Gargoyle Racial Ability: Deadly Aim
-				if ( m_Owner.Owner.Race == Race.Gargoyle && SkillName == SkillName.Throwing && value < 20.0 )
+				if ( Owner.Owner.Race == Race.Gargoyle && SkillName == SkillName.Throwing && value < 20.0 )
 					value = 20.0;
 
 				// Human Racial Ability: Jack of all Trades
-				if ( value < 20.0 && m_Owner.Owner.Race == Race.Human && m_Owner.Owner.Player )
+				if ( value < 20.0 && Owner.Owner.Race == Race.Human && Owner.Owner.Player )
 					value = 20.0;
 
 				return value;
@@ -354,13 +293,13 @@ namespace Server
 			{
 				double value = Base;
 
-				m_Owner.Owner.ValidateSkillMods();
+				Owner.Owner.ValidateSkillMods();
 
 				double bonusObey = 0.0, bonusNotObey = 0.0;
 
-				foreach ( SkillMod mod in m_Owner.Owner.GetSkillMods() )
+				foreach ( SkillMod mod in Owner.Owner.GetSkillMods() )
 				{
-					if ( mod.Skill == (SkillName) m_Info.SkillId )
+					if ( mod.Skill == (SkillName) Info.SkillId )
 					{
 						if ( mod.Relative )
 						{
@@ -394,32 +333,24 @@ namespace Server
 
 		public void Update()
 		{
-			m_Owner.OnSkillChange( this );
+			Owner.OnSkillChange( this );
 		}
 	}
 
 	public class SkillInfo
 	{
-		private readonly int m_SkillId;
-
 		public SkillInfo( int skillId, string name, string title, SkillUseCallback callback, StatType primaryStat, StatType secondaryStat, double gainFactor )
 		{
 			Name = name;
 			Title = title;
-			m_SkillId = skillId;
+			SkillId = skillId;
 			Callback = callback;
 			PrimaryStat = primaryStat;
 			SecondaryStat = secondaryStat;
 			GainFactor = gainFactor;
 		}
 
-		public int SkillId
-		{
-			get
-			{
-				return m_SkillId;
-			}
-		}
+		public int SkillId { get; }
 
 		public SkillUseCallback Callback { get; set; }
 		public string Name { get; set; }
@@ -428,88 +359,74 @@ namespace Server
 		public StatType SecondaryStat { get; set; }
 		public double GainFactor { get; set; }
 
-		private static SkillInfo[] m_Table = new SkillInfo[58]
-			{
-				new SkillInfo(  0, "Alchemy",					"Alchemist",	null,	StatType.Int,	StatType.Dex,	1.0 ),
-				new SkillInfo(  1, "Anatomy",					"Healer",		null,	StatType.Int,	StatType.Str,	1.0 ),
-				new SkillInfo(  2, "Animal Lore",				"Ranger",		null,	StatType.Int,	StatType.Str,	1.0 ),
-				new SkillInfo(  3, "Item Identification",		"Merchant",		null,	StatType.Int,	StatType.Dex,	1.0 ),
-				new SkillInfo(  4, "Arms Lore",					"Warrior",		null,	StatType.Int,	StatType.Str,	1.0 ),
-				new SkillInfo(  5, "Parrying",					"Warrior",		null,	StatType.Dex,	StatType.Str,	1.0 ),
-				new SkillInfo(  6, "Begging",					"Beggar",		null,	StatType.Dex,	StatType.Int,	1.0 ),
-				new SkillInfo(  7, "Blacksmithy",				"Smith",		null,	StatType.Str,	StatType.Dex,	1.0 ),
-				new SkillInfo(  8, "Bowcraft/Fletching",		"Bowyer",		null,	StatType.Dex,	StatType.Str,	1.0 ),
-				new SkillInfo(  9, "Peacemaking",				"Bard",			null,	StatType.Int,	StatType.Dex,	1.0 ),
-				new SkillInfo( 10, "Camping",					"Ranger",		null,	StatType.Dex,	StatType.Int,	1.0 ),
-				new SkillInfo( 11, "Carpentry",					"Carpenter",	null,	StatType.Str,	StatType.Dex,	1.0 ),
-				new SkillInfo( 12, "Cartography",				"Cartographer",	null,	StatType.Int,	StatType.Dex,	1.0 ),
-				new SkillInfo( 13, "Cooking",					"Chef",			null,	StatType.Int,	StatType.Dex,	1.0 ),
-				new SkillInfo( 14, "Detecting Hidden",			"Scout",		null,	StatType.Int,	StatType.Dex,	1.0 ),
-				new SkillInfo( 15, "Discordance",				"Bard",			null,	StatType.Int,	StatType.Dex,	1.0 ),
-				new SkillInfo( 16, "Evaluating Intelligence",	"Scholar",		null,	StatType.Int,	StatType.Str,	1.0 ),
-				new SkillInfo( 17, "Healing",					"Healer",		null,	StatType.Int,	StatType.Dex,	1.0 ),
-				new SkillInfo( 18, "Fishing",					"Fisherman",	null,	StatType.Dex,	StatType.Str,	1.0 ),
-				new SkillInfo( 19, "Forensic Evaluation",		"Detective",	null,	StatType.Int,	StatType.Dex,	1.0 ),
-				new SkillInfo( 20, "Herding",					"Shepherd",		null,	StatType.Int,	StatType.Dex,	1.0 ),
-				new SkillInfo( 21, "Hiding",					"Rogue",		null,	StatType.Dex,	StatType.Int,	1.0 ),
-				new SkillInfo( 22, "Provocation",				"Bard",			null,	StatType.Int,	StatType.Dex,	1.0 ),
-				new SkillInfo( 23, "Inscription",				"Scribe",		null,	StatType.Int,	StatType.Dex,	1.0 ),
-				new SkillInfo( 24, "Lockpicking",				"Rogue",		null,	StatType.Dex,	StatType.Int,	1.0 ),
-				new SkillInfo( 25, "Magery",					"Mage",			null,	StatType.Int,	StatType.Str,	1.0 ),
-				new SkillInfo( 26, "Resisting Spells",			"Mage",			null,	StatType.Str,	StatType.Dex,	1.0 ),
-				new SkillInfo( 27, "Tactics",					"Warrior",		null,	StatType.Str,	StatType.Dex,	1.0 ),
-				new SkillInfo( 28, "Snooping",					"Pickpocket",	null,	StatType.Dex,	StatType.Int,	1.0 ),
-				new SkillInfo( 29, "Musicianship",				"Bard",			null,	StatType.Dex,	StatType.Int,	1.0 ),
-				new SkillInfo( 30, "Poisoning",					"Assassin",		null,	StatType.Int,	StatType.Dex,	1.0 ),
-				new SkillInfo( 31, "Archery",					"Archer",		null,	StatType.Dex,	StatType.Str,	1.0 ),
-				new SkillInfo( 32, "Spirit Speak",				"Medium",		null,	StatType.Int,	StatType.Str,	1.0 ),
-				new SkillInfo( 33, "Stealing",					"Rogue",		null,	StatType.Dex,	StatType.Int,	1.0 ),
-				new SkillInfo( 34, "Tailoring",					"Tailor",		null,	StatType.Dex,	StatType.Int,	1.0 ),
-				new SkillInfo( 35, "Animal Taming",				"Tamer",		null,	StatType.Str,	StatType.Int,	1.0 ),
-				new SkillInfo( 36, "Taste Identification",		"Chef",			null,	StatType.Int,	StatType.Str,	1.0 ),
-				new SkillInfo( 37, "Tinkering",					"Tinker",		null,	StatType.Dex,	StatType.Int,	1.0 ),
-				new SkillInfo( 38, "Tracking",					"Ranger",		null,	StatType.Int,	StatType.Dex,	1.0 ),
-				new SkillInfo( 39, "Veterinary",				"Veterinarian",	null,	StatType.Int,	StatType.Dex,	1.0 ),
-				new SkillInfo( 40, "Swordsmanship",				"Swordsman",	null,	StatType.Str,	StatType.Dex,	1.0 ),
-				new SkillInfo( 41, "Mace Fighting",				"Armsman",		null,	StatType.Str,	StatType.Dex,	1.0 ),
-				new SkillInfo( 42, "Fencing",					"Fencer",		null,	StatType.Dex,	StatType.Str,	1.0 ),
-				new SkillInfo( 43, "Wrestling",					"Wrestler",		null,	StatType.Str,	StatType.Dex,	1.0 ),
-				new SkillInfo( 44, "Lumberjacking",				"Lumberjack",	null,	StatType.Str,	StatType.Dex,	1.0 ),
-				new SkillInfo( 45, "Mining",					"Miner",		null,	StatType.Str,	StatType.Dex,	1.0 ),
-				new SkillInfo( 46, "Meditation",				"Stoic",		null,	StatType.Int,	StatType.Str,	1.0 ),
-				new SkillInfo( 47, "Stealth",					"Rogue",		null,	StatType.Dex,	StatType.Int,	1.0 ),
-				new SkillInfo( 48, "Remove Trap",				"Rogue",		null,	StatType.Dex,	StatType.Int,	1.0 ),
-				new SkillInfo( 49, "Necromancy",				"Necromancer",	null,	StatType.Int,	StatType.Str,	1.0 ),
-				new SkillInfo( 50, "Focus",						"Stoic",		null,	StatType.Dex,	StatType.Int,	1.0 ),
-				new SkillInfo( 51, "Chivalry",					"Paladin",		null,	StatType.Str,	StatType.Int,	1.0 ),
-				new SkillInfo( 52, "Bushido",					"Samurai",		null,	StatType.Str,	StatType.Int,	1.0 ),
-				new SkillInfo( 53, "Ninjitsu",					"Ninja",		null,	StatType.Dex,	StatType.Int,	1.0 ),
-				new SkillInfo( 54, "Spellweaving",				"Arcanist",		null,	StatType.Int,	StatType.Str,	1.0 ),
-				new SkillInfo( 55, "Mysticism",					"Mystic",		null,	StatType.Int,	StatType.Str,	1.0 ),
-				new SkillInfo( 56, "Imbuing",					"Artificer",	null,	StatType.Int,	StatType.Str,	1.0 ),
-				new SkillInfo( 57, "Throwing",					"Bladeweaver",	null,	StatType.Dex,	StatType.Str,	1.0 ),
-			};
-
-		public static SkillInfo[] Table
+		public static SkillInfo[] Table { get; set; } = new SkillInfo[58]
 		{
-			get
-			{
-				return m_Table;
-			}
-			set
-			{
-				m_Table = value;
-			}
-		}
+			new SkillInfo(  0, "Alchemy",					"Alchemist",	null,	StatType.Int,	StatType.Dex,	1.0 ),
+			new SkillInfo(  1, "Anatomy",					"Healer",		null,	StatType.Int,	StatType.Str,	1.0 ),
+			new SkillInfo(  2, "Animal Lore",				"Ranger",		null,	StatType.Int,	StatType.Str,	1.0 ),
+			new SkillInfo(  3, "Item Identification",		"Merchant",		null,	StatType.Int,	StatType.Dex,	1.0 ),
+			new SkillInfo(  4, "Arms Lore",					"Warrior",		null,	StatType.Int,	StatType.Str,	1.0 ),
+			new SkillInfo(  5, "Parrying",					"Warrior",		null,	StatType.Dex,	StatType.Str,	1.0 ),
+			new SkillInfo(  6, "Begging",					"Beggar",		null,	StatType.Dex,	StatType.Int,	1.0 ),
+			new SkillInfo(  7, "Blacksmithy",				"Smith",		null,	StatType.Str,	StatType.Dex,	1.0 ),
+			new SkillInfo(  8, "Bowcraft/Fletching",		"Bowyer",		null,	StatType.Dex,	StatType.Str,	1.0 ),
+			new SkillInfo(  9, "Peacemaking",				"Bard",			null,	StatType.Int,	StatType.Dex,	1.0 ),
+			new SkillInfo( 10, "Camping",					"Ranger",		null,	StatType.Dex,	StatType.Int,	1.0 ),
+			new SkillInfo( 11, "Carpentry",					"Carpenter",	null,	StatType.Str,	StatType.Dex,	1.0 ),
+			new SkillInfo( 12, "Cartography",				"Cartographer",	null,	StatType.Int,	StatType.Dex,	1.0 ),
+			new SkillInfo( 13, "Cooking",					"Chef",			null,	StatType.Int,	StatType.Dex,	1.0 ),
+			new SkillInfo( 14, "Detecting Hidden",			"Scout",		null,	StatType.Int,	StatType.Dex,	1.0 ),
+			new SkillInfo( 15, "Discordance",				"Bard",			null,	StatType.Int,	StatType.Dex,	1.0 ),
+			new SkillInfo( 16, "Evaluating Intelligence",	"Scholar",		null,	StatType.Int,	StatType.Str,	1.0 ),
+			new SkillInfo( 17, "Healing",					"Healer",		null,	StatType.Int,	StatType.Dex,	1.0 ),
+			new SkillInfo( 18, "Fishing",					"Fisherman",	null,	StatType.Dex,	StatType.Str,	1.0 ),
+			new SkillInfo( 19, "Forensic Evaluation",		"Detective",	null,	StatType.Int,	StatType.Dex,	1.0 ),
+			new SkillInfo( 20, "Herding",					"Shepherd",		null,	StatType.Int,	StatType.Dex,	1.0 ),
+			new SkillInfo( 21, "Hiding",					"Rogue",		null,	StatType.Dex,	StatType.Int,	1.0 ),
+			new SkillInfo( 22, "Provocation",				"Bard",			null,	StatType.Int,	StatType.Dex,	1.0 ),
+			new SkillInfo( 23, "Inscription",				"Scribe",		null,	StatType.Int,	StatType.Dex,	1.0 ),
+			new SkillInfo( 24, "Lockpicking",				"Rogue",		null,	StatType.Dex,	StatType.Int,	1.0 ),
+			new SkillInfo( 25, "Magery",					"Mage",			null,	StatType.Int,	StatType.Str,	1.0 ),
+			new SkillInfo( 26, "Resisting Spells",			"Mage",			null,	StatType.Str,	StatType.Dex,	1.0 ),
+			new SkillInfo( 27, "Tactics",					"Warrior",		null,	StatType.Str,	StatType.Dex,	1.0 ),
+			new SkillInfo( 28, "Snooping",					"Pickpocket",	null,	StatType.Dex,	StatType.Int,	1.0 ),
+			new SkillInfo( 29, "Musicianship",				"Bard",			null,	StatType.Dex,	StatType.Int,	1.0 ),
+			new SkillInfo( 30, "Poisoning",					"Assassin",		null,	StatType.Int,	StatType.Dex,	1.0 ),
+			new SkillInfo( 31, "Archery",					"Archer",		null,	StatType.Dex,	StatType.Str,	1.0 ),
+			new SkillInfo( 32, "Spirit Speak",				"Medium",		null,	StatType.Int,	StatType.Str,	1.0 ),
+			new SkillInfo( 33, "Stealing",					"Rogue",		null,	StatType.Dex,	StatType.Int,	1.0 ),
+			new SkillInfo( 34, "Tailoring",					"Tailor",		null,	StatType.Dex,	StatType.Int,	1.0 ),
+			new SkillInfo( 35, "Animal Taming",				"Tamer",		null,	StatType.Str,	StatType.Int,	1.0 ),
+			new SkillInfo( 36, "Taste Identification",		"Chef",			null,	StatType.Int,	StatType.Str,	1.0 ),
+			new SkillInfo( 37, "Tinkering",					"Tinker",		null,	StatType.Dex,	StatType.Int,	1.0 ),
+			new SkillInfo( 38, "Tracking",					"Ranger",		null,	StatType.Int,	StatType.Dex,	1.0 ),
+			new SkillInfo( 39, "Veterinary",				"Veterinarian",	null,	StatType.Int,	StatType.Dex,	1.0 ),
+			new SkillInfo( 40, "Swordsmanship",				"Swordsman",	null,	StatType.Str,	StatType.Dex,	1.0 ),
+			new SkillInfo( 41, "Mace Fighting",				"Armsman",		null,	StatType.Str,	StatType.Dex,	1.0 ),
+			new SkillInfo( 42, "Fencing",					"Fencer",		null,	StatType.Dex,	StatType.Str,	1.0 ),
+			new SkillInfo( 43, "Wrestling",					"Wrestler",		null,	StatType.Str,	StatType.Dex,	1.0 ),
+			new SkillInfo( 44, "Lumberjacking",				"Lumberjack",	null,	StatType.Str,	StatType.Dex,	1.0 ),
+			new SkillInfo( 45, "Mining",					"Miner",		null,	StatType.Str,	StatType.Dex,	1.0 ),
+			new SkillInfo( 46, "Meditation",				"Stoic",		null,	StatType.Int,	StatType.Str,	1.0 ),
+			new SkillInfo( 47, "Stealth",					"Rogue",		null,	StatType.Dex,	StatType.Int,	1.0 ),
+			new SkillInfo( 48, "Remove Trap",				"Rogue",		null,	StatType.Dex,	StatType.Int,	1.0 ),
+			new SkillInfo( 49, "Necromancy",				"Necromancer",	null,	StatType.Int,	StatType.Str,	1.0 ),
+			new SkillInfo( 50, "Focus",						"Stoic",		null,	StatType.Dex,	StatType.Int,	1.0 ),
+			new SkillInfo( 51, "Chivalry",					"Paladin",		null,	StatType.Str,	StatType.Int,	1.0 ),
+			new SkillInfo( 52, "Bushido",					"Samurai",		null,	StatType.Str,	StatType.Int,	1.0 ),
+			new SkillInfo( 53, "Ninjitsu",					"Ninja",		null,	StatType.Dex,	StatType.Int,	1.0 ),
+			new SkillInfo( 54, "Spellweaving",				"Arcanist",		null,	StatType.Int,	StatType.Str,	1.0 ),
+			new SkillInfo( 55, "Mysticism",					"Mystic",		null,	StatType.Int,	StatType.Str,	1.0 ),
+			new SkillInfo( 56, "Imbuing",					"Artificer",	null,	StatType.Int,	StatType.Str,	1.0 ),
+			new SkillInfo( 57, "Throwing",					"Bladeweaver",	null,	StatType.Dex,	StatType.Str,	1.0 ),
+		};
 	}
 
 	[PropertyObject]
 	public class Skills : IEnumerable<Skill>
 	{
-		private readonly Mobile m_Owner;
 		private readonly Skill[] m_Skills;
 
-		private int m_Total, m_Cap;
 		private Skill m_Highest;
 
 		[CommandProperty( AccessLevel.Counselor )]
@@ -687,32 +604,15 @@ namespace Server
 		public Skill Throwing { get { return this[SkillName.Throwing]; } set { } }
 
 		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
-		public int Cap
-		{
-			get { return m_Cap; }
-			set { m_Cap = value; }
-		}
+		public int Cap { get; set; }
 
-		public int Total
-		{
-			get { return m_Total; }
-			set { m_Total = value; }
-		}
+		public int Total { get; set; }
 
-		public Mobile Owner
-		{
-			get { return m_Owner; }
-		}
+		public Mobile Owner { get; }
 
-		public int Length
-		{
-			get { return m_Skills.Length; }
-		}
+		public int Length => m_Skills.Length;
 
-		public Skill this[SkillName name]
-		{
-			get { return this[(int) name]; }
-		}
+		public Skill this[SkillName name] => this[(int)name];
 
 		public Skill this[int skillId]
 		{
@@ -817,11 +717,11 @@ namespace Server
 
 		public void Serialize( GenericWriter writer )
 		{
-			m_Total = 0;
+			Total = 0;
 
 			writer.Write( (int) 3 ); // version
 
-			writer.Write( (int) m_Cap );
+			writer.Write( (int) Cap );
 			writer.Write( (int) m_Skills.Length );
 
 			for ( int i = 0; i < m_Skills.Length; ++i )
@@ -835,15 +735,15 @@ namespace Server
 				else
 				{
 					sk.Serialize( writer );
-					m_Total += sk.BaseFixedPoint;
+					Total += sk.BaseFixedPoint;
 				}
 			}
 		}
 
 		public Skills( Mobile owner )
 		{
-			m_Owner = owner;
-			m_Cap = 7200;
+			Owner = owner;
+			Cap = 7200;
 
 			SkillInfo[] info = SkillInfo.Table;
 
@@ -852,7 +752,7 @@ namespace Server
 
 		public Skills( Mobile owner, GenericReader reader )
 		{
-			m_Owner = owner;
+			Owner = owner;
 
 			int version = reader.ReadInt();
 
@@ -861,14 +761,14 @@ namespace Server
 				case 3:
 				case 2:
 					{
-						m_Cap = reader.ReadInt();
+						Cap = reader.ReadInt();
 
 						goto case 1;
 					}
 				case 1:
 					{
 						if ( version < 2 )
-							m_Cap = 7200;
+							Cap = 7200;
 
 						if ( version < 3 )
 							/*m_Total = */
@@ -889,7 +789,7 @@ namespace Server
 								if ( sk.BaseFixedPoint != 0 || sk.CapFixedPoint != 1000 || sk.Lock != SkillLock.Up )
 								{
 									m_Skills[i] = sk;
-									m_Total += sk.BaseFixedPoint;
+									Total += sk.BaseFixedPoint;
 								}
 							}
 							else
@@ -916,9 +816,9 @@ namespace Server
 			else if ( m_Highest != null && skill.BaseFixedPoint > m_Highest.BaseFixedPoint )
 				m_Highest = skill;
 
-			m_Owner.OnSkillInvalidated( skill );
+			Owner.OnSkillInvalidated( skill );
 
-			NetState ns = m_Owner.NetState;
+			NetState ns = Owner.NetState;
 
 			if ( ns != null )
 				ns.Send( new SkillChange( skill ) );

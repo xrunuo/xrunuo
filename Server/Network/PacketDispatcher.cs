@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 
 using Server;
 using Server.Items;
@@ -11,20 +10,20 @@ namespace Server.Network
 		#region Event Handlers
 		public static void Initialize()
 		{
-			Mobile.Animated += new AnimatedEventHandler( Mobile_Animated );
-			Mobile.Damaged += new DamagedEventHandler( Mobile_Damaged );
-			Mobile.Dead += new DeadEventHandler( Mobile_Dead );
-			Mobile.ItemLifted += new ItemLiftedEventHandler( Mobile_ItemLifted );
-			Mobile.ItemDropped += new ItemDroppedEventHandler( Mobile_ItemDropped );
-			Mobile.LocationChanged += new LocationChangedEventHandler( Mobile_LocationChanged );
+			Mobile.Animated += Mobile_Animated;
+			Mobile.Damaged += Mobile_Damaged;
+			Mobile.Dead += Mobile_Dead;
+			Mobile.ItemLifted += Mobile_ItemLifted;
+			Mobile.ItemDropped += Mobile_ItemDropped;
+			Mobile.LocationChanged += Mobile_LocationChanged;
 		}
 
 		private static void Mobile_Animated( Mobile m, AnimatedEventArgs args )
 		{
-			int action = args.Action;
-			int subAction = args.SubAction;
+			var action = args.Action;
+			var subAction = args.SubAction;
 
-			Map map = m.Map;
+			var map = m.Map;
 
 			if ( map != null )
 			{
@@ -32,7 +31,7 @@ namespace Server.Network
 
 				Packet p = null;
 
-				foreach ( NetState state in map.GetClientsInRange( m.Location ) )
+				foreach ( var state in map.GetClientsInRange( m.Location ) )
 				{
 					if ( state.Mobile.CanSee( m ) )
 					{
@@ -52,14 +51,14 @@ namespace Server.Network
 
 		private static void Mobile_Damaged( Mobile m, DamagedEventArgs args )
 		{
-			int amount = args.Amount;
-			Mobile from = args.From;
+			var amount = args.Amount;
+			var from = args.From;
 
-			NetState ourState = m.NetState, theirState = ( from == null ? null : from.NetState );
+			NetState ourState = m.NetState, theirState = from?.NetState;
 
 			if ( ourState == null )
 			{
-				Mobile master = m.GetDamageMaster( from );
+				var master = m.GetDamageMaster( from );
 
 				if ( master != null )
 					ourState = master.NetState;
@@ -67,7 +66,7 @@ namespace Server.Network
 
 			if ( theirState == null && from != null )
 			{
-				Mobile master = from.GetDamageMaster( m );
+				var master = from.GetDamageMaster( m );
 
 				if ( master != null )
 					theirState = master.NetState;
@@ -75,7 +74,7 @@ namespace Server.Network
 
 			if ( amount > 0 && ( ourState != null || theirState != null ) )
 			{
-				Packet p = Packet.Acquire( new DamagePacket( m, amount ) );
+				var p = Packet.Acquire( new DamagePacket( m, amount ) );
 
 				if ( ourState != null )
 					ourState.Send( p );
@@ -89,16 +88,16 @@ namespace Server.Network
 
 		private static void Mobile_Dead( Mobile m, DeadEventArgs args )
 		{
-			Container c = args.Corpse;
+			var c = args.Corpse;
 
-			Map map = m.Map;
+			var map = m.Map;
 
 			if ( map != null )
 			{
 				Packet animPacket = null;
 				Packet remPacket = null;
 
-				foreach ( NetState state in map.GetClientsInRange( m.Location ) )
+				foreach ( var state in map.GetClientsInRange( m.Location ) )
 				{
 					if ( state != m.NetState )
 					{
@@ -123,16 +122,16 @@ namespace Server.Network
 
 		private static void Mobile_ItemLifted( Mobile m, ItemLiftedEventArgs args )
 		{
-			Item item = args.Item;
-			int amount = args.Amount;
-			Map map = m.Map;
-			object root = item.RootParent;
+			var item = args.Item;
+			var amount = args.Amount;
+			var map = m.Map;
+			var root = item.RootParent;
 
 			if ( map != null && ( root == null || root is Item ) )
 			{
 				Packet p = null;
 
-				foreach ( NetState ns in map.GetClientsInRange( m.Location ) )
+				foreach ( var ns in map.GetClientsInRange( m.Location ) )
 				{
 					if ( ns.Mobile != m && ns.Mobile.CanSee( m ) )
 					{
@@ -155,7 +154,7 @@ namespace Server.Network
 				Packet.Release( p );
 			}
 
-			int liftSound = item.GetLiftSound( m );
+			var liftSound = item.GetLiftSound( m );
 
 			if ( liftSound != -1 )
 				m.Send( GenericPackets.PlaySound( liftSound, m ) );
@@ -163,20 +162,20 @@ namespace Server.Network
 
 		private static void Mobile_ItemDropped( Mobile m, ItemDroppedEventArgs args )
 		{
-			Item item = args.Item;
-			bool bounced = args.Bounced;
+			var item = args.Item;
+			var bounced = args.Bounced;
 
 			if ( bounced )
 				return;
 
-			Map map = m.Map;
-			object root = item.RootParent;
+			var map = m.Map;
+			var root = item.RootParent;
 
 			if ( map != null && ( root == null || root is Item ) )
 			{
 				Packet p = null;
 
-				foreach ( NetState ns in map.GetClientsInRange( m.Location ) )
+				foreach ( var ns in map.GetClientsInRange( m.Location ) )
 				{
 					if ( ns.Mobile != m && ns.Mobile.CanSee( m ) )
 					{
@@ -202,18 +201,18 @@ namespace Server.Network
 
 		private static void Mobile_LocationChanged( Mobile from, LocationChangedEventArgs args )
 		{
-			Point3D oldLocation = args.OldLocation;
-			Point3D newLocation = args.NewLocation;
-			bool isTeleport = args.IsTeleport;
+			var oldLocation = args.OldLocation;
+			var newLocation = args.NewLocation;
+			var isTeleport = args.IsTeleport;
 
-			Map map = from.Map;
+			var map = from.Map;
 
 			if ( map != null )
 			{
 				// First, send a remove message to everyone who can no longer see us. (inOldRange && !inNewRange)
 				Packet removeThis = null;
 
-				foreach ( NetState ns in map.GetClientsInRange( oldLocation ) )
+				foreach ( var ns in map.GetClientsInRange( oldLocation ) )
 				{
 					if ( ns != from.NetState && !ns.Mobile.InUpdateRange( newLocation ) )
 					{
@@ -224,29 +223,29 @@ namespace Server.Network
 					}
 				}
 
-				NetState ourState = from.NetState;
+				var ourState = from.NetState;
 
 				// Check to see if we are attached to a client
 				if ( ourState != null )
 				{
 					// We are attached to a client, so it's a bit more complex. We need to send new items and people to ourself, and ourself to other clients
-					foreach ( object o in map.GetObjectsInRange( newLocation, Mobile.GlobalMaxUpdateRange ) )
+					foreach ( var o in map.GetObjectsInRange( newLocation, Mobile.GlobalMaxUpdateRange ) )
 					{
 						if ( o is Item )
 						{
-							Item item = (Item) o;
+							var item = (Item) o;
 
 							if ( !item.InUpdateRange( oldLocation ) && item.InUpdateRange( newLocation ) && from.CanSee( item ) )
 								item.SendInfoTo( ourState );
 						}
 						else if ( o != from && o is Mobile )
 						{
-							Mobile m = (Mobile) o;
+							var m = (Mobile) o;
 
 							if ( !m.InUpdateRange( newLocation ) )
 								continue;
 
-							bool inOldRange = m.InUpdateRange( oldLocation );
+							var inOldRange = m.InUpdateRange( oldLocation );
 
 							if ( ( isTeleport || !inOldRange ) && m.NetState != null && m.CanSee( from ) )
 							{
@@ -275,7 +274,7 @@ namespace Server.Network
 				else
 				{
 					// We're not attached to a client, so simply send an Incoming
-					foreach ( NetState ns in map.GetClientsInRange( newLocation ) )
+					foreach ( var ns in map.GetClientsInRange( newLocation ) )
 					{
 						if ( ( isTeleport || !ns.Mobile.InUpdateRange( oldLocation ) ) && ns.Mobile.CanSee( from ) )
 						{
@@ -299,14 +298,14 @@ namespace Server.Network
 			if ( amount < 0 )
 				return;
 
-			Map map = m.Map;
+			var map = m.Map;
 
 			if ( map == null )
 				return;
 
-			Packet p = Packet.Acquire( new DamagePacket( m, amount ) );
+			var p = Packet.Acquire( new DamagePacket( m, amount ) );
 
-			foreach ( NetState ns in map.GetClientsInRange( m.Location ) )
+			foreach ( var ns in map.GetClientsInRange( m.Location ) )
 			{
 				if ( ns.Mobile.CanSee( m ) )
 					ns.Send( p );
@@ -317,22 +316,22 @@ namespace Server.Network
 
 		public static void ClearScreen( this Mobile from )
 		{
-			NetState ns = from.NetState;
+			var ns = from.NetState;
 
 			if ( from.Map != null && ns != null )
 			{
-				foreach ( object o in from.Map.GetObjectsInRange( from.Location, Mobile.GlobalMaxUpdateRange ) )
+				foreach ( var o in from.Map.GetObjectsInRange( from.Location, Mobile.GlobalMaxUpdateRange ) )
 				{
 					if ( o is Mobile )
 					{
-						Mobile m = (Mobile) o;
+						var m = (Mobile) o;
 
 						if ( m != from && m.InUpdateRange( from ) )
 							ns.Send( m.RemovePacket );
 					}
 					else if ( o is Item )
 					{
-						Item item = (Item) o;
+						var item = (Item) o;
 
 						if ( item.InUpdateRange( from ) )
 							ns.Send( item.RemovePacket );
@@ -345,7 +344,7 @@ namespace Server.Network
 		{
 			if ( m.Map != null )
 			{
-				foreach ( NetState state in m.Map.GetClientsInRange( m.Location ) )
+				foreach ( var state in m.Map.GetClientsInRange( m.Location ) )
 				{
 					if ( state.Mobile.CanSee( m ) )
 					{
@@ -367,7 +366,7 @@ namespace Server.Network
 			{
 				Packet p = null;
 
-				foreach ( NetState state in m.Map.GetClientsInRange( m.Location ) )
+				foreach ( var state in m.Map.GetClientsInRange( m.Location ) )
 				{
 					if ( state != m.NetState && ( everyone || !state.Mobile.CanSee( m ) ) )
 					{
@@ -382,22 +381,22 @@ namespace Server.Network
 
 		public static void SendEverything( this Mobile from )
 		{
-			NetState ns = from.NetState;
+			var ns = from.NetState;
 
 			if ( from.Map != null && ns != null )
 			{
-				foreach ( object o in from.Map.GetObjectsInRange( from.Location, Mobile.GlobalMaxUpdateRange ) )
+				foreach ( var o in from.Map.GetObjectsInRange( from.Location, Mobile.GlobalMaxUpdateRange ) )
 				{
 					if ( o is Item )
 					{
-						Item item = (Item) o;
+						var item = (Item) o;
 
 						if ( from.CanSee( item ) && from.InRange( item.Location, item.GetUpdateRange( from ) ) )
 							item.SendInfoTo( ns );
 					}
 					else if ( o is Mobile )
 					{
-						Mobile m = (Mobile) o;
+						var m = (Mobile) o;
 
 						if ( from.CanSee( m ) && from.InUpdateRange( m ) )
 						{

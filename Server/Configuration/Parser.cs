@@ -21,7 +21,7 @@ namespace Server.Configuration
 
 		public static string GetElementString( XmlElement parent, string tag )
 		{
-			XmlNodeList nodeList = parent.GetElementsByTagName( tag );
+			var nodeList = parent.GetElementsByTagName( tag );
 
 			if ( nodeList.Count == 0 )
 				return null;
@@ -34,7 +34,7 @@ namespace Server.Configuration
 			if ( parent == null )
 				return defaultValue;
 
-			XmlNodeList nodeList = parent.GetElementsByTagName( tag );
+			var nodeList = parent.GetElementsByTagName( tag );
 
 			if ( nodeList.Count == 0 )
 				return defaultValue;
@@ -47,12 +47,12 @@ namespace Server.Configuration
 			if ( parent == null )
 				return defaultValue;
 
-			XmlNodeList nodeList = parent.GetElementsByTagName( tag );
+			var nodeList = parent.GetElementsByTagName( tag );
 
 			if ( nodeList.Count == 0 )
 				return defaultValue;
 
-			string value = ( (XmlElement) nodeList[0] ).GetAttribute( "value" );
+			var value = ( (XmlElement) nodeList[0] ).GetAttribute( "value" );
 
 			return ParseBool( value, true );
 		}
@@ -62,12 +62,12 @@ namespace Server.Configuration
 			if ( parent == null )
 				return defaultValue;
 
-			XmlNodeList nodeList = parent.GetElementsByTagName( tag );
+			var nodeList = parent.GetElementsByTagName( tag );
 
 			if ( nodeList.Count == 0 )
 				return defaultValue;
 
-			string value = ( (XmlElement) nodeList[0] ).GetAttribute( "value" );
+			var value = ( (XmlElement) nodeList[0] ).GetAttribute( "value" );
 
 			try
 			{

@@ -14,36 +14,20 @@ namespace Server.Network
 
 		private Socket m_Listener;
 		private bool m_Disposed;
-		private int m_ThisPort;
 
-		private Queue m_Accepted;
+		private readonly Queue m_Accepted;
 
-		private AsyncCallback m_OnAccept;
+		private readonly AsyncCallback m_OnAccept;
 
-		private static Socket[] m_EmptySockets = new Socket[0];
+		private static readonly Socket[] m_EmptySockets = new Socket[0];
 
-		public int UsedPort
-		{
-			get { return m_ThisPort; }
-		}
+		public int UsedPort { get; }
 
-		private static int m_Port = 2593;
-
-		public static int Port
-		{
-			get
-			{
-				return m_Port;
-			}
-			set
-			{
-				m_Port = value;
-			}
-		}
+		public static int Port { get; set; } = 2593;
 
 		public Listener( int port )
 		{
-			m_ThisPort = port;
+			UsedPort = port;
 			m_Disposed = false;
 			m_Accepted = new Queue();
 			m_OnAccept = new AsyncCallback( OnAccept );
@@ -66,9 +50,9 @@ namespace Server.Network
 
 		private Socket Bind( IPAddress ip, int port )
 		{
-			IPEndPoint ipep = new IPEndPoint( ip, port );
+			var ipep = new IPEndPoint( ip, port );
 
-			Socket s = new Socket( AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp );
+			var s = new Socket( AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp );
 
 			try
 			{
@@ -139,7 +123,7 @@ namespace Server.Network
 		{
 			try
 			{
-				SocketConnectEventArgs args = new SocketConnectEventArgs( socket );
+				var args = new SocketConnectEventArgs( socket );
 
 				EventSink.InvokeSocketConnect( args );
 
@@ -191,10 +175,10 @@ namespace Server.Network
 				if ( m_Accepted.Count == 0 )
 					return m_EmptySockets;
 
-				object[] array = m_Accepted.ToArray();
+				var array = m_Accepted.ToArray();
 				m_Accepted.Clear();
 
-				Socket[] sockets = new Socket[array.Length];
+				var sockets = new Socket[array.Length];
 
 				Array.Copy( array, sockets, array.Length );
 

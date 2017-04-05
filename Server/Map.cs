@@ -29,36 +29,33 @@ namespace Server
 		public const int SectorShift = 4;
 		public static int SectorActiveRange = 2;
 
-		private static Map[] m_Maps = new Map[0x100];
+		public static Map[] Maps { get; } = new Map[0x100];
 
-		public static Map[] Maps { get { return m_Maps; } }
+		public static Map Felucca => Maps[0];
 
-		public static Map Felucca { get { return m_Maps[0]; } }
-		public static Map Trammel { get { return m_Maps[1]; } }
-		public static Map Ilshenar { get { return m_Maps[2]; } }
-		public static Map Malas { get { return m_Maps[3]; } }
-		public static Map Tokuno { get { return m_Maps[4]; } }
-		public static Map TerMur { get { return m_Maps[5]; } }
-		public static Map Internal { get { return m_Maps[0x7F]; } }
+		public static Map Trammel => Maps[1];
 
-		private static List<Map> m_AllMaps = new List<Map>();
+		public static Map Ilshenar => Maps[2];
 
-		public static List<Map> AllMaps { get { return m_AllMaps; } }
+		public static Map Malas => Maps[3];
 
-		private int m_MapID, m_MapIndex, m_FileIndex;
+		public static Map Tokuno => Maps[4];
 
-		private int m_Width, m_Height;
-		private int m_SectorsWidth, m_SectorsHeight;
-		private int m_Season;
-		private Dictionary<string, Region> m_Regions;
+		public static Map TerMur => Maps[5];
+
+		public static Map Internal => Maps[0x7F];
+
+		public static List<Map> AllMaps { get; } = new List<Map>();
+
+		private readonly int m_FileIndex;
+
+		private readonly int m_SectorsWidth;
+		private readonly int m_SectorsHeight;
 		private Region m_DefaultRegion;
 
-		public int Season { get { return m_Season; } }
+		public int Season { get; }
 
-		private string m_Name;
-		private MapRules m_Rules;
-		private Sector[][] m_Sectors;
-		private Sector m_InvalidSector;
+		private readonly Sector[][] m_Sectors;
 
 		private TileMatrix m_Tiles;
 
@@ -91,8 +88,8 @@ namespace Server
 
 			if ( int.TryParse( value, out index ) )
 			{
-				if ( index >= 0 && index < m_Maps.Length && m_Maps[index] != null )
-					return m_Maps[index];
+				if ( index >= 0 && index < Maps.Length && Maps[index] != null )
+					return Maps[index];
 			}
 
 			throw new Exception( "Invalid map name" );
@@ -100,15 +97,15 @@ namespace Server
 
 		private static void CheckNamesAndValues()
 		{
-			if ( m_MapNames != null && m_MapNames.Length == m_AllMaps.Count )
+			if ( m_MapNames != null && m_MapNames.Length == AllMaps.Count )
 				return;
 
-			m_MapNames = new string[m_AllMaps.Count];
-			m_MapValues = new Map[m_AllMaps.Count];
+			m_MapNames = new string[AllMaps.Count];
+			m_MapValues = new Map[AllMaps.Count];
 
-			for ( int i = 0; i < m_AllMaps.Count; ++i )
+			for ( int i = 0; i < AllMaps.Count; ++i )
 			{
-				Map map = m_AllMaps[i];
+				Map map = AllMaps[i];
 
 				m_MapNames[i] = map.Name;
 				m_MapValues[i] = map;
@@ -117,7 +114,7 @@ namespace Server
 
 		public override string ToString()
 		{
-			return m_Name;
+			return Name;
 		}
 
 		public int GetAverageZ( int x, int y )
@@ -336,7 +333,7 @@ namespace Server
 			if ( this == Map.Internal )
 				return false;
 
-			if ( x < 0 || y < 0 || x >= m_Width || y >= m_Height )
+			if ( x < 0 || y < 0 || x >= Width || y >= Height )
 				return false;
 
 			bool hasSurface = false;
@@ -648,15 +645,15 @@ namespace Server
 		{
 			if ( x < 0 )
 				newX = 0;
-			else if ( x >= m_Width )
-				newX = m_Width - 1;
+			else if ( x >= Width )
+				newX = Width - 1;
 			else
 				newX = x;
 
 			if ( y < 0 )
 				newY = 0;
-			else if ( y >= m_Height )
-				newY = m_Height - 1;
+			else if ( y >= Height )
+				newY = Height - 1;
 			else
 				newY = y;
 		}
@@ -667,29 +664,29 @@ namespace Server
 
 			if ( x < 0 )
 				x = 0;
-			else if ( x >= m_Width )
-				x = m_Width - 1;
+			else if ( x >= Width )
+				x = Width - 1;
 
 			if ( y < 0 )
 				y = 0;
-			else if ( y >= m_Height )
-				y = m_Height - 1;
+			else if ( y >= Height )
+				y = Height - 1;
 
 			return new Point2D( x, y );
 		}
 
 		public Map( int mapID, int mapIndex, int fileIndex, int width, int height, int season, string name, MapRules rules )
 		{
-			m_MapID = mapID;
-			m_MapIndex = mapIndex;
+			MapID = mapID;
+			MapIndex = mapIndex;
 			m_FileIndex = fileIndex;
-			m_Width = width;
-			m_Height = height;
-			m_Season = season;
-			m_Name = name;
-			m_Rules = rules;
-			m_Regions = new Dictionary<string, Region>( StringComparer.OrdinalIgnoreCase );
-			m_InvalidSector = new Sector( 0, 0, this );
+			Width = width;
+			Height = height;
+			Season = season;
+			Name = name;
+			Rules = rules;
+			Regions = new Dictionary<string, Region>( StringComparer.OrdinalIgnoreCase );
+			InvalidSector = new Sector( 0, 0, this );
 			m_SectorsWidth = width >> SectorShift;
 			m_SectorsHeight = height >> SectorShift;
 			m_Sectors = new Sector[m_SectorsWidth][];
@@ -739,7 +736,7 @@ namespace Server
 			}
 			else
 			{
-				return m_InvalidSector;
+				return InvalidSector;
 			}
 		}
 		#endregion
@@ -751,7 +748,7 @@ namespace Server
 				for ( int y = cy - SectorActiveRange; y <= cy + SectorActiveRange; ++y )
 				{
 					Sector sect = GetRealSector( x, y );
-					if ( sect != m_InvalidSector )
+					if ( sect != InvalidSector )
 						sect.Activate();
 				}
 			}
@@ -764,7 +761,7 @@ namespace Server
 				for ( int y = cy - SectorActiveRange; y <= cy + SectorActiveRange; ++y )
 				{
 					Sector sect = GetRealSector( x, y );
-					if ( sect != m_InvalidSector && !PlayersInRange( sect, SectorActiveRange ) )
+					if ( sect != InvalidSector && !PlayersInRange( sect, SectorActiveRange ) )
 						sect.Deactivate();
 				}
 			}
@@ -777,7 +774,7 @@ namespace Server
 				for ( int y = sect.Y - range; y <= sect.Y + range; ++y )
 				{
 					Sector check = GetRealSector( x, y );
-					if ( check != m_InvalidSector && check.Players.Count > 0 )
+					if ( check != InvalidSector && check.Players.Count > 0 )
 						return true;
 				}
 			}
@@ -934,51 +931,21 @@ namespace Server
 			get
 			{
 				if ( m_Tiles == null )
-					m_Tiles = new TileMatrix( this, m_FileIndex, m_MapID, m_Width, m_Height );
+					m_Tiles = new TileMatrix( this, m_FileIndex, MapID, Width, Height );
 
 				return m_Tiles;
 			}
 		}
 
-		public int MapID
-		{
-			get
-			{
-				return m_MapID;
-			}
-		}
+		public int MapID { get; }
 
-		public int MapIndex
-		{
-			get
-			{
-				return m_MapIndex;
-			}
-		}
+		public int MapIndex { get; }
 
-		public int Width
-		{
-			get
-			{
-				return m_Width;
-			}
-		}
+		public int Width { get; }
 
-		public int Height
-		{
-			get
-			{
-				return m_Height;
-			}
-		}
+		public int Height { get; }
 
-		public Dictionary<string, Region> Regions
-		{
-			get
-			{
-				return m_Regions;
-			}
-		}
+		public Dictionary<string, Region> Regions { get; }
 
 		public void RegisterRegion( Region reg )
 		{
@@ -986,10 +953,10 @@ namespace Server
 
 			if ( regName != null )
 			{
-				if ( m_Regions.ContainsKey( regName ) )
+				if ( Regions.ContainsKey( regName ) )
 					log.Warning( "Duplicate region name '{0}' for map '{1}'", regName, this.Name );
 				else
-					m_Regions[regName] = reg;
+					Regions[regName] = reg;
 			}
 		}
 
@@ -998,7 +965,7 @@ namespace Server
 			string regName = reg.Name;
 
 			if ( regName != null )
-				m_Regions.Remove( regName );
+				Regions.Remove( regName );
 		}
 
 		public Region DefaultRegion
@@ -1010,43 +977,14 @@ namespace Server
 
 				return m_DefaultRegion;
 			}
-			set
-			{
-				m_DefaultRegion = value;
-			}
+			set { m_DefaultRegion = value; }
 		}
 
-		public MapRules Rules
-		{
-			get
-			{
-				return m_Rules;
-			}
-			set
-			{
-				m_Rules = value;
-			}
-		}
+		public MapRules Rules { get; set; }
 
-		public Sector InvalidSector
-		{
-			get
-			{
-				return m_InvalidSector;
-			}
-		}
+		public Sector InvalidSector { get; }
 
-		public string Name
-		{
-			get
-			{
-				return m_Name;
-			}
-			set
-			{
-				m_Name = value;
-			}
-		}
+		public string Name { get; set; }
 
 		public IEnumerable<Sector> GetSectors( Rectangle2D bounds )
 		{
@@ -1117,20 +1055,14 @@ namespace Server
 		}
 
 		#region Line Of Sight
-		private static int m_MaxLOSDistance = 25;
-
-		public static int MaxLOSDistance
-		{
-			get { return m_MaxLOSDistance; }
-			set { m_MaxLOSDistance = value; }
-		}
+		public static int MaxLOSDistance { get; set; } = 25;
 
 		public bool LineOfSight( Point3D org, Point3D dest )
 		{
 			if ( this == Map.Internal )
 				return false;
 
-			if ( !org.InRange( dest, m_MaxLOSDistance ) )
+			if ( !org.InRange( dest, MaxLOSDistance ) )
 				return false;
 
 			Point3D end = dest;
@@ -1225,8 +1157,8 @@ namespace Server
 				bool contains = false;
 				int ltID = landTile.ID;
 
-				for ( int j = 0; !contains && j < m_InvalidLandTiles.Length; ++j )
-					contains = ( ltID == m_InvalidLandTiles[j] );
+				for ( int j = 0; !contains && j < InvalidLandTiles.Length; ++j )
+					contains = ( ltID == InvalidLandTiles[j] );
 
 				if ( contains && statics.Length == 0 )
 				{
@@ -1346,21 +1278,15 @@ namespace Server
 		}
 		#endregion
 
-		private static int[] m_InvalidLandTiles = new int[] { 0x244 };
+		public static int[] InvalidLandTiles { get; set; } = { 0x244 };
 
-		public static int[] InvalidLandTiles
-		{
-			get { return m_InvalidLandTiles; }
-			set { m_InvalidLandTiles = value; }
-		}
-
-		private static Point3DList m_PathList = new Point3DList();
+		private static readonly Point3DList m_PathList = new Point3DList();
 		public int CompareTo( Map other )
 		{
 			if ( other == null )
 				return -1;
 
-			return m_MapID.CompareTo( other.m_MapID );
+			return MapID.CompareTo( other.MapID );
 		}
 
 		public int CompareTo( object other )

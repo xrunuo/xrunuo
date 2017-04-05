@@ -7,25 +7,16 @@ namespace Server.Targeting
 	{
 		private static int m_NextTargetID;
 
-		private int m_TargetID;
-		private int m_Range;
-		private bool m_AllowGround;
-		private bool m_CheckLOS;
-		private bool m_AllowNonlocal;
-		private bool m_DisallowMultis;
-		private TargetFlags m_Flags;
-		private DateTime m_TimeoutTime;
-
-		public DateTime TimeoutTime { get { return m_TimeoutTime; } }
+		public DateTime TimeoutTime { get; private set; }
 
 		public Target( int range, bool allowGround, TargetFlags flags )
 		{
-			m_TargetID = ++m_NextTargetID;
-			m_Range = range;
-			m_AllowGround = allowGround;
-			m_Flags = flags;
+			TargetID = ++m_NextTargetID;
+			Range = range;
+			AllowGround = allowGround;
+			Flags = flags;
 
-			m_CheckLOS = true;
+			CheckLOS = true;
 		}
 
 		public static void Cancel( Mobile m )
@@ -45,7 +36,7 @@ namespace Server.Targeting
 
 		public void BeginTimeout( Mobile from, TimeSpan delay )
 		{
-			m_TimeoutTime = DateTime.UtcNow + delay;
+			TimeoutTime = DateTime.UtcNow + delay;
 
 			if ( m_TimeoutTimer != null )
 				m_TimeoutTimer.Stop();
@@ -92,49 +83,13 @@ namespace Server.Targeting
 			}
 		}
 
-		public bool CheckLOS
-		{
-			get
-			{
-				return m_CheckLOS;
-			}
-			set
-			{
-				m_CheckLOS = value;
-			}
-		}
+		public bool CheckLOS { get; set; }
 
-		public bool DisallowMultis
-		{
-			get
-			{
-				return m_DisallowMultis;
-			}
-			set
-			{
-				m_DisallowMultis = value;
-			}
-		}
+		public bool DisallowMultis { get; set; }
 
-		public bool AllowNonlocal
-		{
-			get
-			{
-				return m_AllowNonlocal;
-			}
-			set
-			{
-				m_AllowNonlocal = value;
-			}
-		}
+		public bool AllowNonlocal { get; set; }
 
-		public int TargetID
-		{
-			get
-			{
-				return m_TargetID;
-			}
-		}
+		public int TargetID { get; }
 
 		public virtual Packet GetPacketFor( NetState ns )
 		{
@@ -212,7 +167,7 @@ namespace Server.Targeting
 
 				object root = item.RootParent;
 
-				if ( !m_AllowNonlocal && root is Mobile && root != from && from.AccessLevel == AccessLevel.Player )
+				if ( !AllowNonlocal && root is Mobile && root != from && from.AccessLevel == AccessLevel.Player )
 				{
 					OnNonlocalTarget( from, targeted );
 					OnTargetFinish( from );
@@ -229,7 +184,7 @@ namespace Server.Targeting
 				return;
 			}
 
-			if ( map == null || map != from.Map || ( m_Range != -1 && (int) from.GetDistanceToSqrt( loc ) > m_Range ) )
+			if ( map == null || map != from.Map || ( Range != -1 && (int) from.GetDistanceToSqrt( loc ) > Range ) )
 			{
 				OnTargetOutOfRange( from, targeted );
 			}
@@ -237,7 +192,7 @@ namespace Server.Targeting
 			{
 				if ( !from.CanSee( targeted ) )
 					OnCantSeeTarget( from, targeted );
-				else if ( m_CheckLOS && !from.InLOS( targeted ) )
+				else if ( CheckLOS && !from.InLOS( targeted ) )
 					OnTargetOutOfLOS( from, targeted );
 				else if ( targeted is Item && ( (Item) targeted ).InSecureTrade )
 					OnTargetInSecureTrade( from, targeted );
@@ -305,40 +260,10 @@ namespace Server.Targeting
 		{
 		}
 
-		public int Range
-		{
-			get
-			{
-				return m_Range;
-			}
-			set
-			{
-				m_Range = value;
-			}
-		}
+		public int Range { get; set; }
 
-		public bool AllowGround
-		{
-			get
-			{
-				return m_AllowGround;
-			}
-			set
-			{
-				m_AllowGround = value;
-			}
-		}
+		public bool AllowGround { get; set; }
 
-		public TargetFlags Flags
-		{
-			get
-			{
-				return m_Flags;
-			}
-			set
-			{
-				m_Flags = value;
-			}
-		}
+		public TargetFlags Flags { get; set; }
 	}
 }

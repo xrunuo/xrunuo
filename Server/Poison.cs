@@ -18,40 +18,36 @@ namespace Server
 			return this.Name;
 		}
 
-
-		private static ArrayList m_Poisons = new ArrayList();
-
 		public static void Register( Poison reg )
 		{
 			string regName = reg.Name.ToLower();
 
-			for ( int i = 0; i < m_Poisons.Count; i++ )
+			for ( int i = 0; i < Poisons.Count; i++ )
 			{
 				//if ( reg.Level == ( (Poison) m_Poisons[i] ).Level )
 				//	throw new Exception( "A poison with that level already exists." );
-				if ( regName == ( (Poison) m_Poisons[i] ).Name.ToLower() )
+				if ( regName == ( (Poison) Poisons[i] ).Name.ToLower() )
 					throw new Exception( "A poison with that name already exists." );
 			}
 
-			m_Poisons.Add( reg );
+			Poisons.Add( reg );
 		}
 
 		public static Poison Lesser => GetPoison( "Lesser" );
+
 		public static Poison Regular => GetPoison( "Regular" );
+
 		public static Poison Greater => GetPoison( "Greater" );
+
 		public static Poison Deadly => GetPoison( "Deadly" );
+
 		public static Poison Lethal => GetPoison( "Lethal" );
 
 		public static Poison Darkglow => GetPoison( "Darkglow" );
+
 		public static Poison Parasitic => GetPoison( "Parasitic" );
 
-		public static ArrayList Poisons
-		{
-			get
-			{
-				return m_Poisons;
-			}
-		}
+		public static ArrayList Poisons { get; } = new ArrayList();
 
 		public static Poison Parse( string value )
 		{
@@ -73,9 +69,9 @@ namespace Server
 
 		public static Poison GetPoison( int level )
 		{
-			for ( int i = 0; i < m_Poisons.Count; ++i )
+			for ( int i = 0; i < Poisons.Count; ++i )
 			{
-				Poison p = (Poison) m_Poisons[i];
+				Poison p = (Poison) Poisons[i];
 
 				if ( p.Level == level )
 					return p;
@@ -86,9 +82,9 @@ namespace Server
 
 		public static Poison GetPoison( string name )
 		{
-			for ( int i = 0; i < m_Poisons.Count; ++i )
+			for ( int i = 0; i < Poisons.Count; ++i )
 			{
-				Poison p = (Poison) m_Poisons[i];
+				Poison p = (Poison) Poisons[i];
 
 				if ( Utility.InsensitiveCompare( p.Name, name ) == 0 )
 					return p;
@@ -129,7 +125,7 @@ namespace Server
 
 	public class DarkglowPoison
 	{
-		private static Hashtable m_Table = new Hashtable();
+		private static readonly Hashtable m_Table = new Hashtable();
 
 		public static void AddInfo( Mobile victim, Mobile poisoner )
 		{
@@ -153,7 +149,7 @@ namespace Server
 
 	public class ParasiticPoison
 	{
-		private static Hashtable m_Table = new Hashtable();
+		private static readonly Hashtable m_Table = new Hashtable();
 
 		public static void AddInfo( Mobile victim, Mobile poisoner )
 		{

@@ -34,10 +34,10 @@ namespace Server.Targeting
 
 	public class TargetAwaiter : INotifyCompletion
 	{
-		private Mobile m_Mobile;
-		private int m_Range;
-		private bool m_AllowGround;
-		private TargetFlags m_Flags;
+		private readonly Mobile m_Mobile;
+		private readonly int m_Range;
+		private readonly bool m_AllowGround;
+		private readonly TargetFlags m_Flags;
 
 		private object m_Targeted;
 
@@ -49,7 +49,7 @@ namespace Server.Targeting
 			m_Flags = flags;
 		}
 
-		public bool IsCompleted { get { return m_Targeted != null; } }
+		public bool IsCompleted => m_Targeted != null;
 
 		public void OnCompleted( Action continuation )
 		{

@@ -5,7 +5,7 @@ namespace Server
 {
 	public class CompositeLogger : BaseLogger
 	{
-		private IEnumerable<ILog> m_Loggers;
+		private readonly IEnumerable<ILog> m_Loggers;
 
 		public CompositeLogger( params ILog[] loggers )
 		{
