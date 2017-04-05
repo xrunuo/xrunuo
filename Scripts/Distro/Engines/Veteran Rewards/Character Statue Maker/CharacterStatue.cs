@@ -599,7 +599,7 @@ namespace Server.Mobiles
 					plinth.MoveToWorld( loc, map );
 					statue.InvalidatePose();
 
-					from.CloseGump( typeof( CharacterStatueGump ) );
+					from.CloseGump<CharacterStatueGump>();
 					from.SendGump( new CharacterStatueGump( m_Maker, statue, from ) );
 				}
 				else if ( result == AddonFitResult.Blocked )

@@ -239,7 +239,7 @@ namespace Server.Engines.Quests
 
 		public virtual void ShowQuestLogUpdated()
 		{
-			m_From.CloseGump( typeof( QuestLogUpdatedGump ) );
+			m_From.CloseGump<QuestLogUpdatedGump>();
 			m_From.SendGump( new QuestLogUpdatedGump( this ) );
 		}
 
@@ -247,10 +247,10 @@ namespace Server.Engines.Quests
 		{
 			if ( m_Objectives.Count > 0 )
 			{
-				m_From.CloseGump( typeof( QuestItemInfoGump ) );
-				m_From.CloseGump( typeof( QuestLogUpdatedGump ) );
-				m_From.CloseGump( typeof( QuestObjectivesGump ) );
-				m_From.CloseGump( typeof( QuestConversationsGump ) );
+				m_From.CloseGump<QuestItemInfoGump>();
+				m_From.CloseGump<QuestLogUpdatedGump>();
+				m_From.CloseGump<QuestObjectivesGump>();
+				m_From.CloseGump<QuestConversationsGump>();
 
 				m_From.SendGump( new QuestObjectivesGump( m_Objectives ) );
 
@@ -265,9 +265,9 @@ namespace Server.Engines.Quests
 		{
 			if ( m_Conversations.Count > 0 )
 			{
-				m_From.CloseGump( typeof( QuestItemInfoGump ) );
-				m_From.CloseGump( typeof( QuestObjectivesGump ) );
-				m_From.CloseGump( typeof( QuestConversationsGump ) );
+				m_From.CloseGump<QuestItemInfoGump>();
+				m_From.CloseGump<QuestObjectivesGump>();
+				m_From.CloseGump<QuestConversationsGump>();
 
 				m_From.SendGump( new QuestConversationsGump( m_Conversations ) );
 
@@ -355,9 +355,9 @@ namespace Server.Engines.Quests
 			if ( conv.Logged )
 				m_Conversations.Add( conv );
 
-			m_From.CloseGump( typeof( QuestItemInfoGump ) );
-			m_From.CloseGump( typeof( QuestObjectivesGump ) );
-			m_From.CloseGump( typeof( QuestConversationsGump ) );
+			m_From.CloseGump<QuestItemInfoGump>();
+			m_From.CloseGump<QuestObjectivesGump>();
+			m_From.CloseGump<QuestConversationsGump>();
 
 			if ( conv.Logged )
 				m_From.SendGump( new QuestConversationsGump( m_Conversations ) );
@@ -411,7 +411,7 @@ namespace Server.Engines.Quests
 				return false;
 			}
 
-			if ( pm.HasGump( typeof( QuestOfferGump ) ) )
+			if ( pm.HasGump<QuestOfferGump>() )
 			{
 				return false;
 			}

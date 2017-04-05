@@ -197,7 +197,7 @@ namespace Server.Engines.InstancedPeerless
 						member.SendGump( new RejoinInstanceGump( instance, OfferGumpTitle, OfferGumpDesc ) );
 
 						Timer.DelayCall( TimeSpan.FromMinutes( 1.0 ), new TimerCallback(
-							delegate { member.CloseGump( typeof( RejoinInstanceGump ) ); } ) );
+							delegate { member.CloseGump<RejoinInstanceGump>(); } ) );
 					}
 				}
 			}

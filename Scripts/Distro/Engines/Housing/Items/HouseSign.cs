@@ -186,7 +186,7 @@ namespace Server.Engines.Housing.Items
 				}
 				else
 				{
-					from.CloseGump( typeof( VendorInventoryGump ) );
+					from.CloseGump<VendorInventoryGump>();
 					from.SendGump( new VendorInventoryGump( m_Sign.Owner, from ) );
 				}
 			}

@@ -102,7 +102,7 @@ namespace Server.Engines.Guilds.Gumps
 			{
 				case 0:
 					{
-						m_Mobile.CloseGump( typeof( ProcessWarGump ) );
+						m_Mobile.CloseGump<ProcessWarGump>();
 
 						BaseGuild[] guilds = Guild.Search( "" );
 
@@ -153,7 +153,7 @@ namespace Server.Engines.Guilds.Gumps
 
 							w_Guild.Leader.SendLocalizedMessage( 1070740, m_Guild.Name ); // You have lost the war with ~1_val~.
 
-							m_Mobile.CloseGump( typeof( ProcessWarGump ) );
+							m_Mobile.CloseGump<ProcessWarGump>();
 						}
 						else
 						{

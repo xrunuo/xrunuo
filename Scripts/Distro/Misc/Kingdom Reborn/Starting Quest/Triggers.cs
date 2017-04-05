@@ -112,8 +112,8 @@ namespace Server.Items
 				{
 					pm.MoveToWorld( m_Dest, Map.Trammel );
 
-					pm.CloseGump( typeof( KRStartingQuestGump ) );
-					pm.CloseGump( typeof( KRStartingQuestCancelGump ) );
+					pm.CloseGump<KRStartingQuestGump>();
+					pm.CloseGump<KRStartingQuestCancelGump>();
 
 					pm.KRStartingQuestStep++;
 				}
@@ -197,8 +197,8 @@ namespace Server.Items
 				{
 					if ( m_AdvanceLevel )
 					{
-						pm.CloseGump( typeof( KRStartingQuestGump ) );
-						pm.CloseGump( typeof( KRStartingQuestCancelGump ) );
+						pm.CloseGump<KRStartingQuestGump>();
+						pm.CloseGump<KRStartingQuestCancelGump>();
 
 						pm.KRStartingQuestStep++;
 					}

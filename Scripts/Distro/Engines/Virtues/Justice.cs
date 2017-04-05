@@ -111,7 +111,7 @@ namespace Server
 				protector.SendLocalizedMessage( 1111861 ); // Trial account players cannot be protected by another player.
 			else if ( pm.JusticeProtectors.Count > 0 )
 				protector.SendLocalizedMessage( 1049369 ); // You cannot protect that player right now.
-			else if ( pm.HasGump( typeof( AcceptProtectorGump ) ) )
+			else if ( pm.HasGump<AcceptProtectorGump>() )
 				protector.SendLocalizedMessage( 1049369 ); // You cannot protect that player right now.
 			else
 				pm.SendGump( new AcceptProtectorGump( protector, pm ) );

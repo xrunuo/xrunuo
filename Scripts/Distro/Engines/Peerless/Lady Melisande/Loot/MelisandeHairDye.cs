@@ -41,7 +41,7 @@ namespace Server.Items
 		{
 			if ( from.InRange( this.GetWorldLocation(), 1 ) )
 			{
-				from.CloseGump( typeof( MelisandeHairDyeGump ) );
+				from.CloseGump<MelisandeHairDyeGump>();
 				from.SendGump( new MelisandeHairDyeGump( this ) );
 			}
 			else

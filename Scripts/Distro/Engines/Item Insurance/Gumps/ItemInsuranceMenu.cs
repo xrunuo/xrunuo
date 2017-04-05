@@ -160,21 +160,21 @@ namespace Server.Gumps
 					}
 				case 2: // OK
 					{
-						m_Owner.CloseGump( typeof( ConfirmInsureGump ) );
+						m_Owner.CloseGump<ConfirmInsureGump>();
 						m_Owner.SendGump( new ConfirmInsureGump( m_Owner, m_ItemInsuranceInfo ) );
 
 						break;
 					}
 				case 503: // Previous page
 					{
-						m_Owner.CloseGump( typeof( ItemInsuranceMenu ) );
+						m_Owner.CloseGump<ItemInsuranceMenu>();
 						m_Owner.SendGump( new ItemInsuranceMenu( m_Owner, m_ItemInsuranceInfo, m_Page - 1 ) );
 
 						break;
 					}
 				case 505: // Next page
 					{
-						m_Owner.CloseGump( typeof( ItemInsuranceMenu ) );
+						m_Owner.CloseGump<ItemInsuranceMenu>();
 						m_Owner.SendGump( new ItemInsuranceMenu( m_Owner, m_ItemInsuranceInfo, m_Page + 1 ) );
 
 						break;
@@ -235,7 +235,7 @@ namespace Server.Gumps
 			{
 				ItemInsuranceInfo[] col = list.ToArray();
 
-				pm.CloseGump( typeof( ItemInsuranceMenu ) );
+				pm.CloseGump<ItemInsuranceMenu>();
 				pm.SendGump( new ItemInsuranceMenu( pm, col ) );
 			}
 			else

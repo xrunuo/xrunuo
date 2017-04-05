@@ -36,7 +36,7 @@ namespace Server.Engines.InstancedPeerless
 			}
 			else
 			{
-				if ( !m.HasGump( typeof( ConfirmJoinInstanceGump ) ) )
+				if ( !m.HasGump<ConfirmJoinInstanceGump>() )
 					m.SendGump( new ConfirmJoinInstanceGump( m_Instance ) );
 			}
 

@@ -30,7 +30,7 @@ namespace Server.Engines.Guilds.Prompts
 				return;
 			}
 
-			m_Leader.CloseGump( typeof( DiplomacyMiscGump ) );
+			m_Leader.CloseGump<DiplomacyMiscGump>();
 
 			m_Leader.SendLocalizedMessage( 1070886 ); // That alliance name is not allowed.			
 		}
@@ -86,7 +86,7 @@ namespace Server.Engines.Guilds.Prompts
 				m_Target.AllyInvitations.Add( m_Guild );
 			}
 
-			m_Leader.CloseGump( typeof( DiplomacyMiscGump ) );
+			m_Leader.CloseGump<DiplomacyMiscGump>();
 		}
 	}
 }

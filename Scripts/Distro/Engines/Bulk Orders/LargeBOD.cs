@@ -174,7 +174,7 @@ namespace Server.Engines.BulkOrders
 
 			if ( IsChildOf( from.Backpack ) )
 			{
-				pm.CloseGump( typeof( LargeBODGump ) );
+				pm.CloseGump<LargeBODGump>();
 				from.SendGump( new LargeBODGump( from, this ) );
 			}
 			else

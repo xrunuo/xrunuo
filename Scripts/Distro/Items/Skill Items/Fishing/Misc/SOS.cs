@@ -172,7 +172,7 @@ namespace Server.Items
 				else
 					entry = MessageEntry.Entries[m_MessageIndex = Utility.Random( MessageEntry.Entries.Length )];
 
-				from.CloseGump( typeof( MessageGump ) );
+				from.CloseGump<MessageGump>();
 				from.SendGump( new MessageGump( entry, m_TargetMap, m_TargetLocation ) );
 			}
 			else

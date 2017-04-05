@@ -145,8 +145,8 @@ namespace Server.Items.MusicBox
 					from.SendLocalizedMessage( 502692 ); // This must be in a house and be locked down to work.
 				else
 				{
-					if ( from.HasGump( typeof( MusicGump ) ) )
-						from.CloseGump( typeof( MusicGump ) );
+					if ( from.HasGump<MusicGump>() )
+						from.CloseGump<MusicGump>();
 
 					from.SendGump( new MusicGump( this ) );
 				}

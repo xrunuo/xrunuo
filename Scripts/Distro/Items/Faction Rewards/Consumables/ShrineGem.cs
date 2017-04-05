@@ -42,7 +42,7 @@ namespace Server.Items
 			}
 			else
 			{
-				from.CloseGump( typeof( ShrineGemGump ) );
+				from.CloseGump<ShrineGemGump>();
 				from.SendGump( new ShrineGemGump( this ) );
 			}
 		}

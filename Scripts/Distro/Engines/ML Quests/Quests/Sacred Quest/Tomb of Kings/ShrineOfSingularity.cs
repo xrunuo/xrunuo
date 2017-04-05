@@ -43,7 +43,7 @@ namespace Server.Items
 					}
 					else
 					{
-						if ( !pm.HasGump( typeof( GenericQuestGump ) ) && !pm.HasGump( typeof( QuestQuestionGump ) ) )
+						if ( !pm.HasGump<GenericQuestGump>() && !pm.HasGump<QuestQuestionGump>() )
 							pm.SendGump( new LaInsepOmGump() );
 					}
 				}

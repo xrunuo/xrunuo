@@ -173,7 +173,7 @@ namespace Server.Items
 
 			public override void OnClick()
 			{
-				m_Mobile.CloseGump( typeof( VendorTeleportGump ) );
+				m_Mobile.CloseGump<VendorTeleportGump>();
 				m_Mobile.SendGump( new VendorTeleportGump( m_Map ) );
 			}
 		}

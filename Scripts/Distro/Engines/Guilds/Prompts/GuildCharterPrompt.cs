@@ -25,7 +25,7 @@ namespace Server.Engines.Guilds.Prompts
 				return;
 			}
 
-			m_Mobile.CloseGump( typeof( MyGuildGump ) );
+			m_Mobile.CloseGump<MyGuildGump>();
 
 			m_Mobile.SendLocalizedMessage( 1070775 );
 		}
@@ -51,7 +51,7 @@ namespace Server.Engines.Guilds.Prompts
 				g.Charter = text;
 			}
 
-			m_Mobile.CloseGump( typeof( MyGuildGump ) );
+			m_Mobile.CloseGump<MyGuildGump>();
 
 			m_Mobile.SendLocalizedMessage( 1070775 );
 		}

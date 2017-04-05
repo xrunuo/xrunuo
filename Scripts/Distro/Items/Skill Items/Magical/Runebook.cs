@@ -280,7 +280,7 @@ namespace Server.Items
 
 			if ( from.InRange( GetWorldLocation(), 1 ) )
 			{
-				pm.CloseGump( typeof( RunebookGump ) );
+				pm.CloseGump<RunebookGump>();
 				from.SendGump( new RunebookGump( from, this ) );
 			}
 		}

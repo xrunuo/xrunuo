@@ -86,8 +86,8 @@ namespace Server.Items
 			{
 				if ( firstStage )
 				{
-					from.CloseGump( typeof( StatCapScroll.InternalGump ) );
-					from.CloseGump( typeof( PowerScroll.InternalGump ) );
+					from.CloseGump<StatCapScroll.InternalGump>();
+					from.CloseGump<PowerScroll.InternalGump>();
 					from.SendGump( new InternalGump( from, this ) );
 				}
 				else

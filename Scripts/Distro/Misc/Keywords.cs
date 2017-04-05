@@ -44,7 +44,7 @@ namespace Server.Misc
 						}
 					case 0x0035: // i renounce my young player status*
 						{
-							if ( from is PlayerMobile && ( (PlayerMobile) from ).Young && !from.HasGump( typeof( RenounceYoungGump ) ) )
+							if ( from is PlayerMobile && ( (PlayerMobile) from ).Young && !from.HasGump<RenounceYoungGump>() )
 							{
 								from.SendGump( new RenounceYoungGump() );
 							}

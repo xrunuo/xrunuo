@@ -156,7 +156,7 @@ namespace Server.Engines.VeteranRewards
 		{
 			m_From = from;
 
-			from.CloseGump( typeof( RewardChoiceGump ) );
+			from.CloseGump<RewardChoiceGump>();
 
 			RenderBackground();
 			RenderCategories();

@@ -41,8 +41,8 @@ namespace Server.Spells.Mysticism
 
 		public override void OnCast()
 		{
-			if ( Caster.HasGump( typeof( SpellTriggerGump ) ) )
-				Caster.CloseGump( typeof( SpellTriggerGump ) );
+			if ( Caster.HasGump<SpellTriggerGump>() )
+				Caster.CloseGump<SpellTriggerGump>();
 
 			Caster.SendGump( new SpellTriggerGump( this, Caster ) );
 		}

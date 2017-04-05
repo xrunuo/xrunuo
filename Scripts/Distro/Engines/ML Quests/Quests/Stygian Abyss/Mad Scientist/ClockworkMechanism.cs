@@ -37,7 +37,7 @@ namespace Server.Items
 		{
 			if ( MadScientistQuest.QuestStarted( from ) )
 				MadScientistQuest.BarkIngredient( from );
-			else if ( !from.HasGump( typeof( MadScientistQuest.BeginQuestGump ) ) )
+			else if ( !from.HasGump<MadScientistQuest.BeginQuestGump>() )
 				from.SendGump( new MadScientistQuest.BeginQuestGump( this ) );
 		}
 

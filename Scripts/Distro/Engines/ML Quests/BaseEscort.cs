@@ -200,7 +200,7 @@ namespace Server.Engines.Quests
 			{
 				if ( m == ControlMaster )
 				{
-					m.CloseGump( typeof( BaseQuestGump ) );
+					m.CloseGump<BaseQuestGump>();
 					m.SendGump( new MLQuestConversationGump( m_Quest, MLQuestConverType.InProgress ) );
 				}
 				else
@@ -326,7 +326,7 @@ namespace Server.Engines.Quests
 
 						if ( QuestHelper.AnyRewards( m_Quest ) )
 						{
-							escorter.CloseGump( typeof( BaseQuestGump ) );
+							escorter.CloseGump<BaseQuestGump>();
 							escorter.SendGump( new MLQuestRewardGump( m_Quest ) );
 						}
 						else

@@ -36,7 +36,7 @@ namespace Server.Items
 			}
 			else
 			{
-				pm.CloseGump( typeof( ResurrectGump ) );
+				pm.CloseGump<ResurrectGump>();
 				pm.SendGump( new GemResurrectGump( pm, this ) );
 			}
 		}
@@ -76,7 +76,7 @@ namespace Server.Items
 
 		public override void OnResponse( NetState state, RelayInfo info )
 		{
-			m_Mobile.CloseGump( typeof( ResurrectGump ) );
+			m_Mobile.CloseGump<ResurrectGump>();
 
 			if ( info.ButtonID == 2 && !m_Gem.Deleted && m_Gem.IsChildOf( m_Mobile.Backpack ) )
 			{

@@ -36,7 +36,7 @@ namespace Server.Items
 			}
 			else if ( m.Map != null && m.Map.CanFit( m.Location, 16, false, false ) )
 			{
-				( (PlayerMobile) m ).CloseGump( typeof( ResurrectGump ) );
+				( (PlayerMobile) m ).CloseGump<ResurrectGump>();
 				m.SendGump( new ResurrectGump( m, ResurrectMessage.VirtueShrine ) );
 			}
 			else

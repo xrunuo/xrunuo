@@ -255,7 +255,7 @@ namespace Server.Engines.Quests
 			{
 				m_Busy = false;
 
-				m.CloseGump( typeof( ConfirmHeritageGump ) );
+				m.CloseGump<ConfirmHeritageGump>();
 				m.SendGump( new ConfirmHeritageGump( this ) );
 			}
 

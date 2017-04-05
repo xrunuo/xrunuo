@@ -41,7 +41,7 @@ namespace Server.Items
 
 		public override bool OnMoveOver( Mobile m )
 		{
-			if ( !m.HasGump( typeof( ConfirmExitInstanceGump ) ) )
+			if ( !m.HasGump<ConfirmExitInstanceGump>() )
 				m.SendGump( new ConfirmExitInstanceGump( this ) );
 
 			return base.OnMoveOver( m );

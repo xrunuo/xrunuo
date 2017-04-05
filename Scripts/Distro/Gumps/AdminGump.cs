@@ -125,7 +125,7 @@ namespace Server.Gumps
 		[Description( "Opens an interface providing server information and administration features including client, account, and firewall management." )]
 		public static void Admin_OnCommand( CommandEventArgs e )
 		{
-			e.Mobile.CloseGump( typeof( AdminGump ) );
+			e.Mobile.CloseGump<AdminGump>();
 			e.Mobile.SendGump( new AdminGump( e.Mobile, AdminGumpPage.Clients, 0, null, null, null ) );
 		}
 

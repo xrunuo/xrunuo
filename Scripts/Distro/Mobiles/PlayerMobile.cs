@@ -336,8 +336,8 @@ namespace Server.Mobiles
 		{
 			if ( m_KRStartingQuestStep < step && m_KRStartingQuestStep != 0 )
 			{
-				CloseGump( typeof( KRStartingQuestGump ) );
-				CloseGump( typeof( KRStartingQuestCancelGump ) );
+				CloseGump<KRStartingQuestGump>();
+				CloseGump<KRStartingQuestCancelGump>();
 
 				KRStartingQuestStep = (byte) step;
 			}
@@ -1585,11 +1585,11 @@ namespace Server.Mobiles
 
 			if ( ns != null )
 			{
-				if ( HasGump( typeof( ResurrectGump ) ) )
+				if ( HasGump<ResurrectGump>() )
 				{
 					if ( Alive )
 					{
-						CloseGump( typeof( ResurrectGump ) );
+						CloseGump<ResurrectGump>();
 					}
 					else
 					{
@@ -1788,14 +1788,14 @@ namespace Server.Mobiles
 		#region Vendor Search
 		private void VendorSearchGump()
 		{
-			CloseGump( typeof( VendorSearchQueryGump ) );
+			CloseGump<VendorSearchQueryGump>();
 			SendGump( new VendorSearchQueryGump( this ) );
 		}
 		#endregion
 
 		private void LoyaltyRatingMenu()
 		{
-			CloseGump( typeof( LoyaltyGump ) );
+			CloseGump<LoyaltyGump>();
 			SendGump( new LoyaltyGump( this ) );
 		}
 
@@ -1929,7 +1929,7 @@ namespace Server.Mobiles
 
 		private void SelectRewardTitle()
 		{
-			CloseGump( typeof( SelectRewardTitleGump ) );
+			CloseGump<SelectRewardTitleGump>();
 			SendGump( new SelectRewardTitleGump( this, m_CurrentCollectionTitle ) );
 		}
 
@@ -1939,7 +1939,7 @@ namespace Server.Mobiles
 
 			if ( CheckAlive() && house != null && house.IsOwner( this ) && house.InternalizedVendors.Count > 0 )
 			{
-				CloseGump( typeof( ReclaimVendorGump ) );
+				CloseGump<ReclaimVendorGump>();
 				SendGump( new ReclaimVendorGump( house ) );
 			}
 		}
@@ -1985,8 +1985,8 @@ namespace Server.Mobiles
 		public override void OnRegionChange( Region oldRegion, Region newRegion )
 		{
 			#region Vendor Search
-			if ( HasGump( typeof( VendorSearchQueryGump ) ) && !VendorSearchQueryGump.IsInValidRegion( this ) )
-				CloseGump( typeof( VendorSearchQueryGump ) );
+			if ( HasGump<VendorSearchQueryGump>() && !VendorSearchQueryGump.IsInValidRegion( this ) )
+				CloseGump<VendorSearchQueryGump>();
 			#endregion
 		}
 

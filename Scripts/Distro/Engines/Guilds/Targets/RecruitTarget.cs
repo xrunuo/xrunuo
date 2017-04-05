@@ -112,7 +112,7 @@ namespace Server.Engines.Guilds.Targets
 			if ( rank != 3 && rank != 5 )
 				return;
 
-			m_Mobile.CloseGump( typeof( RosterGump ) );
+			m_Mobile.CloseGump<RosterGump>();
 		}
 	}
 }

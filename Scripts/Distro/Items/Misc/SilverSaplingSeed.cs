@@ -84,7 +84,7 @@ namespace Server.Items
 			public override void OnResponse( NetState state, RelayInfo info )
 			{
 				Mobile from = state.Mobile;
-				from.CloseGump( typeof( ResurrectGump ) );
+				from.CloseGump<ResurrectGump>();
 
 				if ( info.ButtonID == 2 )
 				{

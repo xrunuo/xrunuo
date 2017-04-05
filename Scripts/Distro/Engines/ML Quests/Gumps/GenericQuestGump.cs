@@ -76,7 +76,7 @@ namespace Server.Engines.Quests
 
 		public override void OnResponse( NetState sender, RelayInfo info )
 		{
-			sender.Mobile.CloseGump( typeof( GenericQuestGump ) );
+			sender.Mobile.CloseGump<GenericQuestGump>();
 
 			if ( info.ButtonID == 1 && m_OnAccept != null )
 				m_OnAccept( sender.Mobile );

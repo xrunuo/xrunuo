@@ -115,7 +115,7 @@ namespace Server.Engines.Collections
 
 			if ( info.ButtonID == -1 )
 			{
-				//pm.CloseGump( typeof( CollectionRewardGump ) );
+				//pm.CloseGump<CollectionRewardGump>();
 				pm.SendGump( new CollectionRewardGump( m_Collection, m_From ) );
 			}
 			else if ( info.ButtonID > 0 )

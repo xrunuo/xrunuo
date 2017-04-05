@@ -58,7 +58,7 @@ namespace Server.Items
 			{
 				if ( targeted.GorgonCharges > 0 )
 				{
-					from.CloseGump( typeof( InternalGump ) );
+					from.CloseGump<InternalGump>();
 					from.SendGump( new InternalGump( this, targeted ) );
 				}
 				else

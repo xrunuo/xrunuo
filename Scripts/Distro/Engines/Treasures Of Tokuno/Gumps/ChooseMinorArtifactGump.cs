@@ -213,7 +213,7 @@ namespace Server.Gumps
 
 				Item item = list[i] as Item;
 
-				from.CloseGump( typeof( ChooseMinorArtifactGump ) );
+				from.CloseGump<ChooseMinorArtifactGump>();
 
 				if ( item != null && item.IsChildOf( from.Backpack ) )
 				{
@@ -233,8 +233,8 @@ namespace Server.Gumps
 						{
 							minister.Say( 1070980 ); // Congratulations! You have turned in enough minor treasures to earn a greater reward.
 
-							from.CloseGump( typeof( ChooseRewardGump ) );
-							from.CloseGump( typeof( ChoosePigmentGump ) );
+							from.CloseGump<ChooseRewardGump>();
+							from.CloseGump<ChoosePigmentGump>();
 
 							from.SendGump( new ChooseRewardGump( from, minister ) );
 						}

@@ -65,7 +65,7 @@ namespace Server.Engines.Guilds.Gumps
 			{
 				case 0:
 					{
-						m_Mobile.CloseGump( typeof( DeclareWarGump ) );
+						m_Mobile.CloseGump<DeclareWarGump>();
 						m_Mobile.SendGump( new DiplomacyMiscGump( m_Mobile, t_Guild ) );
 
 						break;
@@ -145,7 +145,7 @@ namespace Server.Engines.Guilds.Gumps
 							}
 						}
 
-						m_Mobile.CloseGump( typeof( DeclareWarGump ) );
+						m_Mobile.CloseGump<DeclareWarGump>();
 
 						break;
 					}

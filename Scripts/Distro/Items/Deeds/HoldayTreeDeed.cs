@@ -132,7 +132,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			from.CloseGump( typeof( HolidayTreeChoiceGump ) );
+			from.CloseGump<HolidayTreeChoiceGump>();
 			from.SendGump( new HolidayTreeChoiceGump( from, this ) );
 		}
 	}

@@ -383,7 +383,7 @@ namespace Server.Engines.Quests
 			{
 				m_Quest.OnRefuse();
 
-				sender.Mobile.CloseGump( typeof( BaseQuestGump ) );
+				sender.Mobile.CloseGump<BaseQuestGump>();
 				sender.Mobile.SendGump( new MLQuestConversationGump( m_Quest, MLQuestConverType.Refuse ) );
 			}
 		}

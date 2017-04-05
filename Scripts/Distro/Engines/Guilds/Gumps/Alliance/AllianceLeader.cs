@@ -108,7 +108,7 @@ namespace Server.Engines.Guilds.Gumps
 			{
 				case 0: // Cancel
 					{
-						m_Mobile.CloseGump( typeof( AllianceLeaderGump ) );
+						m_Mobile.CloseGump<AllianceLeaderGump>();
 
 						BaseGuild[] guilds = Guild.Search( "" );
 
@@ -158,7 +158,7 @@ namespace Server.Engines.Guilds.Gumps
 							}
 						}
 
-						m_Mobile.CloseGump( typeof( AllianceLeaderGump ) );
+						m_Mobile.CloseGump<AllianceLeaderGump>();
 
 						break;
 					}
@@ -191,7 +191,7 @@ namespace Server.Engines.Guilds.Gumps
 							m_Mobile.SendLocalizedMessage( 1063447 ); // Failed to remove guild from alliance.
 						}
 
-						m_Mobile.CloseGump( typeof( AllianceLeaderGump ) );
+						m_Mobile.CloseGump<AllianceLeaderGump>();
 
 						break;
 					}
@@ -210,7 +210,7 @@ namespace Server.Engines.Guilds.Gumps
 
 							m_Guild.AllianceLeader = false;
 
-							m_Mobile.CloseGump( typeof( AllianceLeaderGump ) );
+							m_Mobile.CloseGump<AllianceLeaderGump>();
 						}
 
 						m_Mobile.SendLocalizedMessage( 1063435 ); // Failed to promote guild to alliance leader.
@@ -228,7 +228,7 @@ namespace Server.Engines.Guilds.Gumps
 							m_Mobile.SendGump( new DiplomacyGump( m_Mobile, m_Guild, new ArrayList( guilds ), 2 ) );
 						}
 
-						m_Mobile.CloseGump( typeof( AllianceLeaderGump ) );
+						m_Mobile.CloseGump<AllianceLeaderGump>();
 
 						break;
 					}

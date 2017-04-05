@@ -100,7 +100,7 @@ namespace Server.Engines.Guilds.Gumps
 			{
 				case 0: // Cancel
 					{
-						m_Mobile.CloseGump( typeof( SlaveAllyGump ) );
+						m_Mobile.CloseGump<SlaveAllyGump>();
 
 						BaseGuild[] guilds = Guild.Search( "" );
 
@@ -129,14 +129,14 @@ namespace Server.Engines.Guilds.Gumps
 								t_Guild.AllianceName = "";
 							}
 
-							m_Mobile.CloseGump( typeof( SlaveAllyGump ) );
+							m_Mobile.CloseGump<SlaveAllyGump>();
 						}
 
 						break;
 					}
 				case 310: // Show Alliance Roster
 					{
-						m_Mobile.CloseGump( typeof( SlaveAllyGump ) );
+						m_Mobile.CloseGump<SlaveAllyGump>();
 
 						if ( m_Guild.Allies.Count > 0 )
 						{

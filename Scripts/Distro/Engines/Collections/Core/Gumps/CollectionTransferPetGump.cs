@@ -36,9 +36,9 @@ namespace Server.Engines.Collections
 			{
 				Mobile from = (Mobile) state;
 
-				if ( from.HasGump( typeof( CollectionTransferPetGump ) ) )
+				if ( from.HasGump<CollectionTransferPetGump>() )
 				{
-					from.CloseGump( typeof( CollectionTransferPetGump ) );
+					from.CloseGump<CollectionTransferPetGump>();
 					from.SendLocalizedMessage( 1073114 ); // You decide to not transfer this follower.
 				}
 			}

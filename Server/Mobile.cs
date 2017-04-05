@@ -4620,12 +4620,19 @@ namespace Server
 			return true;
 		}
 
+		public T FindGump<T>() where T : Gump
+		{
+			return (T)FindGump( typeof( T ) );
+		}
+
 		public Gump FindGump( Type type )
 		{
-			if ( m_NetState == null )
-				return null;
+			return m_NetState?.Gumps.FirstOrDefault( type.IsInstanceOfType );
+		}
 
-			return m_NetState.Gumps.FirstOrDefault( gump => type.IsAssignableFrom( gump.GetType() ) );
+		public bool CloseGump<T>( int buttonId = 0 ) where T : Gump
+		{
+			return CloseGump( typeof( T ), buttonId );
 		}
 
 		public bool CloseGump( Type type, int buttonId = 0 )
@@ -4633,7 +4640,7 @@ namespace Server
 			if ( m_NetState == null )
 				return false;
 
-			Gump gump = FindGump( type );
+			var gump = FindGump( type );
 
 			if ( gump != null )
 			{
@@ -4651,7 +4658,7 @@ namespace Server
 			if ( m_NetState == null )
 				return false;
 
-			foreach ( Gump gump in m_NetState.Gumps )
+			foreach ( var gump in m_NetState.Gumps )
 			{
 				m_NetState.Send( new CloseGump( gump.TypeID, 0 ) );
 
@@ -4661,6 +4668,11 @@ namespace Server
 			m_NetState.ClearGumps();
 
 			return true;
+		}
+
+		public bool HasGump<T>() where T : Gump
+		{
+			return HasGump( typeof( T ) );
 		}
 
 		public bool HasGump( Type type )
@@ -4704,7 +4716,7 @@ namespace Server
 		{
 			if ( m_Squelched )
 			{
-				this.SendLocalizedMessage( 500168 ); // You can not say anything, you have been muted.
+				SendLocalizedMessage( 500168 ); // You can not say anything, you have been muted.
 				e.Blocked = true;
 			}
 

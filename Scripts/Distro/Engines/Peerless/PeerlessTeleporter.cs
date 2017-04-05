@@ -24,7 +24,7 @@ namespace Server.Items
 		{
 			if ( m is PlayerMobile )
 			{
-				m.CloseGump( typeof( ConfirmPeerlessExitGump ) );
+				m.CloseGump<ConfirmPeerlessExitGump>();
 				m.SendGump( new ConfirmPeerlessExitGump( this ) );
 			}
 

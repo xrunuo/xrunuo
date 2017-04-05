@@ -18,7 +18,7 @@ namespace Server.Engines.VeteranRewards
 			m_From = from;
 			m_Entry = entry;
 
-			from.CloseGump( typeof( RewardConfirmGump ) );
+			from.CloseGump<RewardConfirmGump>();
 
 			AddPage( 0 );
 

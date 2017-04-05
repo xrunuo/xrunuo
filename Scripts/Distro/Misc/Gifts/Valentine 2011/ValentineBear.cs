@@ -69,7 +69,7 @@ namespace Server.Items
 			}
 			else if ( m_EditEnd > DateTime.UtcNow )
 			{
-				from.CloseGump( typeof( ValentineBearGump ) );
+				from.CloseGump<ValentineBearGump>();
 				from.SendGump( new ValentineBearGump( this ) );
 			}
 		}

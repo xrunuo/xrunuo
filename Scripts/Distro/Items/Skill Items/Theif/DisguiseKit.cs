@@ -116,7 +116,7 @@ namespace Server.Items
 			m_Kit = kit;
 			m_Used = used;
 
-			from.CloseGump( typeof( DisguiseGump ) );
+			from.CloseGump<DisguiseGump>();
 
 			AddPage( 0 );
 

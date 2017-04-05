@@ -287,7 +287,7 @@ namespace Server.Engines.Help
 					Mobile m = ns.Mobile;
 
 					if ( m != null && m.AccessLevel >= AccessLevel.Counselor )
-						m.CloseGump( typeof( PagePendingGump ) );
+						m.CloseGump<PagePendingGump>();
 				}
 			}
 		}
@@ -319,7 +319,7 @@ namespace Server.Engines.Help
 				{
 					m.SendMessage( "A new page has been placed in the queue." );
 
-					if ( !m.HasGump( typeof( PagePendingGump ) ) )
+					if ( !m.HasGump<PagePendingGump>() )
 						m.SendGump( new PagePendingGump() );
 				}
 

@@ -95,7 +95,7 @@ namespace Server.Mobiles
 			m.PlaySound( 0x202 );
 			m.FixedEffect( 0x376A, 10, 16 );
 
-			m.CloseGump( typeof( ResurrectGump ) );
+			m.CloseGump<ResurrectGump>();
 			m.SendGump( new ResurrectGump( m, ResurrectMessage.Healer ) );
 		}
 

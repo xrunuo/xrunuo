@@ -66,7 +66,7 @@ namespace Server.Items
 			}
 			else
 			{
-				m.CloseGump( typeof( MoongateGump ) );
+				m.CloseGump<MoongateGump>();
 				m.SendGump( new MoongateGump( m, this ) );
 
 				if ( !m.Hidden || m.AccessLevel == AccessLevel.Player )

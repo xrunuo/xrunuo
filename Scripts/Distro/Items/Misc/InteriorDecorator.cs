@@ -178,7 +178,7 @@ namespace Server.Items
 
 			//protected override void OnTargetCancel( Mobile from, TargetCancelType cancelType )
 			//{
-			//	from.CloseGump( typeof( InternalGump ) );
+			//	from.CloseGump<InternalGump>();
 			//}
 
 			protected override void OnTargetNotAccessible( Mobile from, object targeted )

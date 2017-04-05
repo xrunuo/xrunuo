@@ -84,7 +84,7 @@ namespace Server.Gumps
 			m_List = list;
 			m_Selection = sel;
 
-			from.CloseGump( typeof( ViewHousesGump ) );
+			from.CloseGump<ViewHousesGump>();
 
 			AddPage( 0 );
 

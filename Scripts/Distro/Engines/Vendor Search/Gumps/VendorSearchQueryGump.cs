@@ -260,9 +260,9 @@ namespace Server.Gumps
 
 			var pollingTimer = new TaskPollingTimer<IVendorSearchItem[]>( resultsTask, ( results ) =>
 			{
-				from.CloseGump( typeof( VendorSearchQueryGump ) );
-				from.CloseGump( typeof( VendorSearchResultsGump ) );
-				from.CloseGump( typeof( VendorSearchWaitGump ) );
+				from.CloseGump<VendorSearchQueryGump>();
+				from.CloseGump<VendorSearchResultsGump>();
+				from.CloseGump<VendorSearchWaitGump>();
 
 				if ( results.Any() )
 				{

@@ -77,7 +77,7 @@ namespace Server.Engines.Quests
 
 					if ( quest != null )
 					{
-						player.CloseGump( typeof( BaseQuestGump ) );
+						player.CloseGump<BaseQuestGump>();
 						player.SendGump( new MLQuestOfferGump( quest ) );
 						return;
 					}
@@ -88,7 +88,7 @@ namespace Server.Engines.Quests
 
 			if ( questt != null )
 			{
-				player.CloseGump( typeof( BaseQuestGump ) );
+				player.CloseGump<BaseQuestGump>();
 				player.SendGump( new MLQuestOfferGump( questt ) );
 			}
 		}

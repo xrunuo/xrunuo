@@ -147,7 +147,7 @@ namespace Server.Spells.Mysticism
 			if ( !m_ResetTable.ContainsKey( Caster ) )
 				return;
 
-			Caster.CloseGump( typeof( EnchantGump ) );
+			Caster.CloseGump<EnchantGump>();
 
 			m_ResetTable[Caster].Stop();
 			m_ResetTable.Remove( Caster );

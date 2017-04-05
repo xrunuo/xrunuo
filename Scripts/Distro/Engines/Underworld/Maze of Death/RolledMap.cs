@@ -22,7 +22,7 @@ namespace Server.Items
 				from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 1019045 ); // I can't reach that.
 			else
 			{
-				from.CloseGump( typeof( UnderworldMapGump ) );
+				from.CloseGump<UnderworldMapGump>();
 				from.SendGump( new UnderworldMapGump() );
 			}
 		}

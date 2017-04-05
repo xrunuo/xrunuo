@@ -228,9 +228,9 @@ namespace Server.Engines.Housing.Gumps
 			m_House = house;
 			m_Page = page;
 
-			from.CloseGump( typeof( HouseGump ) );
-			//from.CloseGump( typeof( HouseListGump ) );
-			//from.CloseGump( typeof( HouseRemoveGump ) );
+			from.CloseGump<HouseGump>();
+			//from.CloseGump<HouseListGump>();
+			//from.CloseGump<HouseRemoveGump>();
 
 			bool isCombatRestricted = house.IsCombatRestricted( from );
 

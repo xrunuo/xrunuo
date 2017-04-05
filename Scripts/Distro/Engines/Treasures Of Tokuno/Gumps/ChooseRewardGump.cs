@@ -114,7 +114,7 @@ namespace Server.Gumps
 					break;
 				case 109:
 					{
-						from.CloseGump( typeof( ChooseRewardGump ) );
+						from.CloseGump<ChooseRewardGump>();
 						from.SendGump( new ChoosePigmentGump( from, minister ) );
 						break;
 					}

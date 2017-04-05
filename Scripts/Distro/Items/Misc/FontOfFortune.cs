@@ -206,7 +206,7 @@ namespace Server.Items
 			{
 				if ( !m.Alive )
 				{
-					m.CloseGump( typeof( ResurrectGump ) );
+					m.CloseGump<ResurrectGump>();
 					m.SendGump( new FoFResurrectGump( m ) );
 				}
 				else if ( m.Poisoned || IsCursed( m ) )
@@ -297,7 +297,7 @@ namespace Server.Items
 		{
 			Mobile from = state.Mobile;
 
-			from.CloseGump( typeof( ResurrectGump ) );
+			from.CloseGump<ResurrectGump>();
 
 			if ( info.ButtonID == 2 )
 			{

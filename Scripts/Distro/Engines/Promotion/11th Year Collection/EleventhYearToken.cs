@@ -126,7 +126,7 @@ namespace Server.Engines.Promotion
 		{
 			try
 			{
-				Gump gump = (Gump) Activator.CreateInstance( m_GumpType, new object[] { token } );
+				Gump gump = (Gump) Activator.CreateInstance( m_GumpType, token );
 
 				m.CloseGump( m_GumpType );
 				m.SendGump( gump );
@@ -217,13 +217,13 @@ namespace Server.Items
 			if ( !this.IsChildOf( from.Backpack ) )
 				return;
 
-			from.CloseGump( typeof( EleventhYearConfirmGump ) );
+			from.CloseGump<EleventhYearConfirmGump>();
 			from.SendGump( new EleventhYearConfirmGump( this ) );
 		}
 
 		public override bool OnDragLift( Mobile from )
 		{
-			from.CloseGump( typeof( EleventhYearConfirmGump ) );
+			from.CloseGump<EleventhYearConfirmGump>();
 
 			return base.OnDragLift( from );
 		}

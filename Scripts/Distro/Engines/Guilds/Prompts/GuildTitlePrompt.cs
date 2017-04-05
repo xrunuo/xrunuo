@@ -33,7 +33,7 @@ namespace Server.Engines.Guilds.Prompts
 				return;
 			}
 
-			m_Mobile.CloseGump( typeof( RosterMiscGump ) );
+			m_Mobile.CloseGump<RosterMiscGump>();
 
 			m_Mobile.SendLocalizedMessage( 501176 ); // That title is disallowed.
 		}
@@ -68,7 +68,7 @@ namespace Server.Engines.Guilds.Prompts
 				m_Target.GuildTitle = text;
 			}
 
-			m_Mobile.CloseGump( typeof( RosterMiscGump ) );
+			m_Mobile.CloseGump<RosterMiscGump>();
 
 			m_Mobile.SendLocalizedMessage( 1063156, m_Target.Name ); // The guild information for ~1_val~ has been updated.
 		}

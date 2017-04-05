@@ -116,7 +116,7 @@ namespace Server.Engines.Guilds.Gumps
 			{
 				case 0:
 					{
-						m_Mobile.CloseGump( typeof( ReceiveWarGump ) );
+						m_Mobile.CloseGump<ReceiveWarGump>();
 
 						BaseGuild[] guilds = Guild.Search( "" );
 
@@ -140,7 +140,7 @@ namespace Server.Engines.Guilds.Gumps
 							i_Guild.RemoveEnemy( m_Guild );
 							i_Guild.DelWar( m_Guild );
 
-							m_Mobile.CloseGump( typeof( ReceiveWarGump ) );
+							m_Mobile.CloseGump<ReceiveWarGump>();
 						}
 
 						break;
@@ -209,7 +209,7 @@ namespace Server.Engines.Guilds.Gumps
 
 							m_Mobile.SendLocalizedMessage( 1070752 ); // The proposal has been updated.
 
-							m_Mobile.CloseGump( typeof( ReceiveWarGump ) );
+							m_Mobile.CloseGump<ReceiveWarGump>();
 						}
 
 						break;
@@ -232,7 +232,7 @@ namespace Server.Engines.Guilds.Gumps
 							i_Guild.DelWar( m_Guild );
 						}
 
-						m_Mobile.CloseGump( typeof( ReceiveWarGump ) );
+						m_Mobile.CloseGump<ReceiveWarGump>();
 						m_Mobile.SendGump( new DeclareWarGump( m_Mobile, i_Guild ) );
 
 						break;

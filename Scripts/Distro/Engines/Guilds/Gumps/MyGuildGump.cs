@@ -22,14 +22,14 @@ namespace Server.Engines.Guilds.Gumps
 		{
 			Mobile beholder = e.Mobile;
 
-			beholder.CloseGump( typeof( AdvancedSearchGump ) );
-			beholder.CloseGump( typeof( DiplomacyGump ) );
-			beholder.CloseGump( typeof( DiplomacyMiscGump ) );
-			beholder.CloseGump( typeof( JoinGuildGump ) );
-			beholder.CloseGump( typeof( InviteGump ) );
-			beholder.CloseGump( typeof( RosterGump ) );
-			beholder.CloseGump( typeof( RosterMiscGump ) );
-			beholder.CloseGump( typeof( MyGuildGump ) );
+			beholder.CloseGump<AdvancedSearchGump>();
+			beholder.CloseGump<DiplomacyGump>();
+			beholder.CloseGump<DiplomacyMiscGump>();
+			beholder.CloseGump<JoinGuildGump>();
+			beholder.CloseGump<InviteGump>();
+			beholder.CloseGump<RosterGump>();
+			beholder.CloseGump<RosterMiscGump>();
+			beholder.CloseGump<MyGuildGump>();
 
 			Guild guild = beholder.Guild as Guild;
 
@@ -199,7 +199,7 @@ namespace Server.Engines.Guilds.Gumps
 					}
 				case 200: // -- Show Alliance
 					{
-						m_Mobile.CloseGump( typeof( DiplomacyGump ) );
+						m_Mobile.CloseGump<DiplomacyGump>();
 
 						if ( m_Guild.Allies.Count > 0 )
 						{

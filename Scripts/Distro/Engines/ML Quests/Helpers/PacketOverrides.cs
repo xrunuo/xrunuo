@@ -39,7 +39,7 @@ namespace Server.Engines.Quests
 			{
 				PlayerMobile from = (PlayerMobile) state.Mobile;
 
-				from.CloseGump( typeof( BaseQuestGump ) );
+				from.CloseGump<BaseQuestGump>();
 				from.SendGump( new MLQuestMainLogGump( from ) );
 			}
 		}

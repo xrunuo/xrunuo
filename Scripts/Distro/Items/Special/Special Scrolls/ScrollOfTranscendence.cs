@@ -71,7 +71,7 @@ namespace Server.Items
 				{
 					if ( firstStage )
 					{
-						from.CloseGump( typeof( ScrollOfTranscendence.InternalGump ) );
+						from.CloseGump<ScrollOfTranscendence.InternalGump>();
 						from.SendGump( BuildGump( from, this ) );
 					}
 					else

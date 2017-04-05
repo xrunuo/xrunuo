@@ -131,7 +131,7 @@ namespace Server.Gumps
 		{
 			Mobile from = state.Mobile;
 
-			from.CloseGump( typeof( ResurrectGump ) );
+			from.CloseGump<ResurrectGump>();
 
 			if ( info.ButtonID == 2 )
 			{

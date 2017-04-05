@@ -185,9 +185,9 @@ namespace Server.Mobiles
 			m_Vendor = vendor;
 			m_SellList = sellList;
 
-			from.CloseGump( typeof( HairstylistBuyGump ) );
-			from.CloseGump( typeof( ChangeHairHueGump ) );
-			from.CloseGump( typeof( ChangeHairstyleGump ) );
+			from.CloseGump<HairstylistBuyGump>();
+			from.CloseGump<ChangeHairHueGump>();
+			from.CloseGump<ChangeHairstyleGump>();
 
 			bool isFemale = ( from.Female || from.Body.IsFemale );
 
@@ -371,9 +371,9 @@ namespace Server.Mobiles
 			m_FacialHair = facialHair;
 			m_Entries = entries;
 
-			from.CloseGump( typeof( HairstylistBuyGump ) );
-			from.CloseGump( typeof( ChangeHairHueGump ) );
-			from.CloseGump( typeof( ChangeHairstyleGump ) );
+			from.CloseGump<HairstylistBuyGump>();
+			from.CloseGump<ChangeHairHueGump>();
+			from.CloseGump<ChangeHairstyleGump>();
 
 			AddPage( 0 );
 
@@ -564,9 +564,9 @@ namespace Server.Mobiles
 			m_FacialHair = facialHair;
 			m_Entries = entries;
 
-			from.CloseGump( typeof( HairstylistBuyGump ) );
-			from.CloseGump( typeof( ChangeHairHueGump ) );
-			from.CloseGump( typeof( ChangeHairstyleGump ) );
+			from.CloseGump<HairstylistBuyGump>();
+			from.CloseGump<ChangeHairHueGump>();
+			from.CloseGump<ChangeHairstyleGump>();
 
 			int tableWidth = ( m_FacialHair ? 2 : 3 );
 			int tableHeight = ( ( entries.Length + tableWidth - ( m_FacialHair ? 1 : 2 ) ) / tableWidth );

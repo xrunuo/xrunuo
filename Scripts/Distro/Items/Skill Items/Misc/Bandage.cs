@@ -296,7 +296,7 @@ namespace Server.Items
 					m_Patient.PlaySound( 0x214 );
 					m_Patient.FixedEffect( 0x376A, 10, 16 );
 
-					petPatient.ControlMaster.CloseGump( typeof( PetResurrectGump ) );
+					petPatient.ControlMaster.CloseGump<PetResurrectGump>();
 
 					if ( petPatient.ControlMaster == m_Healer )
 					{
@@ -338,7 +338,7 @@ namespace Server.Items
 							{
 								healerNumber = 503255; // You are able to resurrect the creature.
 
-								master.CloseGump( typeof( PetResurrectGump ) );
+								master.CloseGump<PetResurrectGump>();
 
 								if ( master == m_Healer )
 								{
@@ -366,7 +366,7 @@ namespace Server.Items
 									{
 										healerNumber = 503255; // You are able to resurrect the creature.
 
-										friend.CloseGump( typeof( PetResurrectGump ) );
+										friend.CloseGump<PetResurrectGump>();
 
 										if ( friend == m_Healer )
 											petPatient.ResurrectPet();
@@ -384,7 +384,7 @@ namespace Server.Items
 						}
 						else
 						{
-							m_Patient.CloseGump( typeof( ResurrectGump ) );
+							m_Patient.CloseGump<ResurrectGump>();
 							m_Patient.SendGump( new ResurrectGump( m_Patient, m_Healer ) );
 						}
 					}

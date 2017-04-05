@@ -197,7 +197,7 @@ namespace Server.Items
 				{
 					BaseWeapon item = (BaseWeapon) targeted;
 
-					from.CloseGump( typeof( InternalGump ) );
+					from.CloseGump<InternalGump>();
 					from.SendGump( new InternalGump( m_Tool, item ) );
 				}
 				else

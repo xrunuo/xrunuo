@@ -69,7 +69,7 @@ namespace Server.Items
 				// You cannot use the Crystal Ball of Knowledge right now.
 				from.SendLocalizedMessage( 1112569 );
 			}*/
-			else if ( !from.HasGump( typeof( ToggleActivationGump ) ) )
+			else if ( !from.HasGump<ToggleActivationGump>() )
 			{
 				from.SendGump( new ToggleActivationGump( this ) );
 			}

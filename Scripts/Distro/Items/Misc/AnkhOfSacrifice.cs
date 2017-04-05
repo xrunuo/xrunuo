@@ -74,7 +74,7 @@ namespace Server.Items
 			}
 			else
 			{
-				m.CloseGump( typeof( AnkhResurrectGump ) );
+				m.CloseGump<AnkhResurrectGump>();
 				m.SendGump( new AnkhResurrectGump( m, ResurrectMessage.VirtueShrine ) );
 			}
 		}
@@ -288,7 +288,7 @@ namespace Server.Items
 
 			if ( IsChildOf( from.Backpack ) )
 			{
-				from.CloseGump( typeof( RewardOptionGump ) );
+				from.CloseGump<RewardOptionGump>();
 				from.SendGump( new RewardOptionGump( this ) );
 			}
 			else

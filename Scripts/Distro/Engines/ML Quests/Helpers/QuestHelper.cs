@@ -157,7 +157,7 @@ namespace Server.Engines.Quests
 
 					if ( quests[i].IsAssignableFrom( quest.GetType() ) )
 					{
-						player.CloseGump( typeof( BaseQuestGump ) );
+						player.CloseGump<BaseQuestGump>();
 
 						if ( quest.Completed )
 						{
@@ -187,7 +187,7 @@ namespace Server.Engines.Quests
 
 				if ( quest.Quester.GetType() == quester.GetType() )
 				{
-					player.CloseGump( typeof( BaseQuestGump ) );
+					player.CloseGump<BaseQuestGump>();
 
 					if ( quest.Completed )
 					{
@@ -249,7 +249,7 @@ namespace Server.Engines.Quests
 
 								quest.OnCompleted();
 
-								player.CloseGump( typeof( BaseQuestGump ) );
+								player.CloseGump<BaseQuestGump>();
 
 								if ( vendor is MondainQuester )
 									player.SendGump( new MLQuestFinishGump( player, quest, (MondainQuester) vendor ) );
@@ -381,7 +381,7 @@ namespace Server.Engines.Quests
 			}
 
 			from.SendLocalizedMessage( 1046258, null, 0x23 ); // Your quest is complete.							
-			from.CloseGump( typeof( BaseQuestGump ) );
+			from.CloseGump<BaseQuestGump>();
 			from.SendGump( new MLQuestFinishGump( from, quest ) );
 			from.PlaySound( quest.CompleteSound );
 

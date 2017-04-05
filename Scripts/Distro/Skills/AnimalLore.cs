@@ -61,7 +61,7 @@ namespace Server.SkillHandlers
 							}
 							else
 							{
-								from.CloseGump( typeof( AnimalLoreGump ) );
+								from.CloseGump<AnimalLoreGump>();
 								from.SendGump( new AnimalLoreGump( c ) );
 							}
 						}

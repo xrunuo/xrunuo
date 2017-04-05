@@ -44,8 +44,8 @@ namespace Server.Engines.Craft
 
 			CraftContext context = craftSystem.GetContext( from );
 
-			from.CloseGump( typeof( CraftGump ) );
-			from.CloseGump( typeof( CraftGumpItem ) );
+			from.CloseGump<CraftGump>();
+			from.CloseGump<CraftGumpItem>();
 
 			AddPage( (int) CraftPage.None );
 
@@ -501,8 +501,8 @@ namespace Server.Engines.Craft
 
 			if ( item != null )
 			{
-				m_From.CloseGump( typeof( CraftGump ) );
-				m_From.CloseGump( typeof( CraftGumpItem ) );
+				m_From.CloseGump<CraftGump>();
+				m_From.CloseGump<CraftGumpItem>();
 
 				CraftItem( item );
 			}

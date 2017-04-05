@@ -196,7 +196,7 @@ namespace Server.Items
 			{
 				if ( from.InRange( this, 5 ) )
 				{
-					from.CloseGump( typeof( VendorRentalContractGump ) );
+					from.CloseGump<VendorRentalContractGump>();
 					from.SendGump( new VendorRentalContractGump( this, from ) );
 				}
 				else
@@ -230,7 +230,7 @@ namespace Server.Items
 
 				if ( m_Contract.IsUsableBy( from, true, true, true, true ) )
 				{
-					from.CloseGump( typeof( VendorRentalContractGump ) );
+					from.CloseGump<VendorRentalContractGump>();
 					from.SendGump( new VendorRentalContractGump( m_Contract, from ) );
 				}
 			}
@@ -336,7 +336,7 @@ namespace Server.Items
 
 				if ( offeree != null )
 				{
-					offeree.CloseGump( typeof( VendorRentalOfferGump ) );
+					offeree.CloseGump<VendorRentalOfferGump>();
 
 					m_Contract.Offeree = null;
 				}

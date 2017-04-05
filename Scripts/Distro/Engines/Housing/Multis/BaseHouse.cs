@@ -1824,7 +1824,7 @@ namespace Server.Engines.Housing.Multis
 					}
 					else
 					{
-						to.CloseGump( typeof( HouseTransferGump ) );
+						to.CloseGump<HouseTransferGump>();
 						to.SendGump( new HouseTransferGump( from, to, this ) );
 					}
 				}
@@ -1846,7 +1846,7 @@ namespace Server.Engines.Housing.Multis
 
 			if ( CheckTransferPosition( from, to ) )
 			{
-				to.CloseGump( typeof( HouseTransferGump ) );
+				to.CloseGump<HouseTransferGump>();
 				to.SendGump( new HouseTransferGump( from, to, this ) );
 			}
 		}

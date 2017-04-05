@@ -110,7 +110,7 @@ namespace Server.Engines.Guilds.Gumps
 			{
 				case 0:
 					{
-						m_Mobile.CloseGump( typeof( WarRequestGump ) );
+						m_Mobile.CloseGump<WarRequestGump>();
 
 						BaseGuild[] guilds = Guild.Search( "" );
 
@@ -139,7 +139,7 @@ namespace Server.Engines.Guilds.Gumps
 							m_Mobile.SendLocalizedMessage( 1070752 ); // The proposal has been updated.
 						}
 
-						m_Mobile.CloseGump( typeof( WarRequestGump ) );
+						m_Mobile.CloseGump<WarRequestGump>();
 
 						break;
 					}

@@ -153,7 +153,7 @@ namespace Server.Engines.BulkOrders
 
 			if ( IsChildOf( from.Backpack ) )
 			{
-				pm.CloseGump( typeof( SmallBODGump ) );
+				pm.CloseGump<SmallBODGump>();
 				from.SendGump( new SmallBODGump( from, this ) );
 			}
 			else
@@ -298,7 +298,7 @@ namespace Server.Engines.BulkOrders
 
 							from.SendLocalizedMessage( 1045170 ); // The item has been combined with the deed.
 
-							pm.CloseGump( typeof( SmallBODGump ) );
+							pm.CloseGump<SmallBODGump>();
 
 							from.SendGump( new SmallBODGump( from, this ) );
 

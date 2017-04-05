@@ -108,7 +108,7 @@ namespace Server.Mobiles
 
 			public override void OnClick()
 			{
-				m.CloseGump( typeof( SphynxGump ) );
+				m.CloseGump<SphynxGump>();
 
 				m.SendGump( new SphynxGump( m, m_Sphynx ) );
 			}

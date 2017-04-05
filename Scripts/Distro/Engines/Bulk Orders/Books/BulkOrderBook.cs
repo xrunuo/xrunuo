@@ -85,7 +85,7 @@ namespace Server.Engines.BulkOrders
 
 					if ( from is PlayerMobile )
 					{
-						( (PlayerMobile) from ).CloseGump( typeof( BOBGump ) );
+						( (PlayerMobile) from ).CloseGump<BOBGump>();
 						from.SendGump( new BOBGump( (PlayerMobile) from, this ) );
 					}
 

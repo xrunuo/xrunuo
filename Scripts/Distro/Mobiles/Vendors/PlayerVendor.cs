@@ -906,8 +906,8 @@ namespace Server.Mobiles
 
 		public void SendOwnerGump( Mobile to )
 		{
-			to.CloseGump( typeof( NewPlayerVendorOwnerGump ) );
-			to.CloseGump( typeof( NewPlayerVendorCustomizeGump ) );
+			to.CloseGump<NewPlayerVendorOwnerGump>();
+			to.CloseGump<NewPlayerVendorCustomizeGump>();
 
 			to.SendGump( new NewPlayerVendorOwnerGump( this ) );
 		}
@@ -958,7 +958,7 @@ namespace Server.Mobiles
 			}
 			else
 			{
-				from.CloseGump( typeof( PlayerVendorBuyGump ) );
+				from.CloseGump<PlayerVendorBuyGump>();
 				from.SendGump( new PlayerVendorBuyGump( vendor, vi ) );
 			}
 		}
@@ -1033,7 +1033,7 @@ namespace Server.Mobiles
 				return;
 			}
 
-			from.CloseGump( typeof( DismissGump ) );
+			from.CloseGump<DismissGump>();
 			from.SendGump( new DismissGump( this ) );
 		}
 

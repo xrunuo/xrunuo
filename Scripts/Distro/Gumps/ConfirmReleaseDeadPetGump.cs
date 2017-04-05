@@ -17,7 +17,7 @@ namespace Server.Gumps
 			m_From = from;
 			m_Pet = pet;
 
-			m_From.CloseGump( typeof( ConfirmReleaseDeadPetGump ) );
+			m_From.CloseGump<ConfirmReleaseDeadPetGump>();
 
 			AddBackground( 0, 0, 270, 120, 0x13BE );
 

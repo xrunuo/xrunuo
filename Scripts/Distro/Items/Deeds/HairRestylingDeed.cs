@@ -64,7 +64,7 @@ namespace Server.Items
 				m_From = from;
 				m_Deed = deed;
 
-				from.CloseGump( typeof( InternalGump ) );
+				from.CloseGump<InternalGump>();
 
 				AddPage( 0 );
 

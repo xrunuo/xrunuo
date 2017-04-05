@@ -37,7 +37,7 @@ namespace Server.Profiler
 		[Description( "Browse profiling information" )]
 		private static void OnViewProfile( CommandEventArgs e )
 		{
-			e.Mobile.CloseGump( typeof( ProfileViewer ) );
+			e.Mobile.CloseGump<ProfileViewer>();
 			e.Mobile.SendGump( new ProfileViewer() );
 		}
 

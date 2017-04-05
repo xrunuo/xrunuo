@@ -627,7 +627,7 @@ namespace Server.Items
 			if ( !from.Alive )
 				return;
 
-			from.CloseGump( typeof( RemoveGump ) );
+			from.CloseGump<RemoveGump>();
 			from.SendGump( new RemoveGump( from, this ) );
 		}
 

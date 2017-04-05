@@ -213,7 +213,7 @@ namespace Server.Engines.Quests.Doom
 								m_AngryAt = null;
 							}
 
-							member.CloseGump( typeof( ChylothPartyGump ) );
+							member.CloseGump<ChylothPartyGump>();
 							member.SendGump( new ChylothPartyGump( from, member ) );
 						}
 					}

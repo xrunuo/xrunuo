@@ -117,13 +117,13 @@ namespace Server.Items
 			if ( !this.IsChildOf( from.Backpack ) )
 				return;
 
-			from.CloseGump( typeof( PromotionalTokenGump ) );
-			from.CloseGump( typeof( AnniversaryRewardGump ) );
-			from.CloseGump( typeof( SeventhAniversaryGump ) );
-			from.CloseGump( typeof( EighthAnniversaryGump ) );
-			from.CloseGump( typeof( BrokenFurnitureGump ) );
-			from.CloseGump( typeof( HeritageItemsGump ) );
-			from.CloseGump( typeof( EvilHomeDecorationGump ) );
+			from.CloseGump<PromotionalTokenGump>();
+			from.CloseGump<AnniversaryRewardGump>();
+			from.CloseGump<SeventhAniversaryGump>();
+			from.CloseGump<EighthAnniversaryGump>();
+			from.CloseGump<BrokenFurnitureGump>();
+			from.CloseGump<HeritageItemsGump>();
+			from.CloseGump<EvilHomeDecorationGump>();
 
 			if ( Type == PromotionalType.AdvancedCharacter )
 			{
@@ -161,13 +161,13 @@ namespace Server.Items
 
 		public override bool OnDragLift( Mobile from )
 		{
-			from.CloseGump( typeof( AnniversaryRewardGump ) );
-			from.CloseGump( typeof( PromotionalTokenGump ) );
-			from.CloseGump( typeof( SeventhAniversaryGump ) );
-			from.CloseGump( typeof( EighthAnniversaryGump ) );
-			from.CloseGump( typeof( BrokenFurnitureGump ) );
-			from.CloseGump( typeof( HeritageItemsGump ) );
-			from.CloseGump( typeof( EvilHomeDecorationGump ) );
+			from.CloseGump<AnniversaryRewardGump>();
+			from.CloseGump<PromotionalTokenGump>();
+			from.CloseGump<SeventhAniversaryGump>();
+			from.CloseGump<EighthAnniversaryGump>();
+			from.CloseGump<BrokenFurnitureGump>();
+			from.CloseGump<HeritageItemsGump>();
+			from.CloseGump<EvilHomeDecorationGump>();
 
 			return base.OnDragLift( from );
 		}
@@ -330,7 +330,7 @@ namespace Server.Items
 					case PromotionalType.SeventhAnniversary:
 						{
 							//Cerramos alg�n posible gump abierto (exploit arreglado)
-							if ( !pm.HasGump( typeof( SeventhAniversaryGump ) ) )
+							if ( !pm.HasGump<SeventhAniversaryGump>() )
 								pm.SendGump( new SeventhAniversaryGump( token ) );
 
 							break;
@@ -338,7 +338,7 @@ namespace Server.Items
 					case PromotionalType.EighthAnniversary:
 						{
 							//Cerramos alg�n posible gump abierto (exploit arreglado)
-							if ( !pm.HasGump( typeof( EighthAnniversaryGump ) ) )
+							if ( !pm.HasGump<EighthAnniversaryGump>() )
 								pm.SendGump( new EighthAnniversaryGump( token ) );
 
 							break;
@@ -346,7 +346,7 @@ namespace Server.Items
 					case PromotionalType.BrokenFurniture:
 						{
 							//Cerramos alg�n posible gump abierto (exploit arreglado)
-							if ( !pm.HasGump( typeof( BrokenFurnitureGump ) ) )
+							if ( !pm.HasGump<BrokenFurnitureGump>() )
 								pm.SendGump( new BrokenFurnitureConfirmGump( token ) );
 
 							break;
@@ -354,7 +354,7 @@ namespace Server.Items
 					case PromotionalType.HeritageItems:
 						{
 							//Cerramos alg�n posible gump abierto (exploit arreglado)
-							if ( !pm.HasGump( typeof( HeritageItemsGump ) ) )
+							if ( !pm.HasGump<HeritageItemsGump>() )
 								pm.SendGump( new HeritageItemsConfirmGump( token ) );
 
 							break;
@@ -362,7 +362,7 @@ namespace Server.Items
 					case PromotionalType.EvilHomeDecoration:
 						{
 							//Cerramos alg�n posible gump abierto (exploit arreglado)
-							if ( !pm.HasGump( typeof( EvilHomeDecorationGump ) ) )
+							if ( !pm.HasGump<EvilHomeDecorationGump>() )
 								pm.SendGump( new EvilHomeDecorationConfirmGump( token ) );
 
 							break;

@@ -72,8 +72,8 @@ namespace Server.Items
 		{
 			PlayerMobile pm = from as PlayerMobile;
 
-			from.CloseGump( typeof( ForgedMetalOfArtifacts.InternalGump ) );
-			from.CloseGump( typeof( ForgedMetalOfArtifacts.CancelGump ) );
+			from.CloseGump<ForgedMetalOfArtifacts.InternalGump>();
+			from.CloseGump<ForgedMetalOfArtifacts.CancelGump>();
 
 			if ( IsChildOf( from.Backpack ) )
 			{

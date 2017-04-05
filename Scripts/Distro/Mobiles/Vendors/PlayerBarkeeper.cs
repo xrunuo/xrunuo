@@ -490,7 +490,7 @@ namespace Server.Mobiles
 
 		public void BeginChangeAppearance( Mobile from )
 		{
-			from.CloseGump( typeof( PlayerVendorCustomizeGump ) );
+			from.CloseGump<PlayerVendorCustomizeGump>();
 			from.SendGump( new PlayerVendorCustomizeGump( this, from ) );
 		}
 
@@ -710,8 +710,8 @@ namespace Server.Mobiles
 			m_From = from;
 			m_Barkeeper = barkeeper;
 
-			from.CloseGump( typeof( BarkeeperGump ) );
-			from.CloseGump( typeof( BarkeeperTitleGump ) );
+			from.CloseGump<BarkeeperGump>();
+			from.CloseGump<BarkeeperTitleGump>();
 
 			Entry[] entries = m_Entries;
 
@@ -970,8 +970,8 @@ namespace Server.Mobiles
 			m_From = from;
 			m_Barkeeper = barkeeper;
 
-			from.CloseGump( typeof( BarkeeperGump ) );
-			from.CloseGump( typeof( BarkeeperTitleGump ) );
+			from.CloseGump<BarkeeperGump>();
+			from.CloseGump<BarkeeperTitleGump>();
 
 			RenderBackground();
 			RenderCategories();

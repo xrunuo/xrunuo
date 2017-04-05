@@ -142,7 +142,7 @@ namespace Server.Regions
 
 		public override void OnExit( Mobile m )
 		{
-			m.CloseGump( typeof( CompassGump ) );
+			m.CloseGump<CompassGump>();
 		}
 
 		public override void OnLocationChanged( Mobile m, Point3D oldLocation )
@@ -243,7 +243,7 @@ namespace Server.Regions
 				}
 				else if ( m.Backpack.FindItemByType<GoldenCompass>( false ) != null )
 				{
-					m.CloseGump( typeof( CompassGump ) );
+					m.CloseGump<CompassGump>();
 					m.SendGump( new CompassGump( m_Maze.GetCompassDirection( m.Location ) ) );
 				}
 			}

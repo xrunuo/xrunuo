@@ -118,8 +118,8 @@ namespace Server.Mobiles
 
 					if ( pm.ToTItemsTurnedIn == 10 )
 					{
-						pm.CloseGump( typeof( ChooseRewardGump ) );
-						pm.CloseGump( typeof( ChoosePigmentGump ) );
+						pm.CloseGump<ChooseRewardGump>();
+						pm.CloseGump<ChoosePigmentGump>();
 
 						pm.SendGump( new ChooseRewardGump( pm, this ) );
 

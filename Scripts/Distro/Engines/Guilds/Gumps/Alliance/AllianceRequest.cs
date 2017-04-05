@@ -107,7 +107,7 @@ namespace Server.Engines.Guilds.Gumps
 
 						m_Mobile.SendGump( new DiplomacyGump( m_Mobile, m_Guild, new ArrayList( guilds ), 2 ) );
 
-						m_Mobile.CloseGump( typeof( AllianceRequestGump ) );
+						m_Mobile.CloseGump<AllianceRequestGump>();
 
 						break;
 					}
@@ -134,7 +134,7 @@ namespace Server.Engines.Guilds.Gumps
 
 						m_Mobile.SendLocalizedMessage( 1070752 ); // The proposal has been updated.
 
-						m_Mobile.CloseGump( typeof( WarRequestGump ) );
+						m_Mobile.CloseGump<WarRequestGump>();
 
 						break;
 					}
@@ -149,7 +149,7 @@ namespace Server.Engines.Guilds.Gumps
 							m_Mobile.SendGump( new DiplomacyGump( m_Mobile, m_Guild, new ArrayList( guilds ), 2 ) );
 						}
 
-						m_Mobile.CloseGump( typeof( AllianceRequestGump ) );
+						m_Mobile.CloseGump<AllianceRequestGump>();
 
 						break;
 					}

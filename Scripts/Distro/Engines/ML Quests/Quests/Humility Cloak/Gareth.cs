@@ -390,7 +390,7 @@ namespace Server.Engines.Quests.HumilityCloak
 			{
 				case HumilityQuestStatus.NonStarted:
 					{
-						if ( player.HasGump( typeof( GenericQuestGump ) ) || player.HasGump( typeof( QuestQuestionGump ) ) )
+						if ( player.HasGump<GenericQuestGump>() || player.HasGump<QuestQuestionGump>() )
 							break;
 
 						if ( player.HumilityQuestNextChance < DateTime.UtcNow )
@@ -411,7 +411,7 @@ namespace Server.Engines.Quests.HumilityCloak
 					}
 				case HumilityQuestStatus.RewardRefused:
 					{
-						player.CloseGump( typeof( GenericQuestGump ) );
+						player.CloseGump<GenericQuestGump>();
 
 						/* Ah yes, there is an island far to the south where ye canst find the
 						 * Shrine of Humility. Seek solace there, my friend, that thine questions

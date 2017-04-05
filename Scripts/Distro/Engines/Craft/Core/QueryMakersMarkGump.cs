@@ -21,7 +21,7 @@ namespace Server.Engines.Craft
 		public QueryMakersMarkGump( bool exceptional, Mobile from, CraftItem craftItem, CraftSystem craftSystem, Type typeRes, BaseTool tool, bool questItem )
 			: base( 100, 200 )
 		{
-			from.CloseGump( typeof( QueryMakersMarkGump ) );
+			from.CloseGump<QueryMakersMarkGump>();
 
 			m_Exceptional = exceptional;
 			m_From = from;

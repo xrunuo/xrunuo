@@ -47,7 +47,7 @@ namespace Server.Items
 			}
 			else
 			{
-				m.CloseGump( typeof( ConfirmPeerlessGump ) );
+				m.CloseGump<ConfirmPeerlessGump>();
 				m.SendGump( new ConfirmPeerlessGump( this ) );
 			}
 		}
@@ -113,7 +113,7 @@ namespace Server.Items
 
 				PlayerMobile from = sender.Mobile as PlayerMobile;
 
-				from.CloseGump( typeof( ConfirmPeerlessGump ) );
+				from.CloseGump<ConfirmPeerlessGump>();
 
 				switch ( button )
 				{
@@ -136,7 +136,7 @@ namespace Server.Items
 
 								if ( member.Map == @from.Map && member.Region == @from.Region )
 								{
-									member.CloseGump( typeof( ConfirmPeerlessPartyGump ) );
+									member.CloseGump<ConfirmPeerlessPartyGump>();
 									member.SendGump( new ConfirmPeerlessPartyGump( m_key, member ) );
 								}
 							}
@@ -144,7 +144,7 @@ namespace Server.Items
 
 						if ( m_key != null && !m_key.Deleted )
 						{
-							from.CloseGump( typeof( ConfirmPeerlessPartyGump ) );
+							from.CloseGump<ConfirmPeerlessPartyGump>();
 							from.SendGump( new ConfirmPeerlessPartyGump( m_key, from ) );
 							m_key.Delete();
 						}
@@ -183,7 +183,7 @@ namespace Server.Items
 			public override void OnResponse( NetState sender, RelayInfo info )
 			{
 				Mobile from = sender.Mobile;
-				from.CloseGump( typeof( ConfirmPeerlessPartyGump ) );
+				from.CloseGump<ConfirmPeerlessPartyGump>();
 
 				int button = info.ButtonID;
 				switch ( button )
@@ -215,7 +215,7 @@ namespace Server.Items
 
 			protected override void OnTick()
 			{
-				m_From.CloseGump( typeof( ConfirmPeerlessPartyGump ) );
+				m_From.CloseGump<ConfirmPeerlessPartyGump>();
 				Stop();
 			}
 		}

@@ -85,7 +85,7 @@ namespace Server
 			}
 			else if ( beholder.Map == beheld.Map && beholder.InRange( beheld, 12 ) )
 			{
-				beholder.CloseGump( typeof( VirtueGump ) );
+				beholder.CloseGump<VirtueGump>();
 				beholder.SendGump( new VirtueGump( beholder, beheld ) );
 			}
 		}

@@ -239,7 +239,7 @@ namespace Server.Items
 
 			InvalidateProperties();
 
-			from.CloseGump( typeof( AquariumGump ) );
+			from.CloseGump<AquariumGump>();
 
 			return true;
 		}
@@ -694,7 +694,7 @@ namespace Server.Items
 
 			IHouse house = HousingHelper.FindHouseAt( this );
 
-			from.CloseGump( typeof( AquariumGump ) );
+			from.CloseGump<AquariumGump>();
 
 			if ( house != null && house.IsCoOwner( from ) )
 				from.SendGump( new AquariumGump( this, true ) );

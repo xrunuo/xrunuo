@@ -40,10 +40,10 @@ namespace Server.Engines.Collections
 
 			if ( m_Controller != null )
 			{
-				from.CloseGump( typeof( CollectionDonateGump ) );
-				from.CloseGump( typeof( CollectionRewardGump ) );
-				from.CloseGump( typeof( CollectionConfirmReward ) );
-				from.CloseGump( typeof( CollectionSelectHueGump ) );
+				from.CloseGump<CollectionDonateGump>();
+				from.CloseGump<CollectionRewardGump>();
+				from.CloseGump<CollectionConfirmReward>();
+				from.CloseGump<CollectionSelectHueGump>();
 
 				from.SendGump( new CollectionDonateGump( m_Controller, from ) );
 			}

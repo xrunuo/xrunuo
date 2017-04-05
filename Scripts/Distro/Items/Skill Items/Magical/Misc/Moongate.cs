@@ -205,7 +205,7 @@ namespace Server.Items
 			if ( IsInTown( from.Location, from.Map ) && !IsInTown( m_Target, m_TargetMap ) || ( from.Map != Map.Felucca && TargetMap == Map.Felucca && ShowFeluccaWarning ) )
 			{
 				from.Send( GenericPackets.PlaySound( 0x20E, from.Location ) );
-				from.CloseGump( typeof( MoongateConfirmGump ) );
+				from.CloseGump<MoongateConfirmGump>();
 				from.SendGump( new MoongateConfirmGump( from, this ) );
 			}
 			else
@@ -353,7 +353,7 @@ namespace Server.Items
 		{
 			if ( m_GumpWidth > 0 && m_GumpHeight > 0 && m_TitleNumber > 0 && ( m_MessageNumber > 0 || m_MessageString != null ) )
 			{
-				from.CloseGump( typeof( WarningGump ) );
+				from.CloseGump<WarningGump>();
 				from.SendGump( new WarningGump( m_TitleNumber, m_TitleColor, m_MessageString == null ? (object) m_MessageNumber : (object) m_MessageString, m_MessageColor, m_GumpWidth, m_GumpHeight, new WarningGumpCallback( Warning_Callback ), from ) );
 			}
 			else

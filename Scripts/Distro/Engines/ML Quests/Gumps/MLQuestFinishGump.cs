@@ -103,7 +103,7 @@ namespace Server.Engines.Quests
 						m_Quest.GiveRewards();
 					else
 					{
-						m_From.CloseGump( typeof( BaseQuestGump ) );
+						m_From.CloseGump<BaseQuestGump>();
 						m_From.SendGump( new MLQuestRewardGump( m_Quest ) );
 					}
 				}

@@ -23,7 +23,7 @@ namespace Server.Engines.Guilds.Prompts
 			if ( m_Guild.BadLeader( m_Mobile ) )
 				return;
 
-			m_Mobile.CloseGump( typeof( MyGuildGump ) );
+			m_Mobile.CloseGump<MyGuildGump>();
 
 			m_Mobile.SendLocalizedMessage( 1070778 ); // You submit a new guild website.
 		}
@@ -43,7 +43,7 @@ namespace Server.Engines.Guilds.Prompts
 			if ( text.Length > 0 )
 				g.Website = text;
 
-			m_Mobile.CloseGump( typeof( MyGuildGump ) );
+			m_Mobile.CloseGump<MyGuildGump>();
 
 			m_Mobile.SendLocalizedMessage( 1070778 ); // You submit a new guild website.
 		}

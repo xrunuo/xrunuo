@@ -56,7 +56,7 @@ namespace Server.Mobiles
 
 					m_ExpireTable[m] = Timer.DelayCall( TimeSpan.FromMinutes( 1.0 ), ResetExpire, m );
 
-					m.CloseGump( typeof( VetResurrectGump ) );
+					m.CloseGump<VetResurrectGump>();
 					m.SendGump( new VetResurrectGump( pets ) );
 				}
 			}
@@ -65,7 +65,7 @@ namespace Server.Mobiles
 		public static void ResetExpire( Mobile m )
 		{
 			m.Frozen = false;
-			m.CloseGump( typeof( VetResurrectGump ) );
+			m.CloseGump<VetResurrectGump>();
 
 			if ( m_ExpireTable.ContainsKey( m ) )
 			{

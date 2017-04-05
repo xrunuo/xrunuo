@@ -286,7 +286,7 @@ namespace Server.Items
 			}
 			else if ( ( sot.Value * 10 ) + m_Total > 50 )
 			{
-				from.CloseGump( typeof( BindSotWarningGump ) );
+				from.CloseGump<BindSotWarningGump>();
 				from.SendGump( new BindSotWarningGump( this, sot ) );
 			}
 			else

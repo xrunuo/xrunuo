@@ -316,7 +316,7 @@ namespace Server.Engines.Quests
 
 				if ( quest != null && quest.ChainID == ChainID )
 				{
-					m_Owner.CloseGump( typeof( BaseQuestGump ) );
+					m_Owner.CloseGump<BaseQuestGump>();
 					m_Owner.SendGump( new MLQuestOfferGump( quest ) );
 				}
 			}

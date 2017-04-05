@@ -153,7 +153,7 @@ namespace Server.Items
 		{
 			Mobile from = sender.Mobile;
 
-			from.CloseGump( typeof( EngravingGump ) );
+			from.CloseGump<EngravingGump>();
 
 			if ( info.ButtonID == 1 ) // Okay button.
 			{

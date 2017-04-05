@@ -139,10 +139,10 @@ namespace Server.Engines.Collections
 
 			base.OnDoubleClick( from );
 
-			from.CloseGump( typeof( CollectionDonateGump ) );
-			from.CloseGump( typeof( CollectionRewardGump ) );
-			from.CloseGump( typeof( CollectionConfirmReward ) );
-			from.CloseGump( typeof( CollectionSelectHueGump ) );
+			from.CloseGump<CollectionDonateGump>();
+			from.CloseGump<CollectionRewardGump>();
+			from.CloseGump<CollectionConfirmReward>();
+			from.CloseGump<CollectionSelectHueGump>();
 
 			from.SendGump( new CollectionDonateGump( this, from ) );
 		}

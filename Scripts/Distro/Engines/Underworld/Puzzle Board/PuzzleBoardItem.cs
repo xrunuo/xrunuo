@@ -34,7 +34,7 @@ namespace Server.Items
 			if ( !m_Board.Initialized )
 				m_Board.Reset();
 
-			from.CloseGump( typeof( PuzzleBoardGump ) );
+			from.CloseGump<PuzzleBoardGump>();
 			from.SendGump( new PuzzleBoardGump( this ) );
 		}
 

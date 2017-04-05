@@ -158,7 +158,7 @@ namespace Server.Engines.Housing.Regions
 				}
 			}
 
-			if ( m_House.InternalizedVendors.Count > 0 && m_House.IsInside( m ) && !m_House.IsInside( oldLocation, 16 ) && m_House.IsOwner( m ) && m.Alive && !m.HasGump( typeof( NoticeGump ) ) )
+			if ( m_House.InternalizedVendors.Count > 0 && m_House.IsInside( m ) && !m_House.IsInside( oldLocation, 16 ) && m_House.IsOwner( m ) && m.Alive && !m.HasGump<NoticeGump>() )
 			{
 				/* This house has been customized recently, and vendors that work out of this
 				 * house have been temporarily relocated.  You must now put your vendors back to work.
@@ -214,7 +214,7 @@ namespace Server.Engines.Housing.Regions
 					return false;
 			}
 
-			if ( m_House.InternalizedVendors.Count > 0 && m_House.IsInside( from ) && !m_House.IsInside( oldLocation, 16 ) && m_House.IsOwner( from ) && from.Alive && !from.HasGump( typeof( NoticeGump ) ) )
+			if ( m_House.InternalizedVendors.Count > 0 && m_House.IsInside( from ) && !m_House.IsInside( oldLocation, 16 ) && m_House.IsOwner( from ) && from.Alive && !from.HasGump<NoticeGump>() )
 			{
 				/* This house has been customized recently, and vendors that work out of this
 				 * house have been temporarily relocated.  You must now put your vendors back to work.
@@ -289,8 +289,8 @@ namespace Server.Engines.Housing.Regions
 				}
 				else if ( isOwner )
 				{
-					from.CloseGump( typeof( ConfirmHouseResize ) );
-					from.CloseGump( typeof( HouseGump ) );
+					from.CloseGump<ConfirmHouseResize>();
+					from.CloseGump<HouseGump>();
 					from.SendGump( new ConfirmHouseResize( from, m_House ) );
 				}
 				else

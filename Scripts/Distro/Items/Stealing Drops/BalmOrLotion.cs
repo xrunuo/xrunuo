@@ -38,7 +38,7 @@ namespace Server.Items
 			{
 				from.SendLocalizedMessage( 1095133 ); // You are already under the effect of a balm or lotion.
 
-				from.CloseGump( typeof( ReplaceBalmOrLotionGump ) );
+				from.CloseGump<ReplaceBalmOrLotionGump>();
 				from.SendGump( new ReplaceBalmOrLotionGump( this ) );
 			}
 			else if ( FontOfFortune.HasAnyBlessing( from ) )

@@ -109,7 +109,7 @@ namespace Server.Engines.Guilds.Gumps
 			{
 				case 0: // Cancel
 					{
-						m_Mobile.CloseGump( typeof( AcceptAllianceGump ) );
+						m_Mobile.CloseGump<AcceptAllianceGump>();
 
 						BaseGuild[] guilds = Guild.Search( "" );
 
@@ -139,7 +139,7 @@ namespace Server.Engines.Guilds.Gumps
 
 							m_Mobile.SendLocalizedMessage( 1070752 ); // The proposal nas been updated.
 
-							m_Mobile.CloseGump( typeof( AcceptAllianceGump ) );
+							m_Mobile.CloseGump<AcceptAllianceGump>();
 						}
 
 						break;
@@ -195,7 +195,7 @@ namespace Server.Engines.Guilds.Gumps
 							m_Mobile.SendLocalizedMessage( 1070752 ); // The proposal nas been updated.
 						}
 
-						m_Mobile.CloseGump( typeof( AcceptAllianceGump ) );
+						m_Mobile.CloseGump<AcceptAllianceGump>();
 
 						break;
 					}
@@ -210,7 +210,7 @@ namespace Server.Engines.Guilds.Gumps
 							m_Mobile.SendGump( new DiplomacyGump( m_Mobile, m_Guild, new ArrayList( guilds ), 2 ) );
 						}
 
-						m_Mobile.CloseGump( typeof( AcceptAllianceGump ) );
+						m_Mobile.CloseGump<AcceptAllianceGump>();
 
 						break;
 					}

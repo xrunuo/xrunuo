@@ -389,8 +389,8 @@ namespace Server.Items
 
 			m_Owner.PlaySound( 0x201 );
 
-			m_Owner.CloseGump( typeof( BaseActivation.ConfirmPeerlessGump ) );
-			m_Owner.CloseGump( typeof( BaseActivation.ConfirmPeerlessPartyGump ) );
+			m_Owner.CloseGump<BaseActivation.ConfirmPeerlessGump>();
+			m_Owner.CloseGump<BaseActivation.ConfirmPeerlessPartyGump>();
 
 			for ( int i = 0; i < m_key.Length; i++ )
 			{

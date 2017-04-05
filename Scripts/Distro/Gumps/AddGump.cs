@@ -51,7 +51,7 @@ namespace Server.Gumps
 			m_SearchResults = searchResults;
 			m_Page = page;
 
-			from.CloseGump( typeof( AddGump ) );
+			from.CloseGump<AddGump>();
 
 			AddPage( 0 );
 
