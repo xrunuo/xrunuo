@@ -26,7 +26,7 @@ namespace Server.Engines.Imbuing
 			return false;
 		}
 
-		private static readonly Point3D m_QueenSoulforgeLoc = new Point3D( 749, 3375, -65 );
+		//private static readonly Point3D m_QueenSoulforgeLoc = new Point3D( 749, 3375, -65 );
 
 		public static bool CheckQueen( Mobile from )
 		{
@@ -45,7 +45,7 @@ namespace Server.Engines.Imbuing
 			if ( map == null )
 				return false;
 
-			bool found = from.GetItemsInRange( range ).Where( i => CheckTile( i.ItemID ) ).Any();
+			bool found = from.GetItemsInRange( range ).Any( i => CheckTile( i.ItemID ) );
 
 			for ( int x = -range; !found && x <= range; ++x )
 			{

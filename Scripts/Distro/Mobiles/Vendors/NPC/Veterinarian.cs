@@ -1,19 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Server;
+using System.Linq;
+
 using Server.Gumps;
-using Server.Items;
 using Server.Network;
-using Server.Targeting;
-using Server.ContextMenus;
 
 namespace Server.Mobiles
 {
 	public class Veterinarian : BaseVendor
 	{
 		private ArrayList m_SBInfos = new ArrayList();
-		protected override ArrayList SBInfos { get { return m_SBInfos; } }
+		protected override ArrayList SBInfos => m_SBInfos;
 
 		[Constructable]
 		public Veterinarian()
@@ -30,44 +28,36 @@ namespace Server.Mobiles
 
 		private static Dictionary<Mobile, Timer> m_ExpireTable = new Dictionary<Mobile, Timer>();
 
-		public static BaseCreature[] GetDeadPets( Mobile from )
+		public static IEnumerable<BaseCreature> GetDeadPets( Mobile from )
 		{
-			List<BaseCreature> pets = new List<BaseCreature>();
-
-			foreach ( Mobile m in from.GetMobilesInRange( 12 ) )
-			{
-				BaseCreature bc = m as BaseCreature;
-
-				if ( bc != null && bc.IsDeadBondedPet && bc.ControlMaster == from && from.InLOS( bc ) )
-					pets.Add( bc );
-			}
-
-			return pets.ToArray();
+			return from.GetMobilesInRange( 12 )
+				.OfType<BaseCreature>()
+				.Where( bc => bc.IsDeadBondedPet && bc.ControlMaster == from && from.InLOS( bc ) );
 		}
 
 		public static int GetResurrectionFee( BaseCreature bc )
 		{
-			int fee = (int) ( 100 + Math.Pow( 1.1041, bc.MinTameSkill ) );
+			int fee = (int)( 100 + Math.Pow( 1.1041, bc.MinTameSkill ) );
 
 			Utility.FixMinMax( ref fee, 100, 30000 );
-			
+
 			return fee;
 		}
 
 		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
-			if ( this.InRange( m, 3 ) && !this.InRange( oldLocation, 3 ) && this.InLOS( m ) )
+			if ( this.InRange( m, 3 ) && !this.InRange( oldLocation, 3 ) && InLOS( m ) )
 			{
-				BaseCreature[] pets = GetDeadPets( m );
+				var pets = GetDeadPets( m ).ToArray();
 
-				if ( pets.Length > 0 )
+				if ( pets.Any() )
 				{
 					m.Frozen = true;
 
-					m_ExpireTable[m] = Timer.DelayCall( TimeSpan.FromMinutes( 1.0 ), new TimerStateCallback<Mobile>( ResetExpire ), m );
+					m_ExpireTable[m] = Timer.DelayCall( TimeSpan.FromMinutes( 1.0 ), ResetExpire, m );
 
 					m.CloseGump( typeof( VetResurrectGump ) );
-					m.SendGump( new VetResurrectGump( this, pets ) );
+					m.SendGump( new VetResurrectGump( pets ) );
 				}
 			}
 		}
@@ -97,7 +87,7 @@ namespace Server.Mobiles
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 ); // version
+			writer.Write( 0 ); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -111,15 +101,13 @@ namespace Server.Mobiles
 
 	public class VetResurrectGump : Gump
 	{
-		public override int TypeID { get { return 0xF3E96; } }
+		public override int TypeID => 0xF3E96;
 
-		private Veterinarian m_Vet;
-		private BaseCreature[] m_Pets;
+		private readonly BaseCreature[] m_Pets;
 
-		public VetResurrectGump( Veterinarian vet, BaseCreature[] pets )
+		public VetResurrectGump( BaseCreature[] pets )
 			: base( 150, 50 )
 		{
-			m_Vet = vet;
 			m_Pets = pets;
 
 			AddPage( 0 );
@@ -159,7 +147,7 @@ namespace Server.Mobiles
 				BaseCreature pet = m_Pets[i];
 
 				AddRadio( 30, 102 + yOffset, 0x25FF, 0x2602, ( i == 0 ), i );
-				AddLabel( 70, 107 + yOffset, 0x47E, String.Format( "{0}  {1}", pet.Name, Veterinarian.GetResurrectionFee( pet ).ToString() ) );
+				AddLabel( 70, 107 + yOffset, 0x47E, String.Format( "{0}  {1}", pet.Name, Veterinarian.GetResurrectionFee( pet ) ) );
 			}
 		}
 
@@ -172,52 +160,52 @@ namespace Server.Mobiles
 			switch ( info.ButtonID )
 			{
 				case -1:
-					{
-						// You decide against paying the Veterinarian, and the ghost of your pet looks at you sadly...
-						from.SendLocalizedMessage( 1113197 );
+				{
+					// You decide against paying the Veterinarian, and the ghost of your pet looks at you sadly...
+					from.SendLocalizedMessage( 1113197 );
 
-						break;
-					}
+					break;
+				}
 				case 1:
+				{
+					for ( int i = 0; i < m_Pets.Length; i++ )
 					{
-						for ( int i = 0; i < m_Pets.Length; i++ )
+						BaseCreature pet = m_Pets[i];
+
+						if ( info.IsSwitched( i ) )
 						{
-							BaseCreature pet = m_Pets[i];
+							int fee = Veterinarian.GetResurrectionFee( pet );
 
-							if ( info.IsSwitched( i ) )
+							if ( !pet.IsDeadBondedPet )
+								from.SendLocalizedMessage( 501041 ); // Target is not dead.
+							else if ( !from.CanSee( pet ) || !from.InLOS( pet ) )
+								from.SendLocalizedMessage( 503376 ); // Target cannot be seen.
+							else if ( !from.InRange( pet, 12 ) )
+								from.SendLocalizedMessage( 500643 ); // Target is too far away.
+							else if ( pet.ControlMaster != from )
+								from.SendLocalizedMessage( 1113200 ); // You must be the owner of that pet to have it resurrected.
+							else if ( pet.Corpse != null && !pet.Corpse.Deleted )
+								from.SendLocalizedMessage( 1113279 ); // That creature's spirit lacks cohesion. Try again in a few minutes.
+							else if ( Banker.Withdraw( from, fee ) )
 							{
-								int fee = Veterinarian.GetResurrectionFee( pet );
+								pet.PlaySound( 0x214 );
+								pet.ResurrectPet();
 
-								if ( !pet.IsDeadBondedPet )
-									from.SendLocalizedMessage( 501041 ); // Target is not dead.
-								else if ( !from.CanSee( pet ) || !from.InLOS( pet ) )
-									from.SendLocalizedMessage( 503376 ); // Target cannot be seen.
-								else if ( !from.InRange( pet, 12 ) )
-									from.SendLocalizedMessage( 500643 ); // Target is too far away.
-								else if ( pet.ControlMaster != from )
-									from.SendLocalizedMessage( 1113200 ); // You must be the owner of that pet to have it resurrected.
-								else if ( pet.Corpse != null && !pet.Corpse.Deleted )
-									from.SendLocalizedMessage( 1113279 ); // That creature's spirit lacks cohesion. Try again in a few minutes.
-								else if ( Banker.Withdraw( from, fee ) )
-								{
-									pet.PlaySound( 0x214 );
-									pet.ResurrectPet();
+								for ( int j = 0; j < pet.Skills.Length; ++j ) // Decrease all skills on pet.
+									pet.Skills[j].Base -= 0.2;
 
-									for ( int j = 0; j < pet.Skills.Length; ++j ) // Decrease all skills on pet.
-										pet.Skills[j].Base -= 0.2;
-
-									from.SendLocalizedMessage( 1060398, fee.ToString() ); // ~1_AMOUNT~ gold has been withdrawn from your bank box.
-									from.SendLocalizedMessage( 1060022, Banker.GetBalance( from ).ToString(), 0x16 ); // You have ~1_AMOUNT~ gold in cash remaining in your bank box.
-								}
-								else
-									from.SendLocalizedMessage( 1060020 ); // Unfortunately, you do not have enough cash in your bank to cover the cost of the healing.
-
-								break;
+								from.SendLocalizedMessage( 1060398, fee.ToString() ); // ~1_AMOUNT~ gold has been withdrawn from your bank box.
+								from.SendLocalizedMessage( 1060022, Banker.GetBalance( from ).ToString(), 0x16 ); // You have ~1_AMOUNT~ gold in cash remaining in your bank box.
 							}
-						}
+							else
+								from.SendLocalizedMessage( 1060020 ); // Unfortunately, you do not have enough cash in your bank to cover the cost of the healing.
 
-						break;
+							break;
+						}
 					}
+
+					break;
+				}
 			}
 		}
 	}

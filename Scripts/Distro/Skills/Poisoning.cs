@@ -89,7 +89,6 @@ namespace Server.SkillHandlers
 					private Item m_Target;
 					private Poison m_Poison;
 					private double m_MinSkill, m_MaxSkill;
-					private BasePoisonPotion m_Potion;
 
 					public InternalTimer( Mobile from, Item target, BasePoisonPotion potion )
 						: base( TimeSpan.FromSeconds( 2.0 ) )
@@ -97,7 +96,6 @@ namespace Server.SkillHandlers
 						m_From = from;
 						m_Target = target;
 						m_Poison = potion.Poison;
-						m_Potion = potion;
 						m_MinSkill = potion.MinPoisoningSkill;
 						m_MaxSkill = potion.MaxPoisoningSkill;
 					}

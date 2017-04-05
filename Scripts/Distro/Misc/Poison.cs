@@ -58,14 +58,13 @@ namespace Server
 			m_MessageInterval = messageInterval;
 		}
 
-		public override string Name { get { return m_Name; } }
-		public override int Level { get { return m_Level; } }
+		public override string Name => m_Name;
+		public override int Level => m_Level;
 
 		private class PoisonTimer : Timer
 		{
 			private PoisonImpl m_Poison;
 			private Mobile m_Mobile;
-			private int m_LastDamage;
 			private int m_Index;
 
 			public PoisonTimer( Mobile m, PoisonImpl p )
@@ -76,7 +75,7 @@ namespace Server
 
 				int damage = 1 + (int) ( m.Hits * p.m_Scalar );
 
-				BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Poison, 1017383, 1075633, TimeSpan.FromSeconds( (int) ( ( p.m_Count + 1 ) * p.m_Interval.TotalSeconds ) ), m, String.Format( "{0}\t{1}", damage, (int) p.m_Interval.TotalSeconds ) ) );
+				BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Poison, 1017383, 1075633, TimeSpan.FromSeconds( (int) ( ( p.m_Count + 1 ) * p.m_Interval.TotalSeconds ) ), m, $"{damage}\t{(int)p.m_Interval.TotalSeconds}" ) );
 			}
 
 			protected override void OnTick()
@@ -90,7 +89,7 @@ namespace Server
 
 					m_Mobile.LocalOverheadMessage( MessageType.Emote, 0x3F, true, "* You feel yourself resisting the effects of the poison *" );
 
-					m_Mobile.NonlocalOverheadMessage( MessageType.Emote, 0x3F, true, String.Format( "* {0} seems resistant to the poison *", m_Mobile.Name ) );
+					m_Mobile.NonlocalOverheadMessage( MessageType.Emote, 0x3F, true, $"* {m_Mobile.Name} seems resistant to the poison *" );
 
 					Stop();
 					return;
@@ -112,10 +111,8 @@ namespace Server
 				else if ( damage > m_Poison.m_Maximum )
 					damage = m_Poison.m_Maximum;
 
-				m_LastDamage = damage;
-
 				#region Darkglow
-				Mobile poisoner = DarkglowPotion.GetPoisoner( m_Mobile );
+				var poisoner = DarkglowPotion.GetPoisoner( m_Mobile );
 
 				if ( poisoner != null )
 				{
@@ -132,7 +129,7 @@ namespace Server
 				}
 				#endregion
 
-				IHonorTarget honorTarget = m_Mobile as IHonorTarget;
+				var honorTarget = m_Mobile as IHonorTarget;
 
 				if ( honorTarget != null && honorTarget.ReceivedHonorContext != null )
 					honorTarget.ReceivedHonorContext.OnTargetPoisoned();

@@ -171,8 +171,6 @@ namespace Server.Mobiles
 			return m_Table[from] != null;
 		}
 
-		private DateTime m_NextDrop = DateTime.UtcNow;
-
 		public virtual void DropOoze()
 		{
 			if ( Map == null )
@@ -357,9 +355,9 @@ namespace Server.Mobiles
 				/*for ( int i = 0; i < m.Items.Count; i ++ )
 				{
 					IDurability item = m.Items[ i ] as IDurability;
-	
+
 					if ( item != null && Utility.RandomDouble() < 0.25 )
-					{						
+					{
 						if ( item.HitPoints > 10 )
 							item.HitPoints -= 10;
 						else

@@ -12,17 +12,13 @@ namespace Server.Items
 
 	public class ValorVirtueTileAddon : BaseAddon
 	{
-		public override BaseAddonDeed Deed { get { return new ValorVirtueTileDeed(); } }
-
-		private ValorTileType m_ValorTileType;
+		public override BaseAddonDeed Deed => new ValorVirtueTileDeed();
 
 		private int offset;
 
 		[Constructable]
 		public ValorVirtueTileAddon( ValorTileType type )
 		{
-			m_ValorTileType = type;
-
 			offset = 0;
 
 			if ( type == ValorTileType.North )
@@ -59,8 +55,8 @@ namespace Server.Items
 
 	public class ValorVirtueTileDeed : BaseAddonDeed, IRewardOption
 	{
-		public override BaseAddon Addon { get { return new ValorVirtueTileAddon( m_ValorTileType ); } }
-		public override int LabelNumber { get { return 1080486; } } // Valor Virtue Tile Deed
+		public override BaseAddon Addon => new ValorVirtueTileAddon( m_ValorTileType );
+		public override int LabelNumber => 1080486; // Valor Virtue Tile Deed
 
 		private ValorTileType m_ValorTileType;
 
@@ -78,7 +74,7 @@ namespace Server.Items
 				from.SendGump( new RewardOptionGump( this ) );
 			}
 			else
-				from.SendLocalizedMessage( 1062334 ); // This item must be in your backpack to be used.       	
+				from.SendLocalizedMessage( 1062334 ); // This item must be in your backpack to be used.
 		}
 
 		public ValorVirtueTileDeed( Serial serial )

@@ -1,16 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using Server;
 using Server.ContextMenus;
 using Server.Engines.Housing;
 using Server.Engines.Housing.Multis;
 using Server.Gumps;
-using Server.Items;
 using Server.Network;
 using Server.Targeting;
 using Server.Mobiles;
-using Server.Multis;
 using Server.Events;
 
 namespace Server.Items
@@ -18,7 +17,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x14E7, 0x14E8 )]
 	public class HitchingPost : Item, ISecurable
 	{
-		public override int LabelNumber { get { return 1071127; } } // hitching post (replica)
+		public override int LabelNumber => 1071127; // hitching post (replica)
 
 		private int m_UsesRemaining;
 		private int m_Charges;
@@ -28,21 +27,33 @@ namespace Server.Items
 		public SecureLevel Level
 		{
 			get { return m_Level; }
-			set { m_Level = value; InvalidateProperties(); }
+			set
+			{
+				m_Level = value;
+				InvalidateProperties();
+			}
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int Charges
 		{
 			get { return m_Charges; }
-			set { m_Charges = value; InvalidateProperties(); }
+			set
+			{
+				m_Charges = value;
+				InvalidateProperties();
+			}
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int UsesRemaining
 		{
 			get { return m_UsesRemaining; }
-			set { m_UsesRemaining = value; InvalidateProperties(); }
+			set
+			{
+				m_UsesRemaining = value;
+				InvalidateProperties();
+			}
 		}
 
 		[Constructable]
@@ -73,21 +84,7 @@ namespace Server.Items
 			base.AddNameProperties( list );
 
 			list.Add( 1060584, m_UsesRemaining.ToString() );
-
 			list.Add( 1071215, m_Charges.ToString() );
-		}
-
-		private class StableEntry : ContextMenuEntry
-		{
-			private HitchingPost m_Post;
-			private Mobile m_From;
-
-			public StableEntry( HitchingPost post, Mobile from )
-				: base( 6126, 12 )
-			{
-				m_Post = post;
-				m_From = from;
-			}
 		}
 
 		private class ClaimListGump : Gump
@@ -155,13 +152,13 @@ namespace Server.Items
 				max = 2;
 
 			if ( taming >= 100.0 )
-				max += (int) ( ( taming - 90.0 ) / 10 );
+				max += (int)( ( taming - 90.0 ) / 10 );
 
 			if ( anlore >= 100.0 )
-				max += (int) ( ( anlore - 90.0 ) / 10 );
+				max += (int)( ( anlore - 90.0 ) / 10 );
 
 			if ( vetern >= 100.0 )
-				max += (int) ( ( vetern - 90.0 ) / 10 );
+				max += (int)( ( vetern - 90.0 ) / 10 );
 
 			return max;
 		}
@@ -179,7 +176,7 @@ namespace Server.Items
 			protected override void OnTarget( Mobile from, object targeted )
 			{
 				if ( targeted is BaseCreature )
-					m_Post.EndStable( from, (BaseCreature) targeted );
+					m_Post.EndStable( from, (BaseCreature)targeted );
 				else if ( targeted == from )
 					from.SendLocalizedMessage( 502672 ); // HA HA HA! Sorry, I am not an inn.
 				else
@@ -291,6 +288,7 @@ namespace Server.Items
 			{
 				from.SendLocalizedMessage( 502673 ); // I can not stable summoned creatures.
 			}
+
 			//#region Mondain's Legacy
 			//else if (pet.Allured)
 			//{
@@ -413,6 +411,7 @@ namespace Server.Items
 
 			return ( house != null && house.IsOwner( mob ) );
 		}
+
 		public bool CheckAccess( Mobile m )
 		{
 			if ( !IsLockedDown || m.AccessLevel >= AccessLevel.GameMaster )
@@ -457,11 +456,11 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 3 ); // version
+			writer.Write( (int)3 ); // version
 
-			writer.Write( (int) m_Level );
-			writer.Write( (int) m_UsesRemaining );
-			writer.Write( (int) m_Charges );
+			writer.Write( (int)m_Level );
+			writer.Write( (int)m_UsesRemaining );
+			writer.Write( (int)m_Charges );
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -473,24 +472,24 @@ namespace Server.Items
 			switch ( version )
 			{
 				case 3:
-					{
-						m_Level = (SecureLevel) reader.ReadInt();
-						goto case 2;
-					}
+				{
+					m_Level = (SecureLevel)reader.ReadInt();
+					goto case 2;
+				}
 				case 2:
-					{
-						m_UsesRemaining = reader.ReadInt();
-						goto case 1;
-					}
+				{
+					m_UsesRemaining = reader.ReadInt();
+					goto case 1;
+				}
 				case 1:
-					{
-						m_Charges = reader.ReadInt();
-						goto case 0;
-					}
+				{
+					m_Charges = reader.ReadInt();
+					goto case 0;
+				}
 				case 0:
-					{
-						break;
-					}
+				{
+					break;
+				}
 			}
 		}
 	}

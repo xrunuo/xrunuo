@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Server;
 using Server.Engines.VeteranRewards;
 using Server.Mobiles;
@@ -16,7 +17,11 @@ namespace Server.Items
 		public bool IsRewardItem
 		{
 			get { return m_IsRewardItem; }
-			set { m_IsRewardItem = value; InvalidateProperties(); }
+			set
+			{
+				m_IsRewardItem = value;
+				InvalidateProperties();
+			}
 		}
 
 		[Constructable]
@@ -62,9 +67,13 @@ namespace Server.Items
 
 			protected override void OnTarget( Mobile from, object targeted )
 			{
-				if ( targeted is EtherealMount )
+				if ( !m_Tool.IsChildOf( from.Backpack ) )
 				{
-					EtherealMount ethereal = (EtherealMount) targeted;
+					from.SendLocalizedMessage( 1042001 ); // That must be in your pack for you to use it.
+				}
+				else if ( targeted is EtherealMount )
+				{
+					EtherealMount ethereal = (EtherealMount)targeted;
 
 					ethereal.SolidHue = !ethereal.SolidHue;
 
@@ -89,9 +98,9 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int)0 ); // version
 
-			writer.Write( (bool) m_IsRewardItem );
+			writer.Write( (bool)m_IsRewardItem );
 		}
 
 		public override void Deserialize( GenericReader reader )

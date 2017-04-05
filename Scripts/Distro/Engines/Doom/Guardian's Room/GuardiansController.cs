@@ -234,8 +234,7 @@ namespace Server.Items
 				}
 			}
 
-			private static Point3D[] m_FaceLocations = new Point3D[]
-				{
+			private static Point3D[] m_FaceLocations = {
 					new Point3D( 356, 7, -1 ),
 					new Point3D( 356, 13, -1 ),
 					new Point3D( 356, 16, -1 ),
@@ -324,7 +323,7 @@ namespace Server.Items
 
 				count++;
 
-				int level = (int) ( count / 60 );
+				int level = count / 60;
 
 				if ( count % 60 == 0 ) // every minute we need send message to player about level's change
 				{
@@ -393,7 +392,7 @@ namespace Server.Items
 					{
 						if ( mobile.Player )
 						{
-							mobile.LocalOverheadMessage( MessageType.Regular, 0x3B2, 1062092 ); // Your body reacts violently from the pain. 
+							mobile.LocalOverheadMessage( MessageType.Regular, 0x3B2, 1062092 ); // Your body reacts violently from the pain.
 							mobile.Animate( 32, 5, 1, true, false, 0 );
 						}
 

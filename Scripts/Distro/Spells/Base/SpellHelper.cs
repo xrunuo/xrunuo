@@ -509,11 +509,11 @@ namespace Server.Spells
 			{
 					/*T2A(Fel)	Ilshenar	Wind(Tram),	Wind(Fel),	Dungeons(Fel),	Solen(Tram),	Solen(Fel), CrystalCave(Malas),	Gauntlet(Malas),	Gauntlet(Ferry),	Stronghold,		ChampionSpawn,	Guardian Room, 	Tokuno Dungeon, 	Lamp Room 		ML Dungeons		SA Dungeons		Tomb of Kings	Maze of Death	SA Entrance */
 /* Recall From */	{ false,	true, 		true, 		false, 		false, 			true, 			false, 		false, 				false, 				false, 				true, 			false,			false, 			true, 				false, 			false,			true,			true,			false,			false },
-/* Recall To */		{ false, 	false, 		false, 		false, 		false, 			false, 			false, 		false, 				false, 				false, 				false, 			false,			false, 			false, 				false, 			false,			false,			false,			false,			false }, 
-/* Gate From */		{ false, 	false, 		false, 		false, 		false, 			false, 			false, 		false, 				false, 				false, 				false, 			false,			false, 			false, 				false, 			false,			false,			false,			false,			false }, 
+/* Recall To */		{ false, 	false, 		false, 		false, 		false, 			false, 			false, 		false, 				false, 				false, 				false, 			false,			false, 			false, 				false, 			false,			false,			false,			false,			false },
+/* Gate From */		{ false, 	false, 		false, 		false, 		false, 			false, 			false, 		false, 				false, 				false, 				false, 			false,			false, 			false, 				false, 			false,			false,			false,			false,			false },
 /* Gate To */		{ false, 	false, 		false, 		false, 		false, 			false, 			false, 		false, 				false, 				false, 				false, 			false,			false, 			false, 				false, 			false,			false,			false,			false,			false },
 /* Mark In */		{ false, 	false, 		false, 		false, 		false, 			false, 			false, 		false, 				false, 				false, 				false, 			false,			false, 			false, 				false, 			false,			false,			false,			false,			false },
-/* Tele From */		{ true, 	true, 		true, 		true, 		true, 			true, 			true, 		false, 				true, 				true, 				false, 			true,			false, 			true, 				true, 			false, 			true,			false,			false,			false }, 
+/* Tele From */		{ true, 	true, 		true, 		true, 		true, 			true, 			true, 		false, 				true, 				true, 				false, 			true,			false, 			true, 				true, 			false, 			true,			false,			false,			false },
 /* Tele To */		{ true, 	true, 		true, 		true, 		true, 			true, 			true, 		false, 				true, 				false,				false, 			true,			false, 			true, 				false, 			false,			true,			false,			false,			false }
 			};
 
@@ -972,7 +972,7 @@ namespace Server.Spells
 
 				WeightOverloading.DFA = dfa;
 
-				int damageGiven = AOS.Damage( target, from, iDamage, phys, fire, cold, pois, nrgy );
+				AOS.Damage( target, from, iDamage, phys, fire, cold, pois, nrgy );
 
 				WeightOverloading.DFA = DFAlgorithm.Standard;
 
