@@ -1,11 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
-using Server;
-using Server.Engines.PartySystem;
 using Server.Mobiles;
-using Server.Network;
 using Server.Regions;
 
 namespace Server.Items
@@ -37,7 +33,7 @@ namespace Server.Items
 		public override bool IsDecoContainer { get { return false; } }
 
 		private PeerlessRegion m_Region;
-		private bool m_actived = false;
+		private bool m_Activated;
 		private BaseActivation[] m_key = new BaseActivation[3];
 		private Mobile m_Boss;
 		private PeerlessList m_Peerless = 0;
@@ -56,10 +52,10 @@ namespace Server.Items
 			get { return m_Boss; }
 		}
 
-		public bool actived
+		public bool Activated
 		{
-			get { return m_actived; }
-			set { m_actived = value; }
+			get { return m_Activated; }
+			set { m_Activated = value; }
 		}
 
 		public BaseActivation[] key { get { return m_key; } set { m_key = value; } }
@@ -74,39 +70,39 @@ namespace Server.Items
 
 				if ( m_Peerless == PeerlessList.ParoxysmusTrammel || m_Peerless == PeerlessList.ParoxysmusFelucca )
 				{
-					this.Name = "Cauldron";
-					this.Hue = 1125;
-					this.ItemID = 0x207A;
+					Name = "Cauldron";
+					Hue = 1125;
+					ItemID = 0x207A;
 				}
 				else if ( m_Peerless == PeerlessList.MelisandeTrammel || m_Peerless == PeerlessList.MelisandeFelucca )
 				{
-					this.Name = "Basket";
-					this.Hue = 0;
-					this.ItemID = 0x207B;
+					Name = "Basket";
+					Hue = 0;
+					ItemID = 0x207B;
 				}
 				else if ( m_Peerless == PeerlessList.DreadHorn )
 				{
-					this.Name = "Statue Of The Faie";
-					this.Hue = 0;
-					this.ItemID = 0x207C;
+					Name = "Statue Of The Faie";
+					Hue = 0;
+					ItemID = 0x207C;
 				}
 				else if ( m_Peerless == PeerlessList.Travesty || m_Peerless == PeerlessList.InterredGrizzle )
 				{
-					this.Name = "Keyed Table";
-					this.Hue = 0;
-					this.ItemID = 0x207E;
+					Name = "Keyed Table";
+					Hue = 0;
+					ItemID = 0x207E;
 				}
 				else if ( m_Peerless == PeerlessList.ShimmeringEffusionTrammel || m_Peerless == PeerlessList.ShimmeringEffusionFelucca )
 				{
-					this.Name = "Pillar";
-					this.Hue = 1153;
-					this.ItemID = 8317;
+					Name = "Pillar";
+					Hue = 1153;
+					ItemID = 8317;
 				}
 				else
 				{
-					this.Name = null;
-					this.Hue = 0;
-					this.ItemID = 0x9AB;
+					Name = null;
+					Hue = 0;
+					ItemID = 0x9AB;
 				}
 
 				if ( m_Peerless != PeerlessList.None )
@@ -152,7 +148,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 ); // version
+			writer.Write( 0 ); // version
 			writer.Write( (int) m_Peerless );
 		}
 
@@ -183,7 +179,7 @@ namespace Server.Items
 
 			if ( PeerlessEntry.IsPeerlessKey( m_Peerless, dropped ) )
 			{
-				if ( m_Owner != from && m_actived )
+				if ( m_Owner != from && m_Activated )
 				{
 					if ( Boss != null && Boss.CheckAlive() )
 						from.SendLocalizedMessage( 1075213 ); // The master of this realm has already been summoned and is engaged in combat.  Your opportunity will come after he has squashed the current batch of intruders!
@@ -200,13 +196,14 @@ namespace Server.Items
 						from.SendLocalizedMessage( 1072682 ); // This is not the proper key.
 						return false;
 					}
-					else if ( m_Keys[i] == null )
+
+					if ( m_Keys[i] == null )
 					{
 						m_Keys[i] = dropped.GetType();
 
 						if ( i == 0 )
 						{
-							m_actived = true;
+							m_Activated = true;
 							m_Owner = from;
 							from.SendLocalizedMessage( 1074575 ); // You have activated this object!
 							m_ResetTimer = new ResetTimer( this );
@@ -237,11 +234,9 @@ namespace Server.Items
 				from.SendLocalizedMessage( 1072682 ); // This is not the proper key.
 				return false;
 			}
-			else
-			{
-				from.SendLocalizedMessage( 1072682 ); // This is not the proper key.
-				return false;
-			}
+
+			from.SendLocalizedMessage( 1072682 ); // This is not the proper key.
+			return false;
 		}
 
 		public void UpdateRegion()
@@ -353,7 +348,7 @@ namespace Server.Items
 			for ( int i = 0; i < m_Keys.Length; i++ )
 				m_Keys[i] = null;
 
-			actived = false;
+			Activated = false;
 		}
 
 		public void GiveKeys( Mobile from )

@@ -1,8 +1,9 @@
 using System;
+using System.Collections;
+
 using Server;
 using Server.Engines.PartySystem;
 using Server.Mobiles;
-using System.Collections;
 using Server.Gumps;
 using Server.Network;
 
@@ -15,16 +16,16 @@ namespace Server.Items
 		public Map Mapa
 		{
 			get { return m_Mapa; }
-			set { m_Mapa = value; InvalidateProperties(); }
+			set
+			{
+				m_Mapa = value;
+				InvalidateProperties();
+			}
 		}
 
 		private Point3D m_EnterPoint;
 
-		public Point3D EnterPoint
-		{
-			get { return m_EnterPoint; }
-			set { m_EnterPoint = value; }
-		}
+		public Point3D EnterPoint { get { return m_EnterPoint; } set { m_EnterPoint = value; } }
 
 		public BaseActivation( int itemid )
 			: base( itemid, TimeSpan.FromSeconds( 600.0 ) )
@@ -55,7 +56,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int)0 ); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -117,40 +118,39 @@ namespace Server.Items
 				switch ( button )
 				{
 					case 0:
-						{
-							break;
-						}
+					{
+						break;
+					}
 					case 1:
+					{
+						Party p = Party.Get( from );
+
+						if ( p != null )
 						{
-							Party p = Party.Get( from );
-
-							if ( p != null )
+							foreach ( PartyMemberInfo pmi in p.Members )
 							{
-								for ( int i = 0; i < p.Members.Count; ++i )
+								PlayerMobile member = pmi.Mobile as PlayerMobile;
+
+								if ( m_key.Map != Map.Felucca && member.Kills >= 5 )
+									continue;
+
+								if ( member.Map == @from.Map && member.Region == @from.Region )
 								{
-									PartyMemberInfo pmi = (PartyMemberInfo) p.Members[i];
-									PlayerMobile member = pmi.Mobile as PlayerMobile;
-
-									if ( m_key.Map != Map.Felucca && member.Kills >= 5 )
-										continue;
-
-									if ( member.Map == from.Map && member.Region == from.Region )
-									{
-										member.CloseGump( typeof( ConfirmPeerlessPartyGump ) );
-										member.SendGump( new ConfirmPeerlessPartyGump( m_key, member ) );
-									}
+									member.CloseGump( typeof( ConfirmPeerlessPartyGump ) );
+									member.SendGump( new ConfirmPeerlessPartyGump( m_key, member ) );
 								}
 							}
-
-							if ( m_key != null && !m_key.Deleted )
-							{
-								from.CloseGump( typeof( ConfirmPeerlessPartyGump ) );
-								from.SendGump( new ConfirmPeerlessPartyGump( m_key, from ) );
-								m_key.Delete();
-							}
-
-							break;
 						}
+
+						if ( m_key != null && !m_key.Deleted )
+						{
+							from.CloseGump( typeof( ConfirmPeerlessPartyGump ) );
+							from.SendGump( new ConfirmPeerlessPartyGump( m_key, from ) );
+							m_key.Delete();
+						}
+
+						break;
+					}
 				}
 			}
 		}
@@ -196,10 +196,8 @@ namespace Server.Items
 							return;
 
 						Effects.SendLocationParticles( EffectItem.Create( from.Location, from.Map, EffectItem.DefaultDuration ), 0x3728, 10, 10, 2023 );
-
 						BaseCreature.TeleportPets( from, m_Key.EnterPoint, m_Key.Mapa );
 						from.MoveToWorld( m_Key.EnterPoint, m_Key.Mapa );
-
 						break;
 				}
 			}

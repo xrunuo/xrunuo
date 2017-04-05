@@ -1,4 +1,5 @@
 using System;
+
 using Server;
 using Server.Gumps;
 using Server.Network;
@@ -34,7 +35,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int)0 ); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -88,7 +89,6 @@ namespace Server.Items
 
 			public override void OnResponse( NetState sender, RelayInfo info )
 			{
-				int button = info.ButtonID;
 				Mobile m = sender.Mobile;
 
 				if ( info.IsSwitched( 1 ) )
