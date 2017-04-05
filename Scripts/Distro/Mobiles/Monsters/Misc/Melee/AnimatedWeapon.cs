@@ -11,7 +11,7 @@ namespace Server.Mobiles
 		public override double DispelDifficulty { get { return 0.0; } }
 		public override double DispelFocus { get { return 20.0; } }
 
-		public override double GetValueFrom( Mobile m, FightMode acqType, bool bPlayerOnly )
+		public override double GetFightModeRanking( Mobile m, FightMode acqType, bool bPlayerOnly )
 		{
 			return m.Str / Math.Max( this.GetDistanceToSqrt( m ), 1.0 );
 		}

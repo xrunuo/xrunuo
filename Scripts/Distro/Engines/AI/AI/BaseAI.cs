@@ -1592,7 +1592,7 @@ namespace Server.Mobiles
 						if ( aggr.IsDeadBondedPet || !aggr.Alive )
 							continue;
 
-						double aggrScore = m_Mobile.GetValueFrom( aggr, FightMode.Closest, false );
+						double aggrScore = m_Mobile.GetFightModeRanking( aggr, FightMode.Closest, false );
 
 						if ( ( newCombatant == null || aggrScore > newScore ) && m_Mobile.InLOS( aggr ) )
 						{
@@ -2638,7 +2638,7 @@ namespace Server.Mobiles
 					if ( bFacFoe && !bFacFriend && !m_Mobile.CanBeHarmful( m, false ) )
 						continue;
 
-					theirVal = m_Mobile.GetValueFrom( m, acqType, bPlayerOnly );
+					theirVal = m_Mobile.GetFightModeRanking( m, acqType, bPlayerOnly );
 
 					if ( theirVal > val && m_Mobile.InLOS( m ) )
 					{

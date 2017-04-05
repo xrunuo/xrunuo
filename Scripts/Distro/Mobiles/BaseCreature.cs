@@ -2856,14 +2856,12 @@ namespace Server.Mobiles
 		}
 
 		/*
-		 * Will need to be givent a better name
-		 *
 		 * This function can be overriden.. so a "Strongest" mobile, can have a different definition depending
 		 * on who check for value
 		 * -Could add a FightMode.Prefered
 		 *
 		 */
-		public virtual double GetValueFrom( Mobile m, FightMode acqType, bool bPlayerOnly )
+		public virtual double GetFightModeRanking( Mobile m, FightMode acqType, bool bPlayerOnly )
 		{
 			if ( ( bPlayerOnly && m.Player ) || !bPlayerOnly )
 			{

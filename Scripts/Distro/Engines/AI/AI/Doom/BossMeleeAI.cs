@@ -319,7 +319,7 @@ namespace Server.Mobiles
 
 					if ( bCheckIt )
 					{
-						double theirVal = m_Mobile.GetValueFrom( m, acqType, bPlayerOnly );
+						double theirVal = m_Mobile.GetFightModeRanking( m, acqType, bPlayerOnly );
 
 						if ( theirVal > val && m_Mobile.InLOS( m ) )
 						{
