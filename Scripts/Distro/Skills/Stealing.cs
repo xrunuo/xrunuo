@@ -53,7 +53,7 @@ namespace Server.SkillHandlers
 			if ( m.Map != Map.Felucca && !monster.IsChampionMonster )
 				return 0.0;
 
-			if ( m.Map == Map.Felucca && !m.Region.IsPartOf( typeof( DungeonRegion ) ) )
+			if ( m.Map == Map.Felucca && !m.Region.IsPartOf<DungeonRegion>() )
 				return 0.0;
 
 			double chance = 0.0;

@@ -75,7 +75,7 @@ namespace Server.Items
 
 		public bool IsInsideHouse()
 		{
-			return Region.Find( Location, Map ).IsPartOf( typeof( HouseRegion ) );
+			return Region.Find( Location, Map ).IsPartOf<HouseRegion>();
 		}
 
 		public DecorativeCarpet( Serial serial )

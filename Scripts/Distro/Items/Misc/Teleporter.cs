@@ -224,7 +224,7 @@ namespace Server.Items
 				{
 					Region region = Region.Find( m_PointDest, m_MapDest );
 
-					if ( region != null && region.IsPartOf( typeof( DungeonRegion ) ) )
+					if ( region != null && region.IsPartOf<DungeonRegion>() )
 					{
 						m.SendMessage( "Trial account players may not enter dungeons." );
 						return true;

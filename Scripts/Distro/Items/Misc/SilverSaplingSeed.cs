@@ -30,7 +30,7 @@ namespace Server.Items
 
 		public static bool CanBeResurrected( Mobile from )
 		{
-			return from.Map == Map.TerMur && from.Region.IsPartOf( typeof( DungeonRegion ) ) && m_ResLocations.ContainsKey( from );
+			return from.Map == Map.TerMur && from.Region.IsPartOf<DungeonRegion>() && m_ResLocations.ContainsKey( from );
 		}
 
 		public static void OfferResurrection( Mobile from )
@@ -40,7 +40,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( from.Map == Map.TerMur && from.Region.IsPartOf( typeof( DungeonRegion ) ) )
+			if ( from.Map == Map.TerMur && from.Region.IsPartOf<DungeonRegion>() )
 			{
 				/* The seed disappears into the earth and for a brief moment you see
 				 * a vision of a small sapling growing before you. Should you perish

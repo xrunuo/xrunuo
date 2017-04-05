@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Server.Items
@@ -7,7 +8,7 @@ namespace Server.Items
 	{
 		public override int LabelNumber { get { return 1072153; } } // wooden container engraving tool
 
-		private static Type[] m_WoodenContainers = new Type[]
+		private static IEnumerable<Type> m_WoodenContainers = new HashSet<Type>
 			{
 				typeof( WoodenChest ),			typeof( WoodenBox ),
 				typeof( SmallCrate ),			typeof( MediumCrate ),

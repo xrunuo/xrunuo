@@ -641,7 +641,7 @@ namespace Server.Engines.CannedEvil
 				if ( SpellHelper.IsAnyT2A( map, c.Location ) && SpellHelper.IsAnyT2A( map, m.Location ) )
 					return false;
 
-				if ( m.Region.IsPartOf( typeof( DungeonRegion ) ) == Region.Find( c.Location, map ).IsPartOf( typeof( DungeonRegion ) ) )
+				if ( m.Region.IsPartOf<DungeonRegion>() == Region.Find( c.Location, map ).IsPartOf<DungeonRegion>() )
 					return false;
 			}
 

@@ -134,7 +134,7 @@ namespace Server.Menus.Questions
 
 		private static StuckMenuEntry[] GetEntriesFor( Mobile m )
 		{
-			if ( m.Region.IsPartOf( typeof( DungeonRegion ) ) && m.Map == Map.TerMur )
+			if ( m.Region.IsPartOf<DungeonRegion>() && m.Map == Map.TerMur )
 			{
 				if ( m.Race == Race.Gargoyle )
 					return m_TerMurEntries;
@@ -314,7 +314,7 @@ namespace Server.Menus.Questions
 						destMap = Map.Felucca;
 					else if ( m_Map == Map.Trammel )
 						destMap = Map.Trammel;
-					else if ( m_Map == Map.TerMur && m_Region.IsPartOf( typeof( DungeonRegion ) ) )
+					else if ( m_Map == Map.TerMur && m_Region.IsPartOf<DungeonRegion>() )
 					{
 						if ( m_Mobile.Race == Race.Gargoyle )
 							destMap = Map.TerMur;

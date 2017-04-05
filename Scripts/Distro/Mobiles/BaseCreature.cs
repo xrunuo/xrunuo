@@ -1883,7 +1883,7 @@ namespace Server.Mobiles
 
 		public virtual bool IsHumanInTown()
 		{
-			return ( Body.IsHuman && Region.IsPartOf( typeof( Regions.GuardedRegion ) ) );
+			return ( Body.IsHuman && Region.IsPartOf<Regions.GuardedRegion>() );
 		}
 
 		public virtual bool CheckGold( Mobile from, Item dropped )

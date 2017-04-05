@@ -2759,7 +2759,7 @@ namespace Server.Mobiles
 
 			Faction.HandleDeath( this, killer );
 
-			if ( Region.IsPartOf( typeof( UnderworldDeathRegion ) ) )
+			if ( Region.IsPartOf<UnderworldDeathRegion>() )
 			{
 				Point3D dest = new Point3D( 1060, 1066, -42 );
 
@@ -3405,7 +3405,7 @@ namespace Server.Mobiles
 				m_DoneQuests = new List<QuestRestartInfo>();
 			#endregion
 
-			if ( this != null && this.Region.IsPartOf( typeof( DoomLampRoom ) ) )
+			if ( this != null && this.Region.IsPartOf<DoomLampRoom>() )
 			{
 				Rectangle2D rect = new Rectangle2D( 342, 168, 16, 16 );
 
@@ -4399,7 +4399,7 @@ namespace Server.Mobiles
 			if ( !this.Young )
 				return false;
 
-			if ( Region.IsPartOf( typeof( DungeonRegion ) ) )
+			if ( Region.IsPartOf<DungeonRegion>() )
 				return false;
 
 			if ( this.Quest != null && this.Quest.IgnoreYoungProtection( from ) )
@@ -4477,7 +4477,7 @@ namespace Server.Mobiles
 
 		public Point3D GetYoungDeathDestination()
 		{
-			if ( this.Region.IsPartOf( typeof( Regions.Jail ) ) )
+			if ( this.Region.IsPartOf<Regions.Jail>() )
 				return Point3D.Zero;
 
 			Point3D[] list;

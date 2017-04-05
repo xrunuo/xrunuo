@@ -54,7 +54,7 @@ namespace Server.Spells.Sixth
 			{
 				Caster.LocalOverheadMessage( MessageType.Regular, 0x3B2, 1062422 ); // You must have this rune in your backpack in order to mark it.
 			}
-			else if ( Caster.Region.IsPartOf( typeof( Jail ) ) )
+			else if ( Caster.Region.IsPartOf<Jail>() )
 			{
 				Caster.SendMessage( "You cannot mark a rune while in jail." );
 			}

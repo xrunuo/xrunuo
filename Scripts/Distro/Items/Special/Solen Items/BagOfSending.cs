@@ -162,7 +162,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( from.Region.IsPartOf( typeof( Regions.Jail ) ) )
+			if ( from.Region.IsPartOf<Regions.Jail>() )
 			{
 				// You'll need a better jailbreak plan then that!
 				from.SendLocalizedMessage( 1041530 );
@@ -198,7 +198,7 @@ namespace Server.Items
 				if ( m_Bag.Deleted )
 					return;
 
-				if ( from.Region.IsPartOf( typeof( Regions.Jail ) ) )
+				if ( from.Region.IsPartOf<Regions.Jail>() )
 				{
 					// You'll need a better jailbreak plan then that!
 					from.SendLocalizedMessage( 1041530 );

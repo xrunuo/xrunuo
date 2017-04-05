@@ -251,7 +251,7 @@ namespace Server.Engines.Help
 						{
 							from.Location = house.BanLocation;
 						}
-						else if ( from.Region.IsPartOf( typeof( Regions.Jail ) ) )
+						else if ( from.Region.IsPartOf<Regions.Jail>() )
 						{
 							from.SendLocalizedMessage( 1041530, "", 0x35 ); // You'll need a better jailbreak plan then that!
 						}
@@ -308,7 +308,7 @@ namespace Server.Engines.Help
 					{
 						if ( IsYoung( from ) )
 						{
-							if ( from.Region.IsPartOf( typeof( Regions.Jail ) ) )
+							if ( from.Region.IsPartOf<Regions.Jail>() )
 							{
 								from.SendLocalizedMessage( 1041530, "", 0x35 ); // You'll need a better jailbreak plan then that!
 							}

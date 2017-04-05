@@ -58,7 +58,7 @@ namespace Server.Items
 				// Wouldst thou flee during the heat of battle??
 				from.SendLocalizedMessage( 1005564, null, 0x22 );
 			}
-			else if ( from.Region.IsPartOf( typeof( Regions.Jail ) ) )
+			else if ( from.Region.IsPartOf<Regions.Jail>() )
 			{
 				// You'll need a better jailbreak plan then that!
 				from.SendLocalizedMessage( 1041530 );

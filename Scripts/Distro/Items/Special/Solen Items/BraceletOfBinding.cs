@@ -291,12 +291,12 @@ namespace Server.Items
 				from.SendLocalizedMessage( 502359, "", 0x22 ); // Thou art too encumbered to move.
 				return false;
 			}
-			else if ( from.Region.IsPartOf( typeof( Regions.Jail ) ) )
+			else if ( from.Region.IsPartOf<Regions.Jail>() )
 			{
 				from.SendLocalizedMessage( 1041530, "", 0x35 ); // You'll need a better jailbreak plan then that!
 				return false;
 			}
-			else if ( boundRoot.Region.IsPartOf( typeof( Regions.Jail ) ) )
+			else if ( boundRoot.Region.IsPartOf<Regions.Jail>() )
 			{
 				from.SendLocalizedMessage( 1019004 ); // You are not allowed to travel there.
 				return false;

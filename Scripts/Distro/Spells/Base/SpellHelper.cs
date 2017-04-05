@@ -619,7 +619,7 @@ namespace Server.Spells
 		public static bool IsFeluccaDungeon( Map map, Point3D loc )
 		{
 			Region region = Region.Find( loc, map );
-			return ( region.IsPartOf( typeof( DungeonRegion ) ) && region.Map == Map.Felucca );
+			return ( region.IsPartOf<DungeonRegion>() && region.Map == Map.Felucca );
 		}
 
 		public static bool IsCrystalCave( Map map, Point3D loc )
@@ -644,7 +644,7 @@ namespace Server.Spells
 
 		public static bool IsChampionSpawn( Map map, Point3D loc )
 		{
-			return ( Region.Find( loc, map ).IsPartOf( typeof( Engines.CannedEvil.ChampionSpawnRegion ) ) );
+			return ( Region.Find( loc, map ).IsPartOf<Engines.CannedEvil.ChampionSpawnRegion>() );
 		}
 
 		public static bool IsDoomFerry( Map map, Point3D loc )
@@ -736,12 +736,12 @@ namespace Server.Spells
 
 		public static bool IsTombOfKings( Map map, Point3D loc )
 		{
-			return ( Region.Find( loc, map ).IsPartOf( typeof( TombOfKingsRegion ) ) );
+			return ( Region.Find( loc, map ).IsPartOf<TombOfKingsRegion>() );
 		}
 
 		public static bool IsMazeOfDeath( Map map, Point3D loc )
 		{
-			return ( Region.Find( loc, map ).IsPartOf( typeof( MazeOfDeathRegion ) ) );
+			return ( Region.Find( loc, map ).IsPartOf<MazeOfDeathRegion>() );
 		}
 
 		public static bool IsSAEntrance( Map map, Point3D loc )
@@ -755,7 +755,7 @@ namespace Server.Spells
 				return false;
 
 			Region region = Region.Find( loc, map );
-			return ( region.IsPartOf( typeof( DungeonRegion ) ) && !region.IsPartOf( typeof( TombOfKingsRegion ) ) );
+			return ( region.IsPartOf<DungeonRegion>() && !region.IsPartOf<TombOfKingsRegion>() );
 		}
 
 		public static bool IsInvalid( Map map, Point3D loc )

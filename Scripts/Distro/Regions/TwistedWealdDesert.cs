@@ -18,7 +18,7 @@ namespace Server.Regions
 		{
 			Mobile m = e.Mobile;
 
-			if ( m.Region.IsPartOf( typeof( TwistedWealdDesert ) ) && m.AccessLevel < AccessLevel.GameMaster )
+			if ( m.Region.IsPartOf<TwistedWealdDesert>() && m.AccessLevel < AccessLevel.GameMaster )
 				m.ForcedWalk = true;
 		}
 

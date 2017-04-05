@@ -79,7 +79,7 @@ namespace Server.Items
 
 				if ( info.ButtonID == 1 && !from.Alive && !m_Gem.Deleted )
 				{
-					if ( from.Region.IsPartOf( typeof( Regions.Jail ) ) )
+					if ( from.Region.IsPartOf<Regions.Jail>() )
 					{
 						from.SendLocalizedMessage( 1041530, "", 0x35 ); // You'll need a better jailbreak plan then that!
 					}
