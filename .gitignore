@@ -5,6 +5,7 @@ log/*
 Saves/*
 *.exe
 *.exe.config
+*.DotSettings.user
 *.pdb
 *.mdb
 *.dll
