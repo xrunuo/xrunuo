@@ -374,94 +374,6 @@ namespace Server
 			return true;
 		}
 
-		/// <summary>
-		/// Enqueue a library for compilation, resolving all dependencies first.
-		/// </summary>
-		/// <param name="dst">This array will receive the libraries in the correct order.</param>
-		/// <param name="libs">Source libraries.</param>
-		/// <param name="queue">Somewhat like a stack of libraries currently waiting.</param>
-		/// <param name="libConfig">The library to be added.</param>
-		private static void EnqueueLibrary( List<Configuration.Library> dst, List<Configuration.Library> libs,
-			ISet<string> queue, Configuration.Library libConfig )
-		{
-			var depends = libConfig.Depends;
-
-			if ( libConfig.Name == "Core" || libConfig.Disabled )
-			{
-				libs.Remove( libConfig );
-				return;
-			}
-
-			if ( libConfig.IsRemote && ( !libConfig.Exists || Core.ForceUpdateDeps ) )
-			{
-				var srcPath = Dependencies.Fetch( libConfig );
-				libConfig.SourcePath = new DirectoryInfo( srcPath );
-			}
-
-			if ( !libConfig.Exists )
-			{
-				libs.Remove( libConfig );
-				log.Warning( "Library {0} does not exist", libConfig.Name );
-				return;
-			}
-
-			// First resolve dependencies.
-			if ( depends != null )
-			{
-				queue.Add( libConfig.Name );
-
-				foreach ( var depend in depends )
-				{
-					// If the depended library is already in the queue, there is a circular dependency.
-					if ( queue.Contains( depend ) )
-					{
-						log.Error( "Circular library dependency {0} on {1}", libConfig.Name, depend );
-						throw new ApplicationException();
-					}
-
-					var next = Core.LibraryConfig.GetLibrary( depend );
-					if ( next == null || !next.Exists )
-					{
-						log.Error( "Unresolved library dependency: {0} depends on {1}, which does not exist", libConfig.Name, depend );
-						throw new ApplicationException();
-					}
-
-					if ( next.Disabled )
-					{
-						log.Error( "Unresolved library dependency: {0} depends on {1}, which is disabled", libConfig.Name, depend );
-						throw new ApplicationException();
-					}
-
-					if ( !dst.Contains( next ) )
-						EnqueueLibrary( dst, libs, queue, next );
-				}
-
-				queue.Remove( libConfig.Name );
-			}
-
-			// Then add it to 'dst'.
-			dst.Add( libConfig );
-			libs.Remove( libConfig );
-		}
-
-		private static IEnumerable<Configuration.Library> SortLibrariesByDepends()
-		{
-			var libs = new List<Configuration.Library>( Core.LibraryConfig.Libraries );
-			var queue = new HashSet<string>();
-			var dst = new List<Configuration.Library>();
-
-			// Handle 'Distro' first, for most compatibility.
-			var libConfig = Core.LibraryConfig.GetLibrary( "Distro" );
-
-			if ( libConfig != null )
-				EnqueueLibrary( dst, libs, queue, libConfig );
-
-			while ( libs.Count > 0 )
-				EnqueueLibrary( dst, libs, queue, libs[0] );
-
-			return dst;
-		}
-
 		public static bool Compile( bool debug )
 		{
 			if ( AlreadyCompiled )
@@ -473,7 +385,8 @@ namespace Server
 			m_Libraries.Add( new Library( Core.LibraryConfig.GetLibrary( "Core" ), Core.Assembly ) );
 
 			// Collect Config.Library objects, sort them and compile.
-			var libConfigs = SortLibrariesByDepends();
+			var libResolver = new LibraryResolver( Core.LibraryConfig.Libraries );
+			var libConfigs = libResolver.SortLibrariesByDepends();
 
 			foreach ( var libConfig in libConfigs )
 			{

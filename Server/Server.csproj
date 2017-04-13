@@ -225,6 +225,7 @@
     <Compile Include="Persistence\RepositoryLoadException.cs" />
     <Compile Include="Profiler.cs" />
     <Compile Include="Scripts\Library.cs" />
+    <Compile Include="Scripts\LibraryResolver.cs" />
     <Compile Include="Scripts\ScriptCompiler.cs" />
     <Compile Include="Scripts\SourceCodeFileProvider.cs" />
     <Compile Include="Season.cs" />

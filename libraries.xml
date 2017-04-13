@@ -3,5 +3,6 @@
 	<library name="Distro" />
 	<library name="Games" disabled="true">
 		<path>https://github.com/ppardalj/xrunuo-games/archive/master.zip</path>
+                <depends name="Distro" />
 	</library>
 </libraries>
