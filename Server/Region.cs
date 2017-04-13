@@ -98,7 +98,22 @@ namespace Server
 		StygianAbyss,
 		StygianDragon,
 		Void,
-		CodexShrine
+		CodexShrine,
+		AnvilStrikeInMinoc,
+		ASkaranLullaby,
+		BlackthornsMarch,
+		DupresNightInTrinsic,
+		FayaxionAndTheSix,
+		FlightOfTheNexus,
+		GalehavenJaunt,
+		JhelomToArms,
+		MidnightInYew,
+		MoonglowSonata,
+		NewMaginciaMarch,
+		NujelmWaltz,
+		SherrysSong,
+		StarlightInBritain,
+		TheVesperMist
 	}
 
 	public class Region : IComparable
