@@ -15,12 +15,9 @@ namespace Server
 		public sealed class Entry : IEquatable<Entry>, IComparable<Entry>
 		{
 			public int FileIndex { get; }
-
 			public string File { get; }
 			public string Scope { get; }
-
 			public string Desc { get; set; }
-
 			public string Key { get; set; }
 			public string Value { get; set; }
 
@@ -42,7 +39,7 @@ namespace Server
 
 			public override string ToString()
 			{
-				return string.Format( "{0}.{1}{2}={3}", Scope, UseDefault ? "@" : "", Key, Value );
+				return $"{Scope}.{( UseDefault ? "@" : "" )}{Key}={Value}";
 			}
 
 			public override int GetHashCode()
@@ -168,11 +165,9 @@ namespace Server
 			var info = new FileInfo( path );
 
 			if ( !info.Exists )
-			{
 				throw new FileNotFoundException();
-			}
 
-			path = info.Directory != null ? info.Directory.FullName : String.Empty;
+			path = info.Directory?.FullName ?? string.Empty;
 
 			var io = path.IndexOf( m_Path, StringComparison.OrdinalIgnoreCase );
 
@@ -183,12 +178,10 @@ namespace Server
 
 			var parts = path.Split( Path.DirectorySeparatorChar );
 
-			var scope = String.Join( ".", parts.Where( p => !String.IsNullOrWhiteSpace( p ) ) );
+			var scope = string.Join( ".", parts.Where( p => !string.IsNullOrWhiteSpace( p ) ) );
 
 			if ( scope.Length > 0 )
-			{
 				scope += ".";
-			}
 
 			scope += Path.GetFileNameWithoutExtension( info.Name );
 
@@ -200,7 +193,7 @@ namespace Server
 			{
 				var line = lines[i].Trim();
 
-				if ( String.IsNullOrWhiteSpace( line ) )
+				if ( string.IsNullOrWhiteSpace( line ) )
 				{
 					desc.Clear();
 					continue;
@@ -224,27 +217,27 @@ namespace Server
 
 				if ( io < 0 )
 				{
-					throw new FormatException( String.Format( "Bad format at line {0}", i + 1 ) );
+					throw new FormatException( $"Bad format at line {i + 1}" );
 				}
 
 				var key = line.Substring( 0, io );
 				var val = line.Substring( io + 1 );
 
-				if ( String.IsNullOrWhiteSpace( key ) )
+				if ( string.IsNullOrWhiteSpace( key ) )
 				{
-					throw new NullReferenceException( String.Format( "Key can not be null at line {0}", i + 1 ) );
+					throw new NullReferenceException( $"Key can not be null at line {i + 1}" );
 				}
 
 				key = key.Trim();
 
-				if ( String.IsNullOrEmpty( val ) )
+				if ( string.IsNullOrEmpty( val ) )
 				{
 					val = null;
 				}
 
-				var e = new Entry( info.FullName, idx++, scope, String.Join( String.Empty, desc ), key, val, useDef );
+				var e = new Entry( info.FullName, idx++, scope, string.Join( string.Empty, desc ), key, val, useDef );
 
-				m_Entries[String.Format( "{0}.{1}", e.Scope, e.Key )] = e;
+				m_Entries[$"{e.Scope}.{e.Key}"] = e;
 
 				desc.Clear();
 			}
@@ -292,7 +285,7 @@ namespace Server
 					{
 						if ( ( line + word ).Length > 100 )
 						{
-							content.AppendLine( string.Format( "# {0}", line ) );
+							content.AppendLine( $"# {line}" );
 							line.Clear();
 						}
 
@@ -301,12 +294,12 @@ namespace Server
 
 					if ( line.Length > 0 )
 					{
-						content.AppendLine( string.Format( "# {0}", line ) );
+						content.AppendLine( $"# {line}" );
 						line.Clear();
 					}
 				}
 
-				content.AppendLine( string.Format( "{0}{1}={2}", e.UseDefault ? "@" : String.Empty, e.Key, e.Value ) );
+				content.AppendLine( $"{( e.UseDefault ? "@" : string.Empty )}{e.Key}={e.Value}" );
 			}
 
 			File.WriteAllText( path, content.ToString() );
@@ -338,7 +331,7 @@ namespace Server
 			var file = new FileInfo( Path.Combine( m_Path, Path.Combine( parts ) + ".cfg" ) );
 			var idx = m_Entries.Values.Where( o => Insensitive.Equals( o.File, file.FullName ) ).Select( o => o.FileIndex ).DefaultIfEmpty().Max();
 
-			m_Entries[key] = new Entry( file.FullName, idx, String.Join( ".", parts ), String.Empty, realKey, value, false );
+			m_Entries[key] = new Entry( file.FullName, idx, string.Join( ".", parts ), string.Empty, realKey, value, false );
 		}
 
 		public static void Set( string key, string value )
