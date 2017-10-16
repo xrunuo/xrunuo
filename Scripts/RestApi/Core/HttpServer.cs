@@ -46,7 +46,7 @@ namespace Server.Web
 			{
 				var context = _listener.GetContext();
 
-				Task.Factory.StartNew( () =>
+				Timer.DelayCall( TimeSpan.Zero, () =>
 				{
 					try
 					{
@@ -56,7 +56,7 @@ namespace Server.Web
 					{
 						context.Response.OutputStream.Close();
 					}
-				} );
+				});
 			}
 		}
 
