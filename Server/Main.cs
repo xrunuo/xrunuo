@@ -10,6 +10,7 @@ using Server.Configuration;
 using Server.Events;
 using Server.Network;
 using Server.Profiler;
+using Server.Testing;
 
 using GameServer = Server.Network.GameServer;
 
@@ -68,6 +69,8 @@ namespace Server
 		public static bool Service { get; private set; }
 
 		public static bool Debug { get; private set; }
+
+		public static bool Testing { get; private set; }
 
 		public static List<string> DataDirectories => Config.DataDirectories;
 
@@ -150,6 +153,8 @@ namespace Server
 			{
 				if ( Insensitive.Equals( args[i], "--debug" ) )
 					Debug = true;
+				else if ( Insensitive.Equals( args[i], "--test" ) )
+					Testing = true;
 				else if ( Insensitive.Equals( args[i], "--service" ) )
 					Service = true;
 				else if ( Insensitive.Equals( args[i], "--profile" ) )
@@ -296,7 +301,7 @@ namespace Server
 			{
 				ScriptCompiler.Configure();
 
-				TileData.Configure();
+				//TileData.Configure();
 			}
 			catch ( TargetInvocationException e )
 			{
@@ -306,12 +311,12 @@ namespace Server
 
 			SaveConfig();
 
-			Region.Load();
+			//Region.Load();
 			World.Load();
 
 			try
 			{
-				ScriptCompiler.Initialize();
+				//ScriptCompiler.Initialize();
 			}
 			catch ( TargetInvocationException e )
 			{
@@ -335,40 +340,47 @@ namespace Server
 			m_TotalProfile = new MainProfile( Now );
 			m_CurrentProfile = new MainProfile( Now );
 
-			try
+			if (!Testing)
 			{
-				while ( !Closing )
+				try
 				{
-					Now = DateTime.UtcNow;
+					while ( !Closing )
+					{
+						Now = DateTime.UtcNow;
 
-					Thread.Sleep( 1 );
+						Thread.Sleep( 1 );
 
-					ClockProfile( MainProfile.TimerId.Idle );
+						ClockProfile( MainProfile.TimerId.Idle );
 
-					Mobile.ProcessDeltaQueue();
+						Mobile.ProcessDeltaQueue();
 
-					ClockProfile( MainProfile.TimerId.MobileDelta );
+						ClockProfile( MainProfile.TimerId.MobileDelta );
 
-					Item.ProcessDeltaQueue();
+						Item.ProcessDeltaQueue();
 
-					ClockProfile( MainProfile.TimerId.ItemDelta );
+						ClockProfile( MainProfile.TimerId.ItemDelta );
 
-					timerExecutor.Slice();
+						timerExecutor.Slice();
 
-					ClockProfile( MainProfile.TimerId.Timers );
+						ClockProfile( MainProfile.TimerId.Timers );
 
-					netServer.Slice();
+						netServer.Slice();
 
-					ClockProfile( MainProfile.TimerId.Network );
+						ClockProfile( MainProfile.TimerId.Network );
 
-					// Done with this iteration.
-					m_TotalProfile.Next();
-					m_CurrentProfile.Next();
+						// Done with this iteration.
+						m_TotalProfile.Next();
+						m_CurrentProfile.Next();
+					}
+				}
+				catch ( Exception e )
+				{
+					HandleCrashed( e );
 				}
 			}
-			catch ( Exception e )
+			else
 			{
-				HandleCrashed( e );
+				TestRunner.RunTests();
 			}
 
 			m_TimerThread.Stop();

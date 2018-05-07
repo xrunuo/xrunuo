@@ -4787,6 +4787,7 @@
     <Compile Include="Targets\BladedItemTarget.cs" />
     <Compile Include="Targets\MoveTarget.cs" />
     <Compile Include="Targets\PickMoveTarget.cs" />
+    <Compile Include="Tests\KillTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Server\Server.csproj">

@@ -1,5 +1,5 @@
 run: build
-	mono Server.exe
+	mono Server.exe --test
 
 build: Server.exe
 

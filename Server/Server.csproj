@@ -317,6 +317,8 @@
     <Compile Include="Targeting\Target.cs" />
     <Compile Include="Targeting\TargetCancelType.cs" />
     <Compile Include="Targeting\TargetFlags.cs" />
+    <Compile Include="Testing\Attributes.cs" />
+    <Compile Include="Testing\TestRunner.cs" />
     <Compile Include="TileData.cs" />
     <Compile Include="TileList.cs" />
     <Compile Include="TileMatrix.cs" />

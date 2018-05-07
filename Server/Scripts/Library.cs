@@ -152,5 +152,10 @@ namespace Server
 		{
 			return TypesByFullName.Get( fullName, ignoreCase );
 		}
+
+		public IEnumerable<Type> FindTypesByAttribute<T>() where T : Attribute
+		{
+			return Types.Where( type => type.GetCustomAttribute<T>() != null );
+		}
 	}
 }

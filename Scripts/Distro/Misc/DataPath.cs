@@ -34,6 +34,7 @@ namespace Server.Misc
 			if ( pathTD != null )
 				Core.DataDirectories.Add( pathTD );
 
+			/*
 			if ( Core.DataDirectories.Count == 0 )
 			{
 				Console.WriteLine( "Enter the Ultima Online directory:" );
@@ -41,6 +42,7 @@ namespace Server.Misc
 
 				Core.DataDirectories.Add( Console.ReadLine() );
 			}
+			*/
 		}
 
 		private static string GetExePath( string subName )
