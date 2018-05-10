@@ -22,7 +22,7 @@ namespace Server.Engines.RestApi
 			return _matcher.IsMatch( uri );
 		}
 
-		public Parameters GetMatchedParameters( string uri )
+		public Parameters GetUriParameters( string uri )
 		{
 			if ( !IsMatch( uri ) )
 				throw new ArgumentException();

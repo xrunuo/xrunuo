@@ -13,16 +13,16 @@ namespace Server.Engines.RestApi
 	{
 		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
 
-		private Dictionary<Route, Type> _routingMap;
+		private Dictionary<Route, Type> _controllerTypes;
 
 		public HttpRouter()
 		{
-			_routingMap = new Dictionary<Route, Type>();
+			_controllerTypes = new Dictionary<Route, Type>();
 		}
 
-		public void RegisterLocator( Route route, Type locatorType )
+		public void RegisterController( Route route, Type controllerType )
 		{
-			_routingMap[route] = locatorType;
+			_controllerTypes[route] = controllerType;
 		}
 
 		public void ProcessRequest( HttpListenerContext context )
@@ -30,11 +30,21 @@ namespace Server.Engines.RestApi
 			try
 			{
 				// Acquire the controller
-				var controller = AcquireController( context.Request.RawUrl.Split( '?' ).First() );
+				var path = context.Request.RawUrl.Split( '?' ).First();
+
+				// Select the route that matches the path
+				var route = _controllerTypes.Keys.FirstOrDefault( r => r.IsMatch( path ) );
+
+				if ( route == null )
+					throw new NotFound( "No controller found to handle request to " + path );
+
+				var controllerType = _controllerTypes[route];
+				var controller = (BaseController) Activator.CreateInstance( controllerType );
 
 				// Call the handler
+				var uriParameters = route.GetUriParameters( path );
 				controller.AccessCheck( context );
-				var response = controller.HandleRequest( context );
+				var response = controller.HandleRequest( context, uriParameters );
 
 				// Serialize the response
 				var jsonResponse = JsonSerialize( response );
@@ -59,25 +69,6 @@ namespace Server.Engines.RestApi
 				log.Error( "Rest Api: Unexpected error: {0}", e );
 				context.Response.StatusCode = 500;
 			}
-		}
-
-		private BaseController AcquireController( string uri )
-		{
-			// Select the route that matches the uri
-			var route = _routingMap.Keys.FirstOrDefault( r => r.IsMatch( uri ) );
-
-			if ( route == null )
-				throw new NotFound( "No controller found to handle request to " + uri );
-
-			// Get the controller locator
-			var locatorType = _routingMap[route];
-			var locator = (BaseLocator) Activator.CreateInstance( locatorType );
-
-			// Get the matched parameters
-			var parameters = route.GetMatchedParameters( uri );
-
-			// Acquire the controller
-			return locator.Locate( parameters );
 		}
 
 		private string JsonSerialize( object o )

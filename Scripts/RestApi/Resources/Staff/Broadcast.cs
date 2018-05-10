@@ -6,34 +6,9 @@ using Parameters = System.Collections.Generic.Dictionary<string, string>;
 namespace Server.Engines.RestApi
 {
 	[Path( "/v1/staff/broadcast" )]
-	public class BroadcastLocator : BaseLocator
-	{
-		public override BaseController Locate( Parameters parameters )
-		{
-			return BroadcastController.Instance;
-		}
-	}
-
 	public class BroadcastController : BaseController
 	{
-		private static BroadcastController _instance;
-
-		public static BroadcastController Instance
-		{
-			get
-			{
-				if ( _instance == null )
-					_instance = new BroadcastController();
-
-				return _instance;
-			}
-		}
-
-		private BroadcastController()
-		{
-		}
-
-		public override object HandleRequest( HttpListenerContext context )
+		public override object HandleRequest( HttpListenerContext context, Parameters parameters )
 		{
 			if ( context.Request.HttpMethod != "POST" )
 				throw new NotSupportedException();

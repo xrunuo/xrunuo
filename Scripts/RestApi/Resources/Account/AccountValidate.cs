@@ -6,41 +6,18 @@ using Parameters = System.Collections.Generic.Dictionary<string, string>;
 namespace Server.Engines.RestApi
 {
 	[Path( "/v1/accounts/{username}/validate" )]
-	public class AccountValidateLocator : BaseLocator
-	{
-		public override BaseController Locate( Parameters parameters )
-		{
-			BaseController controller = null;
-
-			try
-			{
-				var username = parameters["username"];
-				var acct = Accounts.GetAccount( username );
-
-				if ( acct != null )
-					controller = new AccountValidateController( acct );
-			}
-			catch
-			{
-			}
-
-			return controller;
-		}
-	}
-
 	public class AccountValidateController : BaseController
 	{
-		private Account m_Account;
-
-		public AccountValidateController( Account account )
-		{
-			m_Account = account;
-		}
-
-		public override object HandleRequest( HttpListenerContext context )
+		public override object HandleRequest( HttpListenerContext context, Parameters parameters )
 		{
 			if ( context.Request.HttpMethod != "PUT" )
 				throw new NotSupportedException();
+
+			var username = parameters["username"];
+			var acct = Accounts.GetAccount( username );
+
+			if ( acct == null )
+				throw new NotFound( "Account does not exist: " + username );
 
 			var request = GetRequestData<AccountValidateRequest>( context );
 			string authCode = request.AuthCode;

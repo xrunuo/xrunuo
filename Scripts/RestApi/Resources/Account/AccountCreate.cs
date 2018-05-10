@@ -9,34 +9,9 @@ using Parameters = System.Collections.Generic.Dictionary<string, string>;
 namespace Server.Engines.RestApi
 {
 	[Path( "/v1/accounts/create" )]
-	public class AccountCreateLocator : BaseLocator
-	{
-		public override BaseController Locate( Parameters parameters )
-		{
-			return AccountCreateController.Instance;
-		}
-	}
-
 	public class AccountCreateController : BaseController
 	{
-		private static AccountCreateController _instance;
-
-		public static AccountCreateController Instance
-		{
-			get
-			{
-				if ( _instance == null )
-					_instance = new AccountCreateController();
-
-				return _instance;
-			}
-		}
-
-		private AccountCreateController()
-		{
-		}
-
-		public override object HandleRequest( HttpListenerContext context )
+		public override object HandleRequest( HttpListenerContext context, Parameters parameters )
 		{
 			if ( context.Request.HttpMethod != "PUT" )
 				throw new NotSupportedException();

@@ -42,7 +42,7 @@ namespace Server.Engines.RestApi
 				var attr = type.GetCustomAttributes<PathAttribute>( false ).FirstOrDefault();
 
 				if ( attr != null )
-					router.RegisterLocator( new Route( attr.Path ), type );
+					router.RegisterController( new Route( attr.Path ), type );
 			}
 		}
 

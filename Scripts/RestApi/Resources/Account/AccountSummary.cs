@@ -9,67 +9,34 @@ using Parameters = System.Collections.Generic.Dictionary<string, string>;
 namespace Server.Engines.RestApi
 {
 	[Path( "/v1/accounts/{username}/summary" )]
-	public class AccountSummaryLocator : BaseLocator
-	{
-		public override BaseController Locate( Parameters parameters )
-		{
-			BaseController controller = null;
-
-			try
-			{
-				var username = parameters["username"];
-				var acct = Accounts.GetAccount( username );
-
-				if ( acct != null )
-					controller = new AccountSummaryController( acct );
-			}
-			catch
-			{
-			}
-
-			return controller;
-		}
-	}
-
 	public class AccountSummaryController : BaseProtectedController
 	{
 		public override AccessLevel RequiredAccessLevel { get { return AccessLevel.Player; } }
 
-		private Account m_Account;
-
-		public AccountSummaryController( Account account )
+		public override object HandleRequest( HttpListenerContext context, Parameters parameters )
 		{
-			m_Account = account;
-		}
+			var username = parameters["username"];
+			var acct = Accounts.GetAccount( username );
 
-		public override void AccessCheck( HttpListenerContext context )
-		{
-			base.AccessCheck( context );
+			if ( acct == null )
+				throw new NotFound( "Account does not exist: " + username );
 
 			var account = GetAccount( context );
-			if ( account.AccessLevel <= AccessLevel.Player )
-			{
-				if ( account != m_Account )
-					throw new AccessDenied( "Cannot see other player account summary" );
-			}
-		}
+			if ( account.AccessLevel <= AccessLevel.Player && account != acct )
+				throw new AccessDenied( "Cannot see other player account summary" );
 
-		public override object HandleRequest( HttpListenerContext context )
-		{
-			string email = m_Account.GetTag( "email" );
-			if ( email == null )
-				email = "";
+			var email = acct.GetTag( "email" ) ?? "";
 
-			var age = DateTime.Now - m_Account.Created;
+			var age = DateTime.Now - acct.Created;
 
 			return new
 			{
 				AccountSummary = new
 				{
-					Username = m_Account.Username,
+					Username = acct.Username,
 					Email = email,
-					Created = m_Account.Created.ToUnixTime(),
-					Gametime = (int) m_Account.TotalGameTime.TotalSeconds,
+					Created = acct.Created.ToUnixTime(),
+					Gametime = (int) acct.TotalGameTime.TotalSeconds,
 					Age = (int) age.TotalSeconds
 				}
 			};

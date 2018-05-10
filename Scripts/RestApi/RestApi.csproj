@@ -36,7 +36,6 @@
   <ItemGroup>
     <Compile Include="ApiServer.cs" />
     <Compile Include="Core\Attributes\PathAttribute.cs" />
-    <Compile Include="Core\BaseLocator.cs" />
     <Compile Include="Core\BaseProtectedController.cs" />
     <Compile Include="Core\BaseController.cs" />
     <Compile Include="Core\HttpRouter.cs" />

@@ -24,10 +24,7 @@ namespace Server.Engines.RestApi
 		/// </summary>
 		/// <param name="context"></param>
 		/// <returns>The response</returns>
-		public virtual object HandleRequest( HttpListenerContext context )
-		{
-			throw new NotImplementedException();
-		}
+		public abstract object HandleRequest( HttpListenerContext context, Parameters parameters );
 
 		/// <summary>
 		/// Reads the request parameters as a json string and deserializes it

@@ -5,7 +5,6 @@ using System.Net;
 using Server;
 using Server.Accounting;
 using Server.Engines.Guilds;
-using Server.Guilds;
 using Server.Network;
 
 using Parameters = System.Collections.Generic.Dictionary<string, string>;
@@ -13,21 +12,9 @@ using Parameters = System.Collections.Generic.Dictionary<string, string>;
 namespace Server.Engines.RestApi
 {
 	[Path( "/v1/status" )]
-	public class StatusLocator : BaseLocator
-	{
-		public override BaseController Locate( Parameters parameters )
-		{
-			return new StatusController();
-		}
-	}
-
 	public class StatusController : BaseController
 	{
-		public StatusController()
-		{
-		}
-
-		public override object HandleRequest( HttpListenerContext context )
+		public override object HandleRequest( HttpListenerContext context, Parameters parameters )
 		{
 			var onlineCount = GameServer.Instance.ClientCount;
 			var accountCount = Accounts.GetAccounts().Count( a => !a.Banned && a.Count > 0 );
