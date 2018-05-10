@@ -5,14 +5,12 @@ using System.Net;
 using Server;
 using Server.Network;
 
-using Parameters = System.Collections.Generic.Dictionary<string, string>;
-
 namespace Server.Engines.RestApi
 {
 	[Path( "/v1/players" )]
 	public class PlayerListController : BaseController
 	{
-		public override object HandleRequest( HttpListenerContext context, Parameters parameters )
+		public override object HandleRequest( Request request )
 		{
 			var clients = GameServer.Instance.Clients;
 

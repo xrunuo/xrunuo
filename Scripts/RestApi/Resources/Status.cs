@@ -7,14 +7,12 @@ using Server.Accounting;
 using Server.Engines.Guilds;
 using Server.Network;
 
-using Parameters = System.Collections.Generic.Dictionary<string, string>;
-
 namespace Server.Engines.RestApi
 {
 	[Path( "/v1/status" )]
 	public class StatusController : BaseController
 	{
-		public override object HandleRequest( HttpListenerContext context, Parameters parameters )
+		public override object HandleRequest( Request request )
 		{
 			var onlineCount = GameServer.Instance.ClientCount;
 			var accountCount = Accounts.GetAccounts().Count( a => !a.Banned && a.Count > 0 );

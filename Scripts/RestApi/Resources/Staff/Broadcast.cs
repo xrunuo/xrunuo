@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 
 using Parameters = System.Collections.Generic.Dictionary<string, string>;
 
@@ -8,18 +7,18 @@ namespace Server.Engines.RestApi
 	[Path( "/v1/staff/broadcast" )]
 	public class BroadcastController : BaseController
 	{
-		public override object HandleRequest( HttpListenerContext context, Parameters parameters )
+		public override object HandleRequest( Request request )
 		{
-			if ( context.Request.HttpMethod != "POST" )
+			if ( request.HttpMethod != "POST" )
 				throw new NotSupportedException();
 
-			var request = GetRequestData<BroadcastRequest>( context );
-			var broadcast = request.Broadcast;
+			var dto = request.AsDto<BroadcastRequest>();
+			var broadcast = dto.Broadcast;
 
 			Server.Scripts.Commands.CommandHandlers.BroadcastMessage( AccessLevel.Player, 0x482, String.Format( "Staff message from {0}:", broadcast.Name ) );
 			Server.Scripts.Commands.CommandHandlers.BroadcastMessage( AccessLevel.Player, 0x482, broadcast.Message );
 
-			return request;
+			return dto;
 		}
 
 		private class BroadcastRequest

@@ -11,9 +11,9 @@ namespace Server.Engines.RestApi
 	[Path( "/v1/login" )]
 	public class LoginController : BaseController
 	{
-		public override object HandleRequest( HttpListenerContext context, Parameters parameters )
+		public override object HandleRequest( Request request )
 		{
-			var login = GetRequestData<LoginRequest>( context ).Login;
+			var login = request.AsDto<LoginRequest>().Login;
 
 			var account = Accounts.GetAccount( login.Username );
 

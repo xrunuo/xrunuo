@@ -44,7 +44,8 @@ namespace Server.Engines.RestApi
 				// Call the handler
 				var uriParameters = route.GetUriParameters( path );
 				controller.AccessCheck( context );
-				var response = controller.HandleRequest( context, uriParameters );
+				var request = new Request( context, uriParameters );
+				var response = controller.HandleRequest( request );
 
 				// Serialize the response
 				var jsonResponse = JsonSerialize( response );

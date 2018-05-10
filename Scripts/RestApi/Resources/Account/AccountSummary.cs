@@ -11,17 +11,17 @@ namespace Server.Engines.RestApi
 	[Path( "/v1/accounts/{username}/summary" )]
 	public class AccountSummaryController : BaseProtectedController
 	{
-		public override AccessLevel RequiredAccessLevel { get { return AccessLevel.Player; } }
+		public override AccessLevel RequiredAccessLevel => AccessLevel.Player;
 
-		public override object HandleRequest( HttpListenerContext context, Parameters parameters )
+		public override object HandleRequest( Request request )
 		{
-			var username = parameters["username"];
+			var username = request["username"];
 			var acct = Accounts.GetAccount( username );
 
 			if ( acct == null )
 				throw new NotFound( "Account does not exist: " + username );
 
-			var account = GetAccount( context );
+			var account = request.GetAccount();
 			if ( account.AccessLevel <= AccessLevel.Player && account != acct )
 				throw new AccessDenied( "Cannot see other player account summary" );
 

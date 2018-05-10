@@ -40,6 +40,7 @@
     <Compile Include="Core\BaseController.cs" />
     <Compile Include="Core\HttpRouter.cs" />
     <Compile Include="Core\HttpServer.cs" />
+    <Compile Include="Core\Request.cs" />
     <Compile Include="Core\Route.cs" />
     <Compile Include="Resources\Account\AccountCreate.cs" />
     <Compile Include="Resources\Account\AccountSummary.cs" />
