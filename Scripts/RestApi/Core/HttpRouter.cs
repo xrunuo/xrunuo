@@ -23,6 +23,8 @@ namespace Server.Engines.RestApi
 		public void RegisterController( Route route, Type controllerType )
 		{
 			_controllers[route] = (BaseController) Activator.CreateInstance( controllerType );
+
+			log.Info( "Registered controller {0} for route {1}", controllerType.Name, route );
 		}
 
 		public void ProcessRequest( HttpListenerContext context )

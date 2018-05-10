@@ -36,5 +36,10 @@ namespace Server.Engines.RestApi
 					name => match.Groups[name].Value
 				);
 		}
+
+		public override string ToString()
+		{
+			return _pattern;
+		}
 	}
 }
