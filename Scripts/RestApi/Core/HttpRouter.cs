@@ -32,25 +32,22 @@ namespace Server.Engines.RestApi
 				// Acquire the controller
 				var controller = AcquireController( context.Request.RawUrl.Split( '?' ).First() );
 
-				if ( controller != null )
-				{
-					// Call the handler
-					controller.AccessCheck( context );
-					var response = controller.HandleRequest( context );
+				// Call the handler
+				controller.AccessCheck( context );
+				var response = controller.HandleRequest( context );
 
-					// Serialize the response
-					var jsonResponse = JsonSerialize( response );
+				// Serialize the response
+				var jsonResponse = JsonSerialize( response );
 
-					// Write the serialized data into the output stream
-					context.Response.ContentType = "application/json";
-					byte[] outputBuffer = Encoding.ASCII.GetBytes( jsonResponse );
-					context.Response.OutputStream.Write( outputBuffer, 0, outputBuffer.Length );
-				}
-				else
-				{
-					log.Error( "Rest Api: Not found: {0}", context.Request.RawUrl );
-					context.Response.StatusCode = 404; // Not found
-				}
+				// Write the serialized data into the output stream
+				context.Response.ContentType = "application/json";
+				byte[] outputBuffer = Encoding.ASCII.GetBytes( jsonResponse );
+				context.Response.OutputStream.Write( outputBuffer, 0, outputBuffer.Length );
+			}
+			catch ( NotFound e )
+			{
+				log.Error( "Rest Api: Not found: {0}", context.Request.RawUrl );
+				context.Response.StatusCode = 404; // Not found
 			}
 			catch ( AccessDenied e )
 			{
@@ -66,29 +63,21 @@ namespace Server.Engines.RestApi
 
 		private BaseController AcquireController( string uri )
 		{
-			BaseController controller = null;
-
 			// Select the route that matches the uri
-			var route = _routingMap.Keys.FirstOrDefault(
-				r => r.IsMatch( uri ) );
+			var route = _routingMap.Keys.FirstOrDefault( r => r.IsMatch( uri ) );
 
-			if ( route != null )
-			{
-				// Get the controller locator
-				var locatorType = _routingMap[route];
-				var locator = (BaseLocator) Activator.CreateInstance( locatorType );
+			if ( route == null )
+				throw new NotFound( "No controller found to handle request to " + uri );
 
-				if ( locator != null )
-				{
-					// Get the matched parameters
-					var parameters = route.GetMatchedParameters( uri );
+			// Get the controller locator
+			var locatorType = _routingMap[route];
+			var locator = (BaseLocator) Activator.CreateInstance( locatorType );
 
-					// Acquire the controller
-					controller = locator.Locate( parameters );
-				}
-			}
+			// Get the matched parameters
+			var parameters = route.GetMatchedParameters( uri );
 
-			return controller;
+			// Acquire the controller
+			return locator.Locate( parameters );
 		}
 
 		private string JsonSerialize( object o )
