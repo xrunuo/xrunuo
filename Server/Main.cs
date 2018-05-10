@@ -326,22 +326,22 @@ namespace Server
 
 			m_TimerThread.Start();
 
-			NetServer netServer = new NetServer( new Listener( Listener.Port ) );
-			netServer.Initialize();
-
-			GameServer.Instance = new GameServer( netServer );
-			GameServer.Instance.Initialize();
-
-			EventSink.InvokeServerStarted();
-
-			PacketDispatcher.Initialize();
-
-			Now = DateTime.UtcNow;
-			m_TotalProfile = new MainProfile( Now );
-			m_CurrentProfile = new MainProfile( Now );
-
 			if (!Testing)
 			{
+				NetServer netServer = new NetServer( new Listener( Listener.Port ) );
+				netServer.Initialize();
+
+				GameServer.Instance = new GameServer( netServer );
+				GameServer.Instance.Initialize();
+
+				EventSink.InvokeServerStarted();
+
+				PacketDispatcher.Initialize();
+
+				Now = DateTime.UtcNow;
+				m_TotalProfile = new MainProfile( Now );
+				m_CurrentProfile = new MainProfile( Now );
+
 				try
 				{
 					while ( !Closing )
