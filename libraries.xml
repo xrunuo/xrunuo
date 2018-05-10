@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <libraries>
 	<library name="Distro" />
+	<library name="RestApi" />
 	<library name="Games" disabled="true">
 		<path>https://github.com/ppardalj/xrunuo-games/archive/master.zip</path>
 	</library>

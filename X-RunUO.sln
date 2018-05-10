@@ -1,8 +1,10 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
+﻿Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Distro", "Scripts\Distro\Distro.csproj", "{C492FAC4-99A4-4AA3-A5C7-ED0CCB10EF0E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{B2EAB854-8907-43BE-9B8F-9B1B64DDF597}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApi", "Scripts\RestApi\RestApi.csproj", "{1F1759FB-31FD-446D-BC7A-62B01872E63E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,14 @@ Global
 		{B2EAB854-8907-43BE-9B8F-9B1B64DDF597}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B2EAB854-8907-43BE-9B8F-9B1B64DDF597}.Release|x64.ActiveCfg = Release|x64
 		{B2EAB854-8907-43BE-9B8F-9B1B64DDF597}.Release|x64.Build.0 = Release|x64
+		{1F1759FB-31FD-446D-BC7A-62B01872E63E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F1759FB-31FD-446D-BC7A-62B01872E63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F1759FB-31FD-446D-BC7A-62B01872E63E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1F1759FB-31FD-446D-BC7A-62B01872E63E}.Debug|x64.Build.0 = Debug|Any CPU
+		{1F1759FB-31FD-446D-BC7A-62B01872E63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F1759FB-31FD-446D-BC7A-62B01872E63E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F1759FB-31FD-446D-BC7A-62B01872E63E}.Release|x64.ActiveCfg = Release|Any CPU
+		{1F1759FB-31FD-446D-BC7A-62B01872E63E}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
