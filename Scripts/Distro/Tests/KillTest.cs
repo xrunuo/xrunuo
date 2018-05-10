@@ -31,5 +31,21 @@ namespace Server.Tests
 
 	public class TestMobile : Mobile
 	{
+		public TestMobile()
+		{
+		}
+
+		public TestMobile(Serial serial)
+			: base(serial)
+		{
+		}
+
+		public override void Deserialize(GenericReader reader)
+		{
+		}
+
+		public override void Serialize(GenericWriter write)
+		{
+		}
 	}
 }
