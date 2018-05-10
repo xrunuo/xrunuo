@@ -11,7 +11,7 @@ namespace Server.Engines.RestApi
 	{
 		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
 
-		public static readonly bool Enabled = Config.Get( "RestApi.Enabled", true );
+		public static readonly bool Enabled = Config.Get( "RestApi.Enabled", false );
 		public static readonly string Domain = Config.Get( "RestApi.Domain", "127.0.0.1" );
 		public static readonly int Port = Config.Get( "RestApi.Port", 8080 );
 
