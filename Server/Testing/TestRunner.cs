@@ -9,9 +9,9 @@ namespace Server.Testing
 	{
 		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
 
-		private static int m_Failed = 0;
+		private int m_Failed;
 
-		public static void RunTests()
+		public void RunTests()
 		{
 			var testCaseTypes = ScriptCompiler.FindTypesByAttribute<TestCaseAttribute>();
 
@@ -34,7 +34,7 @@ namespace Server.Testing
 			}
 		}
 
-		private static void RunTestMethods(object testCase)
+		private void RunTestMethods(object testCase)
 		{
 			IEnumerable<MethodInfo> methods = testCase.GetType().GetMethods()
 				.Where(m => m.GetCustomAttribute<TestAttribute>() != null);

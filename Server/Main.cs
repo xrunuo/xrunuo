@@ -380,7 +380,7 @@ namespace Server
 			}
 			else
 			{
-				TestRunner.RunTests();
+				new TestRunner().RunTests();
 			}
 
 			m_TimerThread.Stop();
