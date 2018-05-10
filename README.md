@@ -22,13 +22,22 @@ XRunUO
 #### Windows Build
 
 ```console
-C:\runuo> C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc /optimize /unsafe /t:exe /out:Server.exe /recurse:Server\*.cs
+C:\xrunuo> C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc /optimize /unsafe /t:exe /out:Server.exe /recurse:Server\*.cs
+C:\xrunuo> Server.exe
 ```
 
-#### Linux Build (MONO)
+#### OSX / Linux (Mono)
 
 ```console
-~/runuo$ mcs -optimize+ -unsafe -t:exe -out:Server.exe -nowarn:219,414 -d:MONO -recurse:Server/*.cs -reference:System.IO.Compression.FileSystem.dll
+~/xrunuo$ make run
+```
+
+#### Docker (Mono)
+
+You need [Docker](https://www.docker.com/) installed in your system. Then run:
+
+```console
+~/xrunuo$ make docker-run
 ```
 
 #### zlib
