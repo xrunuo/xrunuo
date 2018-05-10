@@ -8,7 +8,7 @@ using Parameters = System.Collections.Generic.Dictionary<string, string>;
 
 namespace Server.Engines.RestApi
 {
-	[Path( "/v1/accounts/{username}/summary" )]
+	[Path( "/accounts/{username}/summary" )]
 	public class AccountSummaryController : BaseProtectedController
 	{
 		public override AccessLevel RequiredAccessLevel => AccessLevel.Player;

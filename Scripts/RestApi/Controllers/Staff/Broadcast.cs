@@ -4,7 +4,7 @@ using Parameters = System.Collections.Generic.Dictionary<string, string>;
 
 namespace Server.Engines.RestApi
 {
-	[Path( "/v1/staff/broadcast" )]
+	[Path( "/staff/broadcast" )]
 	public class BroadcastController : BaseController
 	{
 		public override object HandleRequest( Request request )

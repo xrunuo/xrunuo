@@ -8,7 +8,7 @@ using Parameters = System.Collections.Generic.Dictionary<string, string>;
 
 namespace Server.Engines.RestApi
 {
-	[Path( "/v1/accounts/create" )]
+	[Path( "/accounts/create" )]
 	public class AccountCreateController : BaseController
 	{
 		public override object HandleRequest( Request request )

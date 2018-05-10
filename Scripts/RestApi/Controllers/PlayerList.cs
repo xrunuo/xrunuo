@@ -7,7 +7,7 @@ using Server.Network;
 
 namespace Server.Engines.RestApi
 {
-	[Path( "/v1/players" )]
+	[Path( "/players" )]
 	public class PlayerListController : BaseController
 	{
 		public override object HandleRequest( Request request )

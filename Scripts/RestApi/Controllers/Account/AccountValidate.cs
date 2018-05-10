@@ -5,7 +5,7 @@ using Parameters = System.Collections.Generic.Dictionary<string, string>;
 
 namespace Server.Engines.RestApi
 {
-	[Path( "/v1/accounts/{username}/validate" )]
+	[Path( "/accounts/{username}/validate" )]
 	public class AccountValidateController : BaseController
 	{
 		public override object HandleRequest( Request request )

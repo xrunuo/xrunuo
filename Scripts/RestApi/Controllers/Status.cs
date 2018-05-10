@@ -9,7 +9,7 @@ using Server.Network;
 
 namespace Server.Engines.RestApi
 {
-	[Path( "/v1/status" )]
+	[Path( "/status" )]
 	public class StatusController : BaseController
 	{
 		public override object HandleRequest( Request request )

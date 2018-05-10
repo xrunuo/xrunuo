@@ -8,7 +8,7 @@ using Parameters = System.Collections.Generic.Dictionary<string, string>;
 
 namespace Server.Engines.RestApi
 {
-	[Path( "/v1/login" )]
+	[Path( "/login" )]
 	public class LoginController : BaseController
 	{
 		public override object HandleRequest( Request request )
