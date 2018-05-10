@@ -10,6 +10,8 @@ namespace Server.Engines.RestApi
 {
 	public class ApiServer
 	{
+		private static readonly ILog log = LogManager.GetLogger( System.Reflection.MethodBase.GetCurrentMethod().DeclaringType );
+
 		public static readonly bool Enabled = Config.Get( "RestApi.Enabled", true );
 		public static readonly string Domain = Config.Get( "RestApi.Domain", "127.0.0.1" );
 		public static readonly int Port = Config.Get( "RestApi.Port", 8080 );
@@ -64,11 +66,11 @@ namespace Server.Engines.RestApi
 				m_Server.Start();
 
 				foreach ( string prefix in m_Server.GetPrefixes() )
-					Console.WriteLine( "Rest Api: Listening on {0}", prefix );
+					log.Info( "Listening on {0}", prefix );
 			}
 			catch ( Exception e )
 			{
-				Console.WriteLine( "Rest Api: Couldn't start: {0}", e );
+				log.Warning( "Couldn't start: {0}", e );
 			}
 		}
 
@@ -81,7 +83,7 @@ namespace Server.Engines.RestApi
 		{
 			m_Server.Stop();
 
-			Console.WriteLine( "Rest Api: Stopped" );
+			log.Info( "Stopped" );
 		}
 	}
 }
