@@ -7,6 +7,6 @@ namespace Server.Engines.RestApi
 {
 	public abstract class BaseLocator
 	{
-		public abstract BaseResource Locate( Parameters parameters );
+		public abstract BaseController Locate( Parameters parameters );
 	}
 }

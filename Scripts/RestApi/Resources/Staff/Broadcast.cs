@@ -8,28 +8,28 @@ namespace Server.Engines.RestApi
 	[Path( "/v1/staff/broadcast" )]
 	public class BroadcastLocator : BaseLocator
 	{
-		public override BaseResource Locate( Parameters parameters )
+		public override BaseController Locate( Parameters parameters )
 		{
-			return BroadcastResource.Instance;
+			return BroadcastController.Instance;
 		}
 	}
 
-	public class BroadcastResource : BaseResource
+	public class BroadcastController : BaseController
 	{
-		private static BroadcastResource _instance;
+		private static BroadcastController _instance;
 
-		public static BroadcastResource Instance
+		public static BroadcastController Instance
 		{
 			get
 			{
 				if ( _instance == null )
-					_instance = new BroadcastResource();
+					_instance = new BroadcastController();
 
 				return _instance;
 			}
 		}
 
-		private BroadcastResource()
+		private BroadcastController()
 		{
 		}
 

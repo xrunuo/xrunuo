@@ -29,14 +29,14 @@ namespace Server.Engines.RestApi
 		{
 			try
 			{
-				// Acquire the resource
-				var resource = AcquireResource( context.Request.RawUrl.Split( '?' ).First() );
+				// Acquire the controller
+				var controller = AcquireController( context.Request.RawUrl.Split( '?' ).First() );
 
-				if ( resource != null )
+				if ( controller != null )
 				{
 					// Call the handler
-					resource.AccessCheck( context );
-					var response = resource.HandleRequest( context );
+					controller.AccessCheck( context );
+					var response = controller.HandleRequest( context );
 
 					// Serialize the response
 					var jsonResponse = JsonSerialize( response );
@@ -64,9 +64,9 @@ namespace Server.Engines.RestApi
 			}
 		}
 
-		private BaseResource AcquireResource( string uri )
+		private BaseController AcquireController( string uri )
 		{
-			BaseResource resource = null;
+			BaseController controller = null;
 
 			// Select the route that matches the uri
 			var route = _routingMap.Keys.FirstOrDefault(
@@ -74,7 +74,7 @@ namespace Server.Engines.RestApi
 
 			if ( route != null )
 			{
-				// Get the resource locator
+				// Get the controller locator
 				var locatorType = _routingMap[route];
 				var locator = (BaseLocator) Activator.CreateInstance( locatorType );
 
@@ -83,12 +83,12 @@ namespace Server.Engines.RestApi
 					// Get the matched parameters
 					var parameters = route.GetMatchedParameters( uri );
 
-					// Acquire the resource
-					resource = locator.Locate( parameters );
+					// Acquire the controller
+					controller = locator.Locate( parameters );
 				}
 			}
 
-			return resource;
+			return controller;
 		}
 
 		private string JsonSerialize( object o )

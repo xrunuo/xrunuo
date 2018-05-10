@@ -11,9 +11,9 @@ namespace Server.Engines.RestApi
 	[Path( "/v1/players/{id}" )]
 	public class PlayerLocator : BaseLocator
 	{
-		public override BaseResource Locate( Parameters parameters )
+		public override BaseController Locate( Parameters parameters )
 		{
-			BaseResource resource = null;
+			BaseController controller = null;
 
 			try
 			{
@@ -21,23 +21,23 @@ namespace Server.Engines.RestApi
 				var pm = World.FindMobile( serial ) as PlayerMobile;
 
 				if ( pm != null )
-					resource = new PlayerResource( pm );
+					controller = new PlayerController( pm );
 			}
 			catch
 			{
 			}
 
-			return resource;
+			return controller;
 		}
 	}
 
-	public class PlayerResource : BaseProtectedResource
+	public class PlayerController : BaseProtectedController
 	{
 		public override AccessLevel RequiredAccessLevel { get { return AccessLevel.Player; } }
 
 		private PlayerMobile m_Mobile;
 
-		public PlayerResource( PlayerMobile pm )
+		public PlayerController( PlayerMobile pm )
 		{
 			m_Mobile = pm;
 		}

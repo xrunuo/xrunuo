@@ -15,15 +15,15 @@ namespace Server.Engines.RestApi
 	[Path( "/v1/status" )]
 	public class StatusLocator : BaseLocator
 	{
-		public override BaseResource Locate( Parameters parameters )
+		public override BaseController Locate( Parameters parameters )
 		{
-			return new StatusResource();
+			return new StatusController();
 		}
 	}
 
-	public class StatusResource : BaseResource
+	public class StatusController : BaseController
 	{
-		public StatusResource()
+		public StatusController()
 		{
 		}
 

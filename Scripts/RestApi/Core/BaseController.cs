@@ -8,7 +8,7 @@ using Parameters = System.Collections.Generic.Dictionary<string, string>;
 
 namespace Server.Engines.RestApi
 {
-	public abstract class BaseResource
+	public abstract class BaseController
 	{
 		/// <summary>
 		/// Checks the access to this resource.

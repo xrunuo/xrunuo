@@ -11,9 +11,9 @@ namespace Server.Engines.RestApi
 	[Path( "/v1/accounts/{username}/summary" )]
 	public class AccountSummaryLocator : BaseLocator
 	{
-		public override BaseResource Locate( Parameters parameters )
+		public override BaseController Locate( Parameters parameters )
 		{
-			BaseResource resource = null;
+			BaseController controller = null;
 
 			try
 			{
@@ -21,23 +21,23 @@ namespace Server.Engines.RestApi
 				var acct = Accounts.GetAccount( username );
 
 				if ( acct != null )
-					resource = new AccountSummaryResource( acct );
+					controller = new AccountSummaryController( acct );
 			}
 			catch
 			{
 			}
 
-			return resource;
+			return controller;
 		}
 	}
 
-	public class AccountSummaryResource : BaseProtectedResource
+	public class AccountSummaryController : BaseProtectedController
 	{
 		public override AccessLevel RequiredAccessLevel { get { return AccessLevel.Player; } }
 
 		private Account m_Account;
 
-		public AccountSummaryResource( Account account )
+		public AccountSummaryController( Account account )
 		{
 			m_Account = account;
 		}

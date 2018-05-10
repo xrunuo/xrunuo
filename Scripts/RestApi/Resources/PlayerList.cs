@@ -13,20 +13,20 @@ namespace Server.Engines.RestApi
 	[Path( "/v1/players" )]
 	public class PlayerListLocator : BaseLocator
 	{
-		public override BaseResource Locate( Parameters parameters )
+		public override BaseController Locate( Parameters parameters )
 		{
-			return new PlayerListResource();
+			return new PlayerListController();
 		}
 	}
 
-	public class PlayerListResource : BaseResource
+	public class PlayerListController : BaseController
 	{
-		public static BaseResource Acquire( Parameters parameters )
+		public static BaseController Acquire( Parameters parameters )
 		{
-			return new PlayerListResource();
+			return new PlayerListController();
 		}
 
-		public PlayerListResource()
+		public PlayerListController()
 		{
 		}
 

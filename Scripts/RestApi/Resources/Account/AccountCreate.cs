@@ -11,28 +11,28 @@ namespace Server.Engines.RestApi
 	[Path( "/v1/accounts/create" )]
 	public class AccountCreateLocator : BaseLocator
 	{
-		public override BaseResource Locate( Parameters parameters )
+		public override BaseController Locate( Parameters parameters )
 		{
-			return AccountCreateResource.Instance;
+			return AccountCreateController.Instance;
 		}
 	}
 
-	public class AccountCreateResource : BaseResource
+	public class AccountCreateController : BaseController
 	{
-		private static AccountCreateResource _instance;
+		private static AccountCreateController _instance;
 
-		public static AccountCreateResource Instance
+		public static AccountCreateController Instance
 		{
 			get
 			{
 				if ( _instance == null )
-					_instance = new AccountCreateResource();
+					_instance = new AccountCreateController();
 
 				return _instance;
 			}
 		}
 
-		private AccountCreateResource()
+		private AccountCreateController()
 		{
 		}
 

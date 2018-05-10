@@ -37,8 +37,8 @@
     <Compile Include="ApiServer.cs" />
     <Compile Include="Core\Attributes\PathAttribute.cs" />
     <Compile Include="Core\BaseLocator.cs" />
-    <Compile Include="Core\BaseProtectedResource.cs" />
-    <Compile Include="Core\BaseResource.cs" />
+    <Compile Include="Core\BaseProtectedController.cs" />
+    <Compile Include="Core\BaseController.cs" />
     <Compile Include="Core\HttpRouter.cs" />
     <Compile Include="Core\HttpServer.cs" />
     <Compile Include="Core\Route.cs" />

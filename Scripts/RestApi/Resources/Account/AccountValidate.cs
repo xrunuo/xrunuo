@@ -8,9 +8,9 @@ namespace Server.Engines.RestApi
 	[Path( "/v1/accounts/{username}/validate" )]
 	public class AccountValidateLocator : BaseLocator
 	{
-		public override BaseResource Locate( Parameters parameters )
+		public override BaseController Locate( Parameters parameters )
 		{
-			BaseResource resource = null;
+			BaseController controller = null;
 
 			try
 			{
@@ -18,21 +18,21 @@ namespace Server.Engines.RestApi
 				var acct = Accounts.GetAccount( username );
 
 				if ( acct != null )
-					resource = new AccountValidateResource( acct );
+					controller = new AccountValidateController( acct );
 			}
 			catch
 			{
 			}
 
-			return resource;
+			return controller;
 		}
 	}
 
-	public class AccountValidateResource : BaseResource
+	public class AccountValidateController : BaseController
 	{
 		private Account m_Account;
 
-		public AccountValidateResource( Account account )
+		public AccountValidateController( Account account )
 		{
 			m_Account = account;
 		}

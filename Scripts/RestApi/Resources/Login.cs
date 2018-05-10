@@ -11,15 +11,15 @@ namespace Server.Engines.RestApi
 	[Path( "/v1/login" )]
 	public class LoginLocator : BaseLocator
 	{
-		public override BaseResource Locate( Parameters parameters )
+		public override BaseController Locate( Parameters parameters )
 		{
-			return new LoginResource();
+			return new LoginController();
 		}
 	}
 
-	public class LoginResource : BaseResource
+	public class LoginController : BaseController
 	{
-		public LoginResource()
+		public LoginController()
 		{
 		}
 

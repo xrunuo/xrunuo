@@ -6,7 +6,7 @@ using Server.Accounting;
 
 namespace Server.Engines.RestApi
 {
-	public abstract class BaseProtectedResource : BaseResource
+	public abstract class BaseProtectedController : BaseController
 	{
 		public abstract AccessLevel RequiredAccessLevel { get; }
 
