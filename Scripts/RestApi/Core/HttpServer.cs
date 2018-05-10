@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace Server.Web
+namespace Server.Engines.RestApi
 {
 	public class HttpServer : IDisposable
 	{

@@ -5,9 +5,6 @@ using System.Net;
 using System.Text;
 using System.Web.Script.Serialization;
 
-using Server;
-using Server.Web;
-
 using Parameters = System.Collections.Generic.Dictionary<string, string>;
 
 namespace Server.Engines.RestApi

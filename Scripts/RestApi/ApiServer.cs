@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 
-using Server.Web;
 using Server.Events;
 
 using Parameters = System.Collections.Generic.Dictionary<string, string>;
