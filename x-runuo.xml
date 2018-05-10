@@ -13,6 +13,6 @@
 		<bind address="127.0.0.1" port="2593"/>
 	</network>
 	<locations>
-		<data-path>/opt/data</data-path>
+		<data-path>Muls</data-path>
 	</locations>
 </x-runuo-config>

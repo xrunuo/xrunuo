@@ -301,7 +301,7 @@ namespace Server
 			{
 				ScriptCompiler.Configure();
 
-				//TileData.Configure();
+				TileData.Configure();
 			}
 			catch ( TargetInvocationException e )
 			{
@@ -311,12 +311,12 @@ namespace Server
 
 			SaveConfig();
 
-			//Region.Load();
+			Region.Load();
 			World.Load();
 
 			try
 			{
-				//ScriptCompiler.Initialize();
+				ScriptCompiler.Initialize();
 			}
 			catch ( TargetInvocationException e )
 			{

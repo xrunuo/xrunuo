@@ -130,9 +130,9 @@ namespace Server
 
 			log.Info( "Compiling library {0}, {1} C# sources", libConfig.Name, fileColl.Count );
 
-			string tempFile = /*compiler.GetType().FullName == "Mono.CSharp.CSharpCodeCompiler"
-				? */Path.GetTempFileName()/*
-				: null*/;
+			string tempFile = compiler.GetType().FullName == "Mono.CSharp.CSharpCodeCompiler"
+				? Path.GetTempFileName()
+				: null;
 
 			if ( tempFile == String.Empty )
 				tempFile = null;

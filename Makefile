@@ -7,10 +7,13 @@ DOCKERDATAPATH=/opt/data
 PORT=2593
 
 run: build
-	mono Server.exe --test
+	mono Server.exe
 
 build:
 	${MCS} -optimize+ -unsafe -t:exe -out:Server.exe -nowarn:${NOWARNS} -d:MONO -recurse:Server/*.cs -reference:System.IO.Compression.FileSystem.dll
+
+test: build
+	mono Server.exe --test
 
 clean:
 	rm -f Server.exe
