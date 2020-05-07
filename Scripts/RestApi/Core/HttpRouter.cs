@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Web.Script.Serialization;
-
+using Newtonsoft.Json;
 using Parameters = System.Collections.Generic.Dictionary<string, string>;
 
 namespace Server.Engines.RestApi
@@ -47,7 +46,7 @@ namespace Server.Engines.RestApi
 				var response = controller.HandleRequest( request );
 
 				// Serialize the response
-				var jsonResponse = JsonSerialize( response );
+				var jsonResponse = JsonConvert.SerializeObject( response );
 
 				// Write the serialized data into the output stream
 				context.Response.ContentType = "application/json";
@@ -69,16 +68,6 @@ namespace Server.Engines.RestApi
 				log.Error( "Rest Api: Unexpected error: {0}", e );
 				context.Response.StatusCode = 500;
 			}
-		}
-
-		private string JsonSerialize( object o )
-		{
-			var sb = new StringBuilder();
-			var json = new JavaScriptSerializer();
-
-			json.Serialize( o, sb );
-
-			return sb.ToString();
 		}
 	}
 }
