@@ -38,41 +38,6 @@ namespace Server.Configuration
 		{
 			var coreConfig = new Library( "Core" );
 			m_LibraryConfig["Core"] = coreConfig;
-
-			var baseDirectory = new DirectoryInfo( m_BaseDirectory );
-
-			// Find binary libraries in ./lib/
-			var lib = baseDirectory.CreateSubdirectory( "lib" );
-
-			foreach ( var libFile in lib.GetFiles( "*.dll" ) )
-			{
-				var fileName = libFile.Name;
-				var libName = fileName.Substring( 0, fileName.Length - 4 );
-
-				if ( m_LibraryConfig.ContainsKey( libName ) )
-				{
-					log.Warning( "Duplicate library '{0}' in '{1}'", libName, libFile );
-					continue;
-				}
-
-				m_LibraryConfig[libName] = new Library( libName, libFile );
-			}
-
-			// Find source libraries in ./Scripts/
-			var scriptsDir = baseDirectory.CreateSubdirectory( "Scripts" );
-
-			foreach ( var sub in scriptsDir.GetDirectories() )
-			{
-				var libName = sub.Name;
-
-				if ( m_LibraryConfig.ContainsKey( libName ) )
-				{
-					log.Warning( "Duplicate library '{0}' in '{1}'", libName, sub.FullName );
-					continue;
-				}
-
-				m_LibraryConfig[libName] = new Library( libName, sub );
-			}
 		}
 
 		private void Load()

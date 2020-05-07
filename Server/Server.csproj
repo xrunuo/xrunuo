@@ -2,7 +2,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <StartupObject>Server.Core</StartupObject>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <ApplicationIcon />
     <LangVersion>7.1</LangVersion>
     <AssemblyTitle>X-RunUO Server Core</AssemblyTitle>
@@ -14,8 +14,4 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Reference Include="System.Web" />
-  </ItemGroup>
 </Project>

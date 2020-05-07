@@ -18,5 +18,7 @@ staffHistory.xml
 Scripts/*/obj/*
 output/*
 cache/*
-/.idea
+.idea/
 deps/*
+*.deps.json
+*.runtimeconfig*
