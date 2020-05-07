@@ -54,7 +54,7 @@ namespace Server.Engines.RestApi
 				byte[] outputBuffer = Encoding.ASCII.GetBytes( jsonResponse );
 				context.Response.OutputStream.Write( outputBuffer, 0, outputBuffer.Length );
 			}
-			catch ( NotFound e )
+			catch ( NotFound )
 			{
 				log.Error( "Rest Api: Not found: {0}", context.Request.RawUrl );
 				context.Response.StatusCode = 404; // Not found
