@@ -22,7 +22,8 @@ namespace Server.Engines.RestApi
 		{
 			get
 			{
-				_parameters.TryGetValue( param, out var value );
+				string value;
+				_parameters.TryGetValue( param, out value );
 
 				return value;
 			}
