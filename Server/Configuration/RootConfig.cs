@@ -27,7 +27,6 @@ namespace Server.Configuration
 
 			var baseDir = new DirectoryInfo( BaseDirectory );
 			LogDirectory = baseDir.CreateSubdirectory( "log" ).FullName;
-			CacheDirectory = baseDir.CreateSubdirectory( "cache" ).FullName;
 
 			m_Filename = filename;
 
@@ -47,7 +46,6 @@ namespace Server.Configuration
 		public string SaveDirectory { get; private set; }
 		public string BackupDirectory { get; private set; }
 		public string LogDirectory { get; private set; }
-		public string CacheDirectory { get; private set; }
 		public List<string> DataDirectories { get; private set; }
 		public Network Network { get; private set; }
 
@@ -239,11 +237,6 @@ namespace Server.Configuration
 						case "log-dir":
 						{
 							LogDirectory = path;
-							break;
-						}
-						case "cache-dir":
-						{
-							CacheDirectory = path;
 							break;
 						}
 						default:

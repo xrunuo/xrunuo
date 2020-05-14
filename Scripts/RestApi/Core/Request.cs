@@ -1,7 +1,6 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Net;
-using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 using Server.Accounting;
 using Parameters = System.Collections.Generic.Dictionary<string, string>;
 
@@ -47,7 +46,7 @@ namespace Server.Engines.RestApi
 			using ( var reader = new StreamReader( body, _context.Request.ContentEncoding ) )
 				data = reader.ReadToEnd();
 
-			return new JavaScriptSerializer().Deserialize<T>( data );
+			return JsonConvert.DeserializeObject<T>( data );
 		}
 
 		public string HttpMethod => _context.Request.HttpMethod;

@@ -3,9 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.CodeDom.Compiler;
 using System.Reflection;
-using Microsoft.CSharp;
 
 namespace Server
 {
@@ -29,296 +27,15 @@ namespace Server
 
 		private static List<String> m_AdditionalReferences;
 
-		private static string[] GetReferenceAssemblies()
-		{
-			var assemblies = new List<string>();
-
-			var path = Path.Combine( Core.Config.ConfigDirectory, "Assemblies.cfg" );
-
-			if ( File.Exists( path ) )
-			{
-				var lines = File.ReadLines( path )
-					.Where( line => line.Length > 0 && !line.StartsWith( "#" ) );
-
-				assemblies.AddRange( lines );
-			}
-
-			assemblies.Add( Core.ExePath );
-			assemblies.AddRange( m_AdditionalReferences );
-
-			return assemblies.ToArray();
-		}
-
-		private static Dictionary<string, DateTime> ReadStampFile( string filename )
-		{
-			if ( !File.Exists( filename ) )
-				return null;
-
-			var fs = new FileStream( filename, FileMode.Open, FileAccess.Read );
-			var br = new BinaryReader( fs );
-
-			int version = br.ReadInt32();
-			if ( version != 1 )
-				return null;
-
-			var stamps = new Dictionary<string, DateTime>();
-
-			uint count = br.ReadUInt32();
-			for ( uint i = 0; i < count; i++ )
-			{
-				string fn = br.ReadString();
-				long ticks = br.ReadInt64();
-				stamps[fn] = new DateTime( ticks );
-			}
-
-			br.Close();
-			fs.Close();
-
-			return stamps;
-		}
-
-		private static void WriteStampFile( string filename, Dictionary<string, DateTime> stamps )
-		{
-			var fs = new FileStream( filename, FileMode.OpenOrCreate, FileAccess.Write );
-			var bw = new BinaryWriter( fs );
-			bw.Write( (int) 1 );
-
-			bw.Write( (uint) stamps.Count );
-			foreach ( var kvp in stamps )
-			{
-				bw.Write( kvp.Key );
-				bw.Write( (long) kvp.Value.Ticks );
-			}
-
-			bw.Close();
-			fs.Close();
-		}
-
-		private static bool CheckStamps( Dictionary<string, DateTime> files, string stampFile )
-		{
-			var stamps = ReadStampFile( stampFile );
-			if ( stamps == null )
-				return false;
-
-			foreach ( var kvp in files )
-			{
-				var filename = kvp.Key;
-				if ( !stamps.ContainsKey( filename ) )
-					return false;
-
-				var newStamp = kvp.Value;
-				var oldStamp = stamps[filename];
-
-				if ( oldStamp != newStamp )
-					return false;
-
-				stamps.Remove( filename );
-			}
-
-			return stamps.Count == 0;
-		}
-
-		private static CompilerResults CompileCSScripts( ICollection<string> fileColl, string assemblyFile,
-			Configuration.Library libConfig, bool debug )
-		{
-			var provider = new CSharpCodeProvider();
-#pragma warning disable 618
-			var compiler = provider.CreateCompiler();
-#pragma warning restore 618
-
-			string[] files;
-
-			log.Info( "Compiling library {0}, {1} C# sources", libConfig.Name, fileColl.Count );
-
-			string tempFile = compiler.GetType().FullName == "Mono.CSharp.CSharpCodeCompiler"
-				? Path.GetTempFileName()
-				: null;
-
-			if ( tempFile == String.Empty )
-				tempFile = null;
-
-			if ( tempFile == null )
-			{
-				files = new string[fileColl.Count];
-				fileColl.CopyTo( files, 0 );
-			}
-			else
-			{
-				/* to prevent an "argument list too long" error, we
-				   write a list of file names to a temporary file
-				   and add them with @filename */
-				var w = new StreamWriter( tempFile, false );
-				foreach ( string file in fileColl )
-				{
-					w.Write( "\"" + file + "\" " );
-				}
-				w.Close();
-
-				files = new string[0];
-			}
-
-			var parms = new CompilerParameters( GetReferenceAssemblies(), assemblyFile, debug );
-			if ( tempFile != null )
-				parms.CompilerOptions += "@" + tempFile;
-
-			if ( libConfig.WarningLevel >= 0 )
-				parms.WarningLevel = libConfig.WarningLevel;
-
-			CompilerResults results = null;
-			try
-			{
-				results = compiler.CompileAssemblyFromFileBatch( parms, files );
-			}
-			catch ( System.ComponentModel.Win32Exception e )
-			{
-				/* from WinError.h:
-				 * #define ERROR_FILE_NOT_FOUND 2L
-				 * #define ERROR_PATH_NOT_FOUND 3L
-				 */
-				if ( e.NativeErrorCode == 2 || e.NativeErrorCode == 3 )
-				{
-					log.Fatal( "Could not find the compiler - are you sure MCS is installed? (on Debian, try: apt-get install mono-mcs)" );
-					Environment.Exit( 2 );
-				}
-				else
-				{
-					throw e;
-				}
-			}
-
-			if ( tempFile != null )
-				File.Delete( tempFile );
-
-			m_AdditionalReferences.Add( assemblyFile );
-
-			Display( results );
-
-			return results;
-		}
-
-		public static void Display( CompilerResults results )
-		{
-			if ( results.Errors.Count > 0 )
-			{
-				var errors = new Dictionary<string, List<CompilerError>>( results.Errors.Count, StringComparer.OrdinalIgnoreCase );
-				var warnings =
-					new Dictionary<string, List<CompilerError>>( results.Errors.Count, StringComparer.OrdinalIgnoreCase );
-
-				foreach ( CompilerError e in results.Errors )
-				{
-					var file = e.FileName;
-
-					// Rediculous. FileName is null if the warning/error is internally generated in csc.
-					if ( string.IsNullOrEmpty( file ) )
-					{
-						Console.WriteLine( "ScriptCompiler: {0}: {1}", e.ErrorNumber, e.ErrorText );
-						continue;
-					}
-
-					var table = ( e.IsWarning ? warnings : errors );
-
-					List<CompilerError> list = null;
-					table.TryGetValue( file, out list );
-
-					if ( list == null )
-						table[file] = list = new List<CompilerError>();
-
-					list.Add( e );
-				}
-
-				if ( errors.Count > 0 )
-					log.Error( "compilation failed ({0} errors, {1} warnings)", errors.Count, warnings.Count );
-				else
-					log.Info( "compilation done ({0} errors, {1} warnings)", errors.Count, warnings.Count );
-
-				string scriptRoot = Path.GetFullPath(
-					Path.Combine( Core.BaseDirectory, "src" + Path.DirectorySeparatorChar ) );
-				Uri scriptRootUri = new Uri( scriptRoot );
-
-				if ( Core.Debug )
-				{
-					Utility.PushColor( ConsoleColor.Yellow );
-
-					if ( warnings.Count > 0 )
-						Console.WriteLine( "Warnings:" );
-
-					foreach ( KeyValuePair<string, List<CompilerError>> kvp in warnings )
-					{
-						string fileName = kvp.Key;
-						List<CompilerError> list = kvp.Value;
-
-						string fullPath = Path.GetFullPath( fileName );
-						string usedPath = Uri.UnescapeDataString( scriptRootUri.MakeRelativeUri( new Uri( fullPath ) ).OriginalString );
-
-						Console.WriteLine( " + {0}:", usedPath );
-
-						Utility.PushColor( ConsoleColor.DarkYellow );
-
-						foreach ( CompilerError e in list )
-							Console.WriteLine( "    {0}: Line {1}: {3}", e.ErrorNumber, e.Line, e.Column, e.ErrorText );
-
-						Utility.PopColor();
-					}
-
-					Utility.PopColor();
-				}
-
-				Utility.PushColor( ConsoleColor.Red );
-
-				if ( errors.Count > 0 )
-					Console.WriteLine( "Errors:" );
-
-				foreach ( var kvp in errors )
-				{
-					string fileName = kvp.Key;
-					List<CompilerError> list = kvp.Value;
-
-					string fullPath = Path.GetFullPath( fileName );
-					string usedPath = Uri.UnescapeDataString( scriptRootUri.MakeRelativeUri( new Uri( fullPath ) ).OriginalString );
-
-					Console.WriteLine( " + {0}:", usedPath );
-
-					Utility.PushColor( ConsoleColor.DarkRed );
-
-					foreach ( CompilerError e in list )
-						Console.WriteLine( "    {0}: Line {1}: {3}", e.ErrorNumber, e.Line, e.Column, e.ErrorText );
-
-					Utility.PopColor();
-				}
-
-				Utility.PopColor();
-			}
-			else
-			{
-				log.Info( "compilation done (0 errors, 0 warnings)" );
-			}
-		}
-
-		private static Dictionary<string, DateTime> GetScripts( Configuration.Library libConfig, string type )
-		{
-			var sourceCodeFileProvider = new SourceCodeFileProvider( libConfig, type );
-
-			var files = sourceCodeFileProvider.ProvideSources();
-
-			return files;
-		}
-
 		private static bool Compile( Configuration.Library libConfig, bool debug )
 		{
-			// Check if there is source code for this library.
-			if ( libConfig.SourcePath == null )
+			if ( libConfig.BinaryPath == null )
 			{
-				if ( libConfig.BinaryPath == null )
-				{
-					log.Warning( "Library {0} does not exist", libConfig.Name );
-					return true;
-				}
-				if ( !libConfig.BinaryPath.Exists )
-				{
-					log.Warning( "Library {0} does not exist: {1}", libConfig.Name, libConfig.BinaryPath );
-					return false;
-				}
-
+				log.Error( "Library {0} does not exist. Make sure it has been pre-compiled (X-RunUO no longer supports on-the-fly compilation of script libraries)", libConfig.Name );
+				return false;
+			}
+			else
+			{
 				log.Info( "Loading library {0}", libConfig.Name );
 
 				m_Libraries.Add( new Library( libConfig, Assembly.LoadFrom( libConfig.BinaryPath.FullName ) ) );
@@ -326,52 +43,6 @@ namespace Server
 
 				return true;
 			}
-			if ( !libConfig.SourcePath.Exists )
-			{
-				log.Warning( "Library {0} does not exist", libConfig.Name );
-				return true;
-			}
-
-			var cache = new DirectoryInfo( Core.Config.CacheDirectory ).CreateSubdirectory( libConfig.Name );
-
-			if ( !cache.Exists )
-			{
-				log.Error( "Failed to create directory {0}", cache.FullName );
-				return false;
-			}
-
-			var csFile = Path.Combine( cache.FullName, libConfig.Name + ".dll" );
-			var files = GetScripts( libConfig, "*.cs" );
-
-			if ( files.Count > 0 )
-			{
-				var stampFile = Path.Combine( cache.FullName, libConfig.Name + ".stm" );
-
-				if ( File.Exists( csFile ) && CheckStamps( files, stampFile ) )
-				{
-					m_Libraries.Add( new Library( libConfig, Assembly.LoadFrom( csFile ) ) );
-					m_AdditionalReferences.Add( csFile );
-					log.Info( "Loaded binary library {0}", libConfig.Name );
-				}
-				else
-				{
-					var sorted = new List<string>( files.Keys );
-					sorted.Sort();
-
-					var results = CompileCSScripts( sorted, csFile, libConfig, debug );
-
-					if ( results != null )
-					{
-						if ( results.Errors.HasErrors )
-							return false;
-
-						m_Libraries.Add( new Library( libConfig, results.CompiledAssembly ) );
-						WriteStampFile( stampFile, files );
-					}
-				}
-			}
-
-			return true;
 		}
 
 		/// <summary>
@@ -386,16 +57,17 @@ namespace Server
 		{
 			var depends = libConfig.Depends;
 
-			if ( libConfig.Name == "Core" || libConfig.Disabled )
+			if ( libConfig.Name == "Core"  )
 			{
 				libs.Remove( libConfig );
 				return;
 			}
 
-			if ( libConfig.IsRemote && ( !libConfig.Exists || Core.ForceUpdateDeps ) )
+			if ( libConfig.Disabled )
 			{
-				var srcPath = Dependencies.Fetch( libConfig );
-				libConfig.SourcePath = new DirectoryInfo( srcPath );
+				log.Warning( "Library {0} is disabled, it won't be loaded", libConfig.Name );
+				libs.Remove( libConfig );
+				return;
 			}
 
 			if ( !libConfig.Exists )
@@ -481,17 +153,6 @@ namespace Server
 
 				if ( !result )
 					return false;
-			}
-
-			// Delete unused cache directories.
-			var cacheDir = new DirectoryInfo( Core.Config.CacheDirectory );
-
-			foreach ( var sub in cacheDir.GetDirectories() )
-			{
-				var libName = sub.Name;
-
-				if ( GetLibrary( libName ) == null )
-					sub.Delete( true );
 			}
 
 			return true;

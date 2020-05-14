@@ -18,7 +18,7 @@ namespace Server
 
 			Assembly.GetTypes();
 
-			Types = Assembly.GetTypes().Where( type => !libConfig.GetIgnoreType( type ) ).ToArray();
+			Types = Assembly.GetTypes().ToArray();
 
 			TypesByName = new TypeTable( Types.Length );
 			TypesByFullName = new TypeTable( Types.Length );

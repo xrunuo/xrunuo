@@ -1,6 +1,6 @@
 using System;
 using System.Diagnostics;
-using DiagELog = System.Diagnostics.EventLog;
+//using DiagELog = System.Diagnostics.EventLog;
 
 namespace Server
 {
@@ -8,13 +8,13 @@ namespace Server
 	{
 		static EventLog()
 		{
-			if ( !DiagELog.SourceExists( "X-RunUO" ) )
-				DiagELog.CreateEventSource( "X-RunUO", "Application" );
+			//if ( !DiagELog.SourceExists( "X-RunUO" ) )
+			//	DiagELog.CreateEventSource( "X-RunUO", "Application" );
 		}
 
 		public static void Error( int eventID, string text )
 		{
-			DiagELog.WriteEntry( "X-RunUO", text, EventLogEntryType.Error, eventID );
+			//DiagELog.WriteEntry( "X-RunUO", text, EventLogEntryType.Error, eventID );
 		}
 
 		public static void Error( int eventID, string format, params object[] args )
@@ -24,7 +24,7 @@ namespace Server
 
 		public static void Warning( int eventID, string text )
 		{
-			DiagELog.WriteEntry( "X-RunUO", text, EventLogEntryType.Warning, eventID );
+			//DiagELog.WriteEntry( "X-RunUO", text, EventLogEntryType.Warning, eventID );
 		}
 
 		public static void Warning( int eventID, string format, params object[] args )
@@ -34,7 +34,7 @@ namespace Server
 
 		public static void Inform( int eventID, string text )
 		{
-			DiagELog.WriteEntry( "X-RunUO", text, EventLogEntryType.Information, eventID );
+			//DiagELog.WriteEntry( "X-RunUO", text, EventLogEntryType.Information, eventID );
 		}
 
 		public static void Inform( int eventID, string format, params object[] args )

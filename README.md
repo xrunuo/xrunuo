@@ -5,7 +5,7 @@ XRunUO
 
 [![Join the chat at https://gitter.im/xrunuo/xrunuo](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/xrunuo/xrunuo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-**XRunUO** is a server emulator of the MMORPG game Ultima Online, forked from the RunUO project, adding support for the Stygian Abyss expansion, written in C# and targeting the .NET Framework 4.5 and Mono.
+**XRunUO** is a server emulator of the MMORPG game Ultima Online, forked from the RunUO project, adding support for the Stygian Abyss expansion, written in C# and targeting .NET Core 3.1.
 
 ## Foreword
 
@@ -13,32 +13,34 @@ XRunUO
 
 ## Installation
 
-### Binary packages
+### Requirements
 
-* v0.18.0 (Windows) + Saves w/fully spawned world: https://www.dropbox.com/s/1n2smffgwrwcuzu/xrunuo-distro_0-18-0-41100.zip?dl=0
+- .NET Core 3.1.
+- An Ultima Online installation, or a folder containing UO `.mul` and `.uop` files (XRunUO uses these for extracting map and tileset info).
 
-### From sources
+### Configuring
 
-#### Windows Build
+Configuration is done via `x-runuo.xml` file, located at the root. Before first run, you need to:
+- Under `locations` section, configure `data-path` element with the folder where your UO files are located.
+- If you are going to access the server via the internet, under `network` section put your public IP address in `bind` element.
 
-```console
-C:\xrunuo> C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc /optimize /unsafe /t:exe /out:Server.exe /recurse:Server\*.cs
-C:\xrunuo> Server.exe
+### Building and running from sources
+
+Build server and script library binaries:
+```sh
+~/xrunuo$ make build
 ```
 
-#### OSX / Linux (Mono)
-
-```console
+Then launch the server:
+```sh
 ~/xrunuo$ make run
 ```
 
-#### Docker (Mono)
+### Binary packages
 
-You need [Docker](https://www.docker.com/) installed in your system. Then run:
+If you don't want to build from sources, you can also download pre-compiled binaries:
 
-```console
-~/xrunuo$ make docker-run
-```
+* v0.18.0 (Windows) + Saves w/fully spawned world: https://www.dropbox.com/s/1n2smffgwrwcuzu/xrunuo-distro_0-18-0-41100.zip?dl=0
 
 #### zlib
 

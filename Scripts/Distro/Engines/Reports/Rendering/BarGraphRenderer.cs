@@ -116,7 +116,7 @@ namespace Server.Engines.Reports
 
 		//*********************************************************************
 		//
-		// This method collects all data points and calculate all the necessary dimensions 
+		// This method collects all data points and calculate all the necessary dimensions
 		// to draw the bar graph.  It is the method called before invoking the Draw() method.
 		// labels is the x values.
 		// values is the y values.
@@ -230,7 +230,7 @@ namespace Server.Engines.Reports
 
 		//*********************************************************************
 		//
-		// This method returns a bar graph bitmap to the calling function.  It is called after 
+		// This method returns a bar graph bitmap to the calling function.  It is called after
 		// all dimensions and data points are calculated.
 		//
 		//*********************************************************************
@@ -320,12 +320,12 @@ namespace Server.Engines.Reports
 
 								graph.FillPolygon( barBrush, new PointF[] { pts[2], pts[3], pts[6], pts[5] } );
 
-								using ( SolidBrush ltBrsh = new SolidBrush( System.Windows.Forms.ControlPaint.Light( item.ItemColor, 0.1f ) ) )
+								using ( SolidBrush ltBrsh = new SolidBrush( Light( item.ItemColor, 0.1f ) ) )
 								{
 									graph.FillPolygon( ltBrsh, new PointF[] { pts[0], pts[2], pts[5], pts[4] } );
 								}
 
-								using ( SolidBrush drkBrush = new SolidBrush( System.Windows.Forms.ControlPaint.Dark( item.ItemColor, 0.05f ) ) )
+								using ( SolidBrush drkBrush = new SolidBrush( Dark( item.ItemColor, 0.05f ) ) )
 								{
 									graph.FillPolygon( drkBrush, new PointF[] { pts[0], pts[1], pts[3], pts[2] } );
 								}
@@ -497,7 +497,7 @@ namespace Server.Engines.Reports
 					RectangleF lblRec = new RectangleF( _spacer + fo - 6, labelY, _maxTickValueWidth, lblFont.Height );
 
 					float currentTick = _maxValue - i * _yTickValue; // Calculate tick value from top to bottom
-					graph.DrawString( currentTick.ToString( "#,###.##" ), lblFont, brs, lblRec, lblFormat ); // Draw tick value  
+					graph.DrawString( currentTick.ToString( "#,###.##" ), lblFont, brs, lblRec, lblFormat ); // Draw tick value
 					graph.DrawLine( pen, _xOrigin, currentY, _xOrigin - 4.0f, currentY ); // Draw tick mark
 
 					using ( Pen smallPen = new Pen( Color.FromArgb( 96, _fontColor ), 0.8f ) )
@@ -908,14 +908,14 @@ namespace Server.Engines.Reports
 		private void CalculateBarWidth( int dataCount, float barGraphWidth )
 		{
 			// White space between each bar is the same as bar width itself
-			_barWidth = barGraphWidth / ( dataCount * 2 ); // Each bar has 1 white space 
+			_barWidth = barGraphWidth / ( dataCount * 2 ); // Each bar has 1 white space
 			//_barWidth = (float) Math.Floor( _barWidth );
 			_spaceBtwBars = _barWidth;
 		}
 
 		//*********************************************************************
 		//
-		// This method assigns default value to the bar graph properties and is only 
+		// This method assigns default value to the bar graph properties and is only
 		// called from BarGraph constructors
 		//
 		//*********************************************************************
@@ -934,5 +934,164 @@ namespace Server.Engines.Reports
 			_displayLegend = false;
 			_displayBarData = false;
 		}
+
+		public static Color Light(Color baseColor, float percOfLightLight) {
+			return new HLSColor(baseColor).Lighter(percOfLightLight);
+		}
+
+		public static Color Dark(Color baseColor, float percOfDarkDark) {
+			return new HLSColor(baseColor).Darker(percOfDarkDark);
+		}
+
+		private struct HLSColor {
+            private const int ShadowAdj         = -333;
+            private const int HilightAdj        = 500;
+            private const int WatermarkAdj      = -50;
+
+            private const int Range = 240;
+            private const int HLSMax = Range;
+            private const int RGBMax = 255;
+            private const int Undefined = HLSMax*2/3;
+
+            private int hue;
+            private int saturation;
+            private int luminosity;
+
+            public HLSColor(Color color) {
+                int r = color.R;
+                int g = color.G;
+                int b = color.B;
+                int max, min;        /* max and min RGB values */
+                int sum, dif;
+                int  Rdelta,Gdelta,Bdelta;  /* intermediate value: % of spread from max */
+
+                /* calculate lightness */
+                max = Math.Max( Math.Max(r,g), b);
+                min = Math.Min( Math.Min(r,g), b);
+                sum = max + min;
+
+                luminosity = (((sum * HLSMax) + RGBMax)/(2*RGBMax));
+
+                dif = max - min;
+                if (dif == 0) {       /* r=g=b --> achromatic case */
+                    saturation = 0;                         /* saturation */
+                    hue = Undefined;                 /* hue */
+                }
+                else {                           /* chromatic case */
+                    /* saturation */
+                    if (luminosity <= (HLSMax/2))
+                        saturation = (int) (((dif * (int) HLSMax) + (sum / 2) ) / sum);
+                    else
+                        saturation = (int) ((int) ((dif * (int) HLSMax) + (int)((2*RGBMax-sum)/2) )
+                                            / (2*RGBMax-sum));
+                    /* hue */
+                    Rdelta = (int) (( ((max-r)*(int)(HLSMax/6)) + (dif / 2) ) / dif);
+                    Gdelta = (int) (( ((max-g)*(int)(HLSMax/6)) + (dif / 2) ) / dif);
+                    Bdelta = (int) (( ((max-b)*(int)(HLSMax/6)) + (dif / 2) ) / dif);
+
+                    if ((int) r == max)
+                        hue = Bdelta - Gdelta;
+                    else if ((int)g == max)
+                        hue = (HLSMax/3) + Rdelta - Bdelta;
+                    else /* B == cMax */
+                        hue = ((2*HLSMax)/3) + Gdelta - Rdelta;
+
+                    if (hue < 0)
+                        hue += HLSMax;
+                    if (hue > HLSMax)
+                        hue -= HLSMax;
+                }
+            }
+
+            public Color Darker(float percDarker) {
+                int oneLum = 0;
+                int zeroLum = NewLuma(ShadowAdj, true);
+
+                return ColorFromHLS(hue, zeroLum - (int)((zeroLum - oneLum) * percDarker), saturation);
+            }
+
+            public Color Lighter(float percLighter) {
+                int zeroLum = luminosity;
+                int oneLum = NewLuma(HilightAdj, true);
+
+                return ColorFromHLS(hue, zeroLum + (int)((oneLum - zeroLum) * percLighter), saturation);
+            }
+
+            private int NewLuma(int n, bool scale) {
+                return NewLuma(luminosity, n, scale);
+            }
+
+            private int NewLuma(int luminosity, int n, bool scale) {
+                if (n == 0)
+                    return luminosity;
+
+                if (scale) {
+                    if (n > 0) {
+                        return(int)(((int)luminosity * (1000 - n) + (Range + 1L) * n) / 1000);
+                    }
+                    else {
+                        return(int)(((int)luminosity * (n + 1000)) / 1000);
+                    }
+                }
+
+                int newLum = luminosity;
+                newLum += (int)((long)n * Range / 1000);
+
+                if (newLum < 0)
+                    newLum = 0;
+                if (newLum > HLSMax)
+                    newLum = HLSMax;
+
+                return newLum;
+            }
+
+            private Color ColorFromHLS(int hue, int luminosity, int saturation) {
+                byte r,g,b;                      /* RGB component values */
+                int  magic1,magic2;       /* calculated magic numbers (really!) */
+
+                if (saturation == 0) {                /* achromatic case */
+                    r = g = b = (byte)((luminosity * RGBMax) / HLSMax);
+                    if (hue != Undefined) {
+                        /* ERROR */
+                    }
+                }
+                else {                         /* chromatic case */
+                    /* set up magic numbers */
+                    if (luminosity <= (HLSMax/2))
+                        magic2 = (int)((luminosity * ((int)HLSMax + saturation) + (HLSMax/2))/HLSMax);
+                    else
+                        magic2 = luminosity + saturation - (int)(((luminosity*saturation) + (int)(HLSMax/2))/HLSMax);
+                    magic1 = 2*luminosity-magic2;
+
+                    /* get RGB, change units from HLSMax to RGBMax */
+                    r = (byte)(((HueToRGB(magic1,magic2,(int)(hue+(int)(HLSMax/3)))*(int)RGBMax + (HLSMax/2))) / (int)HLSMax);
+                    g = (byte)(((HueToRGB(magic1,magic2,hue)*(int)RGBMax + (HLSMax/2))) / HLSMax);
+                    b = (byte)(((HueToRGB(magic1,magic2,(int)(hue-(int)(HLSMax/3)))*(int)RGBMax + (HLSMax/2))) / (int)HLSMax);
+                }
+                return Color.FromArgb(r,g,b);
+            }
+
+            private int HueToRGB(int n1, int n2, int hue) {
+                /* range check: note values passed add/subtract thirds of range */
+
+                /* The following is redundant for WORD (unsigned int) */
+                if (hue < 0)
+                    hue += HLSMax;
+
+                if (hue > HLSMax)
+                    hue -= HLSMax;
+
+                /* return r,g, or b value from this tridrant */
+                if (hue < (HLSMax/6))
+                    return( n1 + (((n2-n1)*hue+(HLSMax/12))/(HLSMax/6)) );
+                if (hue < (HLSMax/2))
+                    return( n2 );
+                if (hue < ((HLSMax*2)/3))
+                    return( n1 + (((n2-n1)*(((HLSMax*2)/3)-hue)+(HLSMax/12)) / (HLSMax/6)) );
+                else
+                    return( n1 );
+
+            }
+        }
 	}
 }
